@@ -1,0 +1,1 @@
+export {convertBeacon} from "./analyticsBeacon";
