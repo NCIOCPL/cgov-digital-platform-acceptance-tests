@@ -1,0 +1,28 @@
+{
+  "name": "cgov-digital-platform-acceptance-tests",
+  "version": "0.0.1",
+  "description": "Behavioral tests for CGov Digital Platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NCIOCPL/cgov-digital-platform-acceptance-tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NCIOCPL/cgov-digital-platform-acceptance-tests/issues"
+  },
+  "homepage": "https://github.com/NCIOCPL/cgov-digital-platform-acceptance-tests#readme",
+  "dependencies": {
+    "cypress": "^4.0.2",
+    "cypress-cucumber-preprocessor": "^2.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}
