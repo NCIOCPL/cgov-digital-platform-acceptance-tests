@@ -1,55 +1,60 @@
 Feature: Common Google Analytics Load events properties are captured across all content types
 
-    Scenario: Load Event Home Page
-        Given user is navigating to "/"
-        When page load request is sent
-        Then the following page load parameters should be captured
-            | pageType | cgvHomeLanding                                               |
-            | prop6    | Comprehensive Cancer Information                             |
-            | prop10   | Comprehensive Cancer Information - National Cancer Institute |
-            | prop42   | Normal                                                       |
-            | prop44   | NCI Homepage                                                 |
-            | evar44   | NCI Homepage                                                 |
-            | evar2    | english                                                      |
-            | prop8    | english                                                      |
-            | channel  | NCI Homepage                                                 |
-            | prop3    | /                                                            |
-        And the following parameters contain current url
-            | prop1    |
-            | evar1    |
-            | hier1    |
-            | pageName |
-            | pageURL  |
-        And prop26, prop29, prop 65 are matching expected format
-        And the following events are captured
-            | events | event1  |
-            | events | event47 |
-
-
     Scenario: Load Event Spanish Home Page
         Given user is navigating to "/espanol"
         When page load request is sent
-        Then the following page load parameters should be captured
-
-            | pageType | cgvHomeLanding                                    |
+        Then the following parameters should be captured
             | prop6    | Cáncer en español                                 |
             | prop10   | Cáncer en español - Instituto Nacional del Cáncer |
             | prop42   | Normal                                            |
             | prop44   | NCI Home - Spanish                                |
+            | prop3    | /espanol                                          |
+            | prop65   | /^\d{1,4}$/                                       |
+            | prop26   | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/              |
+            | prop29   | /^\d{1,2}:\d{2} (AM\|PM)\|[a-zA-z]+day$/          |
+            | prop8    | spanish                                           |
             | evar44   | NCI Home - Spanish                                |
             | evar2    | spanish                                           |
-            | prop8    | spanish                                           |
             | channel  | NCI Home - Spanish                                |
-            | prop3    | /espanol                                          |
-        And the following parameters contain current url
-            | prop1    |
-            | evar1    |
-            | pageName |
-            | pageURL  |
-        And prop26, prop29, prop 65 are matching expected format
+            | pageType | cgvHomeLanding                                    |
+            | pageName | {CANONICAL_HOST}/espanol                          |
+            | evar1    | {CANONICAL_HOST}/espanol                          |
+            | prop1    | https://{CANONICAL_HOST}/espanol                  |
+            | hier1    | {CANONICAL_HOST}\|espanol                         |
         And the following events are captured
             | events | event1  |
             | events | event47 |
+
+
+    Scenario: Load Event Home Page
+        Given user is navigating to "/"
+        When page load request is sent
+        Then the following parameters should be captured
+            | prop6    | Comprehensive Cancer Information                             |
+            | prop10   | Comprehensive Cancer Information - National Cancer Institute |
+            | prop42   | Normal                                                       |
+            | prop44   | NCI Homepage                                                 |
+            | prop8    | english                                                      |
+            | prop3    | /                                                            |
+            | prop65   | /^\d{1,4}$/                                                  |
+            | prop26   | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                         |
+            | prop29   | /^\d{1,2}:\d{2} (AM\|PM)\|[a-zA-z]+day$/                     |
+            | evar44   | NCI Homepage                                                 |
+            | evar2    | english                                                      |
+            | pageType | cgvHomeLanding                                               |
+            | channel  | NCI Homepage                                                 |
+            | prop3    | /                                                            |
+            | pageType | cgvHomeLanding                                               |
+            | pageName | {CANONICAL_HOST}/                                            |
+            | evar1    | {CANONICAL_HOST}/                                            |
+            | prop1    | https://{CANONICAL_HOST}/                                    |
+            | hier1    | {CANONICAL_HOST}                                             |
+        And the following events are captured
+            | events | event1  |
+            | events | event47 |
+
+
+
 
 # Examples:
 #     | url                                                              |

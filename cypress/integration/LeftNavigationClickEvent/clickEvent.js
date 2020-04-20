@@ -15,7 +15,7 @@ Then('user is clicking on a menu section with href {string}', (hrefAttr) => {
     // will listen for.
     let locator = '#nvcgSlSectionNav a[href="' + hrefAttr + '"]';
     cy.get(locator).click();
-    cy.wait(2000);   
+    cy.wait(2500);   
 });
 
 
