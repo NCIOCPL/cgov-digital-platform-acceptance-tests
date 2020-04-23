@@ -35,8 +35,8 @@ Feature: function test for a single metrics.com Beacon
             | prop44   | NCI Homepage                                                 |
             | evar5    | Tablet                                                       |
             | evar1    | www-dev-ac.cancer.gov/                                       |
-            | AQB      | 1                                                             |
-            | charSet  | UTF-8                                                         |
+            | AQB      | 1                                                            |
+            | charSet  | UTF-8                                                        |
 
 
 
@@ -50,4 +50,11 @@ Feature: function test for a single metrics.com Beacon
             | https://metrics.cancer.gov/b/ss/ncidceg-cancerepidemiologyandgenetics,ncienterprise/1/JS-2.9.0-LAR3/s63894807692708?AQB=1&ndh=1&pf=1&t=3%2F3%2F2020%2015%3A59%3A40%205%20240&D=D%3D&fid=574675B43351DA11-1FF4FEAB90521619&ce=UTF-8&ns=nci&pageName=www-dev-ac.cancer.gov%2Fabout-cancer%2Fcoping%2Ffeelings%2Frelaxation&g=https%3A%2F%2Fwww-dev-ac.cancer.gov%2Fabout-cancer%2Fcoping%2Ffeelings%2Frelaxation&cc=USD&h7=About%20Cancer&events=event33&v2=english&c4=D%3Dpev1&c8=english&v43=Section%20Menu&v45=Coping%20with%20Cancer&c66=feelings%20and%20cancer&c67=D%3DpageName&c69=Coping%20with%20Cancer&c70=Feelings%20and%20Cancer&c71=2&c72=D%3DpageName&pe=lnk_o&pev1=https%3A%2F%2Fwww-dev-ac.cancer.gov%2Fabout-cancer%2Fcoping%2Ffeelings&pev2=SectionLinkClick&c.&a.&activitymap.&page=www-dev-ac.cancer.gov%2Fabout-cancer%2Fcoping%2Ffeelings%2Frelaxation&link=SectionLinkClick&region=nvcgSlSectionNav&pageIDType=1&.activitymap&.a&.c&s=1680x1050&c=24&j=1.6&v=N&k=Y&bw=1310&bh=796&lrt=83&AQE=1   |
 
 
+    Scenario: testing events processing
+        Given the beacon url is "https://metrics.cancer.gov/b/ss/ncidceg-cancerepidemiologyandgenetics,ncienterprise/1/JS-2.9.0-LAR3/s63894807692708?AQB=1&ndh=1&pf=1&t=3%2F3%2F2020%2015%3A59%3A40%205%20240&D=D%3D&fid=574675B43351DA11-1FF4FEAB90521619&ce=UTF-8&ns=nci&pageName=www-dev-ac.cancer.gov%2Fabout-cancer%2Fcoping%2Ffeelings%2Frelaxation&g=https%3A%2F%2Fwww-dev-ac.cancer.gov%2Fabout-cancer%2Fcoping%2Ffeelings%2Frelaxation&cc=USD&ch=About%20Cancer&events=event33,event1=10,event:123&v2=english&c4=D%3Dpev1&c8=english&v43=Section%20Menu&v45=Coping%20with%20Cancer&c66=feelings%20and%20cancer&c67=D%3DpageName&c69=Coping%20with%20Cancer&c70=Feelings%20and%20Cancer&c71=2&c72=D%3DpageName&pe=lnk_o&pev1=https%3A%2F%2Fwww-dev-ac.cancer.gov%2Fabout-cancer%2Fcoping%2Ffeelings&pev2=SectionLinkClick&c.&a.&activitymap.&page=www-dev-ac.cancer.gov%2Fabout-cancer%2Fcoping%2Ffeelings%2Frelaxation&link=SectionLinkClick&region=nvcgSlSectionNav&pageIDType=1&.activitymap&.a&.c&s=1680x1050&c=24&j=1.6&v=N&k=Y&bw=1310&bh=796&lrt=83&AQE=1"
+        Then there are captured events
+            | event     | value     |
+            | event33   |           |
+            | event1    | /\d{1,2}/ |
+            | event:123 |           |
 
