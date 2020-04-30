@@ -1,7 +1,7 @@
 import { convertBeacon } from "../../utils";
 
 beforeEach(() => {
-    
+
   // Create an image proxy to handle intercepting
     // analytics calls.
 
@@ -75,7 +75,7 @@ beforeEach(() => {
   
       win.Image = AnalyticsInterceptingImage;
     })
-  
+   
   }); 
 
 
