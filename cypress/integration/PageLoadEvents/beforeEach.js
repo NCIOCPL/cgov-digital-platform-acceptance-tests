@@ -7,6 +7,7 @@ beforeEach(() => {
 
     cy.on('window:before:load', (win) => {
      
+
        cy.AnalyticsStorage = [];
       const NativeImage = Image;
   
