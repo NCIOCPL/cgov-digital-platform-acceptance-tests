@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import { Given, Then, And, When } from "cypress-cucumber-preprocessor/steps";
+import { Then } from "cypress-cucumber-preprocessor/steps";
 
 const fieldAttribute = new Map();
 fieldAttribute.set('Subtype', 'st');
