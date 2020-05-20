@@ -22,7 +22,7 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | caption      | This is my caption.                                                                                         |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/Pediatric-MATCH-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-640x2.png |
-    #    And "View and Print Infographic" link should not appear
+        And "View and Print Infographic" link should not appear
 
     Scenario: User is able to see alt text of inline infographic - when alt tag has text (Medium Template)
         Given user is navigating to "/espanol/test-es/embed-info-med-es"
@@ -44,7 +44,7 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | caption      | This is a spanish caption.                                                                                          |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/pediatric-match-espanol-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png |
-    #    And "Ver e Imprimir Infografía" link should not appear
+        And "Ver e Imprimir Infografía" link should not appear
 
 
     #######################LARGE TEMPLATE###########################
@@ -69,7 +69,7 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | caption      | This is my caption.                                                                                         |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/Pediatric-MATCH-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-640x2.png |
-    #    And "View and Print Infographic" link should not appear
+        And "View and Print Infographic" link should not appear
 
     Scenario: User is able to see alt text of inline infographic - when alt tag has text (Large Template)
         Given user is navigating to "/espanol/test-es/embed-info-lrg-es"
@@ -91,5 +91,5 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | caption      | This is a spanish caption.                                                                                          |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/pediatric-match-espanol-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png |
-#    And "Ver e Imprimir Infografía" link should not appear
+    And "Ver e Imprimir Infografía" link should not appear
 
