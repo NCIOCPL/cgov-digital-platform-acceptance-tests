@@ -104,7 +104,7 @@ Then('there should be an infographic with the following', (dataTable) => {
 });
 
 Then('{string} link should not appear', (viewAndPrintLink) => {
-    cy.get("figure[class*='centered']").find('figcaption a').should('not.exist');
+    cy.get("figure[class*='centered']").find('figcaption a').should('not.be.visible');
 });
 
 Then('language toggle is not displayed', () => {
