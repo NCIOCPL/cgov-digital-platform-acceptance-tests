@@ -32,7 +32,7 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | caption      | This is a spanish caption.                                                                                          |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/pediatric-match-espanol-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png |
-        And "Ver y Imprimir Infografía" link appears below caption text with the href "/sites/default/files/styles/cgov_enlarged/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png"
+        And "Ver e Imprimir Infografía" link appears below caption text with the href "/sites/default/files/styles/cgov_enlarged/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png"
 
 
     Scenario: User is able to see inline infographic on mobile with alt tag
@@ -44,7 +44,7 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | caption      | This is a spanish caption.                                                                                          |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/pediatric-match-espanol-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png |
-    #    And "Ver y Imprimir Infografía" link should not appear
+    #    And "Ver e Imprimir Infografía" link should not appear
 
 
     #######################LARGE TEMPLATE###########################
@@ -79,7 +79,7 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | caption      | This is a spanish caption.                                                                                          |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/pediatric-match-espanol-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png |
-        And "Ver y Imprimir Infografía" link appears below caption text with the href "/sites/default/files/styles/cgov_enlarged/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png"
+        And "Ver e Imprimir Infografía" link appears below caption text with the href "/sites/default/files/styles/cgov_enlarged/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png"
 
 
     Scenario: User is able to see inline infographic on mobile with alt tag -Large template
@@ -91,5 +91,5 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | caption      | This is a spanish caption.                                                                                          |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/pediatric-match-espanol-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png |
-#    And "Ver y Imprimir Infografía" link should not appear
+#    And "Ver e Imprimir Infografía" link should not appear
 

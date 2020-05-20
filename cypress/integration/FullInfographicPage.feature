@@ -21,7 +21,7 @@ Feature: As I user I want to be able to see full infographic page
             | alt          | empty                                                                                                |
             | mobileImage  | none                                                                                                 |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/nci-at-a-glance-enlarge.gif |
-    #    And "View and Print Infographic" link should not appear
+    #    And "Ver e Imprimir Infografía" link should not appear
 
     Scenario: Full infographic page with translation without mobile image spanish
         Given user is navigating to "/espanol/infografia-nci"
@@ -32,7 +32,7 @@ Feature: As I user I want to be able to see full infographic page
             | alt          | empty                                                                                                            |
             | mobileImage  | none                                                                                                             |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/espanol-nci-at-a-glance-infographic.gif |
-        And "Ver y Imprimir Infografía" link appears below caption text with the href "/sites/default/files/styles/cgov_enlarged/public/cgov_infographic/2020-05/espanol-nci-at-a-glance-infographic.gif"
+        And "Ver e Imprimir Infografía" link appears below caption text with the href "/sites/default/files/styles/cgov_enlarged/public/cgov_infographic/2020-05/espanol-nci-at-a-glance-infographic.gif"
 
     Scenario: Full infographic page with translation without mobile image spanish - Mobile breakpoint
         Given user is navigating to "/espanol/infografia-nci"
@@ -44,7 +44,7 @@ Feature: As I user I want to be able to see full infographic page
             | alt          | empty                                                                                                            |
             | mobileImage  | none                                                                                                             |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/espanol-nci-at-a-glance-infographic.gif |
-    #    And "View and Print Infographic" link should not appear
+    #    And "Ver e Imprimir Infografía" link should not appear
 
     Scenario: Full infographic page without translation without mobile image
         Given user is navigating to "/about-nci/organization/screen-to-save-infographic"
@@ -101,7 +101,7 @@ Feature: As I user I want to be able to see full infographic page
             | caption      | This is a spanish caption.                                                                                          |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/pediatric-match-espanol-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png |
-        And "Ver y Imprimir Infografía" link appears below caption text with the href "/sites/default/files/styles/cgov_enlarged/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png"
+        And "Ver e Imprimir Infografía" link appears below caption text with the href "/sites/default/files/styles/cgov_enlarged/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png"
 
     Scenario: Full translated infographic page with mobile image spanish - mobile breakpoint
         Given user is navigating to "/espanol/match-infantil-infografia"
@@ -113,4 +113,4 @@ Feature: As I user I want to be able to see full infographic page
             | caption      | This is a spanish caption.                                                                                          |
             | mobileImage  | /sites/default/files/styles/cgov_article/public/2020-05/pediatric-match-espanol-enlarge.png                         |
             | desktopImage | /sites/default/files/styles/cgov_article/public/cgov_infographic/2020-05/Human-Tumor-Atlas-AP-web-spanish-640x2.png |
-#    And "View and Print Infographic" link should not appear
+#    And "Ver e Imprimir Infografía" link should not appear
