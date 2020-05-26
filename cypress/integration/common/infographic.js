@@ -35,11 +35,13 @@ Then('there should be an infographic at position {int} with the following', (num
             if (value === 'none') {
                 cy.get("figure[class*='centered']").find('picture').should('not.exist');
             } else {
+                const regex = new RegExp (value);
                 cy.get("figure[class*='centered'] picture").find("source[media='(max-width: 768px)']")
-                    .should('have.attr', 'srcset').and('include', value);
+                    .should('have.attr', 'srcset').and('match', regex);
             }
         } if (attribute === 'desktopImage') {
-            cy.get("figure[class*='centered']").find('img').should('have.attr', 'src').and('include', value);
+            const regex = new RegExp (value);
+            cy.get("figure[class*='centered']").find('img').should('have.attr', 'src').and('match', regex);
         }
     }
 
@@ -47,16 +49,15 @@ Then('there should be an infographic at position {int} with the following', (num
 
 
 Then('{string} link appears below caption text with the href {string}', (linkText, linkHref) => {
+    const regex = new RegExp (linkHref);
     cy.get("figure[class*='centered']").find('figcaption a').should('have.text', linkText);
-    cy.get("figure[class*='centered']").find('figcaption a').should('have.attr', 'href').and('include', linkHref);
+    cy.get("figure[class*='centered']").find('figcaption a').should('have.attr', 'href').and('match', regex);
 });
 
 Then('infographic at position {int} has a link {string} with the href {string}', (number, linkText, linkHref) => {
-    console.log(`text ${linkText}`)
-    console.log(number)
-    console.log(linkHref)
+    const regex = new RegExp (linkHref);
     cy.get("figure[class*='centered']").eq(number - 1).find('figcaption a').invoke('text').should('be.eq', linkText);
-    cy.get("figure[class*='centered']").eq(number - 1).find('figcaption a').should('have.attr', 'href').and('include', linkHref);
+    cy.get("figure[class*='centered']").eq(number - 1).find('figcaption a').should('have.attr', 'href').and('match', regex);
 });
 
 
@@ -88,17 +89,20 @@ Then('there should be an infographic with the following', (dataTable) => {
                     })
                 }
             }
-            //verify srcset of mobile (if present) and desktop image 
-            if (attribute === 'mobileImage') {
-                if (value === 'none') {
-                    cy.get("figure[class*='centered']").find('picture').should('not.exist');
-                } else {
-                    cy.get("figure[class*='centered'] picture").find("source[media='(max-width: 768px)']")
-                        .should('have.attr', 'srcset').and('include', value);
-                }
-            } if (attribute === 'desktopImage') {
-                cy.get("figure[class*='centered']").find('img').should('have.attr', 'src').and('include', value);
+        }
+        //verify srcset of mobile (if present) and desktop image 
+        if (attribute === 'mobileImage') {
+            if (value === 'none') {
+                cy.get("figure[class*='centered']").find('picture').should('not.exist');
+            } else {
+                const regex = new RegExp (value);
+                cy.get("figure[class*='centered'] picture").find("source[media='(max-width: 768px)']")
+                    .should('have.attr', 'srcset').and('match', regex);
+
             }
+        } if (attribute === 'desktopImage') {
+            const regex = new RegExp (value);
+            cy.get("figure[class*='centered']").find('img').should('have.attr', 'src').and('match', regex);
         }
     }
 });
