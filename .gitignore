@@ -109,6 +109,7 @@ _UpgradeReport_Files/
 /node_trace.*.log
 /cypress/video
 /cypress/screenshots
+/cypress/fixtures
 # coverage related
 /gcovr
 /build
