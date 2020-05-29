@@ -1,7 +1,7 @@
 Feature: Common Google Analytics Load events properties are captured across all content types
 
     Scenario: Load Event Spanish Home Page
-        Given user is navigating to "/espanol" with added wait
+        Given user is navigating to "/espanol"
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -26,7 +26,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
 
 
     Scenario: Load Event Home Page
-        Given user is navigating to "/" with added wait
+        Given user is navigating to "/"
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
