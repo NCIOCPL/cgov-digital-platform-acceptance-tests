@@ -18,10 +18,11 @@ const NativeImage = win.Image;
             }
           }
            
-          
           }
-          
-          return nativeImage[prop] = value;
+          try {
+            return nativeImage[prop] = value;
+          } catch (error) {error.message}
+          return true;
         },
         get: function (target, prop) {
           let result = target[prop];
