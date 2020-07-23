@@ -4,24 +4,24 @@ Feature: Common Google Analytics Load events properties are captured across all 
         Given user is navigating to "/espanol"
         When page load request is sent
         Then the following parameters should be captured
-            | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop6     | Cáncer en español                                                                                                                                                                                                                                                                                                                                                                                   |
-            | prop10    | Cáncer en español - Instituto Nacional del Cáncer                                                                                                                                                                                                                                                                                                                                                   |
-            | prop44    | NCI Home - Spanish                                                                                                                                                                                                                                                                                                                                                                                  |
-            | prop3     | /espanol                                                                                                                                                                                                                                                                                                                                                                                            |
-            | prop65    | /^\d{1,4}$/                                                                                                                                                                                                                                                                                                                                                                                         |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                                                                                                                                                                                                                                                                                                                |
-            | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop8     | spanish                                                                                                                                                                                                                                                                                                                                                                                             |
-            | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
-            | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
-            | evar5     | Desktop                                                                                                                                                                                                                                                                                                                                                                                             |
-            | channel   | NCI Home - Spanish                                                                                                                                                                                                                                                                                                                                                                                  |
-            | pageName  | {CANONICAL_HOST}/espanol                                                                                                                                                                                                                                                                                                                                                                            |
-            | prop1     | https://{CANONICAL_HOST}/espanol                                                                                                                                                                                                                                                                                                                                                                    |
-            | hier1     | {CANONICAL_HOST}\|espanol                                                                                                                                                                                                                                                                                                                                                                           |
-            | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
-            | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
+            | parameter | value                                             |
+            | prop6     | Cáncer en español                                 |
+            | prop10    | Cáncer en español - Instituto Nacional del Cáncer |
+            | prop44    | NCI Home - Spanish                                |
+            | prop3     | /espanol                                          |
+            | prop65    | /^\d{1,4}$/                                       |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/              |
+            | prop29    |                                                   |
+            | prop8     | spanish                                           |
+            | evar44    | D=c44                                             |
+            | evar2     | D=c8                                              |
+            | evar5     | Desktop                                           |
+            | channel   | NCI Home - Spanish                                |
+            | pageName  | {CANONICAL_HOST}/espanol                          |
+            | prop1     | https://{CANONICAL_HOST}/espanol                  |
+            | hier1     | {CANONICAL_HOST}\|espanol                         |
+            | event1    |                                                   |
+            | event47   | /d{0,2}/                                          |
 
 
 
@@ -29,48 +29,22 @@ Feature: Common Google Analytics Load events properties are captured across all 
         Given user is navigating to "/"
         When page load request is sent
         Then the following parameters should be captured
-            | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop6     | Comprehensive Cancer Information                                                                                                                                                                                                                                                                                                                                                                    |
-            | prop10    | Comprehensive Cancer Information - National Cancer Institute                                                                                                                                                                                                                                                                                                                                        |
-            | prop44    | NCI Homepage                                                                                                                                                                                                                                                                                                                                                                                        |
-            | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
-            | prop3     | /                                                                                                                                                                                                                                                                                                                                                                                                   |
-            | prop65    | /^\d{1,4}$/                                                                                                                                                                                                                                                                                                                                                                                         |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                                                                                                                                                                                                                                                                                                                |
-            | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
-            | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
-            | evar5     | Desktop                                                                                                                                                                                                                                                                                                                                                                                             |
-            | channel   | NCI Homepage                                                                                                                                                                                                                                                                                                                                                                                        |
-            | prop3     | /                                                                                                                                                                                                                                                                                                                                                                                                   |
-            | pageName  | {CANONICAL_HOST}/                                                                                                                                                                                                                                                                                                                                                                                   |
-            | prop1     | https://{CANONICAL_HOST}/                                                                                                                                                                                                                                                                                                                                                                           |
-            | hier1     | {CANONICAL_HOST}                                                                                                                                                                                                                                                                                                                                                                                    |
-            | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
-            | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
-
-
-
-
-
-# Examples:
-#     | url                                                              |
-#     | /                                                                |
-#     | /news-events/cancer-currents-blog                                |
-#     | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial    |
-#     | /espanol/noticias/temas-y-relatos-blog                           |
-#     | /research/key-initiatives/ras/ras-central/blog                   |
-#     | /espanol/noticias/comunicados-de-prensa/2018                     |
-#     | /espanol                                                         |
-#     | /nano/                                                           |
-#     | /rare-brain-spine-tumor/                                         |
-#     | /pediatric-adult-rare-tumor/                                     |
-#     | /about-nci                                                       |
-#     | /espanol/instituto                                               |
-#     | /news-events                                                     |
-#     | /espanol/noticias                                                |
-#     | /about-cancer/coping/feelings                                    |
-#     | /about-cancer/coping/feelings/relaxation                         |
-#     | /research/progress/discovery/gutcheck-intro-video                |
-#     | /about-cancer/coping/feelings/relaxation/2019-investigators-site |
-
+            | parameter | value                                                        |
+            | prop6     | Comprehensive Cancer Information                             |
+            | prop10    | Comprehensive Cancer Information - National Cancer Institute |
+            | prop44    | NCI Homepage                                                 |
+            | prop8     | english                                                      |
+            | prop3     | /                                                            |
+            | prop65    | /^\d{1,4}$/                                                  |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                         |
+            | prop29    |                                                              |
+            | evar44    | D=c44                                                        |
+            | evar2     | D=c8                                                         |
+            | evar5     | Desktop                                                      |
+            | channel   | NCI Homepage                                                 |
+            | prop3     | /                                                            |
+            | pageName  | {CANONICAL_HOST}/                                            |
+            | prop1     | https://{CANONICAL_HOST}/                                    |
+            | hier1     | {CANONICAL_HOST}                                             |
+            | event47   | /d{0,2}/                                                     |
+            | event1    |                                                              |
