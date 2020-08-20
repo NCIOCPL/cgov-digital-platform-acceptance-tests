@@ -1,22 +1,10 @@
-import { Then } from "cypress-cucumber-preprocessor/steps";
+import { Given, Then } from "cypress-cucumber-preprocessor/steps";
 
-Then('page title is {string}', (pageTitle) => {
-    cy.get('h1').first().should('include.text', pageTitle);
-  });
-
-  Then('page displays left navigation', () => {
-    cy.get('#nvcgSlSectionNav').should('be.visible');
-  });
-
-  Given('user is navigating to bad url {string}', (badUrl) => {
-    cy.request({
-      url: badUrl,
-      failOnStatusCode: false
-    }).then((resp) => {
-      Cypress.statuscode = resp.status;
-    })
-  });
-  
-  Then('status code is 404',()=>{
-    expect(Cypress.statuscode).to.be.eq(404);
-  });
+Given('screen breakpoint is set to {string}', (screenSize) => {
+  if (screenSize === 'desktop')
+      cy.viewport(1025, 600);
+  else if (screenSize === 'mobile')
+      cy.viewport(600, 800);
+  else if (screenSize === 'tablet')
+      cy.viewport(800, 900);
+})

@@ -11,7 +11,7 @@ Then('search options for {string} and {string} are displayed', (startsWith, cont
 });
 
 Then('{string} is selected by default', (a) => {
-  cy.get('div.radio-selection').find("input[value='starts with']").should('be.checked')
+  cy.get('div.radio-selection').find("input[id='starts-with']").should('be.checked')
 });
 
 Then('{string} option is displayed below search bar', (browse) => {
@@ -54,9 +54,9 @@ Then('the page is showing the expand results for letter {string}', (letter) => {
 });
 
 Then('search bar is displayed below introductory text', () => {
-  cy.get('form.search-box-container').should('be.visible');
+  cy.get('form[data-testid="tid-dictionary-search"]').should('be.visible');
   cy.document().then(doc => {
-    expect(doc.querySelector('form.search-box-container').previousElementSibling.firstChild.tagName).to.be.eq('P');
+    expect(doc.querySelector('form[data-testid="tid-dictionary-search"]').parentNode.previousElementSibling.firstChild.tagName).to.be.eq('P');
   });
 });
 
@@ -79,3 +79,29 @@ Then('the number of glossary terms appears in the text', () => {
 Then('{string} links to {string}', (link, href) => {
   cy.get(`a[href='${href}']`).should('include.text', link);
 });
+
+Then('page title is {string}', (pageTitle) => {
+  cy.get('h1').first().should('include.text', pageTitle);
+});
+
+Then('error page title is {string}', (pageTitle) => {
+  cy.get('div.error-container > h1').should('include.text', pageTitle);
+});
+
+Then('page displays left navigation', () => {
+  cy.get('#nvcgSlSectionNav').should('be.visible');
+});
+
+Given('user is navigating to bad url {string}', (badUrl) => {
+  cy.visit(badUrl,{failOnStatusCode: false});
+});
+
+Then('status code is {int} on {string}',(statusCode,badApi)=>{
+  cy.request({
+    url: badApi,
+    failOnStatusCode: false
+  }).then((resp) => {
+    expect(resp.status).to.be.eq(statusCode);
+  })
+});
+ 
