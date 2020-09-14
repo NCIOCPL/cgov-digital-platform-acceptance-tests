@@ -12,7 +12,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the dictionary definition box is displayed
         And the "More information on dictionary page" button is displayed within the dictionary definition
         Then the "Show full definition" button within the dictionary definition is displayed
-        And the "H4" title is "Results 1-20 of XXXXX for: mantle cell lymphoma" 
+        And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: mantle cell lymphoma"
         And both pagers are displayed
         And the results are displayed with each title containing a link
         And the system defaults to '20' results per page
@@ -28,7 +28,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the "H2" title is "Definición:"
         And the "Más información" button is displayed within the dictionary definition
         And the "Mostrar toda la definición" button within the dictionary definition is displayed
-        And the "H4" title is "Resultados 1-20 de XXXXX para: cancer" 
+        And the "H4" title is "Resultados XXXXX-XXXXX de XXXXX para: cancer"
         And both pagers are displayed
         And the results are displayed with each title containing a link
 
@@ -41,7 +41,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the best bet box is displayed
         And the "H2" title is "Best Bets for Partnership for Accelerating Cancer Therapies (PACT)"
         And the best bets title is a link
-        And the "H4" title is "Results 1-20 of XXXXX for: pact" 
+        And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: pact"
         And both pagers are displayed
         And the results are displayed with each title containing a link
 
@@ -65,12 +65,13 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | mobile     | /espanol/buscar/resultados?swKeyword=2/3 | H3       | Resultados para: 2/3 |
 
     Scenario: Edge case: Fetching more than 30000 results on English site.
-        Given user is navigating to "/search/results/?swKeyword=cancer&page=1518&pageunit=20"
+        Given user is navigating to "/search/results?swKeyword=cancer"
+        And the user clicks the last page link in the pager
         And screen breakpoint is set to "desktop"
         Then the system returns the results page for "cancer"
         And the "H1" title is "NCI Search Results"
         And the "H3" title is "Results for: cancer"
-        And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: cancer" 
+        And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: cancer"
         And both pagers are displayed
         And the results are displayed with each title containing a link
 
@@ -83,7 +84,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the dictionary definition box is displayed
         And the "H2" title is "Definition:"
         Then the "Show full definition" button within the dictionary definition is displayed
-        And the "H4" title is "Results 1-10 of XXXXX for: ert" 
+        And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: ert"
         And pagers are not displayed for less than 20 results
         And the results are displayed with each title containing a link
 
@@ -92,17 +93,17 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And screen breakpoint is set to "<breakpoint>"
         And the "<tag1>" title is "<title1>"
         And the "<tag2>" title is "<title2>"
-        And the "<tag3>" title is "<title3>" 
+        And the "<tag3>" title is "<title3>"
         And both pagers are displayed
         And the results are displayed with each title containing a link
         And the system defaults to '20' results per page
         Then the drop down box to show results per page is displayed
 
         Examples:
-            | url                                                                                      | tag1 | title1                                    | breakpoint | tag2 | title2                  | tag3 | title3                               |
-            | /search/results/dceg-results?swKeyword=genetics                                          | H1   | DCEG Search Results                       | desktop    | H3   | Results for: genetics   | H4   | Results 1-20 of XXXXX for: genetics  |
-            | /rare-brain-spine-tumor/search/results/nciconnect-results?swKeyword=cancer               | H1   | Rare Brain and Spine Tumor Search Results | tablet     | H3   | Results for: cancer     | H4   | Results 1-20 of XXXXX for: cancer    |
-            | /rare-brain-spine-tumor/espanol/buscar/resultados/nciconnect-resultados?swKeyword=cancer | H1   | NCIConnect Resultados                     | mobile     | H3   | Resultados para: cancer | H4   | Resultados 1-20 de XXXXX para: cancer |
+            | url                                                                                      | tag1 | title1                                    | breakpoint | tag2 | title2                  | tag3 | title3                                       |
+            | /search/results/dceg-results?swKeyword=genetics                                          | H1   | DCEG Search Results                       | desktop    | H3   | Results for: genetics   | H4   | Results XXXXX-XXXXX of XXXXX for: genetics   |
+            | /rare-brain-spine-tumor/search/results/nciconnect-results?swKeyword=cancer               | H1   | Rare Brain and Spine Tumor Search Results | tablet     | H3   | Results for: cancer     | H4   | Results XXXXX-XXXXX of XXXXX for: cancer     |
+            | /rare-brain-spine-tumor/espanol/buscar/resultados/nciconnect-resultados?swKeyword=cancer | H1   | NCIConnect Resultados                     | mobile     | H3   | Resultados para: cancer | H4   | Resultados XXXXX-XXXXX de XXXXX para: cancer |
 
 
     #################### Site Wide Search Analytics#####################

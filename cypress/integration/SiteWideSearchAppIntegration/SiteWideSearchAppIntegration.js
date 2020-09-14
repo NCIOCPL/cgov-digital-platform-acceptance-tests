@@ -59,6 +59,10 @@ Then('the {string} text is {string}', (tag1, title1) => {
     cy.get(`${tag1}`).last().should('have.text', title1);
 });
 
+And('the user clicks the last page link in the pager', () => {
+    cy.get('.pager__list-item a[class="pager__button total_pages"]').first().click();
+});
+
 And('pagers are not displayed for less than 20 results', () => {
     cy.get('.pager__navigation[data-testid="tid-results-pager-top"]').should('not.exist')
     cy.get('.pager__navigation[data-testid="tid-results-pager-bottom"]').should('not.exist');
