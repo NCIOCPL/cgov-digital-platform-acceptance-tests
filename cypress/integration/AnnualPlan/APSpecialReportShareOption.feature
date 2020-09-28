@@ -27,12 +27,12 @@ Feature: function test for share options on special report template for Annual P
         And screen breakpoint is set to "tablet"
         Then the page options should appear under the bottom of the content area
         And the following page options are displayed
-            | pageOption                    |
+            | pageOption         |
             | Facebook                      |
             | Twitter                       |
             | Enviar por correo electrónico |
         And "Print" option is not displayed
-        And the page options will have a header "SHARE THIS PAGE"
+        And the page options will have a header "COMPARTIR ESTA PÁGINA"
 
 
     ###############AP Share Options Analytics#############

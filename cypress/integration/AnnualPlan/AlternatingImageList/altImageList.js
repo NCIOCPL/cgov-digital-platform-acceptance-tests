@@ -50,7 +50,7 @@ Then('the item number {int} has a href {string}', (itemNumber, href) => {
 });
 
 Then('the exit disclaimer of item number {int} appears', (itemNumber) => {
-    cy.get('a.alternating-image-list-container-link').eq(itemNumber - 1).find('~ a.icon-exit-notification')
+    cy.get('a.alternating-image-list-container-link').eq(itemNumber - 1).find('a.icon-exit-notification')
         .should('have.attr', 'href');
 });
 

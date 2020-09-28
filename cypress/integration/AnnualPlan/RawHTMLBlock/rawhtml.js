@@ -42,7 +42,7 @@ Then('the image will appear below the title', () => {
     cy.document().then(document => {
         //assert image is allighed on the left
         const offset = document.querySelector('.special-report-raw-html-container img').offsetLeft
-        expect(offset).to.eq(30);
+        expect(offset).to.eq(15);
     })
 });
 
