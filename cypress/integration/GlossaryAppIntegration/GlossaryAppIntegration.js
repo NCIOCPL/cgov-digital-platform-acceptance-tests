@@ -2,7 +2,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
 Then("NCI's Dictionary of Cancer Terms Widget links to {string}", (widgetHref) => {
-  cy.get('#NCI-glossary-root div p a').should('have.attr', 'href').and('be.eq', widgetHref);
+  cy.get('#NCI-glossary-app-root div p a').should('have.attr', 'href').and('be.eq', widgetHref);
 });
 
 Then('search options for {string} and {string} are displayed', (startsWith, contains) => {
@@ -65,14 +65,14 @@ Then('{string} is displayed as the submit button', (searchButton) => {
 });
 
 Then('the introductory text appears', () => {
-  cy.get('#NCI-glossary-root div p:nth-of-type(1)').should('be.visible').invoke('text').should('not.be.empty');
+  cy.get('#NCI-glossary-app-root div p:nth-of-type(1)').should('be.visible').invoke('text').should('not.be.empty');
 });
 
 Then('the number of glossary terms appears in the text', () => {
-  cy.get('#NCI-glossary-root div p:nth-of-type(1)').should('not.include.text', '{{term_count}}');
+  cy.get('#NCI-glossary-app-root div p:nth-of-type(1)').should('not.include.text', '{{term_count}}');
   cy.document().then(doc => {
-    const paragraph = doc.querySelector('#NCI-glossary-root div p:nth-of-type(1)').textContent;
-    expect(paragraph).to.match(/^(?=.*\d+).+$/);
+    const paragraph = doc.querySelector('#NCI-glossary-app-root div p:nth-of-type(1)').textContent;
+    expect(paragraph).to.match(/(?=.*\d+).+/);
   });
 });
 

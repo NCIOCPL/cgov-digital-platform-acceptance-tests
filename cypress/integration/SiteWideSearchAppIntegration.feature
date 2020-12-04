@@ -123,7 +123,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | evar12    | D=c12                                                   |
             | link      | What Is Cancer?                                         |
             | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | www.cancer.gov/search/results                           |
+            | pageName  | {CANONICAL_HOST}/search/results                           |
 
 
     Scenario: Click Events for More Information glossary term link
@@ -140,7 +140,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | evar2     | D=c8                                                    |
             | link      | More information on dictionary page                     |
             | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | www.cancer.gov/search/results                           |
+            | pageName  | {CANONICAL_HOST}/search/results                           |
 
     Scenario: Click Events for result link
         Given user is navigating to "/search/results?swKeyword=tumor"
@@ -154,4 +154,4 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | prop13    | 2                                                       |
             | prop67    | D=pageName                                              |
             | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | www.cancer.gov/search/results                           |
+            | pageName  | {CANONICAL_HOST}/search/results                           |
