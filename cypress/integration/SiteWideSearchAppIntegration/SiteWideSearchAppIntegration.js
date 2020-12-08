@@ -64,24 +64,24 @@ And('the user clicks the last page link in the pager', () => {
 });
 
 And('pagers are not displayed for less than 20 results', () => {
-    cy.get('.pager__navigation[data-testid="tid-results-pager-top"]').should('not.exist')
+    cy.get('.pager__navigation[data-testid="tid-results-pager-top"]').should('not.exist');
     cy.get('.pager__navigation[data-testid="tid-results-pager-bottom"]').should('not.exist');
 });
 
 
 Then('user is clicking on a BestBets title link at position {int}', (positionNumber) => {
     cy.get('div.best-bet').eq(positionNumber - 1).find('a').trigger('click', { followRedirect: false });
-    cy.wait(500)
+    cy.wait(2000);
 });
 
 Then('user is clicking on a search result item at position {int}', (positionNumber) => {
     cy.get('.result__list-item').eq(positionNumber - 1).find('a').trigger('click', { followRedirect: false });
-    cy.wait(500)
+    cy.wait(2000);
 });
 
 Then('user is clicking on a glossary term link {string}', (termLink) => {
     cy.get('div.definition p').find('a').trigger('click', { followRedirect: false });
-    cy.wait(500)
+    cy.wait(2000);
 });
 
 

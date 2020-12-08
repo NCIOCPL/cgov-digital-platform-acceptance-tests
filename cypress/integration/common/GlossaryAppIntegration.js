@@ -18,7 +18,7 @@ Then('{string} option is displayed below search bar', (browse) => {
   cy.document().then(doc => {
     const siblingEl = doc.querySelector('span.browse');
     expect(siblingEl.firstChild.wholeText).to.include(browse);
-    expect(siblingEl.parentNode.previousSibling.className).to.be.eq('dictionary-search');
+    expect(siblingEl.parentNode.previousElementSibling.parentElement.className).to.include('search-box-container');
   })
 });
 
@@ -48,8 +48,7 @@ Then('the page is showing the expand results for letter {string}', (letter) => {
       results = `resultados de: ${letter}`;
     else
       results = `results found for: ${letter}`;
-
-    cy.get("div[class='dictionary-list-container results'] h4").should('include.text', results);
+    cy.get('div[class*="results"] h4').should('include.text', results);
   });
 });
 
@@ -93,10 +92,10 @@ Then('page displays left navigation', () => {
 });
 
 Given('user is navigating to bad url {string}', (badUrl) => {
-  cy.visit(badUrl,{failOnStatusCode: false});
+  cy.visit(badUrl, { failOnStatusCode: false });
 });
 
-Then('status code is {int} on {string}',(statusCode,badApi)=>{
+Then('status code is {int} on {string}', (statusCode, badApi) => {
   cy.request({
     url: badApi,
     failOnStatusCode: false
@@ -104,4 +103,4 @@ Then('status code is {int} on {string}',(statusCode,badApi)=>{
     expect(resp.status).to.be.eq(statusCode);
   })
 });
- 
+
