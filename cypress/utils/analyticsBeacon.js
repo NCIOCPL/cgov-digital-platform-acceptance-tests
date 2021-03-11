@@ -26,7 +26,6 @@ const keyMap = {
   'ts' : 'timestamp',
   'sv' : 'server'
 };
-
 export const convertBeacon = (rawUrl) => {
   const params = new URL(rawUrl).searchParams;
   const rtnObj = Array.from(params.entries())
@@ -51,7 +50,7 @@ export const convertBeacon = (rawUrl) => {
          } else {
           throw new Error (`Invalid variable: ${pkey}`)
          }
-      }else if(pkey.match(/^v[1-9]+$/)){
+      }else if(pkey.match(/^v[0-9]+$/)){
         const number = pkey.substring(1);
         if(number>=1 && number<=250){
         const key = `evar${number}`;
@@ -59,7 +58,7 @@ export const convertBeacon = (rawUrl) => {
          } else {
           throw new Error (`Invalid variable: ${pkey}`)
          }
-      } else if(pkey.match(/^l[1-9]+$/)){
+      } else if(pkey.match(/^l[0-9]+$/)){
         const number = pkey.substring(1);
         if(number>=1 && number<=3){
         const key = `list${number}`;
@@ -80,4 +79,4 @@ export const convertBeacon = (rawUrl) => {
       };
     }, {})
   return rtnObj;
-} 
+}

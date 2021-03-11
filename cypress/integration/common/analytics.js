@@ -88,6 +88,10 @@ Then('the following parameters should be captured', dataTable => {
             }
             const finalString = new RegExp(`(year=${year} \| month=${month} \| date=${day} \| day=${weekDay} \| time=)(${hours12}|${extraHour}):(${minutes}|${extraMin}) ${dayMode}`);
             expect(beacon[parameter]).to.match(finalString);
+        } else if (value.includes('{or}')) {
+            const options = value.split('{or}');
+            const check = beacon[parameter] === options[0] || beacon[parameter] === options[1];
+            expect(check).to.be.true;
         } else
             expect(beacon[parameter]).to.be.equal(value);
     }
