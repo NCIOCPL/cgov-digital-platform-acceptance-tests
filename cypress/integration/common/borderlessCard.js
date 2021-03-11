@@ -1,22 +1,23 @@
 /// <reference types="Cypress" />
-import { Then } from "cypress-cucumber-preprocessor/steps";
+import { Then, And } from "cypress-cucumber-preprocessor/steps";
 
 Then('the title of the feature card {int} is {string}', (cardNumber, cardTitle) => {
-   // check that appropriate h2 tag is displayed depending on the screen breakpoint
+    // check that appropriate h1 tag is displayed depending on the screen breakpoint
     cy.document().then(doc => {
         if (doc.documentElement.clientWidth < 641) {
-            cy.get('.borderless-card').eq(cardNumber - 1).find('h2.mobile-display').should('be.visible');
-            cy.get('.borderless-card').eq(cardNumber - 1).find('h2.desktop-tablet-display').should('not.be.visible');
+            cy.get('.borderless-card').eq(cardNumber - 1).find('h1.mobile-display').should('be.visible');
+            cy.get('.borderless-card').eq(cardNumber - 1).find('h1.desktop-tablet-display').should('not.be.visible');
         } else {
-            cy.get('.borderless-card').eq(cardNumber - 1).find('h2.desktop-tablet-display').should('be.visible');
-            cy.get('.borderless-card').eq(cardNumber - 1).find('h2.mobile-display').should('not.be.visible');
+            cy.get('.borderless-card').eq(cardNumber - 1).find('h1.desktop-tablet-display').should('be.visible');
+            cy.get('.borderless-card').eq(cardNumber - 1).find('h1.mobile-display').should('not.be.visible');
         }
     });
-    cy.get('.borderless-card').eq(cardNumber - 1).find('h2 a:visible').should('have.text', cardTitle);
+    cy.get('.borderless-card').eq(cardNumber - 1).find('h1').should('contain', cardTitle);
 });
 Then('the feature card {int} title will have the href {string}', (cardNumber, titleHref) => {
-    cy.get('.borderless-card').eq(cardNumber - 1).find('h2 a:visible').should('have.attr', 'href').and('eq', titleHref);
+    cy.get('.borderless-card').eq(cardNumber - 1).find('h1 a').should('have.attr', 'href').and('eq', titleHref);
 });
+
 Then('the feature card {int} description is {string}', (cardNumber, cardDescription) => {
     if (cardDescription !== 'none')
         cy.get('.borderless-card').eq(cardNumber - 1).find('p').should('have.text', cardDescription);
@@ -28,7 +29,7 @@ Then('the feature card {int} will have a button displayed under the card descrip
         cy.get('.borderless-card').eq(cardNumber - 1).find('.borderless-button')
             .as('button').should('have.attr', 'href')
             .and('eq', titleHref);
-        cy.get('@button').should('have.text', buttonText);
+        cy.get('@button').should('contain', buttonText);
     })
 Then('{string} by {string} sized promo image of the feature card {int} is displayed with the source {string} and alt text {string}',
     (height, width, cardNumber, src, altText) => {
@@ -53,20 +54,20 @@ Then('the feature card {int} promo image {string} will link to the {string}', (c
 When('user clicks on a {string} of borderless card at position {int}', (cardComponent, index) => {
 
     cy.get('.borderless-card').eq(index - 1).as('card');
-     // check that appropriate h2 tag is displayed depending on the screen breakpoint
+    // check that appropriate h1 tag is displayed depending on the screen breakpoint
     cy.document().then(doc => {
         if (doc.documentElement.clientWidth < 641) {
-            cy.get('@card').find('h2.mobile-display').should('be.visible');
-            cy.get('@card').find('h2.desktop-tablet-display').should('not.be.visible');
+            cy.get('@card').find('h1.mobile-display').should('be.visible');
+            cy.get('@card').find('h1.desktop-tablet-display').should('not.be.visible');
         } else {
-            cy.get('@card').find('h2.desktop-tablet-display').should('be.visible');
-            cy.get('@card').find('h2.mobile-display').should('not.be.visible');
+            cy.get('@card').find('h1.desktop-tablet-display').should('be.visible');
+            cy.get('@card').find('h1.mobile-display').should('not.be.visible');
         }
     })
 
     switch (cardComponent) {
         case "title":
-            cy.get('@card').find('h2 a:visible').trigger('click', { followRedirect: false });
+            cy.get('@card').find('h1 a:visible').trigger('click', { followRedirect: false });
             break;
         case "button":
             cy.get('@card').find('.borderless-button').trigger('click', { followRedirect: false });
@@ -75,8 +76,26 @@ When('user clicks on a {string} of borderless card at position {int}', (cardComp
             cy.get('@card').find('img').trigger('click', { followRedirect: false });
             break;
     }
-
-
-
-
 });
+
+Then('the title of the accent feature card {int} is {string}', (accentCardNumber, accentCardTitle) => {
+    // check that appropriate h2 tag is displayed depending on the screen breakpoint
+    cy.get('div.borderless-container div[class="columns align-center"]').eq(accentCardNumber - 1).find('h2').should('contain.text', accentCardTitle);
+});
+
+And('the accent of feature card {int} is {string}', (accentCardNumber, accent) => {
+    cy.get('div[class="columns align-center"]').eq(accentCardNumber - 1).parent().next().should('have.class', accent)
+});
+
+Then('the accent feature card {int} title will have the href {string}', (cardNumber, titleHref) => {
+    cy.get('div.borderless-card.medium-10.columns.align-center').eq(cardNumber - 1).parent().should('have.attr', 'href').and('eq', titleHref);
+});
+
+And('the feature card {int} will have no button', (cardNumber) => {
+    cy.get('div.borderless-container').eq(cardNumber - 1).find('div.borderless-button').should('not.be.visible');
+});
+
+And('promo image of the feature card {int} is alligned to the {string}', (cardNumber, cardAlignment) => {
+    cy.get('div.borderless-container div.borderless-card').eq(cardNumber - 1).should('have.class',`borderless-image-${cardAlignment}`);
+});
+
