@@ -7,3 +7,7 @@ Given('user is navigating to {string}', (a) => {
 Then("browser title is {string}", (title) => {
   cy.title().should('eq', title);
 });
+
+Then("browser waits", () => {
+  cy.wait(2000);;
+});
