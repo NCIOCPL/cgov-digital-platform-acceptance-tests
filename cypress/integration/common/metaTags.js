@@ -3,7 +3,6 @@
 import { Then } from 'cypress-cucumber-preprocessor/steps';
 
 Then('the page contains meta tags with the following names', (dataTable) => {
-    cy.document().then((doc) => {
         for (const { name, content } of dataTable.hashes()) {
             if (content.includes('{CANONICAL_HOST}')) {
                 cy.location('host').then(host => {
@@ -20,7 +19,6 @@ Then('the page contains meta tags with the following names', (dataTable) => {
                 cy.get(locator).should('have.length', 1).and('have.attr', 'content').and('be.eq', content);
             }
         }
-    });
 });
 
 Then(
