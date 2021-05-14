@@ -128,10 +128,10 @@ Feature: Drug Dictionary app is integrated within CGOV platform
             | pageURL   | https://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
             | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/        |
 
-    Scenario: When user clicks selects a  term from result list -  analytics events are fired
+    Scenario: When user clicks a term from result list -  analytics events are fired
         Given screen breakpoint is set to "mobile"
         And user is navigating to "/publications/dictionaries/cancer-drug/expand/A"
-        When user selects "A-Hydrocort" from result list
+        When user clicks on result number 2
         Then page click request is sent
         And the following parameters should be captured
             | parameter | value                                                                   |
