@@ -7,3 +7,16 @@ Given('user is navigating to {string}', (a) => {
 Then("browser title is {string}", (title) => {
   cy.title().should('eq', title);
 });
+
+Given('user is navigating to {string} with a 404 status', (a) => {
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here to Cypress from
+    // failing the test
+    return false;
+  });
+  cy.visit(a, { failOnStatusCode: false });
+});
+
+And('browser waits', () => {
+  cy.wait(2000);
+});
