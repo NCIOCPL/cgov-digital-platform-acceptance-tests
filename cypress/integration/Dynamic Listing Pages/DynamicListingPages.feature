@@ -29,27 +29,27 @@ Feature: Dynamic Listing Pages
 
 
     Scenario Outline: Pager functionality
-    Given screen breakpoint is set to "<screen breakpoint>"
-    When user is navigating to "<path>"
-    And  the page displays pager info "Trials 1-N of N"
-    And the page "1" is highlighted
-    When user clicks on "Next >" button
-    Then the url has path "<path>" with query "?pn=2"
-    And the page "2" is highlighted
-    When the user navigates to "<path>" with non-existent page "&pn=900"
-    Then the text "<noTrialsText>" appears
-    And "new search" link has href "/about-cancer/treatment/clinical-trials/search"
-    And "contact our Cancer Information Service" link has href "/contact"
+        Given screen breakpoint is set to "<screen breakpoint>"
+        When user is navigating to "<path>"
+        And  the page displays pager info "Trials 1-N of N"
+        And the page "1" is highlighted
+        When user clicks on "Next >" button
+        Then the url has path "<path>" with query "?pn=2"
+        And the page "2" is highlighted
+        When the user navigates to "<path>" with non-existent page "&pn=900"
+        Then the text "<noTrialsText>" appears
+        And "new search" link has href "/about-cancer/treatment/clinical-trials/search"
+        And "contact our Cancer Information Service" link has href "/contact"
 
-    Examples:
+        Examples:
 
-        | screen breakpoint | Route                           | path                                                                                | noTrialsText                                                                                                                                                                                                         |
-        | desktop           | Disease                         | /about-cancer/treatment/clinical-trials/disease/breast-cancer                       | There are no NCI-supported clinical trials for breast cancer at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                             |
-        | tablet            | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab | There are no NCI-supported clinical trials for breast cancer treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. |
-        | mobile            | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab | There are no NCI-supported clinical trials for breast cancer treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. |
-        | desktop           | Intervention                    | /about-cancer/treatment/clinical-trials/intervention/trastuzumab                    | There are no NCI-supported clinical trials studying trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                          |
-        | mobile            | Intervention Trial Type         | /about-cancer/treatment/clinical-trials/intervention/trastuzumab/treatment          | There are no NCI-supported clinical trials for treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.               |
-        | tablet            | Disease Trial Type              | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment             | There are no NCI-supported clinical trials for breast cancer treatment at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                   |
+            | screen breakpoint | Route                           | path                                                                                | noTrialsText                                                                                                                                                                                                         |
+            | desktop           | Disease                         | /about-cancer/treatment/clinical-trials/disease/breast-cancer                       | There are no NCI-supported clinical trials for breast cancer at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                             |
+            | tablet            | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab | There are no NCI-supported clinical trials for breast cancer treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. |
+            | mobile            | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab | There are no NCI-supported clinical trials for breast cancer treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. |
+            | desktop           | Intervention                    | /about-cancer/treatment/clinical-trials/intervention/trastuzumab                    | There are no NCI-supported clinical trials studying trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                          |
+            | mobile            | Intervention Trial Type         | /about-cancer/treatment/clinical-trials/intervention/trastuzumab/treatment          | There are no NCI-supported clinical trials for treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.               |
+            | tablet            | Disease Trial Type              | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment             | There are no NCI-supported clinical trials for breast cancer treatment at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                   |
 
 
 
@@ -62,13 +62,13 @@ Feature: Dynamic Listing Pages
             | prerender-header      | <prerenderHeader> |
         Examples:
             | Route                           | path                                                                             | redirectedUrl                                                                                     | prerenderHeader                                                                                                       |
-            | Disease                         | /about-cancer/treatment/clinical-trials/disease/c4872                            | /about-cancer/treatment/clinical-trials/disease/breast-cancer?redirect=true                       | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/disease/breast-cancer                         |
+            | Disease                         | /about-cancer/treatment/clinical-trials/disease/c4872                            | /about-cancer/treatment/clinical-trials/disease/breast-cancer?redirect=true                       | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/disease/breast-cancer                       |
             | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/c4872/treatment/trastuzumab      | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab?redirect=true | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
             | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/c1647    | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab?redirect=true | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
             | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/c4872/treatment/c1647            | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab?redirect=true | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
             | Intervention                    | /about-cancer/treatment/clinical-trials/intervention/c1647                       | /about-cancer/treatment/clinical-trials/intervention/trastuzumab?redirect=true                    | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/intervention/trastuzumab                    |
             | Intervention Trial Type         | /about-cancer/treatment/clinical-trials/intervention/c1647/treatment             | /about-cancer/treatment/clinical-trials/intervention/trastuzumab/treatment?redirect=true          | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/intervention/trastuzumab/treatment          |
-            | Intervention Trial Type         | /about-cancer/treatment/clinical-trials/intervention/trastuzumab/supportive_care | /about-cancer/treatment/clinical-trials/intervention/trastuzumab/supportive-care?redirect=true    | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/intervention/trastuzumab/supportive-care          |
+            | Intervention Trial Type         | /about-cancer/treatment/clinical-trials/intervention/trastuzumab/supportive_care | /about-cancer/treatment/clinical-trials/intervention/trastuzumab/supportive-care?redirect=true    | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/intervention/trastuzumab/supportive-care    |
             | Disease Trial Type              | /about-cancer/treatment/clinical-trials/disease/c4872/treatment                  | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment?redirect=true             | Location: https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment             |
 
 
@@ -76,7 +76,6 @@ Feature: Dynamic Listing Pages
         When user is navigating to "<path>" with a 404 status
         Then user is redirected to "<redirectedUrl>"
         Then page title is "<page title>"
-        # And delighter is displayed with link "/about-cancer/treatment/clinical-trials/search"
         Then the text "<noTrialsText>" appears
         And "new search" link has href "/about-cancer/treatment/clinical-trials/search"
         And "contact our Cancer Information Service" link has href "/contact"
@@ -85,6 +84,7 @@ Feature: Dynamic Listing Pages
             | prerender-status-code | 302                |
             | prerender-header      | <prerender-header> |
             | robots                | noindex            |
+        And delighter is displayed with link "/about-cancer/treatment/clinical-trials/search"
 
         Examples:
             | Route                           | path                                                                                | redirectedUrl                                                                                         | page title                                                    | noTrialsText                                                                                                                                                                                                         | prerender-header                                                                                                                        |
