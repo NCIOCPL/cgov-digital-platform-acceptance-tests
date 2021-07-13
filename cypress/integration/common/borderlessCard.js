@@ -12,7 +12,7 @@ Then('the title of the feature card {int} is {string}', (cardNumber, cardTitle) 
             cy.get('.borderless-card').eq(cardNumber - 1).find('h2.mobile-display').should('not.be.visible');
         }
     });
-    cy.get('.borderless-card').eq(cardNumber - 1).find('h2 a:visible').should('have.text', cardTitle);
+    cy.get('.borderless-card').eq(cardNumber - 1).find('h2 a:visible').should('include.text', cardTitle);
 });
 Then('the feature card {int} title will have the href {string}', (cardNumber, titleHref) => {
     cy.get('.borderless-card').eq(cardNumber - 1).find('h2 a:visible').should('have.attr', 'href').and('eq', titleHref);
