@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import { Given, Then } from "cypress-cucumber-preprocessor/steps";
+import { Then } from "cypress-cucumber-preprocessor/steps";
 
 Then('the PDF download link should appear', () => {
     cy.get(`.ap-file-block`).should('be.visible');
@@ -8,15 +8,20 @@ Then('the PDF download link should appear', () => {
 });
 
 And('a PDF icon located at {string} should be displayed with a text {string}', (iconUrl, iconText) => {
-    
-    const baseURL = Cypress.config('baseUrl');
-    cy.document().then((document) => {
+      cy.document().then((document) => {
+        let baseURL = '';
         const element = document.querySelector("div[class='ap-file-block pdf'] a");
         const style = window.getComputedStyle(element, '::before');
         const image = style.getPropertyValue('background-image');
-        const expectedURL = `url("${baseURL}${iconUrl}")`;
         const newImage = image.replace(/sprite-.+\.svg/,"sprite.svg"); 
-        expect(expectedURL).equal(newImage); 
+        cy.location('protocol').then(protocol => {
+            baseURL = `${protocol}//`;
+        });
+        cy.location('host').then(host => {
+            baseURL += host;
+            const expectedURL = `url("${baseURL}${iconUrl}")`;
+            expect(expectedURL).equal(newImage);
+        });
         const text = element.innerText;
         expect(text).equal(iconText);
     });

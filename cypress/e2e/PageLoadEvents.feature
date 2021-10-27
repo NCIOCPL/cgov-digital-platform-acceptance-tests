@@ -19,7 +19,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | evar5     | Desktop                              |
             | channel   | NCI Home - Spanish                   |
             | pageName  | {CANONICAL_HOST}/espanol             |
-            | prop1     | https://{CANONICAL_HOST}/espanol     |
+            | prop1     | {PROTOCOL}//{CANONICAL_HOST}/espanol |
             | hier1     | {CANONICAL_HOST}\|espanol            |
             | event1    |                                      |
             | event47   | /d{0,2}/                             |
@@ -46,7 +46,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | channel   | NCI Homepage                           |
             | prop3     | /                                      |
             | pageName  | {CANONICAL_HOST}/                      |
-            | prop1     | https://{CANONICAL_HOST}/              |
+            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/         |
             | hier1     | {CANONICAL_HOST}                       |
             | event47   | /d{0,2}/                               |
             | event1    |                                        |

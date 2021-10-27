@@ -16,7 +16,7 @@ Feature: Analytics events raised by hovering over mega menu in desktop, clicking
             | evar2     | english                   |
             | prop8     | english                   |
             | pageName  | {CANONICAL_HOST}/         |
-            | pageURL   | https://{CANONICAL_HOST}/ |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ |
             | event28   |                           |
             | channel   | NCI Homepage              |
 
@@ -44,7 +44,7 @@ Feature: Analytics events raised by hovering over mega menu in desktop, clicking
             | evar2     | spanish                          |
             | prop8     | spanish                          |
             | pageName  | {CANONICAL_HOST}/espanol         |
-            | pageURL   | https://{CANONICAL_HOST}/espanol |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol |
             | event28   |                                  |
             | channel   | NCI Home - Spanish               |
 
@@ -73,7 +73,7 @@ Feature: Analytics events raised by hovering over mega menu in desktop, clicking
             | evar2     | english                   |
             | prop8     | english                   |
             | pageName  | {CANONICAL_HOST}/         |
-            | pageURL   | https://{CANONICAL_HOST}/ |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ |
             | event28   |                           |
             | channel   | NCI Homepage              |
 
@@ -93,7 +93,7 @@ Feature: Analytics events raised by hovering over mega menu in desktop, clicking
             | evar2     | spanish                          |
             | prop8     | spanish                          |
             | pageName  | {CANONICAL_HOST}/espanol         |
-            | pageURL   | https://{CANONICAL_HOST}/espanol |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol |
             | event28   |                                  |
             | channel   | NCI Home - Spanish               |
 
@@ -114,7 +114,7 @@ Feature: Analytics events raised by hovering over mega menu in desktop, clicking
             | evar2     | english                   |
             | prop8     | english                   |
             | pageName  | {CANONICAL_HOST}/         |
-            | pageURL   | https://{CANONICAL_HOST}/ |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ |
             | event28   |                           |
             | channel   | NCI Homepage              |
 
@@ -136,6 +136,6 @@ Feature: Analytics events raised by hovering over mega menu in desktop, clicking
             | evar2     | spanish                          |
             | prop8     | spanish                          |
             | pageName  | {CANONICAL_HOST}/espanol         |
-            | pageURL   | https://{CANONICAL_HOST}/espanol |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol |
             | event28   |                                  |
             | channel   | NCI Home - Spanish               |

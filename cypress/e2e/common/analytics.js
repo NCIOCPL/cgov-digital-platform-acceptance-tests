@@ -47,11 +47,17 @@ Then('the following parameters should be captured', dataTable => {
         if (value.length > 1 && value.startsWith('/') && value.endsWith('/') && !parameter.includes('event')) {
             const regex = new RegExp(value.substring(1, value.length - 1));
             expect(beacon[parameter]).to.match(regex);
+
         } else if (value.includes('{CANONICAL_HOST}')) {
+            let madeUpValue;
             cy.location('host').then(host => {
-                const madeUpValue = value.replace('{CANONICAL_HOST}', host);
+                madeUpValue = value.replace('{CANONICAL_HOST}', host);
+            });
+            cy.location('protocol').then(protocol => {
+                madeUpValue = madeUpValue.replace('{PROTOCOL}:', protocol);
                 expect(beacon[parameter]).to.eq(madeUpValue);
-            })
+            });
+
         } else if (parameter.includes('event')) {
             if (value.startsWith("/")) {
                 const regex = new RegExp(value.substring(1, value.length - 1))

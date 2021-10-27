@@ -22,7 +22,7 @@ Feature: Left Navigation click events
             | prop4     | D=pev1                                       |
             | evar2     | english                                      |
             | prop8     | english                                      |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/coping |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping |
             | pageName  | {CANONICAL_HOST}/about-cancer/coping         |
 
 
@@ -47,5 +47,5 @@ Feature: Left Navigation click events
             | prop4     | D=pev1                                                |
             | evar2     | english                                               |
             | prop8     | english                                               |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/coping/feelings |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping/feelings |
             | pageName  | {CANONICAL_HOST}/about-cancer/coping/feelings         |

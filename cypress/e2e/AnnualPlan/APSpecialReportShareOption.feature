@@ -50,7 +50,7 @@ Feature: function test for share options on special report template for Annual P
             | prop66    | social-share_facebook                   |
             | prop67    | D=pageName                              |
             | evar2     | english                                 |
-            | pageURL   | https://{CANONICAL_HOST}/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
             | pageName  | {CANONICAL_HOST}/special-report         |
             | link      | BookmarkShareClick                      |
 
@@ -68,7 +68,7 @@ Feature: function test for share options on special report template for Annual P
             | prop66    | social-share_twitter                    |
             | prop67    | D=pageName                              |
             | evar2     | english                                 |
-            | pageURL   | https://{CANONICAL_HOST}/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
             | pageName  | {CANONICAL_HOST}/special-report         |
             | link      | BookmarkShareClick                      |
 
@@ -86,7 +86,7 @@ Feature: function test for share options on special report template for Annual P
             | prop66    | print                                   |
             | prop67    | D=pageName                              |
             | evar2     | english                                 |
-            | pageURL   | https://{CANONICAL_HOST}/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
             | pageName  | {CANONICAL_HOST}/special-report         |
             | link      | PrintLink                               |
 
@@ -103,6 +103,6 @@ Feature: function test for share options on special report template for Annual P
             | prop43    | Email                                           |
             | prop66    | email                                           |
             | prop67    | D=pageName                                      |
-            | pageURL   | https://{CANONICAL_HOST}/espanol/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol/special-report |
             | pageName  | {CANONICAL_HOST}/espanol/special-report         |
             | link      | eMailLink                                       |

@@ -34,4 +34,4 @@ Feature: Tests for AP button on a content block
       | evar2     | english                                 |
       | channel   | NCI Homepage                            |
       | pageName  | {CANONICAL_HOST}/special-report         |
-      | pageURL   | https://{CANONICAL_HOST}/special-report |
+      | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |

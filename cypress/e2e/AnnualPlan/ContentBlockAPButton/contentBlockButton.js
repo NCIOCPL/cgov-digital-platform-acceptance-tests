@@ -28,7 +28,7 @@ And('clicking on the link will open the PDF in a new window', () => {
 });
 
 When('user clicks on bottom {string} button', (hrefAttr) => {
-    cy.get(`div[class='ap-button-block']`).find('a').trigger('click', {followRedirect: false});
+    cy.get(`div[class='ap-button-block']`).find('a').trigger('click', { followRedirect: false });
 
 });
 
