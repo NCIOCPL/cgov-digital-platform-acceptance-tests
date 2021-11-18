@@ -28,7 +28,7 @@ Feature: Lead Image tests
     Scenario Outline: As a user, I want to view the Lead image and Alt text on pages with lead image
         Given user is navigating to "<url>"
         Then lead image is visible
-        And alt text is "<altText>"
+        And alt text is "<alttext>"
 
         Examples:
             | url                                                        | alttext                                                                     |
