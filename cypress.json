@@ -3,5 +3,9 @@
   "video": false,
   "baseUrl": "https://www-dev-ac.cancer.gov",
   "viewportWidth": 1025,
-  "viewportHeight": 600
+  "viewportHeight": 600,
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  }
 }

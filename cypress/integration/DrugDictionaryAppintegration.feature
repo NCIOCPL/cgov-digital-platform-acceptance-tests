@@ -115,7 +115,6 @@ Feature: Drug Dictionary app is integrated within CGOV platform
             | parameter | value                                                          |
             | event2    |                                                                |
             | prop4     | D=pev1                                                         |
-            | prop8     | english                                                        |
             | prop11    | Drug                                                           |
             | prop22    | bev                                                            |
             | prop23    | /Offered\|[1-9]\|10\|0\|undefined\|undefined\|undefined/       |
@@ -124,7 +123,6 @@ Feature: Drug Dictionary app is integrated within CGOV platform
             | evar2     | D=c8                                                           |
             | evar11    | D=c11                                                          |
             | evar26    | D=c24                                                          |
-            | link      | Search                                                         |
             | pageURL   | https://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
             | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/        |
 
