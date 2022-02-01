@@ -8,5 +8,8 @@
     "runMode": 2,
     "openMode": 0
   },
-  "chromeWebSecurity": true
+  "chromeWebSecurity": true,
+  "env": {
+    "trackingServer": ["2o7.net", "metrics.cancer.gov"]
+    }
 }
