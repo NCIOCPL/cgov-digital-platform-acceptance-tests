@@ -8,5 +8,5 @@
     "runMode": 2,
     "openMode": 0
   },
-  "chromeWebSecurity": false
+  "chromeWebSecurity": true
 }
