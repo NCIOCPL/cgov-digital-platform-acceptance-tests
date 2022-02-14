@@ -62,19 +62,22 @@ Feature: As an user, I should be able to see my search results displayed, select
         When user selects "Select all on page" checkbox
         Then all result item's checkboxes are not checked
 
-    Scenario: User is able to print results
-        Given screen breakpoint is set to "tablet"
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&q=breast%20cancer&rl=2"
-        Then page title is "Clinical Trials Search Results"
-        When user selects 1 result's checkbox
-        And user clicks on "Print Selected" button at "top" position
-        Then user is redirected to "/CTS.Print/Display" with generated "printid"
-        And page title is "Your Clinical Trials Search Results"
-        And print page search criteria table displays the following
-            | Category          | Selection     |
-            | Keywords/Phrases: | breast cancer |
-        And "New Search" link has a href "/about-cancer/treatment/clinical-trials/advanced-search"
-        And "Print" link has a href "javascript:window.print();"
-        And "E-Mail These Results" link has a "target" attribute with "_blank" value
-        And "Check for Updates" link has a href that matches "\/about-cancer\/treatment\/clinical-trials\/search\/v\?q=breast\+cancer&loc=0&rl=2&id=NCI-\d+-\d+"
+#dissabling this scenario due to the Cypress cross origin restrictions - dissabling ChromeWebSecurity solution
+#interferes with CTS API V2 security protocols
+#until there is a solution, this scenario becomes a manual regression test
+    # Scenario: User is able to print results
+    #     Given screen breakpoint is set to "tablet"
+    #     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&q=breast%20cancer&rl=2"
+    #     Then page title is "Clinical Trials Search Results"
+    #     When user selects 1 result's checkbox
+    #     And user clicks on "Print Selected" button at "top" position
+    #     Then user is redirected to "/CTS.Print/Display" with generated "printid"
+    #     And page title is "Your Clinical Trials Search Results"
+    #     And print page search criteria table displays the following
+    #         | Category          | Selection     |
+    #         | Keywords/Phrases: | breast cancer |
+    #     And "New Search" link has a href "/about-cancer/treatment/clinical-trials/advanced-search"
+    #     And "Print" link has a href "javascript:window.print();"
+    #     And "E-Mail These Results" link has a "target" attribute with "_blank" value
+    #     And "Check for Updates" link has a href that matches "\/about-cancer\/treatment\/clinical-trials\/search\/v\?q=breast\+cancer&loc=0&rl=2&id=NCI-\d+-\d+"
 
