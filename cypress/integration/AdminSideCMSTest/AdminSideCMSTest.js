@@ -1,10 +1,15 @@
 /// <reference types="Cypress" />
-import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import { And, Then } from 'cypress-cucumber-preprocessor/steps';
 
-const username = Cypress.env('user_name');
-const password = Cypress.env('user_password');
+const username = Cypress.env('admin_username');
+const password = Cypress.env('admin_password');
 
 When('user enters credentials', () => {
+    expect(username, 'username was set').to.be.a('string').and.not.be.empty
+    // the password value should not be shown
+     if (typeof password !== 'string' || !password || password === '') {
+      throw new Error('Missing password value, set using CYPRESS_admin_password=...')
+}
     cy.get('input#edit-name').type(username, { log: false });
     cy.get('input#edit-pass').type(password, { log: false });
 });
