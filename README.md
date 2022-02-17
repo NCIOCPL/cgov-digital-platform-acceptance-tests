@@ -11,11 +11,11 @@ Please add `/// <reference types="Cypress" />` to the top of each JS file to get
 `admin_username` is already provided
 The `admin_password` value needs to be added via command line 
 to open cypress UI console
-`CYPRESS_admin_password=value npx cypress open`
+`CYPRESS_admin_password='value' npx cypress open`
 to run in a headless mode
-`CYPRESS_admin_password=value npx cypress run`
+`CYPRESS_admin_password='value' npx cypress run`
 where value is the password ( can be found in digital-platform slack channel topic )
 ## Running Tests
 1. `npm ci`
-2. `CYPRESS_BASE_URL=https://www-dev-ac.cancer.gov CYPRESS_admin_password=value npx cypress run`
+2. `CYPRESS_BASE_URL='https://www-dev-ac.cancer.gov' CYPRESS_admin_password='value' npx cypress run`
 where value is the password ( can be found in digital-platform slack channel topic )
