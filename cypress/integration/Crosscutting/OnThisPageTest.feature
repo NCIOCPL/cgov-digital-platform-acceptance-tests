@@ -39,9 +39,6 @@ Feature: As a user, I want to be able to use On this Page links to easily naviga
 
         Examples:
             | url                                                                                  |
-            | /research/resources                                                                  |
-            | /publications/dictionaries/cancer-terms                                              |
-            | /espanol/publicaciones/diccionario                                                   |
             | /about-cancer/coping/feelings/relaxation/loukissas-jen-biography                     |
             | /news-events/cancer-currents-blog/2019/vitamin-d-supplement-cancer-prevention        |
             | /espanol/noticias/temas-y-relatos-blog/2019/vitamina-d-complemento-cancer-prevencion |

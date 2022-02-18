@@ -6,7 +6,6 @@ Then('{string} is displayed', (otpTitle) => {
 
 And('OTP links have the following {string}', (options) => {
     const expectedOptions = options.split(',');
-    cy.log(expectedOptions);
     for (let i = 0; i < expectedOptions.length; i++) {
         cy.get('#cgvBody section h2').eq(i).invoke('text').then((text) => {
             expect(text.trim()).equal(expectedOptions[i]);
@@ -16,7 +15,6 @@ And('OTP links have the following {string}', (options) => {
 
 And('OTP links have the {string} as follows', (options) => {
     const expectedOptions = options.split(',');
-    cy.log(expectedOptions);
     for (let i = 0; i < expectedOptions.length; i++) {
         cy.get('#cgvBody ul li a').eq(i).should('be.visible').and('have.attr', 'href', expectedOptions[i]);
     }
