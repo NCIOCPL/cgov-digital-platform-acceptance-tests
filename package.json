@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/NCIOCPL/cgov-digital-platform-acceptance-tests#readme",
   "dependencies": {
-    "cypress": "^7.3.0",
-    "cypress-cucumber-preprocessor": "^4.1.0"
+    "cypress": "^9.4.1",
+    "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
