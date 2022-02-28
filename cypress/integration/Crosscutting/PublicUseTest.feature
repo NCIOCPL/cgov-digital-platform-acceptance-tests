@@ -7,11 +7,11 @@ Feature: Public use tests
         And the public use text contains "<title>"
         Examples:
             | breakpoint | url                                                           | title                                                                                                      |
-            | desktop    | /about-cancer/coping/feelings                                 | Feelings and Cancer                                                                                        |
+            | mobile     | /about-cancer/coping/feelings                                 | Feelings and Cancer                                                                                        |
             | desktop    | /espanol/espanol-investigacion-areas-genomica                 | Investigación de genómica del cáncer                                                                       |
-            | desktop    | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial | Leukemia - Ibrutinib plus rituximab superior to standard treatment for some patients with chronic leukemia |
+            | tablet     | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial | Leukemia - Ibrutinib plus rituximab superior to standard treatment for some patients with chronic leukemia |
             | desktop    | /types/breast/hp/breast-prevention-pdq                        | Breast Cancer Prevention (PDQ®)–Health Professional Version                                                |
-            | desktop    | /espanol/tipos/seno/pro/prevencion-seno-pdq                   | Prevención del cáncer de seno (mama) (PDQ®)–Versión para profesionales de salud                            |
+            | mobile     | /espanol/tipos/seno/pro/prevencion-seno-pdq                   | Prevención del cáncer de seno (mama) (PDQ®)–Versión para profesionales de salud                            |
 
     Scenario Outline: As a user, I do not want to view the public use text on pages with no public use text
         Given screen breakpoint is set to "<breakpoint>"
@@ -20,8 +20,9 @@ Feature: Public use tests
         Examples:
             | breakpoint | url                                                         |
             | desktop    | /news-events/press-releases/2019/brca-exchange              |
-            | desktop    | /about-cancer/treatment/drugs/bevacizumab                   |
-            | desktop    | /about-cancer/coping/feelings/relaxation/loukissas-jennifer |
+            | mobile     | /about-cancer/treatment/drugs/bevacizumab                   |
+            | tablet     | /about-cancer/coping/feelings/relaxation/loukissas-jennifer |
+
     Scenario Outline: As a user, I want to check the length of public use text on pages is correct
         Given screen breakpoint is set to "<breakpoint>"
         When user is navigating to "<url>"
@@ -29,7 +30,7 @@ Feature: Public use tests
         Examples:
             | breakpoint | url                                                           |
             | desktop    | /about-cancer/coping/feelings                                 |
-            | desktop    | /espanol/espanol-investigacion-areas-genomica                 |
-            | desktop    | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial |
+            | mobile     | /espanol/espanol-investigacion-areas-genomica                 |
+            | tablet     | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial |
             | desktop    | /types/breast/hp/breast-prevention-pdq                        |
-            | desktop    | /espanol/tipos/seno/pro/prevencion-seno-pdq                   |
+            | mobile     | /espanol/tipos/seno/pro/prevencion-seno-pdq                   |

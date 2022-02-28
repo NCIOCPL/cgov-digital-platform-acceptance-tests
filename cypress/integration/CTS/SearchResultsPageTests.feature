@@ -1,6 +1,6 @@
 Feature: As an user, I should be able to see my search results displayed, select and print them
 
-    Scenario: Search results page displays general page components
+    Scenario: Search results page displays general page components on desktop
         Given screen breakpoint is set to "desktop"
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&q=breast%20cancer&rl=2"
         Then page title is "Clinical Trials Search Results"

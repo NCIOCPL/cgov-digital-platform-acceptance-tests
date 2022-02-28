@@ -3,6 +3,7 @@ Feature: Analytics events raised by hovering over mega menu in desktop, clicking
 
     Scenario Outline: Hover over mega menu home page
         Given user is navigating to "/"
+        And screen breakpoint is set to "desktop"
         When user is hovering over mega menu with href "/about-cancer"
         And page click request is sent
         Then the following parameters should be captured
@@ -30,6 +31,7 @@ Feature: Analytics events raised by hovering over mega menu in desktop, clicking
 
     Scenario Outline: Hover over mega menu Spanish home page
         Given user is navigating to "/espanol"
+        And screen breakpoint is set to "desktop"
         When user is hovering over mega menu with href "<href>"
         And page click request is sent
         Then the following parameters should be captured

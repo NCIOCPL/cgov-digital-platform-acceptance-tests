@@ -33,6 +33,21 @@ Feature: As a content editor, I would like to be able to embed an alternating im
             | /special-report         | 1              | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_smoo_article\.jpg*                 | Cat-Cat                                      | /news-events/press-releases/2019/deep-learning-cervical-cancer-screening |
             | /espanol/special-report | 2              | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/nci-shady-grove-building-article\.jpg* | National Cancer Institute Shady Grove Campus | /news-events/press-releases/2019/brca-exchange                           |
 
+    Scenario Outline: Content editor added a list item with an override promo image with internal links on mobile breakpoint
+        Given screen breakpoint is set to "mobile"
+        And user is navigating to "<path>"
+        Then an alternating image list will appear
+        And promo image of the list item number <listItemNumber> is not displayed
+        And the page title of the list item number <listItemNumber> should appear as H3 tag
+        And the list description of the list item number <listItemNumber> should appear
+        And the item number <listItemNumber> has a href "<href>"
+
+
+        Examples:
+            | path                    | listItemNumber | promoImageSource                                                                                                                      | promoImageAlt                                | href                                                                     |
+            | /special-report         | 1              | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_smoo_article\.jpg*                 | Cat-Cat                                      | /news-events/press-releases/2019/deep-learning-cervical-cancer-screening |
+            | /espanol/special-report | 2              | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/nci-shady-grove-building-article\.jpg* | National Cancer Institute Shady Grove Campus | /news-events/press-releases/2019/brca-exchange                           |
+
     Scenario Outline: Content editor added a list item with an article image with internal links
         Given screen breakpoint is set to "<screenBreakpoint>"
         And user is navigating to "<path>"
@@ -46,7 +61,7 @@ Feature: As a content editor, I would like to be able to embed an alternating im
         Examples:
             | screenBreakpoint | path            | listItemNumber | promoImageSource                                                                                                           | promoImageAlt            | href                                           |
             | desktop          | /special-report | 3              | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/BRCA-exchange-article\.jpg* | The BRCA Exhange graphic | /news-events/press-releases/2019/brca-exchange |
-            | mobile           | /special-report | 3              | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/BRCA-exchange-article\.jpg* | The BRCA Exhange graphic | /news-events/press-releases/2019/brca-exchange |
+            | tablet           | /special-report | 3              | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/BRCA-exchange-article\.jpg* | The BRCA Exhange graphic | /news-events/press-releases/2019/brca-exchange |
 
     Scenario Outline: Content editor added a list item with an external link
         Given screen breakpoint is set to "desktop"

@@ -2,6 +2,7 @@ Feature: MetaData Tests
 
     Scenario Outline: General tests related to metatag properties, metatag names including DCTerms.
         Given user is navigating to "<path>"
+        And screen breakpoint is set to "desktop"
         And the page contains meta tags with the following properties
             | property       | content          |
             | og:title       | <og:title>       |
@@ -51,6 +52,7 @@ Feature: MetaData Tests
 
     Scenario Outline: Check 'Exclude Search' is selected in pages with No Index
         Given user is navigating to "<path>"
+        And screen breakpoint is set to "mobile"
         Then the page contains meta tags with the following names
             | name   | content |
             | robots | noindex |

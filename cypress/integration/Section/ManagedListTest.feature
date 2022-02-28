@@ -2,6 +2,7 @@ Feature: Managed Lists Tests
 
     Scenario Outline: Verify managed list is visible and has expected number of items
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "mobile"
         Then managed list section is visible
         And number of items in the list is <count>
         And each managed list description text is within reasonable length
@@ -16,6 +17,7 @@ Feature: Managed Lists Tests
 
     Scenario Outline: Verify managed list item's components
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "desktop"
         Then managed list section is visible
         And list items at positions "<indexes>" have "titles" as "<title>"
         And list items at positions "<indexes>" have "links" as "<itemLink>"
@@ -29,8 +31,9 @@ Feature: Managed Lists Tests
             | /research            | 0,1,2,3 | Overridden Title,External Card Title,Feelings and Cancer,Overridden Title | /about-cancer/coping/feelings,https://www.google.com,/about-cancer/coping/feelings,/about-cancer/coping/feelings | Sad Woman Looking Out Window,Find a Clinical Trial,Sad Woman Looking Out Window,Sad Woman Looking Out Window | sad-woman-looking-out-window-thumb.jpg,find-clinical-trial-blue-thumb.jpg,sad-woman-looking-out-window-thumb.jpg,sad-woman-looking-out-window-thumb.jpg |
             | /about-cancer/coping | 0,1,2,3 | Overridden Title,External Card Title,Feelings and Cancer,Overridden Title | /about-cancer/coping/feelings,https://www.google.com,/about-cancer/coping/feelings,/about-cancer/coping/feelings | Sad Woman Looking Out Window,Find a Clinical Trial,Sad Woman Looking Out Window,Sad Woman Looking Out Window | sad-woman-looking-out-window-thumb.jpg,find-clinical-trial-blue-thumb.jpg,sad-woman-looking-out-window-thumb.jpg,sad-woman-looking-out-window-thumb.jpg |
 
-    Scenario Outline: Verify managed list external item's components
+    Scenario Outline: Verify managed list external item's components on tablet
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "tablet"
         Then managed list section is visible
         And the number of exit disclaimers is <externalLinkCount>
         And list items at positions "<indexes>" have "links" as "<titleLink>"
@@ -45,6 +48,7 @@ Feature: Managed Lists Tests
 
     Scenario Outline: Negative: managed list do no appear where they should not
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "desktop"
         Then managed list does not exist
 
         Examples:

@@ -1,6 +1,6 @@
 Feature: CTS App Analytics
 
-    Scenario: CTS Load Basic Search form
+    Scenario: CTS Load Basic Search form on desktop
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search" with added wait
         When page load request is sent
         Then the following parameters should be captured
@@ -27,8 +27,9 @@ Feature: CTS App Analytics
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
 
 
-    Scenario: CTS Load Advanced Search form
+    Scenario: CTS Load Advanced Search form on mobile
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        And screen breakpoint is set to "mobile"
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -54,8 +55,9 @@ Feature: CTS App Analytics
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
 
 
-    Scenario: CTS Load Basic search results
+    Scenario: CTS Load Basic search results on tablet
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=50&loc=0&rl=1&t=C4872"
+        And screen breakpoint is set to "tablet"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
@@ -75,7 +77,7 @@ Feature: CTS App Analytics
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
             | evar7     | D=c7                                                                                                                                                                                                                                                                                                                                                                                                |
-            | evar5     | Desktop                                                                                                                                                                                                                                                                                                                                                                                             |
+            | evar5     | Tablet                                                                                                                                                                                                                                                                                                                                                                                             |
             | evar62    | D=c62                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar15    | D=c15                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar17    | D=c17                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -87,7 +89,7 @@ Feature: CTS App Analytics
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
 
-    Scenario: CTS Load Advanced search results with cancer type, stage and age specified
+    Scenario: CTS Load Advanced search results with cancer type, stage and age specified on desktop
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2&stg=C94774&t=C4872"
         And browser waits
         When page load request is sent
@@ -124,7 +126,7 @@ Feature: CTS App Analytics
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
 
-    Scenario: CTS Load Advanced search results with keyword and location at NIH
+    Scenario: CTS Load Advanced search results with keyword and location at NIH on desktop
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=4&q=Breast%20Cancer&rl=2"
         And browser waits
         When page load request is sent
@@ -161,8 +163,9 @@ Feature: CTS App Analytics
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
 
-    Scenario: CTS Load Advanced search results with state and city specified, trial types and phase
+    Scenario: CTS Load Advanced search results with state and city specified, trial types and phase on mobile
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?lcnty=United%20States&lcty=Los%20Angeles&loc=2&lst=CA&rl=2&tp=i&tp=iv&tt=treatment&tt=diagnostic"
+        And screen breakpoint is set to "mobile"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
@@ -184,7 +187,7 @@ Feature: CTS App Analytics
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
             | evar7     | D=c7                                                                                                                                                                                                                                                                                                                                                                                                |
-            | evar5     | Desktop                                                                                                                                                                                                                                                                                                                                                                                             |
+            | evar5     | Mobile                                                                                                                                                                                                                                                                                                                                                                                             |
             | evar62    | D=c62                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar15    | D=c15                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar17    | D=c17                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -198,8 +201,9 @@ Feature: CTS App Analytics
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
 
-    Scenario: CTS Load Advanced search results with drug and other treatment
+    Scenario: CTS Load Advanced search results with drug and other treatment on tablet
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?d=C2039&i=C15313&loc=0&rl=2"
+        And screen breakpoint is set to "tablet"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
@@ -221,7 +225,7 @@ Feature: CTS App Analytics
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
             | evar7     | D=c7                                                                                                                                                                                                                                                                                                                                                                                                |
-            | evar5     | Desktop                                                                                                                                                                                                                                                                                                                                                                                             |
+            | evar5     | Tablet                                                                                                                                                                                                                                                                                                                                                                                             |
             | evar62    | D=c62                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar15    | D=c15                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar17    | D=c17                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -235,8 +239,9 @@ Feature: CTS App Analytics
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
 
-    Scenario: CTS Load Advanced search results with lead org
+    Scenario: CTS Load Advanced search results with lead org on mobile
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?lo=ECOG-ACRIN%20Cancer%20Research%20Group&loc=0&rl=2"
+        And screen breakpoint is set to "mobile"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
@@ -258,7 +263,7 @@ Feature: CTS App Analytics
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
             | evar7     | D=c7                                                                                                                                                                                                                                                                                                                                                                                                |
-            | evar5     | Desktop                                                                                                                                                                                                                                                                                                                                                                                             |
+            | evar5     | Mobile                                                                                                                                                                                                                                                                                                                                                                                             |
             | evar62    | D=c62                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar15    | D=c15                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar17    | D=c17                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -276,7 +281,7 @@ Feature: CTS App Analytics
     ############# Trial Description Page ##############
 
 
-    Scenario: Page Load event fires when user navigates to trial description page
+    Scenario: Page Load event fires when user navigates to trial description page on desktop
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1"
         And browser waits
         When page load request is sent
@@ -302,7 +307,7 @@ Feature: CTS App Analytics
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
 
-    Scenario: Click event fires when user clicks on Print link on trial description page
+    Scenario: Click event fires when user clicks on Print link on trial description page on desktop
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1"
         When user clicks on share by "Print" button
         And browser waits
@@ -323,6 +328,7 @@ Feature: CTS App Analytics
     # This needs work - right now we need to ensure it does not wait for a page load
     # Scenario: Click event fires when user clicks on Email link on trial description page
     #     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1"
+    #     And screen breakpoint is set to "desktop"
     #     When user clicks on share by "Email" button
     #     And page click request is sent
     #     Then the following parameters should be captured
@@ -347,6 +353,7 @@ Feature: CTS App Analytics
  
     Scenario: Click Events for start over link
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2"
+        And screen breakpoint is set to "mobile"
         When user clicks on "Start Over" link
         And browser waits
         And page click request is sent
@@ -367,6 +374,7 @@ Feature: CTS App Analytics
 
     Scenario: Click Events for Find Trials button
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        And screen breakpoint is set to "mobile"
         When user clicks on "Find Trials" button
         And page click request is sent
         Then the following parameters should be captured
@@ -386,6 +394,7 @@ Feature: CTS App Analytics
 
     Scenario: Click Events fires when user starts interacting with a form
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        And screen breakpoint is set to "mobile"
         When user clicks on "All" button
         And user types "c" in "Primary Cancer Type/Condition" field
         Then page click request is sent
@@ -428,6 +437,7 @@ Feature: CTS App Analytics
 
     Scenario: Click Events for select all on page and print
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2"
+        And screen breakpoint is set to "tablet"
         When user checks "Select all on page" checkbox
         And user clicks on "Print Selected" button
         And page click request is sent
@@ -450,6 +460,7 @@ Feature: CTS App Analytics
     
     Scenario: Click event fires when user inputs invalid age and submits form
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
+        And screen breakpoint is set to "desktop"
         When user types "234" in "age" field
         And user clicks on "Find Trials" button
         Then page click request is sent
@@ -471,6 +482,7 @@ Feature: CTS App Analytics
             
             Scenario: Click Events fires when user clicks on search result item from Advanced Search results page
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2"
+        And screen breakpoint is set to "mobile"
         When user clicks on 1 trial result
         And browser waits
         Then page click request is sent
@@ -491,6 +503,7 @@ Feature: CTS App Analytics
 
     Scenario: Click Events for modify search criteria link
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2"
+        And screen breakpoint is set to "mobile"
         When user clicks on "Modify Search Criteria" button
         And browser waits
         And page click request is sent
@@ -511,6 +524,7 @@ Feature: CTS App Analytics
 
 Scenario: Click event fires when user tries to print without selecting any trial
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2"
+        And screen breakpoint is set to "desktop"
         When user clicks on "Print Selected" button
         And browser waits
         Then page click request is sent
@@ -532,6 +546,7 @@ Scenario: Click event fires when user tries to print without selecting any trial
 
     Scenario: Click event fires when user reaches max number of selected trials
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2"
+        And screen breakpoint is set to "desktop"
         When user checks "Select all on page" checkbox on 11 pages
         Then page click request is sent
         And the following parameters should be captured

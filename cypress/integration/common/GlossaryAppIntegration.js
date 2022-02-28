@@ -91,6 +91,10 @@ Then('page displays left navigation', () => {
   cy.get('#nvcgSlSectionNav').should('be.visible');
 });
 
+Then('page does not display left navigation', () => {
+  cy.get('#nvcgSlSectionNav').should('not.be.visible');
+});
+
 Given('user is navigating to bad url {string}', (badUrl) => {
   cy.visit(badUrl, { failOnStatusCode: false });
 });

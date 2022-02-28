@@ -1,7 +1,8 @@
 Feature: Recommended Content tests
 
-    Scenario Outline: Verify that Recommended Content Card exists on the pages and it's components are correct
+    Scenario Outline: Verify that Recommended Content Card exists on the pages and it's components are correct on desktop
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "desktop"
         Then recommended content section is visible
         And recommended content header text is "<header>"
 
@@ -10,7 +11,18 @@ Feature: Recommended Content tests
             | url                                                                                | header              |
             | /news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly | Recommended Content |
 
-    Scenario Outline: Verify Recommended Content Card's components
+    Scenario Outline: Verify that Recommended Content Card does not exist on tablet and mobile breakpoint
+        Given user is navigating to "<url>"
+        And screen breakpoint is set to "<breakpoint>"
+        Then recommended content section is not visible
+
+        Examples:
+            | breakpoint | url                                                                                |
+            | mobile     | /news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly |
+            | tablet     | /news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly |
+
+
+    Scenario Outline: Verify Recommended Content Card's components on desktop
         Given user is navigating to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
         Then recommended content section is visible
         And recommended content section display <totalNumber> of content cards

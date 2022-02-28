@@ -2,6 +2,7 @@ Feature: Lead Image tests
 
     Scenario Outline: As a user, I want to view the Lead image and Caption on pages with lead image
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "desktop"
         Then lead image is visible
         And caption text is "<caption>"
 
@@ -14,6 +15,7 @@ Feature: Lead Image tests
 
     Scenario Outline: As a user, I want to view the Lead image and Credit on pages with lead image
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "tablet"
         Then lead image is visible
         And credit text is "<credit>"
 
@@ -27,6 +29,7 @@ Feature: Lead Image tests
     
     Scenario Outline: As a user, I want to view the Lead image and Alt text on pages with lead image
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "mobile"
         Then lead image is visible
         And alt text is "<alttext>"
 
@@ -40,6 +43,7 @@ Feature: Lead Image tests
     
     Scenario Outline: Negative: As a user, I do not want to view the Lead image on pages without lead image
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "desktop"
         Then lead image is not visible
 
         Examples:
