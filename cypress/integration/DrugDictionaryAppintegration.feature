@@ -48,7 +48,7 @@ Feature: Drug Dictionary app is integrated within CGOV platform
         And error page title is "Page Not Found"
 
     Scenario: No results found page
-        Given screen breakpoint is set to "desktop"
+        Given screen breakpoint is set to "tablet"
         And user is navigating to "/publications/dictionaries/cancer-drug/search/chicken/?searchMode=Begins"
         Then the no matching results page is displayed
 

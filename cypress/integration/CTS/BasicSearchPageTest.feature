@@ -20,8 +20,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
             | mobile     |
             | tablet     |
 
-    Scenario: User is able to search for and use autosuggested items for cancer type/keyword
-        Given screen breakpoint is set to "desktop"
+    Scenario: User is able to search for and use autosuggested items for cancer type/keyword on desktop
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
         Then page title is "Find NCI-Supported Clinical Trials"
         And "Cancer Type/Keyword" input field has a placeholder "Start typing to select a cancer type or keyword"
@@ -42,7 +41,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
             | loc       | 0     |
             | rl        | 1     |
 
-    Scenario: Negative: User is searching for a keyword that does not exist
+    Scenario: Negative: User is searching for a keyword that does not exist on tablet
         Given screen breakpoint is set to "tablet"
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
         Then page title is "Find NCI-Supported Clinical Trials"
@@ -59,8 +58,9 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
             | loc       | 0     |
             | rl        | 1     |
 
-    Scenario: Negative: User is not able to search for age out of boundaries
+    Scenario: Negative: User is not able to search for age out of boundaries on Tablet
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
+        And screen breakpoint is set to "tablet"
         Then page title is "Find NCI-Supported Clinical Trials"
         And "Age" form section is displayed
         When user types "0" in "Age" field
@@ -72,8 +72,9 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
         When user clicks on "Find Trials" button
         Then the search is not executed and path is "/about-cancer/treatment/clinical-trials/search"
 
-    Scenario: Negative: User is not able to search for an incorrect zip code
+    Scenario: Negative: User is not able to search for an incorrect zip code on Mobile
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
+        And screen breakpoint is set to "mobile"
         Then page title is "Find NCI-Supported Clinical Trials"
         And "U.S. Zip Code" form section is displayed
         When user types "999g9" in "U.S. Zip Code" field
@@ -81,7 +82,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
         And user clicks on "Find Trials" button
         Then the search is not executed and path is "/about-cancer/treatment/clinical-trials/search"
 
-    Scenario: User is able to search for all trials without specifying any criteria
+    Scenario: User is able to search for all trials without specifying any criteria on desktop
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
         Then page title is "Find NCI-Supported Clinical Trials"
         And user clicks on "Find Trials" button
@@ -92,8 +93,9 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
             | loc       | 0     |
             | rl        | 1     |
 
-    Scenario: User is able to search for everything
+    Scenario: User is able to search for everything on tablet
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
+        And screen breakpoint is set to "tablet"
         Then page title is "Find NCI-Supported Clinical Trials"
         When user types "30" in "Age" field
         When user types "22182" in "U.S. Zip Code" field
@@ -114,8 +116,9 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
             | a         | 30    |
             | z         | 22182 |
 
-    Scenario: User has an option to go to search results url directly and modify search
+    Scenario: User has an option to go to search results url directly and modify search on tablet
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=30&loc=1&q=aids&rl=1&z=22182"
+        And screen breakpoint is set to "tablet"
         Then trial info displays "Results 1-10  of \d+ for your search "
         And the criteria table displays the following
             | Category         | Selection |

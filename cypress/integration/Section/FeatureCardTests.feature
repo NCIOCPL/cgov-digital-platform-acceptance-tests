@@ -2,6 +2,7 @@ Feature: Feature Card tests
 
     Scenario Outline: Verify feature cards are visible and have expected number of items
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "desktop"
         Then feature cards are visible
         And number of feature cards is <count>
 
@@ -12,6 +13,7 @@ Feature: Feature Card tests
 
     Scenario Outline: Verify feature card's components
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "tablet"
         Then feature cards are visible
         And feature cards at positions "<indexes>" have "titles" as "<title>"
         And feature cards at positions "<indexes>" have "descriptions" as "<description>"
@@ -27,6 +29,7 @@ Feature: Feature Card tests
 
     Scenario Outline: Verify feature card external item's components
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "mobile"
         Then feature cards are visible
         And the number of exit disclaimers is <externalLinkCount>
         And feature cards at positions "<indexes>" have "links" as "<itemLink>"

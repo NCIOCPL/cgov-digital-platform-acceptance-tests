@@ -10,6 +10,11 @@ Given('user is navigating to {string}', (a) => {
     cy.visit(a);
 });
 
+And('user expands accordion section {string}', (section) => {
+    cy.get('.accordion.ui-accordion > section > h2').contains(section).click();
+    cy.wait(500);
+});
+
 When('user is clicking on definition for {string}', (termName) => {
     cy.get('a.definition').contains(termName).click();
     cy.wait(500);

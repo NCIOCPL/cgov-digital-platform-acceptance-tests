@@ -27,7 +27,7 @@ Feature: function test for share options on special report template for Annual P
         And screen breakpoint is set to "tablet"
         Then the page options should appear under the bottom of the content area
         And the following page options are displayed
-            | pageOption         |
+            | pageOption                    |
             | Facebook                      |
             | Twitter                       |
             | Enviar por correo electrónico |
@@ -73,7 +73,8 @@ Feature: function test for share options on special report template for Annual P
             | link      | BookmarkShareClick                      |
 
     Scenario: Click events for Print page options on desktop
-        Given user is navigating to "/special-report"
+        Given screen breakpoint is set to "desktop"
+        And user is navigating to "/special-report"
         When user clicks on a page option "Print" link
         Then page click request is sent
         And the following parameters should be captured
@@ -90,7 +91,8 @@ Feature: function test for share options on special report template for Annual P
             | link      | PrintLink                               |
 
     Scenario: Click events for Email page options for spanish desktop
-        Given user is navigating to "/espanol/special-report"
+        Given screen breakpoint is set to "desktop"
+        And user is navigating to "/espanol/special-report"
         When user clicks on a page option "Enviar por correo electrónico" link
         Then page click request is sent
         And the following parameters should be captured

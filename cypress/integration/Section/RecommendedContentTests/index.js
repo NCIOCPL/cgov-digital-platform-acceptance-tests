@@ -5,6 +5,10 @@ Then('recommended content section is visible', () => {
     cy.get('div#blog-cards').should('be.visible');
 });
 
+Then('recommended content section is not visible', () => {
+    cy.get('div#blog-cards').should('not.be.visible');
+});
+
 And('recommended content header text is {string}', (headerText) => {
     cy.get('div#blog-cards').find('h4').should('be.visible').and('have.text', headerText);
 

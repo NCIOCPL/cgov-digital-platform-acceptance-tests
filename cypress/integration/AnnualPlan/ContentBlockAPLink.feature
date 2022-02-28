@@ -22,6 +22,7 @@ Feature: Tests for embed a content block
 
     Scenario: Click events for “Annual Plan & Budget Proposal At-A-Glance” file download button from the page (top link)
         Given user is navigating to "/special-report"
+        And screen breakpoint is set to "desktop"
         When user clicks on top "Annual Plan & Budget Proposal At-A-Glance" button
         Then page click request is sent
         And the following parameters should be captured

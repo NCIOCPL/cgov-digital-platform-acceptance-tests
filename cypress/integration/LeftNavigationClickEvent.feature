@@ -2,6 +2,7 @@ Feature: Left Navigation click events
 
     Scenario: Click Events for left navigation 'Feelings and Cancer' submenu
         Given user is navigating to "/about-cancer/coping"
+        And screen breakpoint is set to "desktop"
         When user is clicking on a menu section with href "/about-cancer/coping/feelings"
         And page click request is sent
         Then the following parameters should be captured
@@ -27,6 +28,7 @@ Feature: Left Navigation click events
 
     Scenario: Click Events for left navigation 'Learning to relax' submenu
         Given user is navigating to "/about-cancer/coping/feelings"
+        And screen breakpoint is set to "mobile"
         When user is clicking on a menu section with href "/about-cancer/coping/feelings/relaxation"
         And page click request is sent
         Then the following parameters should be captured

@@ -22,15 +22,23 @@ Feature: Breadcrumb tests
       | desktop    | /espanol/tipos/seno                                                           | 2     | Página principal,Tipos de cáncer                                           | /espanol,/espanol/tipos                                                                                     |
       | tablet     | /types/breast                                                                 | 2     | Home,Cancer Types                                                          | /,/types                                                                                                    |
       | desktop    | /about-cancer/treatment/drugs/bevacizumab                                     | 2     | Home,About Cancer                                                          | /,/about-cancer                                                                                             |
-      
+
 
   Scenario Outline: Negative: as a user, I won't see breadcrumbs where it is not provided
     Given screen breakpoint is set to "<breakpoint>"
     When user is navigating to "<url>"
     Then the breadcrumbs are not displayed
     Examples:
-      | url           |
-      | /about-cancer |
-      | /             |
+      | breakpoint | url           |
+      | desktop    | /about-cancer |
+      | tablet     | /             |
 
+  Scenario Outline: Negative: as a user, I won't see breadcrumbs on mobile
+    Given screen breakpoint is set to "mobile"
+    When user is navigating to "<url>"
+    Then the breadcrumbs are not visible
+    Examples:
+      | url                 |
+      | /types/breast       |
+      | /espanol/tipos/seno |
 

@@ -67,6 +67,7 @@ Feature: Page Options tests
 
     Scenario Outline: Verify that font resizer button exists on the pages at Desktop breakpoint
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "desktop"
         Then page options are displayed
         And "font resizer" button is displayed
         Examples:
@@ -87,6 +88,7 @@ Feature: Page Options tests
 
     Scenario Outline: Verify that font resizer button does not exist on the pages where it should not
         Given user is navigating to "<url>"
+        And screen breakpoint is set to "desktop"
         Then page options are displayed
         And "font resizer" button does not exist
         Examples:

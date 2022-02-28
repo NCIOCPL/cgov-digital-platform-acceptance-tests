@@ -55,6 +55,7 @@ Feature: Dynamic Listing Pages
 
     Scenario Outline: Redirect c-code to pretty url functionality
         When user is navigating to "<path>"
+        And screen breakpoint is set to "desktop"
         Then user is redirected to "<redirectedUrl>"
         And the page contains meta tags with the following names
             | name                  | content           |
@@ -74,6 +75,7 @@ Feature: Dynamic Listing Pages
 
     Scenario Outline: Redirect to noTrialsFound
         When user is navigating to "<path>" with a 404 status
+        And screen breakpoint is set to "desktop"
         Then user is redirected to "<redirectedUrl>"
         Then page title is "<page title>"
         Then the text "<noTrialsText>" appears
@@ -98,6 +100,7 @@ Feature: Dynamic Listing Pages
 
     Scenario Outline: Meta Tags
         When user is navigating to "<path>"
+        And screen breakpoint is set to "mobile"
         Then page title is "<page title>"
         Then the title tag should be "<title tag>"
         And the page contains meta tags with the following properties
@@ -120,6 +123,7 @@ Feature: Dynamic Listing Pages
 
     Scenario Outline: Page not found
         When user is navigating to "<path>" with a 404 status
+        And screen breakpoint is set to "mobile"
         Then page title is "Page Not Found"
         Then the text "We can't find the page you're looking for.Visit the homepage, browse by cancer type, or use the search below.Have a question? Get in touch." appears
         And "homepage" link has href "https://www.cancer.gov"
@@ -141,6 +145,7 @@ Feature: Dynamic Listing Pages
 
     Scenario: Analytics page load Disease
         When user is navigating to "/about-cancer/treatment/clinical-trials/disease/breast-cancer" with added wait
+        And screen breakpoint is set to "desktop"
         Then page load request is sent
         And the following parameters should be captured
             | parameter | value                                                                                 |
@@ -167,6 +172,7 @@ Feature: Dynamic Listing Pages
 
     Scenario: Analytics page load disease trial type no trials found
         When user is navigating to "/about-cancer/treatment/clinical-trials/disease/spiroplatin/treatment" with a 404 status
+        And screen breakpoint is set to "desktop"
         And browser waits
         Then page load request is sent
         And the following parameters should be captured
@@ -194,6 +200,7 @@ Feature: Dynamic Listing Pages
 
     Scenario: Analytics page load disease trial type intervention
         When user is navigating to "/about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab" with added wait
+        And screen breakpoint is set to "desktop"
         And browser waits
         Then page load request is sent
         And the following parameters should be captured
@@ -221,6 +228,7 @@ Feature: Dynamic Listing Pages
 
     Scenario: Analytics page load intervention trial type
         When user is navigating to "/about-cancer/treatment/clinical-trials/intervention/trastuzumab/treatment" with added wait
+        And screen breakpoint is set to "desktop"
         And browser waits
         Then page load request is sent
         And the following parameters should be captured
@@ -248,6 +256,7 @@ Feature: Dynamic Listing Pages
 
     Scenario: Analytics page load no trial found
         When user is navigating to "/about-cancer/treatment/clinical-trials/intervention/spiroplatin" with a 404 status
+        And screen breakpoint is set to "desktop"
         And browser waits
         Then page load request is sent
         And the following parameters should be captured
@@ -275,6 +284,7 @@ Feature: Dynamic Listing Pages
 
     Scenario Outline: Analytics click event
         When user is navigating to "<path>"
+        And screen breakpoint is set to "mobile"
         Then page title is "<page title>"
         When user clicks on 1 result
         And browser waits

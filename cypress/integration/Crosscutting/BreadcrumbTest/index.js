@@ -12,6 +12,9 @@ And('the breadcrumbs have the count of {int}', (count) => {
 Then('the breadcrumbs are not displayed', () => {
     cy.get('.breadcrumbs').should('not.exist');
 });
+Then('the breadcrumbs are not visible', () => {
+    cy.get('.breadcrumbs').should('not.be.visible');
+});
 
 And('the breadcrumbs have the titles as {string}', (title) => {
     const allTitles = title.split(',');

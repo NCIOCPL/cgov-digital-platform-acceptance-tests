@@ -61,3 +61,7 @@ Then('the list items images will not be displayed', () => {
 When('user clicks on a list item at position {int}', (itemNumber) => {
     cy.get('a.alternating-image-list-container-link > div').eq(itemNumber - 1).trigger('click', { followRedirect: false });
 });
+
+Then('promo image of the list item number {int} is not displayed', (itemNumber) => {
+    cy.get('.alternating-image-list-image').eq(itemNumber - 1).find('img').should('not.be.visible');
+});

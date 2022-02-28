@@ -2,6 +2,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
 
     Scenario: Load Event Spanish Home Page
         Given user is navigating to "/espanol"
+        And screen breakpoint is set to "desktop"
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                             |
@@ -27,6 +28,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
 
     Scenario: Load Event Home Page
         Given user is navigating to "/"
+        And screen breakpoint is set to "desktop"
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                        |

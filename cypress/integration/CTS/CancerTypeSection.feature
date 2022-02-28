@@ -1,14 +1,15 @@
 Feature: Primary CancerType keyword search
 
-  Scenario: User is able to search for cancer type via autosuggest
+  Scenario: User is able to search for cancer type via autosuggest on desktop
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     Then cancer types dropdown is displayed
     And autosuggest component is displayed
     And placeholder text "Start typing to narrow options below" displayed
 
-  Scenario: User is able to execute search for cancer type via autosuggest
+  Scenario: User is able to execute search for cancer type via autosuggest on tablet
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    And screen breakpoint is set to "tablet"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
     When user selects matched cancer type from autosuggest
@@ -20,7 +21,7 @@ Feature: Primary CancerType keyword search
       | loc       | 0     |
       | rl        | 2     |
 
-  Scenario: After selecting cancer type, Subtype, Stage, Side Effects fields appear
+  Scenario: After selecting cancer type, Subtype, Stage, Side Effects fields appear on desktop
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
@@ -31,8 +32,9 @@ Feature: Primary CancerType keyword search
       | Stage                                          | Start typing to select a stage   |
       | Side Effects/Biomarkers/Participant Attributes | Examples: Nausea, BRCA1          |
 
-  Scenario: User is able to execute search for Cancer type and subtype
+  Scenario: User is able to execute search for Cancer type and subtype on Tablet
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    And screen breakpoint is set to "tablet"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
     When user selects matched cancer type from autosuggest
@@ -52,7 +54,7 @@ Feature: Primary CancerType keyword search
       | st        | C8287 |
 
 
-  Scenario: User is able to execute search for Cancer type, subtype and stage
+  Scenario: User is able to execute search for Cancer type, subtype and stage on desktop
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
@@ -74,8 +76,9 @@ Feature: Primary CancerType keyword search
       | st        | C8287  |
       | stg       | C94774 |
 
-  Scenario: User is able to execute search for Cancer type, subtype, stage and side effects
+  Scenario: User is able to execute search for Cancer type, subtype, stage and side effects on mobile
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    And screen breakpoint is set to "mobile"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
     When user selects matched cancer type from autosuggest
@@ -98,8 +101,9 @@ Feature: Primary CancerType keyword search
       | stg       | C94774 |
       | fin       | C18673 |
 
-  Scenario: User is able to execute search for Cancer type, stage and side effects
+  Scenario: User is able to execute search for Cancer type, stage and side effects on Mobile
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    And screen breakpoint is set to "mobile"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
     When user selects matched cancer type from autosuggest
@@ -117,7 +121,7 @@ Feature: Primary CancerType keyword search
       | stg       | C94774 |
       | fin       | C18673 |
 
-  Scenario: User is able to execute search for Cancer type, subtype and side effects
+  Scenario: User is able to execute search for Cancer type, subtype and side effects on desktop
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
@@ -139,7 +143,7 @@ Feature: Primary CancerType keyword search
       | st        | C8287  |
       | fin       | C18673 |
 
-  Scenario: User is able to execute search for Cancer type and side effects
+  Scenario: User is able to execute search for Cancer type and side effects on desktop
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
