@@ -31,7 +31,7 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         Then page title is "Resources for Researchers"
         And section titled "Tool Type" is displayed
         And "Tool Type" section displays the following categories
-            | tools                          |
+            | tools                            |
             | Analysis Tools \(\d+\)           |
             | Datasets & Databases \(\d+\)     |
             | Lab Tools \(\d+\)                |
@@ -47,17 +47,17 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         Then page title is "Resources for Researchers"
         And section titled "Research Area" is displayed
         And "Research Area" section displays the following categories
-            | areas                           |
+            | areas                             |
             | Cancer Biology \(\d+\)            |
             | Cancer Omics \(\d+\)              |
             | Cancer Treatment \(\d+\)          |
             | Screening & Detection \(\d+\)     |
             | Cancer Health Disparities \(\d+\) |
             | Causes of Cancer \(\d+\)          |
-            | Cancer Diagnosis \(\d+\)          |
             | Cancer & Public Health \(\d+\)    |
-            | Cancer Statistics \(\d+\)         |
+            | Cancer Diagnosis \(\d+\)          |
             | Cancer Prevention \(\d+\)         |
+            | Cancer Statistics \(\d+\)         |
             | Bioinformatics \(\d+\)            |
             | Cancer Survivorship \(\d+\)       |
         Then the page options should appear at the bottom of the page
@@ -79,7 +79,7 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         And both pagers are displayed
         And the results are displayed with each title containing a link
         And each result has a description text under the title
-        
+
 
 
     Scenario Outline: User is able to search resources using the tool type options on the homepage
@@ -92,7 +92,7 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         And results info text is "1 - \d+ of \d+ results"
         And the "Tool Type" box displays the filter "<tools>"
         And the "Tool Sub-Type" box is displayed for "<eligibleToolType>"
-        
+
         Examples:
 
             | tools                            | toolTypeFilter           | redirectedPath             | search                                     | eligibleToolType |
@@ -114,7 +114,7 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         And search box is empty
         And Result Count text contains the same number as present in the "<areas>" link
         And the "Research Area" box displays the filter "<researchAreaFilter>" as checked
-        
+
 
         Examples:
             | areas                             | researchAreaFilter        | redirectedPath             | search                                          |
@@ -192,11 +192,11 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         And Contact Information field is "<displayed>"
 
         Examples:
-            | url                              | title                                                 |displayed|
-            | /research/resources/resource/82  | Health Disparities Calculator (HD*Calc)               |visible|
-            | /research/resources/resource/102 | Allele-Specific Alternative mRNA processing (ASARP)   |not visible|
-            | /research/resources/resource/32  | The International Registry of Werner Syndrome         |visible|
-            | /research/resources/resource/54  | Cancer Intervention and Surveillance Modeling Network |visible|
+            | url                              | title                                                 | displayed   |
+            | /research/resources/resource/82  | Health Disparities Calculator (HD*Calc)               | visible     |
+            | /research/resources/resource/102 | Allele-Specific Alternative mRNA processing (ASARP)   | not visible |
+            | /research/resources/resource/32  | The International Registry of Werner Syndrome         | visible     |
+            | /research/resources/resource/54  | Cancer Intervention and Surveillance Modeling Network | visible     |
 
 
     Scenario: User is able to go to Resource Detail page from Search Results page
