@@ -3,7 +3,7 @@
 import { Given, Then, And, When } from "cypress-cucumber-preprocessor/steps";
 
 let toolCount;
-let resultTitle; 
+let resultTitle;
 
 And('introductory text {string} appears', (introtext) => {
   cy.get('.r4r-DEFAULT.home__desc > p').should('contain.text', introtext);
@@ -109,7 +109,7 @@ And('both pagers are displayed', () => {
 
 And('no pager is displayed', () => {
   cy.get(".r4r-results.r4r-DEFAULT>nav >.r4r-pager__nav.r4r-DEFAULT").should('not.exist');
-    
+
 });
 
 And('the results are displayed with each title containing a link', () => {
@@ -131,10 +131,10 @@ And('each result has a description text under the title', () => {
 });
 
 When('user clicks on {string}', (tool) => {
-  cy.get(".home-nav__main >div >div>a").contains(tool).as('toolLink').then(($el)=>{
-    toolCount = ($el[0].innerText).split('(')[1].replace(')','');
-   });
-   cy.get(".home-nav__main >div >div>a").contains(tool).click();
+  cy.get(".home-nav__main >div >div>a").contains(tool).as('toolLink').then(($el) => {
+    toolCount = ($el[0].innerText).split('(')[1].replace(')', '');
+  });
+  cy.get(".home-nav__main >div >div>a").contains(tool).click();
 });
 
 And('the filter displays the {string}', (filter) => {
@@ -158,7 +158,7 @@ And('the {string} box is displayed for {string}', (section, eligibleToolType) =>
   } else {
     cy.get("h4").contains(section).should("not.exist");
   }
-  });
+});
 
 And('the {string} box is displayed', (section) => {
   cy.get('.r4r-DEFAULT.results__facets >div').find('h4').should('contain.text', section);
@@ -179,7 +179,7 @@ And("search box displays the term {string}", (searchText) => {
 
 When('user hits {string} key', (enterKey) => {
   cy.get('.searchbar__container input').type('{enter}{enter}');
-  });
+});
 
 When('user clicks on {string} button', (button) => {
   cy.get('.r4r-DEFAULT.results__search-container > .r4r-DEFAULT.results__filter-button').click();
@@ -190,7 +190,15 @@ And('the search result is displayed', () => {
 });
 
 And('the search result title is {string} with href {string}', (title, href) => {
-  cy.get('[aria-label="search results"] > article>h2').first().should('be.visible').find('a').should('have.attr', 'href', href).should('have.text', title);
+  const baseURL = Cypress.config('baseUrl');
+  if (baseURL.includes('ncigovcdode')) {
+    cy.get('[aria-label="search results"] > article>h2').first().should('be.visible').find('a').then($link => {
+      const linkHref = $link[0].getAttribute('href');
+      expect(linkHref.replace('Exit Notification', '')).to.eq(href)
+    })
+  } else {
+    cy.get('[aria-label="search results"] > article>h2').first().should('be.visible').find('a').should('have.attr', 'href', href).should('have.text', title);
+  }
 });
 
 And('the search result description is displayed', () => {
@@ -230,12 +238,12 @@ And('{string} field is displayed', (fieldName) => {
 });
 
 And("Contact Information field is {string}", (visibility) => {
-  if(visibility.toLowerCase() === 'visible')
-  cy.get('h2').contains('Contact Information').should('be.visible');
+  if (visibility.toLowerCase() === 'visible')
+    cy.get('h2').contains('Contact Information').should('be.visible');
   else
-  cy.get('h2').contains('Contact Information').should('not.exist');
-  
-  });
+    cy.get('h2').contains('Contact Information').should('not.exist');
+
+});
 
 And('the Resource not found message is displayed as {string} and {string}', (message1, message2) => {
   cy.document().then(doc => {
@@ -252,14 +260,14 @@ And("the {string} is displayed with href {string}", (linkText, linkHref) => {
 });
 
 And('the {string} box displays the filter {string} as checked', (section, area) => {
-    cy.get('div[class="facet__box  r4r-DEFAULT"]>h4').contains(section).parent().find(`label > input[value="${area}"]`).should('be.checked');
+  cy.get('div[class="facet__box  r4r-DEFAULT"]>h4').contains(section).parent().find(`label > input[value="${area}"]`).should('be.checked');
 });
 
 When("user clicks on {int} search result item", (resIndex) => {
-  cy.get(".r4r-DEFAULT.results-container >article> h2 > a").eq(resIndex-1).as('resultItem').then(($el)=>{
+  cy.get(".r4r-DEFAULT.results-container >article> h2 > a").eq(resIndex - 1).as('resultItem').then(($el) => {
     resultTitle = $el[0].innerText;
   })
-  cy.get("@resultItem").eq(resIndex-1).click();
+  cy.get("@resultItem").eq(resIndex - 1).click();
 });
 
 Then("the {string} is displayed", (backToSearch) => {
@@ -272,12 +280,12 @@ And('Visit Resource link is displayed with exit disclaimer icon', () => {
 });
 
 And('Result Count text contains the same number as present in the {string} link', (tools) => {
-  cy.get('div[aria-label="Results count"] p').then(($el)=>{
-    const totalRes = ($el[0].innerText).split('of ')[1].replace(' results','');
+  cy.get('div[aria-label="Results count"] p').then(($el) => {
+    const totalRes = ($el[0].innerText).split('of ')[1].replace(' results', '');
     expect(totalRes).to.eq(toolCount)
-    });
+  });
 });
 
-Then("the page title is the same as the clicked result's item title",()=>{
-  cy.get('h1').first().should('have.text',resultTitle);
-}); 
+Then("the page title is the same as the clicked result's item title", () => {
+  cy.get('h1').first().should('have.text', resultTitle);
+});
