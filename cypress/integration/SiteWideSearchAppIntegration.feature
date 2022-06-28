@@ -76,15 +76,15 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the results are displayed with each title containing a link
 
     Scenario: Edge case:Display less than 20 results does not show the pager.
-        Given user is navigating to "/search/results?swKeyword=ert"
+        Given user is navigating to "/search/results?swKeyword=retch"
         And screen breakpoint is set to "desktop"
-        Then the system returns the results page for "ert"
+        Then the system returns the results page for "retch"
         And the "H1" title is "NCI Search Results"
-        And the "H3" title is "Results for: ert"
+        And the "H3" title is "Results for: retch"
         And the dictionary definition box is displayed
         And the "H2" title is "Definition:"
         Then the "Show full definition" button within the dictionary definition is displayed
-        And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: ert"
+        And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: retch"
         And pagers are not displayed for less than 20 results
         And the results are displayed with each title containing a link
 
