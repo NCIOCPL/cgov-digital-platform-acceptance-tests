@@ -15,7 +15,7 @@ And('a PDF icon located at {string} should be displayed with a text {string}', (
         const style = window.getComputedStyle(element, '::before');
         const image = style.getPropertyValue('background-image');
         const expectedURL = `url("${baseURL}${iconUrl}")`;
-        const newImage = image.replace(/\?v=\w+/, ''); 
+        const newImage = image.replace(/sprite-.+\.svg/,"sprite.svg"); 
         expect(expectedURL).equal(newImage); 
         const text = element.innerText;
         expect(text).equal(iconText);
