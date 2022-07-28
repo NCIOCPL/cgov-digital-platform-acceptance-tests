@@ -12,9 +12,10 @@ Feature: Primary CancerType keyword search
     And screen breakpoint is set to "tablet"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
-    When user selects matched cancer type from autosuggest
+    When user selects "Breast Cancer" from autosuggest
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
+    And trial info displays "Results 1-10  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value |
       | t         | C4872 |
@@ -25,7 +26,7 @@ Feature: Primary CancerType keyword search
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
-    When user selects matched cancer type from autosuggest
+    When user selects "Breast Cancer" from autosuggest
     Then field with placeholder appears
       | field                                          | placeholder                      |
       | Subtype                                        | Start typing to select a subtype |
@@ -37,7 +38,7 @@ Feature: Primary CancerType keyword search
     And screen breakpoint is set to "tablet"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
-    When user selects matched cancer type from autosuggest
+    When user selects "Breast Cancer" from autosuggest
     Then field with placeholder appears
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
@@ -46,6 +47,7 @@ Feature: Primary CancerType keyword search
       | Subtype | Bilateral Breast Cancer |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
+    And trial info displays "Results 1-10  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value |
       | t         | C4872 |
@@ -58,7 +60,7 @@ Feature: Primary CancerType keyword search
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
-    When user selects matched cancer type from autosuggest
+    When user selects "Breast Cancer" from autosuggest
     Then field with placeholder appears
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
@@ -68,6 +70,7 @@ Feature: Primary CancerType keyword search
       | Stage   | Early-Stage Breast Cancer |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
+    And trial info displays "Results 1-1  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value  |
       | t         | C4872  |
@@ -81,7 +84,7 @@ Feature: Primary CancerType keyword search
     And screen breakpoint is set to "mobile"
     When user clicks on "all" field
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
-    When user selects matched cancer type from autosuggest
+    When user selects "Acute Myeloid Leukemia (AML)" from autosuggest
     Then field with placeholder appears
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
@@ -92,6 +95,7 @@ Feature: Primary CancerType keyword search
       | Side Effects | JAK2 Gene Mutation                     |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
+    And trial info displays "Results 1-1  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value                 |
       | t         | C3171                 |
@@ -106,13 +110,14 @@ Feature: Primary CancerType keyword search
     And screen breakpoint is set to "mobile"
     When user clicks on "all" field
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
-    When user selects matched cancer type from autosuggest
+    When user selects "Acute Myeloid Leukemia (AML)" from autosuggest
     When user types following value and selects matched option in the corresponding field
       | field        | value                                  |
       | Stage        | Recurrent Acute Myeloid Leukemia (AML) |
       | Side Effects | JAK2 Gene Mutation                     |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
+    And trial info displays "Results 1-1  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value                 |
       | t         | C3171                 |
@@ -125,7 +130,7 @@ Feature: Primary CancerType keyword search
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
-    When user selects matched cancer type from autosuggest
+    When user selects "Acute Myeloid Leukemia (AML)" from autosuggest
     Then field with placeholder appears
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
@@ -135,6 +140,7 @@ Feature: Primary CancerType keyword search
       | Side Effects | JAK2 Gene Mutation                     |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
+    And trial info displays "Results 1-1  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value  |
       | t         | C3171  |
@@ -147,7 +153,7 @@ Feature: Primary CancerType keyword search
     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
     When user clicks on "all" field
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
-    When user selects matched cancer type from autosuggest
+    When user selects "Acute Myeloid Leukemia (AML)" from autosuggest
     Then field with placeholder appears
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
@@ -156,6 +162,7 @@ Feature: Primary CancerType keyword search
       | Side Effects | JAK2 Gene Mutation |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
+    And trial info displays "Results 1-1  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value  |
       | t         | C3171  |

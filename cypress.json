@@ -10,8 +10,9 @@
   },
   "chromeWebSecurity": true,
   "env": {
-    "trackingServer": ["2o7.net", "metrics.cancer.gov"],
+    "trackingServer": ["2o7.net","metrics.cancer.gov"],
     "admin_username": "admin",
     "admin_password": ""
-    }
+  },
+  "defaultCommandTimeout": 20000
 }

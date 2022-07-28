@@ -19,6 +19,10 @@ const inputFieldMap = {
     'Keywords/Phrases': 'keywordPhrases',
 };
 
+Then("page title is {string}", (title) => {
+    cy.get(`h1:contains('${title}') `).should('be.visible')
+});
+
 And('the text {string} appears below the title', (introtext) => {
     cy.get('.search-page__header > p').should('contain', introtext);
 });
