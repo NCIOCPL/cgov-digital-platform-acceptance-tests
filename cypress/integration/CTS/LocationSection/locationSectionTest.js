@@ -41,7 +41,7 @@ And("user clicks {string} button", (findButton) => {
 });
 
 Then("the search is executed and results page is displayed", () => {
-    cy.get('h1').first().should('have.text', "Clinical Trials Search Results");
+    cy.get('h1:contains("Clinical Trials Search Results")').should('be.visible');
 });
 
 And("the url query has the following corresponding code", dataTable => {
@@ -83,8 +83,8 @@ And("user types {string} in the State field", (state) => {
     cy.get('input#lst').type(state);
 });
 
-And("user selects matched item from autosuggest", () => {
-    cy.get('.cts-autocomplete__menu-item.highlighted').click();
+And("user selects {string} from autosuggest", (type) => {
+    cy.get(`.cts-autocomplete__menu-item:contains('${type}')`).click();
 });
 
 And("user types {string} in the City field", (city) => {

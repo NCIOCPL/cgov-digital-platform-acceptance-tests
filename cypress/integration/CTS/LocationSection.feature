@@ -45,7 +45,7 @@ Feature: Location search
         When user selects "Country, State, City" radio button
         And user selects "United States" in the Country field
         And user types "Virginia" in the State field
-        And user selects matched item from autosuggest
+        And user selects "Virginia" from autosuggest
         And user types "Arlington" in the City field
         And user clicks "Find Trials" button
         Then the search is executed and results page is displayed
@@ -60,15 +60,15 @@ Feature: Location search
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
         And screen breakpoint is set to "mobile"
         When user selects "Hospitals/Institutions" radio button
-        And user types "Massachusetts General Hospital" in the Hospital field
-        And user selects matched item from autosuggest
+        And user types "Massachusetts General Hospital Cancer Center" in the Hospital field
+        And user selects "Massachusetts General Hospital Cancer Center" from autosuggest
         And user clicks "Find Trials" button
         Then the search is executed and results page is displayed
         And the url query has the following corresponding code
-            | queryParam | value                          |
-            | loc        | 3                              |
-            | rl         | 2                              |
-            | hos        | Massachusetts General Hospital |
+            | queryParam | value                                        |
+            | loc        | 3                                            |
+            | rl         | 2                                            |
+            | hos        | Massachusetts General Hospital Cancer Center |
 
     Scenario: User is able to filter results by atNIH on desktop
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"

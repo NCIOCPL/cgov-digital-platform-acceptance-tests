@@ -24,8 +24,8 @@ And("user types {string} in the autosuggest field", (cancerType) => {
     cy.get('input#ct-searchTerm').type(cancerType);
 });
 
-When("user selects matched cancer type from autosuggest", () => {
-    cy.get('.cts-autocomplete__menu-item').click();
+When("user selects {string} from autosuggest", (type) => {
+    cy.get(`.cts-autocomplete__menu-item:contains('${type}')`).click();
 });
 
 And("user clicks {string} button", (findButton) => {
@@ -33,7 +33,15 @@ And("user clicks {string} button", (findButton) => {
 });
 
 Then("the search is executed and results page is displayed", () => {
-    cy.get('h1').first().should('have.text', "Clinical Trials Search Results");
+    cy.get('h1:contains("Clinical Trials Search Results")').should('be.visible');
+});
+
+And('trial info displays {string}', (infoText) => {
+    cy.get('.all-trials').invoke('text').then((text) => {
+        const resultsText = text.split('\n').join(' ').split('\t').join('');
+        const regex = new RegExp(infoText);
+        expect(resultsText).to.match(regex);
+    });
 });
 
 And("the url query has the following", dataTable => {

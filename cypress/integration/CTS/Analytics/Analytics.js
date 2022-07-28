@@ -16,7 +16,7 @@ When('user clicks on {int} trial result', (resultItem) => {
 });
 When('user checks {string} checkbox on {int} pages', (label, page) => {
   for (let i = 1; i <= page; i++) {
-    cy.get('div.pager__num').contains(`${i}`).click()
+    cy.get('.pager__navigation').contains(`${i}`).click()
     cy.get('label.cts-checkbox__label').contains(label).parent().find('input').check({ force: true });
   }
 })

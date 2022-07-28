@@ -49,7 +49,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
         When user clicks on "Cancer Type/Keyword" field
         Then autocomplete dropdown is displayed
         When user types "asdf" in "Cancer Type/Keyword" field
-        Then autocomplete dropdown is displayed with "No available options found.  Your search will be based on the text above." text
+        Then autocomplete dropdown is displayed with "No available options found. Your search will be based on the text above." text
         When user clicks on "Find Trials" button
         Then the search is executed and no results page is displayed
         And the url query has the following corresponding code
@@ -76,9 +76,9 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
         Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
         And screen breakpoint is set to "mobile"
         Then page title is "Find NCI-Supported Clinical Trials"
-        And "U.S. Zip Code" form section is displayed
+        And "U.S. ZIP Code" form section is displayed
         When user types "999g9" in "U.S. Zip Code" field
-        Then alert "Please enter a valid 5 digit U.S. zip code" is displayed in "U.S. Zip Code" section
+        Then alert "Please enter a valid 5 digit U.S. ZIP code" is displayed in "U.S. Zip Code" section
         And user clicks on "Find Trials" button
         Then the search is not executed and path is "/about-cancer/treatment/clinical-trials/search"
 

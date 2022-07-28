@@ -1,6 +1,10 @@
 // <reference types="Cypress" />
 import { Given, And, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
+Then("page title is {string}", (title) => {
+    cy.get(`h1:contains('${title}') `).should('be.visible')
+});
+
 And('trial info displays {string}', (infoText) => {
     cy.get('.all-trials').invoke('text').then((text) => {
         const resultsText = text.split('\n').join(' ').split('\t').join('');
