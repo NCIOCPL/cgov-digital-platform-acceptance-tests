@@ -59,7 +59,7 @@
       "id": "1500008",
       "langcode": "en",
       "label": "A.1.2",
-      "weight": "0",
+      "weight": "1",
       "path": "/api-test/a/1/2",
       "navigation_display_options": [],
       "is_section_nav_root": false,
