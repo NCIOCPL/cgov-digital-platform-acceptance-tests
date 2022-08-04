@@ -112,11 +112,11 @@ Then('{string} link should not appear', (viewAndPrintLink) => {
 });
 
 Then('language toggle is not displayed', () => {
-    cy.get('ul.links').should('not.exist');
+    cy.get('header.usa-banner__header a').should('not.exist');
 });
 
 Then('language toggle is displayed with the href {string}', (langToggleHref) => {
-    cy.get('ul.links a').should('exist').and('have.attr', 'href').and('be.eq', langToggleHref);
+    cy.get('header.usa-banner__header a').should('exist').and('have.attr', 'href').and('be.eq', langToggleHref);
 
 })
 
