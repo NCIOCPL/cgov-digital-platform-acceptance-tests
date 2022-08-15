@@ -1,5 +1,5 @@
 
-import { InitializeAnalyticsInterceptingImage } from "./../../utils/analyticsInterceptingImage";
+import { InitializeAnalyticsInterceptingImage } from "../../../../utils/analyticsInterceptingImage";
 
 beforeEach(() => {
 
