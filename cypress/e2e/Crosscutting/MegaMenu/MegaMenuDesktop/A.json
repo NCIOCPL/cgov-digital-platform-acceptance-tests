@@ -1,0 +1,56 @@
+{
+    "primary_nav_label": "Explore A",
+    "primary_nav_url": "/api-test/a",
+    "items": [
+        {
+            "type": "list",
+            "title": "A.1",
+            "title_url": "/api-test/a/1",
+            "list_items": [
+                {
+                    "label": "A.1.1",
+                    "url": "/api-test/a/1/1"
+                },
+                {
+                    "label": "A.1.2",
+                    "url": "/api-test/a/1/2"
+                }
+            ]
+        },
+        {
+            "type": "list",
+            "title": "A.2",
+            "title_url": "/api-test/a/2",
+            "list_items": [
+                {
+                    "label": "A.2.1",
+                    "url": "/api-test/a/2/1"
+                },
+                {
+                    "label": "A.2.2",
+                    "url": "/api-test/a/2/2"
+                }
+            ]
+        },
+        {
+            "type": "list",
+            "title": "A.3",
+            "title_url": "/api-test/a/3",
+            "list_items": [
+                {
+                    "label": "A.3.1",
+                    "url": "/api-test/a/3/1"
+                },
+                {
+                    "label": "A.3.2",
+                    "url": "/api-test/a/3/2"
+                }
+            ]
+        },
+        {
+            "type": "list",
+            "title": "A.4",
+            "title_url": "/api-test/b/4/1"
+        }
+    ]
+}
