@@ -1,7 +1,7 @@
 {
   "testFiles": "**/*.feature",
   "video": false,
-  "baseUrl": "https://www.cancer.gov",
+  "baseUrl": "https://www-dev-ac.cancer.gov",
   "viewportWidth": 1025,
   "viewportHeight": 600,
   "retries": {
