@@ -80,7 +80,7 @@ Then('{string} links to {string}', (link, href) => {
 });
 
 Then('page title is {string}', (pageTitle) => {
-  cy.get('h1').first().should('include.text', pageTitle);
+  cy.get(`h1:contains("${pageTitle}")`).should('be.visible');
 });
 
 Then('error page title is {string}', (pageTitle) => {

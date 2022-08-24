@@ -4,10 +4,11 @@
   "description": "Behavioral tests for CGov Digital Platform",
   "main": "index.js",
   "scripts": {
-    "test": "cypress-tags run -e TAGS=\"not @smoke\"",
+    "test": "cypress run --spec \"**/e2e/**/[!$]*.feature\"",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:smoke":"cypress-tags run -e TAGS=\"@smoke\""
+    "cypress:smoke": "cypress run --spec \"cypress/e2e/ProductionSmokeTests/*.feature\"",
+    "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/*.feature\""
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,15 @@
   },
   "homepage": "https://github.com/NCIOCPL/cgov-digital-platform-acceptance-tests#readme",
   "dependencies": {
-    "cypress": "^9.4.1",
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions":"true",
+    "stepDefinitions": "cypress/e2e",
+    "commonPath":"cypress/e2e/common"
+  
+  },
+  "devDependencies": {
+    "cypress": "^10.1.0"
   }
 }
