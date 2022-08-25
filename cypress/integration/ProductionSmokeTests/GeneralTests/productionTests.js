@@ -123,3 +123,13 @@ And('page title is {string}',(title)=>{
     cy.get(`h1:contains('${title}')`).should('be.visible');
     });
     
+    Then('thumbnail images are displayed',()=>{
+     cy.get("div[class*='image container'] img").each(el=>{
+        cy.wrap(el).should('be.visible');
+     })
+    });
+    And('the image src contains {string}',(source)=>{
+        cy.get("div[class*='image container'] img").each(el=>{
+            cy.wrap(el).should('have.attr','src').and('include',source)
+        })
+    });
