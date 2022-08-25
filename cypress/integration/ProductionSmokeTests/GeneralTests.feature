@@ -41,13 +41,6 @@ Feature: Basic checks to ensure production site is up and running
             | /about-nci/organization/cgh/blog?year=2020 | 2020 - CGH Spotlight Blog |
             | /news-events/press-releases/2022           | 2022 News Releases        |
 
-    Scenario: SWS App check
-        Given user is navigating to "/"
-        When user types "mantle cell lymphoma" in the search box
-        And user clicks search icon
-        Then user is redirected to "/search/results?swKeyword=mantle+cell+lymphoma"
-        Then the system returns the results page for "mantle cell lymphoma"
-
     Scenario Outline: App modules API's is working
         Given app sends the request "<request>"
         Then response status code is 200
@@ -71,3 +64,13 @@ Feature: Basic checks to ensure production site is up and running
         And user clicks on "Print Selected" button at "top" position
         Then user is redirected to "/CTS.Print/Display" with generated "printid"
         And page title is "Your Clinical Trials Search Results"
+
+    Scenario Outline: Thumbnail images check
+        Given user is navigating to "<url>"
+        Then thumbnail images are displayed
+        And the image src contains "/files/styles/cgov_thumbnail/public/cgov_image/"
+
+        Examples:
+            | url               |
+            | /news-events      |
+            | /espanol/noticias |
