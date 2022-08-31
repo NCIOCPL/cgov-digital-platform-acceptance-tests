@@ -4,10 +4,10 @@
   "description": "Behavioral tests for CGov Digital Platform",
   "main": "index.js",
   "scripts": {
-    "test": "cypress-tags run -e TAGS='not @smoke'",
+    "test": "cypress-tags run -e TAGS=\"not @smoke\"",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:smoke":"cypress-tags run -e TAGS='@smoke'"
+    "cypress:smoke":"cypress-tags run -e TAGS=\"@smoke\""
   },
   "repository": {
     "type": "git",
