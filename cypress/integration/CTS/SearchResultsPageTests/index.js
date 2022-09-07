@@ -73,7 +73,7 @@ And('chat pop up is displayed', () => {
 });
 
 When('user clicks on chat button', () => {
-    cy.get('#chat-button').click();
+    cy.get('#proactive-chat-link').click();
     cy.wait(2000);
 });
 

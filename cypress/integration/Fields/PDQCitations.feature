@@ -57,7 +57,7 @@ Feature: PDQ Citation Tests
             | /research/progress/discovery/gutcheck-intro-video                           |
             | /about-cancer/treatment/side-effects                                        |
             | /types/breast/reconstruction-fact-sheet                                     |
-            | /espanol/efectos-secundarios                                                |
+            | /espanol/cancer/tratamiento/efectos-secundarios                             |
             | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio |
             | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial               |
             | /news-events/cancer-currents-blog/2019/transition-lowy-nci-acting-director  |

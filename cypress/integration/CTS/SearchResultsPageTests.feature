@@ -35,7 +35,7 @@ Feature: As an user, I should be able to see my search results displayed, select
         And the following parameters should be captured
             | parameter | value                                                            |
             | event44   |                                                                  |
-            | link      | Chat Now                                                         |
+            | link      | ProactiveChat                                                    |
             | linkType  | lnk_o                                                            |
             | prop67    | D=pageName                                                       |
             | prop4     | D=pev1                                                           |
