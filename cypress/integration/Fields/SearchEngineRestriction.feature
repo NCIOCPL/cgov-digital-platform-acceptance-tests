@@ -10,7 +10,7 @@ Feature: Search Engine restrictions test
         Examples:
             | path                                                                                        | breakpoint |
             | /about-cancer/coping/feelings/relaxation                                                    | desktop    |
-            | /espanol/efectos-secundarios                                                                | mobile     |
+            | /espanol/cancer/tratamiento/efectos-secundarios                                                                | mobile     |
             | /about-cancer/coping/feelings/relaxation/loukissas-jennifer                                 | tablet     |
             | /news-events/cancer-currents-blog/2019/hpv-vaccine-presidents-cancer-panel-improving-uptake | tablet     |
             | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio                 | mobile     |

@@ -11,7 +11,7 @@ Feature: Citations Tests
             | breakpoint | url                                                                         | header               | linkUrl                                      | pubMedLinkNumber | plainCitationNumber |
             | desktop    | /about-cancer/treatment/side-effects                                        | Selected References  | https://www.ncbi.nlm.nih.gov/pubmed/21460648 | 3                | 1                   |
             | desktop    | /types/breast/reconstruction-fact-sheet                                     | Selected References  | https://www.ncbi.nlm.nih.gov/pubmed/21460648 | 3                | 1                   |
-            | tablet     | /espanol/efectos-secundarios                                                | Bibliografía selecta | https://www.ncbi.nlm.nih.gov/pubmed/21460648 | 3                | 1                   |
+            | tablet     | /espanol/cancer/tratamiento/efectos-secundarios                                                | Bibliografía selecta | https://www.ncbi.nlm.nih.gov/pubmed/21460648 | 3                | 1                   |
             | tablet     | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio | Bibliografía         | https://www.ncbi.nlm.nih.gov/pubmed/21460648 | 3                | 1                   |
             | mobile     | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial               | References           | https://www.ncbi.nlm.nih.gov/pubmed/21460648 | 3                | 1                   |
             | mobile     | /news-events/cancer-currents-blog/2019/transition-lowy-nci-acting-director  | Selected References  | https://www.ncbi.nlm.nih.gov/pubmed/21460648 | 3                | 1                   |
@@ -26,7 +26,7 @@ Feature: Citations Tests
             | breakpoint | url                                                                         | plainCitationNumber |
             | desktop    | /about-cancer/treatment/side-effects                                        | 1                   |
             | desktop    | /types/breast/reconstruction-fact-sheet                                     | 1                   |
-            | tablet     | /espanol/efectos-secundarios                                                | 1                   |
+            | tablet     | /espanol/cancer/tratamiento/efectos-secundarios                                               | 1                   |
             | tablet     | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio | 1                   |
             | mobile     | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial               | 1                   |
             | mobile     | /news-events/cancer-currents-blog/2019/transition-lowy-nci-acting-director  | 1                   |

@@ -35,7 +35,7 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
         Then back-to-top arrow is not displayed
         Examples:
             | url                                                                         | screenBreakpoint |
-            | /espanol/efectos-secundarios                                                | desktop          |
+            | /espanol/cancer/tratamiento/efectos-secundarios                             | desktop          |
             | /espanol/noticias/temas-y-relatos-blog                                      | tablet           |
             | /espanol/tipos/seno/investigacion                                           | desktop          |
             | /espanol/tipos/seno                                                         | tablet           |
@@ -78,7 +78,7 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
         Then back-to-top arrow is not displayed
         Examples:
             | url                                                                         |
-            | /espanol/efectos-secundarios                                                |
+            | /espanol/cancer/tratamiento/efectos-secundarios                                                |
             | /espanol/noticias/temas-y-relatos-blog                                      |
             | /espanol/tipos/seno/investigacion                                           |
             | /espanol/tipos/seno                                                         |
