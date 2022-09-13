@@ -36,3 +36,7 @@ And('content is displayed', () => {
 And('page title is {string}', (title) => {
     cy.get(`h1:contains('${title}')`).should('be.visible');
 });
+
+And('the text {string} is displayed', (str) => {
+    cy.get(`p:contains("${str}")`).should('be.visible');
+});
