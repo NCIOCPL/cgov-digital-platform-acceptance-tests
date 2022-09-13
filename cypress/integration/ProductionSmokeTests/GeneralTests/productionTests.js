@@ -94,7 +94,7 @@ And('the {string} is not empty', (param) => {
         if (param.includes('body'))
             expect(body).to.not.be.empty;
         else
-           expect( body[param]).to.not.be.empty;
+            expect(body[param]).to.not.be.empty;
     })
 });
 
@@ -119,17 +119,21 @@ Then('user is redirected to {string} with generated {string}', (redirectedPath, 
     cy.location('search').should('include', `?${printID}=`);
 });
 
-And('page title is {string}',(title)=>{
+And('page title is {string}', (title) => {
     cy.get(`h1:contains('${title}')`).should('be.visible');
-    });
-    
-    Then('thumbnail images are displayed',()=>{
-     cy.get("div[class*='image container'] img").each(el=>{
+});
+
+Then('thumbnail images are displayed', () => {
+    cy.get("div[class*='image container'] img").each(el => {
         cy.wrap(el).should('be.visible');
-     })
-    });
-    And('the image src contains {string}',(source)=>{
-        cy.get("div[class*='image container'] img").each(el=>{
-            cy.wrap(el).should('have.attr','src').and('include',source)
-        })
-    });
+    })
+});
+And('the image src contains {string}', (source) => {
+    cy.get("div[class*='image container'] img").each(el => {
+        cy.wrap(el).should('have.attr', 'src').and('include', source)
+    })
+});
+
+And('the text {string} is displayed', (str) => {
+    cy.get(`p:contains("${str}")`).should('be.visible');
+});

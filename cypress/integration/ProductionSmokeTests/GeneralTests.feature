@@ -74,3 +74,28 @@ Feature: Basic checks to ensure production site is up and running
             | url               |
             | /news-events      |
             | /espanol/noticias |
+
+    Scenario Outline: English 404 page
+        Given user is navigating to "<url>" with a 404 status
+        Then page title is "Page Not Found"
+        And the text "We can't find the page you're looking for." is displayed
+
+        Examples:
+            | url                                 |
+            | /chicken                            |
+            | /pediatric-adult-rare-tumor/chicken |
+            | /rare-brain-spine-tumor/chicken     |
+            | /nano/chicken                       |
+            | /connect-prevention-study/chicken   |
+
+    Scenario Outline: Spanish 404 page
+        Given user is navigating to "<url>" with a 404 status
+        Then page title is "No se encontró la página"
+        And the text "No podemos encontrar la página que busca." is displayed
+
+        Examples:
+            | url                                     |
+            | /espanol/chicken                        |
+            | /rare-brain-spine-tumor/espanol/chicken |
+
+
