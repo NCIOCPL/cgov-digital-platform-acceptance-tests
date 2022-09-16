@@ -1,5 +1,55 @@
 Feature: Site Wide Search app is integrated within CGOV platform
 
+    #################### Site Wide Search Analytics#####################
+
+    Scenario: Click Events for Best Bets title link
+        Given user is navigating to "/search/results?swKeyword=tumor"
+        When user is clicking on a BestBets title link at position 1
+        And page click request is sent
+        Then the following parameters should be captured
+            | parameter | value                                                   |
+            | prop4     | D=pev1                                                  |
+            | prop8     | english                                                 |
+            | prop12    | best_bets                                               |
+            | prop13    | 1                                                       |
+            | prop67    | D=pageName                                              |
+            | evar2     | D=c8                                                    |
+            | evar12    | D=c12                                                   |
+            | link      | What Is Cancer?                                         |
+            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
+            | pageName  | {CANONICAL_HOST}/search/results                         |
+
+
+    Scenario: Click Events for More Information glossary term link
+        Given user is navigating to "/search/results?swKeyword=tumor"
+        When user is clicking on a glossary term link "More information on dictionary page"
+        And page click request is sent
+        Then the following parameters should be captured
+            | parameter | value                                                   |
+            | prop4     | D=pev1                                                  |
+            | prop8     | english                                                 |
+            | prop45    | Glossified Term                                         |
+            | prop50    | tumor                                                   |
+            | prop67    | D=pageName                                              |
+            | evar2     | D=c8                                                    |
+            | link      | More information on dictionary page                     |
+            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
+            | pageName  | {CANONICAL_HOST}/search/results                         |
+
+    Scenario: Click Events for result link
+        Given user is navigating to "/search/results?swKeyword=tumor"
+        When user is clicking on a search result item at position 2
+        And page click request is sent
+        Then the following parameters should be captured
+            | parameter | value                                                   |
+            | prop4     | D=pev1                                                  |
+            | prop8     | english                                                 |
+            | prop12    | generic                                                 |
+            | prop13    | 2                                                       |
+            | prop67    | D=pageName                                              |
+            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
+            | pageName  | {CANONICAL_HOST}/search/results                         |
+
     Scenario:  Site Wide Search results display with Definition and Best Bet on English site.
         Given user is navigating to "/search/results?swKeyword=mantle+cell+lymphoma"
         And screen breakpoint is set to "desktop"
@@ -106,52 +156,3 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | /rare-brain-spine-tumor/espanol/buscar/resultados/nciconnect-resultados?swKeyword=cancer | H1   | NCIConnect Resultados                     | mobile     | H3   | Resultados para: cancer | H4   | Resultados XXXXX-XXXXX de XXXXX para: cancer |
 
 
-    #################### Site Wide Search Analytics#####################
-
-    Scenario: Click Events for Best Bets title link
-        Given user is navigating to "/search/results?swKeyword=tumor"
-        When user is clicking on a BestBets title link at position 1
-        And page click request is sent
-        Then the following parameters should be captured
-            | parameter | value                                                   |
-            | prop4     | D=pev1                                                  |
-            | prop8     | english                                                 |
-            | prop12    | best_bets                                               |
-            | prop13    | 1                                                       |
-            | prop67    | D=pageName                                              |
-            | evar2     | D=c8                                                    |
-            | evar12    | D=c12                                                   |
-            | link      | What Is Cancer?                                         |
-            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | {CANONICAL_HOST}/search/results                           |
-
-
-    Scenario: Click Events for More Information glossary term link
-        Given user is navigating to "/search/results?swKeyword=tumor"
-        When user is clicking on a glossary term link "More information on dictionary page"
-        And page click request is sent
-        Then the following parameters should be captured
-            | parameter | value                                                   |
-            | prop4     | D=pev1                                                  |
-            | prop8     | english                                                 |
-            | prop45    | Glossified Term                                         |
-            | prop50    | tumor                                                   |
-            | prop67    | D=pageName                                              |
-            | evar2     | D=c8                                                    |
-            | link      | More information on dictionary page                     |
-            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | {CANONICAL_HOST}/search/results                           |
-
-    Scenario: Click Events for result link
-        Given user is navigating to "/search/results?swKeyword=tumor"
-        When user is clicking on a search result item at position 2
-        And page click request is sent
-        Then the following parameters should be captured
-            | parameter | value                                                   |
-            | prop4     | D=pev1                                                  |
-            | prop8     | english                                                 |
-            | prop12    | generic                                                 |
-            | prop13    | 2                                                       |
-            | prop67    | D=pageName                                              |
-            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | {CANONICAL_HOST}/search/results                           |

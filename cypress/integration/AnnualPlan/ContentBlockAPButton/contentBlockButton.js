@@ -8,15 +8,15 @@ Then('the button to download At a Glance should appear at the bottom of the page
 });
 
 And('a PDF icon located at {string} should be displayed with a text {string}', (iconUrl, iconText) => {
-    
+
     const baseURL = Cypress.config('baseUrl');
     cy.document().then((document) => {
         const element = document.querySelector("div[class='ap-file-block pdf'] a");
         const style = window.getComputedStyle(element, '::before');
         const image = style.getPropertyValue('background-image');
         const expectedURL = `url("${baseURL}${iconUrl}")`;
-        const newImage = image.replace(/sprite-.+\.svg/,"sprite.svg"); 
-        expect(expectedURL).equal(newImage); 
+        const newImage = image.replace(/sprite-.+\.svg/, "sprite.svg");
+        expect(expectedURL).equal(newImage);
         const text = element.innerText;
         expect(text).equal(iconText);
     });
@@ -28,6 +28,10 @@ And('clicking on the link will open the PDF in a new window', () => {
 });
 
 When('user clicks on bottom {string} button', (hrefAttr) => {
-    cy.get(`div[class='ap-button-block']`).find('a').trigger('click', {followRedirect: false});
+    cy.get(`div[class='ap-button-block']`).find('a').trigger('click', { followRedirect: false });
 
+});
+
+And('a PDF icon located at the top is not displayed', () => {
+    cy.get(`div[class='ap-file-block pdf']`).should('not.be.visible');
 });

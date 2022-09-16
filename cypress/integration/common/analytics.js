@@ -27,9 +27,10 @@ const weekDays = [
 
 Then('the following parameters should be captured', dataTable => {
     let beacon = getBeacon();
-
-    const allEvents = beacon.events.split(',');
     let mapOfEvents = new Map();
+   
+    if(beacon.events){
+    const allEvents = beacon?.events.split(',');
 
     allEvents.forEach(eventValue => {
         if (eventValue.includes('=')) {
@@ -39,6 +40,7 @@ Then('the following parameters should be captured', dataTable => {
             mapOfEvents.set(eventValue.toString(), '');
         }
     });
+    }
 
 
     // assertions for each entry parameter provided

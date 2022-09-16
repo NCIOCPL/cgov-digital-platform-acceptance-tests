@@ -1,5 +1,54 @@
 Feature: All manual pages
 
+    Scenario: Analytics
+        When user is navigating to "/about-cancer/treatment/clinical-trials/cam-procedures" with added wait
+        Then page load request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                          |
+            | prop6     | Clinical Trials for Complementary or Alternative Medicine Procedure(s)         |
+            | prop10    | Clinical Trials for Complementary or Alternative Medicine Procedure(s) - NCI   |
+            | prop44    | Clinical Trials                                                                |
+            | prop3     | /about-cancer/treatment/clinical-trials/cam-procedures/                        |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                           |
+            | prop29    |                                                                                |
+            | prop62    | Clinical Trials: Custom                                                        |
+            | prop20    | /^manual parameters\|\d{1,2}/                                                  |
+            | prop11    | clinicaltrials_custom                                                          |
+            | prop8     | english                                                                        |
+            | evar44    | D=c44                                                                          |
+            | evar11    | D=c11                                                                          |
+            | evar20    | D=c20                                                                          |
+            | evar47    | clinicaltrials_custom                                                          |
+            | evar62    | D=c62                                                                          |
+            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/cam-procedures         |
+            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/cam-procedures |
+            | event2    |                                                                                |
+            | event1    |                                                                                |
+            | channel   | About Cancer                                                                   |
+
+    Scenario: Analytics click event
+        When user is navigating to "/about-cancer/treatment/clinical-trials/cam-procedures"
+        Then page title is "Clinical Trials for Complementary or Alternative Medicine Procedure(s)"
+        When user clicks on 1 result
+        And browser waits
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                          |
+            | prop4     | D=pev1                                                                         |
+            | prop67    | D=pageName                                                                     |
+            | prop13    | 1\|page 1                                                                      |
+            | prop12    | clinicaltrials_custom                                                          |
+            | prop8     | english                                                                        |
+            | evar2     | D=c8                                                                           |
+            | evar12    | D=c12                                                                          |
+            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/cam-procedures         |
+            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/cam-procedures |
+            | event42   |                                                                                |
+            | channel   | About Cancer                                                                   |
+            | pev2      | CTSLink                                                                        |
+            | linkType  | lnk_o                                                                          |
+
+
     Scenario Outline: All manual trial listing page components are displayed(with pagers)
         Given screen breakpoint is set to "<screen breakpoint>"
         When user is navigating to "<path>"
@@ -75,51 +124,4 @@ Feature: All manual pages
             | /about-cancer/treatment/clinical-trials/chicken-pox | /about-cancer/treatment/clinical-trials/chicken-pox | Clinical Trials to Treat Chicken Pox | There are currently no available trials. |
 
 
-    Scenario: Analytics
-        When user is navigating to "/about-cancer/treatment/clinical-trials/cam-procedures" with added wait
-        Then page load request is sent
-        And the following parameters should be captured
-            | parameter | value                                                                          |
-            | prop6     | Clinical Trials for Complementary or Alternative Medicine Procedure(s)         |
-            | prop10    | Clinical Trials for Complementary or Alternative Medicine Procedure(s) - NCI   |
-            | prop44    | Clinical Trials                                                                |
-            | prop3     | /about-cancer/treatment/clinical-trials/cam-procedures/                        |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                           |
-            | prop29    |                                                                                |
-            | prop62    | Clinical Trials: Custom                                                        |
-            | prop20    | /^manual parameters\|\d{1,2}/                                                  |
-            | prop11    | clinicaltrials_custom                                                          |
-            | prop8     | english                                                                        |
-            | evar44    | D=c44                                                                          |
-            | evar11    | D=c11                                                                          |
-            | evar20    | D=c20                                                                          |
-            | evar47    | clinicaltrials_custom                                                          |
-            | evar62    | D=c62                                                                          |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/cam-procedures         |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/cam-procedures |
-            | event2    |                                                                                |
-            | event1    |                                                                                |
-            | channel   | About Cancer                                                                   |
-
-    Scenario: Analytics click event
-        When user is navigating to "/about-cancer/treatment/clinical-trials/cam-procedures"
-        Then page title is "Clinical Trials for Complementary or Alternative Medicine Procedure(s)"
-        When user clicks on 1 result
-        And browser waits
-        Then page click request is sent
-        And the following parameters should be captured
-            | parameter | value                                                                          |
-            | prop4     | D=pev1                                                                         |
-            | prop67    | D=pageName                                                                     |
-            | prop13    | 1\|page 1                                                                      |
-            | prop12    | clinicaltrials_custom                                                          |
-            | prop8     | english                                                                        |
-            | evar2     | D=c8                                                                           |
-            | evar12    | D=c12                                                                          |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/cam-procedures         |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/cam-procedures |
-            | event42   |                                                                                |
-            | channel   | About Cancer                                                                   |
-            | pev2      | CTSLink                                                                        |
-            | linkType  | lnk_o                                                                          |
 

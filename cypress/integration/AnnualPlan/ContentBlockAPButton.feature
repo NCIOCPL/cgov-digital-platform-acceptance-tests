@@ -1,18 +1,5 @@
 Feature: Tests for AP button on a content block
 
-  Scenario Outline: Web site visitor views a page with a button on desktop, tablet or mobile
-    Given user is navigating to "<url>"
-    And screen breakpoint is set to "<screenBreakpoint>"
-    Then the button to download At a Glance should appear at the bottom of the page
-    And a PDF icon located at "/profiles/custom/cgov_site/themes/custom/cgov/cgov_common/dist/images/sprites/svg-sprite.svg#file-pdf-blue-o-thick" should be displayed with a text "Annual Plan & Budget Proposal At A Glance"
-    And clicking on the link will open the PDF in a new window
-
-    Examples:
-      | screenBreakpoint | url                     |
-      | desktop          | /special-report         |
-      | tablet           | /espanol/special-report |
-      | mobile           | /special-report         |
-
   ####################Analytics##################################
 
   Scenario: Click events for “Annual Plan & Budget Proposal At-A-Glance” file download button from the page
@@ -30,3 +17,21 @@ Feature: Tests for AP button on a content block
       | channel   | NCI Homepage                            |
       | pageName  | {CANONICAL_HOST}/special-report         |
       | pageURL   | https://{CANONICAL_HOST}/special-report |
+
+  Scenario Outline: Web site visitor views a page with a button on desktop, tablet or mobile
+    Given user is navigating to "<url>"
+    And screen breakpoint is set to "<screenBreakpoint>"
+    Then the button to download At a Glance should appear at the bottom of the page
+    And a PDF icon located at "/profiles/custom/cgov_site/themes/custom/cgov/cgov_common/dist/images/sprites/svg-sprite.svg#file-pdf-blue-o-thick" should be displayed with a text "Annual Plan & Budget Proposal At A Glance"
+    And clicking on the link will open the PDF in a new window
+
+    Examples:
+      | screenBreakpoint | url                     |
+      | desktop          | /special-report         |
+      | tablet           | /espanol/special-report |
+
+  Scenario: Web site visitor views a page with a button on mobile
+    Given user is navigating to "/special-report"
+    And screen breakpoint is set to "mobile"
+    Then the button to download At a Glance should appear at the bottom of the page
+    And a PDF icon located at the top is not displayed

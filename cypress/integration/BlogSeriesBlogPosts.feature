@@ -1,5 +1,30 @@
 Feature: As an user, I want to see different components of the Blog Series and Blog Posts
 
+    ####################BlogSeriesBlogPosts Analytics######################
+    
+    Scenario: When user clicks a blog post image from result list -  analytics event is fired
+        When user is navigating to "/news-events/cancer-currents-blog"
+        And user clicks on blog post image number 1
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                     |
+            | prop4     | D=pev1                                                    |
+            | prop13    | 1                                                         |
+            | prop57    | Cancer Currents Blog                                      |
+            | prop58    | SearchResults                                             |
+            | prop59    | Cancer Currents Blog:1                                    |
+            | prop60    | D=pageName                                                |
+            | prop67    | D=pageName                                                |
+            | prop8     | english                                                   |
+            | evar2     | english                                                   |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog         |
+            | pageURL   | https://{CANONICAL_HOST}/news-events/cancer-currents-blog |
+            | channel   | News and Events                                           |
+            | pev2      | SearchResults                                             |
+            | linkType  | lnk_o                                                     |
+            | link      | Snuggles                                                  |
+
+
     Scenario Outline: Cancer Currents Blog Series main page elements are present
         Given screen breakpoint is set to "<breakpoint>"
         When user is navigating to "/news-events/cancer-currents-blog"
@@ -153,26 +178,3 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | mobile     |
             | tablet     |
 
-    ### blog
-    ## Will enable this test when Anlytics issues are fixed on Issue#214
-    # Scenario: When user clicks a blog post image from result list -  analytics event is fired
-    #     When user is navigating to "/news-events/cancer-currents-blog"
-    #     And user clicks on blog post image number 1
-    #     Then page click request is sent
-    #     And the following parameters should be captured
-    #         | parameter | value                                                     |
-    #         | prop4     | D=pev1                                                    |
-    #         | prop13    | 1                                                         |
-    #         | prop57    | Cancer Currents Blog                                      |
-    #         | prop58    | SearchResults                                             |
-    #         | prop59    | Cancer Currents Blog:1                                    |
-    #         | prop60    | D=pageName                                                |
-    #         | prop67    | D=pageName                                                |
-    #         | prop8     | english                                                   |
-    #         | evar2     | english                                                   |
-    #         | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog         |
-    #         | pageURL   | https://{CANONICAL_HOST}/news-events/cancer-currents-blog |
-    #         | channel   | News and Events                                           |
-    #         | pev2      | SearchResults                                             |
-    #         | linkType  | lnk_o                                                     |
-    #         | link      | Snuggles                                                  |
