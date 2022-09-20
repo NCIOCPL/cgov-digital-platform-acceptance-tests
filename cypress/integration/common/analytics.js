@@ -27,22 +27,22 @@ const weekDays = [
 
 Then('the following parameters should be captured', dataTable => {
     let beacon = getBeacon();
-
-    const allEvents = beacon.events.split(',');
     let mapOfEvents = new Map();
 
-    allEvents.forEach(eventValue => {
-        if (eventValue.includes('=')) {
-            const splitted = eventValue.split('=');
-            mapOfEvents.set(splitted[0].toString(), splitted[1]);
-        } else {
-            mapOfEvents.set(eventValue.toString(), '');
-        }
-    });
-
+    if (beacon?.events) {
+        const allEvents = beacon?.events.split(',');
+        allEvents.forEach(eventValue => {
+            if (eventValue.includes('=')) {
+                const splitted = eventValue.split('=');
+                mapOfEvents.set(splitted[0].toString(), splitted[1]);
+            } else {
+                mapOfEvents.set(eventValue.toString(), '');
+            }
+        });
+    }
 
     // assertions for each entry parameter provided
-
+  if(beacon){
     for (const { parameter, value } of dataTable.hashes()) {
         if (value.length > 1 && value.startsWith('/') && value.endsWith('/') && !parameter.includes('event')) {
             const regex = new RegExp(value.substring(1, value.length - 1));
@@ -75,10 +75,6 @@ Then('the following parameters should be captured', dataTable => {
             let extraMin = (typeof minutes === 'string' && minutes !== '09') ? `0${parseInt(minutes) + 1}` :
                 (minutes === '09') ? '10' :
                     minutes + 1;
-            // also there is a case when test is run when the new hour starts (01:59)
-            let extraTwoMin = (typeof extraMin === 'string' && extraMin !== '09') ? `0${parseInt(extraMin) + 1}` :
-                (extraMin === '09') ? '10' :
-                    extraMin + 1;
             //so we need to add an option when the time might be 02:00 vs 01:59
             //plus the case when it's 11:59 AM turning into 12:00 PM
             let extraHour = hours12;
@@ -89,7 +85,7 @@ Then('the following parameters should be captured', dataTable => {
                     dayMode = dayMode === 'AM' ? 'PM' : 'AM';
                 }
             }
-            const finalString = new RegExp(`(year=${year} \| month=${month} \| date=${day} \| day=${weekDay} \| time=)(${hours12}|${extraHour}):(${minutes}|${extraMin}|${extraTwoMin}) ${dayMode}`);
+            const finalString = new RegExp(`(year=${year} \| month=${month} \| date=${day} \| day=${weekDay} \| time=)(${hours12}|${extraHour}):([0-9]|[0-5][0-9]) ${dayMode}`);
             expect(beacon[parameter]).to.match(finalString);
         } else if (value.includes('{or}')) {
             const options = value.split('{or}');
@@ -98,6 +94,7 @@ Then('the following parameters should be captured', dataTable => {
         } else
             expect(beacon[parameter]).to.be.equal(value);
     }
+}
 });
 
 Then('page click request is sent', () => {
