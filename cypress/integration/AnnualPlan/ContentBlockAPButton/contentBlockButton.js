@@ -31,3 +31,7 @@ When('user clicks on bottom {string} button', (hrefAttr) => {
     cy.get(`div[class='ap-button-block']`).find('a').trigger('click', {followRedirect: false});
 
 });
+
+And('a PDF icon located at the top is not displayed', () => {
+    cy.get(`div[class='ap-file-block pdf']`).should('not.be.visible');
+});

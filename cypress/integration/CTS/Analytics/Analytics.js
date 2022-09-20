@@ -45,7 +45,7 @@ When('user clicks on share by {string} button', (option) => {
   }
 });
 And('user clicks on {string} link', (linkText) => {
-  cy.get(rootDiv).find('div.reset-form a').contains(linkText).trigger('click', { force: true, followRedirect: false });
+  cy.get(rootDiv).find('div.reset-form a').contains(linkText).click();
 });
 When('user checks {string} checkbox', (label) => {
   cy.get('label.cts-checkbox__label').contains(label).parent().find('input').check({ force: true });

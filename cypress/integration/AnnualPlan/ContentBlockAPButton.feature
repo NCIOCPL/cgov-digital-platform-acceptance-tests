@@ -1,6 +1,6 @@
 Feature: Tests for AP button on a content block
 
-  Scenario Outline: Web site visitor views a page with a button on desktop, tablet or mobile
+  Scenario Outline: Web site visitor views a page with a button on desktop, tablet
     Given user is navigating to "<url>"
     And screen breakpoint is set to "<screenBreakpoint>"
     Then the button to download At a Glance should appear at the bottom of the page
@@ -11,7 +11,12 @@ Feature: Tests for AP button on a content block
       | screenBreakpoint | url                     |
       | desktop          | /special-report         |
       | tablet           | /espanol/special-report |
-      | mobile           | /special-report         |
+
+  Scenario: Web site visitor views a page with a button on mobile
+    Given user is navigating to "/special-report"
+    And screen breakpoint is set to "mobile"
+    Then the button to download At a Glance should appear at the bottom of the page
+    And a PDF icon located at the top is not displayed
 
   ####################Analytics##################################
 
