@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+//this is to handle ResizeObserver loop limit exceeded error that is thrown by cy.viewport
+Cypress.on('fail', (error, runnable) => {
+    if (error.message.includes('ResizeObserver')) {
+        return false
+    } else {
+        throw error;
+    }
+})
