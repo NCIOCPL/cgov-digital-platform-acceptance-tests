@@ -287,5 +287,5 @@ And('Result Count text contains the same number as present in the {string} link'
 });
 
 Then("the page title is the same as the clicked result's item title", () => {
-  cy.get('h1').first().should('have.text', resultTitle);
+  cy.get(`h1:contains("${resultTitle}")`).should('be.visible');
 });
