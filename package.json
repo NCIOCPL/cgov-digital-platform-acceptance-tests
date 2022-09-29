@@ -7,7 +7,8 @@
     "test": "cypress run --spec \"**/e2e/**/[!$]*.feature\"",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:smoke": "cypress run --spec \"cypress/e2e/ProductionSmokeTests/*.feature\""
+    "cypress:smoke": "cypress run --spec \"cypress/e2e/ProductionSmokeTests/*.feature\"",
+    "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/*.feature\""
   },
   "repository": {
     "type": "git",
