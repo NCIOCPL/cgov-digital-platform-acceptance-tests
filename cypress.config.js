@@ -13,6 +13,8 @@ module.exports = defineConfig({
     trackingServer: ['2o7.net', 'metrics.cancer.gov'],
     admin_username: 'admin',
     admin_password: '',
+    test_site_section: '/about-cancer/understanding',
+    front_end_base_url: 'https://www-dev-ac.cancer.gov'
   },
   defaultCommandTimeout: 20000,
   e2e: {
