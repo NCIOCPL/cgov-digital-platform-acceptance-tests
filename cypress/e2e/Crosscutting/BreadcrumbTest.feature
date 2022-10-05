@@ -1,44 +1,64 @@
-Feature: Breadcrumb tests
+Feature: As a user I want to see breadcrumb links so I can navigate website more easily
 
-  Scenario Outline: as a user, I want to see the correct number of breadcrumbs and use them to navigate
-    Given screen breakpoint is set to "<breakpoint>"
-    When user is navigating to "<url>"
-    Then the breadcrumbs are displayed
-    And the breadcrumbs have the count of <count>
-    And the breadcrumbs have the titles as "<title>"
-    And the <count> breadcrumbs links to "<linkPath>"
-    Examples:
-      | breakpoint | url                                                                           | count | title                                                                      | linkPath                                                                                                    |
-      | desktop    | /about-cancer/coping/feelings                                                 | 3     | Home,About Cancer,Coping with Cancer                                       | /,/about-cancer,/about-cancer/coping                                                                        |
-      | tablet     | /about-cancer/coping/feelings/relaxation                                      | 4     | Home,About Cancer,Coping with Cancer,Feelings and Cancer                   | /,/about-cancer,/about-cancer/coping,/about-cancer/coping/feelings                                          |
-      | desktop    | /news-events/cancer-currents-blog/2019/vitamin-d-supplement-cancer-prevention | 3     | Home,News & Events,Cancer Currents Blog                                    | /,/news-events,/news-events/cancer-currents-blog                                                            |
-      | tablet     | /about-cancer/coping/feelings/relaxation/2019-investigators-site              | 5     | Home,About Cancer,Coping with Cancer,Feelings and Cancer,Learning to Relax | /,/about-cancer,/about-cancer/coping,/about-cancer/coping/feelings,/about-cancer/coping/feelings/relaxation |
-      | desktop    | /about-cancer/coping/feelings/relaxation/dfharvard                            | 5     | Home,About Cancer,Coping with Cancer,Feelings and Cancer,Learning to Relax | /,/about-cancer,/about-cancer/coping,/about-cancer/coping/feelings,/about-cancer/coping/feelings/relaxation |
-      | tablet     | /types/breast/research                                                        | 3     | Home,Cancer Types,Breast Cancer                                            | /,/types,/types/breast                                                                                      |
-      | desktop    | /espanol/tipos/seno/investigacion                                             | 3     | Página principal,Tipos de cáncer,Cáncer de seno (mama)                     | /espanol,/espanol/tipos,/espanol/tipos/seno                                                                 |
-      | tablet     | /about-cancer/coping/feelings/relaxation/chanock-stephen                      | 5     | Home,About Cancer,Coping with Cancer,Feelings and Cancer,Learning to Relax | /,/about-cancer,/about-cancer/coping,/about-cancer/coping/feelings,/about-cancer/coping/feelings/relaxation |
-      | desktop    | /news-events/cancer-currents-blog                                             | 2     | Home,News & Events                                                         | /,/news-events                                                                                              |
-      | tablet     | /espanol/noticias/temas-y-relatos-blog                                        | 2     | Página principal,Noticias                                                  | /espanol,/espanol/noticias                                                                                  |
-      | desktop    | /espanol/tipos/seno                                                           | 2     | Página principal,Tipos de cáncer                                           | /espanol,/espanol/tipos                                                                                     |
-      | tablet     | /types/breast                                                                 | 2     | Home,Cancer Types                                                          | /,/types                                                                                                    |
-      | desktop    | /about-cancer/treatment/drugs/bevacizumab                                     | 2     | Home,About Cancer                                                          | /,/about-cancer                                                                                             |
+  Scenario: Bread crumbs English desktop
+    Given user is navigating to "/pets/frisco"
+    Then the following breadcrumbs are displayed
+      | label                    | link  |
+      | Home                     | /     |
+      | Hidden Pets              | /pets |
+      | Frisco - The Roo Roo Kid | none  |
+    And current page breadcrumb has an attribute "aria-current" with value "page"
+    When user clicks "Hidden Pets" breadcrumb link
+    Then page title is "Pets"
+    And current page breadcrumb has an attribute "aria-current" with value "page"
+    Then the following breadcrumbs are displayed
+      | label | link |
+      | Home  | /    |
+      | Pets  | none |
 
-
-  Scenario Outline: Negative: as a user, I won't see breadcrumbs where it is not provided
-    Given screen breakpoint is set to "<breakpoint>"
-    When user is navigating to "<url>"
-    Then the breadcrumbs are not displayed
-    Examples:
-      | breakpoint | url           |
-      | desktop    | /about-cancer |
-      | tablet     | /             |
-
-  Scenario Outline: Negative: as a user, I won't see breadcrumbs on mobile
+  Scenario: Spanish Breadcrumb mobile
     Given screen breakpoint is set to "mobile"
-    When user is navigating to "<url>"
-    Then the breadcrumbs are not visible
-    Examples:
-      | url                 |
-      | /types/breast       |
-      | /espanol/tipos/seno |
+    And user is navigating to "/espanol/cancer/sobrellevar/sentimientos"
+    Then the following breadcrumbs are displayed
+      | label                       | link                        |
+      | Cómo hacer frente al cáncer | /espanol/cancer/sobrellevar |
+    And current page breadcrumb has an attribute "aria-current" with value "page"
 
+  Scenario Outline: Negative - no breadcrumbs
+    And user is navigating to "<url>"
+    Then breadcrumbs do not exist
+
+    Examples:
+      | url           |
+      | /             |
+      | /about-cancer |
+
+
+  Scenario: Encoding of page titles in breadcrumbs
+    Given user is navigating to "/test/breadcrumb-test"
+    Then the following breadcrumbs are displayed
+      | label                                  | link  |
+      | Home                                   | /     |
+      | Test Content                           | /test |
+      | Breadcrumb tests ':;<>?`~!@#$%^&*()_+/ | none  |
+
+
+  Scenario: Breadcrumb click event
+    Given user is navigating to "/pets/frisco"
+    When user clicks on "Hidden Pets" breadcrumb link
+    Then page click request is sent
+    And the following parameters should be captured
+      | parameter | value                                |
+      | link      | Hidden Pets                          |
+      | event18   |                                      |
+      | pev2      | Breadcrumbs:LinkClick                |
+      | linkType  | lnk_o                                |
+      | prop67    | D=pageName                           |
+      | prop4     | D=pev1                               |
+      | prop8     | english                              |
+      | prop68    | D=v68                                |
+      | prop47    | L2\|Hidden Pets                      |
+      | evar2     | D=c8                                 |
+      | evar68    | Breadcrumbs                          |
+      | pageURL   | https://{CANONICAL_HOST}/pets/frisco |
+      | pageName  | {CANONICAL_HOST}/pets/frisco         |
