@@ -1,37 +1,42 @@
 /// <reference types="Cypress" />
 import { When, Then, And } from "cypress-cucumber-preprocessor/steps";
 
-Then('the breadcrumbs are displayed', () => {
-    cy.get('.breadcrumbs').should('be.visible');
-});
-
-And('the breadcrumbs have the count of {int}', (count) => {
-    cy.get('div#cgvSlBreadcrumb > ul > li').should('have.length',count);
-});
-
-Then('the breadcrumbs are not displayed', () => {
-    cy.get('.breadcrumbs').should('not.exist');
-});
-Then('the breadcrumbs are not visible', () => {
-    cy.get('.breadcrumbs').should('not.be.visible');
-});
-
-And('the breadcrumbs have the titles as {string}', (title) => {
-    const allTitles = title.split(',');
-    cy.document().then(document => {
-        const number = document.querySelectorAll('div#cgvSlBreadcrumb > ul > li');
-        for (let i = 0; i < number.length; i++) {
-            expect(number[i].innerText.trim()).to.eq(allTitles[i]);
+Then('the following breadcrumbs are displayed', (dataTable) => {
+    for (const { label, link } of dataTable.hashes()) {
+        if (link === 'none') {
+            cy.get(`.usa-breadcrumb__list span:contains("${label}")`).as('breadcrumb').should('be.visible');
+            cy.get('@breadcrumb').parent().find('a').should('not.exist');
+        } else {
+            cy.get(`.usa-breadcrumb__list span:contains("${label}")`).as('breadcrumb').should('be.visible');
+            cy.get('@breadcrumb').parent().should('have.attr', 'href', link);
         }
-    });
+    }
 });
 
 
-And('the {int} breadcrumbs links to {string}', (count, linkPath) => {
-    const allLinks = linkPath.split(',');
-            for (let i = 0; i < count; i++) {
-            cy.get('div#cgvSlBreadcrumb > ul > li >a').then(urls => {
-                expect(urls[i].getAttribute('href')).to.eq(allLinks[i]);
-            })
-            }
-        });
+When('user clicks {string} breadcrumb link', (label) => {
+    cy.get(`.usa-breadcrumb__list span:contains("${label}")`).parent().click();
+});
+
+Then('the following breadcrumbs are not displayed', (dataTable) => {
+    for (const { label, link } of dataTable.hashes()) {
+        if (link === 'none') {
+            cy.get(`.usa-breadcrumb__list span:contains("${label}")`).should('not.exist');
+        } else {
+            cy.get(`.usa-breadcrumb__list span:contains("${label}")`).as('breadcrumb').parent().parent().should('not.be.visible');
+            cy.get('@breadcrumb').parent().should('have.attr', 'href', link);
+        }
+    }
+});
+
+When('user clicks on {string} breadcrumb link', (label) => {
+    cy.get(`.usa-breadcrumb__list span:contains("${label}")`).parent().trigger('click',{followRedirect:false});
+});
+
+Then('breadcrumbs do not exist',()=>{
+    cy.get('.usa-breadcrumb__list').should('not.exist');
+});
+
+And('current page breadcrumb has an attribute {string} with value {string}',(attr, value)=>{
+cy.get('li.usa-breadcrumb__list-item.usa-current').should('have.attr',attr,value);
+})
