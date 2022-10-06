@@ -48,7 +48,7 @@ Feature: As a content owner I want to be able to split one summary into six diff
         Given screen breakpoint is set to "tablet"
         When user is navigating to "/test/types/liver/what-is-liver-cancer/treatment"
         And the intro text displays "This is an intro text. For more information, see Side Effects of Cancer Treatment."
-        And the intro text "This is an intro text. For more information, see Side Effects of Cancer Treatment." is displayed below page options
+        And the intro text "This is an intro text. For more information, see Side Effects of Cancer Treatment." is displayed below page title
         And there is no anchor link to the intro text "#_47" from the On This Page
   
 
@@ -56,7 +56,6 @@ Feature: As a content owner I want to be able to split one summary into six diff
         Given screen breakpoint is set to "mobile"
         When user is navigating to "/test/types/liver/what-is-liver-cancer/treatment"
         Then the intro text displays "This is an intro text. For more information, see Side Effects of Cancer Treatment."
-        And the intro text "This is an intro text. For more information, see Side Effects of Cancer Treatment." is displayed below page options
         And the intro text "This is an intro text. For more information, see Side Effects of Cancer Treatment." is displayed above accordion
 
       

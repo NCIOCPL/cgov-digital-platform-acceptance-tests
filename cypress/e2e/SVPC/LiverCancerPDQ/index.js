@@ -78,24 +78,8 @@ Then(
   "the intro text {string} appears following the {string} title {string}",
   (text, tag, title) => {
     //find h1 first and assert its text
-    cy.get(".resize-content")
-      .children()
-      .first()
-      .as("pageTitle")
-      .should("have.text", title);
-    //title is followed by pageOption in the html tree and is not visible
-    cy.get("@pageTitle")
-      .next()
-      .as("pageOptions")
-      .should("have.class", "page-options-container")
-      .and("not.be.visible");
-    // pageOption is its turn is followed by intro text
-    cy.get("@pageOptions")
-      .next()
-      .find("p")
-      .first()
-      .should("be.visible")
-      .and("include.text", text);
+    cy.get(`${tag}`).should('be.visible').and('have.text',title);
+    cy.get(`${tag}`).next().find(`p:contains("${text}")`).should('be.visible')
   }
 );
 
@@ -111,10 +95,10 @@ And(
   }
 );
 
-And("the intro text {string} is displayed below page options", (text) => {
-  cy.get(".page-options-container").as("pageOptions").should("be.visible");
+And("the intro text {string} is displayed below page title", (text) => {
+  
   // pageOption is followed by intro text
-  cy.get("@pageOptions")
+  cy.get("h1")
     .next()
     .as("summarySections")
     .find("p")
