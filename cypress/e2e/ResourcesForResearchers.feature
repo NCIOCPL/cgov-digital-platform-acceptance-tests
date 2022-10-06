@@ -60,11 +60,7 @@ Feature: Resources For Researchers app is integrated within CGOV platform
             | Cancer Statistics \(\d+\)         |
             | Bioinformatics \(\d+\)            |
             | Cancer Survivorship \(\d+\)       |
-        Then the page options should appear at the bottom of the page
-        And the following page options are displayed
-            | pageOption |
-            | Twitter    |
-            | Email      |
+       
 
 
     Scenario: User is able to see all the resources on View all Resources page
@@ -173,10 +169,7 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         And search box displays the term "fre"
         And the message is displayed as "No results were found for your search. Please try another search or view all resources."
         And "view all resources." is a link with href "#viewAll"
-        And the following page options are displayed
-            | pageOption |
-            | Twitter    |
-            | Email      |
+        
 
     Scenario Outline: User is able to see the Resource Detail page
         Given screen breakpoint is set to "desktop"
@@ -226,7 +219,4 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         Then page title is "Resource Not Found"
         And the Resource not found message is displayed as "We can't find the resource you're looking for." and "Please visit the Resources for Researchers home page to search or browse resources."
         And the "Resources for Researchers home page" is displayed with href "/research/resources/"
-        And the following page options are displayed
-            | pageOption |
-            | Twitter    |
-            | Email      |
+        
