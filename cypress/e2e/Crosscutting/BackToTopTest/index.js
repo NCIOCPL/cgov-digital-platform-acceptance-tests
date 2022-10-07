@@ -9,9 +9,17 @@ When('user scrolls {int} px {string}', (pixels, direction) => {
 });
 
 Then('back-to-top arrow appears with text {string} and href {string}', (textTop, hrefTop) => {
-    cy.get('.back-to-top').should('be.visible').and('have.text', textTop).and('have.attr', 'href', hrefTop);
+    cy.get('div.usa-footer__nci-return-to-top').should('be.visible').and('include.text', textTop).find('a').should('have.attr', 'href', hrefTop);
 });
 
 Then('back-to-top arrow is not displayed', () => {
-    cy.get('.back-to-top').should('not.be.visible');
+    cy.get('div.usa-footer__nci-return-to-top').should('not.be.visible');
+});
+
+Then('back-to-top arrow is displayed',(icon)=>{
+    cy.get('div.usa-footer__nci-return-to-top').should('be.visible');
+});
+
+When('user clicks on back-to-top button',()=>{
+cy.get('div.usa-footer__nci-return-to-top a').click();
 });

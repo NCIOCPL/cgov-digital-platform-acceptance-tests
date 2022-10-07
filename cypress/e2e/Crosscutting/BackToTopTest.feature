@@ -1,11 +1,11 @@
 Feature: As a user, I want to be able to use back to top arrow for easy page navigation
 
     Scenario Outline: Back to top arrow on desktop and tablet on the English site
-        Given user is navigating to "<url>"
         Given screen breakpoint is set to "<screenBreakpoint>"
-        When user scrolls 601 px "down"
-        Then back-to-top arrow appears with text "TOP" and href "#top"
-        When user scrolls 100 px "up"
+        When user is navigating to "<url>"
+        And user scrolls 1 px "down"
+        Then back-to-top arrow appears with text "Back To Top" and href "#"
+        When user scrolls 1 px "up"
         Then back-to-top arrow is not displayed
         Examples:
             | url                                                           | screenBreakpoint |
@@ -27,11 +27,11 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
             | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial | tablet           |
 
     Scenario Outline: Back to top arrow on desktop and tablet on the Spanish site
-        Given user is navigating to "<url>"
         Given screen breakpoint is set to "<screenBreakpoint>"
-        When user scrolls 601 px "down"
-        Then back-to-top arrow appears with text "SUBIR" and href "#top"
-        When user scrolls 100 px "up"
+        When user is navigating to "<url>"
+        And user scrolls 1 px "down"
+        Then back-to-top arrow appears with text "Volver arriba" and href "#"
+        When user scrolls 1 px "up"
         Then back-to-top arrow is not displayed
         Examples:
             | url                                                                         | screenBreakpoint |
@@ -47,45 +47,44 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
             | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pro-pdq       | tablet           |
             | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio | desktop          |
 
-    Scenario Outline: Back to top arrow  does not appear on mobile for the English site.
+    Scenario Outline: Back to top arrow appears as an arrow on mobile
         Given screen breakpoint is set to "mobile"
         When user is navigating to "<url>"
-        When user scrolls 601 px "down"
-        Then back-to-top arrow is not displayed
+        When user scrolls 5 px "down"
+        Then back-to-top arrow is displayed
         Examples:
-            | url                                                           |
-            | /about-cancer/treatment/side-effects                          |
-            | /about-cancer/coping/feelings/relaxation/loukissas-jennifer   |
-            | /news-events/cancer-currents-blog                             |
-            | /about-cancer/coping/feelings/relaxation/dfharvard            |
-            | /types/breast/research                                        |
-            | /types/breast                                                 |
-            | /types/breast/hp                                              |
-            | /news-events/events/schiffman-gordon-lecture                  |
-            | /about-cancer                                                 |
-            | /                                                             |
-            | /dceg-connect                                                 |
-            | /about-cancer/coping                                          |
-            | /about-cancer/treatment/side-effects/fatigue/fatigue-pdq      |
-            | /about-cancer/treatment/side-effects/fatigue/fatigue-hp-pdq   |
-            | /about-cancer/treatment/drugs/bevacizumab                     |
-            | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial |
+            | url                                                |
+            | /about-cancer/treatment/side-effects               |
+            | /news-events/cancer-currents-blog                  |
+            | /about-cancer/coping/feelings/relaxation/dfharvard |
+            | /types/breast/research                             |
+            | /types/breast/hp                                   |
+            | /news-events/events/schiffman-gordon-lecture       |
+            | /about-cancer                                      |
+            | /                                                  |
 
-    Scenario Outline: Back to top arrow  does not appear on mobile for the Spanish site.
-        Given screen breakpoint is set to "mobile"
-        When user is navigating to "<url>"
-        When user scrolls 601 px "down"
-        Then back-to-top arrow is not displayed
-        Examples:
-            | url                                                                         |
-            | /espanol/cancer/tratamiento/efectos-secundarios                                                |
-            | /espanol/noticias/temas-y-relatos-blog                                      |
-            | /espanol/tipos/seno/investigacion                                           |
-            | /espanol/tipos/seno                                                         |
-            | /espanol/tipos/seno/pro                                                     |
-            | /espanol/cancer                                                             |
-            | /espanol                                                                    |
-            | /espanol/cancer/sobrellevar                                                 |
-            | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq           |
-            | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pro-pdq       |
-            | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio |
+
+    Scenario: Click event on back to top
+        Given user is navigating to "/"
+        When user scrolls 5 px "down"
+        Then back-to-top arrow appears with text "Back To Top" and href "#"
+        When user clicks on back-to-top button
+        And browser waits
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                               |
+            | prop4     | D=pev1                              |
+            | prop67    | D=pageName                          |
+            | prop36    | D=v36                               |
+            | prop68    | D=v68                               |
+            | prop8     | english                             |
+            | evar2     | D=c8                                |
+            | evar36    | RightEdge\|Back To Top\|Back To Top |
+            | evar68    | RightEdge                           |
+            | pageURL   | https://{CANONICAL_HOST}/           |
+            | pageName  | {CANONICAL_HOST}/                   |
+            | event16   |                                     |
+            | channel   | NCI Homepage                        |
+            | pev2      | Footer:LinkClick                    |
+            | linkType  | lnk_o                               |
+            | link      | BACK TO TOP                         |
