@@ -4,7 +4,7 @@ Feature: Drug Dictionary app is integrated within CGOV platform
     Scenario: User is able to access a default (or “landing”) page that displays all of the expected Dictionary elements
         Given screen breakpoint is set to "desktop"
         Given user is navigating to "/publications/dictionaries/cancer-drug"
-        # Then page displays left navigation
+        Then page displays left navigation
         And page title is "NCI Drug Dictionary"
         And introductory text appears
         And search bar is displayed below the introductory text
