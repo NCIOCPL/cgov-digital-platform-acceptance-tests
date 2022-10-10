@@ -2,7 +2,6 @@ Feature: Recommended Content tests
 
     Scenario Outline: Verify that Recommended Content Card exists on the pages and it's components are correct on desktop
         Given user is navigating to "<url>"
-        And screen breakpoint is set to "desktop"
         Then recommended content section is visible
         And recommended content header text is "<header>"
 
