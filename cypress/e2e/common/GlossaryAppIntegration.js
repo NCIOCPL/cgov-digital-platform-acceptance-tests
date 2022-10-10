@@ -88,11 +88,11 @@ Then('error page title is {string}', (pageTitle) => {
 });
 
 Then('page displays left navigation', () => {
-  cy.get('#nvcgSlSectionNav').should('be.visible');
+  cy.get('.usa-sidenav').should('be.visible');
 });
 
 Then('page does not display left navigation', () => {
-  cy.get('#nvcgSlSectionNav').should('not.be.visible');
+  cy.get('.usa-sidenav').should('not.be.visible');
 });
 
 Given('user is navigating to bad url {string}', (badUrl) => {
