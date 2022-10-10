@@ -4,7 +4,7 @@ Feature: Tests for embed a content block
         Given user is navigating to "<url>"
         And screen breakpoint is set to "<screenBreakpoint>"
         Then the PDF download link should appear
-        And a PDF icon located at "/profiles/custom/cgov_site/themes/custom/cgov/cgov_common/dist/images/sprites/svg-sprite.svg#file-pdf-blue-o-thick" should be displayed with a text "Annual Plan & Budget Proposal At A Glance"
+         And a PDF icon located at "/profiles/custom/cgov_site/themes/custom/ncids_trans/dist/.svg#file-pdf-blue-o-thick" should be displayed with a text "Annual Plan & Budget Proposal At A Glance"
         And clicking on the link will open a new window
 
         Examples:
