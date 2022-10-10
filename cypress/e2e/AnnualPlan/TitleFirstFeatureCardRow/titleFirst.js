@@ -26,7 +26,7 @@ Then('a {string} card will appear on the {string}', (cardType, alighment) => {
         if (alighment.toLowerCase() === 'left')
             expect(card.offsetLeft).to.eq(30);
         else if (alighment.toLowerCase() === 'right')
-            expect(card.offsetLeft).to.eq(569);
+            expect(card.offsetLeft).to.be.above(550);
         else if (alighment.toLowerCase() === 'top')
             expect(card.nextElementSibling.className).to.eq(oneColumnCard.substring(4))
         else
