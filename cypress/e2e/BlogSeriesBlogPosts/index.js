@@ -101,7 +101,15 @@ And('user clicks on blog post image number {int}', (positionNumber) => {
 
 
 
-
-
+Then('status code is {int} on {string}', (statusCode, badApi) => {  
+const baseUrlFromConfig = Cypress.config("baseUrl");
+const replacedUrl = badApi.replace("{BASE_URL}",baseUrlFromConfig);
+    cy.request({
+      url: replacedUrl,
+      failOnStatusCode: false
+    }).then((resp) => {
+      expect(resp.status).to.be.eq(statusCode);
+    }) 
+  });
 
 
