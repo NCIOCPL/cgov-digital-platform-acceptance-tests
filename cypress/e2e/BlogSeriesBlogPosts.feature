@@ -114,10 +114,10 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then the text "<text>" appears
         And blog posts list doesnot appear
         Examples:
-            | url                                                     | request                                                                              | text                            |
-            | /news-events/cancer-currents-blog?year=chicken          | https://www-dev-ac.cancer.gov/news-events/cancer-currents-blog?year=chicken          | A client error happened         |
-            | /research/key-initiatives/ras/ras-central/blog?year=sdf | https://www-dev-ac.cancer.gov/research/key-initiatives/ras/ras-central/blog?year=sdf | A client error happened         |
-            | /espanol/noticias/temas-y-relatos-blog?year=ghjk        | https://www-dev-ac.cancer.gov//espanol/noticias/temas-y-relatos-blog?year=ghjk       | Ha ocurrido un error de cliente |
+            | url                                                     | request                                                           | text                            |
+            | /news-events/cancer-currents-blog?year=chicken          | {BASE_URL}/news-events/cancer-currents-blog?year=chicken          | A client error happened         |
+            | /research/key-initiatives/ras/ras-central/blog?year=sdf | {BASE_URL}/research/key-initiatives/ras/ras-central/blog?year=sdf | A client error happened         |
+            | /espanol/noticias/temas-y-relatos-blog?year=ghjk        | {BASE_URL}/espanol/noticias/temas-y-relatos-blog?year=ghjk        | Ha ocurrido un error de cliente |
 
     Scenario Outline: Filtering blogs by month - invalid range
         When user is navigating to bad url "<url>"
@@ -125,10 +125,10 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then the text "<text>" appears
         And blog posts list doesnot appear
         Examples:
-            | url                                                      | request                                                                               | text                            |
-            | /news-events/cancer-currents-blog?month=13               | https://www-dev-ac.cancer.gov/news-events/cancer-currents-blog?month=13               | A client error happened         |
-            | /research/key-initiatives/ras/ras-central/blog?month=sdf | https://www-dev-ac.cancer.gov/research/key-initiatives/ras/ras-central/blog?month=sdf | A client error happened         |
-            | /espanol/noticias/temas-y-relatos-blog?month=0           | https://www-dev-ac.cancer.gov//espanol/noticias/temas-y-relatos-blog?month=0          | Ha ocurrido un error de cliente |
+            | url                                                      | request                                                            | text                            |
+            | /news-events/cancer-currents-blog?month=13               | {BASE_URL}/news-events/cancer-currents-blog?month=13               | A client error happened         |
+            | /research/key-initiatives/ras/ras-central/blog?month=sdf | {BASE_URL}/research/key-initiatives/ras/ras-central/blog?month=sdf | A client error happened         |
+            | /espanol/noticias/temas-y-relatos-blog?month=0           | {BASE_URL}/espanol/noticias/temas-y-relatos-blog?month=0           | Ha ocurrido un error de cliente |
 
     ### blog
     ##reccomended content is tested in a separate test
