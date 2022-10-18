@@ -1,0 +1,23 @@
+{
+    "id": "1500035",
+    "langcode": "es",
+    "label": "C.2",
+    "weight": "1",
+    "path": "\/espanol\/api-test-es\/c\/2",
+    "navigation_display_options": [],
+    "is_section_nav_root": true,
+    "is_main_nav_root": false,
+    "children": [
+        {
+            "id": "1500036",
+            "langcode": "es",
+            "label": "C.2.1",
+            "weight": "0",
+            "path": "\/espanol\/api-test-es\/c\/2\/1",
+            "navigation_display_options": [],
+            "is_section_nav_root": true,
+            "is_main_nav_root": false,
+            "children": []
+        }
+    ]
+}
