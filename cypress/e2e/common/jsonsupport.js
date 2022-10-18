@@ -15,6 +15,13 @@ Given('user makes json request to {string}', (url) => {
   cy.request(url).as('json_response');
 });
 
+Given('user makes bad json request to {string}', (url) => {
+  cy.request({
+    url: url,
+    failOnStatusCode: false
+  }).as('json_response');
+});
+
 Then('the json response matches the contents of {string}', (fileName) => {
   // Test data should always live in a folder with the same name as the
   // feature. (Just like any step definitions.)
@@ -30,6 +37,19 @@ Then('the json response matches the contents of {string}', (fileName) => {
   cy.readFile(fullPath).then((fileData) => {
     cy.get('@json_response').should((response) => {
       expect(response.body).to.deep.equal(fileData);
+    });
+  });
+})
+
+Then('the json response matches the contents of {string} and status code is {int}', (fileName, statusCode) => {
+  const currentFeature = Cypress.spec.relative;
+  const featurePath = currentFeature.replace('.feature', '');
+  const fullPath = featurePath + '/' + fileName;
+
+  cy.readFile(fullPath).then((fileData) => {
+    cy.get('@json_response').should((response) => {
+      expect(response.body).to.deep.equal(fileData);
+      expect(response.status).to.eq(statusCode);
     });
   });
 })
