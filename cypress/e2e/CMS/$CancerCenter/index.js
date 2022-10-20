@@ -5,7 +5,7 @@ import { And } from 'cypress-cucumber-preprocessor/steps';
 let imageSrc;
 And('user selects {int} Cancer Center Image from the list of images', (num) => {
     cy.get('span:contains("Cancer Center Image")').parent().as('imageUpload').click();
-    cy.get('input[value="Select Image"]').click({ force: true });
+    cy.get('input[id^="edit-field-image-promotional"][value="Select Image"]').click({ force: true });
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num -1).check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true });
 });

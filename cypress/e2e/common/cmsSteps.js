@@ -186,36 +186,136 @@ And('user enters {string} into {string} text field', (value, fieldLabel) => {
 
 And('user selects {string} from contents dropdown', (contentsList) => {
     cy.get("li[class='dropbutton-toggle'] button[type='button']").should('be.visible').click({ force: true })
-    cy.get(`input[value="${contentsList}"]`).click({force:true})
-})
+    cy.get(`input[value="${contentsList}"]`).click({ force: true })
+});
 
 And('user selects {string} from {string} dropdown', (title, dropdown) => {
     cy.get(`label:contains('${dropdown}')`).parent().find('select').select(title)
-})
+});
 
 And('user clicks on {string} button to add list item', (linkBtn) => {
     cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).parent().click({ force: true });
-})
+});
 
 And('user clicks on {string} button', (contentBtn) => {
     cy.get(`[class*='form-submit '][value='${contentBtn}']`).click({ force: true })
-})
+});
 
 And('user selects {string} from content list', (title) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).parent().find('input').click({ force: true })
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find('#edit-submit').click({ force: true });
-})
+});
 
 And('{string} had been selected', (title) => {
     cy.get(`div:contains("${title}")`).should('be.visible');
-}) 
+});
 
 When('user saves the content page', () => {
     cy.get('edit-submit').click
-})
+});
+
 And('list item title is {string}', (title) => {
     cy.get(`a:contains("${title}")`).should('be.visible').and('have.text', title)
-})
+});
+
 And('list item description is {string}', (title) => {
     cy.get(`div.description p`).should('be.visible').and('have.text', title)
+});
+
+And('user clicks on {string} sub tab', (contentSubTab) => {
+    cy.get(`li.tabs__tab a:contains("${contentSubTab}")`).click({ force: true });
+});
+
+And('user uploads test file {string}', (fileName) => {
+    cy.fixture(fileName, { encoding: null }).as('fixture')
+    cy.get('input[type=file]').selectFile('@fixture');
+    cy.wait(2000);
+});
+
+And('user clicks on dropdown button toggle to view all Related Resources types', () => {
+    cy.get('.dropbutton-toggle button').click({ force: true });
+});
+
+And('user selects {string} related resource item', (resourceType) => {
+    cy.get(`input[value='${resourceType}']`).click({ force: true });
+});
+
+Then('{string} section appears', (resourceType) => {
+    cy.get(`tbody div:contains("${resourceType}")`).should('be.visible');
+});
+
+And('user clicks on {string} button to link to a resource', (link) => {
+    cy.get(`tbody summary[role='button'] span:contains('${link}')`).parent().click({ force: true });
+});
+
+And('user clicks on {string} to choose a resource to link', (selectContentLbl) => {
+    cy.get(`input[value='${selectContentLbl}']`).click({ force: true });
 })
+
+And('user selects {string} item from the list', (title) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).parent().find('input').click({ force: true });
+});
+
+And('user clicks on {string} button to select item', (selectContent) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`input[id='edit-submit'][value='${selectContent}']`).click({ force: true });
+});
+
+And('user fills out {string} field with {string}', (fieldLbl, value) => {
+    cy.get(`tbody label:contains("${fieldLbl}")`).parent().find('input').type(value);
+});
+
+And('user clicks on {string} button to link to a media', (link) => {
+    cy.get(`tbody summary[role='button'] span:contains('${link}')`).eq(1).parent().click({ force: true });
+});
+
+And('{string} had been selected', (title) => {
+    cy.get(`div:contains("${title}")`).should('be.visible');
+})
+
+And('user enters {string} into media title search box and clicks {string}', (nameToSearch, applyBtn) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_media_browser').find('input#edit-name').type(nameToSearch);
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_media_browser').find('input#edit-submit-cgov-media-browser')
+        .click({ force: true });
+});
+
+And('user selects {string} item from the media list', (title) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_media_browser').find(`td:contains(${title})`).parent().find('input').click({ force: true });
+});
+
+And('user clicks on {string} button to select media', (selectContent) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_media_browser').find(`input[id='edit-submit'][value='${selectContent}']`).click({ force: true });
+});
+
+Then('Related Resources section contains the following links', (dataTable) => {
+    for (const { title, link } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection)
+        }
+        cy.get(`a[href="${link}"]`).should('have.text', title);
+    }
+});
+
+And('user deletes test article with url {string}', (url) => {
+    cy.get(`form[id^="views-form-content-page"]`).then(($content) => {
+        if ($content.find(`a[href='${siteSection}/${url}']`).length) {
+            cy.get(`a[href='${siteSection}/${url}']`).parent().parent().find('input.form-checkbox').check();
+            cy.get(`input[value='Apply to selected items']`).first().click();
+            cy.get('h1:contains("Are you sure you want to delete this content item?")').should('be.visible');
+            cy.get(`input[value='Delete']`).click();
+            cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 content item.');
+        } 
+    });
+
+})
+
+And('user deletes test file with url {string}', (url) => {
+    cy.get(`form[id^="views-form-media-media-page-list"]`).then(($content) => {
+        if ($content.find(`a[href='${siteSection}/${url}']`).length) {
+            cy.get(`a[href='${siteSection}/${url}']`).parent().parent().find('input.form-checkbox').check();
+            cy.get(`input[value='Apply to selected items']`).first().click();
+            cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
+            cy.get(`input[value='Delete']`).click();
+            cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 item.');
+        }
+    });
+});

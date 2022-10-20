@@ -126,6 +126,46 @@ Scenario: Create a mini landing page and add cancer center into a list
             | name        | content                             |
             | description | Test Cancer Center Meta Description |
 
+    Scenario: Verify Related resources functionality
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "cancer-center" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user clicks on dropdown button toggle to view all Related Resources types
+        And user selects "Add Internal Link" related resource item
+        Then "Internal Link" section appears
+        And user clicks on "Link" button to link to a resource
+        And user clicks on "Select content" to choose a resource to link
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And "Article to test Related Resources" had been selected
+        And user clicks on dropdown button toggle to view all Related Resources types
+        And user selects "Add External Link" related resource item
+        Then "External Link" section appears
+        And user fills out the following fields
+            | fieldLabel | value                   | field_name                                                |
+            | Link       | https://www.google.com/ | field_related_resources[1][subform][field_external_link]  |
+            | Title      | Google Link             | field_related_resources[1][subform][field_override_title] |
+        And user clicks on dropdown button toggle to view all Related Resources types
+        And user selects "Add Media Link" related resource item
+        Then "Media Link" section appears
+        And user clicks on "Link" button to link to a media
+        And user clicks on "Select media" to choose a resource to link
+        And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
+        And user selects "Test File for Related Resources" item from the media list
+        And user clicks on "Select media" button to select media
+        And "Test File for Related Resources" had been selected
+        And user fills out the following fields
+            | fieldLabel     | value                     | field_name                                                          |
+            | Override Title | Media Link Override Title | field_related_resources[2][subform][field_override_title][0][value] |
+        When user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish cancer center
         Given user is navigating to "/user/login"
@@ -180,6 +220,12 @@ Scenario: Create a mini landing page and add cancer center into a list
         And the page contains meta tags with the following names
             | name        | content                                    |
             | description | Test Cancer Center Meta Description Edited |
+        Then Related Resources section contains the following links
+            | title                             | link                          |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article   |
+            | Google Link                       | https://www.google.com/       |
+            | Media Link Override Title         | {TEST_SITE_SECTION}/test-file |
+
 
     Scenario: Clean up
         Given user is navigating to "/user/login"
