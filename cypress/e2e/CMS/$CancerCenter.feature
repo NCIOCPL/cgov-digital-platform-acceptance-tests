@@ -73,6 +73,38 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user selects "Published" from "Save as" dropdown
         When user saves the content page
 
+Scenario: Create a mini landing page and add cancer center into a list
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Add content" action button
+        And user clicks on "Mini Landing Page" content type
+        Then page title is "Create Mini Landing Page"
+        When user selects test site section
+        And user fills out the following fields
+            | fieldLabel       | value                              | field_name             |
+            | Pretty URL       | mini-landing                       | field_pretty_url       |
+            | Page Title       | Test Mini Landing                  | title[0][value]        |
+            | Browser Title    | Test Mini Landing                  | field_browser_title    |
+            | Meta Description | Test MIni Landing Meta Description | field_page_description |
+        And user selects "Add List" from contents dropdown
+        And user selects "Title and Description" from "List Item Style" dropdown
+        And user clicks on "Link" button to add list item
+        And user clicks on "Select content" button
+        And user selects "Automated Test Cancer Center" from content list
+        And "Automated Test Cancer Center" had been selected
+        And user selects "Published" from "Save as" dropdown
+        When user saves the content page
+    
+        Scenario: Verify that list description is displayed
+        Given user is navigating to the front end site with path site section plus "mini-landing"
+        Then page title is "Test Mini Landing"
+        And list item title is "Automated Test Cancer Center"
+        And list item description is "Cancer Center List Description"
+
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "cancer-center"
         Then page title is "Automated Test Cancer Center"
@@ -162,3 +194,17 @@ Feature: As a cms user I want to be able to create cancer center content type to
         When user clicks on "Delete" button
         Then the confirmation text "Deleted 1 content item." appears on a screen
         And the content item with url "cancer-center-edited" does not exist in the list of content
+
+Scenario: Clean up mini landing
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user selects a checkbox next to title with url "mini-landing" from the list of content
+        And user clicks on "Apply to selected items" content action button
+        Then page title is "Are you sure you want to delete this content item?"
+        When user clicks on "Delete" button
+        Then the confirmation text "Deleted 1 content item." appears on a screen
+        And the content item with url "mini-landing" does not exist in the list of content

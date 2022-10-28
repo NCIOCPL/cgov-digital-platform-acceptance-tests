@@ -183,3 +183,39 @@ And('{string} date stamp displays todays date', (stampLbl) => {
 And('user enters {string} into {string} text field', (value, fieldLabel) => {
     cy.get(`div[class*="form-type-textarea"] label:contains("${fieldLabel}")`).parent().find('div>textarea').type(value);
 });
+
+And('user selects {string} from contents dropdown', (contentsList) => {
+    cy.get("li[class='dropbutton-toggle'] button[type='button']").should('be.visible').click({ force: true })
+    cy.get(`input[value="${contentsList}"]`).click({force:true})
+})
+
+And('user selects {string} from {string} dropdown', (title, dropdown) => {
+    cy.get(`label:contains('${dropdown}')`).parent().find('select').select(title)
+})
+
+And('user clicks on {string} button to add list item', (linkBtn) => {
+    cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).parent().click({ force: true });
+})
+
+And('user clicks on {string} button', (contentBtn) => {
+    cy.get(`[class*='form-submit '][value='${contentBtn}']`).click({ force: true })
+})
+
+And('user selects {string} from content list', (title) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).parent().find('input').click({ force: true })
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find('#edit-submit').click({ force: true });
+})
+
+And('{string} had been selected', (title) => {
+    cy.get(`div:contains("${title}")`).should('be.visible');
+}) 
+
+When('user saves the content page', () => {
+    cy.get('edit-submit').click
+})
+And('list item title is {string}', (title) => {
+    cy.get(`a:contains("${title}")`).should('be.visible').and('have.text', title)
+})
+And('list item description is {string}', (title) => {
+    cy.get(`div.description p`).should('be.visible').and('have.text', title)
+})
