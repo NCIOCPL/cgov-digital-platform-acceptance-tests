@@ -24,7 +24,7 @@ Feature: Basic checks to ensure production site is up and running
         And language toggle has a text "<languageToggle>"
         Examples:
             | url                                                                                              | title                                                                   | languageToggle |
-            | /about-cancer/coping/feelings                                                                    | Feelings and Cancer                                                     | Español        |
+            | /about-cancer/coping/feelings/relaxation                                                         | Learning to Relax                                                     | Español        |
             | /news-events/cancer-currents-blog/2020/fda-foundation-one-cancer-liquid-biopsy-expanded-approval | Cancer “Liquid Biopsy” Blood Test Gets Expanded FDA Approval            | Español        |
             | /research/infrastructure/cancer-centers/find/mayoclinic                                          | Mayo Clinic Cancer Center                                               | none           |
             | /espanol/tipos/leucemia                                                                          | Leucemia—Versión para pacientes                                         | English        |
