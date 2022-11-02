@@ -116,3 +116,7 @@ Then('user is navigating to {string} with added wait', (url) => {
     cy.wait(2000)
 });
 
+
+And('analytics storage is cleared', () => {
+    cy.AnalyticsStorage = [];
+});
