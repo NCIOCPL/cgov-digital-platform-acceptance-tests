@@ -19,6 +19,7 @@
 !.gitkeep
 !.mailmap
 !.nycrc
+!.nvmrc
 !.travis.yml
 !.eslintrc.yaml
 !.cpplint
