@@ -13,7 +13,7 @@ Feature: As a content editor, I would like to be able to embed a borderless full
         Examples:
             | screenBreakpoint | url                   | cardNumber | cardTitle                   | titleHref            | cardDescription                   | buttonText        | promoImageSource                                                                                                           | promoImageAlt       |
             | desktop          | /test/borderless-card | 1          | [Lead IMG Crops] Card Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH LEAD | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
-            | tablet           | /test/borderless-card | 1          | [Lead IMG Crops] Card Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH LEAD | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
+            | custom 640x900   | /test/borderless-card | 1          | [Lead IMG Crops] Card Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH LEAD | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
             | mobile           | /test/borderless-card | 1          | [Lead IMG Crops] Card Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH LEAD | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
 
 
@@ -30,7 +30,7 @@ Feature: As a content editor, I would like to be able to embed a borderless full
 
         Examples:
             | screenBreakpoint | url                   | cardNumber | cardTitle                   | titleHref            | cardDescription | buttonText         | promoImageSource | promoImageAlt |
-            | tablet           | /test/borderless-card | 2          | [Lead Promo IMG] Card Title | /test/lead-promo-img | none            | ARTICLE WITH PROMO | none             | none          |
+            | custom 640x900   | /test/borderless-card | 2          | [Lead Promo IMG] Card Title | /test/lead-promo-img | none            | ARTICLE WITH PROMO | none             | none          |
             | mobile           | /test/borderless-card | 2          | [Lead Promo IMG] Card Title | /test/lead-promo-img | none            | ARTICLE WITH PROMO | none             | none          |
             | desktop          | /test/borderless-card | 2          | [Lead Promo IMG] Card Title | /test/lead-promo-img | none            | ARTICLE WITH PROMO | none             | none          |
 
@@ -48,7 +48,7 @@ Feature: As a content editor, I would like to be able to embed a borderless full
         Examples:
             | screenBreakpoint | url                   | cardNumber | cardTitle           | titleHref    | cardDescription | buttonText     | promoImageSource | promoImageAlt |
             | mobile           | /test/borderless-card | 3          | [No IMG] Card Title | /test/no-img | none            | ARTICLE NO IMG | none             | none          |
-            | tablet           | /test/borderless-card | 3          | [No IMG] Card Title | /test/no-img | none            | ARTICLE NO IMG | none             | none          |
+            | custom 640x900   | /test/borderless-card | 3          | [No IMG] Card Title | /test/no-img | none            | ARTICLE NO IMG | none             | none          |
             | desktop          | /test/borderless-card | 3          | [No IMG] Card Title | /test/no-img | none            | ARTICLE NO IMG | none             | none          |
 
 
@@ -65,7 +65,7 @@ Feature: As a content editor, I would like to be able to embed a borderless full
         Examples:
             | screenBreakpoint | url                              | cardNumber | cardTitle                        | titleHref                       | cardDescription                                                                                | buttonText             | promoImageSource                                                                                                           | promoImageAlt       |
             | desktop          | /espanol/test-es/borderless-card | 4          | [Lead IMG Crops] Card Title - ES | /espanol/test-es/lead-img-crops | This is a much longer description that drones on and on until it starts frothing at the mouth. | ARTICLE WITH LONG DESC | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
-            | tablet           | /espanol/test-es/borderless-card | 4          | [Lead IMG Crops] Card Title - ES | /espanol/test-es/lead-img-crops | This is a much longer description that drones on and on until it starts frothing at the mouth. | ARTICLE WITH LONG DESC | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
+            | custom 640x900   | /espanol/test-es/borderless-card | 4          | [Lead IMG Crops] Card Title - ES | /espanol/test-es/lead-img-crops | This is a much longer description that drones on and on until it starts frothing at the mouth. | ARTICLE WITH LONG DESC | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
             | mobile           | /espanol/test-es/borderless-card | 4          | [Lead IMG Crops] Card Title - ES | /espanol/test-es/lead-img-crops | This is a much longer description that drones on and on until it starts frothing at the mouth. | ARTICLE WITH LONG DESC | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
 
 
@@ -82,7 +82,7 @@ Feature: As a content editor, I would like to be able to embed a borderless full
         Examples:
             | screenBreakpoint | url                   | cardNumber | cardTitle       | titleHref            | cardDescription                   | buttonText         | promoImageSource                                                                                                           | promoImageAlt       |
             | desktop          | /test/borderless-card | 5          | Alternate Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH TITLE | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
-            | tablet           | /test/borderless-card | 5          | Alternate Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH TITLE | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
+            | custom 640x900   | /test/borderless-card | 5          | Alternate Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH TITLE | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
             | mobile           | /test/borderless-card | 5          | Alternate Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH TITLE | \/sites\/default\/files\/styles\/cgov_borderless_card\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/pet_zedd_happy\.jpg.* | Zedd vs the Octopus |
 
     Scenario Outline: Content editor added a content item with override title and override promo image (WIP add promo img when it is in YAML)
@@ -98,5 +98,5 @@ Feature: As a content editor, I would like to be able to embed a borderless full
         Examples:
             | screenBreakpoint | url                   | cardNumber | cardTitle                   | titleHref            | cardDescription                   | buttonText             | promoImageSource | promoImageAlt |
             | desktop          | /test/borderless-card | 6          | [Lead IMG Crops] Card Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH LONG DESC | none             | none          |
-            | tablet           | /test/borderless-card | 6          | [Lead IMG Crops] Card Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH LONG DESC | none             | none          |
+            | custom 640x900   | /test/borderless-card | 6          | [Lead IMG Crops] Card Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH LONG DESC | none             | none          |
             | mobile           | /test/borderless-card | 6          | [Lead IMG Crops] Card Title | /test/lead-img-crops | [Lead IMG Crops] Card Description | ARTICLE WITH LONG DESC | none             | none          |
