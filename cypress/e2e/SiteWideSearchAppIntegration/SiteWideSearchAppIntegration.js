@@ -26,15 +26,13 @@ Then('the {string} button within the dictionary definition is displayed', (showH
 });
 
 And('the {string} title is {string}', (tag, title) => {
+    const regex = new RegExp(title.replace(/XXXXX/g, '[0-9]+'));
     if (title.includes('XXXXX')) {
-        cy.document().then(document => {
-            const actualTitle = document.querySelector(`${tag}:nth-of-type(1)`).textContent;
-            const regex = new RegExp(title.replace(/XXXXX/g, '[0-9]+'));
-            expect(actualTitle).to.match(regex);
-        });
+        cy.wait(2000);
+        cy.get(`${tag}`).first().invoke('text').should('match',regex)
     }
     else {
-        cy.get(`${tag}`).first().should('have.text', title);
+        cy.get(`${tag}:contains("${title}")`).should('be.visible');
     }
 });
 
@@ -51,7 +49,7 @@ Then('the drop down box to show results per page is displayed', () => {
 });
 
 Then('the {string} text is {string}', (tag1, title1) => {
-    cy.get(`${tag1}`).last().should('have.text', title1);
+    cy.get(`${tag1}:contains("${title1}")`).should('be.visible');
 });
 
 And('the user clicks the last page link in the pager', () => {
