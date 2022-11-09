@@ -71,7 +71,7 @@ Then('{string} section is expanded', (archive) => {
 
 And('the following sections are displayed', (dataTable) => {
     for (const { title, isExpanded } of dataTable.hashes()) {
-        cy.get('div#blog-archive-accordion').find(`h4:contains('${title}')`).should('have.attr', 'aria-expanded', isExpanded);
+        cy.get('div#blog-archive-accordion').find(`h3:contains('${title}')`).should('have.attr', 'aria-expanded', isExpanded);
     }
 });
 
@@ -88,7 +88,7 @@ And('only {int} blog appear', (count) => {
 });
 
 Then('the text {string} appears', (errorText) => {
-    cy.get(`div.has-section-nav:contains("${errorText}")`).should('be.visible');
+    cy.get(`div#content`).should('be.visible').and('include.text',errorText);
 });
 
 And(`blog's posted date is {string}`, (postedDate) => {
