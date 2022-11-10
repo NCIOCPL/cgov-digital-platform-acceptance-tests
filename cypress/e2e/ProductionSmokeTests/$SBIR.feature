@@ -21,3 +21,7 @@ Feature: Basic checks to ensure production site is up and running
         Given user is navigating to "/chicken" with a 404 status
         Then page title is "Page Not Found"
         And the text "We can't find the page you're looking for, but don’t let that stop your entrepreneurial journey! Follow the links below for some key information on the NCI SBIR/STTR program." is displayed
+
+    Scenario: SBIR events
+        Given user is navigating to "/events"
+        Then all displayed events have a future date
