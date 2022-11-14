@@ -38,11 +38,6 @@ And('the {string} title is {string}', (tag, title) => {
     }
 });
 
-And('both pagers are displayed', () => {
-    cy.get('.pager__navigation[data-testid="tid-results-pager-top"]').should('be.visible');
-    cy.get('.pager__navigation[data-testid="tid-results-pager-bottom"]').should('be.visible');
-});
-
 And('the results are displayed with each title containing a link', () => {
     cy.get('.result__list-item').find('a').should('have.attr', 'href');
 });
@@ -62,12 +57,6 @@ Then('the {string} text is {string}', (tag1, title1) => {
 And('the user clicks the last page link in the pager', () => {
     cy.get('.pager__list-item a[class="pager__button total_pages"]').first().click();
 });
-
-And('pagers are not displayed for less than 20 results', () => {
-    cy.get('.pager__navigation[data-testid="tid-results-pager-top"]').should('not.exist');
-    cy.get('.pager__navigation[data-testid="tid-results-pager-bottom"]').should('not.exist');
-});
-
 
 Then('user is clicking on a BestBets title link at position {int}', (positionNumber) => {
     cy.get('div.best-bet').eq(positionNumber - 1).find('a').trigger('click', { followRedirect: false });

@@ -13,7 +13,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the "More information on dictionary page" button is displayed within the dictionary definition
         Then the "Show full definition" button within the dictionary definition is displayed
         And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: mantle cell lymphoma"
-        And both pagers are displayed
         And the results are displayed with each title containing a link
         And the system defaults to '20' results per page
         Then the drop down box to show results per page is displayed
@@ -29,7 +28,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the "Más información" button is displayed within the dictionary definition
         And the "Mostrar toda la definición" button within the dictionary definition is displayed
         And the "H4" title is "Resultados XXXXX-XXXXX de XXXXX para: cancer"
-        And both pagers are displayed
         And the results are displayed with each title containing a link
 
     Scenario:  Site Wide Search results display with Best Bet box at mobile breakpoint on English site.
@@ -42,7 +40,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the "H2" title is "Best Bets for Partnership for Accelerating Cancer Therapies (PACT)"
         And the best bets title is a link
         And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: pact"
-        And both pagers are displayed
         And the results are displayed with each title containing a link
 
     Scenario: Negative test:  No search results page
@@ -56,7 +53,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         Given user is navigating to "<url>"
         And screen breakpoint is set to "<breakpoint>"
         And the "<titleTag>" title is "<title>"
-        And both pagers are displayed
         And the results are displayed with each title containing a link
 
         Examples:
@@ -72,7 +68,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the "H1" title is "NCI Search Results"
         And the "H3" title is "Results for: cancer"
         And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: cancer"
-        And both pagers are displayed
         And the results are displayed with each title containing a link
 
     Scenario: Edge case:Display less than 20 results does not show the pager.
@@ -85,7 +80,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the "H2" title is "Definition:"
         Then the "Show full definition" button within the dictionary definition is displayed
         And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: retch"
-        And pagers are not displayed for less than 20 results
         And the results are displayed with each title containing a link
 
     Scenario Outline: Search results on micro sites.
@@ -94,7 +88,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And the "<tag1>" title is "<title1>"
         And the "<tag2>" title is "<title2>"
         And the "<tag3>" title is "<title3>"
-        And both pagers are displayed
         And the results are displayed with each title containing a link
         And the system defaults to '20' results per page
         Then the drop down box to show results per page is displayed
