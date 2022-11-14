@@ -105,7 +105,7 @@ And('the content item with url {string} does not exist in the list of content', 
 });
 
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`);
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
 });
 
 And('the following drupal fields are present', (dataTable) => {
@@ -303,7 +303,7 @@ And('user deletes test article with url {string}', (url) => {
             cy.get('h1:contains("Are you sure you want to delete this content item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
             cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 content item.');
-        } 
+        }
     });
 
 })
