@@ -31,15 +31,15 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         Then page title is "Resources for Researchers"
         And section titled "Tool Type" is displayed
         And "Tool Type" section displays the following categories
-            | tools                            |
-            | Analysis Tools \(\d+\)           |
-            | Datasets & Databases \(\d+\)     |
-            | Lab Tools \(\d+\)                |
-            | Community Research Tools \(\d+\) |
-            | Terminology \(\d+\)              |
-            | Networks/Consortiums \(\d+\)     |
-            | Clinical Research Tools \(\d+\)  |
-            | Training Resources \(\d+\)       |
+            | tools                    |
+            | Analysis Tools           |
+            | Datasets & Databases     |
+            | Lab Tools                |
+            | Community Research Tools |
+            | Terminology              |
+            | Networks/Consortiums     |
+            | Clinical Research Tools  |
+            | Training Resources       |
 
     Scenario: Research Area section on mobile breakpoint
         Given screen breakpoint is set to "mobile"
@@ -47,20 +47,20 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         Then page title is "Resources for Researchers"
         And section titled "Research Area" is displayed
         And "Research Area" section displays the following categories
-            | areas                             |
-            | Cancer Biology \(\d+\)            |
-            | Cancer Omics \(\d+\)              |
-            | Cancer Treatment \(\d+\)          |
-            | Screening & Detection \(\d+\)     |
-            | Cancer Health Disparities \(\d+\) |
-            | Causes of Cancer \(\d+\)          |
-            | Cancer & Public Health \(\d+\)    |
-            | Cancer Diagnosis \(\d+\)          |
-            | Cancer Prevention \(\d+\)         |
-            | Cancer Statistics \(\d+\)         |
-            | Bioinformatics \(\d+\)            |
-            | Cancer Survivorship \(\d+\)       |
-       
+            | areas                     |
+            | Cancer Biology            |
+            | Cancer Omics              |
+            | Cancer Treatment          |
+            | Screening & Detection     |
+            | Cancer Health Disparities |
+            | Causes of Cancer          |
+            | Cancer & Public Health    |
+            | Cancer Diagnosis          |
+            | Cancer Prevention         |
+            | Cancer Statistics         |
+            | Bioinformatics            |
+            | Cancer Survivorship       |
+
 
 
     Scenario: User is able to see all the resources on View all Resources page
@@ -169,7 +169,7 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         And search box displays the term "fre"
         And the message is displayed as "No results were found for your search. Please try another search or view all resources."
         And "view all resources." is a link with href "#viewAll"
-        
+
 
     Scenario Outline: User is able to see the Resource Detail page
         Given screen breakpoint is set to "desktop"
@@ -219,4 +219,3 @@ Feature: Resources For Researchers app is integrated within CGOV platform
         Then page title is "Resource Not Found"
         And the Resource not found message is displayed as "We can't find the resource you're looking for." and "Please visit the Resources for Researchers home page to search or browse resources."
         And the "Resources for Researchers home page" is displayed with href "/research/resources/"
-        
