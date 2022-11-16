@@ -55,7 +55,10 @@ And("{string} section displays the following categories",
       let index = 0;
       for (const tools of dataTable.rows()) {
         //for each resource verify it's title
-        expect(allAnchorTags[index].textContent).to.match(new RegExp(tools));
+        cy.get(`.browse-tiles__container.r4r-DEFAULT a:contains("${tools}")`).should('be.visible').invoke('text').then((txt) => {
+          txt = txt.split('(')[1].replace(')', '');
+          expect(txt).to.match(/\d+/);
+        })
         index++;
       }
     });
