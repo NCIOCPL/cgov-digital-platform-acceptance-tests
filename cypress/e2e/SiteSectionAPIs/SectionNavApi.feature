@@ -21,6 +21,13 @@ Scenario: Shows a section nav when it has been marked as a root, but hide in nav
 Given user makes json request to "/taxonomy/term/1500012/section-nav"
 Then the json response matches the contents of "SNNoShow.json"
 
+## This tests:
+##   * A nested section under another that would not display. This mimicks
+## ccg > research > structural genomics > TCGA.
+Scenario: Correctly handles a nested section
+Given user makes json request to "/taxonomy/term/1500046/section-nav"
+Then the json response matches the contents of "nestedsection.json"
+
 ##Spanish sections
 
 ##   * 4 levels deep Spanish - Should not show C.1.1.1.1.1
