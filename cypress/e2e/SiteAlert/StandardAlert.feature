@@ -80,7 +80,7 @@ Feature: As a site admin I want to configure site alert
             | prop68    | D=v68                                     |
             | pageURL   | https://{CANONICAL_HOST}/                 |
             | pageName  | {CANONICAL_HOST}/                         |
-            | event83   |                                           |
+            | event63   |                                           |
             | channel   | NCI Homepage                              |
             | pev2      | PreHeader:LinkClick                       |
             | linkType  | lnk_o                                     |
@@ -104,7 +104,7 @@ Feature: As a site admin I want to configure site alert
             | prop68    | D=v68                                         |
             | pageURL   | https://{CANONICAL_HOST}/                     |
             | pageName  | {CANONICAL_HOST}/                             |
-            | event83   |                                               |
+            | event63   |                                               |
             | channel   | NCI Homepage                                  |
             | pev2      | PreHeader:LinkClick                           |
             | linkType  | lnk_o                                         |
@@ -127,7 +127,7 @@ Feature: As a site admin I want to configure site alert
             | prop68    | D=v68                                                                      |
             | pageURL   | https://{CANONICAL_HOST}/                                                  |
             | pageName  | {CANONICAL_HOST}/                                                          |
-            | event83   |                                                                            |
+            | event63   |                                                                            |
             | channel   | NCI Homepage                                                               |
             | pev2      | PreHeader:LinkClick                                                        |
             | linkType  | lnk_o                                                                      |
@@ -150,7 +150,7 @@ Feature: As a site admin I want to configure site alert
             | prop68    | D=v68                                       |
             | pageURL   | https://{CANONICAL_HOST}/                   |
             | pageName  | {CANONICAL_HOST}/                           |
-            | event83   |                                             |
+            | event63   |                                             |
             | channel   | NCI Homepage                                |
             | pev2      | PreHeader:LinkClick                         |
             | linkType  | lnk_o                                       |
