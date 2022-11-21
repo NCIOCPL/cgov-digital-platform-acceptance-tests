@@ -118,12 +118,12 @@ Feature: Footer tests
             | parameter | value                      |
             | prop4     | D=pev1                     |
             | prop67    | D=pageName                 |
-            | prop74    | Footer\|EmailSignUp\|Error |
-            | prop68    | Footer                     |
+            | prop74    | D=v74                      |
+            | prop68    | D=v68                      |
             | prop8     | english                    |
             | evar2     | D=c8                       |
-            | evar74    | D=c74                      |
-            | evar68    | D=c68                      |
+            | evar74    | Footer\|EmailSignUp\|Error |
+            | evar68    | Footer                     |
             | pageURL   | https://{CANONICAL_HOST}/  |
             | pageName  | {CANONICAL_HOST}/          |
             | event41   |                            |
@@ -144,12 +144,12 @@ Feature: Footer tests
             | parameter | value                         |
             | prop4     | D=pev1                        |
             | prop67    | D=pageName                    |
-            | prop74    | Footer\|EmailSignUp\|Complete |
-            | prop68    | Footer                        |
+            | prop74    | D=v74                         |
+            | prop68    | D=v68                         |
             | prop8     | english                       |
             | evar2     | D=c8                          |
-            | evar74    | D=c74                         |
-            | evar68    | D=c68                         |
+            | evar74    | Footer\|EmailSignUp\|Complete |
+            | evar68    | Footer                        |
             | pageURL   | https://{CANONICAL_HOST}/     |
             | pageName  | {CANONICAL_HOST}/             |
             | event39   |                               |
@@ -157,7 +157,7 @@ Feature: Footer tests
             | pev2      | Footer:EmailForm:Complete     |
             | linkType  | lnk_o                         |
             | link      | Sign up                       |
-#TODO - update when this gets resolved https://github.com/NCIOCPL/cgov-digital-platform/issues/3528
+    #TODO - update when this gets resolved https://github.com/NCIOCPL/cgov-digital-platform/issues/3528
     # Scenario: Email sign up form start event
     #     When user is navigating to "/"
     #     And screen breakpoint is set to "desktop"
