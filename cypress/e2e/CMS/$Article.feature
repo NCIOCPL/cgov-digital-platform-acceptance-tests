@@ -30,6 +30,17 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user selects "Posted Date" checkbox
         And user selects "Reviewed Date" checkbox
         And user selects "Updated Date" checkbox
+        When user clicks on Add Citation button
+        And user types "PubMed Citation" in the 1 citation body field
+        And user fills out the following fields
+            | fieldLabel | value    | field_name                                  |
+            | PubMed ID  | 24037918 | field_citation[0][subform][field_pubmed_id] |
+        When user clicks on Add Citation button
+        And user types "Citation with an external link " in the 2 citation body field
+        And user clicks on icon to add a link to 2 citation
+        And user types "https://www.yahoo.com/" in the citation url field and saves it
+        When user clicks on Add Citation button
+        And user types "Plain Citation" in the 3 citation body field
         And user selects "Display" from "Public Use Text" dropdown
         And user selects "Published" from "Save as" dropdown
         Then user saves the content page
@@ -48,6 +59,10 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And the page contains meta tags with the following names
             | name        | content                            |
             | description | Automated Article Meta Description |
+        And "Selected References" titled citation paragraph is displayed
+        And citation number 1 titled "PubMed Citation" is a "PubMed Abstract" link with an url "https://www.ncbi.nlm.nih.gov/pubmed/24037918"
+        And citation number 2 titled "Citation with an external link" links to "https://www.yahoo.com/" and exit disclaimer is displayed
+        And citation number 3 titled "Plain Citation" has no link
 
     Scenario: Verify Related resources functionality
         Given user is navigating to "/user/login"
@@ -143,7 +158,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And public use text is not displayed
         And the page contains meta tags with the following names
             | name        | content                                        |
-            | description | Automated Test Article Meta Description Edited |    
+            | description | Automated Test Article Meta Description Edited |
         Then Related Resources section contains the following links
             | title                             | link                          |
             | Article to test Related Resources | {TEST_SITE_SECTION}/article   |
@@ -153,7 +168,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
     Scenario: Clean up
         Given user is navigating to "/user/login"
         When user enters credentials
-        And user clicks "Log in" button 
+        And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
