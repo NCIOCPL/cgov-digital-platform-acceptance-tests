@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 import { And, Then, Given, When } from 'cypress-cucumber-preprocessor/steps';
 
+
 const username = Cypress.env('admin_username');
 const password = Cypress.env('admin_password');
 const siteSection = Cypress.env('test_site_section');
@@ -319,3 +320,49 @@ And('user deletes test file with url {string}', (url) => {
         }
     });
 });
+
+
+
+//************************************Adding Citations***************************************************
+When('user clicks on Add Citation button', () => {
+    cy.get("input[value='Add Citation']").click({ force: true });
+    cy.wait(1500)
+})
+
+Then('{string} label is displayed {int} times', (contentType, num) => {
+    cy.get(`.layout-region.layout-region-node-main label:contains('${contentType}')`).should('have.length', num)
+})
+
+            //this needs to be pass, the iframe locators are the same.
+And('user types {string} in the {int} citation body field', (value, num) => {
+    cy.getNthIframe("iframe[title='Rich Text Editor, Citation Content field']", num - 1).find('p').type(value)
+})
+
+And('user clicks on icon to add a link to {int} citation', (num) => {
+    cy.get("div[id^='field-citation'] a[title^='Link']").eq(num - 1).click()
+})
+
+And('user types {string} in the citation url field and saves it', (link) => {
+    cy.get('div#editor-link-dialog-form input').first().type(link)
+    cy.get('div.ui-dialog-buttonset.form-actions button').click()
+    cy.wait(3000)
+})
+
+And('{string} titled citation paragraph is displayed', (title) => {
+    cy.get(`#cgvCitationSl`).should('include.text',title)
+})
+
+And('citation number {int} titled {string} is a {string} link with an url {string}', (num, citationText, pubMed, link) => {
+    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text',citationText);
+    cy.get('@cit').find('a').should('include.text',pubMed).and('have.attr', 'href', link);
+})
+            // this step does not exist in the front end 
+And('citation number {int} titled {string} links to {string} and exit disclaimer is displayed', (num, citText, linkUrl) => {
+    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('include.text',citText);
+    cy.get('@cit').find('a').should('have.attr', 'href', linkUrl);
+})
+
+And('citation number {int} titled {string} has no link', (num, citText) => {
+    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text',citText);
+    cy.get('@cit').find('a').should('not.exist')
+})
