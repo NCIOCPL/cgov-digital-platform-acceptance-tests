@@ -18,7 +18,8 @@ Feature: Language toggle tests
             | tablet     | news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                                                  | /espanol/noticias/comunicados-de-prensa/2018/oropharyngeal-hpv-cisplatin                                      | Español |
             | mobile     | news-events/press-releases/2019/deep-learning-cervical-cancer-screening                                      | /espanol/noticias/comunicados-de-prensa/2019/aprendizaje-profundo-cancer-cuello-uterino-examenes-de-deteccion | Español |
             | mobile     | espanol/noticias/comunicados-de-prensa/2019/aprendizaje-profundo-cancer-cuello-uterino-examenes-de-deteccion | /news-events/press-releases/2019/deep-learning-cervical-cancer-screening                                      | English |
-
+            | desktop    | espanol/publicaciones/diccionarios/diccionario-cancer                                                        | /publications/dictionaries/cancer-terms                                                                       | English |
+            | tablet     | publications/dictionaries/genetics-dictionary                                                                | /espanol/publicaciones/diccionarios/diccionario-genetica                                                      | Español |
 
     Scenario Outline: Negative: toggle does not exist on pages without translation
         Given user is navigating to "<url>"
@@ -31,6 +32,10 @@ Feature: Language toggle tests
             | about-nci/organization/ccct                                     |
             | about-cancer/coping/feelings/relaxation/duke-university         |
             | about-cancer/coping/feelings/relaxation/loukissas-jen-biography |
+            | about-cancer/treatment/clinical-trials/search                   |
+            | about-cancer/treatment/clinical-trials/disease/breast-cancer    |
+            | espanol/buscar/resultados?swKeyword=cáncer                      |
+            | about-cancer/treatment/clinical-trials/covid-19                 |
 
     Scenario: Languager toggle click event
         Given user is navigating to "/"
