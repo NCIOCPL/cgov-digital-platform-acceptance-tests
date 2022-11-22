@@ -84,9 +84,9 @@ Feature: As an user, I want to see different components of the Blog Series and B
         And blog posts list appears
 
         Examples:
-            | url                                                          | title                                  |
-            | /news-events/cancer-currents-blog?topic=biology              | Biology - Cancer Currents              |
-            | /research/key-initiatives/ras/ras-central/blog?topic=1150271 | Cancer Susceptibilities - RAS Dialogue |
+            | url                                                                   | title                                              |
+            | /news-events/cancer-currents-blog?topic=biology                       | Biology - Cancer Currents                          |
+            | /research/key-initiatives/ras/ras-central/blog?topic=elizabeth-jaffee | RAS Conversations: Elizabeth Jaffee - RAS Dialogue |
 
     Scenario Outline: Filtering blogs by topic - invalid
         Given user is navigating to "<url>"
