@@ -12,7 +12,7 @@ Feature: Dynamic Listing Pages
         And each result displays the trial title with a link in the following format "/clinicaltrials/NCI-"
         And each result displays the trial summary
         And each result displays "Location: " below the summary
-        And delighter is displayed with link "/about-cancer/treatment/clinical-trials/search"
+
 
         Examples:
             | Route                           | screen breakpoint | path                                                                         | page title                                                             | firstParagraph                                                                                                                                                                                                                                                                                     |
@@ -86,7 +86,6 @@ Feature: Dynamic Listing Pages
             | prerender-status-code | 302                |
             | prerender-header      | <prerender-header> |
             | robots                | noindex            |
-        # And delighter is displayed with link "/about-cancer/treatment/clinical-trials/search"
 
         Examples:
             | Route                           | path                                                                                | redirectedUrl                                                                                         | page title                                                    | noTrialsText                                                                                                                                                                                                         | prerender-header                                                                                                                        |
