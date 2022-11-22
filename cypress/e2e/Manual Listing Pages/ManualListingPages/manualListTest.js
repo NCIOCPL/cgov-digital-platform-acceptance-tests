@@ -48,11 +48,6 @@ And('each result displays {string} below the summary', (location) => {
         .should('include.text', location);
 });
 
-Then('delighter is displayed with link {string}', (link) => {
-    cy.get('div div.floating-delighter').find('a').should('be.visible').and('have.attr', 'href', link);
-});
-
-
 When('the user navigates to {string} with non-existent page {string}', (path, parameter) => {
     cy.visit(`${path}/?${parameter}`);
 });
