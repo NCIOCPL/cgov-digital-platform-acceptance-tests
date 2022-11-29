@@ -9,12 +9,12 @@ Feature: Basic checks to ensure production site is up and running
         And footer is displayed
         Examples:
             | url                         | titles                                                                                         |
-            | /                           | ABOUT CANCER,CANCER TYPES,RESEARCH,GRANTS & TRAINING,NEWS & EVENTS,ABOUT NCI                   |
-            | /espanol                    | EL CÁNCER,TIPOS DE CÁNCER,INVESTIGACIÓN,SUBVENCIONES Y CAPACITACIÓN,NOTICIAS,NUESTRO INSTITUTO |
-            | /pediatric-adult-rare-tumor | RARE TUMORS,RESEARCH,PARTICIPATE,SUPPORT,NEWS,ABOUT                                            |
-            | /rare-brain-spine-tumor     | TUMOR TYPES,LIVING WITH A TUMOR,REFER AND PARTICIPATE,NCI-CONNECTIONS,ABOUT                    |
-            | /nano                       | CANCER & NANOTECH,RESEARCH,GRANTS & TRAINING,NEWS & EVENTS,ABOUT NSDB                          |
-            | /connect-prevention-study   | WHO CAN JOIN,WHAT TO EXPECT,ABOUT THE STUDY,YOUR PRIVACY,STUDY NEWS                            |
+            | /                           | About Cancer,Cancer Types,Research,Grants & Training,News & Events,About NCI                   |
+            | /espanol                    | El cáncer,Tipos de cáncer,Investigación,Subvenciones y capacitación,Noticias,Nuestro instituto |
+            | /pediatric-adult-rare-tumor | Rare Tumors,Research,Participate,Support,News,About                                            |
+            | /rare-brain-spine-tumor     | Tumor Types,Living with a Tumor,Refer and Participate,NCI-CONNECTions,About                    |
+            | /nano                       | Cancer & Nanotech,Research,Grants & Training,News & Events,About NSDB                          |
+
 
     Scenario Outline: Different contents are loaded on all sites
         Given user is navigating to "<url>"
@@ -24,11 +24,10 @@ Feature: Basic checks to ensure production site is up and running
         And language toggle has a text "<languageToggle>"
         Examples:
             | url                                                                                              | title                                                                   | languageToggle |
-            | /about-cancer/coping/feelings/relaxation                                                         | Learning to Relax                                                     | Español        |
+            | /about-cancer/coping/feelings/relaxation                                                         | Learning to Relax                                                       | Español        |
             | /news-events/cancer-currents-blog/2020/fda-foundation-one-cancer-liquid-biopsy-expanded-approval | Cancer “Liquid Biopsy” Blood Test Gets Expanded FDA Approval            | Español        |
             | /research/infrastructure/cancer-centers/find/mayoclinic                                          | Mayo Clinic Cancer Center                                               | none           |
-            | /espanol/tipos/leucemia                                                                          | Leucemia—Versión para pacientes                                         | English        |
-            | /news-events/nca50                                                                               | Nothing Will Stop Us.                                                   | Español        |
+            | /espanol/tipos/higado/cancer-vias-biliares                                                       | ¿Qué es el cáncer de vías biliares (colangiocarcinoma)?                 | English        |
             | /types/liver/hp/adult-liver-treatment-pdq                                                        | Adult Primary Liver Cancer Treatment (PDQ®)–Health Professional Version | Español        |
             | /nano/about/contact/grodzinski-piotr                                                             | Piotr Grodzinski, Ph.D.                                                 | none           |
 

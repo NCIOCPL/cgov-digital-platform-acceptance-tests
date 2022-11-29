@@ -1,15 +1,16 @@
 /// <reference types="Cypress"/>
 
+const baseUrl = "https://www.cancer.gov";
 
 Then('mega menu is displayed', () => {
-    cy.get('#mega-nav').should('be.visible');
+    cy.get('nav.nci-header-nav').should('be.visible');
 });
 And('main categories titles are {string}', (titles) => {
     const allTitles = titles.split(',');
     cy.document().then(document => {
-        const els = document.querySelectorAll('.nav-item.lvl-1>div.nav-item-title>a');
+        const els = document.querySelectorAll('.nci-header-nav__primary-item span');
         for (let i = 0; i < els.length; i++) {
-            expect(els[i].innerText).to.eq(allTitles[i]);
+            expect(els[i].textContent).to.eq(allTitles[i]);
         }
 
     });
@@ -18,22 +19,23 @@ And('main categories titles are {string}', (titles) => {
 
 And('correct {int} of top-level menu items is displayed', (number) => {
     cy.document().then(document => {
-        const els = document.querySelectorAll('.nav-item.lvl-1>div.nav-item-title>a');
+        const els = document.querySelectorAll('.nci-header-nav__primary-item');
         expect(els.length).to.eq(number)
     });
 });
 
 And('all mega menu sections have the correct {string}', (path) => {
     const regex = new RegExp(`^\\${path}`);
-    cy.get('li[class*="nav-item lvl-1"]>div.nav-item-title>a').each(el => {
-        cy.wrap(el).should('have.attr', 'href').and('match', regex);
+    cy.get('.nci-header-nav__primary-item button,.nci-header-nav__primary-item a').each(el => {
+        const href = el[0].getAttribute('data-href')? (el[0].getAttribute('data-href')).replace(baseUrl,"") : el[0].getAttribute('href');
+       expect(href).to.match(regex);
     })
 });
 
 
 And('footer is displayed', () => {
-    cy.get('#nvcgSlFooter').should('be.visible');
-    cy.get('#nvcgSlFooter ul li a').each(el => {
+    cy.get('footer#nci-footer').should('be.visible');
+    cy.get('footer#nci-footer a').each(el => {
         cy.wrap(el).should('have.attr', 'href').then(href => {
             expect(href).to.not.be.empty;
         })
@@ -45,18 +47,19 @@ And('the list of posts is displayed', () => {
 });
 
 And('page options are displayed', () => {
-    cy.get('#PageOptionsControl1').should('be.visible');
+    cy.get('div.cgdp-page-options').should('be.visible')
+    .and('have.length',2);
 });
 
 And('content is displayed', () => {
-    cy.get('div#content').should('be.visible').and('not.be.empty');
+    cy.get('main#main-content,div#content').should('be.visible').and('not.be.empty');
 });
 
 And('language toggle has a text {string}', (lbl) => {
     if (lbl.includes('none'))
-        cy.get('#LangList1 li a').should('not.exist');
+        cy.get('.usa-banner__header a').should('not.exist');
     else
-        cy.get('#LangList1 li a').should('have.text', lbl);
+        cy.get('.usa-banner__header a').should('have.text', lbl);
 });
 
 Then('the system returns the results page for {string}', (term) => {
@@ -66,14 +69,7 @@ Then('the system returns the results page for {string}', (term) => {
 When('user types {string} in the search box', (keyword) => {
     cy.get("input#swKeyword").type(keyword);
 });
-And('user clicks search icon', () => {
-    Cypress.on('uncaught:exception', (err, runnable) => {
-        // returning false here to Cypress from
-        // failing the test
-        return false;
-    })
-    cy.get('button#sitesearch').click();
-})
+
 Then('user is redirected to {string}', (path) => {
     cy.url('pathname').should('include', path);
 });
