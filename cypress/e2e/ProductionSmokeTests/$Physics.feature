@@ -4,7 +4,7 @@ Feature: Basic checks to ensure production site is up and running
     Scenario: Home page is loading on all sites
         Given user is navigating to "/"
         Then mega menu is displayed
-        And main categories titles are "HOME,ABOUT,RESEARCH & FUNDING,ADVOCACY & OUTREACH,NEWS & EVENTS"
+        And main categories titles are "ABOUT,RESEARCH & FUNDING,ADVOCACY & OUTREACH,NEWS & EVENTS"
         And footer is displayed
 
     Scenario Outline: Different contents are loaded on all sites
