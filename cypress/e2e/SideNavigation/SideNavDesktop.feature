@@ -121,98 +121,127 @@ Feature: As a user, I want to be able to navigate to a different site sections u
         And status code is 403 on "/api-test/b/4"
         When user is navigating to "/api-test/b/3/1"
 
-    ### Analytics
+    ### the following scenarios are mimicking CTHP's nav structure
+    Scenario: site section that has the same landing page as it's first child's section
+        Given user is navigating to "/api-test/a/6"
+        Then the current page is "A.6.1"
+        And 1 level up section is "A.6"
+        And the following nav children are displayed
+            | A.6.1.1 |
+        And the following nav siblings are displayed
+            | A.6.2 |
+        And section "A.6.2" is not expanded
 
-    Scenario: Click even fires when user clicks on nav root
-        Given user is navigating to "/api-test/a/1/1"
-        Then the current page is "A.1.1"
-        When user clicks on "A.1" link
-        And browser waits
-        Then page click request is sent
-        And the following parameters should be captured
-            | parameter | value                                   |
-            | prop4     | D=pev1                                  |
-            | prop67    | D=pageName                              |
-            | evar68    | SideNav                                 |
-            | evar69    | A.1\|A.1\|L2\|L1\|1                     |
-            | prop8     | english                                 |
-            | evar2     | D=c8                                    |
-            | prop68    | D=v68                                   |
-            | prop69    | D=v69                                   |
-            | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
-            | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
-            | event33   |                                         |
-            | channel   | NCI Homepage                            |
-            | pev2      | SideNav:LinkClick                       |
-            | linkType  | lnk_o                                   |
-            | link      | A.1                                     |
+    Scenario: site section one level deeper of the second child (parent's sibling is not showing it's children(e.g. not expanded))
+        Given user is navigating to "/api-test/a/6/2/1"
+        Then the current page is "A.6.2.1"
+        And 1 level up section is "A.6.2"
+        And 2 level up section is "A.6"
+        And the children are not displayed
+        And section "A.6.1" is not expanded
 
-    Scenario: Click even fires when user clicks on first level child section
-        Given user is navigating to "/api-test/a/1"
-        When user clicks on "A.1.1" link
-        And browser waits
-        Then page click request is sent
-        And the following parameters should be captured
-            | parameter | value                                 |
-            | prop4     | D=pev1                                |
-            | prop67    | D=pageName                            |
-            | evar68    | SideNav                               |
-            | evar69    | A.1\|A.1.1\|L1\|L2\|2                 |
-            | prop8     | english                               |
-            | evar2     | D=c8                                  |
-            | prop68    | D=v68                                 |
-            | prop69    | D=v69                                 |
-            | pageURL   | https://{CANONICAL_HOST}/api-test/a/1 |
-            | pageName  | {CANONICAL_HOST}/api-test/a/1         |
-            | event33   |                                       |
-            | channel   | NCI Homepage                          |
-            | pev2      | SideNav:LinkClick                     |
-            | linkType  | lnk_o                                 |
-            | link      | A.1.1                                 |
-
-    Scenario: Click even fires when user clicks on 5th level child section
-        Given user is navigating to "/api-test/a/1/1/1/1"
-        When user clicks on "A.1.1.1.1.1" link
-        And browser waits
-        Then page click request is sent
-        And the following parameters should be captured
-            | parameter | value                                       |
-            | prop4     | D=pev1                                      |
-            | prop67    | D=pageName                                  |
-            | evar68    | SideNav                                     |
-            | evar69    | A.1\|A.1.1.1.1.1\|L4\|L5\|5                 |
-            | prop8     | english                                     |
-            | evar2     | D=c8                                        |
-            | prop68    | D=v68                                       |
-            | prop69    | D=v69                                       |
-            | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1/1/1 |
-            | pageName  | {CANONICAL_HOST}/api-test/a/1/1/1/1         |
-            | event33   |                                             |
-            | channel   | NCI Homepage                                |
-            | pev2      | SideNav:LinkClick                           |
-            | linkType  | lnk_o                                       |
-            | link      | A.1.1.1.1.1                                 |
+    Scenario: site section one level deeper of the first child (parent's sibling is not showing it's children(e.g. not expanded))
+        Given user is navigating to "/api-test/a/6/1/1"
+        Then the current page is "A.6.1.1"
+        And 1 level up section is "A.6.1"
+        And 2 level up section is "A.6"
+        And the children are not displayed
+        And section "A.6.2" is not expanded
 
 
-    Scenario: Click even fires when user clicks on the sibling section of a root while on the 4th level deep child
-        Given user is navigating to "/api-test/a/1/1/1/1"
-        When user clicks on "A.1.2" link
-        And browser waits
-        Then page click request is sent
-        And the following parameters should be captured
-            | parameter | value                                       |
-            | prop4     | D=pev1                                      |
-            | prop67    | D=pageName                                  |
-            | evar68    | SideNav                                     |
-            | evar69    | A.1\|A.1.2\|L4\|L2\|6                       |
-            | prop8     | english                                     |
-            | evar2     | D=c8                                        |
-            | prop68    | D=v68                                       |
-            | prop69    | D=v69                                       |
-            | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1/1/1 |
-            | pageName  | {CANONICAL_HOST}/api-test/a/1/1/1/1         |
-            | event33   |                                             |
-            | channel   | NCI Homepage                                |
-            | pev2      | SideNav:LinkClick                           |
-            | linkType  | lnk_o                                       |
-            | link      | A.1.2                                       |
+
+### Analytics
+
+Scenario: Click even fires when user clicks on nav root
+    Given user is navigating to "/api-test/a/1/1"
+    Then the current page is "A.1.1"
+    When user clicks on "A.1" link
+    And browser waits
+    Then page click request is sent
+    And the following parameters should be captured
+        | parameter | value                                   |
+        | prop4     | D=pev1                                  |
+        | prop67    | D=pageName                              |
+        | evar68    | SideNav                                 |
+        | evar69    | A.1\|A.1\|L2\|L1\|1                     |
+        | prop8     | english                                 |
+        | evar2     | D=c8                                    |
+        | prop68    | D=v68                                   |
+        | prop69    | D=v69                                   |
+        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+        | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
+        | event33   |                                         |
+        | channel   | NCI Homepage                            |
+        | pev2      | SideNav:LinkClick                       |
+        | linkType  | lnk_o                                   |
+        | link      | A.1                                     |
+
+Scenario: Click even fires when user clicks on first level child section
+    Given user is navigating to "/api-test/a/1"
+    When user clicks on "A.1.1" link
+    And browser waits
+    Then page click request is sent
+    And the following parameters should be captured
+        | parameter | value                                 |
+        | prop4     | D=pev1                                |
+        | prop67    | D=pageName                            |
+        | evar68    | SideNav                               |
+        | evar69    | A.1\|A.1.1\|L1\|L2\|2                 |
+        | prop8     | english                               |
+        | evar2     | D=c8                                  |
+        | prop68    | D=v68                                 |
+        | prop69    | D=v69                                 |
+        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1 |
+        | pageName  | {CANONICAL_HOST}/api-test/a/1         |
+        | event33   |                                       |
+        | channel   | NCI Homepage                          |
+        | pev2      | SideNav:LinkClick                     |
+        | linkType  | lnk_o                                 |
+        | link      | A.1.1                                 |
+
+Scenario: Click even fires when user clicks on 5th level child section
+    Given user is navigating to "/api-test/a/1/1/1/1"
+    When user clicks on "A.1.1.1.1.1" link
+    And browser waits
+    Then page click request is sent
+    And the following parameters should be captured
+        | parameter | value                                       |
+        | prop4     | D=pev1                                      |
+        | prop67    | D=pageName                                  |
+        | evar68    | SideNav                                     |
+        | evar69    | A.1\|A.1.1.1.1.1\|L4\|L5\|5                 |
+        | prop8     | english                                     |
+        | evar2     | D=c8                                        |
+        | prop68    | D=v68                                       |
+        | prop69    | D=v69                                       |
+        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1/1/1 |
+        | pageName  | {CANONICAL_HOST}/api-test/a/1/1/1/1         |
+        | event33   |                                             |
+        | channel   | NCI Homepage                                |
+        | pev2      | SideNav:LinkClick                           |
+        | linkType  | lnk_o                                       |
+        | link      | A.1.1.1.1.1                                 |
+
+
+Scenario: Click even fires when user clicks on the sibling section of a root while on the 4th level deep child
+    Given user is navigating to "/api-test/a/1/1/1/1"
+    When user clicks on "A.1.2" link
+    And browser waits
+    Then page click request is sent
+    And the following parameters should be captured
+        | parameter | value                                       |
+        | prop4     | D=pev1                                      |
+        | prop67    | D=pageName                                  |
+        | evar68    | SideNav                                     |
+        | evar69    | A.1\|A.1.2\|L4\|L2\|6                       |
+        | prop8     | english                                     |
+        | evar2     | D=c8                                        |
+        | prop68    | D=v68                                       |
+        | prop69    | D=v69                                       |
+        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1/1/1 |
+        | pageName  | {CANONICAL_HOST}/api-test/a/1/1/1/1         |
+        | event33   |                                             |
+        | channel   | NCI Homepage                                |
+        | pev2      | SideNav:LinkClick                           |
+        | linkType  | lnk_o                                       |
+        | link      | A.1.2                                       |
