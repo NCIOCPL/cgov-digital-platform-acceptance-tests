@@ -58,3 +58,7 @@ When('user clicks on {string} link',(link)=>{
     cy.get(`nav[aria-label='Secondary navigation']`).find('a').contains(new RegExp(`^${link}$`))
     .trigger('click',{followRedirect:false});
 });
+
+And('section {string} is not expanded',(sectionLbl)=>{
+cy.get(`a.nci-has-children:contains("${sectionLbl}")`).should('be.visible');
+});
