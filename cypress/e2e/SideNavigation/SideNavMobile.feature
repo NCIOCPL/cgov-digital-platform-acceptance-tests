@@ -131,6 +131,40 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | A.4       |
                         | A.5       |
 
+        ### CTHP mimicking use case
+        Scenario: Verify that the right parents and children are displayed when navigating back in the tree
+                Given user is navigating to "/api-test/a/6/2/1"
+                When user clicks on the mobile menu button
+                Then user should see the following in the mobile menu
+                        | Label         |
+                        | Back          |
+                        | Explore A.6.2 |
+                        | A.6.2.1       |
+                When user clicks on Back button
+                Then user should see the following in the mobile menu
+                        | Label       |
+                        | Back        |
+                        | Explore A.6 |
+                        | A.6.1       |
+                        | A.6.2       |
+                When user clicks on Back button
+                Then user should see the following in the mobile menu
+                        | Label     |
+                        | Main Menu |
+                        | Explore A |
+                        | A.1       |
+                        | A.2       |
+                        | A.3       |
+                        | A.4       |
+                        | A.5       |
+                        | A.6       |
+                When user clicks on Back button
+                Then user should see the following in the mobile menu
+                        | Label |
+                        | A     |
+                        | B     |
+             
+
         ###Spanish
 
         Scenario: Spanish -  User is viewing a landing page of a section nav root that has children and who's parent is something in the mobile nav.
