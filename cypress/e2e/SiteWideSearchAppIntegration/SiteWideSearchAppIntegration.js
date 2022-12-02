@@ -26,10 +26,9 @@ Then('the {string} button within the dictionary definition is displayed', (showH
 });
 
 And('the {string} title is {string}', (tag, title) => {
-    const regex = new RegExp(title.replace(/XXXXX/g, '[0-9]+'));
     if (title.includes('XXXXX')) {
-        cy.wait(2000);
-        cy.get(`${tag}`).first().invoke('text').should('match',regex)
+            const regex = new RegExp(title.replace(/XXXXX/g, '[0-9]+'));
+            cy.get(`${tag}:nth-of-type(1)`).invoke('text').should('match',regex)
     }
     else {
         cy.get(`${tag}:contains("${title}")`).should('be.visible');
@@ -71,8 +70,19 @@ Then('user is clicking on a glossary term link {string}', (termLink) => {
     cy.wait(2000);
 });
 
+When('user types {string} in the site search box', (searchText) => {
+    cy.get('input#nci-header-search__field').type(searchText);
+})
+
+And('user selects {string} from the autosuggest dropdown', (term) => {
+    cy.get(`span[aria-label="${term}"]`).parent().click();
+});
 
 
-
-
+And('user clicks Search button', () => {
+    Cypress.on('window:before:unload', (win) => {
+        cy.AnalyticsStorageBeforeUnload = cy.AnalyticsStorage;
+    });
+    cy.get('button[class*="search-button"]').click();
+})
 

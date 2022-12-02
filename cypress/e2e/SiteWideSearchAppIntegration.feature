@@ -116,7 +116,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | evar12    | D=c12                                                   |
             | link      | What Is Cancer?                                         |
             | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | {CANONICAL_HOST}/search/results                           |
+            | pageName  | {CANONICAL_HOST}/search/results                         |
 
 
     Scenario: Click Events for More Information glossary term link
@@ -133,7 +133,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | evar2     | D=c8                                                    |
             | link      | More information on dictionary page                     |
             | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | {CANONICAL_HOST}/search/results                           |
+            | pageName  | {CANONICAL_HOST}/search/results                         |
 
     Scenario: Click Events for result link
         Given user is navigating to "/search/results?swKeyword=tumor"
@@ -147,4 +147,73 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | prop13    | 2                                                       |
             | prop67    | D=pageName                                              |
             | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
-            | pageName  | {CANONICAL_HOST}/search/results                           |
+            | pageName  | {CANONICAL_HOST}/search/results                         |
+
+
+    Scenario: Click Events for site search box when user selects a term from dropdown
+        Given user is navigating to "/"
+        When user types "can" in the site search box
+        And user selects "breast cancer" from the autosuggest dropdown
+        And user clicks Search button
+        Then page click request is sent right before page unload
+        And the following parameters should be captured
+            | parameter | value                                  |
+            | prop11    | D=v11                                  |
+            | prop14    | D=v14                                  |
+            | prop23    | D=v23                                  |
+            | prop68    | D=v68                                  |
+            | evar11    | SitewideSearch                         |
+            | evar13    | +1                                     |
+            | evar14    | breast cancer                          |
+            | evar23    | Selected\|10\|1\|3\|can\|breast cancer |
+            | evar68    | Header                                 |
+            | event2    |                                        |
+            | pageURL   | https://{CANONICAL_HOST}/              |
+            | pageName  | {CANONICAL_HOST}/                      |
+            | link      | Search                                 |
+            | pev2      | HeaderSearch:Submit                    |
+
+    Scenario: Click Events for site search box when user doesn't select a term from dropdown
+        Given user is navigating to "/"
+        When user types "cancer" in the site search box
+        And user clicks Search button
+        Then page click request is sent right before page unload
+        And the following parameters should be captured
+            | parameter | value                                 |
+            | prop11    | D=v11                                 |
+            | prop14    | D=v14                                 |
+            | prop23    | D=v23                                 |
+            | prop68    | D=v68                                 |
+            | evar11    | SitewideSearch                        |
+            | evar13    | +1                                    |
+            | evar14    | cancer                                |
+            | evar23    | Offered\|10\|null\|null\|null\|cancer |
+            | evar68    | Header                                |
+            | event2    |                                       |
+            | pageURL   | https://{CANONICAL_HOST}/             |
+            | pageName  | {CANONICAL_HOST}/                     |
+            | link      | Search                                |
+            | pev2      | HeaderSearch:Submit                   |
+
+    Scenario: Click Events for site search box when there is no suggestion
+        Given user is navigating to "/"
+        When user types "chickensoup" in the site search box
+        And user clicks Search button
+        Then page click request is sent right before page unload
+        And the following parameters should be captured
+            | parameter | value                                  |
+            | prop11    | D=v11                                  |
+            | prop14    | D=v14                                  |
+            | prop23    | D=v23                                  |
+            | prop68    | D=v68                                  |
+            | evar11    | SitewideSearch                         |
+            | evar13    | +1                                     |
+            | evar14    | chickensoup                            |
+            | evar23    | None\|0\|null\|null\|null\|chickensoup |
+            | evar68    | Header                                 |
+            | event2    |                                        |
+            | pageURL   | https://{CANONICAL_HOST}/              |
+            | pageName  | {CANONICAL_HOST}/                      |
+            | link      | Search                                 |
+            | pev2      | HeaderSearch:Submit                    |
+
