@@ -87,7 +87,7 @@ Then('there are {int} accordion sections in the footer', (num) => {
 });
 And("the following links have become section's headers", (dataTable) => {
     for (const { header } of dataTable.hashes()) {
-        cy.get("#nci-footer section[class$='collapsible']").find(`h4:contains('${header}')`).should('be.visible');
+        cy.get("#nci-footer section[class$='collapsible']").find(`div.usa-footer__primary-link:contains('${header}')`).should('be.visible');
     }
 })
 And('sections are collapsed', () => {
@@ -96,11 +96,11 @@ And('sections are collapsed', () => {
     });
 });
 When('user clicks on {string} link header', (header) => {
-    cy.get("#nci-footer section[class$='collapsible']").find(`h4:contains('${header}')`).click();
+    cy.get("#nci-footer section[class$='collapsible']").find(`div:contains('${header}')`).click();
 });
 Then('following are the states of sections accordions', (dataTable) => {
     for (const { header, expanded } of dataTable.hashes()) {
-        cy.get("#nci-footer section[class$='collapsible']").find(`h4:contains('${header}') button`)
+        cy.get("#nci-footer section[class$='collapsible']").find(`div:contains('${header}') button`)
             .should('have.attr', 'aria-expanded', expanded);
     }
 });
