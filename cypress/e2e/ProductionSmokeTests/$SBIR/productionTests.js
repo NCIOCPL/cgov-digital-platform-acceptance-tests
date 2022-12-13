@@ -29,7 +29,7 @@ And('footer is displayed', () => {
 })
 
 And('page options are displayed', () => {
-    cy.get('div.cgdp-page-options').should('be.visible')
+    cy.get('.cgdp-page-options').should('be.visible')
     .and('have.length',2);
 });
 
