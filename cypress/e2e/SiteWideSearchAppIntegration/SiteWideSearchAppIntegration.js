@@ -27,14 +27,11 @@ Then('the {string} button within the dictionary definition is displayed', (showH
 
 And('the {string} title is {string}', (tag, title) => {
     if (title.includes('XXXXX')) {
-        cy.document().then(document => {
-            const actualTitle = document.querySelector(`${tag}:nth-of-type(1)`).textContent;
             const regex = new RegExp(title.replace(/XXXXX/g, '[0-9]+'));
-            expect(actualTitle).to.match(regex);
-        });
+            cy.get(`${tag}:nth-of-type(1)`).invoke('text').should('match',regex)
     }
     else {
-        cy.get(`${tag}`).first().should('have.text', title);
+        cy.get(`${tag}:contains("${title}")`).should('be.visible');
     }
 });
 
@@ -51,7 +48,7 @@ Then('the drop down box to show results per page is displayed', () => {
 });
 
 Then('the {string} text is {string}', (tag1, title1) => {
-    cy.get(`${tag1}`).last().should('have.text', title1);
+    cy.get(`${tag1}:contains("${title1}")`).should('be.visible');
 });
 
 And('the user clicks the last page link in the pager', () => {
@@ -73,8 +70,19 @@ Then('user is clicking on a glossary term link {string}', (termLink) => {
     cy.wait(2000);
 });
 
+When('user types {string} in the site search box', (searchText) => {
+    cy.get('input#nci-header-search__field').type(searchText);
+})
+
+And('user selects {string} from the autosuggest dropdown', (term) => {
+    cy.get(`span[aria-label="${term}"]`).parent().click();
+});
 
 
-
-
+And('user clicks Search button', () => {
+    Cypress.on('window:before:unload', (win) => {
+        cy.AnalyticsStorageBeforeUnload = cy.AnalyticsStorage;
+    });
+    cy.get('button[class*="search-button"]').click();
+})
 

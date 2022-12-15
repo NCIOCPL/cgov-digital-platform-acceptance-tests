@@ -98,7 +98,7 @@ Then('the following parameters should be captured', dataTable => {
 });
 
 Then('page click request is sent', () => {
-    loadOrClick = getClickBeacon();
+    loadOrClick = getClickBeacon(cy.AnalyticsStorage);
 });
 
 When('page load request is sent', () => {
@@ -114,5 +114,14 @@ function getBeacon() {
 Then('user is navigating to {string} with added wait', (url) => {
     cy.visit(url);
     cy.wait(2000)
+});
+
+
+And('analytics storage is cleared', () => {
+    cy.AnalyticsStorage = [];
+});
+
+Then('page click request is sent right before page unload', () => {
+    loadOrClick = getClickBeacon(cy.AnalyticsStorageBeforeUnload);
 });
 

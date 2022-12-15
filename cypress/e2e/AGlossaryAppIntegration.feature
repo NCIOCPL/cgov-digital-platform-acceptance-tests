@@ -27,7 +27,6 @@ Feature: Glossary app is integrated withing CGOV platform
         And the introductory text appears
         And the number of glossary terms appears in the text
         And NCI's Dictionary of Cancer Terms Widget links to '\\"/syndication/widgets\\"'
-             
         And search bar is displayed below introductory text
         Then search options for "Starts with" and "Contains" are displayed
         And "starts with" is selected by default
@@ -39,7 +38,7 @@ Feature: Glossary app is integrated withing CGOV platform
 
     Scenario: User is able to access a default (or “landing”) page that displays all of the expected Dictionary elements for the Spanish dictionary.
         Given screen breakpoint is set to "desktop"
-        Given user is navigating to "/espanol/publicaciones/diccionario"
+        Given user is navigating to "/espanol/publicaciones/diccionarios/diccionario-cancer"
         And page displays left navigation
         And page title is "Diccionario de cáncer"
         And the introductory text appears
@@ -57,7 +56,7 @@ Feature: Glossary app is integrated withing CGOV platform
 
         Scenario: User is able to access a default (or “landing”) page that displays all of the expected Dictionary elements for the Spanish dictionary on tablet breakpoint.
         Given screen breakpoint is set to "tablet"
-        Given user is navigating to "/espanol/publicaciones/diccionario"
+        Given user is navigating to "/espanol/publicaciones/diccionarios/diccionario-cancer"
         And page does not display left navigation
         And page title is "Diccionario de cáncer"
         And the introductory text appears

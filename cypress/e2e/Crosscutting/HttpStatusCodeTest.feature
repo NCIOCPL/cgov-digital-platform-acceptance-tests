@@ -26,7 +26,7 @@ Feature: Test for checking HTTP Status Code
       | tablet     | /pediatric-adult-rare-tumor/espanol                              | 200  |
       | desktop    | /publications/dictionaries/cancer-terms/def/45413                | 200  |
       | desktop    | /publications/dictionaries/cancer-drug                           | 200  |
-      | desktop    | /espanol/publicaciones/diccionario/ampliar/C                     | 200  |
+      | desktop    | /espanol/publicaciones/diccionarios/diccionario-cancer/ampliar/C | 200  |
       | desktop    | /about-cancer/treatment/clinical-trials/search                   | 200  |
       | desktop    | /about-cancer/treatment/clinical-trials/search/advanced          | 200  |
       | desktop    | /research/resources                                              | 200  |

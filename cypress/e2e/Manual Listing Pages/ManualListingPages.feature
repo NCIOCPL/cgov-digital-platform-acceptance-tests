@@ -11,7 +11,6 @@ Feature: All manual pages
         And each result displays the trial summary
         And each result displays "Location: " below the summary
         And the 2 pager is displayed with the following "<pager items>"
-        And delighter is displayed with link "/about-cancer/treatment/clinical-trials/search"
 
         Examples:
             | screen breakpoint | path                                                                  | page title                                                             | pager items        |
@@ -68,8 +67,7 @@ Feature: All manual pages
         Then user is directed to "<directedUrl>"
         Then page title is "<page title>"
         Then the text "<noTrialsText>" appears
-        And delighter is displayed with link "/about-cancer/treatment/clinical-trials/search"
-
+      
         Examples:
             | path                                                | directedUrl                                         | page title                           | noTrialsText                             |
             | /about-cancer/treatment/clinical-trials/chicken-pox | /about-cancer/treatment/clinical-trials/chicken-pox | Clinical Trials to Treat Chicken Pox | There are currently no available trials. |

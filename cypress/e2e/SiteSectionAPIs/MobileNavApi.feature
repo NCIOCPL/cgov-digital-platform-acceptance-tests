@@ -18,4 +18,25 @@ Scenario: Site requests mobile nav root
 Given user makes json request to "/taxonomy/term/1500000/mobile-nav"
 Then the json response matches the contents of "MobileNavApi.json"
 
-## TODO: Scenario for 400 response for a node not matching field_main_nav_root
+Scenario: Site requests Spanish mobile nav root
+Given user makes json request to "/espanol/taxonomy/term/1500028/mobile-nav"
+Then the json response matches the contents of "SpanishMobileNavApi.json"
+
+## Scenarios for 400 response
+
+Scenario: Bad requests to a mobile site section that is not a root
+Given user makes bad json request to "/taxonomy/term/1500011/mobile-nav"
+Then the json response matches the contents of "EmptyResponse.json"
+
+Scenario: Bad requests to a Spanish mobile site section that is not a root
+Given user makes bad json request to "/espanol/taxonomy/term/1500037/mobile-nav"
+Then the json response matches the contents of "EmptyResponse.json"
+
+Scenario: Bad requests to a mobile site section that has unpublished landing page
+Given user makes bad json request to "/taxonomy/term/1500026/mobile-nav"
+Then the json response matches the contents of "EmptyResponse.json"
+
+Scenario: Requesting a mobile section that has no landing page
+Given user makes bad json request to "/taxonomy/term/1500024/mobile-nav"
+Then the json response matches the contents of "EmptyResponse.json" and status code is 400
+

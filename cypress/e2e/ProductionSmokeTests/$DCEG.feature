@@ -4,7 +4,7 @@ Feature: Basic checks to ensure production site is up and running
     Scenario Outline: Home page is loading on all sites
         Given user is navigating to "/"
         Then mega menu is displayed
-        And main categories titles are "ABOUT DCEG,OUR RESEARCH,FELLOWSHIPS & TRAINING,TOOLS & RESOURCES,NEWS & EVENTS"
+        And main categories titles are "About DCEG,Our Research,Fellowship & Training,Tools & Resources,News & Events"
         And footer is displayed
 
     Scenario Outline: Different contents are loaded on all sites

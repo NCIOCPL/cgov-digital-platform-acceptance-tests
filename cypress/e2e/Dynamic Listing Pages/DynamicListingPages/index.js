@@ -95,6 +95,3 @@ When('user is navigating to {string} with {string}', (path, search) => {
     cy.visit(`${path}${search}`)
 });
 
-Then('delighter is displayed with link {string}', (link) => {
-    cy.get('div div.floating-delighter').find('a').should('be.visible').and('have.attr', 'href', link);
-});

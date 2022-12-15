@@ -3,104 +3,140 @@ Feature: Page Options tests
 
     Scenario Outline: Verify that Page options exists on the pages
         Given user is navigating to "<url>"
-        Then page options are displayed
-        And "<pageOption>" button is displayed
-
+        Then the following "<pageOption>" buttons are displayed at top and bottom of the page
+        When screen breakpoint is set to "mobile"
+        Then the page options are not displayed
         Examples:
             | url                                                                                         | pageOption                             |
-            | /about-cancer/coping/feelings/relaxation                                                    | print,email,facebook,twitter,pinterest |
-            | /espanol/hoja-informativa-vitamina-d                                                        | print,email,facebook,twitter,pinterest |
-            | /about-cancer/coping/feelings/relaxation/loukissas-jennifer                                 | print,email,facebook,twitter,pinterest |
-            | /news-events/cancer-currents-blog/2019/hpv-vaccine-presidents-cancer-panel-improving-uptake | print,email,facebook,twitter,pinterest |
-            | /espanol/noticias/temas-y-relatos-blog/2017/tobacco-corrective-es                           | print,email,facebook,twitter,pinterest |
-            | /types/breast/research                                                                      | print,email,facebook,twitter,pinterest |
-            | /espanol/tipos/seno/investigacion                                                           | print,email,facebook,twitter,pinterest |
-            | /about-cancer/coping/feelings/relaxation/dfharvard                                          | print,email,facebook,twitter,pinterest |
-            | /about-cancer/coping/feelings/relaxation/2019-investigators-site                            | print,email,facebook,twitter,pinterest |
-            | /news-events/press-releases/2019/annual-report-nation-2018                                  | print,email,facebook,twitter,pinterest |
-            | /espanol/noticias/comunicados-de-prensa/2019/informe-anual-a-la-nacion-1975-2014            | print,email,facebook,twitter,pinterest |
-            | /about-cancer/treatment/side-effects/fatigue/fatigue-pdq                                    | print,email,facebook,twitter,pinterest |
-            | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq                           | print,email,facebook,twitter,pinterest |
-            | /news-events/cancer-currents-blog                                                           | print,email,facebook,twitter,pinterest |
-            | /espanol/noticias/temas-y-relatos-blog                                                      | print,email,facebook,twitter,pinterest |
-            | /types/breast                                                                               | print,email,facebook,twitter,pinterest |
-            | /espanol/tipos/seno                                                                         | print,email,facebook,twitter,pinterest |
-            | /about-cancer                                                                               | print,email,facebook,twitter,pinterest |
-            | /espanol/cancer                                                                             | print,email,facebook,twitter,pinterest |
-            | /news-events/press-releases/2019                                                            | print,email,facebook,twitter,pinterest |
-            | /espanol/noticias/comunicados-de-prensa/2019                                                | print,email,facebook,twitter,pinterest |
-            | /about-nci/organization/nci-at-a-glance                                                     | print,email,facebook,twitter,pinterest |
-            | /espanol/infografia-nci                                                                     | print,email,facebook,twitter,pinterest |
-            | /about-cancer/coping/feelings/relaxation/hedge-maze                                         | print,email,facebook,twitter,pinterest |
+            | /about-cancer/coping/feelings/relaxation                                                    | Print,Email                            |
+            | /espanol/hoja-informativa-vitamina-d                                                        | Imprimir,Enviar por correo electrónico |
+            | /about-cancer/coping/feelings/relaxation/loukissas-jennifer                                 | Print,Email                            |
+            | /news-events/cancer-currents-blog/2019/hpv-vaccine-presidents-cancer-panel-improving-uptake | Print,Email                            |
+            | /espanol/noticias/temas-y-relatos-blog/2017/tobacco-corrective-es                           | Imprimir,Enviar por correo electrónico |
+            | /types/breast/research                                                                      | Print,Email                            |
+            | /espanol/tipos/seno/investigacion                                                           | Imprimir,Enviar por correo electrónico |
+            | /about-cancer/coping/feelings/relaxation/dfharvard                                          | Print,Email                            |
+            | /about-cancer/coping/feelings/relaxation/2019-investigators-site                            | Print,Email                            |
+            | /news-events/press-releases/2019/annual-report-nation-2018                                  | Print,Email                            |
+            | /espanol/noticias/comunicados-de-prensa/2019/informe-anual-a-la-nacion-1975-2014            | Imprimir,Enviar por correo electrónico |
+            | /about-cancer/treatment/side-effects/fatigue/fatigue-pdq                                    | Print,Email                            |
+            | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq                           | Imprimir,Enviar por correo electrónico |
+            | /news-events/cancer-currents-blog                                                           | Print,Email                            |
+            | /espanol/noticias/temas-y-relatos-blog                                                      | Imprimir,Enviar por correo electrónico |
+            | /news-events/press-releases/2019                                                            | Print,Email                            |
+            | /espanol/noticias/comunicados-de-prensa/2019                                                | Imprimir,Enviar por correo electrónico |
+            | /about-nci/organization/nci-at-a-glance                                                     | Print,Email                            |
+            | /espanol/infografia-nci                                                                     | Imprimir,Enviar por correo electrónico |
+            | /about-cancer/coping/feelings/relaxation/hedge-maze                                         | Print,Email                            |
 
-    Scenario Outline: Negative: Verify that print and font resizer buttons are not visible at tablet and mobile viewpoints
-        Given screen breakpoint is set to "<breakpoint>"
-        When user is navigating to "<url>"
-        Then page options are displayed
-        And "<pageOption1>" button is not displayed
-        Examples:
-            | url                                                                                         | breakpoint | pageOption1        |
-            | /about-cancer/coping/feelings/relaxation                                                    | tablet     | font resizer,print |
-            | /espanol/hoja-informativa-vitamina-d                                                        | mobile     | font resizer,print |
-            | /about-cancer/coping/feelings/relaxation/loukissas-jennifer                                 | tablet     | font resizer,print |
-            | /news-events/cancer-currents-blog/2019/hpv-vaccine-presidents-cancer-panel-improving-uptake | mobile     | font resizer,print |
-            | /espanol/noticias/temas-y-relatos-blog/2017/tobacco-corrective-es                           | tablet     | font resizer,print |
-            | /types/breast/research                                                                      | mobile     | font resizer,print |
-            | /espanol/tipos/seno/investigacion                                                           | tablet     | font resizer,print |
-            | /about-cancer/coping/feelings/relaxation/dfharvard                                          | mobile     | font resizer,print |
-            | /about-cancer/coping/feelings/relaxation/2019-investigators-site                            | tablet     | font resizer,print |
-            | /news-events/press-releases/2019/annual-report-nation-2018                                  | mobile     | font resizer,print |
-            | /espanol/noticias/comunicados-de-prensa/2019/informe-anual-a-la-nacion-1975-2014            | tablet     | font resizer,print |
-            | /about-cancer/treatment/side-effects/fatigue/fatigue-pdq                                    | mobile     | font resizer,print |
-            | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq                           | tablet     | font resizer,print |
-            | /news-events/cancer-currents-blog                                                           | mobile     | print              |
-            | /espanol/noticias/temas-y-relatos-blog                                                      | tablet     | print              |
-            | /types/breast                                                                               | mobile     | print              |
-            | /espanol/tipos/seno                                                                         | tablet     | print              |
-            | /about-cancer                                                                               | mobile     | print              |
-            | /espanol/cancer                                                                             | tablet     | print              |
-            | /news-events/press-releases/2019                                                            | mobile     | print              |
-            | /espanol/noticias/comunicados-de-prensa/2019                                                | tablet     | print              |
-            | /about-nci/organization/nci-at-a-glance                                                     | mobile     | print              |
-            | /espanol/infografia-nci                                                                     | tablet     | print              |
-            | /about-cancer/coping/feelings/relaxation/hedge-maze                                         | mobile     | print              |
-
-    Scenario Outline: Verify that font resizer button exists on the pages at Desktop breakpoint
+    Scenario Outline: Verify that Page options do not exist exists on the home page, landing page, cthp and special template pages
         Given user is navigating to "<url>"
-        And screen breakpoint is set to "desktop"
-        Then page options are displayed
-        And "font resizer" button is displayed
-        Examples:
-            | url                                                                                         |
-            | /about-cancer/coping/feelings/relaxation                                                    |
-            | /espanol/hoja-informativa-vitamina-d                                                        |
-            | /about-cancer/coping/feelings/relaxation/loukissas-jen-biography                            |
-            | /news-events/cancer-currents-blog/2019/hpv-vaccine-presidents-cancer-panel-improving-uptake |
-            | /espanol/noticias/temas-y-relatos-blog/2017/tobacco-corrective-es                           |
-            | /types/breast/research                                                                      |
-            | /espanol/tipos/seno/investigacion                                                           |
-            | /about-cancer/coping/feelings/relaxation/dfharvard                                          |
-            | /about-cancer/coping/feelings/relaxation/2019-investigators-site                            |
-            | /news-events/press-releases/2019/annual-report-nation-2018                                  |
-            | /espanol/noticias/comunicados-de-prensa/2019/informe-anual-a-la-nacion-1975-2014            |
-            | /about-cancer/treatment/side-effects/fatigue/fatigue-pdq                                    |
-            | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq                           |
+        Then the page options do not exist
 
-    Scenario Outline: Verify that font resizer button does not exist on the pages where it should not
-        Given user is navigating to "<url>"
-        And screen breakpoint is set to "desktop"
-        Then page options are displayed
-        And "font resizer" button does not exist
         Examples:
-            | url                                                 |
-            | /news-events/cancer-currents-blog                   |
-            | /espanol/noticias/temas-y-relatos-blog              |
-            | /types/breast                                       |
-            | /espanol/tipos/seno                                 |
-            | /about-cancer                                       |
-            | /espanol/cancer                                     |
-            | /news-events/press-releases/2019                    |
-            | /espanol/noticias/comunicados-de-prensa/2019        |
-            | /about-nci/organization/nci-at-a-glance             |
-            | /espanol/infografia-nci                             |
-            | /about-cancer/coping/feelings/relaxation/hedge-maze |
+            | url                 |
+            | /                   |
+            | /about-cancer       |
+            | /espanol            |
+            | /special-report     |
+            | /types/breast       |
+            | /espanol/tipos/seno |
+
+    Scenario: Verify english email contents
+        Given user is navigating to "/about-cancer/coping/feelings"
+        Then email page option will pre-populate email subject line with "Information from the National Cancer Institute Web Site"
+        And email body will have the following text "I found this information on www.cancer.gov and I'd like to share it with you"
+        And email body will contain shared page url as "https://{CANONICAL_HOST}/about-cancer/coping/feelings"
+
+    Scenario: Verify spanish email contents
+        Given user is navigating to "/espanol/hoja-informativa-vitamina-d"
+        Then email page option will pre-populate email subject line with "Información del portal de Internet del Instituto Nacional del Cáncer "
+        And email body will have the following text "Encontré esta información en cancer.gov/espanol y quiero compartirla contigo"
+        And email body will contain shared page url as "https://{CANONICAL_HOST}/espanol/hoja-informativa-vitamina-d"
+
+    Scenario: Click event fires when user clicks on print share option
+        Given user is navigating to "/about-cancer/coping/feelings/"
+        When user clicks on "print" share option at the "top"
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                 |
+            | prop4     | D=pev1                                                |
+            | prop67    | D=pageName                                            |
+            | prop43    | D=v43                                                 |
+            | prop68    | D=v68                                                 |
+            | prop8     | english                                               |
+            | evar2     | D=c8                                                  |
+            | evar43    | BodyTop\|Print                                        |
+            | evar68    | BodyTop                                               |
+            | pageURL   | https://{CANONICAL_HOST}/about-cancer/coping/feelings |
+            | pageName  | {CANONICAL_HOST}/about-cancer/coping/feelings         |
+            | event17   |                                                       |
+            | channel   | About Cancer                                          |
+            | pev2      | PageOptions:LinkClick                                 |
+            | linkType  | lnk_o                                                 |
+            | link      | Print                                                 |
+
+    Scenario: Click event fires when user clicks on email share option
+        Given user is navigating to "/about-cancer/coping/feelings/"
+        When user clicks on "email" share option at the "bottom"
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                 |
+            | prop4     | D=pev1                                                |
+            | prop67    | D=pageName                                            |
+            | prop43    | D=v43                                                 |
+            | prop68    | D=v68                                                 |
+            | prop8     | english                                               |
+            | evar2     | D=c8                                                  |
+            | evar43    | BodyBottom\|Email                                     |
+            | evar68    | BodyBottom                                            |
+            | pageURL   | https://{CANONICAL_HOST}/about-cancer/coping/feelings |
+            | pageName  | {CANONICAL_HOST}/about-cancer/coping/feelings         |
+            | event17   |                                                       |
+            | channel   | About Cancer                                          |
+            | pev2      | PageOptions:LinkClick                                 |
+            | linkType  | lnk_o                                                 |
+
+
+    Scenario: Click event fires when user clicks on print share option in spanish content
+        Given user is navigating to "/espanol/cancer/sobrellevar/sentimientos/relajarse"
+        When user clicks on "print" share option at the "bottom"
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                      |
+            | prop4     | D=pev1                                                                     |
+            | prop67    | D=pageName                                                                 |
+            | prop43    | D=v43                                                                      |
+            | prop68    | D=v68                                                                      |
+            | prop8     | spanish                                                                    |
+            | evar2     | D=c8                                                                       |
+            | evar43    | BodyBottom\|Print                                                          |
+            | evar68    | BodyBottom                                                                 |
+            | pageURL   | https://{CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse |
+            | pageName  | {CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse         |
+            | event17   |                                                                            |
+            | channel   | About Cancer - Spanish                                                     |
+            | pev2      | PageOptions:LinkClick                                                      |
+            | linkType  | lnk_o                                                                      |
+            | link      | Imprimir                                                                   |
+
+    Scenario: Click event fires when user clicks on email share option in spanish content
+        Given user is navigating to "/espanol/cancer/sobrellevar/sentimientos/relajarse"
+        When user clicks on "email" share option at the "top"
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                      |
+            | prop4     | D=pev1                                                                     |
+            | prop67    | D=pageName                                                                 |
+            | prop43    | D=v43                                                                      |
+            | prop68    | D=v68                                                                      |
+            | prop8     | spanish                                                                    |
+            | evar2     | D=c8                                                                       |
+            | evar43    | BodyTop\|Email                                                             |
+            | evar68    | BodyTop                                                                    |
+            | pageURL   | https://{CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse |
+            | pageName  | {CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse         |
+            | event17   |                                                                            |
+            | channel   | About Cancer - Spanish                                                     |
+            | pev2      | PageOptions:LinkClick                                                      |
+            | linkType  | lnk_o                                                                      |
