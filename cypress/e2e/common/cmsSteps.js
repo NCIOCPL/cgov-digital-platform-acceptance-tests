@@ -106,6 +106,13 @@ And('the content item with url {string} does not exist in the list of content', 
 });
 
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
+    cy.on('uncaught:exception', (err, runnable) => {
+        if (err.message.includes('Failed to load script https://assets.adobedtm.com')) {
+            return false;
+        }
+        return true
+    })
+
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
 });
 
@@ -325,7 +332,7 @@ And('user deletes test file with url {string}', (url) => {
 
 //************************************Adding Citations***************************************************
 When('user clicks on Add Citation button', () => {
-    cy.get("input[value='Add Citation']").click({force:true})
+    cy.get("input[value='Add Citation']").click({ force: true })
 })
 
 Then('{string} label is displayed {int} times', (contentType, num) => {
