@@ -30,7 +30,7 @@ And('footer is displayed', () => {
 
 And('page options are displayed', () => {
     cy.get('.cgdp-page-options').should('be.visible')
-    .and('have.length',2);
+        .and('have.length', 2);
 });
 
 And('content is displayed', () => {
@@ -45,7 +45,7 @@ And('the text {string} is displayed', (str) => {
     cy.get(`p:contains("${str}")`).should('be.visible');
 });
 
-Then('all displayed events have a future date', () => {
+Then('all displayed events have a future date or text {string} is displayed', (noEventsText) => {
     const months = [
         'January',
         'February',
@@ -65,27 +65,34 @@ Then('all displayed events have a future date', () => {
     const currMonth = date.getMonth();
     const currDay = date.getDate();
 
-
-    cy.get('div.event-date-time').each(($el) => {
-        const monthAndDay = ($el[0].innerText.split(','))[0];
-        const eventMonth = monthAndDay.split(' ')[0];
-        const eventDay = parseInt(monthAndDay.split(' ')[1]);
-        const eventYear =parseInt(($el[0].innerText.split(','))[1].trim());
-        // get index of month that matches event month
-        const monthOffset = months.findIndex( element => element === eventMonth);
-        //start with verifying the year - if year is less than current fail
-        if (eventYear < currYear) {
-            throw new Error("event displayed is from the past year")
-            // next check month : if the year is current and month is older than current month then fail
-        } else if ((monthOffset < currMonth) && (eventYear == currYear)) {
-            throw new Error(`event displayed is from the previous month/months: ${eventMonth}`)
-            //lastly if year and month passes, check the day - if the month and year are current, fail if its older day
-        } else if (((eventDay) < currDay) && (monthOffset == currMonth) && (eventYear == currYear)) {
-            throw new Error(`event displayed is from the previous day/days: ${monthAndDay}`)
+    const eventsDateLocator = 'div.event-date-time';
+    cy.document().then((document) => {
+        const events = document.querySelector(eventsDateLocator);
+        if (events === null) {
+            cy.get('div.views-element-container').should('include.text', noEventsText);
         } else {
-            //if all above check passes then pass the test
-            expect(true).to.be.true
-        }
+            cy.get(eventsDateLocator).each(($el) => {
+                const monthAndDay = ($el[0].innerText.split(','))[0];
+                const eventMonth = monthAndDay.split(' ')[0];
+                const eventDay = parseInt(monthAndDay.split(' ')[1]);
+                const eventYear = parseInt(($el[0].innerText.split(','))[1].trim());
+                // get index of month that matches event month
+                const monthOffset = months.findIndex(element => element === eventMonth);
+                //start with verifying the year - if year is less than current fail
+                if (eventYear < currYear) {
+                    throw new Error("event displayed is from the past year")
+                    // next check month : if the year is current and month is older than current month then fail
+                } else if ((monthOffset < currMonth) && (eventYear == currYear)) {
+                    throw new Error(`event displayed is from the previous month/months: ${eventMonth}`)
+                    //lastly if year and month passes, check the day - if the month and year are current, fail if its older day
+                } else if (((eventDay) < currDay) && (monthOffset == currMonth) && (eventYear == currYear)) {
+                    throw new Error(`event displayed is from the previous day/days: ${monthAndDay}`)
+                } else {
+                    //if all above check passes then pass the test
+                    expect(true).to.be.true
+                }
 
+            })
+        }
     })
 });
