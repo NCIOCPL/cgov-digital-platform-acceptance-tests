@@ -4,7 +4,7 @@ Feature: Basic checks to ensure production site is up and running
     Scenario: Home page is loading on all sites
         Given user is navigating to "/"
         Then mega menu is displayed
-        And main categories titles are "Small Business Funding,Commercialize Your Technology,Portfolio,Events,About"
+        And main categories titles are "Small Business Funding,Commercialization,Portfolio,Events,About"
         And footer is displayed
 
     Scenario Outline: Different contents are loaded on all sites
@@ -24,4 +24,4 @@ Feature: Basic checks to ensure production site is up and running
 
     Scenario: SBIR events
         Given user is navigating to "/events"
-        Then all displayed events have a future date
+        Then all displayed events have a future date or text "We have no events posted right now, but check back soon for a listing of upcoming events and meetings." is displayed 
