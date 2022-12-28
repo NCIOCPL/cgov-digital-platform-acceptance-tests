@@ -1,13 +1,13 @@
 @smoke
-Feature: Basic checks to ensure production site is up and running
+Feature: Basic checks to ensure production SBIR site is up and running
 
-    Scenario: Home page is loading on all sites
+    Scenario: SBIR home page is loading
         Given user is navigating to "/"
         Then mega menu is displayed
         And main categories titles are "Small Business Funding,Commercialization,Portfolio,Events,About"
         And footer is displayed
 
-    Scenario Outline: Different contents are loaded on all sites
+    Scenario Outline: SBIR different content pages are loaded correctly
         Given user is navigating to "<url>"
         And page title is "<title>"
         And page options are displayed
@@ -17,7 +17,7 @@ Feature: Basic checks to ensure production site is up and running
             | url                            | title                |
             | /small-business-funding/grants | NCI SBIR/STTR Grants |
 
-    Scenario: English 404 page
+    Scenario: SBIR English 404 page
         Given user is navigating to "/chicken" with a 404 status
         Then page title is "Page Not Found"
         And the text "We can't find the page you're looking for, but don’t let that stop your entrepreneurial journey! Follow the links below for some key information on the NCI SBIR/STTR program." is displayed

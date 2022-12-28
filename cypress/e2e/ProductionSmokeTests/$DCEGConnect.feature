@@ -7,7 +7,7 @@ Feature: Basic checks to ensure DCEG connect production site is up and running
         And all mega menu sections have the correct "/connect-prevention-study"
         And footer is displayed
 
-    Scenario: Different contents are loaded on all sites
+    Scenario: Different contents are loaded on DCEG connect
         Given user is navigating to "/connect-prevention-study/what-to-expect "
         And page title is "What to Expect"
         And page options are displayed

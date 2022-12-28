@@ -1,14 +1,14 @@
 @smoke
-Feature: Basic checks to ensure production site is up and running
+Feature: Basic checks to ensure production sites (Cgov Eng, Cgov Spanish, MyPart. NCI-Connect and Nano) are up and running
 
-    Scenario Outline: Home page is loading on all sites
+    Scenario Outline: Home page is loaded on Cgov Eng, Cgov Spanish, MyPart. NCI-Connect and Nano
         Given user is navigating to "<url>"
         Then mega menu is displayed
         And main categories titles are "<titles>"
         And all mega menu sections have the correct "<url>"
         And footer is displayed
         Examples:
-            | url                         | titles                                                                                         |
+            | url                         | titles                                                                                         | 
             | /                           | About Cancer,Cancer Types,Research,Grants & Training,News & Events,About NCI                   |
             | /espanol                    | El cáncer,Tipos de cáncer,Investigación,Subvenciones y capacitación,Noticias,Nuestro instituto |
             | /pediatric-adult-rare-tumor | Rare Tumors,Research,Participate,Support,News,About                                            |
@@ -16,7 +16,7 @@ Feature: Basic checks to ensure production site is up and running
             | /nano                       | Cancer & Nanotech,Research,Grants & Training,News & Events,About NSDB                          |
 
 
-    Scenario Outline: Different contents are loaded on all sites
+    Scenario Outline: Different content pages are loaded on Cgov Eng, Cgov Spanish, Nano
         Given user is navigating to "<url>"
         And page title is "<title>"
         And page options are displayed
@@ -31,7 +31,7 @@ Feature: Basic checks to ensure production site is up and running
             | /types/liver/hp/adult-liver-treatment-pdq                                                        | Adult Primary Liver Cancer Treatment (PDQ®)–Health Professional Version | Español        |
             | /nano/about/contact/grodzinski-piotr                                                             | Piotr Grodzinski, Ph.D.                                                 | none           |
 
-    Scenario Outline: Blogs and Press release
+    Scenario Outline: Blogs and Press release are loaded as expected on cgov
         Given user is navigating to "<url>"
         And page title is "<title>"
         And the list of posts is displayed
@@ -64,7 +64,7 @@ Feature: Basic checks to ensure production site is up and running
         Then user is redirected to "/CTS.Print/Display" with generated "printid"
         And page title is "Your Clinical Trials Search Results"
 
-    Scenario Outline: Thumbnail images check
+    Scenario Outline: Thumbnail images check on cgov news and events
         Given user is navigating to "<url>"
         Then thumbnail images are displayed
         And the image src contains "/files/styles/cgov_thumbnail/public/cgov_image/"
@@ -74,7 +74,7 @@ Feature: Basic checks to ensure production site is up and running
             | /news-events      |
             | /espanol/noticias |
 
-    Scenario Outline: English 404 page
+    Scenario Outline: English 404 page on Cgov Eng, MyPart, NCI-Connect, DCEG Connect and Nano
         Given user is navigating to "<url>" with a 404 status
         Then page title is "Page Not Found"
         And the text "We can't find the page you're looking for." is displayed
@@ -87,7 +87,7 @@ Feature: Basic checks to ensure production site is up and running
             | /nano/chicken                       |
             | /connect-prevention-study/chicken   |
 
-    Scenario Outline: Spanish 404 page
+    Scenario Outline: CGOV Spanish 404 page
         Given user is navigating to "<url>" with a 404 status
         Then page title is "No se encontró la página"
         And the text "No podemos encontrar la página que busca." is displayed
