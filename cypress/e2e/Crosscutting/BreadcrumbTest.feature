@@ -57,7 +57,8 @@ Feature: As a user I want to see breadcrumb links so I can navigate website more
       | prop4     | D=pev1                               |
       | prop8     | english                              |
       | prop68    | D=v68                                |
-      | prop47    | L2\|Hidden Pets                      |
+      | prop46    | D=v46                                |
+      | evar46    | L2\|Hidden Pets                      |
       | evar2     | D=c8                                 |
       | evar68    | Breadcrumbs                          |
       | pageURL   | https://{CANONICAL_HOST}/pets/frisco |

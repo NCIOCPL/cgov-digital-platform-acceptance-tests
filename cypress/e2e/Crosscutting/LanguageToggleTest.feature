@@ -43,42 +43,42 @@ Feature: Language toggle tests
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                               |
-            | prop4     | D=pev1                                              |
-            | prop67    | D=pageName                                          |
-            | prop52    | D=v52                                               |
-            | prop68    | D=v68                                               |
-            | prop8     | english                                             |
-            | evar2     | D=c8                                                |
-            | evar52    | PreHeader\|Language\|Link Click\|English to Spanish |
-            | evar68    | PreHeader                                           |
-            | pageURL   | https://{CANONICAL_HOST}/                           |
-            | pageName  | {CANONICAL_HOST}/                                   |
-            | event63   |                                                     |
-            | channel   | NCI Homepage                                        |
-            | pev2      | PreHeader:LinkClick                                 |
-            | linkType  | lnk_o                                               |
-            | link      | Español                                             |
+            | parameter | value                                    |
+            | prop4     | D=pev1                                   |
+            | prop67    | D=pageName                               |
+            | prop52    | D=v52                                    |
+            | prop68    | D=v68                                    |
+            | prop8     | english                                  |
+            | evar2     | D=c8                                     |
+            | evar52    | Language\|Link Click\|English to Spanish |
+            | evar68    | PreHeader                                |
+            | pageURL   | https://{CANONICAL_HOST}/                |
+            | pageName  | {CANONICAL_HOST}/                        |
+            | event83   |                                          |
+            | channel   | NCI Homepage                             |
+            | pev2      | PreHeader:LinkClick                      |
+            | linkType  | lnk_o                                    |
+            | link      | Español                                  |
 
-    Scenario: Languager toggle click event
+    Scenario: Scenario: Spanish language toggle click event
         Given user is navigating to "/espanol"
         When user clicks on language toggle
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                               |
-            | prop4     | D=pev1                                              |
-            | prop67    | D=pageName                                          |
-            | evar52    | PreHeader\|Language\|Link Click\|Spanish to English |
-            | evar68    | PreHeader                                           |
-            | prop8     | spanish                                             |
-            | evar2     | D=c8                                                |
-            | prop52    | D=v52                                               |
-            | prop68    | D=v68                                               |
-            | pageURL   | https://{CANONICAL_HOST}/espanol                    |
-            | pageName  | {CANONICAL_HOST}/espanol                            |
-            | event63   |                                                     |
-            | channel   | NCI Home - Spanish                                  |
-            | pev2      | PreHeader:LinkClick                                 |
-            | linkType  | lnk_o                                               |
-            | link      | English                                             |
+            | parameter | value                                    |
+            | prop4     | D=pev1                                   |
+            | prop67    | D=pageName                               |
+            | evar52    | Language\|Link Click\|Spanish to English |
+            | evar68    | PreHeader                                |
+            | prop8     | spanish                                  |
+            | evar2     | D=c8                                     |
+            | prop52    | D=v52                                    |
+            | prop68    | D=v68                                    |
+            | pageURL   | https://{CANONICAL_HOST}/espanol         |
+            | pageName  | {CANONICAL_HOST}/espanol                 |
+            | event83   |                                          |
+            | channel   | NCI Home - Spanish                       |
+            | pev2      | PreHeader:LinkClick                      |
+            | linkType  | lnk_o                                    |
+            | link      | English                                  |
