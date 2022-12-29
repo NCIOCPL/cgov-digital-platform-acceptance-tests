@@ -62,7 +62,7 @@ And('user selects {string} checkbox', (visible) => {
 })
 
 And('description reads {string}', (title) => {
-    cy.get(`[id='main'] p:contains('${title}')`).should('be.visible')
+    cy.get(`p:contains('${title}')`).should('be.visible')
 })
 
 Then('Selected Research pages list contains the following links', (dataTable) => {
@@ -74,10 +74,6 @@ Then('Selected Research pages list contains the following links', (dataTable) =>
 
         }
     }
-})
-
-And('the description reads {string}', (title) => {
-    cy.get(`div[id='cgvBody'] p:contains("${title}")`).should('be.visible')
 })
 
 And('list item number {int} has an exit Disclaimer displayed', (num) => {
