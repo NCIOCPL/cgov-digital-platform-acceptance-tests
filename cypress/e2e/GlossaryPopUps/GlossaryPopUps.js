@@ -16,7 +16,7 @@ And('user expands accordion section {string}', (section) => {
 });
 
 When('user is clicking on definition for {string}', (termName) => {
-    cy.get('a.definition').contains(termName).click();
+    cy.get(`a.definition:contains("${termName}")`).first().click();
     cy.wait(500);
 });
 

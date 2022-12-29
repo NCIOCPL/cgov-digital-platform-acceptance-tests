@@ -6,6 +6,12 @@ And('Spanish chat pop up is displayed', () => {
 });
 
 When('user clicks on chat button', () => {
-    cy.get('#proactive-chat-link').click();
+    cy.window().then(win => {
+        //stubbing the open window to prevent the call to open it,
+        //but still triggering the click event
+        const openWinStub = cy.stub(win, 'open')
+        cy.get('#proactive-chat-link').trigger('click', { followRedirect: false });
+    })
+
     cy.wait(2000);
 });
