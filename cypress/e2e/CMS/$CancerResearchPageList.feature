@@ -72,7 +72,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
             | Article to test Related Resources | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
             | Google Link                       | https://www.google.com/       | N/A                                                  |
             | Media Link Override Title         | {TEST_SITE_SECTION}/test-file | N/A                                                  |
-        And the description reads "Article to test Related Resources - Meta Description"
+        And description reads "Article to test Related Resources - Meta Description"
         And list item number 2 has an exit Disclaimer displayed
         And list item number 3 has pdf icon displayed
 

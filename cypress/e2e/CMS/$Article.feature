@@ -31,15 +31,20 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user selects "Reviewed Date" checkbox
         And user selects "Updated Date" checkbox
         When user clicks on Add Citation button
+        And browser waits
+        When user clicks on Add Citation button
+        And browser waits
+        When user clicks on Add Citation button
+        And browser waits
+        When user clicks on Add Citation button
+        And browser waits
         And user types "PubMed Citation" in the 1 citation body field
         And user fills out the following fields
             | fieldLabel | value    | field_name                                  |
             | PubMed ID  | 24037918 | field_citation[0][subform][field_pubmed_id] |
-        When user clicks on Add Citation button
         And user types "Citation with an external link " in the 2 citation body field
         And user clicks on icon to add a link to 2 citation
         And user types "https://www.yahoo.com/" in the citation url field and saves it
-        When user clicks on Add Citation button
         And user types "Plain Citation" in the 3 citation body field
         And user selects "Display" from "Public Use Text" dropdown
         And user selects "Published" from "Save as" dropdown
@@ -128,6 +133,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | Meta Description         | Automated Test Article Meta Description Edited    | field_page_description         |
             | Feature Card Description | Automated Test Article - Feature Card Desc Edited | field_feature_card_description |
         And user clicks on "Add Body Section" to add a body section
+        And browser waits
         And user enters "Article Heading2" as 2 body section heading
         And user fills out 2 "Body" text area with "This is a description of article content type under heading2."
         And user removes the Lead Image
@@ -143,7 +149,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user selects "Quick Publish" from workflow actions
 
 
-   Scenario: Verify edited content
+    Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "test-article-edited"
         Then page title is "Automated Test Article Edited"
         And the lead image is matching the earlier selected image

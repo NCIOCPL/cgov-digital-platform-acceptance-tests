@@ -325,15 +325,14 @@ And('user deletes test file with url {string}', (url) => {
 
 //************************************Adding Citations***************************************************
 When('user clicks on Add Citation button', () => {
-    cy.get("input[value='Add Citation']").click({ force: true });
-    cy.wait(1500)
+    cy.get("input[value='Add Citation']").click({force:true})
 })
 
 Then('{string} label is displayed {int} times', (contentType, num) => {
     cy.get(`.layout-region.layout-region-node-main label:contains('${contentType}')`).should('have.length', num)
 })
 
-            //this needs to be pass, the iframe locators are the same.
+//this needs to be pass, the iframe locators are the same.
 And('user types {string} in the {int} citation body field', (value, num) => {
     cy.getNthIframe("iframe[title='Rich Text Editor, Citation Content field']", num - 1).find('p').type(value)
 })
@@ -349,20 +348,20 @@ And('user types {string} in the citation url field and saves it', (link) => {
 })
 
 And('{string} titled citation paragraph is displayed', (title) => {
-    cy.get(`#cgvCitationSl`).should('include.text',title)
+    cy.get(`#cgvCitationSl`).should('include.text', title)
 })
 
 And('citation number {int} titled {string} is a {string} link with an url {string}', (num, citationText, pubMed, link) => {
-    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text',citationText);
-    cy.get('@cit').find('a').should('include.text',pubMed).and('have.attr', 'href', link);
+    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text', citationText);
+    cy.get('@cit').find('a').should('include.text', pubMed).and('have.attr', 'href', link);
 })
-            // this step does not exist in the front end 
+// this step does not exist in the front end 
 And('citation number {int} titled {string} links to {string} and exit disclaimer is displayed', (num, citText, linkUrl) => {
-    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('include.text',citText);
+    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('include.text', citText);
     cy.get('@cit').find('a').should('have.attr', 'href', linkUrl);
 })
 
 And('citation number {int} titled {string} has no link', (num, citText) => {
-    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text',citText);
+    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text', citText);
     cy.get('@cit').find('a').should('not.exist')
 })

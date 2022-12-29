@@ -1,10 +1,10 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
 function createRandomStr() {
-    var result           = '';
-    var characters       = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < 5; i++ ) {
+    for (var i = 0; i < 5; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
@@ -88,7 +88,7 @@ And('{int} section heading reads {string}', (num, title) => {
 })
 
 And('{int} description reads {string}', (contentText) => {
-    cy.get(`div[class='medium-9 columns contentzone has-section-nav'] p:contains('${contentText}')`).should('be.visible')
+    cy.get(`p:contains('${contentText}')`).should('be.visible')
 })
 
 And('public use text has a link {string} with href {string}', (linkText, linkUrl) => {
@@ -116,6 +116,7 @@ let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
     cy.get('span:contains("Promotional Image")').parent().first().as('imageUpload').click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
+    cy.wait(2000)
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
 })
@@ -142,10 +143,10 @@ And('the lead image is matching the earlier selected image', () => {
 And('user removes the Lead Image', () => {
     cy.get('#edit-field-image-article-current-items-0-remove-button').click({ force: true })
 })
-//this step fails without the wait 
+
 And('user clicks on {string} to add a body section', (option) => {
-    cy.get(`input[value='${option}']`).click({ force: true })
-    cy.wait(2000)
+    cy.get(`input[value='${option}']`).click();
+    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
 })
 
 And('user removes the Promo Image', () => {
