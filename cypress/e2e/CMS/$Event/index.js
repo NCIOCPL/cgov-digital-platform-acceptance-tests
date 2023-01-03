@@ -14,18 +14,30 @@ And('user selects {int} event series from {string} autosuggest', (position, fiel
 And('Event Start Date & Time date field is displaying todays date', () => {
     const date = new Date();
     const currYear = date.getFullYear();
-    const currMonth = date.getMonth();
-    const currDay = date.getDate();
-    const expectedDate = `${currYear}-${currMonth + 1}-${currDay}`
+    let currMonth = date.getMonth();
+    if ((currMonth + 1) < 10) {
+        currMonth = `0${currMonth + 1}`
+    }
+    let currDay = date.getDate();
+    if (currDay < 10) {
+        currDay = `0${currDay}`
+    }
+    const expectedDate = `${currYear}-${currMonth}-${currDay}`
     cy.get('input#edit-field-event-start-date-0-value-date').should('have.attr', 'value', expectedDate);
 });
 
 And('Event End Date & Time date field is displaying todays date', () => {
     const date = new Date();
     const currYear = date.getFullYear();
-    const currMonth = date.getMonth();
-    const currDay = date.getDate();
-    const expectedDate = `${currYear}-${currMonth + 1}-${currDay}`
+    let currMonth = date.getMonth();
+    if ((currMonth + 1) < 10) {
+        currMonth = `0${currMonth + 1}`
+    }
+    let currDay = date.getDate();
+    if (currDay < 10) {
+        currDay = `0${currDay}`
+    }
+    const expectedDate = `${currYear}-${currMonth}-${currDay}`
     cy.get('input#edit-field-event-end-date-0-value-date').should('have.attr', 'value', expectedDate);
 });
 
@@ -35,7 +47,7 @@ And('user enters {string} in the {string} time field', (value, fieldLabel) => {
 
 let imageSrc;
 And('user selects {int} Lead Image from the list of images', (num) => {
-    cy.get('span:contains("Lead Image")').parent().as('imageUpload').click()
+    cy.get('span:contains("Lead Image")').parent().click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -43,7 +55,7 @@ And('user selects {int} Lead Image from the list of images', (num) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().as('imageUpload').click()
+    cy.get('span:contains("Promotional Image")').parent().first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
