@@ -8,7 +8,10 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "cypress:smoke": "cypress run --spec \"cypress/e2e/ProductionSmokeTests/*.feature\"",
-    "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/*.feature\""
+    "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/*.feature\"",
+    "backstop:reference": "backstop reference --config='backstop.config.js'",
+    "backstop:test": "backstop test --config='backstop.config.js'",
+    "backstop:approve": "backstop approve --config='backstop.config.js'"
   },
   "repository": {
     "type": "git",
@@ -21,15 +24,16 @@
   },
   "homepage": "https://github.com/NCIOCPL/cgov-digital-platform-acceptance-tests#readme",
   "dependencies": {
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "glob": "^8.0.3"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions":"true",
+    "nonGlobalStepDefinitions": "true",
     "stepDefinitions": "cypress/e2e",
-    "commonPath":"cypress/e2e/common"
-  
+    "commonPath": "cypress/e2e/common"
   },
   "devDependencies": {
+    "backstopjs": "^6.0.0",
     "cypress": "^10.1.0"
   }
 }
