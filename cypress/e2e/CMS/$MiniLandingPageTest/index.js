@@ -1,6 +1,44 @@
 /// <reference types="Cypress" />
+import { should } from 'chai';
 import { And, Then, Given, When } from 'cypress-cucumber-preprocessor/steps';
+function createRandomStr() {
+    var result = '';
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < 5; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+let randomNum = createRandomStr();
+const siteSection = Cypress.env('test_site_section');
+const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
+And('user fills out the following fields', (dataTable) => {
+    for (const { fieldLabel, value, field_name } of dataTable.hashes()) {
+        if (fieldLabel === 'Pretty URL') {
+            value = `${value}-${randomNum}`;
+        }
+        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
+        cy.get('@inputField').type(value);
+    }
+});
+
+And('user clicks on title with url {string} from the list of content', (contentHref) => {
+    cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
+});
+
+And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
+    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).parent().parent().find('input.form-checkbox').check();
+});
+
+Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+And('the content item with url {string} does not exist in the list of content', (url) => {
+    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).should('not.exist');
+});
 
 let imageSrc;
 And('user selects {int} Promotional Image from the list of images', (num) => {
@@ -48,7 +86,7 @@ And('Button Display dropdown has default value {string}', (title) => {
 })
 
 And('user enters {string}', (value) => {
-    cy.get('#edit-field-list-description-0-value').type(value)
+    cy.get("textarea[name*='field_raw_html']").type(value)
 })
 
 And('user clicks {string} link in the Dynamic List area', (linkBtn) => {
@@ -103,13 +141,83 @@ And('user selects {string} from Save as dropdown', (title) => {
 
 And('user selects {string} item from main page content', (title) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains("${title}")`).parent().find('input').check();
-
 })
 
-And('user selects {string} from Display dropdown',(dropdown) => {
+And('user selects {string} from Display dropdown', (dropdown) => {
     cy.get("select[name='field_landing_contents[5][subform][field_source_view][0][display_id]']").select(dropdown)
 })
 
 And('user clicks on {string} button to link to a media', (link) => {
     cy.get(`summary[aria-controls^="edit-field-media-link"]`).click({ force: true });
 });
+
+And('Content Heading reads {string}', (title) => {
+    cy.get(`main[id='main-content']:contains('${title}')`)
+})
+
+And('HTML Content reads {string}', (htmlContent) => {
+    cy.get(`p:contains('${htmlContent}')`).should('be.visible')
+})
+
+And('feature card row displays the following cards', (dataTable) => {
+    for (const { title, url, description } of dataTable.hashes()) {
+        const siteSection = Cypress.env("test_site_section");
+        const replacedTestSiteSection = url.replace("{TEST_SITE_SECTION}", siteSection);
+        cy.get(`div.feature-card h3:contains('${title}')`).should('be.visible')
+        if (description !== 'N/A') {
+            cy.get(`div.feature-card p:contains('${description}')`).should('be.visible')
+        }
+        cy.get(`div.feature-card a[href="${replacedTestSiteSection}"]`).should('be.visible')
+    }
+})
+
+And('managed list has the following links', (dataTable) => {
+    for (const { title, url, description } of dataTable.hashes()) {
+
+        const replacedTestSiteSection = url.replace("{TEST_SITE_SECTION}", siteSection);
+        cy.get(`div.managed.list h3:contains('${title}')`).should('be.visible')
+        if (description !== 'N/A') {
+            cy.get(`div.managed.list p:contains('${description}')`).should('be.visible')
+        }
+        cy.get(`div.managed.list a[href="${replacedTestSiteSection}"]`).should('be.visible')
+    }
+})
+
+And('borderless card with {string} accent displays the following', (accent, dataTable) => {
+    cy.get(`div.${accent} .borderless-card`).should('be.visible')
+    for (const { title, link } of dataTable.hashes()) {
+        const replacedTestSiteSection = link.replace("{TEST_SITE_SECTION}", siteSection);
+        cy.get(`div.${accent} .borderless-card h2:contains('${title}')`).should('be.visible')
+        cy.get(`div.${accent} .borderless-card a[href="${replacedTestSiteSection}"]`).should('be.visible')
+    }
+})
+
+And('List Item Title is displayed as {string}', (title) => {
+    cy.get(`h2:contains('${title}')`).should('be.visible')
+})
+
+And('the button with text {string} appears with href {string}', (linkText, href) => {
+    const replacedTestSiteSection = href.replace("{TEST_SITE_SECTION}", siteSection);
+    cy.get('a.borderless-button').should('have.text', linkText)
+    cy.get('a.borderless-button').should('have.attr', 'href', replacedTestSiteSection)
+})
+
+And('the Raw HTML Content reads the following {string}', (htmlContent) => {
+    cy.get(`p:contains('${htmlContent}')`).should('be.visible')
+})
+
+And('{int} links are displayed under the Dynamic List Title', (num) => {
+    cy.get('.dynamic.list a.title').should('have.length', num)
+})
+
+And('the Dynamic List Title reads as {string}', (title) => {
+    cy.get('.dynamic.list h2').should('have.text',title)
+})
+
+And('view title displays text {string}', (title) => {
+    cy.get("div[class='viewsreference--view-title']").should('be.visible').and('include.text',title)
+})
+
+
+
+
