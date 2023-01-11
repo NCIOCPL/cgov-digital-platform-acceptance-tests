@@ -16,7 +16,9 @@ Feature: Adding a custom site logo
         And user types " Test alt tag" in the "The accessible label for the home page link." field
         And user checks "Use a custom logo?" checkbox
         When user uploads "desktopTest.svg" in "desktop" logo image
+        And system waits for file upload process
         And user uploads "mobileTest.svg" in "mobile" logo image
+        And system waits for file upload process
         And user clicks on "Pages" option in Visibility section
         And user types "/about-cancer/coping/feelings" in the "Pages" text field
         And user saves block
@@ -89,6 +91,7 @@ Feature: Adding a custom site logo
         And user saves editing block
         Then error "If you use a custom logo you must supply both logos." is displayed
         When user uploads "mobileTest.svg" in "mobile" logo image
+        And system waits for file upload process
         And user saves editing block
         Then error "If you use a custom logo you must supply both logos." is displayed
 
