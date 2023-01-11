@@ -72,19 +72,19 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                               |
-            | prop4     | D=pev1                              |
-            | prop67    | D=pageName                          |
-            | prop36    | D=v36                               |
-            | prop68    | D=v68                               |
-            | prop8     | english                             |
-            | evar2     | D=c8                                |
-            | evar36    | RightEdge\|Back To Top\|Back To Top |
-            | evar68    | RightEdge                           |
-            | pageURL   | https://{CANONICAL_HOST}/           |
-            | pageName  | {CANONICAL_HOST}/                   |
-            | event16   |                                     |
-            | channel   | NCI Homepage                        |
-            | pev2      | Footer:LinkClick                    |
-            | linkType  | lnk_o                               |
-            | link      | BACK TO TOP                         |
+            | parameter | value                                |
+            | prop4     | D=pev1                               |
+            | prop67    | D=pageName                           |
+            | prop38    | D=v38                                |
+            | prop68    | D=v68                                |
+            | prop8     | english                              |
+            | evar2     | D=c8                                 |
+            | evar38    | Right Edge\|Back To Top\|Back To Top |
+            | evar68    | Right Edge                           |
+            | pageURL   | https://{CANONICAL_HOST}/            |
+            | pageName  | {CANONICAL_HOST}/                    |
+            | event21   |                                      |
+            | channel   | NCI Homepage                         |
+            | pev2      | RightEdge:LinkClick                  |
+            | linkType  | lnk_o                                |
+            | link      | BACK TO TOP                          |

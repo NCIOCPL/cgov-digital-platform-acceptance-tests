@@ -50,7 +50,6 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | 2019  | false      |
             | 2018  | false      |
             | 2017  | false      |
-            | 2016  | false      |
         When user clicks on "2019" accordion
         Then "2019" section is expanded
         And months links are displayed
@@ -60,7 +59,6 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | 2019  | true       |
             | 2018  | true       |
             | 2017  | false      |
-            | 2016  | false      |
 
 
     Scenario Outline: RAS blog main page elements are present

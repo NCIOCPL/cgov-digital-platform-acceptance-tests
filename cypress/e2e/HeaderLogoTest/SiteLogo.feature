@@ -111,5 +111,6 @@ Feature: Adding a custom site logo
         Then page title is "Configure block"
         And user clicks on "Pages" option in Visibility section
         And user clears out "Pages" text field
+        And user selects "Show for the listed pages" radio button
         And user saves editing block
         Then the confirmation text "The block configuration has been saved." appears on a screen
