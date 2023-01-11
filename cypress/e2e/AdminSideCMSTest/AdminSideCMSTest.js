@@ -7,9 +7,9 @@ const password = Cypress.env('admin_password');
 When('user enters credentials', () => {
     expect(username, 'username was set').to.be.a('string').and.not.be.empty
     // the password value should not be shown
-     if (typeof password !== 'string' || !password || password === '') {
-      throw new Error('Missing password value, set using CYPRESS_admin_password=...')
-}
+    if (typeof password !== 'string' || !password || password === '') {
+        throw new Error('Missing password value, set using CYPRESS_admin_password=...')
+    }
     cy.get('input#edit-name').type(username, { log: false });
     cy.get('input#edit-pass').type(password, { log: false });
 });
@@ -86,4 +86,8 @@ And('each username is a link', () => {
             cy.get(userLocator[i]).find('a').should('have.attr', 'href');
         }
     });
+});
+
+Then('the error message {string} appears', (errorMessage) => {
+cy.get('div.item-list ul li').should('exist').and('include.text',errorMessage)
 });

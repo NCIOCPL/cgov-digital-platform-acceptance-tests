@@ -24,3 +24,7 @@ And('browser waits', () => {
 And('page title is {string}',(title)=>{
 cy.get(`h1:contains('${title}')`).should('be.visible');
 });
+
+And('system waits for file upload process', () => {
+  cy.get('.throbber', { timeout: 40000 }).should('not.exist')
+});

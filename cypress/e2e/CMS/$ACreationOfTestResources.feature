@@ -31,5 +31,6 @@
             | Name          | Test File for Related Resources | name[0][value]      |
             | Browser Title | Test File for Related Resources | field_browser_title |
         And user uploads test file "text.txt"
+        And system waits for file upload process
         And user selects "Published" from "Save as" dropdown
         Then user saves the content page
