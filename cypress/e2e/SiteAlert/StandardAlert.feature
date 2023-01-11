@@ -72,7 +72,7 @@ Feature: As a site admin I want to configure site alert
             | parameter | value                                     |
             | prop4     | D=pev1                                    |
             | prop67    | D=pageName                                |
-            | evar52    | PreHeader\|Standard Alert\|Expand\|Expand |
+            | evar52    | Standard Alert\|Expand\|Expand |
             | evar68    | PreHeader                                 |
             | prop8     | english                                   |
             | evar2     | D=c8                                      |
@@ -80,7 +80,7 @@ Feature: As a site admin I want to configure site alert
             | prop68    | D=v68                                     |
             | pageURL   | https://{CANONICAL_HOST}/                 |
             | pageName  | {CANONICAL_HOST}/                         |
-            | event63   |                                           |
+            | event83   |                                           |
             | channel   | NCI Homepage                              |
             | pev2      | PreHeader:LinkClick                       |
             | linkType  | lnk_o                                     |
@@ -96,7 +96,7 @@ Feature: As a site admin I want to configure site alert
             | parameter | value                                         |
             | prop4     | D=pev1                                        |
             | prop67    | D=pageName                                    |
-            | evar52    | PreHeader\|Standard Alert\|Minimize\|Minimize |
+            | evar52    | Standard Alert\|Minimize\|Minimize |
             | evar68    | PreHeader                                     |
             | prop8     | english                                       |
             | evar2     | D=c8                                          |
@@ -104,7 +104,7 @@ Feature: As a site admin I want to configure site alert
             | prop68    | D=v68                                         |
             | pageURL   | https://{CANONICAL_HOST}/                     |
             | pageName  | {CANONICAL_HOST}/                             |
-            | event63   |                                               |
+            | event83   |                                               |
             | channel   | NCI Homepage                                  |
             | pev2      | PreHeader:LinkClick                           |
             | linkType  | lnk_o                                         |
@@ -119,7 +119,7 @@ Feature: As a site admin I want to configure site alert
             | parameter | value                                                                      |
             | prop4     | D=pev1                                                                     |
             | prop67    | D=pageName                                                                 |
-            | evar52    | PreHeader\|Standard Alert\|Link Click\|What people with cancer should know |
+            | evar52    | Standard Alert\|Link Click\|What people with cancer should know |
             | evar68    | PreHeader                                                                  |
             | prop8     | english                                                                    |
             | evar2     | D=c8                                                                       |
@@ -127,7 +127,7 @@ Feature: As a site admin I want to configure site alert
             | prop68    | D=v68                                                                      |
             | pageURL   | https://{CANONICAL_HOST}/                                                  |
             | pageName  | {CANONICAL_HOST}/                                                          |
-            | event63   |                                                                            |
+            | event83   |                                                                            |
             | channel   | NCI Homepage                                                               |
             | pev2      | PreHeader:LinkClick                                                        |
             | linkType  | lnk_o                                                                      |
@@ -142,7 +142,7 @@ Feature: As a site admin I want to configure site alert
             | parameter | value                                       |
             | prop4     | D=pev1                                      |
             | prop67    | D=pageName                                  |
-            | evar52    | PreHeader\|Standard Alert\|Dismiss\|Dismiss |
+            | evar52    | Standard Alert\|Dismiss\|Dismiss |
             | evar68    | PreHeader                                   |
             | prop8     | english                                     |
             | evar2     | D=c8                                        |
@@ -150,7 +150,7 @@ Feature: As a site admin I want to configure site alert
             | prop68    | D=v68                                       |
             | pageURL   | https://{CANONICAL_HOST}/                   |
             | pageName  | {CANONICAL_HOST}/                           |
-            | event63   |                                             |
+            | event83   |                                             |
             | channel   | NCI Homepage                                |
             | pev2      | PreHeader:LinkClick                         |
             | linkType  | lnk_o                                       |

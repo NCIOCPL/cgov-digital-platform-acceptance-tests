@@ -52,11 +52,12 @@ Feature: As a user, I want to be able to view and interact with the Mega Menu
             | parameter | value                             |
             | prop4     | D=pev1                            |
             | prop67    | D=pageName                        |
-            | prop53    | Primary Nav\|A                    |
+            | prop53    | D=v76                             |
             | prop68    | D=v68                             |
             | prop8     | english                           |
             | evar2     | D=c8                              |
             | evar68    | Primary Nav                       |
+            | evar76    | A                                 |
             | pageURL   | https://{CANONICAL_HOST}/api-test |
             | pageName  | {CANONICAL_HOST}/api-test         |
             | event28   |                                   |
@@ -76,13 +77,14 @@ Feature: As a user, I want to be able to view and interact with the Mega Menu
             | parameter | value                             |
             | prop4     | D=pev1                            |
             | prop67    | D=pageName                        |
-            | prop54    | A\|A.1\|A.1.2                     |
-            | prop55    | List Item\|1\|2                   |
+            | prop54    | D=v77                             |
+            | prop55    | D=v78                             |
             | prop68    | D=v68                             |
             | prop8     | english                           |
             | evar2     | D=c8                              |
             | evar68    | Primary Nav                       |
-            | evar53    | A                                 |
+            | evar77    | A\|A.1\|A.1.2                     |
+            | evar78    | List Item\|1\|2                   |
             | pageURL   | https://{CANONICAL_HOST}/api-test |
             | pageName  | {CANONICAL_HOST}/api-test         |
             | event26   |                                   |
@@ -102,13 +104,14 @@ Feature: As a user, I want to be able to view and interact with the Mega Menu
             | parameter | value                             |
             | prop4     | D=pev1                            |
             | prop67    | D=pageName                        |
-            | prop54    | B\|B\|B                           |
-            | prop55    | Primary Nav Button\|0\|0          |
+            | prop54    | D=v77                             |
+            | prop55    | D=v78                             |
             | prop68    | D=v68                             |
             | prop8     | english                           |
             | evar2     | D=c8                              |
             | evar68    | Primary Nav                       |
-            | evar53    | B                                 |
+            | evar77    | B\|B\|B                           |
+            | evar78    | Primary Nav Button\|0\|0          |
             | pageURL   | https://{CANONICAL_HOST}/api-test |
             | pageName  | {CANONICAL_HOST}/api-test         |
             | event26   |                                   |

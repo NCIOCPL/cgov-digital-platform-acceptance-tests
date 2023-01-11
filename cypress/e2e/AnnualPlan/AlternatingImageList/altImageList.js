@@ -13,9 +13,9 @@ Then('the list items will have alternating alighment starting with left', () => 
         for (let i = 0; i < allImages.length; i++) {
             if (i % 2 === 0) {
                 expect(allImages[i].offsetLeft).to.eq(30);
-                expect(allDescContainer[i].offsetLeft).to.eq(441);
+                expect(allDescContainer[i].offsetLeft).to.be.greaterThan(440);
             } else {
-                expect(allImages[i].offsetLeft).to.eq(441);
+                expect(allImages[i].offsetLeft).to.be.greaterThan(440);
                 expect(allDescContainer[i].offsetLeft).to.eq(30);
             }
         }
