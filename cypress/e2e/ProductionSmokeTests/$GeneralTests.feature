@@ -63,6 +63,27 @@ Feature: Basic checks to ensure production site is up and running
         And user clicks on "Print Selected" button at "top" position
         Then user is redirected to "/CTS.Print/Display" with generated "printid"
         And page title is "Your Clinical Trials Search Results"
+        Then page load request is sent
+        And the following parameters should be captured
+            | parameter | value                                |
+            | prop6     | Comprehensive Cancer Information     |
+            | prop10    | Clinical Trial Search Results        |
+            | prop44    | Clinical Trials                      |
+            | prop8     | english                              |
+            | prop3     | /                                    |
+            | prop65    | /^\d{1,2}$/                          |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/ |
+            | prop62    | Clinical Trials: Print Results Page  |
+            | evar1     | {CANONICAL_HOST}/cts.print/display   |
+            | evar44    | Clinical Trials                      |
+            | evar2     | english                              |
+            | evar5     | Desktop                              |
+            | evar62    | Clinical Trials: Print Results Page  |
+            | channel   | Clinical Trials Print Results Page   |
+            | pageName  | {CANONICAL_HOST}/cts.print/display   |
+            | hier1     | {CANONICAL_HOST}\|CTS.Print\|Display |
+            | event47   | /d{0,2}/                             |
+            | event1    |                                      |
 
     Scenario Outline: Thumbnail images check
         Given user is navigating to "<url>"
