@@ -171,6 +171,47 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | Google Link                       | https://www.google.com/       |
             | Media Link Override Title         | {TEST_SITE_SECTION}/test-file |
 
+    Scenario: Add a featured item to mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user selects "Add Two Item Feature Card Row" from "Contents" dropdown
+        And user clicks on "Featured Item" link in the "Internal Feature Card" text area
+        And user clicks on "Select content" button in the "Internal Feature Card" text area
+        And user selects "test-article-edited" item from the list
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify promo and card titles in mini landing
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Then page title is "Test Resource Mini Landing Page"
+        Then the promo image is matching the earlier selected image
+
+
+    Scenario: remove featured item
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user removes "Two Item Feature Card Row" section
+        And user confirms removal
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+        
+
     Scenario: Clean up
         Given user is navigating to "/user/login"
         When user enters credentials
