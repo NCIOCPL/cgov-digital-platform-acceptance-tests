@@ -15,7 +15,7 @@ const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 
 And('user fills out the following fields', (dataTable) => {
-    for (const { fieldLabel, value, field_name } of dataTable.hashes()) {
+    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
         if (fieldLabel === 'Pretty URL') {
             value = `${value}-${randomNum}`;
         }
@@ -66,7 +66,7 @@ And('description reads {string}', (title) => {
 })
 
 Then('Selected Research pages list contains the following links', (dataTable) => {
-    for (const { title, link, description } of dataTable.hashes()) {
+    for (let { title, link, description } of dataTable.hashes()) {
         const replacedTestSiteSection = link.replace("{TEST_SITE_SECTION}", siteSection);
         cy.get(`.managed.list div a:contains("${title}")`).should('be.visible').and('have.attr', 'href', replacedTestSiteSection)
         if (description !== 'N/A') {

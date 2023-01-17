@@ -14,7 +14,7 @@ const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 And('user fills out the following fields', (dataTable) => {
-    for (const { fieldLabel, value, field_name } of dataTable.hashes()) {
+    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
         if (fieldLabel === 'Pretty URL') {
             value = `${value}-${randomNum}`;
         }

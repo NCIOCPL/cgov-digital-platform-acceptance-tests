@@ -295,7 +295,7 @@ And('user clicks on {string} button to select media', (selectContent) => {
 });
 
 Then('Related Resources section contains the following links', (dataTable) => {
-    for (const { title, link } of dataTable.hashes()) {
+    for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
         }

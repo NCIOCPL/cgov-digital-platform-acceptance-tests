@@ -24,10 +24,10 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And user enters "Press Release List Description" into "List Description" text field
         And user fills out "Body" text area with "This is a description of press release content type."
         And user selects 1 Lead Image from the list of images
-         And browser waits
+        And browser waits
         And user remembers the source of selected lead image for further verification
         And user selects 2 Promotional Image from the list of images
-         And browser waits
+        And browser waits
         And user remembers the source of selected promo image for further verification
         And user selects "Posted Date" checkbox
         And user selects "Reviewed Date" checkbox
