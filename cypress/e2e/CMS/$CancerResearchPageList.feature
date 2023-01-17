@@ -48,6 +48,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
         And user selects "Test File for Related Resources" item from the media list
         And user clicks on "Select media" button to select media
+        And browser waits
         And "Test File for Related Resources" had been selected
         And user fills out the following fields
             | fieldLabel     | value                     | field_name                                                          |

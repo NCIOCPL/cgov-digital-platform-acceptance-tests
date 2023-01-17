@@ -207,7 +207,7 @@ And('public use text is not displayed', () => {
 });
 
 Then('Related Resources section contains the following links', (dataTable) => {
-    for (const { title1, link1 } of dataTable.hashes()) {
+    for (let { title1, link1 } of dataTable.hashes()) {
         if (link1.includes("{TEST_SITE_SECTION}")) {
             link1 = link1.replace("{TEST_SITE_SECTION}", siteSection)
         }
@@ -216,7 +216,7 @@ Then('Related Resources section contains the following links', (dataTable) => {
 });
 
 Then('Recommended Content section contains the following links', (dataTable) => {
-    for (const { title, link } of dataTable.hashes()) {
+    for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
         }

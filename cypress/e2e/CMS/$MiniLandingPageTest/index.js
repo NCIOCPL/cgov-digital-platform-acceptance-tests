@@ -15,7 +15,7 @@ const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 And('user fills out the following fields', (dataTable) => {
-    for (const { fieldLabel, value, field_name } of dataTable.hashes()) {
+    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
         if (fieldLabel === 'Pretty URL') {
             value = `${value}-${randomNum}`;
         }
@@ -160,7 +160,7 @@ And('HTML Content reads {string}', (htmlContent) => {
 })
 
 And('feature card row displays the following cards', (dataTable) => {
-    for (const { title, url, description } of dataTable.hashes()) {
+    for (let { title, url, description } of dataTable.hashes()) {
         const siteSection = Cypress.env("test_site_section");
         const replacedTestSiteSection = url.replace("{TEST_SITE_SECTION}", siteSection);
         cy.get(`div.feature-card h3:contains('${title}')`).should('be.visible')
@@ -172,7 +172,7 @@ And('feature card row displays the following cards', (dataTable) => {
 })
 
 And('managed list has the following links', (dataTable) => {
-    for (const { title, url, description } of dataTable.hashes()) {
+    for (let { title, url, description } of dataTable.hashes()) {
 
         const replacedTestSiteSection = url.replace("{TEST_SITE_SECTION}", siteSection);
         cy.get(`div.managed.list h3:contains('${title}')`).should('be.visible')
@@ -185,7 +185,7 @@ And('managed list has the following links', (dataTable) => {
 
 And('borderless card with {string} accent displays the following', (accent, dataTable) => {
     cy.get(`div.${accent} .borderless-card`).should('be.visible')
-    for (const { title, link } of dataTable.hashes()) {
+    for (let { title, link } of dataTable.hashes()) {
         const replacedTestSiteSection = link.replace("{TEST_SITE_SECTION}", siteSection);
         cy.get(`div.${accent} .borderless-card h2:contains('${title}')`).should('be.visible')
         cy.get(`div.${accent} .borderless-card a[href="${replacedTestSiteSection}"]`).should('be.visible')

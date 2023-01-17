@@ -101,8 +101,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
         And user selects "Test File for Related Resources" item from the media list
+        And browser waits
         And user clicks on "Select media" button to select media
-        And "Article to test Related Resources" had been selected
+        And browser waits
         And user fills out the following fields
             | fieldLabel     | value                     | field_name                                                          |
             | Override Title | Media Link Override Title | field_related_resources[2][subform][field_override_title][0][value] |
