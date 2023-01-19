@@ -55,7 +55,6 @@ Feature: Adding any necessary test resources
       | Feature Card Description | Test Resource Mini Landing Page - Feature Card Desc | field_feature_card_description |
       | Card Title               | Test Resource Mini Landing Page - Card Title        | field_card_title               |
     And user enters "Mini Landing Page List Description" into "List Description" text field
-    ### below two steps should definitely live under common -> cmsSteps
     And user selects 1 Promotional Image for the mini landing
     And user remembers the source of selected promo image for the mini landing
     And user selects "Published" from "Save as" dropdown

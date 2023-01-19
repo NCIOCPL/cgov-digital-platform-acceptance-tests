@@ -365,3 +365,18 @@ And('citation number {int} titled {string} has no link', (num, citText) => {
     cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text', citText);
     cy.get('@cit').find('a').should('not.exist')
 })
+
+// for promo image verification
+
+let imageSrc;
+And('user selects {int} Promotional Image for the mini landing', (num) => {
+    cy.get('span:contains("Promotional Image")').parent().as('imageUpload').click()
+    cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
+});
+And('user remembers the source of selected promo image for the mini landing', () => {
+    cy.get('details img').then($el => {
+        imageSrc = $el[0].getAttribute('src')
+    })
+})
