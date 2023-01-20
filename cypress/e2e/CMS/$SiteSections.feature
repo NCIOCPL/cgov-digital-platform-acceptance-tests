@@ -48,15 +48,39 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Verify newly created site section
         Given user is navigating to the front end site with path "/about-cancer/coping"
-        Then the current page is "Coping with Cancer"
+        Then the current page is "Coping with Cancer" in left nav
         And the following nav children are displayed
             | label             |
             | Test Site Section |
         And browser waits
         When user is navigating to the front end site with path "/about-cancer/coping/test-site-section"
-        Then the current page is "Test Site Section"
+        Then the current page is "Test Site Section" in left nav
         And page title is "Article to test Site Section"
         And 1 level up section is "Coping with Cancer"
+
+    Scenario: Making site section a nav root
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Structure" tab
+        And user clicks on "Taxonomy" sub tab
+        And user selects "List terms" option from Operations for "Site Sections"
+        And user selects "children" link under "Home"
+        And user selects "children" link under "About Cancer"
+        And user selects "children" link under "Coping with Cancer"
+        And user selects "Edit" operation for "Test Site Section"
+        Then page title is "Edit term"
+        And user checks "Set Section Nav Root" checkbox to set as a nav root
+        And browser waits
+        When user saves the content page
+
+    Scenario: Verify that the test site section points to a new url after changing landing's page site section
+        Given user is navigating to the front end site with path "/about-cancer/coping/test-site-section"
+        Then left navigation does not display "About Cancer"
+        And the current page is "Test Site Section" in left nav
+        And page title is "Article to test Site Section"
 
     Scenario: Clean up
         Given user is navigating to "/user/login"
@@ -77,7 +101,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And user selects "children" link under "Home"
         And user selects "children" link under "About Cancer"
         And user selects "children" link under "Coping with Cancer"
-        And user clicks on "Delete" from  dropdown button under "Test Site Section"
+        And user selects "Delete" operation for "Test Site Section"
         Then page title is "Are you sure you want to delete the taxonomy term Test Site Section?"
         When user clicks on "Delete" button
         Then the confirmation text "Deleted term Test Site Section." appears on a screen

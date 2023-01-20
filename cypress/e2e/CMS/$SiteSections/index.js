@@ -55,7 +55,7 @@ Given('user is navigating to the front end site with path {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${purl}`, { retryOnStatusCodeFailure: true });
 });
 
-Then('the current page is {string}', (title) => {
+Then('the current page is {string} in left nav', (title) => {
     cy.get(`li.usa-sidenav__item a:contains("${title}")`).should('have.attr', 'aria-current', 'page');
 });
 
@@ -90,6 +90,14 @@ And('user selects {string} link under {string}', (children, parentName) => {
     cy.get(`a.menu-item__link:contains("${parentName}")`).parent().parent().find(`a:contains("${children}")`).click();
 });
 
-And('user clicks on {string} from  dropdown button under {string}', (deleteBtn, termName) => {
-    cy.get(`li.delete.dropbutton-action a:contains("${deleteBtn}")`).first().click({ force: true });
+And('user selects {string} operation for {string}', (editBtn, termName) => {
+    cy.get(`ul.dropbutton a:contains("${editBtn}")`).first().click({ force: true });
+});
+
+And('user checks {string} checkbox to set as a nav root', (setNavRoot) => {
+    cy.get('#edit-field-section-nav-root-wrapper > .js-form-item').find('input').check();
+});
+
+Then('left navigation does not display {string}', (leftNavItem) => {
+    cy.get(`nav[aria-label='Secondary navigation']`).find('a').contains(`${leftNavItem}$`).should('not.exist');
 });
