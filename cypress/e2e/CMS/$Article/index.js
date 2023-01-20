@@ -23,8 +23,12 @@ And('user fills out the following fields', (dataTable) => {
     }
 });
 
+// And('user clicks on title with url {string} from the list of content', (contentHref) => {
+//     cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
+// });
+
 And('user clicks on title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
+    cy.get(`a[href='${siteSection}/${contentHref}']`).click();
 });
 
 And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
