@@ -25,6 +25,12 @@ And('user fills out the following fields', (dataTable) => {
     }
 });
 
+And('user clicks on title with url {string} under {string} from the list of content', (blogPost, blogSeries) => {
+    const date = new Date();
+    const currYear = date.getFullYear();
+    cy.get(`a[href='${blogSeries}-${randomNum}/${currYear}/${blogPost}-${randomNum}']`).click();
+});
+
 And('user clicks on title with url {string} from the list of content', (contentHref) => {
     cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
 });
@@ -35,6 +41,13 @@ And('user selects a checkbox next to title with url {string} from the list of co
 
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+Given('user is navigating to the blog {string} under {string}', (blogPost, blogSeries) => {
+    const date = new Date();
+    const currYear = date.getFullYear();
+    const frontEndBaseUrl = Cypress.env('front_end_base_url');
+    cy.visit(`${frontEndBaseUrl}/${blogSeries}-${randomNum}/${currYear}/${blogPost}-${randomNum}`, { retryOnStatusCodeFailure: true });
 });
 
 And('the content item with url {string} does not exist in the list of content', (url) => {
@@ -111,6 +124,27 @@ And('blog series description reads {string}', (desc) => {
     cy.get(`p:contains('${desc}')`).should('be.visible');
 });
 
+And('user clicks on {string} sub tab', (contentSubTab) => {
+    cy.get(`ul.admin-list li a:contains("${contentSubTab}")`).click({ force: true });
+});
+
+And('user selects {string} option from Operations for {string}', (option, label) => {
+    cy.get(`td:contains("${label}")`).parent().find(`a:contains("${option}")`).click();
+});
+
+And('user selects {string} radio button under {string}', (option, label) => {
+    cy.get(`#edit-field-owner-blog label:contains("${option}")`).first().click();
+});
+
+And('user checks {string} checkbox', (checkboxLbl) => {
+    cy.get('fieldset#edit-field-blog-topics--wrapper input').parent().find(`label:contains("${checkboxLbl}")`).as('checkbox');
+    cy.get('@checkbox').parent().find('input').check();
+});
+
+And('user enters {string} into Description field', (description) => {
+    cy.getIframeBody("iframe[title='Rich Text Editor, Description field']").find('p').type(description);
+});
+
 And('the {string} link appears with url {string}', (subscribeLinkText, linkUrl) => {
     cy.get(`a:contains("${subscribeLinkText}")`).should('be.visible').and('have.attr', 'href', linkUrl);
 });
@@ -126,7 +160,6 @@ And('the {string} accordion is displayed', (archiveAccor) => {
 And('blog posts list does not appear in the archive', () => {
     cy.get('#blog-archive-accordion-year').invoke('css', 'display', 'none').should('have.css', 'display', 'none');
 });
-
 let imageSrc;
 And('user selects {int} Lead Image from the list of images for blog series', (num) => {
     cy.get('span:contains("Lead Image")').parent().click();
@@ -259,6 +292,22 @@ And('the Continue Reading link appears with the following href', (dataTable) => 
     }
 });
 
+And('the Test Blog Topic link appears with the following href', (dataTable) => {
+    for (let { linkName, linkHref } of dataTable.hashes()) {
+        if (linkHref.includes("{TEST_SITE_SECTION}")) {
+            linkHref = linkHref.replace("{TEST_SITE_SECTION}", siteSection);
+        }
+        if (linkHref.includes("{RANDOM}")) {
+            linkHref = linkHref.replaceAll("{RANDOM}", randomNum);
+        }
+        cy.get(`div.managed.list.without-date a[href='${linkHref}']`).should('be.visible').and('have.text', linkName);
+    }
+});
+
+And('the {string} managed list appears without the date', (categories) => {
+    cy.get('div.managed.list.without-date').find('h2').should('be.visible').and('include.text', categories);
+});
+
 And('user selects a checkbox next to title {string} with url {string} from the list of content', (title, lastPartUrl) => {
     cy.get(`a:contains("${title}")`).invoke('attr', 'href').then(href => {
         cy.get(`a:contains("${title}")`).parent().parent().find('input.form-checkbox').check();
@@ -267,4 +316,8 @@ And('user selects a checkbox next to title {string} with url {string} from the l
 
 And('user clicks on the {string} action button', (buttonLabel) => {
     cy.get(`input[value='${buttonLabel}']`).first().click();
+});
+
+And('user clicks on {string} from  dropdown button under {string}', (deleteBtn, termName) => {
+    cy.get(`a.menu-item__link:contains("${termName}")`).parent().parent().find(`td li.delete.dropbutton-action a:contains("${deleteBtn}")`).click({ force: true });
 });
