@@ -111,7 +111,7 @@ And('user clicks on {string} button at {string} position', (printButton, printBu
 });
 
 Then('user is redirected to {string} with generated {string}', (redirectedPath, printID) => {
-    Cypress.on('fail', (error, runnable) => {
+    Cypress.on('uncaught:exception', (error, runnable) => {
         if (error.message.includes('ReferenceError: attachEvents is not defined')) {
             return false
         } else {
@@ -123,13 +123,6 @@ Then('user is redirected to {string} with generated {string}', (redirectedPath, 
 });
 
 And('page title is {string}', (title) => {
-    Cypress.on('fail', (error, runnable) => {
-        if (error.message.includes('Script error')) {
-            return false
-        } else {
-            throw error;
-        }
-    })
     cy.get(`h1:contains('${title}')`).should('be.visible');
 });
 
@@ -146,4 +139,11 @@ And('the image src contains {string}', (source) => {
 
 And('the text {string} is displayed', (str) => {
     cy.get(`p:contains("${str}")`).should('be.visible');
+});
+
+Then('search results page title is {string}', (title) => {
+    Cypress.on('uncaught:exception', (error, runnable) => {
+        return false
+    })
+    cy.get(`h1:contains('${title}')`).should('be.visible');
 });
