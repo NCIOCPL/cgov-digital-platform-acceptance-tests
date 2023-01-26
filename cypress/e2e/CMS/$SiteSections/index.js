@@ -95,17 +95,17 @@ And('user selects {string} operation for {string}', (editBtn, termName) => {
 });
 
 And('user checks {string} checkbox to set as a nav root', (setNavRoot) => {
-    cy.get('#edit-field-section-nav-root-wrapper > .js-form-item').find('input').check();
+    cy.get(`label:contains("${setNavRoot}")`).parent().find('input').check();
 });
 
 Then('left navigation does not display {string}', (leftNavItem) => {
     cy.get(`nav[aria-label='Secondary navigation']`).find('a').contains(`${leftNavItem}$`).should('not.exist');
 });
 
-And('user unchecks {string} checkbox', (unSetNavRoot) => {
-    cy.get('#edit-field-section-nav-root-wrapper > .js-form-item').find('input').check();
+And('user checks {string} checkbox to set display option', (hideSectionNav) => {
+    cy.get(`label:contains("${hideSectionNav}")`).parent().find('input').check();
 });
 
-And('user checks {string} checkbox to set display option', (hideSectionNav) => {
-    cy.get('.js-form-item-field-navigation-display-options-hide-in-section-nav').find('input').check();
+And('user unchecks {string} checkbox', (checkboxLbl) => {
+    cy.get(`label:contains("${checkboxLbl}")`).parent().find('input').uncheck();
 });
