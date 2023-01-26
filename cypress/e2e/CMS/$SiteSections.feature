@@ -82,6 +82,28 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And the current page is "Test Site Section" in left nav
         And page title is "Article to test Site Section"
 
+    Scenario: Hiding site section is section anv
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Structure" tab
+        And user clicks on "Taxonomy" sub tab
+        And user selects "List terms" option from Operations for "Site Sections"
+        And user selects "children" link under "Home"
+        And user selects "children" link under "About Cancer"
+        And user selects "children" link under "Coping with Cancer"
+        And user selects "Edit" operation for "Test Site Section"
+        Then page title is "Edit term"
+        And user unchecks "Set Section Nav Root" checkbox
+        And user checks "Hide in Section Nav" checkbox to set display option
+        When user saves the content page
+
+    Scenario: Verify that the test site section is not displayed in section nav
+        Given user is navigating to the front end site with path "/about-cancer/coping/test-site-section"
+        Then left navigation does not display "Test Site Section"
+
     Scenario: Clean up
         Given user is navigating to "/user/login"
         When user enters credentials
