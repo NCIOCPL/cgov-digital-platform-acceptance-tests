@@ -20,63 +20,64 @@ Scenario: User is adding new Cancer Type Homepage content type
         | Meta Description         | Automated Cancer Type Homepage Meta Description         | field_page_description         |
         | Feature Card Description | Automated Test Cancer Type Homepage - Feature Card Desc | field_feature_card_description |
     And user enters "Cancer Type Homepage List Description" into "List Description" text field
-    And user selects "Add CTHP Overview Card" from "CTHP Cards" dropdown
+    And user selects "Add CTHP Overview Card" from "CTHP Cards" main dropdown
     And user fills out the following fields
         | fieldLabel      | value         | field_name                                          |
         | CTHP Card Title | Test Overview | field_cthp_cards[0][subform][field_cthp_card_title] |
-    And user selects "Overview" from CTHP Card Theme dropdown
+    And user selects "Overview" from "CTHP Card Theme" section dropdown
     And user fills out Overview Card Text field text area with "Description of Overview Card of CTHP content type"
     Then user saves the content page
 
 
-# Scenario: Adding guide card
-#     Given user is navigating to "/user/login"
-#     When user enters credentials
-#     And user clicks "Log in" button
-#     Then user is logged in and the user name "admin" is displayed in the toolbar
-#     And the tool bar appears at the top
-#     When user clicks on "Content" tab
-#     And user clicks on title with url "cancer-type-homepage" from the list of content
-#     And user clicks on the tool bar status green button "Draft"
-#     And user clicks "View in edit form" button from other actions
-#     And user selects "Add CTHP Guide Card" from "CTHP Cards" dropdown
-#     And user fills out the following fields
-#         | fieldLabel      | value          | field_name                                          |
-#         | CTHP Card Title | Test Treatment | field_cthp_cards[1][subform][field_cthp_card_title] |
-#     And user selects "Treatment" from 2 "CTHP Card Theme" dropdown
-#     And user fills out "CTHP Guide Card Description field" text area with "Description of Guide Card of CTHP content type"
-#     And user fills out the following fields
-#         | fieldLabel       | value                                  | field_name                                                          |
-#         | PDQ Link Heading | PDQ Treatment Information for Patients | field_cthp_cards[1][subform][field_cthp_pdq_link_heading][0][value] |
-#     And user clicks on "PDQ Links" to add PDQ summary
-#     And user clicks on "Select summary" button to select PDQ sumamry
-#     And user filters summaries list by "English" language and clicks "Apply" button
-#     And user selects 1 PDQ Summary from the list of summaries
-#     And user clicks on "Select summary" button to select item
-#     And user remembers the title of selected summary for further verification
-#     And user selects "Add Internal Link" from "View More Information" dropdown
-#     And user clicks on "Link" link in the "CTHP Guide Card" card area
-#     And user clicks on "Select content" button in the "Internal Link" text area
-#     And user selects "Article to test Related Resources" item from the list
-#     And user clicks on "Select content" button to select item
-#     And browser waits
-#     And user selects "Add External Link" from "View More Information" dropdown
-#     Then "External Link" section appears
-#     And user fills out the following fields
-#         | fieldLabel | value                  | field_name                                                                                          |
-#         | Link       | https://www.google.com | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_external_link][0][uri]    |
-#         | Title      | Google Link Guide Card | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_override_title][0][value] |
-#     And user selects "Add Media Link" from "View More Information" dropdown
-#     Then "Media Link" section appears
-#     And user clicks on "Link" button to link to a media in "CTHP Guide Card" card area
-#     And user clicks on "Select media" to choose a resource to link
-#     And user selects "Test File for Related Resources" item from the media list
-#     And user clicks on "Select media" button to select media
-#     And browser waits
-#     And user fills out the following fields
-#         | fieldLabel     | value                                 | field_name                                                                                          |
-#         | Override Title | Media Link Override Title Guide cards | field_cthp_cards[1][subform][field_cthp_view_more_info][2][subform][field_override_title][0][value] |
-#     Then user saves the content page
+Scenario: Adding guide card
+    Given user is navigating to "/user/login"
+    When user enters credentials
+    And user clicks "Log in" button
+    Then user is logged in and the user name "admin" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    And user clicks on title with url "cancer-type-homepage" from the list of content
+    And user clicks on the tool bar status green button "Draft"
+    And user clicks "View in edit form" button from other actions
+    And user selects "Add CTHP Guide Card" from "CTHP Cards" main dropdown
+    And user fills out the following fields
+        | fieldLabel      | value          | field_name                                          |
+        | CTHP Card Title | Test Treatment | field_cthp_cards[1][subform][field_cthp_card_title] |
+    And user selects "Treatment" from "CTHP Card Theme" section dropdown
+    And user fills out "CTHP Guide Card Description field" text area with "Description of Guide Card of CTHP content type"
+    And user fills out the following fields
+        | fieldLabel       | value                                  | field_name                                                          |
+        | PDQ Link Heading | PDQ Treatment Information for Patients | field_cthp_cards[1][subform][field_cthp_pdq_link_heading][0][value] |
+    #And user clicks on "PDQ Links" to add PDQ summary
+    And user clicks on "PDQ Links" link in the "CTHP Guide Card" text area
+    And user clicks on "Select summary" button to select PDQ sumamry
+    And user filters summaries list by "English" language and clicks "Apply" button
+    And user selects 1 PDQ Summary from the list of summaries
+    And user clicks on "Select summary" button to select item
+    And user remembers the title of selected summary for further verification
+    And user selects "Add Internal Link" from "View More Information" dropdown
+    And user clicks on "Link" link in the "CTHP Guide Card" card area
+    And user clicks on "Select content" button in the "Internal Link" text area
+    And user selects "Article to test Related Resources" item from the list
+    And user clicks on "Select content" button to select item
+    And browser waits
+    And user selects "Add External Link" from "View More Information" dropdown
+    Then "External Link" section appears
+    And user fills out the following fields
+        | fieldLabel | value                  | field_name                                                                                          |
+        | Link       | https://www.google.com | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_external_link][0][uri]    |
+        | Title      | Google Link Guide Card | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_override_title][0][value] |
+    And user selects "Add Media Link" from "View More Information" dropdown
+    Then "Media Link" section appears
+    And user clicks on "Link" button to link to a media in "CTHP Guide Card" card area
+    And user clicks on "Select media" to choose a resource to link
+    And user selects "Test File for Related Resources" item from the media list
+    And user clicks on "Select media" button to select media
+    And browser waits
+    And user fills out the following fields
+        | fieldLabel     | value                                 | field_name                                                                                          |
+        | Override Title | Media Link Override Title Guide cards | field_cthp_cards[1][subform][field_cthp_view_more_info][2][subform][field_override_title][0][value] |
+    Then user saves the content page
 
 # Scenario: Adding Internal Feature card
 #     Given user is navigating to "/user/login"

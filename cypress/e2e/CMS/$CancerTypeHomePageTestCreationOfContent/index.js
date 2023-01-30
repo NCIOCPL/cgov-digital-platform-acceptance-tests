@@ -40,12 +40,12 @@ And('the content item with url {string} does not exist in the list of content', 
 });
 
 /*----------- Scenario: User is adding new Cancer Type Homepage content type------------ */
-And('user selects {string} from {string} dropdown',(dropdown,cartOption)=> {
+And('user selects {string} from {string} main dropdown',(dropdown,cartOption)=> {
     cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropdown}"]`).click({ force: true })
 })
 
-And('user selects {string} from CTHP Card Theme dropdown',(dropdown)=>{
-    cy.get("select[name*='[field_cthp_card_theme]']").select(dropdown)
+And('user selects {string} from {string} section dropdown',(dropdown,dropdownOption)=>{
+    cy.get(`label:contains("${dropdownOption}")`).parent().find("select[name*='[field_cthp_card_theme]']").eq(0).select(dropdown)
 })
 
 And('user fills out Overview Card Text field text area with {string}',(value)=>{
@@ -53,4 +53,6 @@ And('user fills out Overview Card Text field text area with {string}',(value)=>{
 })
 
 /* ---------- Scenario: Adding guide card ---------- */
-
+And('user clicks on {string} link in the {string} text area',(link, linkOption) =>{
+    cy.get(`div:contains("${linkOption}")`).parent().find(`span:contains("${link}")`).click()
+})
