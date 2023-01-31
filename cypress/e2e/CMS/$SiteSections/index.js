@@ -61,7 +61,7 @@ Then('the current page is {string} in left nav', (title) => {
 
 And('the following nav children are displayed', (dataTable) => {
     for (const { label } of dataTable.hashes()) {
-        cy.get('a[class="usa-current"]').siblings('ul').find(`a:contains("${label}")`).should('be.visible')
+        cy.get('a[class="usa-current"]').siblings('ul').find(`a:contains("${label}")`).should('be.visible');
     }
 });
 
@@ -90,8 +90,8 @@ And('user selects {string} link under {string}', (children, parentName) => {
     cy.get(`a.menu-item__link:contains("${parentName}")`).parent().parent().find(`a:contains("${children}")`).click();
 });
 
-And('user selects {string} operation for {string}', (editBtn, termName) => {
-    cy.get(`ul.dropbutton a:contains("${editBtn}")`).first().click({ force: true });
+And('user selects {string} operation for {string}', (btn, termName) => {
+    cy.get(`a.menu-item__link:contains("${termName}")`).parent().parent().find(`td li.dropbutton-action a:contains("${btn}")`).click({ force: true });
 });
 
 And('user checks {string} checkbox to set as a nav root', (setNavRoot) => {
@@ -108,4 +108,14 @@ And('user checks {string} checkbox to set display option', (hideSectionNav) => {
 
 And('user unchecks {string} checkbox', (checkboxLbl) => {
     cy.get(`label:contains("${checkboxLbl}")`).parent().find('input').uncheck();
+});
+
+And('user drags {string} item one level down', (dragLink) => {
+    cy.get(`a.menu-item__link:contains("${dragLink}")`).parent().find('a.tabledrag-handle').trigger('mousedown', { which: 1, pageX: 200, pageY: 50 })
+        .trigger('mousemove', { which: 1, clientX: 100, clientY: 100, pageY: 100 })
+        .trigger('mouseup')
+});
+
+And('{string} appears in position {int} in the side menu tree', (label, position) => {
+    cy.get('ul.usa-sidenav__sublist li').eq(position - 1).find(`a:contains("${label}")`).should('be.visible');
 });
