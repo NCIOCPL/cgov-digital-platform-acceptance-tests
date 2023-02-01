@@ -67,7 +67,7 @@ Feature: All manual pages
         Then user is directed to "<directedUrl>"
         Then page title is "<page title>"
         Then the text "<noTrialsText>" appears
-      
+
         Examples:
             | path                                                | directedUrl                                         | page title                           | noTrialsText                             |
             | /about-cancer/treatment/clinical-trials/chicken-pox | /about-cancer/treatment/clinical-trials/chicken-pox | Clinical Trials to Treat Chicken Pox | There are currently no available trials. |
@@ -98,6 +98,7 @@ Feature: All manual pages
             | event2    |                                                                                |
             | event1    |                                                                                |
             | channel   | About Cancer                                                                   |
+            | evar61    | nciAppModulePage                                                               |
 
     Scenario: Analytics click event
         When user is navigating to "/about-cancer/treatment/clinical-trials/cam-procedures"
