@@ -168,6 +168,7 @@ Feature: Dynamic Listing Pages
             | event2    |                                                                                       |
             | event1    |                                                                                       |
             | channel   | About Cancer                                                                          |
+            | evar61    | nciAppModulePage                                                                      |
 
     Scenario: Analytics page load disease trial type no trials found
         When user is navigating to "/about-cancer/treatment/clinical-trials/disease/spiroplatin/treatment" with a 404 status
@@ -196,6 +197,7 @@ Feature: Dynamic Listing Pages
             | event2    |                                                                                                              |
             | event1    |                                                                                                              |
             | channel   | About Cancer                                                                                                 |
+            | evar61    | nciAppModulePage                                                                                             |
 
     Scenario: Analytics page load disease trial type intervention
         When user is navigating to "/about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab" with added wait
@@ -224,6 +226,7 @@ Feature: Dynamic Listing Pages
             | event2    |                                                                                                             |
             | event1    |                                                                                                             |
             | channel   | About Cancer                                                                                                |
+            | evar61    | nciAppModulePage                                                                                            |
 
     Scenario: Analytics page load intervention trial type
         When user is navigating to "/about-cancer/treatment/clinical-trials/intervention/trastuzumab/treatment" with added wait
@@ -252,6 +255,7 @@ Feature: Dynamic Listing Pages
             | event2    |                                                                                                    |
             | event1    |                                                                                                    |
             | channel   | About Cancer                                                                                       |
+            | evar61    | nciAppModulePage                                                                                   |
 
     Scenario: Analytics page load no trial found
         When user is navigating to "/about-cancer/treatment/clinical-trials/intervention/spiroplatin" with a 404 status
@@ -279,6 +283,7 @@ Feature: Dynamic Listing Pages
             | event2    |                                                                               |
             | event1    |                                                                               |
             | channel   | About Cancer                                                                  |
+            | evar61    | nciAppModulePage                                                              |
 
 
     Scenario Outline: Analytics click event
