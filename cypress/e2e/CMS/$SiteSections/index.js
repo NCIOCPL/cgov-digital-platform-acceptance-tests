@@ -112,10 +112,14 @@ And('user unchecks {string} checkbox', (checkboxLbl) => {
 
 And('user drags {string} item one level down', (dragLink) => {
     cy.get(`a.menu-item__link:contains("${dragLink}")`).parent().find('a.tabledrag-handle').trigger('mousedown', { which: 1, pageX: 200, pageY: 50 })
-        .trigger('mousemove', { which: 1, clientX: 100, clientY: 100, pageY: 100 })
+        .trigger('mousemove', { which: 1, clientX: 50, clientY: 50, pageY: 50 })
         .trigger('mouseup')
 });
 
 And('{string} appears in position {int} in the side menu tree', (label, position) => {
     cy.get('ul.usa-sidenav__sublist li').eq(position - 1).find(`a:contains("${label}")`).should('be.visible');
+});
+
+And('user clicks on title with the url {string} from the list of content', (contentHref) => {
+    cy.get(`a[href='${contentHref}']`).click();
 });

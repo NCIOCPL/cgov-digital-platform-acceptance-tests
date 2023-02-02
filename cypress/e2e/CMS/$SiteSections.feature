@@ -128,6 +128,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
     Scenario: Verify nav label override
         Given user is navigating to the front end site with path "/about-cancer/coping"
         Then the current page is "Coping with Cancer" in left nav
+        And browser waits
         And the following nav children are displayed
             | label     |
             | Nav Label |
@@ -156,7 +157,40 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
     Scenario: Verify the new tree order of a site section
         Given user is navigating to the front end site with path "/about-cancer/coping"
         Then the current page is "Coping with Cancer" in left nav
+        And browser waits
         And "Nav Label" appears in position 2 in the side menu tree
+
+    Scenario: Verify pretty url change of a site section and removal of nav label
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Structure" tab
+        And user clicks on "Taxonomy" sub tab
+        And user selects "List terms" option from Operations for "Site Sections"
+        And user selects "children" link under "Home"
+        And user selects "children" link under "About Cancer"
+        And user selects "children" link under "Coping with Cancer"
+        And user selects "Edit" operation for "Test Site Section"
+        Then page title is "Edit term"
+        And user clears out "Navigation Label" field
+        And user fills out the following fields
+            | fieldLabel | value   | field_name       |
+            | Pretty URL | -edited | field_pretty_url |
+        When user saves the content page
+        When user clicks on "Content" tab
+        And user clicks on title with the url "/about-cancer/coping/test-site-section" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        When user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify the new purl of site section
+        Given user is navigating to the front end site with path "/about-cancer/coping/test-site-section-edited"
+        Then the current page is "Test Site Section" in left nav
+        And page title is "Article to test Site Section"
 
     Scenario: Clean up
         Given user is navigating to "/user/login"
