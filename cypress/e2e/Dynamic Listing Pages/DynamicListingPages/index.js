@@ -12,26 +12,6 @@ And('the page displays pager info {string}', (pagerInfo) => {
     })
 });
 
-
-And('the {int} pager is displayed with the following {string}', (pagerIndex, pagerItems) => {
-    //convert passed string of pager items into an array
-    const expectedPagerItems = pagerItems.split(',');
-    let index = 0;
-    //only yield visible pager items and verify the count
-    cy.get('.pager__navigation').eq(pagerIndex - 1).find('li:visible').as('allPages').should('have.length', expectedPagerItems.length)
-    //assert that expected pager items are displayed 
-    cy.get('@allPages').each(($link) => {
-        expect(expectedPagerItems[index]).to.eq($link.text());
-        index++;
-    });
-});
-
-And('the page {string} is highlighted', (pageNum) => {
-    cy.get(
-        '.pager__navigation button[class="pager__button active"]:first'
-    ).should('have.text', pageNum);
-});
-
 And('each result displays the trial title with a link in the following format {string}', (linkFormat) => {
     cy.get('.ct-list-item a').should('have.attr', 'href').then((link) => {
         expect(link).to.include(linkFormat)

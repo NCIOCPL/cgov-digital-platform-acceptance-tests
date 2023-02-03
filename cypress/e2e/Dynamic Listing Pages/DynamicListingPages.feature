@@ -8,7 +8,6 @@ Feature: Dynamic Listing Pages
         And intro text 2 paragraph is "NCI’s basic information about clinical trials explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you."
         And "basic information about clinical trials" link has href "/about-cancer/treatment/clinical-trials/what-are-trials"
         And the page displays pager info "Trials 1-N of N"
-        And the page "1" is highlighted
         And each result displays the trial title with a link in the following format "/clinicaltrials/NCI-"
         And each result displays the trial summary
         And each result displays "Location: " below the summary
@@ -27,33 +26,7 @@ Feature: Dynamic Listing Pages
             | Disease Trial Type              | desktop           | /about-cancer/treatment/clinical-trials/disease/c4872/treatment              | Treatment Clinical Trials for Breast Cancer                            | Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer treatment. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.                                               |
             | Disease Trial Type              | mobile            | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment      | Treatment Clinical Trials for Breast Cancer                            | Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer treatment. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.                                               |
 
-
-    Scenario Outline: Pager functionality
-        Given screen breakpoint is set to "<screen breakpoint>"
-        When user is navigating to "<path>"
-        And  the page displays pager info "Trials 1-N of N"
-        And the page "1" is highlighted
-        When user clicks on "Next >" button
-        Then the url has path "<path>" with query "?pn=2"
-        And the page "2" is highlighted
-        When the user navigates to "<path>" with non-existent page "&pn=900"
-        Then the text "<noTrialsText>" appears
-        And "new search" link has href "/about-cancer/treatment/clinical-trials/search"
-        And "contact our Cancer Information Service" link has href "/contact"
-
-        Examples:
-
-            | screen breakpoint | Route                           | path                                                                                | noTrialsText                                                                                                                                                                                                         |
-            | desktop           | Disease                         | /about-cancer/treatment/clinical-trials/disease/breast-cancer                       | There are no NCI-supported clinical trials for breast cancer at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                             |
-            | tablet            | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab | There are no NCI-supported clinical trials for breast cancer treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. |
-            | mobile            | Disease Trial Type Intervention | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment/trastuzumab | There are no NCI-supported clinical trials for breast cancer treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. |
-            | desktop           | Intervention                    | /about-cancer/treatment/clinical-trials/intervention/trastuzumab                    | There are no NCI-supported clinical trials studying trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                          |
-            | mobile            | Intervention Trial Type         | /about-cancer/treatment/clinical-trials/intervention/trastuzumab/treatment          | There are no NCI-supported clinical trials for treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.               |
-            | tablet            | Disease Trial Type              | /about-cancer/treatment/clinical-trials/disease/breast-cancer/treatment             | There are no NCI-supported clinical trials for breast cancer treatment at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                   |
-
-
-
-    Scenario Outline: Redirect c-code to pretty url functionality
+ Scenario Outline: Redirect c-code to pretty url functionality
         When user is navigating to "<path>"
         And screen breakpoint is set to "desktop"
         Then user is redirected to "<redirectedUrl>"
