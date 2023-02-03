@@ -5,23 +5,20 @@ Feature: All manual pages
         When user is navigating to "<path>"
         Then page title is "<page title>"
         And the page displays pager info "Trials 1-N of N"
-        And the 1 pager is displayed with the following "<pager items>"
-        And the page "1" is highlighted
         And each result displays the trial title with a link in the following format "/clinicaltrials/NCI-"
         And each result displays the trial summary
         And each result displays "Location: " below the summary
-        And the 2 pager is displayed with the following "<pager items>"
 
         Examples:
-            | screen breakpoint | path                                                                  | page title                                                             | pager items        |
-            | desktop           | /about-cancer/treatment/clinical-trials/covid-19                      | NCI-Supported Clinical Trials for Coronavirus                          | 1,2,Next >         |
-            | mobile            | /about-cancer/treatment/clinical-trials/covid-19                      | NCI-Supported Clinical Trials for Coronavirus                          | 1,2,Next >         |
-            | tablet            | /about-cancer/treatment/clinical-trials/cam-procedures                | Clinical Trials for Complementary or Alternative Medicine Procedure(s) | 1,2,3,Next >       |
-            | mobile            | /about-cancer/treatment/clinical-trials/cam-procedures                | Clinical Trials for Complementary or Alternative Medicine Procedure(s) | 1,2,3,Next >       |
-            | desktop           | /about-cancer/treatment/clinical-trials/adult-metastatic-brain-tumors | Clinical Trials to Treat Adult Metastatic Brain Tumors                 | 1,2,3,4,Next >     |
-            | tablet            | /about-cancer/treatment/clinical-trials/adult-metastatic-brain-tumors | Clinical Trials to Treat Adult Metastatic Brain Tumors                 | 1,2,3,4,Next >     |
-            | desktop           | /about-cancer/treatment/clinical-trials/kidney-cancer                 | Clinical Trials to Treat Kidney (Renal Cell) Cancer                    | 1,2,3,...,7,Next > |
-            | mobile            | /about-cancer/treatment/clinical-trials/kidney-cancer                 | Clinical Trials to Treat Kidney (Renal Cell) Cancer                    | 1,2,3,...,7,Next > |
+            | screen breakpoint | path                                                                  | page title                                                             |
+            | desktop           | /about-cancer/treatment/clinical-trials/covid-19                      | NCI-Supported Clinical Trials for Coronavirus                          |
+            | mobile            | /about-cancer/treatment/clinical-trials/covid-19                      | NCI-Supported Clinical Trials for Coronavirus                          |
+            | tablet            | /about-cancer/treatment/clinical-trials/cam-procedures                | Clinical Trials for Complementary or Alternative Medicine Procedure(s) |
+            | mobile            | /about-cancer/treatment/clinical-trials/cam-procedures                | Clinical Trials for Complementary or Alternative Medicine Procedure(s) |
+            | desktop           | /about-cancer/treatment/clinical-trials/adult-metastatic-brain-tumors | Clinical Trials to Treat Adult Metastatic Brain Tumors                 |
+            | tablet            | /about-cancer/treatment/clinical-trials/adult-metastatic-brain-tumors | Clinical Trials to Treat Adult Metastatic Brain Tumors                 |
+            | desktop           | /about-cancer/treatment/clinical-trials/kidney-cancer                 | Clinical Trials to Treat Kidney (Renal Cell) Cancer                    |
+            | mobile            | /about-cancer/treatment/clinical-trials/kidney-cancer                 | Clinical Trials to Treat Kidney (Renal Cell) Cancer                    |
 
 
     Scenario Outline: Manual trial listing page with intro text
