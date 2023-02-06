@@ -110,7 +110,10 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select media" button item
         And user filters results by Type "Video"
         And user filters results by "Is Published" "True"
+        And user clicks on "Apply" button
+        And browser waits
         And user selects 1 item from the media list
+        And browser waits
         And user clicks on "Select media" button to select media
         And browser waits
         And user remembers the name of media card item for future verification
@@ -301,6 +304,159 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Published" from Save as dropdown
         When user saves the content page
 
+    Scenario: Verify newly created content
+        Given user is navigating to the front end site with path site section plus "home-and-landing-page"
+        And page title is "Automated Test Home and Landing page"
+        And primary feature card row displays the following cards
+            | title                             | link                        |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article |
+            | Featured Item Url                 | https://www.google.com      |
+        And 3 primary feature card has text "This is to test Raw Html Content under Primary Feature Card Row"
+        And guide card row title is "Guide Card Row Title"
+        And guide card row displays the following cards
+            | title                          | link                                       |
+            | Content Heading Guide Card Row | /about-cancer/understanding/what-is-cancer |
+        And 2 guide card has text "This is to test Raw Html Content under Guide Card Row"
+        And secondary feature card row displays the following cards
+            | title                                  | link                        |
+            | Article to test Related Resources      | {TEST_SITE_SECTION}/article |
+            | Google Link Secondary Feature Card Row | https://www.google1.com     |
+        And multimedia card row has a video which name matches selected multimedia card item
+        And multimedia card row displays the following cards
+            | title                             | link                        |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article |
+        And list card row title is "List Title"
+        And list row displays the following links
+            | title                                | link                          | description                                          |
+            | Article to test Related Resources    | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
+            | Google Link List Item                | https://www.google2.com       |                                                      |
+            | Media Link Override Title List Items | {TEST_SITE_SECTION}/test-file |                                                      |
+        And one-column card row title is "One Column Container Title"
+        And one-column content displays text "This is Html content for Content Block in One Column Container"
+        And one-column list has the following links
+            | title                             | link                        | description                                          |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article | Article to test Related Resources - Meta Description |
+            | Google Link One Column Container  | https://www.google3.com     |                                                      |
+        And one-column list has raw html displaying "This is Html content for Content Block in One Column Container"
+        And two-column list has raw html displaying "This is to test Raw HTML Content in Two Columns container"
+        And two-column content heading reads "Content Heading Two Column Container"
+        And two-column html content reads "This is Html content for Content Block Two Column"
+        And two-column dynamic list shows "Press Releases"
+        And dynamic lists shows 5 items
+        And borderless card title is "Override title for Borderless Card"
+        And borderless card long description is "Longer Override Card Description for Borderless Card"
+        And borderless card button has title text "BUTTON TEXT FOR BORDERLESS FULL-WIDTH CARD" and links to "{TEST_SITE_SECTION}/article"
+        And title first feature card row has the following cards
+            | title                                | link                        |
+            | Google Link Title First Feature card | https://www.google6.com     |
+            | Article to test Related Resources    | {TEST_SITE_SECTION}/article |
+        And the page contains meta tags with the following names
+            | name        | content                                               |
+            | description | Automated Test Home and Landing page Meta Description |
+
+    Scenario: User is adding new Mini Landing page content type with Content Block
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Add content" action button
+        And user clicks on "Mini Landing Page" content type
+        Then page title is "Mini Landing Page"
+        When user selects test site section
+        And user fills out the following fields
+            | fieldLabel               | value                                                                | field_name                     |
+            | Pretty URL               | test-resource-mini-landing-page-for-home-landing                     | field_pretty_url               |
+            | Page Title               | Test Resource Mini Landing Page for Home Landing                     | title                          |
+            | Browser Title            | Test Resource Mini Landing Page for Home Landing - Browser Title     | field_browser_title            |
+            | Card Title               | Test Resource Mini Landing Page for Home Landing - Card Title        | field_card_title               |
+            | Meta Description         | Test Resource Mini Landing Page for Home Landing Meta Description    | field_page_description         |
+            | Feature Card Description | Test Resource Mini Landing Page for Home Landing - Feature Card Desc | field_feature_card_description |
+        And user enters "Mini Landing Page List Description" into "List Description" text field
+        And user selects 1 Promotional Image from the list of images for mini landing page
+        And user remembers the source of selected promo image for further verification for mini landing page
+        And user selects "Add Content Block" content item
+        And user enters "Content Heading" into Content Heading text field
+        And user fills out "HTML Content" text area with "This is HTML content for Content Block."
+        And user selects "Posted Date" checkbox
+        And user selects "Reviewed Date" checkbox
+        And user selects "Updated Date" checkbox
+        And user selects "Include in search" from Search Engine Restrictions dropdown
+        When user saves the content page
+        And user clicks on the tool bar status green button "Draft"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Edit and republish Home and Landing Page content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "home-and-landing-page" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user clears out "Pretty URL" field
+        And user clears out "Page Title" field
+        And user clears out "Meta Description" field
+        And user fills out the following fields
+            | fieldLabel       | value                                                        | field_name             |
+            | Pretty URL       | home-and-landing-page-edited                                 | field_pretty_url       |
+            | Page Title       | Automated Test Home and Landing Page Edited                  | title                  |
+            | Meta Description | Automated Test Home and Landing Page Meta Description Edited | field_page_description |
+        And user fills out the following fields
+            | fieldLabel          | value                        | field_name                                                                                           |
+            | Override Card Title | Featured Item Override Title | field_landing_contents[0][subform][field_row_cards][0][subform][field_override_card_title][0][value] |
+            | Title               | -Edited                      | field_landing_contents[1][subform][field_container_heading][0][value]                                |
+        And user enters "<div> Edited</div>" into Raw HTML Content text field under Primary Feature Card Row
+        And user removes multimedia card
+        And user clicks on "Multimedia Card" button in the Multimedia row text area
+        And user clicks on "Select media" to choose a media to link
+        And user filters results by Type "Video"
+        And user filters results by "Is Published" "True"
+        And user clicks on "Apply" button
+        And browser waits
+        And user selects 2 item from the media list
+        And browser waits
+        And user clicks on "Select media" button to select media
+        And browser waits
+        And user remembers the name of media card item for future verification
+        And user selects "Add Primary Feature Card Row" from "Contents" dropdown
+        And user fills out the following fields
+            | fieldLabel | value                              | field_name                                                            |
+            | Title      | Verify Mini Landing Card and Promo | field_landing_contents[9][subform][field_container_heading][0][value] |
+        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And browser waits
+        And user clicks on "Select content" button item 2
+        And browser waits
+        And user selects "Test Resource Mini Landing Page for Home Landing" item from the list
+        And user clicks on the "Select content" button to select item
+        And browser waits
+        And the "Test Resource Mini Landing Page for Home Landing" had been selected
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify edited content
+        Given user is navigating to the front end site with path site section plus "home-and-landing-page-edited"
+        Then page title is "Automated Test Home and Landing Page Edited"
+        And primary feature card row displays the following cards
+            | title                        | link                        |
+            | Featured Item Override Title | {TEST_SITE_SECTION}/article |
+            | Featured Item Url            | https://www.google.com      |
+        And guide card row title is "Guide Card Row Title-Edited"
+        And 3 primary feature card has text "This is to test Raw Html Content under Primary Feature Card Row Edited"
+        And guide card row title is "Guide Card Row Title-Edited"
+        And multimedia card row has a video which name matches selected multimedia card item
+        And the page contains meta tags with the following names
+            | name        | content                                                      |
+            | description | Automated Test Home and Landing Page Meta Description Edited |
+        And last feature card row displays the following cards
+            | title                                                         | link                                                                 | featureCardDescription                                               |
+            | Test Resource Mini Landing Page for Home Landing - Card Title | {TEST_SITE_SECTION}/test-resource-mini-landing-page-for-home-landing | Test Resource Mini Landing Page for Home Landing - Feature Card Desc |
+
     Scenario: Clean up
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -308,9 +464,13 @@ Feature: Home And Landing Page Test Creation of Content
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "home-and-landing-page" from the list of content
+        And user selects a checkbox next to title with url "test-resource-mini-landing-page-for-home-landing" from the list of content
+        And user selects a checkbox next to title with url "home-and-landing-page-edited" from the list of content
         And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
-        And the content item with url "mini-landing-page-edited" does not exist in the list of content
+        Then page title is "Are you sure you want to delete these content items?"
+        And browser waits
+        When user clicks on the "Delete" button
+        And browser waits
+        Then the confirmation text "Deleted 2 content items." appears on a screen
+        And the content item with url "test-resource-mini-landing-page-for-home-landing" does not exist in the list of content
+        And the content item with url "home-and-landing-page-edited" does not exist in the list of content
