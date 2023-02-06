@@ -1,5 +1,6 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
+
 function createRandomStr() {
     var result = '';
     var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -39,29 +40,37 @@ And('the content item with url {string} does not exist in the list of content', 
     cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).should('not.exist');
 });
 
+Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
+});
+
+And('user clicks on title with url {string} from the list of content', (contentHref) => {
+    cy.get(`a[href='${siteSection}/${contentHref}']`).click();
+});
+
 And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
-    cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true })
+    cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });
 })
 
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
-    cy.get(`div.paragraph-type-title:contains('${cartOption}')`).parent().parent().find(`span:contains('${title}')`).parent().click()
+    cy.get(`div.paragraph-type-title:contains('${cartOption}')`).parent().parent().find(`span:contains('${title}')`).parent().click({ force: true });
 })
 
 And('user clicks on {string} link in the {string} text area within {string} section', (title, cartOption, multimediaRow) => {
     cy.get(`div:contains("${multimediaRow}")`).parent().parent().find(`div:contains("${cartOption}")`).parent().find(`span:contains('${title}')`).eq(0).click({ force: true })
 })
 
-And('user clicks on {string} link in the {string} text area within {string} section for {string}',(link, textArea, subSection, section)=>{
+And('user clicks on {string} link in the {string} text area within {string} section for {string}', (link, textArea, subSection, section) => {
     cy.get(`div[class*="paragraph-type-title"]:contains("${section}")`).parent().parent().find(`div:contains("${subSection}")`).parent().parent().find(`div:contains("${textArea}")`).parent().find(`span:contains('${link}')`).eq(0).click({ force: true })
-    })
+})
 
 And('user clicks on {string} link in the {string} text area within {string} section for {string}', (title, cartOption, subSection, section) => {
     cy.get(`div:contains("${subSection}")`).parent().parent().find(`div:contains("${cartOption}")`).parent().find(`span:contains('${title}')`).eq(0).click({ force: true })
 })
 
-And('user selects {string} from {string} dropdown {string} section for {string}',(dropDValue,dropdownLbl,subSection, section)=>{
+And('user selects {string} from {string} dropdown {string} section for {string}', (dropDValue, dropdownLbl, subSection, section) => {
     cy.get(`div[class*="paragraph-type-title"]:contains("${section}")`).parent().parent().find(`div:contains("${subSection}")`).parent().parent().find(`.placeholder:contains("${dropdownLbl}")`).parent().find(`input[value="${dropDValue}"]`).eq(0).click({ force: true })
-    })
+})
 
 And('user clicks on {string} button item', (content) => {
     cy.get(`input[value='${content}']`).eq(0).click({ force: true })
@@ -106,15 +115,20 @@ And('user filters results by {string} {string}', (title, option) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').parent().find(`label:contains("${title}")`).parent().find("select[name='status']").select(option)
 })
 
-And('user selects {int} item from the media list', (num) => {
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input.form-checkbox").eq(num - 1).check()
-})
+And('user clicks on {string} button', (content) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value='${content}']`).eq(0).click({ force: true });
+});
 
+And('user selects {int} item from the media list', (num) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').eq(num - 1).check();
+});
+
+let mediaTextBack;
 And('user remembers the name of media card item for future verification', () => {
-    cy.get('details img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src')
-    })
-})
+    cy.get('div[id*="mm-media-item"] div[class*="field--name"] div.field__item').eq(0).then($el => {
+        mediaTextBack = $el[0].innerText;
+    });
+});
 
 And('user selects {string} item from the media list', (title) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name='name']").type(title)
@@ -151,13 +165,10 @@ And('user enters {string} in Raw HTML Content under {string}', (value, section) 
 })
 
 And('user fills out HTML Content text area with {string} under {string}', (value, section) => {
-
     cy.get(`div[class*="paragraph-type-title"]:contains("${section}")`).parent().parent().find('iframe[title="Rich Text Editor, HTML Content field"]').its('0.contentDocument.body').should('not.be.empty').then(iframe => {
         cy.wrap(iframe).find('p').type(value);
     })
-
 })
-
 
 And('user selects {string} from Source View dropdown', (sourceDropdown) => {
     cy.get("select[name*='[field_source_view][0][target_id]']").select(sourceDropdown)
@@ -229,6 +240,204 @@ And('user fills out the following fields under {string} section', (option, dataT
 
     }
 });
-And('user clicks on {string} button item in the {string} text area',(selectContentBtn,section)=>{
+And('user clicks on {string} button item in the {string} text area', (selectContentBtn, section) => {
     cy.get(`div[id*="top-paragraph-type-title"]:contains("${section}")`).parent().parent().find(`input[value="${selectContentBtn}"]`).click()
-})
+});
+
+And('primary feature card row displays the following cards', (dataTable) => {
+    for (let { title, link } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection);
+            cy.get(`div.row.feature-primary a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
+        }
+    }
+});
+
+And('{int} primary feature card has text {string}', (cardNum, cardText) => {
+    cy.get('div.row.feature-primary').find('div.slot-item').eq(cardNum - 1).should('include.text', cardText);
+});
+
+And('guide card row title is {string}', (cardTitle) => {
+    cy.get(`div.guide-title`).find(`h2:contains("${cardTitle}")`).should('be.visible');
+});
+
+And('guide card row displays the following cards', (dataTable) => {
+    for (let { title, link } of dataTable.hashes()) {
+        cy.get(`div.row.guide-card h2:contains("${title}")`).should('be.visible');
+        cy.get('div.row.guide-card ul').find(`a[href='${link}']`).should('be.visible');
+    }
+});
+
+And('{int} guide card has text {string}', (cardNum, cardText) => {
+    cy.get('div.row.guide-card').find('div.slot-item').eq(cardNum - 1).should('include.text', cardText);
+});
+
+And('secondary feature card row displays the following cards', (dataTable) => {
+    for (let { title, link } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection);
+            cy.get(`div.row.feature-secondary a[href='${link}']`).should('be.visible').and('include.text', title);
+        }
+    }
+});
+
+And('multimedia card row has a video which name matches selected multimedia card item', () => {
+    cy.get('div.multimedia-feature-card figure').then($el => {
+        const mediaTextFront = $el[0].innerText;
+        expect(mediaTextFront).to.equal(mediaTextBack);
+    });
+});
+
+And('multimedia card row displays the following cards', (dataTable) => {
+    for (let { title, link } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection);
+            cy.get(`div.multimedia-slot a[href='${link}']`).should('be.visible').and('include.text', title);
+        }
+    }
+});
+
+And('list card row title is {string}', (cardTitle) => {
+    cy.get('div.managed.list').find(`h2:contains("${cardTitle}")`).should('be.visible');
+});
+
+And('list row displays the following links', (dataTable) => {
+    for (let { title, link, description } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection);
+            cy.get(`div.managed.list a[href='${link}']`).should('be.visible').and('include.text', title);
+            cy.get('div.managed.list').find('div.description').should('be.visible').and('include.text', description);
+        }
+    }
+});
+
+And('one-column card row title is {string}', (cardTitle) => {
+    cy.get(`div.row.paragraph-col-one`).find(`h3:contains("${cardTitle}")`).should('be.visible');
+});
+
+And('one-column content displays text {string}', (contentText) => {
+    cy.get(`div.row.paragraph-col-one`).find(`p:contains("${contentText}")`).should('be.visible');
+});
+
+And('one-column list has the following links', (dataTable) => {
+    for (let { title, link, description } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection);
+            cy.get(`div.row.paragraph-col-one a[href='${link}']`).should('be.visible').and('include.text', title);
+            cy.get('div.row.paragraph-col-one').find('div.description').should('be.visible').and('include.text', description);
+        }
+    }
+});
+
+And('one-column list has raw html displaying {string}', (contentText) => {
+    cy.get('div.row.paragraph-col-one').find(`p:contains("${contentText}")`).should('be.visible');
+});
+
+And('two-column list has raw html displaying {string}', (contentText) => {
+    cy.get('div.rawHtml').find(`p:contains("${contentText}")`).should('be.visible');
+});
+
+And('two-column content heading reads {string}', (contentHeading) => {
+    cy.get('div.row.news').should('include.text', contentHeading);
+});
+
+And('two-column html content reads {string}', (contentText) => {
+    cy.get('div.row.news').find(`p:contains("${contentText}")`).should('be.visible');
+});
+
+And('two-column dynamic list shows {string}', (pressReleases) => {
+    cy.get('div.dynamic.list').find(`div:contains("${pressReleases}")`).should('be.visible');
+});
+
+And('dynamic lists shows {int} items', (itemCount) => {
+    cy.get('div.dynamic.list').find('li.list-item').should('have.length', itemCount);
+});
+
+And('borderless card title is {string}', (title) => {
+    cy.get('div.borderless-text-container').find(`h2:contains("${title}")`).should('be.visible');
+});
+
+And('borderless card long description is {string}', (longDesc) => {
+    cy.get('div.borderless-text-container').find(`p:contains("${longDesc}")`).should('be.visible');
+});
+
+And('borderless card button has title text {string} and links to {string}', (title, link) => {
+    if (link.includes("{TEST_SITE_SECTION}")) {
+        link = link.replace("{TEST_SITE_SECTION}", siteSection);
+        cy.get(`div.centered-container a[href='${link}']`).should('be.visible').and('include.text', title);
+    }
+});
+
+And('title first feature card row has the following cards', (dataTable) => {
+    for (let { title, link } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection);
+            cy.get(`div.title-first-feature-card-container a[href='${link}']`).should('be.visible').and('include.text', title);
+        }
+    }
+});
+
+And('user removes multimedia card', () => {
+    cy.get('#edit-field-landing-contents-3-subform-field-mm-media-item-current-items-0-remove-button').click({ force: true });
+});
+
+let imageSrc;
+And('user selects {int} Promotional Image from the list of images for mini landing page', (num) => {
+    cy.get('span:contains("Promotional Image")').parent().as('imageUpload').click()
+    cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
+});
+And('user remembers the source of selected promo image for further verification for mini landing page', () => {
+    cy.get('details img').then($el => {
+        imageSrc = $el[0].getAttribute('src');
+    });
+});
+
+And('user selects {string} content item', (dropDown) => {
+    cy.get(`input[value='${dropDown}']`).click({ force: true });
+});
+
+And('user clicks on {string} link in the Internal Feature Card text area under Primary Feature Card Row', (featuredLink) => {
+    cy.get(`div[id*="edit-field-landing-contents-9-subform-field-row-cards-0-subform-field-featured-item"] span:contains('${featuredLink}')`).click({ force: true });
+});
+
+And('user enters {string} into Content Heading text field', (value) => {
+    cy.get("input[name^='field_landing_contents[0][subform][field_content_heading]']").type(value);
+});
+
+And('last feature card row displays the following cards', (dataTable) => {
+    let link1;
+    for (let { title, link, featureCardDescription } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection);
+            link1 = `${link}-${randomNum}`;
+            cy.get(`div.feature-card a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link1);
+        }
+        cy.get(`div.feature-card p:contains("${featureCardDescription}")`).should('be.visible');
+    }
+});
+
+When('user clicks on the {string} button', (deleteBtn) => {
+    cy.get(`input[id='edit-submit'][value='${deleteBtn}']`).click({ force: true });
+});
+
+And('user clicks on the {string} button to select item', (title) => {
+    cy.getIframeBody('iframe[name="entity_browser_iframe_cgov_content_browser"]').find(`input[value="${title}"]`).click({ force: true });
+});
+
+And('the {string} had been selected', (title) => {
+    cy.get(`div.seven-details__wrapper`).find(`div[id*=edit-field-landing-contents-9-subform-field-row-cards-0-subform-field-featured-item-current-item]:contains('${title}')`).should('be.visible');
+});
+
+And('user clicks on the {string} link in the {string} text area', (title, cardOption) => {
+    cy.get(`div[id*="field-landing-contents-9-subform-field-row-cards-0-item"]`).find(`summary.seven-details__summary span:contains('${title}')`).click({ force: true });
+});
+
+And('user clicks on {string} button item {int}', (content, index) => {
+    cy.get(`input[value='${content}']`).eq(index - 1).click({ force: true })
+});
+
+And('user selects {string} item from the list', (title) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
+});
