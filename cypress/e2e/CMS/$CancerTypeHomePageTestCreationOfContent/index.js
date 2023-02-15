@@ -58,7 +58,7 @@ And('user fills out CTHP Guide Card Description field text area with {string}',(
 })
 
 And('user clicks on {string} link in the {string} text area',(link, linkOption) =>{
-    cy.get(`div:contains("${linkOption}")`).parent().find(`span:contains("${link}")`).eq(0).click({force: true})
+    cy.get(`div:contains("${linkOption}")`).parent().parent().find(`span:contains("${link}")`).eq(0).click({force: true})
 })
 
 And('user clicks on {string} button from {string} text area',(title, option)=>{
@@ -71,14 +71,26 @@ And('user filters summaries list by {string} language and clicks on {string} but
 })
 
 And('user selects {int} PDQ Summary from the list of summaries',(num)=>{
-    cy.getIframeBody('iframe.entity-browser-modal-iframe')
-    //.find(`td:contains('${siteSection}')`).first().parent()
-    .find('td.views-field views-field-title').first().check();
-    //cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name='entity_browser_select[node:1206]").eq(num - 1).check() 
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').first().click({force: true})
 })
 
-And('user selects {string} from section {string} dropdown',(dropdown, option)=>{
-    cy.get(`.placeholder:contains("${option}")`).parent().find(`input[value="${dropdown}"]`).click({force: true})
+And('user clicks on {string} button to select item',(listBtn)=>{
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${listBtn}"]`).click({force: true})
+})
+
+let imageSrc1;
+And('user remembers the title of selected summary for further verification', () => {
+    cy.get('details div').then($el => {
+        imageSrc1 = $el[0].getAttribute('src')
+    })
+})
+
+And('user selects {string} from {string} dropdown',(dropdown, section)=>{
+    cy.get(`.placeholder:contains("${section}")`).parent().find(`input[value="${dropdown}"]`).click({ force: true })   
+})
+
+And('user clicks on {string} link in the Internal Link text area',(link)=>{
+    cy.get(`tbody summary[role='button'] span:contains("${link}")`).eq(1).click({force: true})
 })
 
 And('user selects {string} item from the media list',(title)=>{
@@ -87,17 +99,15 @@ And('user selects {string} item from the media list',(title)=>{
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains(${title})`).parent().find('input').click()
 })
 
+/*---------- Scenario: Adding Internal Feature card ---- DOES NOT HAVE STEPS ----*/
 
-/*---------- Scenario: Adding Internal Feature card ------ TEST Passes But Fails on CTHP Card Title ----*/
+
+/*---------- Scenario: Adding External feature card ---- DOES NOT HAVE STEPS ----*/
 
 
-/*--------- Scenario: Adding External feature card ----- TEST Passes But Fails on CTHP Card Title ----*/
+/*---------- Scenario: Adding video card -----------*/
 And('user selects {int} Video from the list of videos',(num)=>{
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-entity-browser-select-media36']").eq(num - 1).check()
-})
-
-And('user clicks on {string} button item list',(listBtn)=>{
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${listBtn}"]`).click({force:true})
 })
 
 let imageSrc;
@@ -111,8 +121,6 @@ And('user selects {string} from {string} dropdown {string} section',(dropDown,op
 cy.get(`div:contains("${section}")`).parent().parent().find(`.placeholder:contains("${option}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true })
 })
 
-/*---------- Scenario: Adding video card -----------*/
-
 
 /*---------- Scenario: Adding research card -----NEED attention on Main Page content ------*/
 And('user filters research list by {string} type and clicks {string} button',(dropdown,btn)=>{
@@ -120,12 +128,19 @@ And('user filters research list by {string} type and clicks {string} button',(dr
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${btn}"]`).click({force:true})   
 })
 
-And('user selects {int} research page from the list',(num)=>{
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name='entity_browser_select[node:1206]").eq(num - 1).check()  
+And('user selects {int} research page from the list',(num)=>{  
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').first().click({force: true})  
+})
+let imageSrc2;
+And('user remembers title of selected Cancer Research List Page for future verification', () => {
+    cy.get('details div').then($el => {
+        imageSrc2 = $el[0].getAttribute('src')
+    })
 })
 
 
-/*---------- Scenario: Adding research card -----DONE ------*/
+
+/*---------- Scenario: Adding block and raw html cards -----DONE ------*/
 And('user types {string} in the autosuggest field of {string} card area',(value, option)=>{
     cy.get(`label:contains("${option}")`).parent().find("input[name*='field_cthp_cards[3][subform]']").type(value) 
 })

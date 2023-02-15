@@ -50,35 +50,37 @@ Scenario: Adding guide card
     And user fills out CTHP Guide Card Description field text area with "Description of Guide Card of CTHP content type"
     And browser waits
     And user fills out the following fields
-        | fieldLabel       | value                                  | field_name                                                          |
-        | PDQ Link Heading | PDQ Treatment Information for Patients | field_cthp_cards[1][subform][field_cthp_pdq_link_heading][0][value] |
-    # And user clicks on "PDQ Links" link in the "CTHP Guide Card" text area
-    # And user clicks on "Select summary" button from "CTHP Guide Card" text area
-    # And user filters summaries list by "English" language and clicks on "Apply" button
-    # And user selects 1 PDQ Summary from the list of summaries
-    # And browser waits
-    # And user clicks on "Select summary" button to select item
-    # And user remembers the title of selected summary for further verification
-    And user selects "Add Internal Link" from section "View More Information" dropdown
+        | fieldLabel       | value                                  | field_name                                                |
+        | PDQ Link Heading | PDQ Treatment Information for Patients | field_cthp_cards[1][subform][field_cthp_pdq_link_heading] |
     And browser waits
-    And user clicks on "Link" link in the "Internal Link" text area
+    And user clicks on "PDQ Links" link in the "CTHP Guide Card" text area
+    And user clicks on "Select summary" button from "CTHP Guide Card" text area
+    And user filters summaries list by "English" language and clicks on "Apply" button
+    And user selects 1 PDQ Summary from the list of summaries
+    And user clicks on "Select summary" button to select item
+    And user remembers the title of selected summary for further verification
+    And browser waits
+    And user selects "Add Internal Link" from "View More Information" dropdown
+    And browser waits   
+    And user clicks on "Link" link in the Internal Link text area
+    And browser waits
     And user clicks on "Select content" button from "Internal Link" text area
     And user selects "Article to test Related Resources" item from the list
     And user clicks on "Select content" button to select item
     And browser waits
-    And user selects "Add External Link" from section "View More Information" dropdown
+    And user selects "Add External Link" from "View More Information" dropdown
     Then "External Link" section appears
     And user fills out the following fields
-        | fieldLabel | value                  | field_name                                                                                          |
-        | Link       | https://www.google.com | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_external_link][0][uri]    |
-        | Title      | Google Link Guide Card | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_override_title][0][value] |
+         | fieldLabel | value                  | field_name                                                                                          |
+         | Link       | https://www.google.com | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_external_link][0][uri]    |
+         | Title      | Google Link Guide Card | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_override_title][0][value] |
     And user selects "Add Media Link" from "View More Information" CTHP dropdown
+    And browser waits
     Then "Media Link" section appears
     And user clicks on "Link" link in the "External Link" text area
     And user clicks on "Select media" to choose a resource to link
     And user selects "Test File for Related Resources" item from the media list
-    And user clicks on "Select media" button to select media
-    And browser waits
+    And user clicks on "Select media" button to select item
     And user fills out the following fields
         | fieldLabel     | value                                 | field_name                                                                                          |
         | Override Title | Media Link Override Title Guide cards | field_cthp_cards[1][subform][field_cthp_view_more_info][2][subform][field_override_title][0][value] |
@@ -94,7 +96,6 @@ Scenario: Adding Internal Feature card
     And user clicks on title with url "cancer-type-homepage" from the list of content
     And user clicks on the tool bar status green button "Draft"
     And user clicks "View in edit form" button from other actions
-    And browser waits
     And user selects "Add CTHP Internal Feature Card" from "CTHP Cards" CTHP dropdown
     And browser waits
     And user fills out the following fields
@@ -126,7 +127,6 @@ Scenario: Adding External feature card
     And user fills out the following fields
         | fieldLabel      | value           | field_name                                          |
         | CTHP Card Title | Test Statistics | field_cthp_cards[2][subform][field_cthp_card_title] |
-    And browser waits
     And user selects "Survival Rates & Prognosis" from 3 "CTHP Card Theme" section "CTHP External Feature Card" dropdown
     And browser waits
     And user fills out the following fields
@@ -165,31 +165,30 @@ Scenario: Adding video card
     And user clicks on "Select content" button to select item
     Then user saves the content page
 
-# Scenario: Adding research card
-#     Given user is navigating to "/user/login"
-#     When user enters credentials
-#     And user clicks "Log in" button
-#     Then user is logged in and the user name "admin" is displayed in the toolbar
-#     And the tool bar appears at the top
-#     When user clicks on "Content" tab
-#     And user clicks on title with url "cancer-type-homepage" from the list of content
-#     And user clicks on the tool bar status green button "Draft"
-#     And user clicks "View in edit form" button from other actions
-#     And user selects "Add CTHP Research Card" from "CTHP Cards" CTHP dropdown
-#     And browser waits
-#     And user fills out the following fields
-#         | fieldLabel      | value         | field_name                                          |
-#         | CTHP Card Title | Test Research | field_cthp_cards[1][subform][field_cthp_card_title] |
-#     And user selects "Research" from 5 "CTHP Card Theme" section "CTHP Research Card" dropdown
-#     And browser waits
-#     And user clicks on "Research Page" link in the "CTHP Research Card" link area
-#     And user clicks on "Select content" button from "CTHP Research Card" link area
-#     And user filters research list by "Cancer Research List Page" type and clicks "Apply" button
-#     And user selects 1 research page from the list
-#     And user clicks on "Select content" button to select item
-#     And user remembers title of selected Cancer Research List Page for future verification
-#     And browser waits
-#     Then user saves the content page
+Scenario: Adding research card
+    Given user is navigating to "/user/login"
+    When user enters credentials
+    And user clicks "Log in" button
+    Then user is logged in and the user name "admin" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    And user clicks on title with url "cancer-type-homepage" from the list of content
+    And user clicks on the tool bar status green button "Draft"
+    And user clicks "View in edit form" button from other actions
+    And user selects "Add CTHP Research Card" from "CTHP Cards" CTHP dropdown
+    And browser waits
+    And user fills out the following fields
+        | fieldLabel      | value         | field_name                                          |
+        | CTHP Card Title | Test Research | field_cthp_cards[1][subform][field_cthp_card_title] |
+    And user selects "Research" from 2 "CTHP Card Theme" section "CTHP Research Card" dropdown
+    And user clicks on "Research Page" link in the "CTHP Research Card" text area
+    And user clicks on "Select content" button from "CTHP Research Card" text area
+    And user filters research list by "Cancer Research List Page" type and clicks "Apply" button
+    And user selects 1 research page from the list
+    And user clicks on "Select content" button to select item
+    And user remembers title of selected Cancer Research List Page for future verification
+    And browser waits
+    Then user saves the content page
 
 Scenario: Adding block and raw html cards
     Given user is navigating to "/user/login"
