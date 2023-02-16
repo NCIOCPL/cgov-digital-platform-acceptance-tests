@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
+import { extractImgName } from "../../../utils/extractImgName.js";
 
 const siteSection = Cypress.env('test_site_section');
 
@@ -239,3 +240,13 @@ And('user selects {string} from Blog Series dropdown', (blogSeries) => {
     })
 });
 
+Then('the promo image is matching the earlier selected image', () => {
+    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
+
+    cy.get('div.feature-card').find('img').then($el => {
+        const source = $el[0].getAttribute('src');
+        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
+        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
+    })
+});

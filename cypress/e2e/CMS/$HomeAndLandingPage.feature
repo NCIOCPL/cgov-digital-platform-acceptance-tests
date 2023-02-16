@@ -19,6 +19,10 @@ Feature: Home And Landing Page Test Creation of Content
             | Card Title               | Automated Test Home and Landing page - Card Title        | field_card_title               |
             | Meta Description         | Automated Test Home and Landing page Meta Description    | field_page_description         |
             | Feature Card Description | Automated Test Home and Landing page - Feature Card Desc | field_feature_card_description |
+        And user selects 2 Promotional Image from the list of images to be displayed in mini landing pages
+        And browser waits
+        And user remembers the source of selected promotional image to be displayed in mini landing pages for further verification
+        And browser waits
         And user enters "Home and Landing page List Description" into "List Description" text field
         And user selects "Add Primary Feature Card Row" from "Contents" dropdown
         And user fills out the following fields
@@ -258,7 +262,8 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user selects "Accent Warm" from Card Theme dropdown
         And user selects "Image Left" from Image Position dropdown
-        And user selects 1 Promotional Image from the list of images
+        And user selects 4 Promotional Image from the list of images
+        And browser waits
         And user remembers the source of selected promo image for further verification
         And user selects "Show Button" from Button Display dropdown
         And user fills out the following fields
@@ -426,7 +431,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user fills out the following fields
             | fieldLabel | value                              | field_name                                                            |
             | Title      | Verify Mini Landing Card and Promo | field_landing_contents[9][subform][field_container_heading][0][value] |
-        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And user clicks on the "Featured Item" link in "Internal Feature Card" text area
         And browser waits
         And user clicks on "Select content" button item 2
         And browser waits
@@ -436,6 +441,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the "Test Resource Mini Landing Page for Home Landing" had been selected
         And browser waits
         Then user saves the content page
+        And browser waits
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
 
@@ -456,6 +462,52 @@ Feature: Home And Landing Page Test Creation of Content
         And last feature card row displays the following cards
             | title                                                         | link                                                                 | featureCardDescription                                               |
             | Test Resource Mini Landing Page for Home Landing - Card Title | {TEST_SITE_SECTION}/test-resource-mini-landing-page-for-home-landing | Test Resource Mini Landing Page for Home Landing - Feature Card Desc |
+
+    Scenario: Add a featured item to mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user selects the "Add Two Item Feature Card Row" content item
+        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And browser waits
+        And user clicks on "Select content" button item
+        And browser waits
+        And user selects "Automated Test Home and Landing Page Edited" item from main page content
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And "Automated Test Home and Landing Page Edited" had been selected
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify promo image and card titles in mini landing page
+        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Then page title is "Test Resource Mini Landing Page"
+        Then the promo image is matching the earlier selected image
+
+    Scenario: Remove featured item
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user removes "Two Item Feature Card Row" section
+        And user confirms removal
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
 
     Scenario: Clean up
         Given user is navigating to "/user/login"

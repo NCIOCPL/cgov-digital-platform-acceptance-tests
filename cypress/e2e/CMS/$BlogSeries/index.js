@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
+import { extractImgName } from "../../../utils/extractImgName.js";
 
 const siteSection = Cypress.env('test_site_section');
 
@@ -42,6 +43,11 @@ And('user selects a checkbox next to title with url {string} from the list of co
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
 });
+
+Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
+});
+
 
 Given('user is navigating to the blog {string} under {string}', (blogPost, blogSeries) => {
     const date = new Date();
@@ -249,22 +255,6 @@ Then('list of blog post has the following posts', (dataTable) => {
 });
 
 And('the promotional image is matching the earlier selected image', () => {
-    function extractImgName(imageFullName) {
-        let str = '';
-        for (let i = 0; i < imageFullName.length; i++) {
-            let stringToRemove = '';
-            if (imageFullName.charAt(i) === '/') {
-                for (let j = i; j < imageFullName.length; j++) {
-                    stringToRemove += imageFullName.charAt(j);
-                    if (imageFullName.charAt(i + 1) === '/') {
-                        return;
-                    }
-                }
-                str = stringToRemove;
-            }
-        }
-        return str;
-    }
     const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
@@ -320,4 +310,33 @@ And('user clicks on the {string} action button', (buttonLabel) => {
 
 And('user clicks on {string} from  dropdown button under {string}', (deleteBtn, termName) => {
     cy.get(`a.menu-item__link:contains("${termName}")`).parent().parent().find(`td li.delete.dropbutton-action a:contains("${deleteBtn}")`).click({ force: true });
+});
+
+And('user clicks on {string} button to select the item', (selectContent) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`input[id='edit-submit'][value='${selectContent}']`).click({ force: true });
+});
+
+let imageSrc2;
+And('user selects {int} Promotional Image from the list of images to be displayed in mini landing pages', (num) => {
+    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
+});
+
+And('user remembers the source of selected promotional image to be displayed in mini landing pages for further verification', () => {
+    cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
+        imageSrc2 = $el[0].getAttribute('src')
+    });
+});
+
+Then('the promo image is matching the earlier selected image', () => {
+    const expectedSrc = (imageSrc2.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
+
+    cy.get('div.feature-card').find('img').then($el => {
+        const source = $el[0].getAttribute('src');
+        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
+        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
+    });
 });

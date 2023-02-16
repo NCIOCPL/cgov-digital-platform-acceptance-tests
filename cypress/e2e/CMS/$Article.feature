@@ -24,8 +24,11 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user enters "Article Heading1" as 1 body section heading
         And user fills out 1 "Body" text area with "This is a description of article content type under heading1."
         And user selects 1 Lead Image from the list of images
+        And browser waits
         And user remembers the source of selected lead image for further verification
-        And user selects 2 Promotional Image from the list of images
+        And browser waits
+        And user selects 3 Promotional Image from the list of images
+        And browser waits
         And user remembers the source of selected promo image for further verification
         And user selects "Posted Date" checkbox
         And user selects "Reviewed Date" checkbox
@@ -138,11 +141,14 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user enters "Article Heading2" as 2 body section heading
         And user fills out 2 "Body" text area with "This is a description of article content type under heading2."
         And user removes the Lead Image
+        And browser waits
         And user selects 2 Lead Image from the list of images
+        And browser waits
         And user remembers the source of selected lead image for further verification
+        And browser waits
         And user removes the Promo Image
         And browser waits
-        And user selects 3 Promotional Image from the list of images
+        And user selects 4 Promotional Image from the list of images
         And user remembers the source of selected promo image for further verification
         And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
@@ -152,6 +158,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "test-article-edited"
+        And browser waits
         Then page title is "Automated Test Article Edited"
         And the lead image is matching the earlier selected image
         And "On This Page" section is displayed with the following anchor links
@@ -172,6 +179,51 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | Google Link                       | https://www.google.com/       |
             | Media Link Override Title         | {TEST_SITE_SECTION}/test-file |
 
+    Scenario: Add a featured item to mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user selects the "Add Two Item Feature Card Row" content item
+        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And browser waits
+        And user clicks on "Select content" button item
+        And browser waits
+        And user selects "Automated Test Article Edited" item from main page content
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And "Automated Test Article Edited" had been selected
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify promo image and card titles in mini landing page
+        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Then page title is "Test Resource Mini Landing Page"
+        Then the promo image is matching the earlier selected image
+
+    Scenario: Remove featured item
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user removes "Two Item Feature Card Row" section
+        And user confirms removal
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
     Scenario: Clean up
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -185,4 +237,3 @@ Feature: As a cms user I want to be able to create Article content type to promo
         When user clicks on "Delete" button
         Then the confirmation text "Deleted 1 content item." appears on a screen
         And the content item with url "test-article-edited" does not exist in the list of content
-
