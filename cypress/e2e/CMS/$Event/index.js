@@ -1,6 +1,8 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
+import { extractImgName } from "../../../utils/extractImgName.js";
 
+const siteSection = Cypress.env('test_site_section');
 
 And('user types {string} in the {string} autosuggest', (value, fieldLabel) => {
     cy.get(`div[class*="field-event-series"] label:contains("${fieldLabel}")`).type(value);
@@ -64,6 +66,12 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 And('user remembers the source of selected lead image for further verification', () => {
     cy.get('details img').then($el => {
         imageSrc = $el[0].getAttribute('src')
+    });
+});
+
+And('user remembers the source of selected promo image for further verification', () => {
+    cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
+        imageSrc1 = $el[0].getAttribute('src')
     });
 });
 
@@ -151,4 +159,15 @@ And('event date does not display time', () => {
 
 And('user removes the Lead Image', () => {
     cy.get('#edit-field-image-article-current-items-0-remove-button').click({ force: true })
+});
+
+Then('the promo image is matching the earlier selected image', () => {
+    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
+
+    cy.get('div.feature-card').find('img').then($el => {
+        const source = $el[0].getAttribute('src');
+        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
+        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
+    })
 });

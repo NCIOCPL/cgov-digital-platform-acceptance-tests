@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
+import { extractImgName } from "../../../utils/extractImgName.js";
 
 const siteSection = Cypress.env('test_site_section');
 function createRandomStr() {
@@ -34,6 +35,10 @@ And('user selects a checkbox next to title with url {string} from the list of co
 
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
 });
 
 And('the content item with url {string} does not exist in the list of content', (url) => {
@@ -132,29 +137,13 @@ And('the list item description reads {string}', (desc) => {
 });
 
 And('the promotional image for press release is matching the earlier selected image', () => {
-    function extractImgName(imageFullName) {
-        let str = '';
-        for (let i = 0; i < imageFullName.length; i++) {
-            let stringToRemove = '';
-            if (imageFullName.charAt(i) === '/') {
-                for (let j = i; j < imageFullName.length; j++) {
-                    stringToRemove += imageFullName.charAt(j);
-                    if (imageFullName.charAt(i + 1) === '/') {
-                        return;
-                    }
-                }
-                str = stringToRemove;
-            }
-        }
-        return str;
-    }
     const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
-    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/,'')
+    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('.views-element-container > ul> li').find('img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        expect(actSrc).to.include(extractedImageName.replaceAll('_','-').replace('article',''))
+        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
 
@@ -172,4 +161,15 @@ And('public use text is not displayed', () => {
 
 And('user is navigating to the front end site plus {string}', (path) => {
     cy.visit(`${frontEndBaseUrl}/${path}`);
+});
+
+Then('the promo image is matching the earlier selected image', () => {
+    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
+
+    cy.get('div.feature-card').find('img').then($el => {
+        const source = $el[0].getAttribute('src');
+        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
+        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
+    });
 });

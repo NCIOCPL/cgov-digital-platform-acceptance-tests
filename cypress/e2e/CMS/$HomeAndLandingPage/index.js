@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
-
+import { extractImgName } from "../../../utils/extractImgName.js";
 function createRandomStr() {
     var result = '';
     var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -34,6 +34,10 @@ And('user selects a checkbox next to title with url {string} from the list of co
 
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
 });
 
 And('the content item with url {string} does not exist in the list of content', (url) => {
@@ -215,6 +219,20 @@ And('user remembers the source of selected promo image for further verification'
         imageSrc1 = $el[0].getAttribute('src')
     })
 })
+
+let imageSrc2;
+And('user selects {int} Promotional Image from the list of images to be displayed in mini landing pages', (num) => {
+    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
+});
+
+And('user remembers the source of selected promotional image to be displayed in mini landing pages for further verification', () => {
+    cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
+        imageSrc2 = $el[0].getAttribute('src')
+    });
+});
 
 And('user selects {string} from Button Display dropdown', (dropdown) => {
     cy.get("select[name*='[subform][field_button_display]']").select(dropdown)
@@ -430,7 +448,7 @@ And('the {string} had been selected', (title) => {
     cy.get(`div.seven-details__wrapper`).find(`div[id*=edit-field-landing-contents-9-subform-field-row-cards-0-subform-field-featured-item-current-item]:contains('${title}')`).should('be.visible');
 });
 
-And('user clicks on the {string} link in the {string} text area', (title, cardOption) => {
+And('user clicks on the {string} link in {string} text area', (title, cardOption) => {
     cy.get(`div[id*="field-landing-contents-9-subform-field-row-cards-0-item"]`).find(`summary.seven-details__summary span:contains('${title}')`).click({ force: true });
 });
 
@@ -440,4 +458,15 @@ And('user clicks on {string} button item {int}', (content, index) => {
 
 And('user selects {string} item from the list', (title) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
+})
+
+Then('the promo image is matching the earlier selected image', () => {
+    const expectedSrc = (imageSrc2.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
+
+    cy.get('div.feature-card').find('img').then($el => {
+        const source = $el[0].getAttribute('src');
+        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
+        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
+    })
 });

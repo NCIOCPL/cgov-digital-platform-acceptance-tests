@@ -32,8 +32,12 @@ Feature: As a cms user I want to be able to create Event content type to promote
             | City/State/Country | Rockville, MD, USA | field_city_state |
         And user fills out "Body" text area with "This is a description of event content type."
         And user selects 1 Lead Image from the list of images
-        And user selects 2 Promotional Image from the list of images
+        And browser waits
         And user remembers the source of selected lead image for further verification
+        And browser waits
+        And user selects 3 Promotional Image from the list of images
+        And browser waits
+        And user remembers the source of selected promo image for further verification
         And user selects "Published" from "Save as" dropdown
         Then user saves the content page
 
@@ -65,6 +69,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And user clicks on the tool bar status green button "Published"
         And user clicks "View in edit form" button from other actions
         And user checks "All Day Event?" checkbox
+        And browser waits
         When user saves the content page
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
@@ -106,7 +111,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And user types "e" in the "Event Series" autosuggest
         And user selects 3 event series from "Event Series" autosuggest
         And user removes the Lead Image
-        And user selects 3 Lead Image from the list of images
+        And browser waits
+        And user selects 2 Lead Image from the list of images
+        And browser waits
         And user remembers the source of selected lead image for further verification
         When user saves the content page
         And user clicks on the tool bar status green button "Editing"
@@ -126,6 +133,50 @@ Feature: As a cms user I want to be able to create Event content type to promote
             | name        | content                                      |
             | description | Automated Test Event Meta Description Edited |
 
+    Scenario: Add a featured item to mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user selects the "Add Two Item Feature Card Row" content item
+        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And browser waits
+        And user clicks on "Select content" button item
+        And browser waits
+        And user selects "Automated Test Event Edited" item from main page content
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And "Automated Test Event Edited" had been selected
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify promo image and card titles in mini landing page
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Then page title is "Test Resource Mini Landing Page"
+        Then the promo image is matching the earlier selected image
+
+    Scenario: Remove featured item
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user removes "Two Item Feature Card Row" section
+        And user confirms removal
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
 
     Scenario: Clean up
         Given user is navigating to "/user/login"

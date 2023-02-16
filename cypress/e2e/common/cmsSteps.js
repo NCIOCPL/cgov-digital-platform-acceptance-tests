@@ -372,3 +372,48 @@ And('citation number {int} titled {string} has no link', (num, citText) => {
     cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text', citText);
     cy.get('@cit').find('a').should('not.exist')
 })
+
+And('user selects the {string} content item', (dropDown) => {
+    cy.get('li.dropbutton-toggle').click();
+    cy.get(`input[id*="edit-field-landing-contents-add-more-add-more-button-cgov-two-item-feature-row"]`).click();
+});
+
+And('user clicks on the {string} link in the {string} text area', (title, cardOption) => {
+    cy.get(`summary.seven-details__summary span:contains('${title}')`).parent().click();
+});
+
+And('user removes {string} section', (removeSection) => {
+    cy.get('#edit-field-landing-contents-0-top-links-remove-button').click({ force: true });
+});
+
+And('user confirms removal', () => {
+    cy.get(`li.confirm-remove.dropbutton-action input[value='Confirm removal']`).click({ force: true });
+});
+
+And('user clicks on the title with url {string} from the list of content', (contentHref) => {
+    cy.get(`a[href='${siteSection}/${contentHref}']`).click();
+});
+
+And('user clicks on {string} button item', (title) => {
+    cy.get(`input[value="${title}"]`).click({ force: true })
+});
+
+And('user selects {string} item from main page content', (title) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains("${title}")`).parent().find('input').check();
+});
+
+// for promo image verification
+
+let imageSrc;
+And('user selects {int} Promotional Image for the mini landing', (num) => {
+    cy.get('span:contains("Promotional Image")').parent().as('imageUpload').click()
+    cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
+});
+
+And('user remembers the source of selected promo image for the mini landing', () => {
+    cy.get('details img').then($el => {
+        imageSrc = $el[0].getAttribute('src')
+    })
+});

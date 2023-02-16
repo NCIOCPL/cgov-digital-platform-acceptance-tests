@@ -27,7 +27,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And user selects 1 Lead Image from the list of images
         And browser waits
         And user remembers the source of selected lead image for further verification
-        And user selects 2 Promotional Image from the list of images
+        And user selects 3 Promotional Image from the list of images
         And browser waits
         And user remembers the source of selected promo image for further verification
         And user selects "Display" from "Public Use Text" dropdown
@@ -177,6 +177,52 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
             | title                             | link                        |
             | Article to test Related Resources | {TEST_SITE_SECTION}/article |
             | Google Link                       | https://www.google.com/     |
+
+    Scenario: Add a featured item to mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user selects the "Add Two Item Feature Card Row" content item
+        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And browser waits
+        And user clicks on "Select content" button item
+        And browser waits
+        And user selects "Automated Test Blog Post Edited" item from main page content
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And "Automated Test Blog Post Edited" had been selected
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify promo image and card titles in mini landing page
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Then page title is "Test Resource Mini Landing Page"
+        Then the promo image is matching the earlier selected image
+
+    Scenario: Remove featured item
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user removes "Two Item Feature Card Row" section
+        And user confirms removal
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
 
     Scenario: Clean up
         Given user is navigating to "/user/login"

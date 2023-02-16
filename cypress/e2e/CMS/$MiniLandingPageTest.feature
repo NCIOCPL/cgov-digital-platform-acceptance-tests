@@ -21,6 +21,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | Feature Card Description | Automated Test Mini Landing Page - Feature Card Desc | field_feature_card_description |
         And user enters "Mini Landing Page List Description" into "List Description" text field
         And user selects 1 Promotional Image from the list of images
+        And browser waits
         And user remembers the source of selected promo image for further verification
         And user selects "Add Content Block" content item
         And user enters "Content Heading" into Content Heading text field
@@ -30,7 +31,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user selects "Updated Date" checkbox
         And user selects "Include in search" from "Search Engine Restrictions" dropdown
         When user saves the content page
-        
+
 
     Scenario: Add Two Item Feature Card Row section
         Given user is navigating to "/user/login"
@@ -55,7 +56,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | Card Title        | External Feature Card             | field_landing_contents[1][subform][field_two_item_row_cards][1][subform][field_override_card_title]       |
             | Card Description  | External Feature Card Description | field_landing_contents[1][subform][field_two_item_row_cards][1][subform][field_override_card_description] |
         When user saves the content page
-               
+
 
     Scenario: Add list section
         Given user is navigating to "/user/login"
@@ -146,33 +147,33 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user selects "Published" from Save as dropdown
         When user saves the content page
 
-       ##-------Mini landing page test front end verification --------##
-     Scenario: Verify newly created content
+    ##-------Mini landing page test front end verification --------##
+    Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "mini-landing-page"
         And page title is "Automated Test Mini Landing Page"
         And Content Heading reads "Content Heading"
         And HTML Content reads "This is HTML content for Content Block."
         And feature card row displays the following cards
-            |title                            |url                         |description                      |
-            |Article to test Related Resources|{TEST_SITE_SECTION}/article |N/A                              |
-            |External Feature Card            |https://www.externalcard.com|External Feature Card Description|
+            | title                             | url                          | description                       |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article  | N/A                               |
+            | External Feature Card             | https://www.externalcard.com | External Feature Card Description |
         And List Item Title is displayed as "List Item Title"
         And managed list has the following links
-            |title                                   |url                          |description|
-            |Override Test File for Related Resources       |{TEST_SITE_SECTION}/article  |Article to test Related Resources - Meta Description|
-            |Google Link                             |https://www.google.com       |N/A                                                 |
-            |Override Test File for Related Resources|{TEST_SITE_SECTION}/test-file|N/A                                                 |
+            | title                                    | url                           | description                                          |
+            | Override Test File for Related Resources | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
+            | Google Link                              | https://www.google.com        | N/A                                                  |
+            | Override Test File for Related Resources | {TEST_SITE_SECTION}/test-file | N/A                                                  |
         And borderless card with "accent-warm" accent displays the following
-            |title                            |link                       |
-            |Article to test Related Resources|{TEST_SITE_SECTION}/article|
-       And the button with text "BUTTON TEXT FOR BORDERLESS FULL-WIDTH CARD" appears with href "{TEST_SITE_SECTION}/article"
+            | title                             | link                        |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article |
+        And the button with text "BUTTON TEXT FOR BORDERLESS FULL-WIDTH CARD" appears with href "{TEST_SITE_SECTION}/article"
         And the Raw HTML Content reads the following "This is to test Raw HTML Content"
         And the Dynamic List Title reads as "Dynamic List Title"
         And 5 links are displayed under the Dynamic List Title
         And view title displays text "Press Releases"
         And the page contains meta tags with the following names
-            |name       |content                                          |
-            |description|Automated Test Mini Landing Page Meta Description|
+            | name        | content                                           |
+            | description | Automated Test Mini Landing Page Meta Description |
 
 
     Scenario: Edit and republish Mini Landing Page content type
@@ -189,10 +190,10 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user clears out "Page Title" field
         And user clears out "Meta Description" field
         And user fills out the following fields
-            |fieldLabel               |value                                                   |field_name            |
-            |Pretty URL               |mini-landing-page-edited                                |field_pretty_url      |
-            |Page Title               |Automated Test Mini Landing Page Edited                 |title                 |
-            |Meta Description         |Automated Test Mini Landing Page Meta Description Edited|field_page_description|
+            | fieldLabel       | value                                                    | field_name             |
+            | Pretty URL       | mini-landing-page-edited                                 | field_pretty_url       |
+            | Page Title       | Automated Test Mini Landing Page Edited                  | title                  |
+            | Meta Description | Automated Test Mini Landing Page Meta Description Edited | field_page_description |
         And user saves the content page
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
@@ -202,8 +203,53 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         Given user is navigating to the front end site with path site section plus "mini-landing-page-edited"
         Then page title is "Automated Test Mini Landing Page Edited"
         And the page contains meta tags with the following names
-            |name       |content                                                 |
-            |description|Automated Test Mini Landing Page Meta Description Edited|
+            | name        | content                                                  |
+            | description | Automated Test Mini Landing Page Meta Description Edited |
+
+    Scenario: Add a featured item to mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user selects the "Add Two Item Feature Card Row" content item
+        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And browser waits
+        And user clicks on "Select content" button item
+        And browser waits
+        And user selects "Automated Test Mini Landing Page Edited" item from main page content
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And "Automated Test Mini Landing Page Edited" had been selected
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify promo image and card titles in mini landing page
+        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Then page title is "Test Resource Mini Landing Page"
+        Then the promo image is matching the earlier selected image
+
+    Scenario: Remove featured item
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user removes "Two Item Feature Card Row" section
+        And user confirms removal
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
 
 
     Scenario: Clean up
