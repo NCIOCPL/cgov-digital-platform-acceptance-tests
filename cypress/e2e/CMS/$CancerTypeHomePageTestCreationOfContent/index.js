@@ -41,11 +41,11 @@ And('the content item with url {string} does not exist in the list of content', 
 
 /*----------- Scenario: User is adding new Cancer Type Homepage content type-----DONE------- */
 And('user selects {string} from {string} CTHP dropdown',(dropdown,cartOption)=> {
-    cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropdown}"]`).eq(0).click({ force: true })
+    cy.get(`.placeholder:contains("${cartOption}")`).parent().parent().find(`input[value="${dropdown}"]`).eq(0).click({ force: true })
 })
 
-And('user selects {string} from {int} {string} section {string} dropdown',(dropdown,num, dropdownLabel,option)=>{
-    cy.get(`div:contains("${option}")`).parent().find(`label:contains("${dropdownLabel}")`).parent().find("select[name*='[field_cthp_card_theme]']").eq(num-1).select(dropdown)
+And('user selects {string} from CTHP Card Theme dropdown number {int}',(option, index)=>{
+    cy.get('select[id*="cthp-card-theme"]').eq(index-1).select(option)
 })
 
 And('user fills out Overview Card Text field text area with {string}',(value)=>{
@@ -53,6 +53,15 @@ And('user fills out Overview Card Text field text area with {string}',(value)=>{
 })
 
 /* ---------- Scenario: Adding guide card ---------- */
+And('user fills out the following fields under {string} section', (option, dataTable) => {
+    for (const { fieldLabel, value, field_name } of dataTable.hashes()) {
+        cy.get(`label:contains("${option}")`).should('be.visible')
+        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
+        cy.get('@inputField').type(value);
+        
+    }
+})
+
 And('user fills out CTHP Guide Card Description field text area with {string}',(value)=>{
     cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value)
 })
@@ -99,13 +108,7 @@ And('user selects {string} item from the media list',(title)=>{
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains(${title})`).parent().find('input').click()
 })
 
-/*---------- Scenario: Adding Internal Feature card ---- DOES NOT HAVE STEPS ----*/
-
-
-/*---------- Scenario: Adding External feature card ---- DOES NOT HAVE STEPS ----*/
-
-
-/*---------- Scenario: Adding video card -----------*/
+/*---------- Scenario: Adding video card ---DONE--------*/
 And('user selects {int} Video from the list of videos',(num)=>{
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-entity-browser-select-media36']").eq(num - 1).check()
 })
@@ -120,7 +123,6 @@ And('user remembers the title of selected video for further verification', () =>
 And('user selects {string} from {string} dropdown {string} section',(dropDown,option,section)=> {
 cy.get(`div:contains("${section}")`).parent().parent().find(`.placeholder:contains("${option}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true })
 })
-
 
 /*---------- Scenario: Adding research card -----NEED attention on Main Page content ------*/
 And('user filters research list by {string} type and clicks {string} button',(dropdown,btn)=>{
@@ -138,11 +140,13 @@ And('user remembers title of selected Cancer Research List Page for future verif
     })
 })
 
-
-
 /*---------- Scenario: Adding block and raw html cards -----DONE ------*/
+And('user selects {string} from CTHP Card Theme dropdown',(dropdown)=>{
+    cy.get("select[name*='field_cthp_cards[5][subform][field_cthp_card_theme]']").select(dropdown)
+})
+
 And('user types {string} in the autosuggest field of {string} card area',(value, option)=>{
-    cy.get(`label:contains("${option}")`).parent().find("input[name*='field_cthp_cards[3][subform]']").type(value) 
+    cy.get(`label:contains("${option}")`).parent().find("input[name*='field_cthp_cards[6][subform]']").type(value) 
 })
 
 And('user selects {int} result from the list of autosuggest',(num)=>{
@@ -150,13 +154,20 @@ And('user selects {int} result from the list of autosuggest',(num)=>{
 })
 
 And('user clicks on Source tool icon in the html content tool bar', () => {
-    cy.get("span.cke_button_label.cke_button__source_label").eq(0).click({force:true})
+   cy.get("span.cke_button_label.cke_button__source_label").eq(2).click({force:true})
 })
 
 And('user enters {string} into source text field', (value) => {
     cy.get("textarea[title='Rich Text Editor, HTML Content field']").type(value)
 })
 
+And('user selects {string} from Search Engine Restrictions dropdown',(dropdown)=>{
+    cy.get("select[name='field_search_engine_restrictions']").select(dropdown)
+})
+
 And('user selects {string} from draft {string} dropdown',(dropdown, option) =>{
     cy.get(`label:contains("${option}")`).parent().parent().find("select[name*='moderation_state']").select(dropdown)
 })
+
+
+
