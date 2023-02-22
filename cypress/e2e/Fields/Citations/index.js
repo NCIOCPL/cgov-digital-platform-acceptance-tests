@@ -1,4 +1,4 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 
 Then('citation section is visible', () => {

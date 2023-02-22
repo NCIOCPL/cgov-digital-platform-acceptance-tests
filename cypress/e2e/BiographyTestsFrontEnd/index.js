@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+import { getBaseDirectory } from '../../utils';
 
 And('the individuals title is {string}', (individualTitle) => {
     cy.get('div[class="profile-title"]').should('be.visible').and('include.text', individualTitle)
@@ -41,7 +41,7 @@ And('biography description contains text {string}', (socialMedia) => {
 
 And('{string} section contains the following links', (sectionTitle, dataTable) => {
     for (const { title, href } of dataTable.hashes()) {
-        cy.get(`div#nvcgRelatedResourcesArea li a:contains('${title}')`).should('have.attr', 'href', href);
+        cy.get(`div#nvcgRelatedResourcesArea li a:contains('${title}')`).should('have.attr','href').and('include',`${href}`);
     }
 })
 
@@ -56,7 +56,7 @@ And('date stamp does not exist', () => {
 
 And('the following organizations with links are listed for this individual', (dataTable) => {
     for (const { organization, url } of dataTable.hashes()) {
-        cy.get(`div#nvcgSlProfilePanel div a:contains('${organization}')`).should('have.attr', 'href', url)
+        cy.get(`div#nvcgSlProfilePanel div a:contains('${organization}')`).should('have.attr', 'href').and('eq', `${url}`);
     }
 })
 

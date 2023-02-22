@@ -19,7 +19,7 @@ Feature: Feature Card tests
         And feature cards at positions "<indexes>" have "descriptions" as "<description>"
         And feature cards at positions "<indexes>" have "links" as "<itemLink>"
         And feature cards at positions "<indexes>" have "alt texts" as "<altText>"
-        And feature cards at positions "<indexes>" have "sources" as "/sites/default/files/styles/cgov_featured/public/cgov_image/featured/"
+        And feature cards at positions "<indexes>" have "sources" as "/files/styles/cgov_featured/public/cgov_image/featured/"
         And feature cards at positions "<indexes>" have "files" as "<files>"
 
         Examples:

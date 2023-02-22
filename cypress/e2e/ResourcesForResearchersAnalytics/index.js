@@ -4,6 +4,8 @@ import { Then, When } from "cypress-cucumber-preprocessor/steps";
 import { getLoadBeacon } from "../../utils/getLoadBeacon.js";
 
 let resultTitle;
+const baseURL = Cypress.config('baseUrl');
+const hostName = baseURL.replace(new RegExp('(https:\/\/)|(http:\/\/)'), "")
 
 When("user clicks on Visit resource link", () => {
     cy.get("div a")
@@ -54,7 +56,6 @@ When("user clicks on {int} search result item", (resIndex) => {
 
 function getClickBeacon() {
     let clickBeacon;
-    console.log(cy.AnalyticsStorage);
     for (let i = 0; i < cy.AnalyticsStorage.length; i++) {
         const singleBeacon = cy.AnalyticsStorage[i];
         if (!(singleBeacon.linkType === undefined)) {
@@ -144,17 +145,17 @@ Then("the following parameters should be captured", (dataTable) => {
             //we will account for that minute by adding one to currently captured time
             let extraMin =
                 typeof minutes === "string" && minutes !== "09" ?
-                `0${parseInt(minutes) + 1}` :
-                minutes === "09" ?
-                "10" :
-                minutes + 1;
+                    `0${parseInt(minutes) + 1}` :
+                    minutes === "09" ?
+                        "10" :
+                        minutes + 1;
             // also there is a case when test is run when the new hour starts (01:59)
             let extraTwoMin =
                 typeof extraMin === "string" && extraMin !== "09" ?
-                `0${parseInt(extraMin) + 1}` :
-                extraMin === "09" ?
-                "10" :
-                extraMin + 1;
+                    `0${parseInt(extraMin) + 1}` :
+                    extraMin === "09" ?
+                        "10" :
+                        extraMin + 1;
             //so we need to add an option when the time might be 02:00 vs 01:59
             //plus the case when it's 11:59 AM turning into 12:00 PM
             let extraHour = hours12;
@@ -174,6 +175,10 @@ Then("the following parameters should be captured", (dataTable) => {
             const check =
                 beacon[parameter] === options[0] || beacon[parameter] === options[1];
             expect(check).to.be.true;
+        } else if (value.startsWith('/') && !value.endsWith('/')) {
+            expect(beacon[parameter]).to.include(value);
+        } else if (value === '/') {
+            expect(beacon[parameter]).to.include(value);
         } else expect(beacon[parameter]).to.be.equal(value);
     }
 });

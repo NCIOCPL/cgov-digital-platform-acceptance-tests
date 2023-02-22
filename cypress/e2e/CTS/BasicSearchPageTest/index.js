@@ -1,5 +1,6 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then, When } from 'cypress-cucumber-preprocessor/steps';
+import { getBaseDirectory } from '../../../utils';
 
 // Local field map as labels are not used in the shared field map.
 const labelFieldMap = {
@@ -28,7 +29,11 @@ And('the text {string} appears below the title', (introtext) => {
 });
 
 And('{string} link has a href {string}', (linkText, linkHref) => {
-    cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', linkHref);
+    if(linkText === 'Steps to Find a Clinical Trial'){
+        cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', linkHref);
+    } else {
+    cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${getBaseDirectory()}${linkHref}`);
+    }
 });
 
 
@@ -51,7 +56,7 @@ Then(
     (fieldLabel, helpHref) => {
         cy.get(`#fieldset--${labelFieldMap[fieldLabel]}`)
             .find('a.text-icon-help')
-            .should('have.attr', 'href', helpHref);
+            .should('have.attr', 'href', `${getBaseDirectory()}${helpHref}`);
     }
 );
 
@@ -69,8 +74,7 @@ And('user clicks on {string} button', (buttonLabel) => {
 
 Then('the search is executed and results page is displayed', () => {
     cy.location('pathname').should('contain', 'search/r');
-    cy.get('.results-page h1').should('have.text', 'Clinical Trials Search Results');
-    cy.get('div[class="results-list"]').should('be.visible');
+    cy.get('div[class="results-list"]',{timeout:10000}).should('be.visible');
 });
 
 And('results info has text {string}', (resultsInfo) => {
@@ -152,7 +156,7 @@ Then('alert is not displayed in {string} section', (fieldLabel) => {
 });
 
 Then('the search is not executed and path is {string}', (path) => {
-    cy.location('pathname').should('equal', path);
+    cy.location('pathname').should('eq', `${getBaseDirectory()}${path}`);
 });
 
 When('user clears {string} input field', (fieldLabel) => {

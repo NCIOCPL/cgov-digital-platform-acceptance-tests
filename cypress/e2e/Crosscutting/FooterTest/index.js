@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+import { getBaseDirectory } from "../../../utils";
 Given('user is navigating to {string}', (a) => {
     cy.visit(a);
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -44,7 +44,7 @@ And('the footer text does not contain any broken links', () => {
 });
 
 Then('clicking on {string} link with href {string} in the footer opens a chat pop-up', (linkName, href) => {
-    cy.get(`#nci-footer a:contains('${linkName}')`).should('have.attr', 'href', href);
+    cy.get(`#nci-footer a:contains('${linkName}')`).should('have.attr','href').and('eq',href);
 });
 And('clicking on {string} link in the footer opens a {string} survey', (linkName, href) => {
     cy.get(`#nci-footer a:contains(${linkName})`).should('have.attr', 'href').and('include', href);
@@ -71,7 +71,7 @@ And('footer is broken into {int} sections', (sectionNum) => {
 });
 
 And('link {string} links to {string}', (linkName, href) => {
-    cy.get(`#nci-footer a:contains('${linkName}')`).should('be.visible').and('have.attr', 'href', href);
+    cy.get(`#nci-footer a:contains('${linkName}')`).should('be.visible').and('have.attr','href').and('eq',`${getBaseDirectory()}${href}`);
 });
 
 And('the {string} are displayed', (socialMediaIcons, area) => {

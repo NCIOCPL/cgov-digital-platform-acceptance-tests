@@ -1,13 +1,13 @@
 /// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+import { getBaseDirectory } from '../../utils';
 And('the {int} release doesnt have a link', (year) => {
     cy.get('p').should('contain.text', year).should('not.have','a');
 });
 
 And('the following press releases are displayed', (dataTable) => {
     for (const { title, link } of dataTable.hashes()) {
-        cy.get('p').find(`a:contains('${title}')`).should('have.attr', 'href', link);
+        cy.get('p').find(`a:contains('${title}')`).should('have.attr','href',link);
     }
 });
 

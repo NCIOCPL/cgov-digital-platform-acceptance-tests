@@ -9,7 +9,7 @@ When('user scrolls {int} px {string}', (pixels, direction) => {
 });
 
 Then('back-to-top arrow appears with text {string} and href {string}', (textTop, hrefTop) => {
-    cy.get('div.usa-footer__nci-return-to-top').should('be.visible').and('include.text', textTop).find('a').should('have.attr', 'href', hrefTop);
+    cy.get('div.usa-footer__nci-return-to-top').should('be.visible').and('include.text', textTop).find('a').should('have.attr', 'href',hrefTop);
 });
 
 Then('back-to-top arrow is not displayed', () => {

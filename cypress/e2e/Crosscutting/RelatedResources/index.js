@@ -1,13 +1,13 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+import { getBaseDirectory } from '../../../utils';
 And('related resources section is visible', () => {
     cy.get('div#nvcgRelatedResourcesArea').should('be.visible');
 });
 
 And('related resources have working link {string} with the href {string}', (linkText, linkHref) => {
     cy.get('.related-resources.list').find('a').first().invoke('text').should('be.eq', linkText);
-    cy.get('.related-resources.list').find('a').should('have.attr', 'href').and('eq', linkHref);
+    cy.get('.related-resources.list').find('a').should('have.attr', 'href').and('eq', `${getBaseDirectory()}${linkHref}`);
 });
 
 And('exit disclaimer is visible', () => {

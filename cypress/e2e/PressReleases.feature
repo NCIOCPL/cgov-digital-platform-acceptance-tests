@@ -1,6 +1,6 @@
 Feature: As an user, I want to see different components of the Press Releases
 
-Scenario Outline: Press Release landing page comonents
+Scenario Outline: Press Release landing page components
         Given screen breakpoint is set to "<breakpoint>"
         When user is navigating to "/news-events/press-releases/2019"
         Then page title is "2019 Press Releases"

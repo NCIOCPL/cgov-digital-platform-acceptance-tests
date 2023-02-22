@@ -45,7 +45,6 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | evar2     | D=c8                                   |
             | evar5     | Desktop                                |
             | channel   | NCI Homepage                           |
-            | prop3     | /                                      |
             | pageName  | {CANONICAL_HOST}/                      |
             | prop1     | {PROTOCOL}://{CANONICAL_HOST}/              |
             | hier1     | {CANONICAL_HOST}                       |

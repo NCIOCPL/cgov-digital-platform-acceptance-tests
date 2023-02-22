@@ -1,5 +1,6 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import { getBaseDirectory } from '../../../utils';
 
 //This step is just a workaround until it gets fixed
 Given('user is navigating to {string}', (a) => {
@@ -25,7 +26,11 @@ And('pdq citation number {string} is a PubMed link with an url {string}', (pubMe
     const linkPath = linkUrl.split(',');
     const number = pubMedLinkNumber.split(',');
     for (let i = 0; i < linkPath.length; i++) {
-        cy.get(`li[id*='section']`).eq(number[i]).find('a').should('have.attr', 'href', linkPath[i]);
+        if (linkPath[i].startsWith('http')) {
+            cy.get(`li[id*='section']`).eq(number[i]).find('a').should('have.attr', 'href', linkPath[i]);
+        } else {
+            cy.get(`li[id*='section']`).eq(number[i]).find('a').should('have.attr', 'href', `${getBaseDirectory()}${linkPath[i]}`);
+        }
     }
 });
 

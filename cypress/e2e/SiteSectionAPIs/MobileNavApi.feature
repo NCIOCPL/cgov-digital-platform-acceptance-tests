@@ -16,11 +16,11 @@ Feature: Expose mobile navigation as API
 ##    field_landing_page that is unpublished
 Scenario: Site requests mobile nav root
 Given user makes json request to "/taxonomy/term/1500000/mobile-nav"
-Then the json response matches the contents of "MobileNavApi.json"
+Then the json response matches the modified contents of "MobileNavApi.json"
 
 Scenario: Site requests Spanish mobile nav root
 Given user makes json request to "/espanol/taxonomy/term/1500028/mobile-nav"
-Then the json response matches the contents of "SpanishMobileNavApi.json"
+Then the json response matches the modified contents of "SpanishMobileNavApi.json"
 
 ## Scenarios for 400 response
 

@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+import { getBaseDirectory } from '../../utils';
 And('the {string} button appears', (linkSubscribe) => {
     cy.get('div.subscribeRSS span').should('be.visible').and('contain.text', linkSubscribe);
 });
@@ -26,7 +26,7 @@ And('blog posts list appears', () => {
 });
 
 And('{string} button appears with a link {string}', (postLink, link) => {
-    cy.get(`a:contains("${postLink}")`).should('be.visible').and('have.attr', 'href', link);
+    cy.get(`a:contains("${postLink}")`).should('be.visible').and('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
 });
 
 When('user clicks on {string} button', (olderPostLink) => {
@@ -45,12 +45,12 @@ And('{int} blog has a date as {string}', (blogPosition, date) => {
 });
 
 And('{int} blog has an image with an url {string}', (blogPosition, link) => {
-    cy.get('div.item-list').eq(blogPosition - 1).find('a').should('have.attr', 'href', link);
+    cy.get('div.item-list').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
 });
 
 And(`{int} blog's title and continue reading button both link to {string}`, (blogPosition, link) => {
-    cy.get('div.item-list').eq(blogPosition - 1).find('a').should('have.attr', 'href', link);
-    cy.get('div[class*="title-and-desc"]').eq(blogPosition - 1).find('a').should('have.attr', 'href', link);
+    cy.get('div.item-list').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
+    cy.get('div[class*="title-and-desc"]').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
 });
 
 When('user clicks on {string} accordion', (archive) => {

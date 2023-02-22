@@ -27,7 +27,7 @@ Feature: Recommended Content tests
         Then recommended content section is visible
         And recommended content section display <totalNumber> of content cards
         And the card's title at position <cardIndex> is "<cardTitle>"
-        And the card's image at position <cardIndex> has source "/sites/default/files/styles/cgov_featured/public/cgov_image/featured/" and file name "<fileName>"
+        And the card's image at position <cardIndex> has source "/files/styles/cgov_featured/public/cgov_image/featured/" and file name "<fileName>"
         And the card's image at position <cardIndex> has the alt text "<altText>" and a link "<cardLink>"
 
         Examples:

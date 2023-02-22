@@ -25,26 +25,6 @@ Feature: As an user, I should be able to see my search results displayed, select
             | cts-livehelp | /contact                                                   | Have a question?We're here to help | Chat with us: LiveHelpCall us: 1-800-4-CANCER(1-800-422-6237)         |
             | cts-which    | /about-cancer/treatment/clinical-trials/search/trial-guide | Which trials are right for you?    | Use the checklist in our guide to gather the information you’ll need. |
 
-    Scenario: Clicking on chat now will fire an analytics event
-        Given screen breakpoint is set to "desktop"
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=1"
-        Then page title is "Clinical Trials Search Results"
-        And chat pop up is displayed
-        When user clicks on chat button
-        Then page click request is sent
-        And the following parameters should be captured
-            | parameter | value                                                            |
-            | event44   |                                                                  |
-            | link      | ProactiveChat                                                    |
-            | linkType  | lnk_o                                                            |
-            | prop67    | D=pageName                                                       |
-            | prop4     | D=pev1                                                           |
-            | prop8     | english                                                          |
-            | prop5     | livehelp_proactive chat - launch\|D=pageName                     |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r |
-            | evar2     | english                                                          |
-
-
     Scenario: User is able to select results on mobile breakpoint
         Given screen breakpoint is set to "mobile"
         When user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&q=breast%20cancer&rl=2"

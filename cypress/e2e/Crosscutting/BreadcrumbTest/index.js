@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
 import { When, Then, And } from "cypress-cucumber-preprocessor/steps";
+import { getBaseDirectory } from "../../../utils";
 
 Then('the following breadcrumbs are displayed', (dataTable) => {
     for (const { label, link } of dataTable.hashes()) {
@@ -8,7 +9,7 @@ Then('the following breadcrumbs are displayed', (dataTable) => {
             cy.get('@breadcrumb').parent().find('a').should('not.exist');
         } else {
             cy.get(`.usa-breadcrumb__list span:contains("${label}")`).as('breadcrumb').should('be.visible');
-            cy.get('@breadcrumb').parent().should('have.attr', 'href', link);
+            cy.get('@breadcrumb').parent().should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
         }
     }
 });
@@ -24,7 +25,7 @@ Then('the following breadcrumbs are not displayed', (dataTable) => {
             cy.get(`.usa-breadcrumb__list span:contains("${label}")`).should('not.exist');
         } else {
             cy.get(`.usa-breadcrumb__list span:contains("${label}")`).as('breadcrumb').parent().parent().should('not.be.visible');
-            cy.get('@breadcrumb').parent().should('have.attr', 'href', link);
+            cy.get('@breadcrumb').parent().should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
         }
     }
 });

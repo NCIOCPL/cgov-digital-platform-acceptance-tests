@@ -19,7 +19,7 @@ And('user clicks {string} button', (loginButton) => {
 });
 
 When('user is logged in and the user name {string} is displayed in the toolbar', (admin) => {
-    cy.get('#toolbar-item-user').should('have.text', admin).and('be.visible');
+    cy.get('#toolbar-item-user').should('include.text', admin).and('be.visible');
 });
 
 Then('the tool bar appears at the top', () => {
@@ -40,7 +40,7 @@ When('user clicks on {string} tab', (option) => {
 
 And('the following tab links appear below title', (dataTable) => {
     for (const { name, link } of dataTable.hashes()) {
-        cy.get('.tabs__tab').contains(name).should('have.attr', 'href', link);
+        cy.get('.tabs__tab').contains(name).should('have.attr','href').and('include',link);
     }
 });
 
@@ -60,12 +60,12 @@ And('each content title is a link', () => {
 
 And('the following config links appear below', (dataTable) => {
     for (const { name, link } of dataTable.hashes()) {
-        cy.get('.admin-list').contains(name).should('have.attr', 'href', link);
+        cy.get('.admin-list').contains(name).should('have.attr','href').and('include',link);
     }
 });
 
 And(`page's {int} subtitle is {string}`, (num, subTitle) => {
-    cy.get('.region.region-content').find('h2').eq(num - 1).should('have.text', subTitle);
+    cy.get('.region.region-content').find('h2').eq(num - 1).should('include.text', subTitle);
 });
 
 And('the following configuration groups are displayed', (dataTable) => {

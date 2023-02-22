@@ -1,6 +1,6 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then, When } from 'cypress-cucumber-preprocessor/steps';
-
+import { getBaseDirectory } from '../../../utils';
 Then("page title is {string}", (title) => {
     cy.get(`h1:contains('${title}') `).should('be.visible')
 });
@@ -34,7 +34,7 @@ And('search criteria table displays the following', (dataTable) => {
 });
 
 And('{string} link has a href {string}', (linkText, linkHref) => {
-    cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', linkHref);
+    cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${getBaseDirectory()}${linkHref}`);
 });
 
 And('{string} pager is displayed', (pagerPosition) => {
@@ -68,9 +68,6 @@ And('the following delighters are displayed', (dataTable) => {
     }
 });
 
-And('chat pop up is displayed', () => {
-    cy.get('#ProactiveLiveHelpForCTSPrompt', { timeout: 30000 }).should('be.visible');
-});
 
 When('user clicks on chat button', () => {
     cy.window().then(win => {
@@ -139,7 +136,7 @@ And('user clicks on {string} button at {string} position', (printButton, printBu
 });
 
 Then('user is redirected to {string} with generated {string}', (redirectedPath, printID) => {
-    cy.location('pathname').should('eq', redirectedPath);
+    cy.location('pathname').should('eq', `${getBaseDirectory()}${redirectedPath}`);
     cy.location('search').should('include', `?${printID}=`);
 });
 

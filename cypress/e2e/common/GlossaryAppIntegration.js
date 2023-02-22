@@ -1,8 +1,9 @@
 /// <reference types="Cypress" />
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { getBaseDirectory } from '../../utils';
 
 Then("NCI's Dictionary of Cancer Terms Widget links to {string}", (widgetHref) => {
-  cy.get('#NCI-glossary-app-root div p a').should('have.attr', 'href').and('be.eq', widgetHref);
+  cy.get('#NCI-glossary-app-root div p a').should('have.attr', 'href').and('eq', `${widgetHref}`);
 });
 
 Then('search options for {string} and {string} are displayed', (startsWith, contains) => {
@@ -76,7 +77,7 @@ Then('the number of glossary terms appears in the text', () => {
 });
 
 Then('{string} links to {string}', (link, href) => {
-  cy.get(`a[href='${href}']`).should('include.text', link);
+  cy.get(`a[href='${getBaseDirectory()}${href}']`).should('include.text', link);
 });
 
 Then('page title is {string}', (pageTitle) => {

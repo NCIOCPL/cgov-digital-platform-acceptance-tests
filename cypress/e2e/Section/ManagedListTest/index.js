@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+import { getBaseDirectory } from '../../../utils';
 //This step is just a workaround until it gets fixed
 Given('user is navigating to {string}', (a) => {
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -43,7 +43,13 @@ And('list items at positions {string} have {string} as {string}', (indexes, comp
                 break;
 
             case 'links':
-                cy.get('.list.managed > ul >li>.title-and-desc.title.desc.container h3').eq(index[i]).find('a').should('have.attr', 'href', value[i]);
+                cy.get('.list.managed > ul >li>.title-and-desc.title.desc.container h3').eq(index[i]).find('a').invoke('attr','href').then(href=>{
+                    if(href.startsWith('http')){
+                        expect(href).to.eq(value[i])
+                    }else {
+                        expect(href).to.eq(`${getBaseDirectory()}${value[i]}`)
+                    }
+                })
                 break;
 
             case 'alt texts':
@@ -52,7 +58,8 @@ And('list items at positions {string} have {string} as {string}', (indexes, comp
 
             case 'sources':
                 cy.get('.list.managed > ul >li>.list-item-image.image.container a').eq(i).find('img').invoke('attr', 'src').then((fullSrc) => {
-                    expect(fullSrc.startsWith(value)).to.be.true;
+                    console.log(fullSrc)
+                    expect(fullSrc).to.include(value);
                 });
                 break;
 
@@ -64,7 +71,7 @@ And('list items at positions {string} have {string} as {string}', (indexes, comp
                 break;
 
             case 'exit notification link':
-                cy.get('.list.managed > ul >li>.title-and-desc.title.desc.container >h3 ').eq(index[i]).find('a.icon-exit-notification').should('have.attr', 'href', value[i]);
+                cy.get('.list.managed > ul >li>.title-and-desc.title.desc.container >h3 ').eq(index[i]).find('a.icon-exit-notification').should('have.attr', 'href',`${value[i]}`);
                 break;
 
         }

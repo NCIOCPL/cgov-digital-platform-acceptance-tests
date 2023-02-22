@@ -10,14 +10,14 @@ Feature: Footer tests
         And the footer text does not contain any broken links
 
         Examples:
-            | breakpoint | url                                                                               | header                        |
-            | desktop    | espanol/noticias/comunicados-de-prensa/2018/oropharyngeal-hpv-cisplatin           | Instituto Nacional del Cáncer |
-            | desktop    | about-cancer/coping/feelings                                                      | National Cancer Institute     |
-            | desktop    | annual-report-nation-2018                                                         | National Cancer Institute     |
-            | tablet     | types/breast/patient/breast-treatment-pdq                                         | National Cancer Institute     |
-            | tablet     | /news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                      | National Cancer Institute     |
-            | mobile     | espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres                   | Instituto Nacional del Cáncer |
-            | mobile     | news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly | National Cancer Institute     |
+            | breakpoint | url                                                                                | header                        |
+            | desktop    | /espanol/noticias/comunicados-de-prensa/2018/oropharyngeal-hpv-cisplatin           | Instituto Nacional del Cáncer |
+            | desktop    | /about-cancer/coping/feelings                                                      | National Cancer Institute     |
+            | desktop    | /annual-report-nation-2018                                                         | National Cancer Institute     |
+            | tablet     | /types/breast/patient/breast-treatment-pdq                                         | National Cancer Institute     |
+            | tablet     | /news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                       | National Cancer Institute     |
+            | mobile     | /espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres                   | Instituto Nacional del Cáncer |
+            | mobile     | /news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly | National Cancer Institute     |
 
 
     Scenario Outline: Live chat popup and site feedback survey English and sign up for updates
@@ -33,8 +33,8 @@ Feature: Footer tests
 
         Examples:
             | breakpoint | url                                                          |
-            | desktop    | about-cancer/coping/feelings                                 |
-            | mobile     | types/breast/patient/breast-treatment-pdq                    |
+            | desktop    | /about-cancer/coping/feelings                                 |
+            | mobile     | /types/breast/patient/breast-treatment-pdq                    |
             | tablet     | /news-events/press-releases/2018/oropharyngeal-hpv-cisplatin |
 
 
@@ -52,8 +52,8 @@ Feature: Footer tests
 
         Examples:
             | breakpoint | url                                                                     |
-            | desktop    | espanol/noticias/comunicados-de-prensa/2018/oropharyngeal-hpv-cisplatin |
-            | mobile     | espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres         |
+            | desktop    | /espanol/noticias/comunicados-de-prensa/2018/oropharyngeal-hpv-cisplatin |
+            | mobile     | /espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres         |
             | tablet     | /espanol/cancer/sobrellevar/sentimientos                                |
 
 

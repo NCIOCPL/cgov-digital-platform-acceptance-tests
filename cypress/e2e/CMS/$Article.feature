@@ -139,7 +139,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user clicks on "Add Body Section" to add a body section
         And browser waits
         And user enters "Article Heading2" as 2 body section heading
+         And browser waits
         And user fills out 2 "Body" text area with "This is a description of article content type under heading2."
+         And browser waits
         And user removes the Lead Image
         And browser waits
         And user selects 2 Lead Image from the list of images
