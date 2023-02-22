@@ -36,3 +36,12 @@ And('browser waits for {int}', (time) => {
 And('user refreshes the page',()=>{
   cy.reload()
 })
+
+Then('correct status code {int} is received for the {string}', (code, path) => {
+  cy.request({
+    url: path,
+  }).then((resp) => {
+    expect(resp.status).to.eq(code);
+  })
+
+});

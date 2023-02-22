@@ -22,7 +22,7 @@ Feature: Managed Lists Tests
         And list items at positions "<indexes>" have "titles" as "<title>"
         And list items at positions "<indexes>" have "links" as "<itemLink>"
         And list items at positions "<indexes>" have "alt texts" as "<altText>"
-        And list items at positions "<indexes>" have "sources" as "/sites/default/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/"
+        And list items at positions "<indexes>" have "sources" as "/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/"
         And list items at positions "<indexes>" have "files" as "<file>"
         Examples:
             | url                  | indexes | title                                                                     | itemLink                                                                                                         | altText                                                                                                      | file                                                                                                                                                    |

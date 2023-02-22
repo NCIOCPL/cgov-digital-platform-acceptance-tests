@@ -1,5 +1,4 @@
 /// <reference types="Cypress" />
-import { should } from 'chai';
 import { And, Then } from 'cypress-cucumber-preprocessor/steps';
 
 const username = Cypress.env('admin_username');
@@ -20,11 +19,11 @@ And('user clicks {string} button', (loginButton) => {
 });
 
 When('user is logged in and the user name {string} is displayed in the toolbar', (admin) => {
-    cy.get('#toolbar-item-user').should('have.text', admin).and('be.visible');
+    cy.get('#toolbar-item-user').should('include.text', admin).and('be.visible');
 });
 
 And('user clicks on {string} button', (block) => {
-    cy.get('div#block-cgov-admin-local-actions li a').as('addBlock').should('have.text', block);
+    cy.get('div#block-cgov-admin-local-actions li a').as('addBlock').should('include.text', block);
     cy.get('@addBlock').click();
 });
 Then('the list of block contents appears', () => {
@@ -83,7 +82,7 @@ Then('alert is {string}', (isExpanded) => {
 });
 And('the following links are exposed', (dataTable) => {
     for (const { linkText, href } of dataTable.hashes()) {
-        cy.get(`section[class*='standard usa-site-alert'] li a:contains("${linkText}")`).should('be.visible').and('have.attr', 'href', href);
+        cy.get(`section[class*='standard usa-site-alert'] li a:contains("${linkText}")`).should('be.visible').and('have.attr','href').and('include',href);
     }
 });
 

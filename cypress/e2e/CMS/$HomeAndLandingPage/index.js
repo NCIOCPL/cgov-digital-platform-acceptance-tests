@@ -251,7 +251,7 @@ And('user selects {string} from Save as dropdown', (dropdown) => {
 })
 
 And('user fills out the following fields under {string} section', (option, dataTable) => {
-    for (const { fieldLabel, value, field_name } of dataTable.hashes()) {
+    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
         cy.get(`div:contains("${option}")`).should('be.visible')
         cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
         cy.get('@inputField').type(value);

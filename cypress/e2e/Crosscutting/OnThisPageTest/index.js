@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
-
+import { And, Then } from 'cypress-cucumber-preprocessor/steps';
+ 
 Then('{string} is displayed', (otpTitle) => {
     cy.get('.on-this-page').contains(otpTitle).should('be.visible');
 });

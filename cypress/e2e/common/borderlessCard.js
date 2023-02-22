@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { Then } from "cypress-cucumber-preprocessor/steps";
-
+import { getBaseDirectory } from "../../utils";
 Then('the title of the feature card {int} is {string}', (cardNumber, cardTitle) => {
    // check that appropriate h2 tag is displayed depending on the screen breakpoint
     cy.document().then(doc => {
@@ -15,7 +15,7 @@ Then('the title of the feature card {int} is {string}', (cardNumber, cardTitle) 
     cy.get('.borderless-card').eq(cardNumber - 1).find('h2 a:visible').should('include.text', cardTitle);
 });
 Then('the feature card {int} title will have the href {string}', (cardNumber, titleHref) => {
-    cy.get('.borderless-card').eq(cardNumber - 1).find('h2 a:visible').should('have.attr', 'href').and('eq', titleHref);
+    cy.get('.borderless-card').eq(cardNumber - 1).find('h2 a:visible').should('have.attr', 'href').and('eq', `${getBaseDirectory()}${titleHref}`);
 });
 Then('the feature card {int} description is {string}', (cardNumber, cardDescription) => {
     if (cardDescription !== 'none')
@@ -27,7 +27,7 @@ Then('the feature card {int} will have a button displayed under the card descrip
     (cardNumber, buttonText, titleHref) => {
         cy.get('.borderless-card').eq(cardNumber - 1).find('.borderless-button')
             .as('button').should('have.attr', 'href')
-            .and('eq', titleHref);
+            .and('eq', `${getBaseDirectory()}${titleHref}`);
         cy.get('@button').should('have.text', buttonText);
     })
 Then('{string} by {string} sized promo image of the feature card {int} is displayed with the source {string} and alt text {string}',
@@ -45,7 +45,7 @@ Then('{string} by {string} sized promo image of the feature card {int} is displa
     });
 Then('the feature card {int} promo image {string} will link to the {string}', (cardNumber, src, titleHref) => {
     if (src !== 'none')
-        cy.get('.borderless-card').eq(cardNumber - 1).find('img').parent().should('have.attr', 'href').and('eq', titleHref);
+        cy.get('.borderless-card').eq(cardNumber - 1).find('img').parent().should('have.attr', 'href').and('eq', `${getBaseDirectory()}${titleHref}`);
     else
         cy.get('.borderless-card').eq(cardNumber - 1).find('img').should('not.exist');
 });

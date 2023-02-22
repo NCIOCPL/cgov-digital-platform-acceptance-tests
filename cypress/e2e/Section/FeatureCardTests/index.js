@@ -1,6 +1,6 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+import { getBaseDirectory } from '../../../utils';
 Then('feature cards are visible', () => {
     cy.get('.feature-primary .feature-card').should('be.visible');
 });
@@ -32,7 +32,14 @@ And('feature cards at positions {string} have {string} as {string}', (indexes, c
                 break;
             case 'links':
                 const expectedItemLink = value.split(',');
-                cy.get('.feature-primary .feature-card > a').eq(expectedIndex[i]).should('have.attr', 'href', expectedItemLink[i]);
+                cy.get('.feature-primary .feature-card > a').eq(expectedIndex[i]).invoke('attr','href').then(href=>{
+                    if(href.startsWith('http')){
+                        expect(href).to.eq(expectedItemLink[i])
+                    }else {
+                        expect(href).to.eq(`${getBaseDirectory()}${expectedItemLink[i]}`)
+                    }
+                })
+    
                 break;
             case 'alt texts':
                 const expectedAltText = value.split(',');
@@ -40,7 +47,7 @@ And('feature cards at positions {string} have {string} as {string}', (indexes, c
                 break;
             case 'sources':
                 cy.get('.feature-primary .feature-card').eq(expectedIndex[i]).find('img').invoke('attr', 'src').then((fullSrc) => {
-                    expect(fullSrc.startsWith(value)).to.be.true;
+                    expect(fullSrc.includes(`${value}`)).to.be.true;
                 });
                 break;
             case 'files':
@@ -52,7 +59,7 @@ And('feature cards at positions {string} have {string} as {string}', (indexes, c
                 break;
             case 'exit notification link href':
                 const expectedHref = value.split(',');
-                cy.get('.feature-primary .feature-card').eq(expectedIndex[i]).find('a.icon-exit-notification').should('be.visible').and('have.attr', 'href', expectedHref[i]);
+                cy.get('.feature-primary .feature-card').eq(expectedIndex[i]).find('a.icon-exit-notification').should('be.visible').and('have.attr', 'href',`${expectedHref[i]}`);
                 break;
         }
     }

@@ -1,4 +1,5 @@
 import { Given, Then, And, When } from "cypress-cucumber-preprocessor/steps";
+import { getBaseDirectory } from "../../../utils";
 
 Then('page title is {string}', (title) => {
     cy.get('#NCI-trial-listing-app-root').find('h1').should('have.text', title);
@@ -33,7 +34,7 @@ When('user clicks on {string} button', (arrow) => {
 });
 
 Then('the url has path {string} with query {string}', (path, queryParams) => {
-    cy.location('pathname').should('eq', `${path}`);
+    cy.location('pathname').should('include', `${getBaseDirectory()}${path}`);
     cy.location('search').should('eq', queryParams);
 
 });
@@ -62,12 +63,12 @@ And('intro text {int} paragraph is {string}', (num, introText) => {
 });
 
 And('{string} link has href {string}', (link, href) => {
-    cy.get('a').contains(link).should('have.attr', 'href', href);
+    cy.get('a').contains(link).should('have.attr', 'href', `${href}`);
 });
 
 Then('user is redirected to {string}', (redirectedUrl) => {
     const expUrl = redirectedUrl.split('?');
-    cy.location('pathname').should('eq', expUrl[0])
+    cy.location('pathname').should('eq', `${getBaseDirectory()}${expUrl[0]}`)
     cy.location('search').should('eq', `?${expUrl[1]}`)
 });
 

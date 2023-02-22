@@ -1,5 +1,7 @@
 /// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
+const baseURL = Cypress.config('baseUrl');
+const host = baseURL.replace( new RegExp("(https:\/\/)|(http:\/\/)"),"")
 
 //This step is just a workaround until it gets fixed
 Given('user is navigating to {string}', (a) => {

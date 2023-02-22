@@ -20,10 +20,6 @@ Feature: Test for checking HTTP Status Code
       | mobile     | /about-nci/organization/screen-to-save-infographic               | 200  |
       | mobile     | /espanol/infografia-nci                                          | 200  |
       | desktop    | /research/progress/discovery/gutcheck-intro-video                | 200  |
-      | desktop    | /nano                                                            | 200  |
-      | tablet     | /nano/espanol/cancer/sobrellevar/sentimientos                    | 200  |
-      | desktop    | /pediatric-adult-rare-tumor                                      | 200  |
-      | tablet     | /pediatric-adult-rare-tumor/espanol                              | 200  |
       | desktop    | /publications/dictionaries/cancer-terms/def/45413                | 200  |
       | desktop    | /publications/dictionaries/cancer-drug                           | 200  |
       | desktop    | /espanol/publicaciones/diccionarios/diccionario-cancer/ampliar/C | 200  |

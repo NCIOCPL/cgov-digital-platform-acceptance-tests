@@ -5,6 +5,10 @@ And('Spanish chat pop up is displayed', () => {
     cy.get('#Spanish-CTSPrompt', { timeout: 30000 }).should('be.visible');
 });
 
+And('chat pop up is displayed', () => {
+    cy.get('#ProactiveLiveHelpForCTSPrompt', { timeout: 30000 }).should('be.visible');
+});
+
 When('user clicks on chat button', () => {
     cy.window().then(win => {
         //stubbing the open window to prevent the call to open it,

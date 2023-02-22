@@ -1,6 +1,8 @@
 /// <reference types="Cypress"/>
 
 import { Then } from 'cypress-cucumber-preprocessor/steps';
+const baseURL = Cypress.config('baseUrl');
+const hostName = baseURL.replace(new RegExp('(https:\/\/)|(http:\/\/)'),"")
 
 Then('the page contains meta tags with the following names', (dataTable) => {
     for (const { name, content } of dataTable.hashes()) {
@@ -78,7 +80,6 @@ Then('there are alternate links with the following', (dataTable) => {
     const locator = "[rel='alternate']";
     let expectedHref;
     //convert data table into the object of type
-    cy.location('host').then(host => {
         for (const { href, hreflang } of dataTable.hashes()) {
             expectedHref = href.replace('{CANONICAL_HOST}', host)
             cy.location('protocol').then(protocol => {
@@ -91,7 +92,6 @@ Then('there are alternate links with the following', (dataTable) => {
                 //hreflang value is matching expected
                 .and('be.eq', hreflang);
         }
-    });
 });
 
 Then('there are no alternate links', () => {

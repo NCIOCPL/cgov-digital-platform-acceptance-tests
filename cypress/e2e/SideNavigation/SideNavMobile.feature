@@ -325,7 +325,6 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 When user clicks on the mobile menu button
                 And analytics storage is cleared
                 And user hits "Esc" key
-                And browser waits
                 Then page click request is sent
                 And the following parameters should be captured
                         | parameter | value                                   |
@@ -349,7 +348,6 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 When user clicks on the mobile menu button
                 And analytics storage is cleared
                 And user clicks on the right side of a screen
-                And browser waits
                 Then page click request is sent
                 And the following parameters should be captured
                         | parameter | value                                   |

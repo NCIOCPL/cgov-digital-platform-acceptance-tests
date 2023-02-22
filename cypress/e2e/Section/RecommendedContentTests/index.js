@@ -1,5 +1,6 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import { getBaseDirectory } from '../../../utils';
 
 Then('recommended content section is visible', () => {
     cy.get('div#blog-cards').should('be.visible');
@@ -25,7 +26,8 @@ And(`the card's title at position {int} is {string}`, (cardIndex, cardTitle) => 
 
 And(`the card's image at position {int} has source {string} and file name {string}`, (cardIndex, src, fileName) => {
     cy.get('.feature-card.cgvBlogPost img').eq(cardIndex).invoke('attr', 'src').then((fullSrc) => {
-        expect(fullSrc.startsWith(src)).to.be.true;
+        expect(fullSrc.startsWith(getBaseDirectory())).to.be.true;
+        expect(fullSrc).to.include(src)
         const src1 = fullSrc.substring(0, fullSrc.indexOf('?itok'));
         expect(src1.endsWith(fileName)).to.be.true;
     });
@@ -33,5 +35,11 @@ And(`the card's image at position {int} has source {string} and file name {strin
 
 And(`the card's image at position {int} has the alt text {string} and a link {string}`, (cardIndex, altText, cardLink) => {
     cy.get('.feature-card.cgvBlogPost').eq(cardIndex).find('img').should('have.attr', 'alt', altText);
-    cy.get('.feature-card.cgvBlogPost').eq(cardIndex).find('a').should('have.attr', 'href', cardLink);
+    cy.get('.feature-card.cgvBlogPost').eq(cardIndex).find('a').invoke('attr','href').then(href=>{
+        if(href.startsWith('http')){
+            expect(href).to.eq(cardLink)
+        }else {
+            expect(href).to.eq(`${getBaseDirectory()}${cardLink}`);
+        }
+    }) 
 });

@@ -11,10 +11,10 @@ Feature: As a content editor, I would like to be able to embed a title-first fea
         And the "two column" card has a href "<href>"
 
         Examples:
-            | url                     | screenBreakpoint | alighment | href                                           | promoImageSource                                                                                                                        | promoImageAlt                        |
-            | /special-report         | desktop          | left      | /news-events/press-releases/2019/brca-exchange | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/ocean-sunset-view-mykonos-article\.jpg.* | sunset ocean view in Mykonos         |
-            | /espanol/special-report | tablet           | left      | /news-events/press-releases/2019/brca-exchange | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/ocean-sunset-view-mykonos-article\.jpg.* | vista del mar en el ocaso en Mykonos |
-            | /special-report         | mobile           | top       | /news-events/press-releases/2019/brca-exchange | \/sites\/default\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/ocean-sunset-view-mykonos-article\.jpg.* | sunset ocean view in Mykonos         |
+            | url                     | screenBreakpoint | alighment | href                                           | promoImageSource                                                                                                          | promoImageAlt                        |
+            | /special-report         | desktop          | left      | /news-events/press-releases/2019/brca-exchange | .*\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/ocean-sunset-view-mykonos-article\.jpg.* | sunset ocean view in Mykonos         |
+            | /espanol/special-report | tablet           | left      | /news-events/press-releases/2019/brca-exchange | .*\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/ocean-sunset-view-mykonos-article\.jpg.* | vista del mar en el ocaso en Mykonos |
+            | /special-report         | mobile           | top       | /news-events/press-releases/2019/brca-exchange | .*\/files\/styles\/cgov_panoramic\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/ocean-sunset-view-mykonos-article\.jpg.* | sunset ocean view in Mykonos         |
 
 
     Scenario Outline: User views a page with an external title-first feature card row on desktop and mobile / spanish and english
@@ -28,9 +28,9 @@ Feature: As a content editor, I would like to be able to embed a title-first fea
         And the "one column" card has a href "<href>"
 
         Examples:
-            | url                    | screenBreakpoint | alighment | href                   | promoImageSource                                                                                                  | promoImageAlt |
-            | /special-report        | desktop          | right     | https://www.google.com | \/sites\/default\/files\/styles\/cgov_featured\/public\/cgov_image\/featured\/\d{4}-\d{2}\/pet_mm_featured\.jpg.* | Minnie        |
-            | espanol/special-report | mobile           | bottom    | https://www.google.com | \/sites\/default\/files\/styles\/cgov_featured\/public\/cgov_image\/featured\/\d{4}-\d{2}\/pet_mm_featured\.jpg.* | Minnie        |
+            | url                    | screenBreakpoint | alighment | href                   | promoImageSource                                                                                    | promoImageAlt |
+            | /special-report        | desktop          | right     | https://www.google.com | .*\/files\/styles\/cgov_featured\/public\/cgov_image\/featured\/\d{4}-\d{2}\/pet_mm_featured\.jpg.* | Minnie        |
+            | espanol/special-report | mobile           | bottom    | https://www.google.com | .*\/files\/styles\/cgov_featured\/public\/cgov_image\/featured\/\d{4}-\d{2}\/pet_mm_featured\.jpg.* | Minnie        |
 
     #############ANALYTICS####################
 

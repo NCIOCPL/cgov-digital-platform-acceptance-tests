@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { When, Then, And } from "cypress-cucumber-preprocessor/steps";
-
+import { getBaseDirectory } from "../../../../utils";
 Then('mega menu is displayed', () => {
     cy.get('nav.nci-header-nav').should('be.visible');
 });
@@ -58,5 +58,5 @@ Then('the following menu links are displayed', (dataTable) => {
 
 And('primary link is {string} with href {string}', (label, href) => {
     cy.get('a.nci-megamenu__primary-link').should('have.text', label);
-    cy.get('a.nci-megamenu__primary-link').should('have.attr', 'href', href);
+    cy.get('a.nci-megamenu__primary-link').should('have.attr', 'href',href);
 });

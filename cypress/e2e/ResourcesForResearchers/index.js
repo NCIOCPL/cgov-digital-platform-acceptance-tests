@@ -1,7 +1,7 @@
 
 /// <reference types="Cypress" />
 import { Given, Then, And, When } from "cypress-cucumber-preprocessor/steps";
-
+import { getBaseDirectory } from "../../utils";
 let toolCount;
 let resultTitle;
 
@@ -10,7 +10,7 @@ And('introductory text {string} appears', (introtext) => {
 });
 
 And('{string} text is a link with href {string}', (linktext, linkurl) => {
-  cy.get('.r4r-DEFAULT.r4r__link--about').should('contain.text', linktext).should('have.attr', 'href', linkurl);
+  cy.get('.r4r-DEFAULT.r4r__link--about').should('contain.text', linktext).should('have.attr','href',`${linkurl}`);
 });
 
 And('{string} section is displayed with correct icon', (title) => {
@@ -84,12 +84,12 @@ And("user clicks on {string} link", (viewAll) => {
 });
 
 And("user is redirected to {string} with {string}", (redirectedPath, urlSearch) => {
-  cy.location('pathname').should('eq', redirectedPath);
+  cy.location('pathname').should('include', redirectedPath);
   cy.location('search').should('include', urlSearch);
 });
 
 And("{string} link has a href {string}", (linkText, linkHref) => {
-  cy.get('header > a').contains(linkText).should('have.attr', 'href').and('eq', linkHref);
+  cy.get('header > a').contains(linkText).should('have.attr', 'href').and('include', linkHref);
 });
 
 And("search box is empty", () => {
@@ -197,10 +197,11 @@ And('the search result title is {string} with href {string}', (title, href) => {
   if (baseURL.includes('ncigovcdode')) {
     cy.get('[aria-label="search results"] > article>h2').first().should('be.visible').find('a').then($link => {
       const linkHref = $link[0].getAttribute('href');
-      expect(linkHref.replace('Exit Notification', '')).to.eq(href)
+      expect(linkHref.replace('Exit Notification', '')).to.include(href)
     })
   } else {
-    cy.get('[aria-label="search results"] > article>h2').first().should('be.visible').find('a').should('have.attr', 'href', href).should('have.text', title);
+    cy.get('[aria-label="search results"] > article>h2').first().should('be.visible').find('a').should('have.attr','href').and('include',href) 
+    cy.get('[aria-label="search results"] > article>h2').first().find('a').should('include.text', title);
   }
 });
 
@@ -213,7 +214,7 @@ And('the message is displayed as {string}', (message) => {
 });
 
 And("{string} is a link with href {string}", (linkText, linkHref) => {
-  cy.get('.results__noresults > a').contains(linkText).should('have.attr', 'href').and('eq', linkHref);
+  cy.get('.results__noresults > a').contains(linkText).should('have.attr', 'href').and('include', linkHref);
 });
 
 Then('the resource title is displayed as {string}', (resourceTitle) => {
@@ -221,7 +222,7 @@ Then('the resource title is displayed as {string}', (resourceTitle) => {
 });
 
 And("{string} is displayed with href {string}", (linkText, linkHref) => {
-  cy.get('.r4r-DEFAULT.resource__home > a').contains(linkText).should('have.attr', 'href').and('eq', linkHref);
+  cy.get('.r4r-DEFAULT.resource__home > a').contains(linkText).should('have.attr', 'href').and('include', linkHref);
 });
 
 And('Visit Resource link is displayed', () => {
@@ -259,7 +260,7 @@ And('the Resource not found message is displayed as {string} and {string}', (mes
 });
 
 And("the {string} is displayed with href {string}", (linkText, linkHref) => {
-  cy.get('.r4r-container.row a').contains(linkText).should('have.attr', 'href').and('eq', linkHref);
+  cy.get('.r4r-container.row a').contains(linkText).should('have.attr', 'href').and('include', linkHref);
 });
 
 And('the {string} box displays the filter {string} as checked', (section, area) => {

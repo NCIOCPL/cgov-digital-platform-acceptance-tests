@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { Then } from "cypress-cucumber-preprocessor/steps";
-
+import { getBaseDirectory } from "../../utils";
 Then('there should be an infographic at position {int} with the following', (number, dataTable) => {
     //index of a DOM element representing an image 
     let index = number - 1;
@@ -116,7 +116,7 @@ Then('language toggle is not displayed', () => {
 });
 
 Then('language toggle is displayed with the href {string}', (langToggleHref) => {
-    cy.get('header.usa-banner__header a').should('exist').and('have.attr', 'href').and('be.eq', langToggleHref);
+    cy.get('header.usa-banner__header a').should('exist').and('have.attr', 'href').and('eq', `${getBaseDirectory()}${langToggleHref}`);
 
 })
 

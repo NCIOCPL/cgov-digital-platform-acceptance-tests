@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import { Then } from "cypress-cucumber-preprocessor/steps";
+import { getBaseDirectory } from "../../../utils";
 
 const twoColumCard = 'div.title-first-feature-card-left';
 const oneColumnCard = 'div.title-first-feature-card-right';
@@ -56,7 +57,11 @@ Then('the card description of the {string} feature card item should appear', (ca
 })
 Then('the {string} card has a href {string}', (cardType, href) => {
     const cardLocator = getCard(cardType);
-    cy.get(cardLocator).find('a').should('have.attr', 'href', href)
+    if(cardType === 'one column'){
+        cy.get(cardLocator).find('a').should('have.attr','href').and('eq',href)
+    }else {
+    cy.get(cardLocator).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${href}`)
+    }
 })
 
 When('user clicks on a {string} feature card row', (cardType) => {

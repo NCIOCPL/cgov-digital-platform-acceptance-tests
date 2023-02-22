@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import { Then } from "cypress-cucumber-preprocessor/steps";
+import { getBaseDirectory } from "../../../utils";
 
 Then('an alternating image list will appear', () => {
     cy.get('div.alternating-image-list-container').should('be.visible');
@@ -45,7 +46,7 @@ Then('the list description of the list item number {int} should appear', (itemNu
 
 Then('the item number {int} has a href {string}', (itemNumber, href) => {
     cy.get('a.alternating-image-list-container-link').eq(itemNumber - 1)
-        .should('have.attr', 'href', href);
+        .should('have.attr', 'href').and('include',`${href}`);
 
 });
 

@@ -1,5 +1,6 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import {getBaseDirectory} from '../../../utils';
 
 Then("page title is {string}", (title) => {
     cy.get(`h1:contains('${title}') `).should('be.visible')
@@ -15,7 +16,7 @@ And('{string} button does not exist', (showSearchCriteriaButton) => {
 });
 
 And('{string} link has a href {string}', (linkText, linkHref) => {
-    cy.get(`a[href="${linkHref}"]`).should('have.text', linkText);
+    cy.get(`a[href="${getBaseDirectory()}${linkHref}"]`).should('have.text', linkText);
 });
 
 When('user clicks on {int} result item link', (num) => {
@@ -23,7 +24,7 @@ When('user clicks on {int} result item link', (num) => {
 });
 
 Then('user is redirected to {string} with query parameters that match {string}', (redirectedPath, queryParam) => {
-    cy.location('pathname').should('eq', redirectedPath);
+    cy.location('pathname').should('eq', `${getBaseDirectory()}${redirectedPath}`);
     const regex = new RegExp(queryParam);
     cy.location('search').should('match', regex);
 });

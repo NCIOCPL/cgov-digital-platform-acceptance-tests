@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 import { Given, Then, And, When } from "cypress-cucumber-preprocessor/steps";
-
+import { getBaseDirectory } from "../../../utils";
 Given('user is navigating to {string}', (a) => {
     cy.visit(a);
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -25,7 +25,7 @@ And("toggle label is {string}", (label) => {
 });
 
 And("toggle links to {string}", (link) => {
-    cy.get('header.usa-banner__header a').should('have.attr', 'href').and('eq', link);
+    cy.get('header.usa-banner__header a').should('have.attr', 'href').and('eq', `${getBaseDirectory()}${link}`);
 });
 
 Then("language toggle does not exist", () => {
