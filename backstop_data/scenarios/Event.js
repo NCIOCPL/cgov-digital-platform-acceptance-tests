@@ -1,8 +1,17 @@
 module.exports = [
     {
-        label: 'event whole page focus on email link desktop',
+        label: 'biography whole page',
+        testPath: '/about-cancer/coping/feelings/relaxation/loukissas-jen-biography',
+    },
+    {
+        label: 'event focus on calendar link desktop',
         testPath: '/about-cancer/coping/nci-workshop-event',
         focusSelector: 'a[href$="icalendar"]',
+        selectors: [
+            'div[class="cgdpl desktop:grid-col-9"]'
+        ],
+        selectorExpansion: false,
+        postInteractionWait: 1000,
         viewports: [
             {
                 label: 'desktop',
@@ -12,9 +21,14 @@ module.exports = [
         ],
     },
     {
-        label: 'event whole page focus on social media link tablet',
+        label: 'event focus on social media link tablet',
         testPath: '/about-cancer/coping/nci-workshop-event',
         focusSelector: 'a[href="http://www.cnn.com/"]',
+        selectors: [
+            '   #nvcgRelatedResourcesArea'
+        ],
+        selectorExpansion: false,
+        postInteractionWait: 1000,
         viewports: [
             {
                 label: 'tablet',

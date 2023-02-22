@@ -2,6 +2,7 @@ module.exports = [
 	{
 		label: 'PDQ drug info summary whole page',
 		testPath: '/about-cancer/treatment/drugs/bevacizumab',
+        delay: 2000,
 	},
     {
 		label: 'PDQ drug info summary audio button focus',
@@ -45,7 +46,7 @@ module.exports = [
     {
 		label: 'PDQ drug info summary FDA glossified term focus',
 		testPath: '/about-cancer/treatment/drugs/bevacizumab',
-        focusSelector: 'a[href="/Common/PopUps/popDefinition.aspx?id=444973&version=Patient&language=English"]',
+        focusSelector: 'a[href*="/Common/PopUps/popDefinition.aspx?id=444973&version=Patient&language=English"]',
         viewports: [
             {
                 label: 'desktop',
@@ -70,7 +71,7 @@ module.exports = [
             },
             {
                 action: 'focus',
-                selector: 'a[href="/Common/PopUps/popDefinition.aspx?id=46283&version=Patient&language=English"]',
+                selector: 'a[href*="/Common/PopUps/popDefinition.aspx?id=46283&version=Patient&language=English"]',
             },
         ],
         postInteractionWait: 1000,
