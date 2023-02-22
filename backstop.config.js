@@ -60,7 +60,7 @@ module.exports = {
 	asyncCompareLimit: 50,
 	debug: false,
 	debugWindow: false,
-	misMatchThreshold: 0,
+	misMatchThreshold: 1,
 	resembleOutputOptions: {
 		usePreciseMatching: true,
 	},

@@ -1,8 +1,17 @@
 module.exports = [
     {
-        label: 'cancer center whole page focus on phone link desktop',
+		label: 'cancer center all page components',
+		testPath: '/about-cancer/coping/feelings/relaxation/duke-university',
+        delay: 2000,
+	},
+    {
+        label: 'cancer center focus on phone link desktop',
         testPath: '/about-cancer/coping/feelings/relaxation/duke-university',
         focusSelector: 'a[href="tel:1-888-275-3853"]',
+        selectors: [
+            ' #nvcgSlProfilePanel'
+        ],
+        selectorExpansion: false,
         viewports: [
             {
                 label: 'desktop',
@@ -12,9 +21,13 @@ module.exports = [
         ],
     },
     {
-        label: 'cancer center whole page focus on website link tablet',
+        label: 'cancer center focus on website link tablet',
         testPath: '/about-cancer/coping/feelings/relaxation/duke-university',
         focusSelector: 'a[href="http://www.dukecancerinstitute.org/"]',
+        selectors: [
+            ' #nvcgSlProfilePanel'
+        ],
+        selectorExpansion: false,
         viewports: [
             {
                 label: 'tablet',

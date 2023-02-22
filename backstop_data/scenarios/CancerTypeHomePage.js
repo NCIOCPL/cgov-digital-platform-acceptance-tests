@@ -6,7 +6,7 @@ module.exports = [
     {
 		label: 'cancer type home page hover over link without cranberry ',
 		testPath: '/types/breast',
-        hoverSelector: 'a[href="/types/breast/patient/breast-treatment-pdq"]',
+        hoverSelector: 'a[href*="/types/breast/patient/breast-treatment-pdq"]',
         viewports: [
             {
                 label: 'desktop',
