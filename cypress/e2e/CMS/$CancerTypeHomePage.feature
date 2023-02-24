@@ -80,7 +80,6 @@ Scenario: Adding guide card
     And browser waits
     Then "Media Link" section appears
     And user clicks on "Link" link in the "External Link" text area
-    And browser waits 
     And user clicks on "Select media" to choose a resource to link
     And user selects "Test File for Related Resources" item from the media list
     And browser waits 
@@ -196,9 +195,8 @@ Scenario: Adding research card
     And browser waits
     And user clicks on "Select content" button from "CTHP Research Card" text area
     And browser waits
-    And user filters research list by "Cancer Research List Page" type and clicks "Apply" button
-     And browser waits
-    And user selects 1 research page from the list
+    And user types "Breast Cancer Research" into title field search area
+    And browser waits
     And user clicks on "Select content" button to select item
     And user remembers title of selected Cancer Research List Page for future verification
     And browser waits
@@ -237,3 +235,110 @@ Scenario: Adding block and raw html cards
     And user selects "Include in search" from Search Engine Restrictions dropdown
     And user selects "Published" from draft "Current state" dropdown
     When user saves the content page
+
+         #----- Cancer Type Home Page front end verification starts from below------#
+Scenario: Verify newly created content
+    Given user is navigating to the front end site with path site section plus "cancer-type-homepage"
+    And page title is "Automated Test Cancer Type Homepage Patient"
+    And the following cards are displayed
+        | title                    | cardType       |
+        | Test Overview            | cthp-overview  |
+        | Test Treatment           | cthp-treatment |
+        | Test Causes & Prevention | cthp-causes    |
+        | Test Statistics          | cthp-survival  |
+        | Test Video Card          | cthp-screening |
+        | Test Research            | cthp-research  |
+        | Test Block Card          | cthp-general   |
+        | Test Raw HTML Card       | cthp-genetics  |       
+    And cthp overview card has description "Description of Overview Card of CTHP content type"
+    And PDQ link label reads "PDQ Treatment Information for Patients"
+    Then the PDQ link is matching the earlier selected PDQ link
+    When user clicks on "View more information" dropdown
+    And browser waits
+    Then the following more info links are displayed
+        | title                                 | url                           |
+        | Article to test Related Resources     | {TEST_SITE_SECTION}/article   |
+        | Google Link Guide Card                | https://www.google.com        |
+        | Media Link Override Title Guide cards | {TEST_SITE_SECTION}/test-file |
+    And cthp causes card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
+    And cthp survival card has a link "Override Card Desc - External Feature Card" with href "https://www.google1.com"
+    Then the video is matching the earlier selected video
+    And cthp screening card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
+    And cthp general card has description that is not empty
+    And cthp general card has multiple links
+    And cthp genetics card reads "This is to test Raw Html Content in CTHP Raw HTML Card"
+    And cthp research card has multiple links
+    Then user clicks "View more research" link inside cthp research card
+    Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
+  
+Scenario: Edit and republish Cancer Type Homepage content type
+    Given user is navigating to "/user/login"
+    When user enters credentials
+    And user clicks "Log in" button
+    Then user is logged in and the user name "admin" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    And user clicks on title with url "cancer-type-homepage" from the list of content
+    And user clicks on the tool bar status green button "Published"
+    And user clicks "View in edit form" button from other actions
+    And user clears out "Pretty URL" field
+    And user clears out "Meta Description" field
+    And browser waits
+    And user fills out the following fields
+        | fieldLabel       | value                                                       | field_name                                                                                          |
+        | Pretty URL       | cancer-type-homepage-Edited                                 | field_pretty_url                                                                                    |
+        | Meta Description | Automated Test Cancer Type Homepage Meta Description Edited | field_page_description                                                                              |  
+        | CTHP Card Title  | Edited                                                      | field_cthp_cards[0][subform][field_cthp_card_title]                                                 |
+        | CTHP Card Title  | Edited                                                      | field_cthp_cards[1][subform][field_cthp_card_title]                                                 |
+        | PDQ Link Heading | Edited                                                      | field_cthp_cards[1][subform][field_cthp_pdq_link_heading][0][value]                                 |
+        | Override Title   | Edited                                                      | field_cthp_cards[1][subform][field_cthp_view_more_info][2][subform][field_override_title][0][value] |
+   And browser waits
+    And user removes Video from "CTHP Video Card" card area
+    And browser waits
+    And user clicks on "Video" link in the "CTHP Video Card" text area
+    And browser waits
+    And user clicks on "Select video" to choose a resource to link
+    And user filters published list by "True" and clicks "Apply" button
+    And browser waits
+    And user selects 2 Video from the list of main page videos
+    And browser waits
+    And user clicks on "Select video" button to select item
+    And browser waits
+    And user remembers the title of selected video for further verification
+    When user saves the content page
+    And user clicks on the tool bar status green button "Editing"
+    And user selects "Quick Publish" from workflow actions
+
+Scenario: Verify edited content
+    Given user is navigating to the front end site with path site section plus "cancer-type-homepage-edited"
+    Then page title is "Automated Test Cancer Type Homepage Patient"
+    And the page contains meta tags with the following names
+        | name        | content                                                     |
+        | description | Automated Test Cancer Type Homepage Meta Description Edited |
+    And the following cards are displayed
+        | title                | cardType       |
+        | Test OverviewEdited  | cthp-overview  |
+        | Test TreatmentEdited | cthp-treatment |
+    And cthp overview card has description "Description of Overview Card of CTHP content type"
+    And PDQ link label reads "PDQ Treatment Information for PatientsEdited"
+    When user clicks on "View more information" dropdown
+    Then the following more info links are displayed
+        | title                                       | url                           |
+        | Article to test Related Resources           | {TEST_SITE_SECTION}/article   |
+        | Google Link Guide Card                      | https://www.google.com        |
+        | Media Link Override Title Guide cardsEdited | {TEST_SITE_SECTION}/test-file |
+    Then the video is matching the earlier selected video
+      
+Scenario: Clean up
+    Given user is navigating to "/user/login"
+    When user enters credentials
+    And user clicks "Log in" button
+    Then user is logged in and the user name "admin" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    And user selects a checkbox next to title with url "cancer-type-homepage-edited" from the list of content
+    And user clicks on "Apply to selected items" content action button
+    Then page title is "Are you sure you want to delete this content item?"
+    When user clicks on "Delete" button
+    Then the confirmation text "Deleted 1 content item." appears on a screen
+    And the content item with url "cancer-type-homepage-edited" does not exist in the list of content
