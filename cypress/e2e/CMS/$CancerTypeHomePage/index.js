@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { And } from 'cypress-cucumber-preprocessor/steps';
+import { And, Then, When } from 'cypress-cucumber-preprocessor/steps';
 function createRandomStr() {
     var result = '';
     var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -84,13 +84,6 @@ And('user clicks on {string} button to select item', (listBtn) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${listBtn}"]`).click({ force: true })
 })
 
-let imageSrc1;
-And('user remembers the title of selected summary for further verification', () => {
-    cy.get('details div').then($el => {
-        imageSrc1 = $el[0].getAttribute('src')
-    })
-})
-
 And('user selects {string} from {string} dropdown', (dropdown, section) => {
     cy.get(`.placeholder:contains("${section}")`).parent().find(`input[value="${dropdown}"]`).click({ force: true })
 })
@@ -105,34 +98,18 @@ And('user selects {string} item from the media list', (title) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains(${title})`).parent().find('input').click()
 })
 
-And('user selects {int} Video from the list of videos', (num) => {
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').first().eq(num - 1).check()
-})
-
-let imageSrc;
-And('user remembers the title of selected video for further verification', () => {
-    cy.get('details div').then($el => {
-        imageSrc = $el[0].getAttribute('src')
-    })
-})
-
 And('user selects {string} from {string} dropdown {string} section', (dropDown, option, section) => {
     cy.get(`div:contains("${section}")`).parent().parent().find(`.placeholder:contains("${option}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true })
 })
 
-And('user filters research list by {string} type and clicks {string} button', (dropdown, btn) => {
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("select[name='type']").select(dropdown)
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${btn}"]`).click({ force: true })
+And('user types {string} into title field search area', (title) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name='title']").type(title)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-submit-cgov-content-browser']").click()
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains(${title})`).parent().find('input').eq(0).click();
 })
 
 And('user selects {int} research page from the list', (num) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').first().click({ force: true })
-})
-let imageSrc2;
-And('user remembers title of selected Cancer Research List Page for future verification', () => {
-    cy.get('details div').then($el => {
-        imageSrc2 = $el[0].getAttribute('src')
-    })
 })
 
 And('user selects {string} from CTHP Card Theme dropdown', (dropdown) => {
@@ -163,5 +140,120 @@ And('user selects {string} from draft {string} dropdown', (dropdown, option) => 
     cy.get(`label:contains("${option}")`).parent().parent().find("select[name*='moderation_state']").select(dropdown)
 })
 
+/*------- Cancer Type Home Page front end verification Starts from below below --------*/
 
+And('the following cards are displayed', (dataTable) => {
+    for (const { title, cardType } of dataTable.hashes()) {
+        cy.get(`div[class*="${cardType}"] h2`).should('include.text', title)
+    }
+})
 
+And('cthp overview card has description {string}', (description) => {
+    cy.get("div[class*='cthp-overview'] p") .should ('include.text', description)
+})
+
+And('PDQ link label reads {string}', (title) => {
+    cy.get(`div[class='cardBody'] h4:contains("${title}")`).should('be.visible')
+})
+
+let summaryTitle;
+And('user remembers the title of selected summary for further verification', () => {
+    cy.get('div[id*="pdq-links-current-items"]').then($el => {
+        summaryTitle = $el[0].innerText
+    })
+})
+
+Then('the PDQ link is matching the earlier selected PDQ link', () => {
+    cy.get('div[class*="cthp-treatment"] a').then($el => {
+        const title = $el[0].innerText;
+        expect(summaryTitle).to.include(title);
+    })
+})
+
+let summaryVideo;
+And('user remembers the title of selected video for further verification', () => {
+    cy.get("div[id*='cthp-video-current-']").then($el => {
+        summaryVideo = $el[0].innerText
+    })
+})
+
+Then('the video is matching the earlier selected video', () => {
+    cy.get('div[class*="cthp-screening"] img').then($el => {
+        const video = $el[0].innerText;
+        expect(summaryVideo).to.include(video);
+    })
+})
+
+let summaryPageTitle;
+And('user remembers title of selected Cancer Research List Page for future verification', () => {
+    cy.get("div[class*='cthp-research'] div[class*='label']").then($el => {
+        summaryPageTitle = $el[0].innerText
+    })
+})
+
+Then('the Cancer Research List page title is matching the earlier selected Cancer Research List page title', () => {
+    cy.get("h1").should('include.text', summaryPageTitle)
+})
+
+And('user clicks on {string} dropdown', (dropdown) => {
+    cy.get(`div[class='more-info list cthp-dropdown'] label:contains("${dropdown}")`).click({ force: true })
+})
+
+And('the following more info links are displayed', (dataTable) => {
+    for (const { title, url } of dataTable.hashes()) {
+        const replacedTestSiteSection = url.replace("{TEST_SITE_SECTION}", siteSection);
+        cy.get(`ul a[class='title']:contains("${title}")`).should('be.visible').and('have.attr', 'href', replacedTestSiteSection)
+    }
+})
+
+And('cthp causes card has a link {string} with href {string}', (linkText, href) => {
+    const replacedTestSiteSection = href.replace("{TEST_SITE_SECTION}", siteSection);
+    cy.get("div[class='equalheight bgWhite cthp-causes'] a").as('card').should('have.text', linkText)
+    cy.get("div[class*='cthp-causes'] a").as('card').should('have.attr', 'href', replacedTestSiteSection)
+})
+
+And('cthp survival card has a link {string} with href {string}', (title, href) => {
+    cy.get(`div[class='equalheight bgWhite cthp-survival'] a:contains("${title}")`).should('be.visible').and('have.attr', 'href', href)
+})
+
+And('cthp screening card has a link {string} with href {string}', (linkText, href) => {
+    const replacedTestSiteSection = href.replace("{TEST_SITE_SECTION}", siteSection);
+    cy.get("div[class='equalheight bgWhite cthp-screening'] a").as('card').should('have.text', linkText)
+    cy.get("div[class*='cthp-screening'] a").as('card').should('have.attr', 'href', replacedTestSiteSection)
+})
+
+And('cthp general card has description that is not empty', () => {
+    cy.get("div[class='equalheight bgWhite cthp-general'] p").should('be.visible').and('not.be.empty')
+})
+And('cthp general card has multiple links', () => {
+    cy.get("div[class*='cthp-general'] a").should('have.length', 6)
+})
+
+And('cthp genetics card reads {string}', (title) => {
+    cy.get(`div[class='equalheight bgWhite cthp-genetics'] div:contains("${title}")`).should('be.visible')
+})
+
+And('cthp research card has multiple links', () => {
+    cy.get("div[class*='cthp-general'] a").should('have.length', 6)
+})
+
+And('user clicks {string} link inside cthp research card', (option) => {
+    cy.get(`div[class*='cthp-research'] a:contains("${option}")`).click({ force: true })
+})
+
+And('user removes Video from {string} card area', (section) => {
+    cy.get(`div:contains("${section}")`).parent().find("input[name*='field_cthp_video_remove']").click({ force: true })
+})
+
+And('user selects {int} Video from the list of videos', (num) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').eq(num - 1).check()
+})
+
+And('user filters published list by {string} and clicks {string} button', (dropdown, button) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("select[name='status']").select(dropdown)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${button}"]`).click({ force: true })
+})
+
+And('user selects {int} Video from the list of main page videos', (num) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').eq(num - 1).check()
+})
