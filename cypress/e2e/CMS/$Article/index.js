@@ -187,3 +187,31 @@ Then('the promo image is matching the earlier selected image', () => {
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
+
+And('Link section under related resources was translated as {string}', (linkText) => {
+    cy.get(`summary.seven-details__summary span:contains("${linkText}")`).should('be.visible');
+});
+
+And('{string} label is displayed', (labelListDesc) => {
+    cy.get(`div[class*="js-form-item-field-list-description-0-value"] label:contains("${labelListDesc}")`).should('be.visible');
+});
+
+And('body was translated as {string}', (bodyTranslation) => {
+    cy.get(`div[id*=field-article-body] h4:contains("${bodyTranslation}")`).should('be.visible');
+});
+
+And('body content was translated as {string}', (contentHeadingTranslation) => {
+    cy.get(`div[id="edit-field-article-body-0-subform-field-body-section-content-wrapper"] label:contains("${contentHeadingTranslation}")`);
+});
+
+And('Add Body Section was translated as {string}', (addBodySection) => {
+    cy.get(`input[value='${addBodySection}']`).should('be.visible');
+});
+
+Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+});

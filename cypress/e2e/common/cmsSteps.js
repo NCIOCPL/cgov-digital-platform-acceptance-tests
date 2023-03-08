@@ -417,3 +417,81 @@ And('user remembers the source of selected promo image for the mini landing', ()
         imageSrc = $el[0].getAttribute('src')
     })
 });
+
+Then('user selects {string} option from Operations dropdown for content with title {string}', (translateOption, title) => {
+    cy.get(`td:contains('${title}')`).siblings('td').find(`ul.dropbutton >li> a:contains("${translateOption}")`).click({ force: true });
+});
+
+Then('the page title is {string}', (title) => {
+    cy.get(`h2:contains('${title}')`).should('be.visible');
+});
+
+When('user clicks on {string} button to add translation', (addBtn) => {
+    cy.get(`li.add.dropbutton-action a:contains("${addBtn}")`).click({ force: true });
+});
+
+And('Remove button for image was translated as {string}', (removeBtn) => {
+    cy.get(`input[value='${removeBtn}']`).should('be.visible');
+});
+
+And('Related Resources section was translated as {string}', (relatedResources) => {
+    cy.get(`div#field-related-resources-add-more-wrapper h4:contains("${relatedResources}")`).should('be.visible');
+});
+
+And('dropdown to add link under related resources was translated to start with {string}', (dropDownText) => {
+    cy.get(`li.dropbutton__item.dropbutton__item--extrasmall.dropbutton-action input[value^="Añadir"]`).should('be.visible');
+});
+
+And('button to add citation was translated as {string}', (citationBtn) => {
+    cy.get(`input[value='${citationBtn}']`).should('be.visible');
+});
+
+And('heading was translated as {string}', (headingTranslation) => {
+    cy.get(`div.paragraphs-subform.js-form-wrapper.form-wrapper label:contains("${headingTranslation}")`).should('be.visible');
+});
+
+And('{string} label is displayed', (fieldLabel) => {
+    cy.get(`div[class*="form-type-textarea"] label:contains("${fieldLabel}")`).should('be.visible');
+});
+
+Then('Recursos relacionados section contains the following links', (dataTable) => {
+    for (let { title, link } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection)
+        }
+        cy.get(`div#nvcgRelatedResourcesArea a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
+    }
+});
+
+And('{string} dropdown displays {string}', (fieldLabel, displayedText) => {
+    cy.get(`label:contains("${fieldLabel}")`).siblings('select').find(`option:contains("${displayedText}")`).should('be.visible');
+});
+
+And('current state was translated as {string} {string}', (currentModerationState, state) => {
+    cy.get(`div#edit-moderation-state-0-current label:contains("${currentModerationState}")`).should('be.visible');
+    cy.get('div#edit-moderation-state-0-current').should('include.text', state);
+});
+
+And('Change to dropdown has the following options', (dataTable) => {
+    for (let { option } of dataTable.hashes()) {
+        cy.get(`div[class*="moderation-state-0-state"] option:contains("${option}")`).should('be.visible');
+    }
+});
+
+And('the following fields are displayed', (dataTable) => {
+    for (let { fieldLabel, field_name } of dataTable.hashes()) {
+        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
+    }
+});
+
+And('Save button was translated as {string}', (saveBtn) => {
+    cy.get(`input[value='${saveBtn}']`).should('be.visible');
+});
+
+And('preview button was translated as {string}', (previewBtn) => {
+    cy.get(`input[value='${previewBtn}']`).should('be.visible');
+});
+
+And('date published was translated as {string}', (datePublished) => {
+    cy.get('ul.clearfix li strong').should('be.visible').and('include.text', datePublished);
+});
