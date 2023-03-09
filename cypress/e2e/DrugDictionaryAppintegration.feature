@@ -36,6 +36,7 @@ Feature: Drug Dictionary app is integrated within CGOV platform
         And user is navigating to "/publications/dictionaries/cancer-drug/expand/W"
         Then the "H4" title is "XX results found for: W"
         When user types "can" in the search bar
+        And browser waits for 500
         Then autosuggest appears
         When user hits "enter" key
         Then search is executed and page url is "/search/can/?searchMode=Begins"
@@ -55,11 +56,16 @@ Feature: Drug Dictionary app is integrated within CGOV platform
     Scenario: When user uses Autosuggest by selecting multiple suggestions and search - analytics events are fired
         Given screen breakpoint is set to "desktop"
         And user is navigating to "/publications/dictionaries/cancer-drug"
+        Given analytics storage is cleared
         When user types "can" in the search bar
+        And browser waits for 500
         And user selects "cannabidiol" from the dropdown
+        And browser waits for 500
         And user clears the search box
         And user types "bev" in the search bar
+        And browser waits for 500
         And user selects "bevacizumab" from the dropdown
+        And browser waits for 500
         And user clicks "Search" button
         Then page click request is sent
         And the following parameters should be captured
@@ -82,9 +88,13 @@ Feature: Drug Dictionary app is integrated within CGOV platform
     Scenario: When user uses Autosuggest, modifies the suggestion and search -  analytics events are fired
         Given screen breakpoint is set to "desktop"
         And user is navigating to "/publications/dictionaries/cancer-drug"
+        Given analytics storage is cleared
         When user types "bev" in the search bar
+        And browser waits for 1000
         And user selects "bevacizumab" from the dropdown
+        And browser waits for 1000
         And user modifies the search box value to "bevacizuma"
+        And browser waits for 1000
         And user hits "enter" key
         Then page click request is sent
         And the following parameters should be captured
@@ -107,9 +117,12 @@ Feature: Drug Dictionary app is integrated within CGOV platform
     Scenario: When user does not use autosuggest and search -  analytics events are fired
         Given screen breakpoint is set to "desktop"
         And user is navigating to "/publications/dictionaries/cancer-drug"
+        Given analytics storage is cleared
         When user selects "Contains" radio button
+        And browser waits for 1000
         And user types "bev" in the search bar
-        And user hits "enter" key
+        And browser waits for 1000
+        And user clicks "Search" button
         Then page click request is sent
         And the following parameters should be captured
             | parameter | value                                                          |

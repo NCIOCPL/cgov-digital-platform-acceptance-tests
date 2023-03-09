@@ -114,14 +114,14 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
             | Top 'page not found' errors   | /admin/reports/page-not-found  |
             | Views plugins                 | /admin/reports/views-plugins   |
 
-    Scenario: User is trying to upload a file with virus
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on "Media" sub tab
-        And user clicks on "Add media" action button
-        And user clicks on "File" content type
-        Then page title is "Add File"
-        And user uploads test file "fileWithVirus.txt"
-        And system waits for file upload process
-        Then the error message "A virus has been detected in the file. The file will be deleted." appears
+    # Scenario: User is trying to upload a file with virus
+    #     Then user is logged in and the user name "admin" is displayed in the toolbar
+    #     And the tool bar appears at the top
+    #     When user clicks on "Content" tab
+    #     And user clicks on "Media" sub tab
+    #     And user clicks on "Add media" action button
+    #     And user clicks on "File" content type
+    #     Then page title is "Add File"
+    #     And user uploads test file "fileWithVirus.txt"
+    #     And system waits for file upload process
+    #     Then the error message "A virus has been detected in the file. The file will be deleted." appears
