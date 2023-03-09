@@ -28,3 +28,11 @@ cy.get(`h1:contains('${title}')`).should('be.visible');
 And('system waits for file upload process', () => {
   cy.get('.throbber', { timeout: 40000 }).should('not.exist')
 });
+
+And('browser waits for {int}', (time) => {
+  cy.wait(time);
+})
+
+And('user refreshes the page',()=>{
+  cy.reload()
+})

@@ -153,7 +153,9 @@ Feature: Site Wide Search app is integrated within CGOV platform
     Scenario: Click Events for site search box when user selects a term from dropdown
         Given user is navigating to "/"
         When user types "can" in the site search box
+        And browser waits for 500
         And user selects "breast cancer" from the autosuggest dropdown
+        And browser waits for 500
         And user clicks Search button
         Then page click request is sent right before page unload
         And the following parameters should be captured
@@ -176,6 +178,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
     Scenario: Click Events for site search box when user doesn't select a term from dropdown
         Given user is navigating to "/"
         When user types "cancer" in the site search box
+        And browser waits for 500
         And user clicks Search button
         Then page click request is sent right before page unload
         And the following parameters should be captured
@@ -198,6 +201,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
     Scenario: Click Events for site search box when there is no suggestion
         Given user is navigating to "/"
         When user types "chickensoup" in the site search box
+        And browser waits for 500
         And user clicks Search button
         Then page click request is sent right before page unload
         And the following parameters should be captured

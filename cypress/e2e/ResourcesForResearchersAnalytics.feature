@@ -1,7 +1,5 @@
 Feature: R4R app fires analytics event for SEO tracking purposes
 
-
-
     Scenario: R4R landing page load analytics
         Given user is navigating to "/research/resources" with added wait
         When page load request is sent
@@ -52,8 +50,10 @@ Feature: R4R app fires analytics event for SEO tracking purposes
 
     Scenario: R4R resource page load analytics
         Given user is navigating to "/research/resources/resource/89"
-        When page load request is sent
-        Then the following parameters should be captured
+        When analytics storage is cleared
+        And user refreshes the page
+        Then page load request is sent
+        And the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
             | prop1     | https://{CANONICAL_HOST}/research/resources/resource/89                                                                                                                                                                                                                                                                                                                                             |
             | prop3     | /research/resources/resource/89                                                                                                                                                                                                                                                                                                                                                                     |
@@ -74,89 +74,89 @@ Feature: R4R app fires analytics event for SEO tracking purposes
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | evar61    | nciAppModulePage                                                                                                                                                                                                                                                                                                                                                                                    |
 
-    ###click events
+###click events
 
-    Scenario: R4R search results page fires an event after clicking on '<Back to results' link
-        Given user is navigating to "/research/resources/search?from=0"
-        When user clicks on 1 search result item
-        When user clicks <Back to results link
-        Then page click request is sent
-        Then the following parameters should be captured
-            | parameter | value                                                    |
-            | prop4     | D=pev1                                                   |
-            | prop39    | /^r4r_results\|view\|none\|ra=0;tt=0;rt=0;tst=0\|1\|\d+/ |
-            | prop40    | <resultTitle>                                            |
-            | prop8     | english                                                  |
-            | prop67    | D=pageName                                               |
-            | evar2     | D=c8                                                     |
-            | pev2      | R4R Click Event                                          |
-            | link      | <resultTitle>                                            |
-            | linkType  | lnk_o                                                    |
-            | channel   | Research                                                 |
-            | pageName  | {CANONICAL_HOST}/research/resources                      |
-            | event42   |                                                          |
+Scenario: R4R search results page fires an event after clicking on '<Back to results' link
+    Given user is navigating to "/research/resources/search?from=0"
+    When user clicks on 1 search result item
+    When user clicks <Back to results link
+    Then page click request is sent
+    Then the following parameters should be captured
+        | parameter | value                                                    |
+        | prop4     | D=pev1                                                   |
+        | prop39    | /^r4r_results\|view\|none\|ra=0;tt=0;rt=0;tst=0\|1\|\d+/ |
+        | prop40    | <resultTitle>                                            |
+        | prop8     | english                                                  |
+        | prop67    | D=pageName                                               |
+        | evar2     | D=c8                                                     |
+        | pev2      | R4R Click Event                                          |
+        | link      | <resultTitle>                                            |
+        | linkType  | lnk_o                                                    |
+        | channel   | Research                                                 |
+        | pageName  | {CANONICAL_HOST}/research/resources                      |
+        | event42   |                                                          |
 
-    Scenario: R4R search results page fires an event after searching for a keyword
-        Given user is navigating to "/research/resources"
-        When user types "tool" in the search bar
-        And user clicks on the magnifying glass icon
-        Then page click request is sent
-        Then the following parameters should be captured
-            | parameter | value                                                   |
-            | prop4     | D=pev1                                                  |
-            | prop39    | /r4r_results\|view\|tool\|ra=0;tt=0;rt=0;tst=0\|1\|\d+/ |
-            | prop40    | Home View                                               |
-            | prop14    | tool                                                    |
-            | prop11    | r4r_home_searchbar                                      |
-            | prop8     | english                                                 |
-            | prop67    | D=pageName                                              |
-            | evar2     | D=c8                                                    |
-            | pev2      | R4R Click Event                                         |
-            | link      | Search                                                  |
-            | linkType  | lnk_o                                                   |
-            | channel   | Research                                                |
-            | pageName  | {CANONICAL_HOST}/research/resources                     |
-            | event2    |                                                         |
-            | event39   |                                                         |
+Scenario: R4R search results page fires an event after searching for a keyword
+    Given user is navigating to "/research/resources"
+    When user types "tool" in the search bar
+    And user clicks on the magnifying glass icon
+    Then page click request is sent
+    Then the following parameters should be captured
+        | parameter | value                                                   |
+        | prop4     | D=pev1                                                  |
+        | prop39    | /r4r_results\|view\|tool\|ra=0;tt=0;rt=0;tst=0\|1\|\d+/ |
+        | prop40    | Home View                                               |
+        | prop14    | tool                                                    |
+        | prop11    | r4r_home_searchbar                                      |
+        | prop8     | english                                                 |
+        | prop67    | D=pageName                                              |
+        | evar2     | D=c8                                                    |
+        | pev2      | R4R Click Event                                         |
+        | link      | Search                                                  |
+        | linkType  | lnk_o                                                   |
+        | channel   | Research                                                |
+        | pageName  | {CANONICAL_HOST}/research/resources                     |
+        | event2    |                                                         |
+        | event39   |                                                         |
 
-    Scenario: R4R resource page fires an event after clicking on Visit resource link
-        Given user is navigating to "/research/resources/resource/89"
-        When user clicks on Visit resource link
-        And browser waits
-        Then page click request is sent
-        Then the following parameters should be captured
-            | parameter | value                               |
-            | prop4     | D=pev1                              |
-            | prop39    | r4r_resource\|resource_click        |
-            | prop40    | DevCan                              |
-            | prop8     | english                             |
-            | prop67    | D=pageName                          |
-            | evar2     | D=c8                                |
-            | link      | Visit Resource                      |
-            | pev2      | R4R Click Event                     |
-            | linkType  | lnk_o                               |
-            | channel   | Research                            |
-            | pageName  | {CANONICAL_HOST}/research/resources |
-            | event67   |                                     |
+Scenario: R4R resource page fires an event after clicking on Visit resource link
+    Given user is navigating to "/research/resources/resource/89"
+    When user clicks on Visit resource link
+    And browser waits
+    Then page click request is sent
+    Then the following parameters should be captured
+        | parameter | value                               |
+        | prop4     | D=pev1                              |
+        | prop39    | r4r_resource\|resource_click        |
+        | prop40    | DevCan                              |
+        | prop8     | english                             |
+        | prop67    | D=pageName                          |
+        | evar2     | D=c8                                |
+        | link      | Visit Resource                      |
+        | pev2      | R4R Click Event                     |
+        | linkType  | lnk_o                               |
+        | channel   | Research                            |
+        | pageName  | {CANONICAL_HOST}/research/resources |
+        | event67   |                                     |
 
 
-    Scenario: R4R search results page fires an event after clicking on search result item
-        Given user is navigating to "/research/resources/search?from=0"
-        When user clicks on 1 search result item without navigation
-        Then page click request is sent
-        And browser waits
-        Then the following parameters should be captured
-            | parameter | value                                                   |
-            | prop4     | D=pev1                                                  |
-            | prop39    | /r4r_results\|view\|none\|ra=0;tt=0;rt=0;tst=0\|1\|\d+/ |
-            | prop40    | <resultTitle>                                           |
-            | prop8     | english                                                 |
-            | prop67    | D=pageName                                              |
-            | evar2     | D=c8                                                    |
-            | pev2      | R4R Click Event                                         |
-            | linkType  | lnk_o                                                   |
-            | channel   | Research                                                |
-            | pageName  | {CANONICAL_HOST}/research/resources                     |
-            | event42   |                                                         |
+Scenario: R4R search results page fires an event after clicking on search result item
+    Given user is navigating to "/research/resources/search?from=0"
+    When user clicks on 1 search result item without navigation
+    Then page click request is sent
+    And browser waits
+    Then the following parameters should be captured
+        | parameter | value                                                   |
+        | prop4     | D=pev1                                                  |
+        | prop39    | /r4r_results\|view\|none\|ra=0;tt=0;rt=0;tst=0\|1\|\d+/ |
+        | prop40    | <resultTitle>                                           |
+        | prop8     | english                                                 |
+        | prop67    | D=pageName                                              |
+        | evar2     | D=c8                                                    |
+        | pev2      | R4R Click Event                                         |
+        | linkType  | lnk_o                                                   |
+        | channel   | Research                                                |
+        | pageName  | {CANONICAL_HOST}/research/resources                     |
+        | event42   |                                                         |
 
 
