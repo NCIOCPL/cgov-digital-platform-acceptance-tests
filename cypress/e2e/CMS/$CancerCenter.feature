@@ -73,7 +73,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user selects "Published" from "Save as" dropdown
         When user saves the content page
 
-Scenario: Create a mini landing page and add cancer center into a list
+    Scenario: Create a mini landing page and add cancer center into a list
         Given user is navigating to "/user/login"
         When user enters credentials
         And user clicks "Log in" button
@@ -98,8 +98,8 @@ Scenario: Create a mini landing page and add cancer center into a list
         And "Automated Test Cancer Center" had been selected
         And user selects "Published" from "Save as" dropdown
         When user saves the content page
-    
-        Scenario: Verify that list description is displayed
+
+    Scenario: Verify that list description is displayed
         Given user is navigating to the front end site with path site section plus "mini-landing"
         Then page title is "Test Mini Landing"
         And list item title is "Automated Test Cancer Center"
@@ -180,20 +180,24 @@ Scenario: Create a mini landing page and add cancer center into a list
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Organization Head Name" field
+        And user clears out "Card Title" field
         And user clears out "Meta Description" field
+        And user clears out "Feature Card Description" field
         And user clears out "Street address" field
         And user clears out "Zip code" field
         And user clears out "Phone 1 Label" field
         And user clears out "Phone 2 Number" field
         And user fills out the following fields
-            | fieldLabel             | value                                      | field_name                               |
-            | Pretty URL             | cancer-center-edited                       | field_pretty_url                         |
-            | Organization Head Name | Organization Head Name Edited              | field_org_head_name                      |
-            | Meta Description       | Test Cancer Center Meta Description Edited | field_page_description                   |
-            | Street address         | 123 Magnolia Str Edited                    | field_address[0][address][address_line1] |
-            | Phone 1 Label          | Main Phone Edited                          | field_phone_label_1                      |
-            | Phone 2 Number         | 888-111-1234                               | field_phone_number_2                     |
-            | Zip code               | 76001                                      | field_address[0][address][postal_code]   |
+            | fieldLabel               | value                                      | field_name                               |
+            | Pretty URL               | cancer-center-edited                       | field_pretty_url                         |
+            | Organization Head Name   | Organization Head Name Edited              | field_org_head_name                      |
+            | Card Title               | Test Card Title Edited                     | field_card_title                         |
+            | Meta Description         | Test Cancer Center Meta Description Edited | field_page_description                   |
+            | Feature Card Description | Test Feature Card Description Edited       | field_feature_card_description           |
+            | Street address           | 123 Magnolia Str Edited                    | field_address[0][address][address_line1] |
+            | Phone 1 Label            | Main Phone Edited                          | field_phone_label_1                      |
+            | Phone 2 Number           | 888-111-1234                               | field_phone_number_2                     |
+            | Zip code                 | 76001                                      | field_address[0][address][postal_code]   |
         And user selects "Comprehensive Cancer Center" from "Institution Type" dropdown
         And user selects "Texas" from "State" dropdown
         And user removes Cancer Center Image
@@ -227,6 +231,52 @@ Scenario: Create a mini landing page and add cancer center into a list
             | Google Link                       | https://www.google.com/       |
             | Media Link Override Title         | {TEST_SITE_SECTION}/test-file |
 
+    Scenario: Add a featured item to mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user selects the "Add Two Item Feature Card Row" content item
+        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And browser waits
+        And user clicks on "Select content" button item
+        And browser waits
+        And user selects "Automated Test Cancer Center" item from main page content
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And "Automated Test Cancer Center" had been selected
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify card titles and feature card description in mini landing page
+        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Then page title is "Test Resource Mini Landing Page"
+        And the Card Title has a link "Test Card Title Edited" with href "/about-cancer/understanding/cancer-center-edited"
+        And feature card description reads "Test Feature Card Description Edited"
+
+    Scenario: Remove featured item
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user removes "Two Item Feature Card Row" section
+        And user confirms removal
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
 
     Scenario: Clean up
         Given user is navigating to "/user/login"
@@ -242,7 +292,7 @@ Scenario: Create a mini landing page and add cancer center into a list
         Then the confirmation text "Deleted 1 content item." appears on a screen
         And the content item with url "cancer-center-edited" does not exist in the list of content
 
-Scenario: Clean up mini landing
+    Scenario: Clean up mini landing
         Given user is navigating to "/user/login"
         When user enters credentials
         And user clicks "Log in" button

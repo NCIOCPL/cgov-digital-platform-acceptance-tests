@@ -141,13 +141,14 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
         And user clears out "Meta Description" field
+        And user clears out "Card Title" field
         And user clears out "Feature Card Description" field
         And browser waits
         And user fills out the following fields
             | fieldLabel               | value                                               | field_name                     |
             | Pretty URL               | blog-post-edited                                    | field_pretty_url               |
             | Page Title               | Automated Test Blog Post Edited                     | title                          |
-            | Card Title               | Edited                                              | field_card_title[0][value]     |
+            | Card Title               | Automated Test Blog Post - Card Title Edited        | field_card_title[0][value]     |
             | Meta Description         | Automated Test Blog Post Meta Description Edited    | field_page_description         |
             | Feature Card Description | Automated Test Blog Post - Feature Card Desc Edited | field_feature_card_description |
         And user removes the Lead Image
@@ -205,6 +206,8 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
+        And the Card Title has a link "Automated Test Blog Post - Card Title Edited" with href "/news-events/cancer-currents-blog/{YEAR}/blog-post-edited"
+        And feature card description reads "Automated Test Blog Post - Feature Card Desc Edited"
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login"

@@ -206,6 +206,8 @@ Feature: As a cms user I want to be able to create Article content type to promo
         Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
+        And the Card Title has a link "Automated Test Article - Card Title Edited" with href "/about-cancer/understanding/test-article-edited"
+        And feature card description reads "Automated Test Article - Feature Card Desc Edited"
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login"

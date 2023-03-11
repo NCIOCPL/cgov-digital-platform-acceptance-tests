@@ -137,6 +137,8 @@ Feature: As a cms user I want to be able to create Press Release content type to
         Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         And the promo image is matching the earlier selected image
+        And the Card Title has a link "Automated Test Press Release - Card Title Edited" with href "/about-cancer/understanding/press-release-edited"
+        And feature card description reads "Automated Test Press Release - Feature Card Desc Edited"
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login"

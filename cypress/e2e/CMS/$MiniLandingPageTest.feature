@@ -188,12 +188,16 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
+        And user clears out "Card Title" field
         And user clears out "Meta Description" field
+        And user clears out "Feature Card Description" field
         And user fills out the following fields
-            | fieldLabel       | value                                                    | field_name             |
-            | Pretty URL       | mini-landing-page-edited                                 | field_pretty_url       |
-            | Page Title       | Automated Test Mini Landing Page Edited                  | title                  |
-            | Meta Description | Automated Test Mini Landing Page Meta Description Edited | field_page_description |
+            | fieldLabel               | value                                                       | field_name                     |
+            | Pretty URL               | mini-landing-page-edited                                    | field_pretty_url               |
+            | Page Title               | Automated Test Mini Landing Page Edited                     | title                          |
+            | Card Title               | Automated Test Mini Landing Page - Card Title Edited        | field_card_title               |
+            | Meta Description         | Automated Test Mini Landing Page Meta Description Edited    | field_page_description         |
+            | Feature Card Description | Automated Test Mini Landing Page - Feature Card Desc Edited | field_feature_card_description |
         And user saves the content page
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
@@ -233,6 +237,8 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
+        And the Card Title has a link "Automated Test Mini Landing Page - Card Title Edited" with href "/about-cancer/understanding/mini-landing-page-edited"
+        And feature card description reads "Automated Test Mini Landing Page - Feature Card Desc Edited"
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login"
