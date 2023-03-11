@@ -50,6 +50,7 @@ Given('user is navigating to the blog {string} under {string}', (blogPost, blogS
     const currYear = date.getFullYear();
     const frontEndBaseUrl = Cypress.env('front_end_base_url');
     cy.visit(`${frontEndBaseUrl}/${blogSeries}/${currYear}/${blogPost}`, { retryOnStatusCodeFailure: true });
+    cy.wait(200);
 });
 
 And(`blog's posted date is today's date`, () => {

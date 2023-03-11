@@ -95,18 +95,20 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And user clears out "Event Title" field
         And user clears out "Card Title" field
         And user clears out "Meta Description" field
+        And user clears out "Feature Card Description" field
         And user clears out "Venue" field
         And user clears out "City/State/Country" field
         And user clears out "Room" field
         And user fills out the following fields
-            | fieldLabel         | value                                        | field_name             |
-            | Pretty URL         | test-event-edited                            | field_pretty_url       |
-            | Event Title        | Automated Test Event Edited                  | title                  |
-            | Card Title         | Automated Test Event - Card Title Edited     | field_card_title       |
-            | Meta Description   | Automated Test Event Meta Description Edited | field_page_description |
-            | Venue              | NCI Shady Grove Edited                       | field_venue            |
-            | Room               | 2E626 Edited                                 | field_room             |
-            | City/State/Country | Arlington, VA, USA                           | field_city_state       |
+            | fieldLabel               | value                                           | field_name                     |
+            | Pretty URL               | test-event-edited                               | field_pretty_url               |
+            | Event Title              | Automated Test Event Edited                     | title                          |
+            | Card Title               | Automated Test Event - Card Title Edited        | field_card_title               |
+            | Meta Description         | Automated Test Event Meta Description Edited    | field_page_description         |
+            | Feature Card Description | Automated Test Event - Feature Card Desc Edited | field_feature_card_description |
+            | Venue                    | NCI Shady Grove Edited                          | field_venue                    |
+            | Room                     | 2E626 Edited                                    | field_room                     |
+            | City/State/Country       | Arlington, VA, USA                              | field_city_state               |
         And user clears out "Event Series" field
         And user types "e" in the "Event Series" autosuggest
         And user selects 3 event series from "Event Series" autosuggest
@@ -160,6 +162,8 @@ Feature: As a cms user I want to be able to create Event content type to promote
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
+        And the Card Title has a link "Automated Test Event - Card Title Edited" with href "/about-cancer/understanding/test-event-edited"
+        And feature card description reads "Automated Test Event - Feature Card Desc Edited"
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login"

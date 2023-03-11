@@ -495,3 +495,20 @@ And('preview button was translated as {string}', (previewBtn) => {
 And('date published was translated as {string}', (datePublished) => {
     cy.get('ul.clearfix li strong').should('be.visible').and('include.text', datePublished);
 });
+
+And('the Card Title has a link {string} with href {string}', (linkText, linkHref) => {
+    const date = new Date();
+    const currYear = date.getFullYear();
+    if (linkHref.includes("{YEAR}")) {
+        linkHref = linkHref.replaceAll("{YEAR}", currYear);
+    }
+    cy.get(`a[href*="${linkHref}"] h3:contains('${linkText}')`).should('be.visible');
+});
+
+And('feature card description reads {string}', (description) => {
+    cy.get(`div.feature-card p:contains('${description}')`).should('be.visible');
+});
+
+Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
+});

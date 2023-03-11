@@ -1,6 +1,6 @@
 Feature: As a cms user I want to be able to create Biography content type to promote Biography
 
-   
+
 
 
     Scenario: User is adding new biography content type
@@ -13,7 +13,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And user clicks on "Add content" action button
         And user clicks on "Biography" content type
         Then page title is "Create Biography"
-         And today date is displayed for the following fields
+        And today date is displayed for the following fields
             | date          |
             | Posted Date   |
             | Updated Date  |
@@ -151,6 +151,52 @@ Feature: As a cms user I want to be able to create Biography content type to pro
             | NCI          | https://www.cancer.gov/         |
             | DCEG Edited  | https://dceg.cancer.gov/edited/ |
         And individuals office is at "NCI Frederick Campus | Building 31, Room 7492"
+
+    Scenario: Add a featured item to mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user selects the "Add Two Item Feature Card Row" content item
+        And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
+        And browser waits
+        And user clicks on "Select content" button item
+        And browser waits
+        And user selects "Full Name Edited" item from main page content
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And "Full Name Edited" had been selected
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify card titles and feature card description in mini landing page
+        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Then page title is "Test Resource Mini Landing Page"
+        And the Card Title has a link "Automated Test Biography - Card Title Edited" with href "/about-cancer/understanding/biography-edited"
+        And feature card description reads "Automated Test Biography - Feature Card Desc Edited"
+
+    Scenario: Remove featured item
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the tool bar status green button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user removes "Two Item Feature Card Row" section
+        And user confirms removal
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
 
     Scenario: Clean up
         Given user is navigating to "/user/login"

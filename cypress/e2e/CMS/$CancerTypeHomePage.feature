@@ -359,6 +359,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
+        And the Card Title has a link "Automated Test Cancer Type Homepage - Card Title" with href "/about-cancer/understanding/cancer-type-homepage-edited"
+        And feature card description reads "Automated Test Cancer Type Homepage - Feature Card Desc"
+
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login"
@@ -376,8 +379,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
-
-
 
     Scenario: Clean up
         Given user is navigating to "/user/login"

@@ -121,12 +121,16 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
+        And user clears out "Card Title" field
+        And user clears out "Feature Card Description" field
         And user clears out "Meta Description" field
         And user fills out the following fields
-            | fieldLabel       | value                                              | field_name             |
-            | Pretty URL       | blog-series-edited                                 | field_pretty_url       |
-            | Page Title       | Automated Test Blog Series Edited                  | title                  |
-            | Meta Description | Automated Test Blog Series Meta Description Edited | field_page_description |
+            | fieldLabel               | value                                              | field_name                     |
+            | Pretty URL               | blog-series-edited                                 | field_pretty_url               |
+            | Page Title               | Automated Test Blog Series Edited                  | title                          |
+            | Card Title               | Automated Test Blog Series - Card Title Edited     | field_card_title               |
+            | Meta Description         | Automated Test Blog Series Meta Description Edited | field_page_description         |
+            | Feature Card Description | Automated Test Blog Post - Feature Card Desc       | field_feature_card_description |
         And user clicks on dropdown button toggle to view Featured Posts
         And user clicks on "Select entities" button to link to the Featured Post
         Then "Select entities" section appears
@@ -251,6 +255,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
+        And browser waits
+        And the Card Title has a link "Automated Test Blog Series - Card Title Edited" with href "/about-cancer/understanding/blog-series-edited"
+        And feature card description reads "Automated Test Blog Post - Feature Card Desc"
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login"

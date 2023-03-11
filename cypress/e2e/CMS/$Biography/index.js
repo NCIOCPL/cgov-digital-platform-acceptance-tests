@@ -69,4 +69,3 @@ And('user removes the Biography Image', () => {
     cy.get('span:contains("Biography Image")').parent().as('imageUpload').click();
     cy.get('#edit-field-image-promotional-current-items-0-remove-button').click({ force: true })
 })
-

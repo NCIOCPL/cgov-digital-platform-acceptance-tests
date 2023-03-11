@@ -404,12 +404,16 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
+        And user clears out "Card Title" field
         And user clears out "Meta Description" field
+        And user clears out "Feature Card Description" field
         And user fills out the following fields
-            | fieldLabel       | value                                                        | field_name             |
-            | Pretty URL       | home-and-landing-page-edited                                 | field_pretty_url       |
-            | Page Title       | Automated Test Home and Landing Page Edited                  | title                  |
-            | Meta Description | Automated Test Home and Landing Page Meta Description Edited | field_page_description |
+            | fieldLabel               | value                                                           | field_name                     |
+            | Pretty URL               | home-and-landing-page-edited                                    | field_pretty_url               |
+            | Page Title               | Automated Test Home and Landing Page Edited                     | title                          |
+            | Meta Description         | Automated Test Home and Landing Page Meta Description Edited    | field_page_description         |
+            | Card Title               | Automated Test Home and Landing page - Card Title Edited        | field_card_title               |
+            | Feature Card Description | Automated Test Home and Landing page - Feature Card Desc Edited | field_feature_card_description |
         And user fills out the following fields
             | fieldLabel          | value                        | field_name                                                                                           |
             | Override Card Title | Featured Item Override Title | field_landing_contents[0][subform][field_row_cards][0][subform][field_override_card_title][0][value] |
@@ -490,6 +494,8 @@ Feature: Home And Landing Page Test Creation of Content
         Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
+        And the Card Title has a link "Automated Test Home and Landing page - Card Title Edited" with href "/about-cancer/understanding/home-and-landing-page-edited"
+        And feature card description reads "Automated Test Home and Landing page - Feature Card Desc Edited"
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login"
