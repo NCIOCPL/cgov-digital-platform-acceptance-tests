@@ -26,25 +26,25 @@ Scenario: Add a translation
     And Related Resources section was translated as "Recursos relacionados"
     And dropdown to add link under related resources was translated to start with "Añadir"
     And button to add citation was translated as "Añadir Citation"
-    And current state was translated as "Estado actual" Borrador
-    # And Change to dropdown has the following options
-    #     | option    |
-    #     | Borrador  |
-    #     | Review    |
-    #     | Publicado |
+    And current state was translated as "Estado actual" "Borrador"
+    And Change to dropdown has the following options
+        | option    |
+        | Borrador  |
+        | Review    |
+        | Publicado |
    And Save button was translated as "Guardar (esta traducción)"
    And preview button was translated as "Vista previa"
    Then user saves the content page
    And user clicks on the tool bar status green button "Borrador"
    And user selects "Quick Publish" from workflow actions
 
-# Scenario: Verify translated content
-#     #Given user is navigating to the front end site with spanish path site section plus "test-press-release-edited"
-#     Then page title is "Automated Test Press Release Edited"
-#     And dates were translated as follows
-#     | date          |
-#     | Publicación   |
-#     | Actualización |
-#     | Revisión      |
+Scenario: Verify translated content
+    Given user is navigating to the front end site with spanish path site section plus "test-press-release-edited"
+    Then page title is "Automated Test Press Release Edited"
+    And dates were translated as follows
+    | date          |
+    | Publicación   |
+    | Actualización |
+    | Revisión      |
 
 
