@@ -155,7 +155,7 @@ And('user unchecks {string} checkbox', (checkboxLbl) => {
 
 And('user drags {string} item one level down', (dragLink) => {
     cy.get(`a.menu-item__link:contains("${dragLink}")`).parent().find('a.tabledrag-handle').trigger('mousedown', { which: 1, pageX: 200, pageY: 50 })
-        .trigger('mousemove', { which: 1, clientX: 50, clientY: 50, pageY: 50 })
+        .trigger('mousemove', { which: 1, clientX: 50, clientY: 50, pageY: 100 })
         .trigger('mouseup')
 });
 
