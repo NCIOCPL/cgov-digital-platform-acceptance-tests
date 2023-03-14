@@ -173,3 +173,21 @@ Then('the promo image is matching the earlier selected image', () => {
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     });
 });
+
+And('body was translated as {string}', (title) => {
+    cy.get(`label:contains("${title}")`).should('be.visible')
+})
+
+And('Related Resources section was translated as {string}', (dropdownLabel) => {
+    cy.get("strong[data-drupal-selector='edit-field-related-resources-title']").should('include.text', dropdownLabel)
+})
+
+Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+})
+
+And('dates were translated as follows', (dataTable) => {
+    for (const { date } of dataTable.hashes()) {
+        cy.get(`div[class='document-dates horizontal'] li>strong:contains("${date}")`).should('be.visible')
+    }
+})
