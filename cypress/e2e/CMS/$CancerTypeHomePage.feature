@@ -362,7 +362,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the Card Title has a link "Automated Test Cancer Type Homepage - Card Title" with href "/about-cancer/understanding/cancer-type-homepage-edited"
         And feature card description reads "Automated Test Cancer Type Homepage - Feature Card Desc"
 
-
     Scenario: Remove featured item
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -380,6 +379,122 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
 
+    Scenario: Add a translation
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Cancer Type Homepage Patient"
+        Then the page title is "Translations of Automated Test Cancer Type Homepage Patient"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Automated Test Cancer Type Homepage Patient"
+        And the following fields are displayed
+            | fieldLabel               | field_name                     |
+            | Pretty URL               | field_pretty_url               |
+            | Título de página         | title                          |
+            | Browser Title            | field_browser_title            |
+            | Card Title               | field_card_title               |
+            | Meta Description         | field_page_description         |
+            | Feature Card Description | field_feature_card_description |
+        And "List Description" label is displayed
+        And Current Page Audience dropdown has the following values
+            | option              |
+            | Patient             |
+            | Health Professional |
+        And "Audience Toggle Link" is present
+        And the following cards fields are displayed with remove button translated as "Eliminar"
+            | card                       |
+            | CTHP Overview Card         |
+            | CTHP Guide Card            |
+            | CTHP Internal Feature Card |
+            | CTHP External Feature Card |
+            | CTHP Video Card            |
+            | CTHP Research Card         |
+            | CTHP Block Card            |
+            | CTHP Raw HTML Card         |
+        And Add Card Section was translated as "Añadir CTHP Overview Card"
+        And dropdown to add link under related resources was translated to start with "Añadir"
+        And "Search Engine Restrictions" dropdown displays "Include in search"
+        And current state was translated as "Estado actual" "Borrador"
+        And Change to dropdown has the following options
+            | option    |
+            | Borrador  |
+            | Review    |
+            | Publicado |
+        And Save button was translated as "Guardar (esta traducción)"
+        And preview button was translated as "Vista previa"
+        And user remembers the title of selected summary for further verification
+        And user remembers the title of selected video for further verification
+        And user remembers title of selected Cancer Research List Page for future verification
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify translated content
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-edited"
+        Then page title is "Automated Test Cancer Type Homepage Patient"
+        And the following cards are displayed
+            | title                    | cardType       |
+            | Test Overview            | cthp-overview  |
+            | Test Treatment           | cthp-treatment |
+            | Test Causes & Prevention | cthp-causes    |
+            | Test Statistics          | cthp-survival  |
+            | Test Video Card          | cthp-screening |
+            | Test Research            | cthp-research  |
+            | Test Block Card          | cthp-general   |
+            | Test Raw HTML Card       | cthp-genetics  |
+        And cthp overview card has description "Description of Overview Card of CTHP content type"
+        And PDQ link label reads "PDQ Treatment Information for PatientsEdited"
+        Then the PDQ link is matching the earlier selected PDQ link
+        When user clicks on "Vea más información" dropdown
+        And browser waits
+        Then the following more info links are displayed
+            | title                                 | url                           |
+            | Article to test Related Resources     | {TEST_SITE_SECTION}/article   |
+            | Google Link Guide Card                | https://www.google.com        |
+            | Media Link Override Title Guide cards | {TEST_SITE_SECTION}/test-file |
+        And cthp causes card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
+        And cthp survival card has a link "Override Card Desc - External Feature Card" with href "https://www.google1.com"
+        Then the video is matching the earlier selected video
+        And cthp screening card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
+        And cthp general card has description that is not empty
+        And the following cards have multiple spanish links that start with "/espanol"
+            | cardType      |
+            | cthp-research |
+            | cthp-general  |
+        And cthp genetics card reads "This is to test Raw Html Content in CTHP Raw HTML Card"
+        Then user clicks "Ver más investigaciones" link inside cthp research card
+        Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
+
+    Scenario: Edit and republish Spansih CTHP content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-edited"
+        And user clicks on the tool bar status green button "Publicado"
+        And user clicks "View in edit form" button from other actions
+        And user clears out "Título de página" field
+        And user clears out "Meta Description" field
+        And user fills out the following fields
+            | fieldLabel       | value                                               | field_name             |
+            | Título de página | Automated Test CTHP Edited Spanish                  | title                  |
+            | Meta Description | Automated Test CTHP Meta Description Edited Spanish | field_page_description |
+        When user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify Spanish edited CTHP content
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-edited"
+        Then page title is "Automated Test CTHP Edited Spanish"
+        And the page contains meta tags with the following names
+            | name        | content                                             |
+            | description | Automated Test CTHP Meta Description Edited Spanish |
+
     Scenario: Clean up
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -391,5 +506,5 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
+        Then the confirmation text "Deleted 2 content items" appears on a screen
         And the content item with url "cancer-type-homepage-edited" does not exist in the list of content

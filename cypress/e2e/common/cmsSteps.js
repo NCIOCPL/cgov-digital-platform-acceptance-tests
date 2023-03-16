@@ -439,7 +439,7 @@ And('Related Resources section was translated as {string}', (relatedResources) =
 });
 
 And('dropdown to add link under related resources was translated to start with {string}', (dropDownText) => {
-    cy.get(`li.dropbutton__item.dropbutton__item--extrasmall.dropbutton-action input[value^="Añadir"]`).should('be.visible');
+    cy.get(`li.dropbutton__item.dropbutton__item--extrasmall.dropbutton-action input[value^='${dropDownText}']`).should('be.visible');
 });
 
 And('button to add citation was translated as {string}', (citationBtn) => {

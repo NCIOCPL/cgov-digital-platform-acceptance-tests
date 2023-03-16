@@ -287,3 +287,42 @@ Then('the promo image is matching the earlier selected image', () => {
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
+
+And('Current Page Audience dropdown has the following values', (dataTable) => {
+    for (let { option } of dataTable.hashes()) {
+        cy.get(`select[id*="edit-field-audience"] option:contains("${option}")`).should('be.visible');
+    }
+});
+
+And('{string} is present', (audienceToggle) => {
+    cy.get(`summary.seven-details__summary span:contains("${audienceToggle}")`).should('be.visible');
+});
+
+And('the following cards fields are displayed with remove button translated as {string}', (removeBtn, dataTable) => {
+    for (let { card } of dataTable.hashes()) {
+        cy.get(`div[id*='top-paragraph-type-title']:contains("${card}")`).each($el => {
+            cy.wrap($el).parent().find(`input[value = "${removeBtn}"]`).should('be.visible');
+        })
+    }
+});
+
+And('Add Card Section was translated as {string}', (addCardSection) => {
+    cy.get(`input[value='${addCardSection}']`).should('be.visible');
+});
+
+Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+And('the following cards have multiple spanish links that start with {string}', (startLink, dataTable) => {
+    for (let { cardType } of dataTable.hashes()) {
+        cy.get(`div[class*="${cardType}"]`).find('a').as('card').should('have.length.above', 1);
+        cy.get('@card').invoke('attr', 'href').then((linkHref) => {
+            expect(linkHref.startsWith(startLink)).to.be.true;
+        });
+    }
+});
+
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+});
