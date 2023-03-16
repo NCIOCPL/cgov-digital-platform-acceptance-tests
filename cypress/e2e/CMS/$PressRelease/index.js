@@ -191,3 +191,7 @@ And('dates were translated as follows', (dataTable) => {
         cy.get(`div[class='document-dates horizontal'] li>strong:contains("${date}")`).should('be.visible')
     }
 })
+
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+});
