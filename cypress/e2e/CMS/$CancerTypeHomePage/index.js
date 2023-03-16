@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps';
+import { extractImgName } from "../../../utils/extractImgName.js";
 function createRandomStr() {
     var result = '';
     var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -33,6 +34,10 @@ And('user selects a checkbox next to title with url {string} from the list of co
 
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
 });
 
 And('the content item with url {string} does not exist in the list of content', (url) => {
@@ -149,7 +154,7 @@ And('the following cards are displayed', (dataTable) => {
 })
 
 And('cthp overview card has description {string}', (description) => {
-    cy.get("div[class*='cthp-overview'] p") .should ('include.text', description)
+    cy.get("div[class*='cthp-overview'] p").should('include.text', description)
 })
 
 And('PDQ link label reads {string}', (title) => {
@@ -213,7 +218,7 @@ And('cthp causes card has a link {string} with href {string}', (linkText, href) 
 })
 
 And('cthp survival card has a link {string} with href {string}', (linkText, href) => {
-cy.get(`div[class*='cthp-survival'] a:contains("${linkText}")`).should('be.visible').and('have.attr', 'href', href)
+    cy.get(`div[class*='cthp-survival'] a:contains("${linkText}")`).should('be.visible').and('have.attr', 'href', href)
 })
 
 And('cthp screening card has a link {string} with href {string}', (linkText, href) => {
@@ -257,6 +262,31 @@ And('user filters published list by {string} and clicks {string} button', (dropd
 And('user selects {int} Video from the list of main page videos', (num) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').eq(num - 1).check()
 })
+
+let imageSrc1;
+And('user selects {int} Promotional Image from the list of images', (num) => {
+    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
+});
+
+And('user remembers the source of selected promo image for further verification', () => {
+    cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
+        imageSrc1 = $el[0].getAttribute('src')
+    });
+});
+
+Then('the promo image is matching the earlier selected image', () => {
+    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
+
+    cy.get('div.feature-card').find('img').then($el => {
+        const source = $el[0].getAttribute('src');
+        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
+        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
+    })
+});
 
 
 
