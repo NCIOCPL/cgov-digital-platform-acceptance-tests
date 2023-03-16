@@ -98,7 +98,7 @@ Feature: Footer tests
             | evar2     | D=c8                      |
             | evar36    | Resources\|Contact Us     |
             | evar68    | Footer                    |
-            | pageURL   | https://{CANONICAL_HOST}/ |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ |
             | pageName  | {CANONICAL_HOST}/         |
             | event16   |                           |
             | channel   | NCI Homepage              |
@@ -124,7 +124,7 @@ Feature: Footer tests
             | evar2     | D=c8                      |
             | evar74    | EmailSignUp\|Error        |
             | evar68    | Footer                    |
-            | pageURL   | https://{CANONICAL_HOST}/ |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ |
             | pageName  | {CANONICAL_HOST}/         |
             | event41   |                           |
             | channel   | NCI Homepage              |
@@ -151,7 +151,7 @@ Feature: Footer tests
             | evar74    | D=v36                     |
             | evar36    | EmailSignUp\|Complete     |
             | evar68    | Footer                    |
-            | pageURL   | https://{CANONICAL_HOST}/ |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ |
             | pageName  | {CANONICAL_HOST}/         |
             | event39   |                           |
             | channel   | NCI Homepage              |
@@ -176,7 +176,7 @@ Feature: Footer tests
     #         | evar2     | D=c8                          |
     #         | evar74    | D=c74                         |
     #         | evar68    | D=c68                         |
-    #         | pageURL   | https://{CANONICAL_HOST}/     |
+    #         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/     |
     #         | pageName  | {CANONICAL_HOST}/             |
     #         | event39   |                               |
     #         | channel   | NCI Homepage                  |
@@ -201,7 +201,7 @@ Feature: Footer tests
             | evar2     | D=c8                      |
             | evar36    | Footer\|About\|Expand     |
             | evar68    | Footer                    |
-            | pageURL   | https://{CANONICAL_HOST}/ |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ |
             | pageName  | {CANONICAL_HOST}/         |
             | event17   |                           |
             | channel   | NCI Homepage              |

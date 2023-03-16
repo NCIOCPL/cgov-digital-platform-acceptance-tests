@@ -5,7 +5,7 @@ Feature: CTS App Analytics
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop1     | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search                                                                                                                                                                                                                                                                                                                              |
+            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search                                                                                                                                                                                                                                                                                                                              |
             | prop3     | /about-cancer/treatment/clinical-trials/search                                                                                                                                                                                                                                                                                                                                                      |
             | prop6     | Find NCI-Supported Clinical Trials                                                                                                                                                                                                                                                                                                                                                                  |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -34,7 +34,7 @@ Feature: CTS App Analytics
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop1     | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced                                                                                                                                                                                                                                                                                                                     |
+            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced                                                                                                                                                                                                                                                                                                                     |
             | prop3     | /about-cancer/treatment/clinical-trials/search/advanced                                                                                                                                                                                                                                                                                                                                             |
             | prop6     | Find NCI-Supported Clinical Trials - Advanced Search                                                                                                                                                                                                                                                                                                                                                |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -329,7 +329,7 @@ Feature: CTS App Analytics
             | prop43    | print                                                                                                 |
             | prop66    | print                                                                                                 |
             | evar2     | D=c8                                                                                                  |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1 |
 
     # This needs work - right now we need to ensure it does not wait for a page load
     # Scenario: Click event fires when user clicks on Email link on trial description page
@@ -350,7 +350,7 @@ Feature: CTS App Analytics
     #         | prop43    | email                                                                                                 |
     #         | prop66    | email                                                                                                 |
     #         | evar2     | D=c8                                                                                                  |
-    #         | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1 |
+    #         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1 |
     #         | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v                                      |
 
 
@@ -376,7 +376,7 @@ Feature: CTS App Analytics
             | prop74    | clinicaltrials_advanced\|start over                                                      |
             | evar2     | D=c8                                                                                     |
             | evar47    | clinicaltrials_advanced                                                                  |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2 |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                         |
 
     Scenario: Click Events for Find Trials button
@@ -396,7 +396,7 @@ Feature: CTS App Analytics
             | prop74    | clinicaltrials_advanced\|complete                                               |
             | evar2     | D=c8                                                                            |
             | evar47    | clinicaltrials_advanced                                                         |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced         |
 
     Scenario: Click Events fires when user starts interacting with a form
@@ -417,7 +417,7 @@ Feature: CTS App Analytics
             | prop74    | clinicaltrials_advanced\|start                                                  |
             | evar2     | D=c8                                                                            |
             | evar47    | clinicaltrials_advanced                                                         |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced         |
 
 
@@ -439,7 +439,7 @@ Feature: CTS App Analytics
     #         | prop74    | clinicaltrials_advanced\|clear                                                  |
     #         | evar2     | D=c8                                                                            |
     #         | evar47    | clinicaltrials_advanced                                                         |
-    #         | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
+    #         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
     #         | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced         |
 
     Scenario: Click Events for select all on page and print
@@ -460,7 +460,7 @@ Feature: CTS App Analytics
             | prop74    | clinicaltrials_advanced\|print selected                                             |
             | prop21    | CTSPrintSelected_top_true_10_1                                                      |
             | evar2     | D=c8                                                                                |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                    |
 
 
@@ -484,7 +484,7 @@ Feature: CTS App Analytics
             | prop75    | submit\|attempted form submit with errors\|a                           |
             | evar2     | D=c8                                                                   |
             | evar47    | clinicaltrials_basic                                                   |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search         |
 
     Scenario: Click Events fires when user clicks on search result item from Advanced Search results page
@@ -505,7 +505,7 @@ Feature: CTS App Analytics
             | prop13    | 1\|page 1                                                                           |
             | evar2     | D=c8                                                                                |
             | evar12    | D=c12                                                                               |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                    |
 
     Scenario: Click Events for modify search criteria link
@@ -526,7 +526,7 @@ Feature: CTS App Analytics
             | prop74    | clinicaltrials_advanced\|modify                                                          |
             | evar2     | D=c8                                                                                     |
             | evar47    | clinicaltrials_advanced                                                                  |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2 |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                         |
 
     Scenario: Click event fires when user tries to print without selecting any trial
@@ -547,7 +547,7 @@ Feature: CTS App Analytics
             | prop74    | clinicaltrials_advanced\|error                                                      |
             | prop75    | printselected\|noneselected                                                         |
             | evar2     | D=c8                                                                                |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                    |
 
 
@@ -569,5 +569,5 @@ Feature: CTS App Analytics
             | prop74    | clinicaltrials_advanced\|error                                                      |
             | prop75    | printselected\|maxselectionreached                                                  |
             | evar2     | D=c8                                                                                |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
             | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                    |

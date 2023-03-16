@@ -46,13 +46,13 @@ Feature: Page Options tests
         Given user is navigating to "/about-cancer/coping/feelings"
         Then email page option will pre-populate email subject line with "Information from the National Cancer Institute Web Site"
         And email body will have the following text "I found this information on www.cancer.gov and I'd like to share it with you"
-        And email body will contain shared page url as "https://{CANONICAL_HOST}/about-cancer/coping/feelings"
+        And email body will contain shared page url as "{PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping/feelings"
 
     Scenario: Verify spanish email contents
         Given user is navigating to "/espanol/hoja-informativa-vitamina-d"
         Then email page option will pre-populate email subject line with "Información del portal de Internet del Instituto Nacional del Cáncer "
         And email body will have the following text "Encontré esta información en cancer.gov/espanol y quiero compartirla contigo"
-        And email body will contain shared page url as "https://{CANONICAL_HOST}/espanol/hoja-informativa-vitamina-d"
+        And email body will contain shared page url as "{PROTOCOL}://{CANONICAL_HOST}/espanol/hoja-informativa-vitamina-d"
 
     Scenario: Click event fires when user clicks on print share option
         Given user is navigating to "/about-cancer/coping/feelings/"
@@ -68,7 +68,7 @@ Feature: Page Options tests
             | evar2     | D=c8                                                  |
             | evar43    | BodyTop\|Print                                        |
             | evar68    | BodyTop                                               |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/coping/feelings |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping/feelings |
             | pageName  | {CANONICAL_HOST}/about-cancer/coping/feelings         |
             | event17   |                                                       |
             | channel   | About Cancer                                          |
@@ -90,7 +90,7 @@ Feature: Page Options tests
             | evar2     | D=c8                                                  |
             | evar43    | BodyBottom\|Email                                     |
             | evar68    | BodyBottom                                            |
-            | pageURL   | https://{CANONICAL_HOST}/about-cancer/coping/feelings |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping/feelings |
             | pageName  | {CANONICAL_HOST}/about-cancer/coping/feelings         |
             | event17   |                                                       |
             | channel   | About Cancer                                          |
@@ -112,7 +112,7 @@ Feature: Page Options tests
             | evar2     | D=c8                                                                       |
             | evar43    | BodyBottom\|Print                                                          |
             | evar68    | BodyBottom                                                                 |
-            | pageURL   | https://{CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse |
             | pageName  | {CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse         |
             | event17   |                                                                            |
             | channel   | About Cancer - Spanish                                                     |
@@ -134,7 +134,7 @@ Feature: Page Options tests
             | evar2     | D=c8                                                                       |
             | evar43    | BodyTop\|Email                                                             |
             | evar68    | BodyTop                                                                    |
-            | pageURL   | https://{CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse |
             | pageName  | {CANONICAL_HOST}/espanol/cancer/sobrellevar/sentimientos/relajarse         |
             | event17   |                                                                            |
             | channel   | About Cancer - Spanish                                                     |

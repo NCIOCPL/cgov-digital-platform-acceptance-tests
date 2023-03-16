@@ -61,5 +61,5 @@ Feature: As a user I want to see breadcrumb links so I can navigate website more
       | evar46    | L2\|Hidden Pets                      |
       | evar2     | D=c8                                 |
       | evar68    | Breadcrumbs                          |
-      | pageURL   | https://{CANONICAL_HOST}/pets/frisco |
+      | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/pets/frisco |
       | pageName  | {CANONICAL_HOST}/pets/frisco         |

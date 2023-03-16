@@ -67,12 +67,16 @@ And('email body will have the following text {string}', (bodyText) => {
         expect(href).to.include(`body=${bodyText}`);
     })
 });
-And('email body will contain shared page url as {string}', (url) => {
+And('email body will contain shared page url as {string}', (value) => {
 
     cy.get('section.cgdp-page-options.cgdp-page-options--top > a').invoke('attr', 'href').then(href => {
+        let madeUpValue;
         cy.location('host').then(host => {
-            const currentUrl = url.replace('{CANONICAL_HOST}', host);
-            expect(href).to.include(currentUrl);
-        })
+            madeUpValue = value.replace('{CANONICAL_HOST}', host);
+        });
+        cy.location('protocol').then(protocol => {
+            madeUpValue = madeUpValue.replace('{PROTOCOL}:', protocol);
+            expect(href).to.include(madeUpValue);
+        });
     })
 });

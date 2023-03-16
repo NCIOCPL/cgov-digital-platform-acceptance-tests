@@ -82,7 +82,7 @@ Feature: Drug Dictionary app is integrated within CGOV platform
             | evar11    | D=c11                                                          |
             | evar26    | D=c24                                                          |
             | link      | Search                                                         |
-            | pageURL   | https://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
             | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/        |
 
     Scenario: When user uses Autosuggest, modifies the suggestion and search -  analytics events are fired
@@ -111,7 +111,7 @@ Feature: Drug Dictionary app is integrated within CGOV platform
             | evar11    | D=c11                                                          |
             | evar26    | D=c24                                                          |
             | link      | Search                                                         |
-            | pageURL   | https://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
             | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/        |
 
     Scenario: When user does not use autosuggest and search -  analytics events are fired
@@ -136,7 +136,7 @@ Feature: Drug Dictionary app is integrated within CGOV platform
             | evar2     | D=c8                                                           |
             | evar11    | D=c11                                                          |
             | evar26    | D=c24                                                          |
-            | pageURL   | https://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
             | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/        |
 
     Scenario: When user clicks a term from result list -  analytics events are fired
@@ -152,5 +152,5 @@ Feature: Drug Dictionary app is integrated within CGOV platform
             | prop13    | 2                                                                       |
             | prop67    | D=pageName                                                              |
             | link      | A-Hydrocort                                                             |
-            | pageURL   | https://{CANONICAL_HOST}/publications/dictionaries/cancer-drug/expand/A |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug/expand/A |
             | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/expand/A         |

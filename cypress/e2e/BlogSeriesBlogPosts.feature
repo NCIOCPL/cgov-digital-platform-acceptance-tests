@@ -169,7 +169,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | prop8     | english                                                   |
             | evar2     | english                                                   |
             | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog         |
-            | pageURL   | https://{CANONICAL_HOST}/news-events/cancer-currents-blog |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog |
             | channel   | News and Events                                           |
             | pev2      | SearchResults                                             |
             | linkType  | lnk_o                                                     |
