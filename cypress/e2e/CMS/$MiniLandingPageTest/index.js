@@ -233,3 +233,40 @@ Then('the promo image is matching the earlier selected image', () => {
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
+             /* ----- Translation of Mini Landinga ----- */
+And('banner image has requirements translated as follows', (dataTable) => {
+    for (const { text } of dataTable.hashes()) {
+        cy.get("div[class*='ld-banner-image-0']").should('include.text', text)
+    }
+})
+
+And('the following content sections are displayed', (dataTable) => {
+    for (const { section } of dataTable.hashes()) {
+        cy.get("div[class*='paragraph-type-ti']").should('include.text', section )
+    }
+})
+
+And('Dynamic List has options translated as {string}', (TranslatedOption) => {
+    cy.get(`tbody summary[role='button'] span:contains("${TranslatedOption}")`).should('be.visible')
+})
+
+And('button to add content was translated to start with {string}', (TranslatedOption) => {
+    cy.get(`li[class*='dropbutton-action'] input[value^='${TranslatedOption}']`).should('be.visible')
+})
+
+Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+
+    
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+});
+
+And('{int} links are displayed under the Dynamic List Title and all starts with {string}', (linksNum, espanolPath) => {
+    cy.get("div[class*='dynamic list'] a").should('be.visible').and('have.length.above', linksNum)
+    cy.get("div[class*='dynamic list'] a").invoke('attr','href').then((linkHref) =>{
+        expect(linkHref.startsWith(espanolPath)).to.be.true;
+    })   
+})
