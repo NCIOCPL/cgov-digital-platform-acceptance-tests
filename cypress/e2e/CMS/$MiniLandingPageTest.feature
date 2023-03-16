@@ -32,7 +32,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user selects "Include in search" from "Search Engine Restrictions" dropdown
         When user saves the content page
 
-
     Scenario: Add Two Item Feature Card Row section
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -56,7 +55,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | Card Title        | External Feature Card             | field_landing_contents[1][subform][field_two_item_row_cards][1][subform][field_override_card_title]       |
             | Card Description  | External Feature Card Description | field_landing_contents[1][subform][field_two_item_row_cards][1][subform][field_override_card_description] |
         When user saves the content page
-
 
     Scenario: Add list section
         Given user is navigating to "/user/login"
@@ -94,7 +92,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | Override Title | Override Test File for Related Resources | field_landing_contents[2][subform][field_list_items][0][subform][field_override_title] |
         When user saves the content page
 
-
     Scenario: Add Borderless Full-Width Card and raw html
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -122,7 +119,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user enters '<div class="callout-box" tabindex="0"><p>This is to test Raw HTML Content</p></div>'
         When user saves the content page
 
-
     Scenario: Add Dynamic List section
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -147,7 +143,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user selects "Published" from Save as dropdown
         When user saves the content page
 
-    ##-------Mini landing page test front end verification --------##
+    #-------Mini landing page test front end verification --------##
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "mini-landing-page"
         And page title is "Automated Test Mini Landing Page"
@@ -175,7 +171,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | name        | content                                           |
             | description | Automated Test Mini Landing Page Meta Description |
 
-
     Scenario: Edit and republish Mini Landing Page content type
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -201,7 +196,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user saves the content page
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
-
 
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "mini-landing-page-edited"
@@ -257,6 +251,110 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
 
+    # Translation of Mini Landing
+    Scenario: Add a translation
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Mini Landing Page Edited"
+        Then the page title is "Translations of Automated Test Mini Landing Page Edited"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Automated Test Mini Landing Page Edited"
+        And the following fields are displayed
+            | fieldLabel               | field_name                     |
+            | Pretty URL               | field_pretty_url               |
+            | Título de página         | title                          |
+            | Browser Title            | field_browser_title            |
+            | Card Title               | field_card_title               |
+            | Meta Description         | field_page_description         |
+            | Feature Card Description | field_feature_card_description |
+        And "List Description" label is displayed
+        And banner image has requirements translated as follows
+            | text                                |
+            | Máximo 1 fichero.                   |
+            | límite de 256 MB.                   |
+            | Tipos permitidos: png gif jpg jpeg. |
+        And Remove button for image was translated as "Eliminar"
+        And the following content sections are displayed
+            | section                    |
+            | Content Block              |
+            | Two Item Feature Card Row  |
+            | Listado                    |
+            | Borderless Full-Width Card |
+            | Raw Html Content           |
+            | Dynamic List               |
+        And Dynamic List has options translated as "Opciones"
+        And button to add content was translated to start with "Añadir"
+        And "Search Engine Restrictions" dropdown displays "Include in search"
+        And current state was translated as "Estado actual" "Borrador"
+        And Change to dropdown has the following options
+            | option    |
+            | Borrador  |
+            | Review    |
+            | Publicado |
+        And Save button was translated as "Guardar (esta traducción)"
+        And preview button was translated as "Vista previa"
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify translated content
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "mini-landing-page-edited"
+        And page title is "Automated Test Mini Landing Page Edited"
+        And Content Heading reads "Content Heading"
+        And HTML Content reads "This is HTML content for Content Block."
+        And feature card row displays the following cards
+            | title                             | url                          | description                       |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article  | N/A                               |
+            | External Feature Card             | https://www.externalcard.com | External Feature Card Description |
+        And List Item Title is displayed as "List Item Title"
+        And managed list has the following links
+            | title                                    | url                           | description                                          |
+            | Override Test File for Related Resources | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
+            | Google Link                              | https://www.google.com        | N/A                                                  |
+            | Override Test File for Related Resources | {TEST_SITE_SECTION}/test-file | N/A                                                  |
+        And borderless card with "accent-warm" accent displays the following
+            | title                             | link                        |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article |
+        And the button with text "BUTTON TEXT FOR BORDERLESS FULL-WIDTH CARD" appears with href "{TEST_SITE_SECTION}/article"
+        And the Raw HTML Content reads the following "This is to test Raw HTML Content"
+        And the Dynamic List Title reads as "Dynamic List Title"
+        And 5 links are displayed under the Dynamic List Title and all starts with "/espanol"
+        And view title displays text "Press Releases"
+        And the page contains meta tags with the following names
+            | name        | content                                                  |
+            | description | Automated Test Mini Landing Page Meta Description Edited |
+
+    Scenario: Edit and republish Spanish Mini landing page
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "mini-landing-page-edited"
+        And user clicks on the tool bar status green button "Publicado"
+        And user clicks "View in edit form" button from other actions
+        And user clears out "Título de página" field
+        And user clears out "Meta Description" field
+        And user fills out the following fields
+            | fieldLabel       | value                                                       | field_name             |
+            | Título de página | Automated Test Mini Landing Edited Spanish                  | title                  |
+            | Meta Description | Automated Test Mini Landing Meta Description Edited Spanish | field_page_description |
+        When user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify Spanish edited content
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "mini-landing-page-edited"
+        And browser waits
+        Then page title is "Automated Test Mini Landing Edited Spanish"
+        And the page contains meta tags with the following names
+            | name        | content                                                     |
+            | description | Automated Test Mini Landing Meta Description Edited Spanish |
 
     Scenario: Clean up
         Given user is navigating to "/user/login"
@@ -269,5 +367,5 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
+        Then the confirmation text "Deleted 2 content items." appears on a screen
         And the content item with url "mini-landing-page-edited" does not exist in the list of content
