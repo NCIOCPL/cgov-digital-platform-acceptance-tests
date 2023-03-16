@@ -204,6 +204,35 @@ Feature: As a cms user I want to be able to create Press Release content type to
             | Actualización |
             | Revisión      |
 
+
+    Scenario: Edit and republish Spanish press release content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user is navigating to the front end site with spanish path "/espanol" site section plus "press-release-edited"
+        And user clicks on the tool bar status green button "Publicado"
+        And user clicks "View in edit form" button from other actions
+        And user clears out "Título de página" field
+        And user clears out "Meta Description" field
+        And user fills out the following fields
+            | fieldLabel       | value                                                        | field_name             |
+            | Título de página | Automated Test Press Release Edited Spanish                  | title                  |
+            | Meta Description | Automated Test Press Release Meta Description Edited Spanish | field_page_description |
+        When user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify Spanish edited content
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "press-release-edited"
+        And browser waits
+        Then page title is "Automated Test Press Release Edited Spanish"
+        And the page contains meta tags with the following names
+            | name        | content                                                      |
+            | description | Automated Test Press Release Meta Description Edited Spanish |
+
     Scenario: Clean up
         Given user is navigating to "/user/login"
         When user enters credentials
