@@ -207,7 +207,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | evar2     | D=c8                                    |
                         | prop68    | D=v68                                   |
                         | prop70    | D=v70                                   |
-                        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
                         | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
                         | event28   |                                         |
                         | channel   | NCI Homepage                            |
@@ -234,7 +234,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | prop68    | D=v68                                   |
                         | prop70    | D=v70                                   |
                         | prop71    | D=v71                                   |
-                        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
                         | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
                         | event26   |                                         |
                         | channel   | NCI Homepage                            |
@@ -261,7 +261,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | prop68    | D=v68                                   |
                         | prop70    | D=v70                                   |
                         | prop71    | D=v71                                   |
-                        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
                         | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
                         | event26   |                                         |
                         | channel   | NCI Homepage                            |
@@ -288,7 +288,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | prop68    | D=v68                                   |
                         | prop70    | D=v70                                   |
                         | prop71    | D=v71                                   |
-                        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
                         | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
                         | event26   |                                         |
                         | channel   | NCI Homepage                            |
@@ -313,7 +313,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | evar2     | D=c8                                    |
                         | prop68    | D=v68                                   |
                         | prop70    | D=v70                                   |
-                        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
                         | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
                         | event30   |                                         |
                         | channel   | NCI Homepage                            |
@@ -337,7 +337,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | evar2     | D=c8                                    |
                         | prop68    | D=v68                                   |
                         | prop70    | D=v70                                   |
-                        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
                         | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
                         | event30   |                                         |
                         | channel   | NCI Homepage                            |
@@ -361,7 +361,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | evar2     | D=c8                                    |
                         | prop68    | D=v68                                   |
                         | prop70    | D=v70                                   |
-                        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
                         | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
                         | event30   |                                         |
                         | channel   | NCI Homepage                            |

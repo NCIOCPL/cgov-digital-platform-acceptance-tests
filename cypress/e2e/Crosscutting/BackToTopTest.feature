@@ -81,7 +81,7 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
             | evar2     | D=c8                                 |
             | evar38    | Right Edge\|Back To Top\|Back To Top |
             | evar68    | Right Edge                           |
-            | pageURL   | https://{CANONICAL_HOST}/            |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/            |
             | pageName  | {CANONICAL_HOST}/                    |
             | event21   |                                      |
             | channel   | NCI Homepage                         |

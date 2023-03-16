@@ -78,7 +78,7 @@ Feature: As a site admin I want to configure site alert
             | evar2     | D=c8                                      |
             | prop52    | D=v52                                     |
             | prop68    | D=v68                                     |
-            | pageURL   | https://{CANONICAL_HOST}/                 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                 |
             | pageName  | {CANONICAL_HOST}/                         |
             | event83   |                                           |
             | channel   | NCI Homepage                              |
@@ -102,7 +102,7 @@ Feature: As a site admin I want to configure site alert
             | evar2     | D=c8                                          |
             | prop52    | D=v52                                         |
             | prop68    | D=v68                                         |
-            | pageURL   | https://{CANONICAL_HOST}/                     |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                     |
             | pageName  | {CANONICAL_HOST}/                             |
             | event83   |                                               |
             | channel   | NCI Homepage                                  |
@@ -125,7 +125,7 @@ Feature: As a site admin I want to configure site alert
             | evar2     | D=c8                                                                       |
             | prop52    | D=v52                                                                      |
             | prop68    | D=v68                                                                      |
-            | pageURL   | https://{CANONICAL_HOST}/                                                  |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                                                  |
             | pageName  | {CANONICAL_HOST}/                                                          |
             | event83   |                                                                            |
             | channel   | NCI Homepage                                                               |
@@ -148,7 +148,7 @@ Feature: As a site admin I want to configure site alert
             | evar2     | D=c8                                        |
             | prop52    | D=v52                                       |
             | prop68    | D=v68                                       |
-            | pageURL   | https://{CANONICAL_HOST}/                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                   |
             | pageName  | {CANONICAL_HOST}/                           |
             | event83   |                                             |
             | channel   | NCI Homepage                                |

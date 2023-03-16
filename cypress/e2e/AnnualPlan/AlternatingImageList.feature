@@ -96,7 +96,7 @@ Feature: As a content editor, I would like to be able to embed an alternating im
             | evar2     | english                                 |
             | channel   | NCI Homepage                            |
             | pageName  | {CANONICAL_HOST}/special-report         |
-            | pageURL   | https://{CANONICAL_HOST}/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
             | prop58    | /\n*\t*\Molecular Diagnostics\n*\t*/    |
             | prop57    | /\n*\t*\Molecular Diagnostics\n*\t*/    |
 

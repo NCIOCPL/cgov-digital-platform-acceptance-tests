@@ -15,7 +15,7 @@ Feature: Analytics should fire when user click on title, image or button of a bo
             | evar2     | english                                       |
             | channel   | NCI Homepage                                  |
             | pageName  | {CANONICAL_HOST}/test/borderless-card         |
-            | pageURL   | https://{CANONICAL_HOST}/test/borderless-card |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/borderless-card |
             | prop57    | /\n*\t*\[Lead IMG Crops\] Card Title\n*\t*/   |
             | prop58    | /\n*\t*\[Lead IMG Crops\] Card Title\n*\t*/   |
 
@@ -42,7 +42,7 @@ Feature: Analytics should fire when user click on title, image or button of a bo
             | evar2     | english                                       |
             | channel   | NCI Homepage                                  |
             | pageName  | {CANONICAL_HOST}/test/borderless-card         |
-            | pageURL   | https://{CANONICAL_HOST}/test/borderless-card |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/borderless-card |
             | prop58    | /\n*\t*\[No IMG\] Card Title\n*\t*/           |
             | prop57    | /\n*\t*\[No IMG\] Card Title\n*\t*/           |
 

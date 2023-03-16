@@ -51,7 +51,7 @@ Feature: As a content editor, I would like to be able to embed a title-first fea
             | prop60    | D=pageName                              |
             | prop67    | D=pageName                              |
             | pageName  | {CANONICAL_HOST}/special-report         |
-            | pageURL   | https://{CANONICAL_HOST}/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
 
     Scenario: Click events for feature card row clicks on Mobile Spanish Page
         Given screen breakpoint is set to "mobile"
@@ -70,4 +70,4 @@ Feature: As a content editor, I would like to be able to embed a title-first fea
             | prop60    | D=pageName                                      |
             | prop67    | D=pageName                                      |
             | pageName  | {CANONICAL_HOST}/espanol/special-report         |
-            | pageURL   | https://{CANONICAL_HOST}/espanol/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol/special-report |

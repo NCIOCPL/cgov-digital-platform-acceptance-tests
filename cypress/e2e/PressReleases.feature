@@ -71,7 +71,7 @@ Scenario: Press Release with a date
             | prop8     | english                                                                                         |
             | evar2     | english                                                                                         |
             | pageName  | {CANONICAL_HOST}/news-events/press-releases/2018                                                |
-            | pageURL   | https://{CANONICAL_HOST}/news-events/press-releases/2018                                        |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/press-releases/2018                                        |
             | channel   | News and Events                                                                                 |
             | pev2      | SearchResults                                                                                   |
             | linkType  | lnk_o                                                                                           |

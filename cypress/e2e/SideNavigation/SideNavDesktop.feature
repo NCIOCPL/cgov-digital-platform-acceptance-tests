@@ -168,7 +168,7 @@ Scenario: Click even fires when user clicks on nav root
         | evar2     | D=c8                                    |
         | prop68    | D=v68                                   |
         | prop69    | D=v69                                   |
-        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1 |
+        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
         | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
         | event33   |                                         |
         | channel   | NCI Homepage                            |
@@ -191,7 +191,7 @@ Scenario: Click even fires when user clicks on first level child section
         | evar2     | D=c8                                  |
         | prop68    | D=v68                                 |
         | prop69    | D=v69                                 |
-        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1 |
+        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1 |
         | pageName  | {CANONICAL_HOST}/api-test/a/1         |
         | event33   |                                       |
         | channel   | NCI Homepage                          |
@@ -214,7 +214,7 @@ Scenario: Click even fires when user clicks on 5th level child section
         | evar2     | D=c8                                        |
         | prop68    | D=v68                                       |
         | prop69    | D=v69                                       |
-        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1/1/1 |
+        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1/1/1 |
         | pageName  | {CANONICAL_HOST}/api-test/a/1/1/1/1         |
         | event33   |                                             |
         | channel   | NCI Homepage                                |
@@ -238,7 +238,7 @@ Scenario: Click even fires when user clicks on the sibling section of a root whi
         | evar2     | D=c8                                        |
         | prop68    | D=v68                                       |
         | prop69    | D=v69                                       |
-        | pageURL   | https://{CANONICAL_HOST}/api-test/a/1/1/1/1 |
+        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1/1/1 |
         | pageName  | {CANONICAL_HOST}/api-test/a/1/1/1/1         |
         | event33   |                                             |
         | channel   | NCI Homepage                                |

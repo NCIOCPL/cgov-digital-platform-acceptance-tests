@@ -58,7 +58,7 @@ Feature: As a user, I want to be able to view and interact with the Mega Menu
             | evar2     | D=c8                              |
             | evar68    | Primary Nav                       |
             | evar76    | A                                 |
-            | pageURL   | https://{CANONICAL_HOST}/api-test |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test |
             | pageName  | {CANONICAL_HOST}/api-test         |
             | event28   |                                   |
             | channel   | NCI Homepage                      |
@@ -85,7 +85,7 @@ Feature: As a user, I want to be able to view and interact with the Mega Menu
             | evar68    | Primary Nav                       |
             | evar77    | A\|A.1\|A.1.2                     |
             | evar78    | List Item\|1\|2                   |
-            | pageURL   | https://{CANONICAL_HOST}/api-test |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test |
             | pageName  | {CANONICAL_HOST}/api-test         |
             | event26   |                                   |
             | channel   | NCI Homepage                      |
@@ -112,7 +112,7 @@ Feature: As a user, I want to be able to view and interact with the Mega Menu
             | evar68    | Primary Nav                       |
             | evar77    | B\|B\|B                           |
             | evar78    | Primary Nav Button\|0\|0          |
-            | pageURL   | https://{CANONICAL_HOST}/api-test |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test |
             | pageName  | {CANONICAL_HOST}/api-test         |
             | event26   |                                   |
             | channel   | NCI Homepage                      |

@@ -48,7 +48,7 @@ Feature: As a content editor, I would like to be able to embed a raw HTML block,
             | evar2     | english                                 |
             | channel   | NCI Homepage                            |
             | pageName  | {CANONICAL_HOST}/special-report         |
-            | pageURL   | https://{CANONICAL_HOST}/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
             | prop58    | /\n*\t*\Driving Discovery\n*\t*/        |
             | prop57    | /\n*\t*\Driving Discovery\n*\t*/        |
 
@@ -73,7 +73,7 @@ Feature: As a content editor, I would like to be able to embed a raw HTML block,
             | evar2     | english                                 |
             | channel   | NCI Homepage                            |
             | pageName  | {CANONICAL_HOST}/special-report         |
-            | pageURL   | https://{CANONICAL_HOST}/special-report |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
             | prop58    | /\n*\t*\Driving Discovery\n*\t*/        |
             | prop57    | /\n*\t*\Driving Discovery\n*\t*/        |
 

@@ -115,7 +115,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | evar2     | D=c8                                                    |
             | evar12    | D=c12                                                   |
             | link      | What Is Cancer?                                         |
-            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/search/results?swKeyword=tumor |
             | pageName  | {CANONICAL_HOST}/search/results                         |
 
 
@@ -132,7 +132,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | prop67    | D=pageName                                              |
             | evar2     | D=c8                                                    |
             | link      | More information on dictionary page                     |
-            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/search/results?swKeyword=tumor |
             | pageName  | {CANONICAL_HOST}/search/results                         |
 
     Scenario: Click Events for result link
@@ -146,7 +146,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | prop12    | generic                                                 |
             | prop13    | 2                                                       |
             | prop67    | D=pageName                                              |
-            | pageURL   | https://{CANONICAL_HOST}/search/results?swKeyword=tumor |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/search/results?swKeyword=tumor |
             | pageName  | {CANONICAL_HOST}/search/results                         |
 
 
@@ -170,7 +170,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | evar23    | Selected\|10\|1\|3\|can\|breast cancer |
             | evar68    | Header                                 |
             | event2    |                                        |
-            | pageURL   | https://{CANONICAL_HOST}/              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/              |
             | pageName  | {CANONICAL_HOST}/                      |
             | link      | Search                                 |
             | pev2      | HeaderSearch:Submit                    |
@@ -193,7 +193,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | evar23    | Offered\|10\|null\|null\|null\|cancer |
             | evar68    | Header                                |
             | event2    |                                       |
-            | pageURL   | https://{CANONICAL_HOST}/             |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/             |
             | pageName  | {CANONICAL_HOST}/                     |
             | link      | Search                                |
             | pev2      | HeaderSearch:Submit                   |
@@ -216,7 +216,7 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | evar23    | None\|0\|null\|null\|null\|chickensoup |
             | evar68    | Header                                 |
             | event2    |                                        |
-            | pageURL   | https://{CANONICAL_HOST}/              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/              |
             | pageName  | {CANONICAL_HOST}/                      |
             | link      | Search                                 |
             | pev2      | HeaderSearch:Submit                    |
