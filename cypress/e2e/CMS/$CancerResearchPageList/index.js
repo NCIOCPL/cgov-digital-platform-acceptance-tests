@@ -103,3 +103,23 @@ Then('the promo image is matching the earlier selected image', () => {
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
+/* ----- Translation of Cancer Research Page List -----*/
+And('body was translated as {string}', (bodyTranslated) => {
+    cy.get(`div[class*='text-format'] label:contains("${bodyTranslated}")`).should('be.visible')
+})
+
+And('Remove button for media was translated as {string}', (RemoveBtn) => {
+    cy.get(`input[value="${RemoveBtn}"]`).should('be.visible')
+})
+
+And('Link section under related resources was translated as {string}', (linkTranslated) => {
+    cy.get(`summary[class*='summary'] span:contains("${linkTranslated}")`).should('be.visible')
+})
+
+Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+})
+
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+})
