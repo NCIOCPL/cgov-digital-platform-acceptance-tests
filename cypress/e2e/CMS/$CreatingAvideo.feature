@@ -1,4 +1,4 @@
-Feature: User creting a video
+Feature: User creating a video
 
     Scenario: create a new video
         Given user is navigating to "/user/login"
