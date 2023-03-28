@@ -14,7 +14,9 @@ module.exports = defineConfig({
     admin_username: 'admin',
     admin_password: '',
     test_site_section: '/about-cancer/understanding',
-    front_end_base_url: 'https://www-dev-ac.cancer.gov'
+    front_end_base_url: 'https://www-dev-ac.cancer.gov',
+    ocpl_username: 'ocpl-test',
+    ocpl_password: ''
   },
   defaultCommandTimeout: 20000,
   e2e: {

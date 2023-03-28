@@ -19,6 +19,8 @@ to open cypress UI console
 to run in a headless mode
 `CYPRESS_admin_password='value' npx cypress run`
 where value is the password ( can be found in digital-platform slack channel topic )
+To run using the single sign-on (SSO)
+`CYPRESS_ocpl_password='value' npm run cypress:open`
 ## Running Tests
 1. `npm ci`
 2. `CYPRESS_BASE_URL='https://www-dev-ac.cancer.gov' CYPRESS_admin_password='value' npx cypress run`
