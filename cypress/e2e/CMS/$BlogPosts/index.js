@@ -1,10 +1,30 @@
 /// <reference types="Cypress" />
-import { And } from 'cypress-cucumber-preprocessor/steps';
+import { And, Given } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
-import { enrichUrl } from "../../../utils/enrichUrl";
+const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+];
 
 const siteSection = Cypress.env('test_site_section');
 const randomStr = Cypress.env('randomStr');
+const date = new Date();
+const currYear = date.getFullYear();
+const month = months[date.getMonth()];
+const day = date.getDate();
+const frontEndBaseUrl = Cypress.env('front_end_base_url');
+
+
 
 And('user enters {string} as intro text', (introText) => {
     cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introText);
@@ -48,33 +68,15 @@ And('user selects {string} from {string}', (includeSearchText, fieldLabel) => {
 });
 
 Given('user is navigating to the blog {string} under {string}', (blogPost, blogSeries) => {
-    const date = new Date();
-    const currYear = date.getFullYear();
-    const frontEndBaseUrl = Cypress.env('front_end_base_url');
+
     cy.visit(`${frontEndBaseUrl}/${blogSeries}/${currYear}/${blogPost}-${randomStr}`, { retryOnStatusCodeFailure: true });
     cy.wait(200);
 });
 
+
 And(`blog's posted date is today's date`, () => {
-    const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-    ];
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = months[date.getMonth()];
-    const day = date.getDate();
-    const expectedDate = `${month} ${day}, ${year}`;
+
+    const expectedDate = `${month} ${day}, ${currYear}`;
     cy.get('p>time').should('include.text', expectedDate);
 });
 
@@ -87,25 +89,7 @@ And('the {string} managed list appears', (featuredPosts) => {
 });
 
 And('the {string} managed list appears without a date', (categories) => {
-    const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-    ];
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = months[date.getMonth()];
-    const day = date.getDate();
-    const expectedDate = `${month} ${day}, ${year}`;
+    const expectedDate = `${month} ${day}, ${currYear}`;
     cy.get('div.managed.list.without-date').should('be.visible').and('contain.text', categories);
     cy.get('div.managed.list.without-date').should('not.include.text', expectedDate);
 });
@@ -156,8 +140,6 @@ And('public use text has a link {string} with href {string}', (linkText, linkUrl
 })
 
 And('user clicks on title with url {string} under {string} from the list of content', (blogPost, blogSeries) => {
-    const date = new Date();
-    const currYear = date.getFullYear();
     cy.get(`a[href='${blogSeries}/${currYear}/${blogPost}-${randomStr}']`).click();
 });
 
@@ -165,9 +147,6 @@ And('user clicks on dropdown button toggle {int} to view all Related Resources t
     cy.get('.dropbutton-toggle button').eq(pos - 1).click({ force: true });
 });
 
-And('user clicks on the tool bar status yellow button {string}', (status) => {
-    cy.get(`a[data-label='${status}']`).click();
-});
 
 And('user clicks on dropdown button toggle {int} to view all Recommended Content types', (pos) => {
     cy.get('.dropbutton-toggle button').eq(pos - 1).click({ force: true });
@@ -225,8 +204,6 @@ Then('Recommended Content section contains the following links', (dataTable) => 
 });
 
 And('user selects a checkbox next to title with url {string} under {string} from the list of content', (url, blogSeries) => {
-    const date = new Date();
-    const currYear = date.getFullYear();
     cy.get(`a[href='${blogSeries}/${currYear}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
 });
 
@@ -249,3 +226,95 @@ Then('the promo image is matching the earlier selected image', () => {
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
+
+/*----------- Translation of Blog Post -------------*/
+And('Author was translated as {string}', (authorTranslated) => {
+    cy.get(`label:contains("${authorTranslated}")`).should('be.visible')
+})
+
+And('{string} label is displayed', (introTextLabel) => {
+    cy.get(`label:contains("${introTextLabel}")`).should('be.visible')
+})
+
+And('body was translated as {string}', (bodyTranslated) => {
+    cy.get(`div[class*='item-body'] label:contains("${bodyTranslated}")`).should('be.visible')
+})
+
+And('{string} button is displayed', (imageDisplay) => {
+    cy.get(`summary[role='button'] span:contains("${imageDisplay}")`).should('be.visible')
+})
+
+And('the following fields are displayed under {string} label', (titleText, dataTable) => {
+    const baseUrlFromConfig = Cypress.config("baseUrl");
+       cy.get(".fieldset-legend").should('include.text', titleText).and('be.visible')
+       for (const { blogTopic } of dataTable.hashes()) {
+      if(baseUrlFromConfig.includes('cms') && blogTopic.includes('')){
+      cy.get("div[id*='cgov-edit-blog-topics-wrapper'] label:contains('Exámenes de detección y la detección temprana')").should('be.visible')  
+    
+    }else{
+            cy.get(`div[id*='cgov-edit-blog-topics-wrapper'] label:contains('${blogTopic}')`).should('be.visible') 
+           }
+       }
+   })
+
+And('Link section under related resources was translated as {string}', (TranslatedLabel) => {
+    cy.get(`span:contains("${TranslatedLabel}")`).should('be.visible')
+})
+
+And('{string} label is displayed in the page', (contentLabel) => {
+    cy.get(`h4:contains("${contentLabel}")`).should('be.visible')
+})
+
+And('Link section under recommended content is displayed as {string}', (LinkSection) => {
+    cy.get(`div[id*='featured-item-wrapper'] span:contains("${LinkSection}")`).should('be.visible')
+})
+
+And('dropdown to add link under recommended content was translated to start with {string}', (dropDownTranslated) => {
+    cy.get(`input[value^='${dropDownTranslated}']`).should('be.visible')
+})
+
+And('{string} dropdown has the following options', (PbText, dataTable) => {
+    cy.get(`div[id*='use-wrapper'] label:contains("${PbText}")`).should('be.visible')
+    for (const { options } of dataTable.hashes()) {
+        cy.get(`select[id*='edit-field-public-use'] option:contains("${options}")`).should('be.visible')
+    }
+})
+
+And('{string} label is displayed under search Engine', (DtDisplay) => {
+    cy.get(`div[id*='posted-wrapper'] h4:contains("${DtDisplay}")`).should('be.visible')
+})
+
+Given('user is navigating to the blog {string} under {string}', (blogPost, blogSeries) => {
+    cy.visit(`${frontEndBaseUrl}${blogPost}${siteSection}${blogSeries}-${randomStr}`, { retryOnStatusCodeFailure: true })
+})
+
+And(`espanol blog's posted date is today's date`, () => {
+    const esMonths = [
+        'enero',
+        'febrero',
+        'marzo',
+        'abril',
+        'mayo',
+        'junio',
+        'julio',
+        'agosto',
+        'septiembre',
+        'octubre',
+        'noviembre',
+        'diciembre'
+    ];
+    const esMonth = esMonths[date.getMonth()];
+    const expectedDate = `${day} de ${esMonth} de ${currYear}`;
+    cy.get('p>time').should('include.text', expectedDate);
+})
+
+And('user clicks on title with url spanish path {string} plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}/${purl}-${randomStr}']`).click();
+})
+
+Given('user is navigating to the front end site with spanish path {string} plus {string}', (spPath, title) => {
+    cy.visit(`${frontEndBaseUrl}${spPath}/${title}-${randomStr}`, { retryOnStatusCodeFailure: true });
+})
+
+
+
