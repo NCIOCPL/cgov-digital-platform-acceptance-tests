@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 const baseURL = Cypress.config('baseUrl');
-const host = baseURL.replace( new RegExp("(https:\/\/)|(http:\/\/)"),"")
+const host = baseURL.replace(new RegExp("(https:\/\/)|(http:\/\/)"), "")
 
 //This step is just a workaround until it gets fixed
 Given('user is navigating to {string}', (a) => {
@@ -70,12 +70,9 @@ And('email body will have the following text {string}', (bodyText) => {
     })
 });
 And('email body will contain shared page url as {string}', (value) => {
-
     cy.get('section.cgdp-page-options.cgdp-page-options--top > a').invoke('attr', 'href').then(href => {
         let madeUpValue;
-        cy.location('host').then(host => {
-            madeUpValue = value.replace('{CANONICAL_HOST}', host);
-        });
+        madeUpValue = value.replace('{CANONICAL_HOST}', host);
         cy.location('protocol').then(protocol => {
             madeUpValue = madeUpValue.replace('{PROTOCOL}:', protocol);
             expect(href).to.include(madeUpValue);

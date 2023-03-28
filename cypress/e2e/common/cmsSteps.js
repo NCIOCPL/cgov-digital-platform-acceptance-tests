@@ -391,7 +391,7 @@ And('user confirms removal', () => {
 });
 
 And('user clicks on the title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}']`).click();
+    cy.get(`a[href*='${siteSection}/${contentHref}']`).click();
 });
 
 And('user clicks on {string} button item', (title) => {
