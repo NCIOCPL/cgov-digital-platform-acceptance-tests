@@ -114,9 +114,9 @@ Then("the following parameters should be captured", (dataTable) => {
             expect(beacon[parameter]).to.match(regex);
         } else if (value.includes("{CANONICAL_HOST}")) {
             let madeUpValue;
-            cy.location("host").then((host) => {
-                madeUpValue = value.replace("{CANONICAL_HOST}", host);
-            });
+         
+                madeUpValue = value.replace("{CANONICAL_HOST}", hostName);
+         
             cy.location('protocol').then(protocol => {
                 madeUpValue = madeUpValue.replace('{PROTOCOL}:', protocol);
                 expect(beacon[parameter]).to.eq(madeUpValue);

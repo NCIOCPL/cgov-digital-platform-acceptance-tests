@@ -214,7 +214,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user is navigating to the front end site with spanish path "/espanol" site section plus "press-release-edited"
+        And user clicks on title with url spanish path "/espanol" site section plus "press-release-edited"
         And user clicks on the tool bar status green button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user clears out "Título de página" field

@@ -45,27 +45,25 @@ Then('the following parameters should be captured', dataTable => {
     }
 
     // assertions for each entry parameter provided
-  if(beacon){
-    for (const { parameter, value } of dataTable.hashes()) {
-        if (value.length > 1 && value.startsWith('/') && value.endsWith('/') && !parameter.includes('event')) {
-            const regex = new RegExp(value.substring(1, value.length - 1));
-            expect(beacon[parameter]).to.match(regex);
+    if (beacon) {
+        for (const { parameter, value } of dataTable.hashes()) {
+            if (value.length > 1 && value.startsWith('/') && value.endsWith('/') && !parameter.includes('event')) {
+                const regex = new RegExp(value.substring(1, value.length - 1));
+                expect(beacon[parameter]).to.match(regex);
 
-        } else if (value.includes('{CANONICAL_HOST}')) {
-            let madeUpValue;
-            cy.location('host').then(host => {
-                madeUpValue = value.replace('{CANONICAL_HOST}', host);
-            });
-            cy.location('protocol').then(protocol => {
-                madeUpValue = madeUpValue.replace('{PROTOCOL}:', protocol);
-                expect(beacon[parameter]).to.eq(madeUpValue);
-            });
-        } else if (parameter.includes('event')) {
-            if (value.startsWith("/")) {
-                const regex = new RegExp(value.substring(1, value.length - 1))
-                expect(mapOfEvents.get(parameter)).to.match(regex);
-            } else
-                expect(mapOfEvents.get(parameter)).to.be.eq(value);
+            } else if (value.includes('{CANONICAL_HOST}')) {
+                let madeUpValue;
+                madeUpValue = value.replace('{CANONICAL_HOST}', hostName);
+                cy.location('protocol').then(protocol => {
+                    madeUpValue = madeUpValue.replace('{PROTOCOL}:', protocol);
+                    expect(beacon[parameter]).to.eq(madeUpValue);
+                });
+            } else if (parameter.includes('event')) {
+                if (value.startsWith("/")) {
+                    const regex = new RegExp(value.substring(1, value.length - 1))
+                    expect(mapOfEvents.get(parameter)).to.match(regex);
+                } else
+                    expect(mapOfEvents.get(parameter)).to.be.eq(value);
 
             } else if (parameter === 'prop29') {
                 const year = date.getFullYear();
