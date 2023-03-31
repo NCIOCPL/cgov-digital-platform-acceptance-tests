@@ -191,6 +191,7 @@ And('user checks Include View Title checkbox', () => {
 })
 
 And('user enters {string} into Items per page dropdown', (value) => {
+    cy.get("input[name*='[field_source_view][0][options][limit]").clear()
     cy.get("input[name*='[field_source_view][0][options][limit]").type(value)
 })
 
@@ -470,3 +471,39 @@ Then('the promo image is matching the earlier selected image', () => {
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
+//-- Translation of Home and Landing Page -- //
+And('Hero Banner displays text {string}', (TextDisplay) => {
+    cy.get(`div[id*='hero-banner-text'] em:contains("${TextDisplay}")`).should('be.visible')
+})
+
+And('button to add a banner was translated as {string}', (textTranslated) => {
+    cy.get(`input[value^="${textTranslated}"]`).should('be.visible')
+})
+
+And('the following sections have title field translated as {string}', (spPath, dataTable) => {
+    for (const { section } of dataTable.hashes()) {
+        cy.get(`div[class*='main-canvas'] div:contains("${section}")`).parent().find(`div[class*='contents-9-subform-field-'] label:contains("${spPath}")`).should('be.visible')
+    }
+})
+
+Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+});
+
+And('dynamic lists shows {int} items espanol link', (num) => {
+    cy.get("li[class*='item general list-item t'] a").should('have.length', num)
+})
+
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+});
+
+And('list row card title is {string}', (listTitleSpPath) => {
+    cy.get('div[class="dynamic list"] h2').should('be.visible').and('have.text', listTitleSpPath)
+})
+
+And('every link in dynamic list starts with {string}', (espanolPath) => {
+    cy.get("div[class='dynamic list'] a").invoke('attr', 'href').then((linkHref) => {
+        expect(linkHref.startsWith(espanolPath)).to.be.true;
+    })
+})

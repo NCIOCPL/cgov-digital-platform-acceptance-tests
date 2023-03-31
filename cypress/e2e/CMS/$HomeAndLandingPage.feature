@@ -96,7 +96,6 @@ Feature: Home And Landing Page Test Creation of Content
             | Card Title        | Google Link Secondary Feature Card Row | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_title][0][value] |
         When user saves the content page
 
-
     Scenario: Add Multimedia Row
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -128,7 +127,6 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select content" button to select item
         And browser waits
         When user saves the content page
-
 
     Scenario: Add List
         Given user is navigating to "/user/login"
@@ -170,7 +168,6 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel     | value                                | field_name                                                                                       |
             | Override Title | Media Link Override Title List Items | field_landing_contents[4][subform][field_list_items][2][subform][field_override_title][0][value] |
         When user saves the content page
-
 
     Scenario: Add One and two column containers
         Given user is navigating to "/user/login"
@@ -240,7 +237,6 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Mini pager" from Pagination dropdown
         When user saves the content page
 
-
     Scenario: Add Borderless Full-Width Card
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -273,7 +269,6 @@ Feature: Home And Landing Page Test Creation of Content
             | Button Text                      | Button text for Borderless Full-Width Card           | field_landing_contents[7][subform][field_button_text][0][value]                |
             | Button Alt Text                  | Button Alt text for Borderless Full-Width Card       | field_landing_contents[7][subform][field_button_alt][0][value]                 |
         When user saves the content page
-
 
     Scenario: Add Title First Feature Card Row
         Given user is navigating to "/user/login"
@@ -514,6 +509,117 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
 
+    # -- Translation of Home and Landing Page --
+    Scenario: Add a translation
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Home and Landing Page Edited"
+        Then the page title is "Translations of Automated Test Home and Landing Page Edited"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Automated Test Home and Landing Page Edited"
+        And the following fields are displayed
+            | fieldLabel               | field_name                     |
+            | Pretty URL               | field_pretty_url               |
+            | Título de página         | title                          |
+            | Browser Title            | field_browser_title            |
+            | Card Title               | field_card_title               |
+            | Meta Description         | field_page_description         |
+            | Feature Card Description | field_feature_card_description |
+        And Hero Banner displays text "Aún no se ha añadido ningún Paragraph."
+        And button to add a banner was translated as "Añadir Hero Banner"
+        And the following sections have title field translated as "Título"
+            | section                  |
+            | Primary Feature Card     |
+            | Guide Card Row           |
+            | Listado                  |
+            | One Column Container     |
+            | Primary Feature Card Row |
+        And user remembers the name of media card item for future verification
+        And user fills out the following fields
+            | fieldLabel        | value    | field_name                                                                                       |
+            | Featured Item Url | spanish  | field_landing_contents[0][subform][field_row_cards][1][subform][field_featured_url][0][uri]      |
+            | List Title        | _Spanish | field_landing_contents[6][subform][field_main_contents][2][subform][field_list_title][0][value]  |
+            | Override Title    | _Spanish | field_landing_contents[4][subform][field_list_items][2][subform][field_override_title][0][value] |
+            | Button Text       | _Spanish | field_landing_contents[7][subform][field_button_text][0][value]                                  |
+        And user selects "Archive Block" from Display dropdown
+        And user clicks "Opciones" link in the Dynamic List area
+        And user checks Include View Title checkbox
+        And user enters "6" into Items per page dropdown
+        And user selects "Minipaginador" from Pagination dropdown
+        And current state was translated as "Estado actual" "Borrador"
+        And Change to dropdown has the following options
+            | option    |
+            | Borrador  |
+            | Review    |
+            | Publicado |
+        And Save button was translated as "Guardar (esta traducción)"
+        And preview button was translated as "Vista previa"
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify translated content
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-edited"
+        Then page title is "Automated Test Home and Landing Page Edited"
+        And primary feature card row displays the following cards
+            | title                                | link                          |
+            | Featured Item Override Title         | {TEST_SITE_SECTION}/article   |
+            | Google Link Primary Feature Card Row | https://www.google.comspanish |
+        And list row card title is "Dynamic List Title_Spanish"
+        And list row displays the following links
+            | title                                        | link                          | description                                          |
+            | Article to test Related Resources            | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
+            | Google Link List Item                        | https://www.google2.com       |                                                      |
+            | Media Link Override Title List Items_Spanish | {TEST_SITE_SECTION}/test-file |                                                      |
+        And guide card row title is "Guide Card Row Title"
+        And 2 guide card has text "This is to test Raw Html Content under Guide Card Row"
+        And multimedia card row has a video which name matches selected multimedia card item
+        And list card row title is "List Title"
+        And one-column card row title is "One Column Container Title"
+        And one-column content displays text "This is Html content for Content Block in One Column Container"
+        And one-column list has raw html displaying "This is Html content for Content Block in One Column Container"
+        And two-column list has raw html displaying "This is to test Raw HTML Content in Two Columns container"
+        And two-column content heading reads "Content Heading Two Column Container"
+        And two-column html content reads "This is Html content for Content Block Two Column"
+        And two-column dynamic list shows "Press Releases"
+        And dynamic lists shows 6 items espanol link
+        And every link in dynamic list starts with "/espanol"
+        And borderless card title is "Override title for Borderless Card"
+        And borderless card long description is "Longer Override Card Description for Borderless Card"
+        And borderless card button has title text "BUTTON TEXT FOR BORDERLESS FULL-WIDTH CARD_SPANISH" and links to "{TEST_SITE_SECTION}/article"
+        And the page contains meta tags with the following names
+            | name        | content                                                      |
+            | description | Automated Test Home and Landing Page Meta Description Edited |
+
+    Scenario: Edit and republish Spanish Home And Landing Page content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-edited"
+        And user clicks on the tool bar status green button "Publicado"
+        And user clicks "View in edit form" button from other actions
+        And user fills out the following fields
+            | fieldLabel       | value    | field_name             |
+            | Título de página | _Spanish | title                  |
+            | Meta Description | _Spanish | field_page_description |
+        When user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify Spanish edited content
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-edited"
+        And browser waits
+        Then page title is "Automated Test Home and Landing Page Edited_Spanish"
+        And the page contains meta tags with the following names
+            | name        | content                                                              |
+            | description | Automated Test Home and Landing Page Meta Description Edited_Spanish |
 
     Scenario: Clean up
         Given user is navigating to "/user/login"
@@ -529,6 +635,6 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         When user clicks on the "Delete" button
         And browser waits
-        Then the confirmation text "Deleted 2 content items." appears on a screen
+        Then the confirmation text "Deleted 3 content items." appears on a screen
         And the content item with url "test-resource-mini-landing-page-for-home-landing" does not exist in the list of content
         And the content item with url "home-and-landing-page-edited" does not exist in the list of content
