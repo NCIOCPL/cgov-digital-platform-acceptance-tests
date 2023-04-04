@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { And, Then, When } from 'cypress-cucumber-preprocessor/steps';
+import { Given, And, Then, When } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
 function createRandomStr() {
     var result = '';
@@ -70,6 +70,10 @@ And('user fills out CTHP Guide Card Description field text area with {string}', 
 
 And('user clicks on {string} link in the {string} text area', (link, linkOption) => {
     cy.get(`div:contains("${linkOption}")`).parent().parent().find(`span:contains("${link}")`).eq(0).click({ force: true })
+})
+
+And('user selects {string} from Current Page Audience dropdown', (option) => {
+    cy.get('label:contains("Current Page Audience")').parent().find('select').select(option)
 })
 
 And('user clicks on {string} button from {string} text area', (title, option) => {
@@ -325,4 +329,12 @@ And('the following cards have multiple spanish links that start with {string}', 
 
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+});
+
+And('user clicks on {string} link', (linkText) => {
+    cy.get(`span:contains('${linkText}')`).parent().click();
+});
+
+And("the {string} link is displayed with href {string}", (linkText, linkHref) => {
+    cy.get('.toggle-arrow-link').contains(linkText).should('have.attr', 'href').and('include', linkHref);
 });
