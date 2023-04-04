@@ -197,10 +197,6 @@ And('user selects {string} from contents dropdown', (contentsList) => {
     cy.get(`input[value="${contentsList}"]`).click({ force: true })
 });
 
-And('user selects {string} from {string} dropdown', (title, dropdown) => {
-    cy.get(`label:contains('${dropdown}')`).parent().find('select').select(title)
-});
-
 And('user clicks on {string} button to add list item', (linkBtn) => {
     cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).parent().click({ force: true });
 });
