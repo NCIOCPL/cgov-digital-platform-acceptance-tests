@@ -318,8 +318,8 @@ And('user deletes test article with url {string}', (url) => {
 
 And('user deletes test file with url {string}', (url) => {
     cy.get(`form[id^="views-form-media-media-page-list"]`).then(($content) => {
-        if ($content.find(`a[href='${siteSection}/${url}']`).length) {
-            cy.get(`a[href='${siteSection}/${url}']`).parent().parent().find('input.form-checkbox').check();
+        if ($content.find(`a[href*='${siteSection}/${url}']`).length) {
+            cy.get(`a[href*='${siteSection}/${url}']`).parent().parent().find('input.form-checkbox').check();
             cy.get(`input[value='Apply to selected items']`).first().click();
             cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
