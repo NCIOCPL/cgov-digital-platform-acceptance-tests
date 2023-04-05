@@ -8,7 +8,12 @@ const baseURL = Cypress.config('baseUrl');
 const hostName = baseURL.replace(new RegExp('(https:\/\/)|(http:\/\/)'), "")
 
 //date, months and weekDays are used to generate date and time value for prop29
-const date = new Date();
+const systemDate = new Date();
+const dateStr = systemDate.toLocaleString('en-US', {
+  timeZone: 'America/New_York'
+}) 
+const date = new Date(dateStr);
+
 const months = [
     'January',
     'February',

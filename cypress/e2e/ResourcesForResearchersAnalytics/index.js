@@ -7,6 +7,12 @@ let resultTitle;
 const baseURL = Cypress.config('baseUrl');
 const hostName = baseURL.replace(new RegExp('(https:\/\/)|(http:\/\/)'), "")
 
+const systemDate = new Date();
+const dateStr = systemDate.toLocaleString('en-US', {
+  timeZone: 'America/New_York'
+}) 
+const date = new Date(dateStr);
+
 When("user clicks on Visit resource link", () => {
     cy.get("div a")
         .contains("Visit Resource")
