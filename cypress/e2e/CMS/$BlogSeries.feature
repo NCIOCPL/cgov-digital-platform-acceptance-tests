@@ -90,7 +90,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Pretty URL | test-blog-topic | field_topic_pretty_url[0][value] |
         And user selects "Automated Test Blog Series" radio button under "Owner Blog"
         And browser waits
-        And user enters "Blog Topic Description" into Description field
+        And user enters "Blog Topic Description" into "Description" field
         Then user saves the content page
 
     Scenario: Edit and republish Blog Post content type
@@ -192,7 +192,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then page title is "Automated Test Blog Series Edited"
         And the "Featured Posts" managed list appears
         And public use text is not displayed
-        And the Featured Posts section is displayed with the following cards
+        And the "Featured Posts" section is displayed with the following cards
             | title                                 | linkEnding | expectedDate | author                          |
             | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
             | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
@@ -200,7 +200,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the page contains meta tags with the following names
             | name        | content                                            |
             | description | Automated Test Blog Series Meta Description Edited |
-        Then list of blog post has the following posts
+        Then list of "blog post" has the following posts
             | title                                             | url                                                                                         | expectedDate | author                           |
             | Automated Test Blog Post for testing Blog Series  | {TEST_SITE_SECTION}/blog-series-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM}         | today's date | Automated Test Blog Post Author  |
             | Automated Test Blog Post2 for testing Blog Series | {TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post2-test-blog-series-{RANDOM} | today's date | Automated Test Blog Post2 Author |
@@ -210,21 +210,21 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Continue Reading > | {TEST_SITE_SECTION}/blog-series-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM}         |
             | Continue Reading > | {TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post2-test-blog-series-{RANDOM} |
         And the "Categories" managed list appears without the date
-        And the Test Blog Topic link appears with the following href
+        And the "Test Blog Topic" link appears with the following href
             | linkName        | linkHref                                                                       |
             | Test Blog Topic | {TEST_SITE_SECTION}/blog-series-edited-{RANDOM}?topic=test-blog-topic-{RANDOM} |
 
     Scenario: Verify Blog Topic at the front end on Blog Post without images content type
         Given user is navigating to the blog "blog-post-test-blog-series" under "about-cancer/understanding/blog-series"
         And the "Categories" managed list appears without the date
-        And the Test Blog Topic link appears with the following href
+        And the "Test Blog Topic" link appears with the following href
             | linkName        | linkHref                                                                       |
             | Test Blog Topic | {TEST_SITE_SECTION}/blog-series-edited-{RANDOM}?topic=test-blog-topic-{RANDOM} |
 
     Scenario: Verify Blog Topic at the front end on Blog Post with images content type
         Given user is navigating to the blog "blog-post2-test-blog-series" under "/about-cancer/understanding/blog-series-edited"
         And the "Categories" managed list appears without the date
-        And the Test Blog Topic link appears with the following href
+        And the "Test Blog Topic" link appears with the following href
             | linkName        | linkHref                                                                       |
             | Test Blog Topic | {TEST_SITE_SECTION}/blog-series-edited-{RANDOM}?topic=test-blog-topic-{RANDOM} |
 
@@ -276,6 +276,194 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user clicks on the tool bar status green button "Editing"
         And user selects "Quick Publish" from workflow actions
 
+    Scenario: Add a translation for Blog Series
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Blog Series Edited"
+        Then the page title is "Translations of Automated Test Blog Series Edited"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Automated Test Blog Series Edited"
+        And the following fields are displayed
+            | fieldLabel               | field_name                     |
+            | Pretty URL               | field_pretty_url               |
+            | Título de página         | title                          |
+            | Browser Title            | field_browser_title            |
+            | Card Title               | field_card_title               |
+            | Meta Description         | field_page_description         |
+            | Feature Card Description | field_feature_card_description |
+            | Blog Series Shortname    | field_blog_series_shortname    |
+        And user clears out "Título de página" field
+        And user clears out "Meta Description" field
+        And user fills out the following fields
+            | fieldLabel       | value                                                      | field_name             |
+            | Título de página | Automated Test Blog Series Edited Spanish                  | title                  |
+            | Meta Description | Automated Test Blog Series Meta Description Edited Spanish | field_page_description |
+        And "Number of Posts to Display" label is displayed with value 10
+        And "List Description" label is displayed
+        And "Allow Comments" dropdown has the following options
+            | options               |
+            | Allow Comments        |
+            | Do Not Allow Comments |
+        And "Allow Comments" dropdown displays "Do Not Allow Comments"
+        And "About Blog" label is displayed
+        And "Subscription URL" text field label is displayed
+        And "Featured Posts" button is displayed
+        And the following posts are displayed with remove button translated as "Eliminar"
+            | posts                                            |
+            | Automated Test Blog Post for testing Blog Series |
+            | Automated Test Blog Post for testing Blog Series |
+            | Automated Test Blog Post for testing Blog Series |
+        And "Recommended Content Header" label is displayed with the text "Recommended Text"
+        And the translated banner image is displayed
+        And "Texto alternativo" label is displayed with the text "Text Alt"
+        And the link with the name "heroimagenewsdesktop.jpg" is displayed with remove button translated as "Eliminar"
+        And "Promotional Image" button is displayed with remove button translated as "Eliminar"
+        And "Public Use Text" dropdown has the following options
+            | options        |
+            | - Ninguno -    |
+            | Presentación   |
+            | Do Not Display |
+        And "Public Use Text" dropdown displays "Do Not Display"
+        And "Search Engine Restrictions" dropdown has the following options
+            | options             |
+            | Include in search   |
+            | Exclude from search |
+        And "Search Engine Restrictions" dropdown displays "Include in search"
+        And "List Thumbnails" dropdown has the following options
+            | options                |
+            | Show Thumbnails        |
+            | Do Not Show Thumbnails |
+        And "List Thumbnails" dropdown displays "Show Thumbnails"
+        And "Archive Group By" dropdown has the following options
+            | options |
+            | Mes     |
+            | Año     |
+        And "Archive Group By" dropdown displays "Año"
+        And current state was translated as "Estado actual" "Borrador"
+        And Change to dropdown has the following options
+            | option    |
+            | Borrador  |
+            | Review    |
+            | Publicado |
+        And Save button was translated as "Guardar (esta traducción)"
+        And preview button was translated as "Vista previa"
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify translated Blog Series
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "blog-series-edited"
+        Then page title is "Automated Test Blog Series Edited Spanish"
+        And the "Suscríbase" link appears with href "https://feedburner-test.cancer.gov/testblogseries"
+        And the "Archivo" accordion is displayed
+        And the banner image is matching the earlier selected image
+        And blog posts list does not appear in the archive
+        And the "Featured Posts" managed list appears
+        And public use text is not displayed
+        And the "Spanish Featured Posts" section is displayed with the following cards
+            | title                                 | linkEnding | author                          |
+            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
+            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
+            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
+        And description reads "This is all about Blog Series."
+
+    Scenario: User is adding new Spanish Blog Post content type without any image so it can be added to Spanish Blog Series
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Blog Post for testing Blog Series"
+        Then the page title is "Translations of Automated Test Blog Post for testing Blog Series"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Automated Test Blog Post for testing Blog Series"
+        And "Blog Series" dropdown displays "Automated Test Blog Series Edited Spanish"
+        And the following fields are displayed
+            | fieldLabel               | field_name                     |
+            | Pretty URL               | field_pretty_url               |
+            | Título de página         | title                          |
+            | Browser Title            | field_browser_title            |
+            | Card Title               | field_card_title               |
+            | Meta Description         | field_page_description         |
+            | Feature Card Description | field_feature_card_description |
+        And "List Description" label is displayed
+        And Author was translated as "Autor"
+        And "Intro Text" label is displayed
+        And body was translated as "Cuerpo"
+        And Save button was translated as "Guardar (esta traducción)"
+        And preview button was translated as "Vista previa"
+        Then user saves the content page
+        And user clicks on the tool bar status green button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: User is adding Spanish Blog Topic to the already created Spanish Blog Series
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Structure" tab
+        And user clicks on "Taxonomy" sub tab
+        And user selects "List terms" option from Operations for "Blog Topics"
+        And user selects "Translate" option from Operations for "Test Blog Topic"
+        Then the page title is "Translations of Test Blog Topic"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Test Blog Topic"
+        And user clears out "Nombre" field
+        And user clears out "Pretty URL" field
+        And user fills out the following fields
+            | fieldLabel | value                   | field_name                       |
+            | Nombre     | Test Blog Topic Spanish | name[0][value]                   |
+            | Pretty URL | test-blog-topic         | field_topic_pretty_url[0][value] |
+        And user selects "Automated Test Blog Series Edited Spanish" radio button under "Owner Blog"
+        And browser waits
+        And user enters "Blog Topic Description Spanish" into "Descripción" field
+        Then user saves the content page
+
+    Scenario: Edit and republish Spanish Blog Post content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "blog-post-test-blog-series" under "/espanol/about-cancer/understanding/blog-series-edited" from the list of content
+        And user clicks on the tool bar status green button "Publicado"
+        And user clicks "View in edit form" button from other actions
+        And user checks "Test Blog Topic Spanish" checkbox
+        When user saves the content page
+        And user clicks on the tool bar status green button "Editing"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify edited content and Blog Topic in the Blog Series
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "blog-series-edited"
+        And browser waits
+        Then page title is "Automated Test Blog Series Edited Spanish"
+        And the page contains meta tags with the following names
+            | name        | content                                                    |
+            | description | Automated Test Blog Series Meta Description Edited Spanish |
+        Then list of "Spanish blog post" has the following posts
+            | title                                            | url                                                                                                | expectedDate | author                          |
+            | Automated Test Blog Post for testing Blog Series | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} | today's date | Automated Test Blog Post Author |
+        And the Continue Reading link appears with the following href
+            | linkName       | linkHref                                                                                            |
+            | Siga leyendo > | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} |
+        And the "Categorías" managed list appears without the date
+        And the "Test Blog Topic Spanish" link appears with the following href
+            | linkName                | linkHref                                                                               |
+            | Test Blog Topic Spanish | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}?topic=test-blog-topic-{RANDOM} |
+
+    Scenario: Verify Blog Topic at the front end on Blog Post without images content type
+        Given user is navigating to the blog "blog-post-test-blog-series" under "espanol/about-cancer/understanding/blog-series-edited"
+        And the "Categorías" managed list appears without the date
+        And the "Test Blog Topic Spanish" link appears with the following href
+            | linkName                | linkHref                                                                               |
+            | Test Blog Topic Spanish | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}?topic=test-blog-topic-{RANDOM} |
 
     Scenario: Clean up
         Given user is navigating to "/user/login"
@@ -290,7 +478,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user clicks on the "Apply to selected items" action button
         Then page title is "Are you sure you want to delete these content items?"
         When user clicks on "Delete" button
-        Then the confirmation text "Deleted 3 content items." appears on a screen
+        Then the confirmation text "Deleted 5 content items." appears on a screen
         And the content item with url "blog-series-edited" does not exist in the list of content
         And the content item with url "blog-post-test-blog-series" does not exist in the list of content
         And the content item with url "blog-post2-test-blog-series" does not exist in the list of content
@@ -299,5 +487,5 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects "List terms" option from Operations for "Blog Topics"
         And user clicks on "Delete" from  dropdown button under "Blog Topic"
         Then page title is "Are you sure you want to delete the taxonomy term Test Blog Topic?"
-        When user clicks on "Delete" button
+        When user clicks on "Delete all translations" button
         Then the confirmation text "Deleted term Test Blog Topic." appears on a screen
