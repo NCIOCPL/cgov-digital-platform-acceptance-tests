@@ -2,48 +2,11 @@
 import { should } from 'chai';
 import { And, Then, Given, When } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
-function createRandomStr() {
-    var result = '';
-    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < 5; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-let randomNum = createRandomStr();
+import { enrichUrl } from "../../../utils/enrichUrl";
+
 const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
-
-And('user fills out the following fields', (dataTable) => {
-    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
-        if (fieldLabel === 'Pretty URL') {
-            value = `${value}-${randomNum}`;
-        }
-        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
-        cy.get('@inputField').type(value);
-    }
-});
-
-And('user clicks on title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
-});
-
-And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).parent().parent().find('input.form-checkbox').check();
-});
-
-Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
-});
-
-Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
-});
-
-And('the content item with url {string} does not exist in the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).should('not.exist');
-});
+const randomStr = Cypress.env('randomStr')
 
 let imageSrc;
 And('user selects {int} Promotional Image from the list of images', (num) => {
@@ -167,7 +130,7 @@ And('HTML Content reads {string}', (htmlContent) => {
 And('feature card row displays the following cards', (dataTable) => {
     for (let { title, url, description } of dataTable.hashes()) {
         const siteSection = Cypress.env("test_site_section");
-        const replacedTestSiteSection = url.replace("{TEST_SITE_SECTION}", siteSection);
+        const replacedTestSiteSection = enrichUrl(url, siteSection, randomStr)
         cy.get(`div.feature-card h3:contains('${title}')`).should('be.visible')
         if (description !== 'N/A') {
             cy.get(`div.feature-card p:contains('${description}')`).should('be.visible')
@@ -179,21 +142,21 @@ And('feature card row displays the following cards', (dataTable) => {
 And('managed list has the following links', (dataTable) => {
     for (let { title, url, description } of dataTable.hashes()) {
 
-        const replacedTestSiteSection = url.replace("{TEST_SITE_SECTION}", siteSection);
+        url = url.replace('{TEST_SITE_SECTION}',siteSection)
         cy.get(`div.managed.list h3:contains('${title}')`).should('be.visible')
         if (description !== 'N/A') {
             cy.get(`div.managed.list p:contains('${description}')`).should('be.visible')
         }
-        cy.get(`div.managed.list a[href="${replacedTestSiteSection}"]`).should('be.visible')
+        cy.get(`div.managed.list a[href*="${url}"]`).should('be.visible')
     }
 })
 
 And('borderless card with {string} accent displays the following', (accent, dataTable) => {
     cy.get(`div.${accent} .borderless-card`).should('be.visible')
     for (let { title, link } of dataTable.hashes()) {
-        const replacedTestSiteSection = link.replace("{TEST_SITE_SECTION}", siteSection);
+        link = link.replace('{TEST_SITE_SECTION}',siteSection)
         cy.get(`div.${accent} .borderless-card h2:contains('${title}')`).should('be.visible')
-        cy.get(`div.${accent} .borderless-card a[href="${replacedTestSiteSection}"]`).should('be.visible')
+        cy.get(`div.${accent} .borderless-card a[href*="${link}"]`).should('be.visible')
     }
 })
 
@@ -202,7 +165,7 @@ And('List Item Title is displayed as {string}', (title) => {
 })
 
 And('the button with text {string} appears with href {string}', (linkText, href) => {
-    const replacedTestSiteSection = href.replace("{TEST_SITE_SECTION}", siteSection);
+    const replacedTestSiteSection = enrichUrl(href, siteSection, randomStr)
     cy.get('a.borderless-button').should('have.text', linkText)
     cy.get('a.borderless-button').should('have.attr', 'href', replacedTestSiteSection)
 })
@@ -233,7 +196,7 @@ Then('the promo image is matching the earlier selected image', () => {
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
-             /* ----- Translation of Mini Landinga ----- */
+/* ----- Translation of Mini Landinga ----- */
 And('banner image has requirements translated as follows', (dataTable) => {
     for (const { text } of dataTable.hashes()) {
         cy.get("div[class*='ld-banner-image-0']").should('include.text', text)
@@ -242,7 +205,7 @@ And('banner image has requirements translated as follows', (dataTable) => {
 
 And('the following content sections are displayed', (dataTable) => {
     for (const { section } of dataTable.hashes()) {
-        cy.get("div[class*='paragraph-type-ti']").should('include.text', section )
+        cy.get("div[class*='paragraph-type-ti']").should('include.text', section)
     }
 })
 
@@ -255,18 +218,18 @@ And('button to add content was translated to start with {string}', (TranslatedOp
 })
 
 Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 });
 
 
-    
+
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 });
 
 And('{int} links are displayed under the Dynamic List Title and all starts with {string}', (linksNum, espanolPath) => {
     cy.get("div[class*='dynamic list'] a").should('be.visible').and('have.length.above', linksNum)
-    cy.get("div[class*='dynamic list'] a").invoke('attr','href').then((linkHref) =>{
+    cy.get("div[class*='dynamic list'] a").invoke('attr', 'href').then((linkHref) => {
         expect(linkHref.startsWith(espanolPath)).to.be.true;
-    })   
+    })
 })

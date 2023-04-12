@@ -5,6 +5,7 @@ import { And, Then, Given, When } from 'cypress-cucumber-preprocessor/steps';
 const username = Cypress.env('admin_username');
 const password = Cypress.env('admin_password');
 const siteSection = Cypress.env('test_site_section');
+const randomStr = Cypress.env('randomStr');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 When('user enters credentials', () => {
@@ -52,13 +53,6 @@ When('user selects test site section', () => {
         .find("input[id='edit-submit'][value='Select Site Section']").click({ force: true });
 });
 
-And('user fills out the following fields', (dataTable) => {
-    for (const { fieldLabel, value, field_name } of dataTable.hashes()) {
-        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
-        cy.get('@inputField').type(value);
-    }
-});
-
 And('user selects {string} from {string} dropdown', (option, dropdown) => {
     cy.get(`label:contains('${dropdown}')`).parent().find('select').select(option)
 });
@@ -72,10 +66,7 @@ When('user saves the content page', () => {
     cy.get("input[id='edit-submit']").click({ force: true });
 });
 
-And('user clicks on title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}']`).click();
-});
-And('user clicks on the tool bar status green button {string}', (status) => {
+And('user clicks on the tool bar status button {string}', (status) => {
     cy.get(`a[data-label='${status}']`).click();
 });
 And('user clicks {string} button from other actions', (action) => {
@@ -88,9 +79,6 @@ And('user selects {string} from workflow actions', (action) => {
     cy.get(`input[value='${action}']`).click();
 })
 
-And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}']`).parent().parent().find('input.form-checkbox').check();
-});
 And('user clicks on {string} content action button', (actionButtonLabel) => {
     cy.get(`input[value='${actionButtonLabel}']`).first().click();
 });
@@ -101,19 +89,9 @@ When('user clicks on {string} button', (deleteBtn) => {
 Then('the confirmation text {string} appears on a screen', (text) => {
     cy.get("div[role='contentinfo']").should('include.text', text);
 });
+
 And('the content item with url {string} does not exist in the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}']`).should('not.exist');
-});
-
-Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
-    cy.on('uncaught:exception', (err, runnable) => {
-        if (err.message.includes('Failed to load script https://assets.adobedtm.com')) {
-            return false;
-        }
-        return true
-    })
-
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
+    cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
 });
 
 And('the following drupal fields are present', (dataTable) => {
@@ -295,14 +273,14 @@ Then('Related Resources section contains the following links', (dataTable) => {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
         }
-        cy.get(`a[href="${link}"]`).should('have.text', title);
+        cy.get(`a[href*="${link}"]`).should('have.text', title);
     }
 });
 
 And('user deletes test article with url {string}', (url) => {
     cy.get(`form[id^="views-form-content-page"]`).then(($content) => {
-        if ($content.find(`a[href='${siteSection}/${url}']`).length) {
-            cy.get(`a[href='${siteSection}/${url}']`).parent().parent().find('input.form-checkbox').check();
+        if ($content.find(`a[href='${siteSection}/${url}-${randomStr}']`).length) {
+            cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
             cy.get(`input[value='Apply to selected items']`).first().click();
             cy.get('h1:contains("Are you sure you want to delete this content item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
@@ -387,7 +365,7 @@ And('user confirms removal', () => {
 });
 
 And('user clicks on the title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href*='${siteSection}/${contentHref}']`).click();
+    cy.get(`a[href*='${siteSection}/${contentHref}-${randomStr}']`).click();
 });
 
 And('user clicks on {string} button item', (title) => {
@@ -454,6 +432,7 @@ Then('Recursos relacionados section contains the following links', (dataTable) =
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
+            link = link + '-' + randomStr
         }
         cy.get(`div#nvcgRelatedResourcesArea a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
     }
@@ -505,6 +484,24 @@ And('feature card description reads {string}', (description) => {
     cy.get(`div.feature-card p:contains('${description}')`).should('be.visible');
 });
 
-Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
+And('user fills out the following fields', (dataTable) => {
+    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
+        if (fieldLabel === 'Pretty URL') {
+            value = `${value}-${randomStr}`;
+        }
+        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
+        cy.get('@inputField').type(value);
+    }
+});
+
+And('user clicks on title with url {string} from the list of content', (contentHref) => {
+    cy.get(`a[href='${siteSection}/${contentHref}-${randomStr}']`).click();
+});
+
+And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
+    cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+});
+
+Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
+    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true }, { failOnStatusCode: false });
 });

@@ -80,7 +80,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-article" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clicks on dropdown button toggle to view all Related Resources types
         And user selects "Add Internal Link" related resource item
@@ -111,7 +111,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | fieldLabel     | value                     | field_name                                                          |
             | Override Title | Media Link Override Title | field_related_resources[2][subform][field_override_title][0][value] |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish article content type
@@ -122,7 +122,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-article" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
@@ -154,7 +154,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user remembers the source of selected promo image for further verification
         And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
 
@@ -189,7 +189,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -201,11 +201,11 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And browser waits
         And "Automated Test Article Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Article - Card Title Edited" with href "/about-cancer/understanding/test-article-edited"
@@ -219,13 +219,13 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Add a translation
@@ -267,7 +267,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify translated content
@@ -294,7 +294,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "test-article-edited"
-        And user clicks on the tool bar status green button "Publicado"
+        And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user clears out "Título de página" field
         And user clears out "Meta Description" field
@@ -303,7 +303,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | Título de página | Automated Test Article Edited Spanish                  | title                  |
             | Meta Description | Automated Test Article Meta Description Edited Spanish | field_page_description |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify Spanish edited content

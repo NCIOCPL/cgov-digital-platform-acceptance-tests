@@ -66,12 +66,12 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-event" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user checks "All Day Event?" checkbox
         And browser waits
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify the "all day event" checkbox hides time on front end
@@ -89,7 +89,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-event" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Event Title" field
@@ -118,7 +118,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And browser waits
         And user remembers the source of selected lead image for further verification
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify edited content
@@ -143,7 +143,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -155,7 +155,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And browser waits
         And "Automated Test Event Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
@@ -173,13 +173,13 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Clean up

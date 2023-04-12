@@ -35,7 +35,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         Then user saves the content page
         When user clicks on "Content" tab
         And user clicks on title with url "article-to-test-site-section" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user removes site section
         And browser waits
@@ -43,7 +43,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And "Test Site Section" has been selected
         And user clears out "Pretty URL" field
         When user saves the content page
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify newly created site section
@@ -176,17 +176,19 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And user selects "Edit" operation for "Test Site Section"
         Then page title is "Edit term"
         And user clears out "Navigation Label" field
+        And user clears out "Pretty URL" field
         And user fills out the following fields
             | fieldLabel | value   | field_name       |
-            | Pretty URL | -edited | field_pretty_url |
+            | Pretty URL | test-site-section-edited | field_pretty_url |
         When user saves the content page
         When user clicks on "Content" tab
         And user clicks on title with the url "/about-cancer/coping/test-site-section" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
+        And browser waits
 
     Scenario: Verify the new purl of site section
         Given user is navigating to the front end site with path "/about-cancer/coping/test-site-section-edited"
@@ -202,7 +204,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with the url "/about-cancer/coping/test-site-section-edited" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes site section
         When user selects first "/about-cancer/coping/feelings" site section
@@ -212,8 +214,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
             | fieldLabel | value | field_name       |
             | Pretty URL | purl  | field_pretty_url |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
+        And browser waits
 
     Scenario: Verify that the test site section points to a new url after changing landing's page site section
         Given user is navigating to the front end site with selected path "purl"

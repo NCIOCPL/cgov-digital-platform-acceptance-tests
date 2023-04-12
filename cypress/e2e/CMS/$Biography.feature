@@ -102,7 +102,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "biography" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Card Title" field
@@ -131,7 +131,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And user remembers the source of selected biography image for further verification
         And user selects "Editing" from "Change to" dropdown
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
         And browser waits
 
@@ -160,7 +160,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -172,11 +172,11 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And browser waits
         And "Full Name Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify card titles and feature card description in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         And the Card Title has a link "Automated Test Biography - Card Title Edited" with href "/about-cancer/understanding/biography-edited"
         And feature card description reads "Automated Test Biography - Feature Card Desc Edited"
@@ -189,13 +189,13 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Clean up

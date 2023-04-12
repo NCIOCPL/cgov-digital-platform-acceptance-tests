@@ -1,56 +1,12 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
-function createRandomStr() {
-    var result = '';
-    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < 5; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-let randomNum = createRandomStr();
+import { enrichUrl } from "../../../utils/enrichUrl";
+
 const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
+const randomStr = Cypress.env('randomStr')
 
-And('user fills out the following fields', (dataTable) => {
-    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
-        if (fieldLabel === 'Pretty URL') {
-            value = `${value}-${randomNum}`;
-        }
-        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
-        cy.get('@inputField').type(value);
-    }
-});
-
-And('user clicks on title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
-});
-
-And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).parent().parent().find('input.form-checkbox').check();
-});
-
-Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
-});
-
-Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
-});
-
-And('the content item with url {string} does not exist in the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).should('not.exist');
-});
-
-Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
-});
-
-And('user clicks on title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}']`).click();
-});
 
 And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
     cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });
@@ -266,8 +222,10 @@ And('user clicks on {string} button item in the {string} text area', (selectCont
 And('primary feature card row displays the following cards', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            cy.get(`div.row.feature-primary a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
+           link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            cy.get(`div.row.feature-primary a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href=>{
+                expect(href).to.include(link)
+            })
         }
     }
 });
@@ -294,8 +252,8 @@ And('{int} guide card has text {string}', (cardNum, cardText) => {
 And('secondary feature card row displays the following cards', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            cy.get(`div.row.feature-secondary a[href='${link}']`).should('be.visible').and('include.text', title);
+            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            cy.get(`div.row.feature-secondary a[href*='${link}']`).should('be.visible').and('include.text', title);
         }
     }
 });
@@ -310,8 +268,8 @@ And('multimedia card row has a video which name matches selected multimedia card
 And('multimedia card row displays the following cards', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            cy.get(`div.multimedia-slot a[href='${link}']`).should('be.visible').and('include.text', title);
+            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            cy.get(`div.multimedia-slot a[href*='${link}']`).should('be.visible').and('include.text', title);
         }
     }
 });
@@ -323,8 +281,8 @@ And('list card row title is {string}', (cardTitle) => {
 And('list row displays the following links', (dataTable) => {
     for (let { title, link, description } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            cy.get(`div.managed.list a[href='${link}']`).should('be.visible').and('include.text', title);
+            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            cy.get(`div.managed.list a[href*='${link}']`).should('be.visible').and('include.text', title);
             cy.get('div.managed.list').find('div.description').should('be.visible').and('include.text', description);
         }
     }
@@ -341,8 +299,8 @@ And('one-column content displays text {string}', (contentText) => {
 And('one-column list has the following links', (dataTable) => {
     for (let { title, link, description } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            cy.get(`div.row.paragraph-col-one a[href='${link}']`).should('be.visible').and('include.text', title);
+            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            cy.get(`div.row.paragraph-col-one a[href*='${link}']`).should('be.visible').and('include.text', title);
             cy.get('div.row.paragraph-col-one').find('div.description').should('be.visible').and('include.text', description);
         }
     }
@@ -383,7 +341,7 @@ And('borderless card long description is {string}', (longDesc) => {
 And('borderless card button has title text {string} and links to {string}', (title, link) => {
     if (link.includes("{TEST_SITE_SECTION}")) {
         link = link.replace("{TEST_SITE_SECTION}", siteSection);
-        cy.get(`div.centered-container a[href='${link}']`).should('be.visible').and('include.text', title);
+        cy.get(`div.centered-container a[href*='${link}']`).should('be.visible').and('include.text', title);
     }
 });
 
@@ -391,7 +349,7 @@ And('title first feature card row has the following cards', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            cy.get(`div.title-first-feature-card-container a[href='${link}']`).should('be.visible').and('include.text', title);
+            cy.get(`div.title-first-feature-card-container a[href*='${link}']`).should('be.visible').and('include.text', title);
         }
     }
 });
@@ -426,12 +384,12 @@ And('user enters {string} into Content Heading text field', (value) => {
 });
 
 And('last feature card row displays the following cards', (dataTable) => {
-    let link1;
     for (let { title, link, featureCardDescription } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            link1 = `${link}-${randomNum}`;
-            cy.get(`div.feature-card a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link1);
+            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            cy.get(`div.feature-card a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href=>{
+                expect(href).to.include(link)
+            })
         }
         cy.get(`div.feature-card p:contains("${featureCardDescription}")`).should('be.visible');
     }
@@ -487,7 +445,7 @@ And('the following sections have title field translated as {string}', (spPath, d
 })
 
 Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 });
 
 And('dynamic lists shows {int} items espanol link', (num) => {
@@ -495,7 +453,7 @@ And('dynamic lists shows {int} items espanol link', (num) => {
 })
 
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 });
 
 And('list row card title is {string}', (listTitleSpPath) => {

@@ -101,12 +101,12 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post-test-blog-series" under "/about-cancer/understanding/blog-series" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user checks "Test Blog Topic" checkbox
         And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish Blog Series content type
@@ -117,7 +117,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-series" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
@@ -151,7 +151,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user remembers the source of selected promotional image to be displayed in mini landing pages for further verification
         And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: User is adding new Blog Post content type with images so it can be added to Blog Series
@@ -236,7 +236,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -248,11 +248,11 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And browser waits
         And "Automated Test Blog Series Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And browser waits
@@ -267,13 +267,13 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Add a translation for Blog Series
@@ -352,7 +352,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify translated Blog Series
@@ -398,7 +398,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: User is adding Spanish Blog Topic to the already created Spanish Blog Series
@@ -433,11 +433,11 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post-test-blog-series" under "/espanol/about-cancer/understanding/blog-series-edited" from the list of content
-        And user clicks on the tool bar status green button "Publicado"
+        And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user checks "Test Blog Topic Spanish" checkbox
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify edited content and Blog Topic in the Blog Series

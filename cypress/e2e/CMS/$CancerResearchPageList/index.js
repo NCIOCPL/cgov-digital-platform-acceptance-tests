@@ -1,49 +1,10 @@
 /// <reference types="Cypress" />
 import { And, Then, Given, When } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
-function createRandomStr() {
-    var result = '';
-    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < 5; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-let randomNum = createRandomStr();
+
 const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
-
-
-And('user fills out the following fields', (dataTable) => {
-    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
-        if (fieldLabel === 'Pretty URL') {
-            value = `${value}-${randomNum}`;
-        }
-        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
-        cy.get('@inputField').type(value);
-    }
-});
-
-And('user clicks on title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
-});
-
-And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).parent().parent().find('input.form-checkbox').check();
-});
-
-Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
-});
-
-Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
-});
-
-And('the content item with url {string} does not exist in the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).should('not.exist');
-});
+const randomStr = Cypress.env('randomStr')
 
 And('user clicks on dropdown button toggle to view all Selected Research Pages types', () => {
     cy.get("li[class='dropbutton-toggle'] button[type='button']").click({ force: true })
@@ -72,8 +33,12 @@ And('description reads {string}', (title) => {
 
 Then('Selected Research pages list contains the following links', (dataTable) => {
     for (let { title, link, description } of dataTable.hashes()) {
-        const replacedTestSiteSection = link.replace("{TEST_SITE_SECTION}", siteSection);
-        cy.get(`.managed.list div a:contains("${title}")`).should('be.visible').and('have.attr', 'href', replacedTestSiteSection)
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection);
+        }
+        cy.get(`.managed.list div a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href=>{
+            expect(href).to.include(link)
+        })
         if (description !== 'N/A') {
             cy.get(`.managed.list div a:contains("${title}")`).parent().find('.description p').should('have.text', description)
 
@@ -117,9 +82,9 @@ And('Link section under related resources was translated as {string}', (linkTran
 })
 
 Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 })
 
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 })

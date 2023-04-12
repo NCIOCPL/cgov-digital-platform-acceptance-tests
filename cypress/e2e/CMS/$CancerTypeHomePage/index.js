@@ -1,48 +1,11 @@
 /// <reference types="Cypress" />
 import { Given, And, Then, When } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
-function createRandomStr() {
-    var result = '';
-    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < 5; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-let randomNum = createRandomStr();
+import { enrichUrl } from "../../../utils/enrichUrl";
+
 const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
-
-And('user fills out the following fields', (dataTable) => {
-    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
-        if (fieldLabel === 'Pretty URL') {
-            value = `${value}-${randomNum}`;
-        }
-        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
-        cy.get('@inputField').type(value);
-    }
-});
-
-And('user clicks on title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
-});
-
-And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).parent().parent().find('input.form-checkbox').check();
-});
-
-Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
-});
-
-Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
-});
-
-And('the content item with url {string} does not exist in the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).should('not.exist');
-});
+const randomStr = Cypress.env('randomStr')
 
 And('user selects {string} from {string} CTHP dropdown', (dropdown, cartOption) => {
     cy.get(`.placeholder:contains("${cartOption}")`).parent().parent().find(`input[value="${dropdown}"]`).eq(0).click({ force: true })
@@ -209,16 +172,20 @@ And('user clicks on {string} dropdown', (dropdown) => {
 })
 
 And('the following more info links are displayed', (dataTable) => {
-    for (const { title, url } of dataTable.hashes()) {
-        const replacedTestSiteSection = url.replace("{TEST_SITE_SECTION}", siteSection);
-        cy.get(`ul a[class='title']:contains("${title}")`).should('be.visible').and('have.attr', 'href', replacedTestSiteSection)
+    for (let { title, url } of dataTable.hashes()) {
+        url = url.replace('{TEST_SITE_SECTION}',siteSection)
+        cy.get(`ul a[class='title']:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href=>{
+            expect(href).to.include(url)
+        })
     }
 })
 
 And('cthp causes card has a link {string} with href {string}', (linkText, href) => {
-    const replacedTestSiteSection = href.replace("{TEST_SITE_SECTION}", siteSection);
+    const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}',siteSection)
     cy.get("div[class*='cthp-causes'] a").as('card').should('have.text', linkText)
-    cy.get("@card").should('have.attr', 'href', replacedTestSiteSection)
+    cy.get("@card").should('have.attr', 'href').then( href =>{
+        expect(href).to.include(replacedTestSiteSection)
+    })
 })
 
 And('cthp survival card has a link {string} with href {string}', (linkText, href) => {
@@ -226,9 +193,11 @@ And('cthp survival card has a link {string} with href {string}', (linkText, href
 })
 
 And('cthp screening card has a link {string} with href {string}', (linkText, href) => {
-    const replacedTestSiteSection = href.replace("{TEST_SITE_SECTION}", siteSection);
+    const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}',siteSection)
     cy.get("div[class*='cthp-screening'] a").as('card').should('have.text', linkText)
-    cy.get("@card").should('have.attr', 'href', replacedTestSiteSection)
+    cy.get("@card").should('have.attr', 'href').then( href =>{
+        expect(href).to.include(replacedTestSiteSection)
+    })
 })
 
 And('cthp general card has description that is not empty', () => {
@@ -315,7 +284,7 @@ And('Add Card Section was translated as {string}', (addCardSection) => {
 });
 
 Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 });
 
 And('the following cards have multiple spanish links that start with {string}', (startLink, dataTable) => {
@@ -328,7 +297,7 @@ And('the following cards have multiple spanish links that start with {string}', 
 });
 
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomNum}']`).click();
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 });
 
 And('user clicks on {string} link', (linkText) => {

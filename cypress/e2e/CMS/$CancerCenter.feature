@@ -134,7 +134,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-center" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clicks on dropdown button toggle to view all Related Resources types
         And user selects "Add Internal Link" related resource item
@@ -165,7 +165,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
             | fieldLabel     | value                     | field_name                                                          |
             | Override Title | Media Link Override Title | field_related_resources[2][subform][field_override_title][0][value] |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish cancer center
@@ -176,7 +176,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-center" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Organization Head Name" field
@@ -204,7 +204,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user selects 2 Cancer Center Image from the list of images
         And user remembers the source of selected image for further verification
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify edited content
@@ -239,7 +239,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -251,11 +251,11 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And browser waits
         And "Automated Test Cancer Center" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify card titles and feature card description in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         And the Card Title has a link "Test Card Title Edited" with href "/about-cancer/understanding/cancer-center-edited"
         And feature card description reads "Test Feature Card Description Edited"
@@ -268,13 +268,13 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
 

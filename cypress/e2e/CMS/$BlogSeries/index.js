@@ -3,61 +3,24 @@ import { And } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
 
 const siteSection = Cypress.env('test_site_section');
-
-function createRandomStr() {
-    var result = '';
-    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < 5; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-let randomNum = createRandomStr();
+const randomStr = Cypress.env('randomStr')
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
-
-And('user fills out the following fields', (dataTable) => {
-    for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
-        if (fieldLabel === 'Pretty URL') {
-            value = `${value}-${randomNum}`;
-        }
-        cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label').should('include.text', fieldLabel);
-        cy.get('@inputField').type(value);
-    }
-});
 
 And('user clicks on title with url {string} under {string} from the list of content', (blogPost, blogSeries) => {
     const date = new Date();
     const currYear = date.getFullYear();
-    cy.get(`a[href='${blogSeries}-${randomNum}/${currYear}/${blogPost}-${randomNum}']`).click();
+    cy.get(`a[href='${blogSeries}-${randomStr}/${currYear}/${blogPost}-${randomStr}']`).click();
 });
-
-And('user clicks on title with url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${siteSection}/${contentHref}-${randomNum}']`).click();
-});
-
-And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).parent().parent().find('input.form-checkbox').check();
-});
-
-Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
-});
-
-Given('user is navigating to the front end site with the path site section plus {string}', (purl) => {
-    cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}`, { retryOnStatusCodeFailure: true });
-});
-
 
 Given('user is navigating to the blog {string} under {string}', (blogPost, blogSeries) => {
     const date = new Date();
     const currYear = date.getFullYear();
     const frontEndBaseUrl = Cypress.env('front_end_base_url');
-    cy.visit(`${frontEndBaseUrl}/${blogSeries}-${randomNum}/${currYear}/${blogPost}-${randomNum}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}/${blogSeries}-${randomStr}/${currYear}/${blogPost}-${randomStr}`, { retryOnStatusCodeFailure: true });
 });
 
 And('the content item with url {string} does not exist in the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomNum}']`).should('not.exist');
+    cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
 });
 
 And('user enters {string} as intro text', (introText) => {
@@ -251,7 +214,7 @@ Then('list of {string} has the following posts', (blogPost, dataTable) => {
             url = url.replace("{TEST_SITE_SECTION}", siteSection)
         }
         if (url.includes("{RANDOM}")) {
-            url = url.replaceAll("{RANDOM}", randomNum);
+            url = url.replaceAll("{RANDOM}", randomStr);
         }
         const date1 = new Date();
         const currYear = date1.getFullYear();
@@ -304,7 +267,7 @@ And('the Continue Reading link appears with the following href', (dataTable) => 
             linkHref = linkHref.replace("{YEAR}", currYear);
         }
         if (linkHref.includes("{RANDOM}")) {
-            linkHref = linkHref.replaceAll("{RANDOM}", randomNum);
+            linkHref = linkHref.replaceAll("{RANDOM}", randomStr);
         }
         cy.get(`p a[href='${linkHref}']`).should('be.visible').and('have.text', linkName);
     }
@@ -316,7 +279,7 @@ And('the {string} link appears with the following href', (testBlogTopic, dataTab
             linkHref = linkHref.replace("{TEST_SITE_SECTION}", siteSection);
         }
         if (linkHref.includes("{RANDOM}")) {
-            linkHref = linkHref.replaceAll("{RANDOM}", randomNum);
+            linkHref = linkHref.replaceAll("{RANDOM}", randomStr);
         }
         cy.get(`div.managed.list.without-date a[href='${linkHref}']`).should('be.visible').and('have.text', linkName);
     }
@@ -431,7 +394,7 @@ And('description reads {string}', (desc) => {
 });
 
 Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomNum}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 })
 
 And('Author was translated as {string}', (text) => {

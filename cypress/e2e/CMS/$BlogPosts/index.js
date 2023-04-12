@@ -1,8 +1,10 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
+import { enrichUrl } from "../../../utils/enrichUrl";
 
 const siteSection = Cypress.env('test_site_section');
+const randomStr = Cypress.env('randomStr');
 
 And('user enters {string} as intro text', (introText) => {
     cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introText);
@@ -49,7 +51,7 @@ Given('user is navigating to the blog {string} under {string}', (blogPost, blogS
     const date = new Date();
     const currYear = date.getFullYear();
     const frontEndBaseUrl = Cypress.env('front_end_base_url');
-    cy.visit(`${frontEndBaseUrl}/${blogSeries}/${currYear}/${blogPost}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}/${blogSeries}/${currYear}/${blogPost}-${randomStr}`, { retryOnStatusCodeFailure: true });
     cy.wait(200);
 });
 
@@ -156,7 +158,7 @@ And('public use text has a link {string} with href {string}', (linkText, linkUrl
 And('user clicks on title with url {string} under {string} from the list of content', (blogPost, blogSeries) => {
     const date = new Date();
     const currYear = date.getFullYear();
-    cy.get(`a[href='${blogSeries}/${currYear}/${blogPost}']`).click();
+    cy.get(`a[href='${blogSeries}/${currYear}/${blogPost}-${randomStr}']`).click();
 });
 
 And('user clicks on dropdown button toggle {int} to view all Related Resources types', (pos) => {
@@ -210,26 +212,22 @@ And('public use text is not displayed', () => {
 
 Then('Related Resources section contains the following links', (dataTable) => {
     for (let { title1, link1 } of dataTable.hashes()) {
-        if (link1.includes("{TEST_SITE_SECTION}")) {
-            link1 = link1.replace("{TEST_SITE_SECTION}", siteSection)
-        }
-        cy.get(`a[href="${link1}"]`).first().should('have.text', title1);
+        const replacedTestSiteSection = link1.replace("{TEST_SITE_SECTION}", siteSection);
+        cy.get(`a[href*="${replacedTestSiteSection}"]`).first().should('have.text', title1);
     }
 });
 
 Then('Recommended Content section contains the following links', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
-        if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection)
-        }
-        cy.get(`a[href="${link}"]`).should('include.text', title)
+       link = link.replace("{TEST_SITE_SECTION}", siteSection);
+        cy.get(`a[href*="${link}"]`).should('include.text', title)
     }
 });
 
 And('user selects a checkbox next to title with url {string} under {string} from the list of content', (url, blogSeries) => {
     const date = new Date();
     const currYear = date.getFullYear();
-    cy.get(`a[href='${blogSeries}/${currYear}/${url}']`).parent().parent().find('input.form-checkbox').check();
+    cy.get(`a[href='${blogSeries}/${currYear}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
 });
 
 And('user selects {string} from Blog Series dropdown', (blogSeries) => {
