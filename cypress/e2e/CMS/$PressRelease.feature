@@ -62,7 +62,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "press-release" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
@@ -93,7 +93,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And user remembers the source of selected promo image for further verification
         And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
 
@@ -118,7 +118,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -130,11 +130,11 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And browser waits
         And "Automated Test Press Release Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         And the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Press Release - Card Title Edited" with href "/about-cancer/understanding/press-release-edited"
@@ -148,13 +148,13 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
 
@@ -194,7 +194,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify translated content
@@ -215,7 +215,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "press-release-edited"
-        And user clicks on the tool bar status green button "Publicado"
+        And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user clears out "Título de página" field
         And user clears out "Meta Description" field
@@ -224,7 +224,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
             | Título de página | Automated Test Press Release Edited Spanish                  | title                  |
             | Meta Description | Automated Test Press Release Meta Description Edited Spanish | field_page_description |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify Spanish edited content

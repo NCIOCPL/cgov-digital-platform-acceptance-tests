@@ -66,7 +66,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post" under "/news-events/cancer-currents-blog" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clicks on dropdown button toggle 1 to view all Related Resources types
         And user selects "Add Internal Link" related resource item
@@ -187,7 +187,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -199,7 +199,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And browser waits
         And "Automated Test Blog Post Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
@@ -217,13 +217,13 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
 

@@ -53,7 +53,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And browser waits
         And user selects "Add Guide Card Row" from "Contents" dropdown
@@ -67,7 +67,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user enters '<li><a class="arrow-link" href="/about-cancer/understanding/what-is-cancer" title="">What Is Cancer</a></li>' into source text field
         And user selects "Add Raw Html Content" from "Cards" dropdown "Guide Card Row" section
         And user enters "<div>This is to test Raw Html Content under Guide Card Row</div>" into Raw HTML Content text field under Guide Card Row
+        And browser waits
         When user saves the content page
+        And browser waits for 3000
 
 
     Scenario: Add Secondary Feature Card Row
@@ -78,7 +80,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add Secondary Feature Card Row" from "Contents" dropdown
         And browser waits
@@ -104,7 +106,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add Multimedia Row" from "Contents" dropdown
         And browser waits
@@ -127,6 +129,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select content" button to select item
         And browser waits
         When user saves the content page
+        And browser waits for 3000
 
     Scenario: Add List
         Given user is navigating to "/user/login"
@@ -136,7 +139,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add List" from "Contents" dropdown
         And browser waits
@@ -177,7 +180,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And browser waits
         And user selects "Add One Column Container" from "Contents" dropdown
@@ -245,7 +248,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add Borderless Full-Width Card" from "Contents" dropdown
         And user clicks on "Featured Item" link in the "Borderless Full-Width Card" text area
@@ -278,7 +281,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add Title First Feature Card Row" from "Contents" dropdown
         And user selects "Add External Feature Card" from "Two Column Feature Card" dropdown "Title First Feature Card Row" section
@@ -384,7 +387,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Updated Date" checkbox
         And user selects "Include in search" from Search Engine Restrictions dropdown
         When user saves the content page
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish Home and Landing Page content type
@@ -395,7 +398,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
@@ -441,7 +444,7 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         Then user saves the content page
         And browser waits
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify edited content
@@ -470,7 +473,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -482,11 +485,11 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And "Automated Test Home and Landing Page Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Home and Landing page - Card Title Edited" with href "/about-cancer/understanding/home-and-landing-page-edited"
@@ -500,13 +503,13 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     # -- Translation of Home and Landing Page --
@@ -559,7 +562,7 @@ Feature: Home And Landing Page Test Creation of Content
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify translated content
@@ -603,14 +606,14 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-edited"
-        And user clicks on the tool bar status green button "Publicado"
+        And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user fills out the following fields
             | fieldLabel       | value    | field_name             |
             | Título de página | _Spanish | title                  |
             | Meta Description | _Spanish | field_page_description |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify Spanish edited content

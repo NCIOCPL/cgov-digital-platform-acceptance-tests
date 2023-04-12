@@ -3,6 +3,7 @@ import { And, When } from 'cypress-cucumber-preprocessor/steps';
 
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const siteSection = Cypress.env('test_site_section');
+const randomStr = Cypress.env('randomStr');
 
 function waitForText(attempt = 0) {
 
@@ -84,7 +85,7 @@ Given('user is navigating to the front end site with selected path {string}', (p
         }
         return true;
     })
-    cy.visit(`${frontEndBaseUrl}${firstSiteSection}/${purl}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}${firstSiteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 });
 
 Given('user is navigating to the front end site with path {string}', (purl) => {
@@ -94,7 +95,12 @@ Given('user is navigating to the front end site with path {string}', (purl) => {
         }
         return true;
     })
-    cy.visit(`${frontEndBaseUrl}${purl}`, { retryOnStatusCodeFailure: true });
+    if (purl == '/about-cancer/coping') {
+        cy.visit(`${frontEndBaseUrl}${purl}`, { retryOnStatusCodeFailure: true });
+    }
+    else {
+        cy.visit(`${frontEndBaseUrl}${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
+    }
 });
 
 Then('the current page is {string} in left nav', (title) => {
@@ -164,7 +170,7 @@ And('{string} appears in position {int} in the side menu tree', (label, position
 });
 
 And('user clicks on title with the url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${contentHref}']`).click();
+    cy.get(`a[href='${contentHref}-${randomStr}']`).click();
 });
 
 Then('the current left navigation label has url {string}', (currentHref) => {
@@ -172,7 +178,7 @@ Then('the current left navigation label has url {string}', (currentHref) => {
 });
 
 And('left navigation label {string} has selected site section url plus {string}',(label, purl)=>{
-    cy.get('ul.usa-sidenav__sublist li').find(`a:contains("${label}")`).should('have.attr', 'href', `${firstSiteSection}/${purl}`);
+    cy.get('ul.usa-sidenav__sublist li').find(`a:contains("${label}")`).should('have.attr', 'href', `${firstSiteSection}/${purl}-${randomStr}`);
 })
 
 And('left navigation label {string} has url {string}', (label, contentHref) => {

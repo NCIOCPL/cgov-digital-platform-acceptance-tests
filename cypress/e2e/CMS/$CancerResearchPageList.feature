@@ -62,6 +62,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         When user saves the content page
 
     Scenario: Verify newly created content
+        And browser waits
         Given user is navigating to the front end site with path site section plus "cancer-research-list-page"
         Then page title is "Automated Test Cancer Research List Page"
         And description reads "This is a description of cancer research list page content type."
@@ -85,7 +86,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-research-list-page" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
@@ -103,7 +104,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And user enters "Internal Link List Description" into 1 "Override List Description" text field
         And user enters "Media Link List Description" into 2 "Override List Description" text field
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify edited content
@@ -126,7 +127,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -138,11 +139,11 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And browser waits
         And "Automated Test Cancer Research List Page Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Cancer Research List Page - Card Title Edited" with href "/about-cancer/understanding/cancer-research-list-page-edited"
@@ -156,13 +157,13 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     # Translation of Cancer Research Page List
@@ -200,7 +201,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And user fills out the following fields
             | Meta Description | _Spanish | field_page_description |
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify translated content
@@ -223,7 +224,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-research-list-page-edited"
-        And user clicks on the tool bar status green button "Publicado"
+        And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user clears out "Título de página" field
         And user clears out "Meta Description" field
@@ -232,7 +233,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
             | Título de página | Automated Test CRLP Edited Spanish                  | title                  |
             | Meta Description | Automated Test CRLP Meta Description Edited Spanish | field_page_description |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify Spanish edited content

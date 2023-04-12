@@ -1,6 +1,6 @@
 Feature: User creating a video
 
-    Scenario: create a new video
+    Scenario: Create a new video
         Given user is navigating to "/user/login"
         When user enters credentials
         And user clicks "Log in" button

@@ -16,7 +16,8 @@ module.exports = defineConfig({
     test_site_section: '/about-cancer/understanding',
     front_end_base_url: 'https://www-dev-ac.cancer.gov',
     ocpl_username: 'ocpl-test',
-    ocpl_password: ''
+    ocpl_password: '',
+    randomStr: createRandomStr()
   },
   defaultCommandTimeout: 20000,
   e2e: {
@@ -29,3 +30,13 @@ module.exports = defineConfig({
     baseUrl: 'https://www-dev-ac.cancer.gov',
   },
 })
+
+function createRandomStr() {
+  var result = '';
+  var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for (var i = 0; i < 5; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}

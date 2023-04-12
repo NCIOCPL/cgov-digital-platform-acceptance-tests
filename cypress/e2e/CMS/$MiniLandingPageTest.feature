@@ -40,7 +40,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add Two Item Feature Card Row" content item
         And user clicks on "Featured Item" link in the "Internal Feature Card" text area
@@ -64,7 +64,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add List" content item
         And user fills out the following fields
@@ -100,7 +100,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add Borderless Full-Width Card" content item
         And user clicks on "Featured Item" link in the "Borderless Full-Width Card" text area
@@ -127,7 +127,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add Dynamic List" content item
         And user fills out the following fields
@@ -179,7 +179,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
@@ -194,7 +194,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | Meta Description         | Automated Test Mini Landing Page Meta Description Edited    | field_page_description         |
             | Feature Card Description | Automated Test Mini Landing Page - Feature Card Desc Edited | field_feature_card_description |
         And user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify edited content
@@ -212,7 +212,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -224,11 +224,11 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And browser waits
         And "Automated Test Mini Landing Page Edited" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Mini Landing Page - Card Title Edited" with href "/about-cancer/understanding/mini-landing-page-edited"
@@ -242,13 +242,13 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     # Translation of Mini Landing
@@ -298,7 +298,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify translated content
@@ -336,7 +336,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "mini-landing-page-edited"
-        And user clicks on the tool bar status green button "Publicado"
+        And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user clears out "Título de página" field
         And user clears out "Meta Description" field
@@ -345,7 +345,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | Título de página | Automated Test Mini Landing Edited Spanish                  | title                  |
             | Meta Description | Automated Test Mini Landing Meta Description Edited Spanish | field_page_description |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify Spanish edited content

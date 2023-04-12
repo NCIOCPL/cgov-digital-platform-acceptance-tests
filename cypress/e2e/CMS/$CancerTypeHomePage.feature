@@ -42,7 +42,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Guide Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -90,7 +90,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user fills out the following fields
             | fieldLabel     | value                                 | field_name                                                                                          |
             | Override Title | Media Link Override Title Guide cards | field_cthp_cards[1][subform][field_cthp_view_more_info][2][subform][field_override_title][0][value] |
-        And browser waits for 2000
+        And browser waits
         Then user saves the content page
         And browser waits for 2000
 
@@ -102,7 +102,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Internal Feature Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -130,7 +130,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP External Feature Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -155,7 +155,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Video Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -177,7 +177,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Select content" button from "Internal Link" text area
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
-        And browser waits
+        And browser waits for 5000
         Then user saves the content page
 
     Scenario: Adding research card
@@ -188,7 +188,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Research Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -217,7 +217,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Block Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -286,7 +286,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Meta Description" field
@@ -313,7 +313,8 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user remembers the title of selected video for further verification
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
+        And browser waits for 5000
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify edited content
@@ -344,7 +345,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -356,11 +357,11 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And "Automated Test Cancer Type Homepage Patient" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Cancer Type Homepage - Card Title" with href "/about-cancer/understanding/cancer-type-homepage-edited"
@@ -374,13 +375,13 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Add a translation
@@ -433,7 +434,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user remembers the title of selected video for further verification
         And user remembers title of selected Cancer Research List Page for future verification
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify translated content
@@ -480,7 +481,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-edited"
-        And user clicks on the tool bar status green button "Publicado"
+        And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user clears out "Título de página" field
         And user clears out "Meta Description" field
@@ -489,7 +490,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Título de página | Automated Test CTHP Edited Spanish                  | title                  |
             | Meta Description | Automated Test CTHP Meta Description Edited Spanish | field_page_description |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify Spanish edited CTHP content
@@ -549,7 +550,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Guide Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -608,7 +609,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Internal Feature Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -634,7 +635,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP External Feature Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -659,7 +660,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Video Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -692,7 +693,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Research Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -721,7 +722,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
-        And user clicks on the tool bar status green button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add CTHP Block Card" from "CTHP Cards" CTHP dropdown
         And browser waits
@@ -755,7 +756,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-edited" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         # And user clicks on "Audience Toggle Link" link
         And user clicks on "Select content" button item
@@ -764,7 +765,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And "Automated Test Cancer Type Homepage HP" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
        
 #----- Cancer Type Home Page HP front end verification starts from below------#
@@ -810,7 +811,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user clears out "Pretty URL" field
         And user clears out "Meta Description" field
@@ -837,7 +838,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user remembers the title of selected video for further verification
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify edited Cancer Type Homepage HP content
@@ -874,7 +875,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
@@ -886,11 +887,11 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And "Automated Test Cancer Type Homepage HP" had been selected
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with the path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Cancer Type Homepage HP - Card Title" with href "/about-cancer/understanding/cancer-type-homepage-hp-edited"
@@ -904,13 +905,13 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
         Then user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Add a translation to Cancer Type Homepage HP content
@@ -963,7 +964,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user remembers the title of selected video for further verification
         And user remembers title of selected Cancer Research List Page for future verification
         Then user saves the content page
-        And user clicks on the tool bar status green button "Borrador"
+        And user clicks on the tool bar status button "Borrador"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify translated Cancer Type Homepage HP content
@@ -1011,7 +1012,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
-        And user clicks on the tool bar status green button "Publicado"
+        And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user clears out "Título de página" field
         And user clears out "Meta Description" field
@@ -1020,7 +1021,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Título de página | Automated Test CTHP HP Edited Spanish                             | title                  |
             | Meta Description | Automated Cancer Type Homepage HP Meta Description Edited Spanish | field_page_description |
         When user saves the content page
-        And user clicks on the tool bar status green button "Editing"
+        And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify Spanish edited CTHP HP content
