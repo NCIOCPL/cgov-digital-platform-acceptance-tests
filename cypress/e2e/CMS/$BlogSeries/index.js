@@ -393,10 +393,6 @@ And('description reads {string}', (desc) => {
     cy.get(`p:contains('${desc}')`).should('be.visible');
 });
 
-Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
-})
-
 And('Author was translated as {string}', (text) => {
     cy.get(`div[class*="js-form-item"] label:contains("${text}")`).should('be.visible')
 });
