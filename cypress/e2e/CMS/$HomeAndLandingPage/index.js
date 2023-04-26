@@ -222,8 +222,8 @@ And('user clicks on {string} button item in the {string} text area', (selectCont
 And('primary feature card row displays the following cards', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-           link = link.replace('{TEST_SITE_SECTION}',siteSection)
-            cy.get(`div.row.feature-primary a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href=>{
+            link = link.replace('{TEST_SITE_SECTION}', siteSection)
+            cy.get(`div.row.feature-primary a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href => {
                 expect(href).to.include(link)
             })
         }
@@ -252,7 +252,7 @@ And('{int} guide card has text {string}', (cardNum, cardText) => {
 And('secondary feature card row displays the following cards', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            link = link.replace('{TEST_SITE_SECTION}', siteSection)
             cy.get(`div.row.feature-secondary a[href*='${link}']`).should('be.visible').and('include.text', title);
         }
     }
@@ -268,7 +268,7 @@ And('multimedia card row has a video which name matches selected multimedia card
 And('multimedia card row displays the following cards', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            link = link.replace('{TEST_SITE_SECTION}', siteSection)
             cy.get(`div.multimedia-slot a[href*='${link}']`).should('be.visible').and('include.text', title);
         }
     }
@@ -281,7 +281,7 @@ And('list card row title is {string}', (cardTitle) => {
 And('list row displays the following links', (dataTable) => {
     for (let { title, link, description } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            link = link.replace('{TEST_SITE_SECTION}', siteSection)
             cy.get(`div.managed.list a[href*='${link}']`).should('be.visible').and('include.text', title);
             cy.get('div.managed.list').find('div.description').should('be.visible').and('include.text', description);
         }
@@ -299,7 +299,7 @@ And('one-column content displays text {string}', (contentText) => {
 And('one-column list has the following links', (dataTable) => {
     for (let { title, link, description } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace('{TEST_SITE_SECTION}',siteSection)
+            link = link.replace('{TEST_SITE_SECTION}', siteSection)
             cy.get(`div.row.paragraph-col-one a[href*='${link}']`).should('be.visible').and('include.text', title);
             cy.get('div.row.paragraph-col-one').find('div.description').should('be.visible').and('include.text', description);
         }
@@ -386,8 +386,8 @@ And('user enters {string} into Content Heading text field', (value) => {
 And('last feature card row displays the following cards', (dataTable) => {
     for (let { title, link, featureCardDescription } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace('{TEST_SITE_SECTION}',siteSection)
-            cy.get(`div.feature-card a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href=>{
+            link = link.replace('{TEST_SITE_SECTION}', siteSection)
+            cy.get(`div.feature-card a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href => {
                 expect(href).to.include(link)
             })
         }
@@ -443,10 +443,6 @@ And('the following sections have title field translated as {string}', (spPath, d
         cy.get(`div[class*='main-canvas'] div:contains("${section}")`).parent().find(`div[class*='contents-9-subform-field-'] label:contains("${spPath}")`).should('be.visible')
     }
 })
-
-Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
-});
 
 And('dynamic lists shows {int} items espanol link', (num) => {
     cy.get("li[class*='item general list-item t'] a").should('have.length', num)

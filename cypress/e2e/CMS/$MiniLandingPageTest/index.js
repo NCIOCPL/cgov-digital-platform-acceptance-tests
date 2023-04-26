@@ -142,7 +142,7 @@ And('feature card row displays the following cards', (dataTable) => {
 And('managed list has the following links', (dataTable) => {
     for (let { title, url, description } of dataTable.hashes()) {
 
-        url = url.replace('{TEST_SITE_SECTION}',siteSection)
+        url = url.replace('{TEST_SITE_SECTION}', siteSection)
         cy.get(`div.managed.list h3:contains('${title}')`).should('be.visible')
         if (description !== 'N/A') {
             cy.get(`div.managed.list p:contains('${description}')`).should('be.visible')
@@ -154,7 +154,7 @@ And('managed list has the following links', (dataTable) => {
 And('borderless card with {string} accent displays the following', (accent, dataTable) => {
     cy.get(`div.${accent} .borderless-card`).should('be.visible')
     for (let { title, link } of dataTable.hashes()) {
-        link = link.replace('{TEST_SITE_SECTION}',siteSection)
+        link = link.replace('{TEST_SITE_SECTION}', siteSection)
         cy.get(`div.${accent} .borderless-card h2:contains('${title}')`).should('be.visible')
         cy.get(`div.${accent} .borderless-card a[href*="${link}"]`).should('be.visible')
     }
@@ -216,12 +216,6 @@ And('Dynamic List has options translated as {string}', (TranslatedOption) => {
 And('button to add content was translated to start with {string}', (TranslatedOption) => {
     cy.get(`li[class*='dropbutton-action'] input[value^='${TranslatedOption}']`).should('be.visible')
 })
-
-Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
-});
-
-
 
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();

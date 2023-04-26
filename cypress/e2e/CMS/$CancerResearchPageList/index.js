@@ -36,7 +36,7 @@ Then('Selected Research pages list contains the following links', (dataTable) =>
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection);
         }
-        cy.get(`.managed.list div a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href=>{
+        cy.get(`.managed.list div a:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href => {
             expect(href).to.include(link)
         })
         if (description !== 'N/A') {
@@ -79,10 +79,6 @@ And('Remove button for media was translated as {string}', (RemoveBtn) => {
 
 And('Link section under related resources was translated as {string}', (linkTranslated) => {
     cy.get(`summary[class*='summary'] span:contains("${linkTranslated}")`).should('be.visible')
-})
-
-Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 })
 
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
