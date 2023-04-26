@@ -173,17 +173,17 @@ And('user clicks on {string} dropdown', (dropdown) => {
 
 And('the following more info links are displayed', (dataTable) => {
     for (let { title, url } of dataTable.hashes()) {
-        url = url.replace('{TEST_SITE_SECTION}',siteSection)
-        cy.get(`ul a[class='title']:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href=>{
+        url = url.replace('{TEST_SITE_SECTION}', siteSection)
+        cy.get(`ul a[class='title']:contains("${title}")`).should('be.visible').and('have.attr', 'href').then(href => {
             expect(href).to.include(url)
         })
     }
 })
 
 And('cthp causes card has a link {string} with href {string}', (linkText, href) => {
-    const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}',siteSection)
+    const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}', siteSection)
     cy.get("div[class*='cthp-causes'] a").as('card').should('have.text', linkText)
-    cy.get("@card").should('have.attr', 'href').then( href =>{
+    cy.get("@card").should('have.attr', 'href').then(href => {
         expect(href).to.include(replacedTestSiteSection)
     })
 })
@@ -193,9 +193,9 @@ And('cthp survival card has a link {string} with href {string}', (linkText, href
 })
 
 And('cthp screening card has a link {string} with href {string}', (linkText, href) => {
-    const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}',siteSection)
+    const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}', siteSection)
     cy.get("div[class*='cthp-screening'] a").as('card').should('have.text', linkText)
-    cy.get("@card").should('have.attr', 'href').then( href =>{
+    cy.get("@card").should('have.attr', 'href').then(href => {
         expect(href).to.include(replacedTestSiteSection)
     })
 })
@@ -281,10 +281,6 @@ And('the following cards fields are displayed with remove button translated as {
 
 And('Add Card Section was translated as {string}', (addCardSection) => {
     cy.get(`input[value='${addCardSection}']`).should('be.visible');
-});
-
-Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 });
 
 And('the following cards have multiple spanish links that start with {string}', (startLink, dataTable) => {

@@ -144,10 +144,6 @@ And('Related Resources section was translated as {string}', (dropdownLabel) => {
     cy.get("strong[data-drupal-selector='edit-field-related-resources-title']").should('include.text', dropdownLabel)
 })
 
-Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
-})
-
 And('dates were translated as follows', (dataTable) => {
     for (const { date } of dataTable.hashes()) {
         cy.get(`div[class='document-dates horizontal'] li>strong:contains("${date}")`).should('be.visible')

@@ -169,10 +169,6 @@ And('Add Body Section was translated as {string}', (addBodySection) => {
     cy.get(`input[value='${addBodySection}']`).should('be.visible');
 });
 
-Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
-    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
-});
-
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 });
