@@ -505,3 +505,7 @@ And('user selects a checkbox next to title with url {string} from the list of co
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true }, { failOnStatusCode: false });
 });
+
+Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
+})

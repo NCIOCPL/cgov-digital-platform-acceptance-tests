@@ -40,12 +40,12 @@ And('user selects {string} item from the media list', (title) => {
 
 Then('Selected Research pages list contains the following links', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
-       link = link.replace("{TEST_SITE_SECTION}", siteSection);
+        link = link.replace("{TEST_SITE_SECTION}", siteSection);
         cy.get(`.managed.list div a:contains("${title}")`).each(($el) => {
             const text = $el[0].innerText;
             if (text === title) {
-                cy.wrap($el).should('be.visible').and('have.attr', 'href').then(href=>{
-                    expect(href).to.include(link)  
+                cy.wrap($el).should('be.visible').and('have.attr', 'href').then(href => {
+                    expect(href).to.include(link)
                 })
             }
         })
@@ -73,3 +73,28 @@ And('each file has a size class', () => {
         cy.wrap($el).parent().find(".filesize").should('include.text', 'B)')
     })
 })
+
+Then('user selects {string} option from Operations dropdown for media with title {string}', (translateOption, title) => {
+    cy.get(`td:contains('${title}')`).each(($el) => {
+        const text = $el[0].innerText;
+        if (text === title) {
+            cy.wrap($el).siblings('td').find(`ul.dropbutton >li> a:contains("${translateOption}")`).click({ force: true });
+        }
+    })
+});
+
+When('user clicks on {string} button to edit translation of {string}', (editButton, fileName) => {
+    cy.get(`a:contains("${fileName}")`).parent().parent().find('li.edit.dropbutton-action').find('a').should('have.text', editButton).click({ force: true });
+})
+
+And('user deletes test file and translation with url {string}', (url) => {
+    cy.get(`form[id^="views-form-media-media-page-list"]`).then(($content) => {
+        if ($content.find(`a[href*='${siteSection}/${url}']`).length) {
+            cy.get(`a[href*='${siteSection}/${url}']`).parent().parent().find('input.form-checkbox').check();
+            cy.get(`input[value='Apply to selected items']`).first().click();
+            cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
+            cy.get(`input[value='Delete']`).click();
+            cy.get("div[role='contentinfo']").should('include.text', 'Deleted 2 items.');
+        }
+    });
+});
