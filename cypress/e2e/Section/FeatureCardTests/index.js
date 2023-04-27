@@ -32,14 +32,14 @@ And('feature cards at positions {string} have {string} as {string}', (indexes, c
                 break;
             case 'links':
                 const expectedItemLink = value.split(',');
-                cy.get('.feature-primary .feature-card > a').eq(expectedIndex[i]).invoke('attr','href').then(href=>{
-                    if(href.startsWith('http')){
+                cy.get('.feature-primary .feature-card > a').eq(expectedIndex[i]).invoke('attr', 'href').then(href => {
+                    if (href.startsWith('http')) {
                         expect(href).to.eq(expectedItemLink[i])
-                    }else {
+                    } else {
                         expect(href).to.eq(`${getBaseDirectory()}${expectedItemLink[i]}`)
                     }
                 })
-    
+
                 break;
             case 'alt texts':
                 const expectedAltText = value.split(',');
@@ -59,7 +59,7 @@ And('feature cards at positions {string} have {string} as {string}', (indexes, c
                 break;
             case 'exit notification link href':
                 const expectedHref = value.split(',');
-                cy.get('.feature-primary .feature-card').eq(expectedIndex[i]).find('a.icon-exit-notification').should('be.visible').and('have.attr', 'href',`${expectedHref[i]}`);
+                cy.get('.feature-primary .feature-card').eq(expectedIndex[i]).find('a.icon-exit-notification').should('be.visible').and('have.attr', 'href', `${expectedHref[i]}`);
                 break;
         }
     }
@@ -70,10 +70,48 @@ And('the number of exit disclaimers is {int}', (externalLinkCount) => {
 });
 
 
+Then('NCIDS feature cards are visible', () => {
+    cy.get('section[class*="cgdp-feature-card-row"] .nci-card__body').should('be.visible');
+});
 
+And('NCIDS feature cards have the following attributes', (dataTable) => {
 
+    for (const { index, title, description, link, altText, source, file } of dataTable.hashes()) {
+        cy.get('.nci-card__body').eq(index).as('featureCard');
 
+        cy.get('@featureCard').find('.nci-card__title').invoke('text').then((text) => {
+            expect(text.trim()).equal(title);
+        });
 
+        if (description === 'N/A') {
+            cy.get('@featureCard').find('p').should('not.exist');
+        }
+        else {
+            cy.get('@featureCard').find('p').invoke('text').then((text) => {
+                expect(text.trim()).equal(description);
+            });
+        }
 
+        cy.get('@featureCard').parent().invoke('attr', 'href').then(href => {
+            if (href.startsWith('http')) {
+                expect(href).to.eq(link)
+            } else {
+                expect(href).to.eq(`${getBaseDirectory()}${link}`)
+            }
+        })
 
+        cy.get('@featureCard').parent().find('img').should('have.attr', 'alt', altText);
 
+        cy.get('@featureCard').parent().find('img').invoke('attr', 'src').then((fullSrc) => {
+            console.log('source',fullSrc)
+            expect(fullSrc.includes(`${source}`)).to.be.true;
+        });
+
+        cy.get('@featureCard').parent().find('img').invoke('attr', 'src').then((fullSrc) => {
+            const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+            console.log(src1)
+            expect(src1.endsWith(file)).to.be.true;
+        });
+
+    }
+});
