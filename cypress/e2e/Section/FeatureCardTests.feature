@@ -39,3 +39,46 @@ Feature: Feature Card tests
             | url                          | indexes | externalLinkCount | href                       | itemLink               |
             | /about-nci/organization/ccct | 1       | 1                 | /policies/linking          | https://www.google.com |
             | /espanol/noticias            | 2       | 1                 | /espanol/politicas/enlaces | https://www.google.com |
+
+
+    Scenario Outline: Verify NCIDS 3 feature card row components
+        Given screen breakpoint is set to "<breakpoint"
+        And user is navigating to "/ncids-internal-feature-card-test"
+        Then NCIDS feature cards are visible
+        And NCIDS feature cards have the following attributes
+            | index | title                              | description                                                                   | link                                  | altText                       | source                                                                   | file                                       |
+            | 0     | [Internal Feature Card] Card Title | N/A                                                                           | /test/internal-card-test-article      | Feature Card Cat              | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | feature_card_test_cat_override_source.jpeg |
+            | 1     | Internal Card Title Override       | N/A                                                                           | /test/internal-card-test-16x9-article | 16x9 Override Image           | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | feature_card_test_cat_16x9_override.jpeg   |
+            | 2     | Internal Card Title Override       | Internal Card Description Override                                            | /test/internal-card-test-4x3-article  | Feature Card Cat 4x3 Override | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | feature_card_test_cat_override_source.jpeg |
+            | 3     | [Lead IMG] Card Title              | N/A                                                                           | /test/lead-img                        | Lead Placeholder              | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | lead-placeholder-16x9.png                  |
+            | 4     | Internal Card Title Override       | N/A                                                                           | /test/lead-promo-img                  | Promo Placeholder             | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | promo-placeholder-16x9.png                 |
+            | 5     | Internal Card Title Override       | Internal Card Description Override                                            | /test/lead-promo-img                  | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
+            | 6     | Internal Card Title Override       | Image has no crops -> show placeholder                                        | /test/clinical-trial-test-article     | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
+            | 7     | Feelings and Cancer                | Internal Card Description Override - Small Lead Article Image being scaled up | /about-cancer/coping/feelings         | Sad Woman Looking Out Window  | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | sad-woman-looking-out-window-article.jpg   |
+            | 8     | [No IMG] Card Title                | [No IMG] List Description                                                     | /test/no-img                          | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
+
+        Examples:
+            | breakpoint |
+            | desktop    |
+            | tablet     |
+            | mobile     |
+
+    Scenario Outline: Verify NCIDS 3 external feature card row components
+        Given screen breakpoint is set to "<breakpoint"
+        And user is navigating to "/ncids-external-feature-card-test"
+        Then NCIDS feature cards are visible
+        And NCIDS feature cards have the following attributes
+            | index | title               | description                                                            | link                   | altText                       | source                                                                   | file                                       |
+            | 0     | External Card Title | Image using 16x9 and 4x3 Override Fields                               | https://www.google.com | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
+            | 1     | External Card Title | This is a use case of the card using the images crops for 16x9 and 4x3 | https://www.google.com | Feature Card Cat              | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | feature_card_test_cat_override_source.jpeg |
+            | 2     | External Card Title | This uses the 4x3 crop and the 16x9 override                           | https://www.google.com | 16x9 Override Image           | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | feature_card_test_cat_16x9_override.jpeg   |
+            | 3     | External Card Title | Image using 16x9 crop and 4x3 Override Fields                          | https://www.google.com | Feature Card Cat 4x3 Override | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | feature_card_test_cat_override_source.jpeg |
+            | 4     | External Card Title | N/A                                                                    | https://www.google.com | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
+            | 5     | External Card Title | External Card Description                                              | https://www.google.com | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
+            | 6     | External Card Title | Image has no crop -> Show placeholder                                  | https://www.google.com | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
+
+        Examples:
+            | breakpoint |
+            | desktop    |
+            | tablet     |
+            | mobile     |
