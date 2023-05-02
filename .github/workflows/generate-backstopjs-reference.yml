@@ -1,11 +1,11 @@
 name: Generate Backstop Reference Images
-on: 
+on:
   workflow_dispatch:
     inputs:
       base_url:
         description: "Base url to generate reference images"
         required: true
-        default: 'https://www-dev-ac.cancer.gov'
+        default: "https://www-dev-ac.cancer.gov"
         type: string
 jobs:
   generate_images:
@@ -19,8 +19,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
+          node-version-file: ".nvmrc"
+          cache: "npm"
       ## Install using CI
       - name: Install Dependencies
         run: npm ci
