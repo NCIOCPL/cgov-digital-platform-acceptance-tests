@@ -1,14 +1,14 @@
-name: Run regression (FE and CMS) against ODE
-on: 
+name: Run ODE regression (FE and CMS)
+on:
   workflow_dispatch:
     inputs:
       base_url:
-        description: "Base url (ode or ac)"
+        description: "Base url (ode or ac), without trailing slash"
         required: true
         type: string
 jobs:
   front-end-regression:
-    name: Running cypress regression tests
+    name: Running cypress regression tests on ODE
     runs-on: ubuntu-latest
     steps:
       ## This clones and checks out.
@@ -18,5 +18,28 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
+          node-version-file: ".nvmrc"
+          cache: "npm"
+      ## Install using CI
+      - name: Install Dependencies
+        run: npm ci
+      ## Run Cypress functional tests
+      - name: Run tests
+        run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.base_url }} CYPRESS_ocpl_password='${{ secrets.ocpl_password }}' CYPRESS_admin_password='${{ secrets.admin_password }}' npm test
+      ## Upload screenshots of failed tests
+      - uses: actions/upload-artifact@v2
+        name: Upload failed tests
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/cypress/screenshots
+      - name: Run cms tests
+        if: always()
+        run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms
+      ## Upload screenshots of failed tests
+      - uses: actions/upload-artifact@v2
+        name: Upload failed CMS tests
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/cypress/screenshots
