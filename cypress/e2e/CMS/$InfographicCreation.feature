@@ -39,7 +39,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         Then user saves the content page
 
 
-    Scenario: Verify newly created English Infographic as a media item at desktop breakpoint
+    Scenario: Verify newly created English Infographic as a media item
         Given user is navigating to the front end site with path site section plus "test-infographic"
         And browser waits
         And screen breakpoint is set to "desktop"
@@ -58,7 +58,59 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And "Posted:" date is displaying today's date
 
 
-    Scenario: Create English test pages to embed Infographic and embed/add infographic to test pages
+    Scenario: Create a Spanish Infographic translation
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Media" sub tab
+        Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Infographic"
+        Then the page title is "Translations of Automated Test Infographic"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Automated Test Infographic"
+        And user clears out "Pretty URL" field
+        And user clears out "Nombre" field
+        And user clears out "Card Title" field
+        And user clears out "Feature Card Description" field
+        And user fills out the following fields
+            | fieldLabel               | value                                                   | field_name                     |
+            | Pretty URL               | test-infographic-spanish                                | field_pretty_url               |
+            | Nombre                   | Automated Test Infographic Spanish                      | name[0][value]                 |
+            | Card Title               | Automated Test Infographic Spanish - Card Title         | field_card_title               |
+            | Feature Card Description | Automated Test Infographic Spanish - Featured Card Desc | field_feature_card_description |
+        And user enters "Spanish" into "List Description" text field
+        And user types "Spanish" into Caption text field
+        And user selects "Review" from "Change to" dropdown
+        Then user saves the content page
+        And user clicks on "Moderated media" sub tab
+        Then user selects "Editar" option from Operations dropdown for media with title "Automated Test Infographic Spanish"
+        Then page title is "Automated Test Infographic Spanish [Español traducción]"
+        And user selects "Publicado" from "Change to" dropdown
+        Then user saves the content page
+
+    Scenario: Verify newly created Spanish Infographic as a media item
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "test-infographic-spanish"
+        And browser waits
+        And screen breakpoint is set to "desktop"
+        And page title is "Automated Test Infographic Spanish"
+        And description reads "This is a description of Infographic content type."
+        And the image has the name "infographic-desktop"
+        And the caption appears as "Automated Test Infographic CaptionSpanish"
+        And the infographic link "Ver e Imprimir Infografía" appears with href "infographic-desktop"
+        And date label is displaying as "Publicación:"
+        And screen breakpoint is set to "mobile"
+        Then page title is "Automated Test Infographic Spanish"
+        And description reads "This is a description of Infographic content type."
+        And the image has name "infographic-mobile"
+        And the caption appears as "Automated Test Infographic CaptionSpanish"
+        And the infographic link "Ver e Imprimir Infografía" does not appear
+        And date label is displaying as "Publicación:"
+
+
+
+    Scenario: Create English test pages to embed Infographic and embed/add Infographic to test pages
         Given user is navigating to "/user/login"
         When user enters credentials
         And user clicks "Log in" button
@@ -134,8 +186,8 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clicks on "Add Body Section" to add a body section
         And user enters "Article Heading4" as 4 body section heading
         And browser waits
-        And browser waits
         And user fills out 4 "Body" text area with "Infographic Display: Article: Medium,Right:"
+        And browser waits
         And user clicks the "Insert Infographic" button 4 in the WYSIWYG editor
         And user enters "Automated Test Infographic" into media title search box and clicks "Apply"
         And user selects "Automated Test Infographic" item from the media list
@@ -201,6 +253,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user selects "Published" from "Save as" dropdown
         When user saves the content page
 
+
     Scenario: Verify Infographic at the front end in the English Article
         Given user is navigating to the front end site with path site section plus "article-to-test-infographic"
         And screen breakpoint is set to "desktop"
@@ -215,17 +268,86 @@ Feature: As a cms user I want to be able to create an Infographic media content 
             | 2     | align-center    | infographic-desktop | Alt Text | Infographic Display: Article: Medium,Center: |
             | 3     | align-right     | infographic-desktop | Alt Text | Infographic Display: Article: Medium,Right:  |
 
-    Scenario: Verify infographic at the front end in the English Home and Landing page
+
+    Scenario: Verify Infographic at the front end in the English Home and Landing page
         Given user is navigating to the front end site with path site section plus "home-and-landing-page-to-test-infographic"
         And page title is "Automated Test Home and Landing page to test Infographic"
         And multimedia card row displays an image which matches the earlier selected promo image of Infographic
         And multimedia card row displays the following cards
             | title                      | link                                 |
             | Automated Test Infographic | {TEST_SITE_SECTION}/test-infographic |
+        And the Card Title has a link "Automated Test Infographic - Card Title" with href "test-infographic"
+        And feature card description reads "Automated Test Infographic - Featured Card Desc"
         And list card row title is "List Title"
         And list row displays the following links
             | title                      | link                                 | description                                 |
             | Automated Test Infographic | {TEST_SITE_SECTION}/test-infographic | Automated Test Infographic List Description |
+        And the thumbnail image has an image which matches the earlier selected promo image of Infographic
+
+
+    Scenario: Translate test pages to Spanish to embed Infographic and embed/add Infographic to test pages
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Article to test Infographic"
+        Then page title is "Translations of Automated Test Article to test Infographic"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Automated Test Article to test Infographic"
+        And user clears out "Pretty URL" field
+        And user clears out "Título de página" field
+        And user fills out the following fields
+            | fieldLabel       | value                                              | field_name       |
+            | Pretty URL       | article-to-test-infographic-spanish                | field_pretty_url |
+            | Título de página | Automated Test Article to test Infographic Spanish | title            |
+        Then user saves the content page
+        And user clicks on the tool bar status button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+        When user clicks on "Contenido" tab
+        Then user selects "Traducir" option from Operations dropdown for content with title "Automated Test Home and Landing page to test Infographic"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Automated Test Home and Landing page to test Infographic"
+        And user clears out "Pretty URL" field
+        And user clears out "Título de página" field
+        And user fills out the following fields
+            | fieldLabel       | value                                                            | field_name       |
+            | Pretty URL       | home-and-landing-page-to-test-infographic-spanish                | field_pretty_url |
+            | Título de página | Automated Test Home and Landing page to test Infographic Spanish | title            |
+        Then user saves the content page
+        And user clicks on the tool bar status button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+
+
+    Scenario: Verify Infographic at the front end in the Spanish Article
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "article-to-test-infographic-spanish"
+        And screen breakpoint is set to "desktop"
+        And page title is "Automated Test Article to test Infographic Spanish"
+        And the intro text reads "Article Intro Text"
+        And the caption appears as "Automated Test Infographic Caption"
+        And the infographic link "Ver e Imprimir Infografía" appears with href "infographic-desktop"
+        And the spanish infographic displayed has the following attributes
+            | index | position        | imageSource         | imageAlt | descText                                     | longDesc |
+            | 0     | embedded-entity | infographic-desktop | Alt Text | Infographic Display: Article: Large,None:    | espanol  |
+            | 1     | align-left      | infographic-desktop | Alt Text | Infographic Display: Article: Medium,Left:   | espanol  |
+            | 2     | align-center    | infographic-desktop | Alt Text | Infographic Display: Article: Medium,Center: | espanol  |
+            | 3     | align-right     | infographic-desktop | Alt Text | Infographic Display: Article: Medium,Right:  | espanol  |
+
+
+    Scenario: Verify Infographic at the front end in the Spanish Home and Landing page
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-to-test-infographic-spanish"
+        And page title is "Automated Test Home and Landing page to test Infographic Spanish"
+        And multimedia card row displays an image which matches the earlier selected promo image of Infographic
+        And multimedia card row displays the following cards
+            | title                              | link                                         |
+            | Automated Test Infographic Spanish | {TEST_SITE_SECTION}/test-infographic-spanish |
+        And the Card Title has a link "Automated Test Infographic Spanish - Card Title" with href "test-infographic-spanish"
+        And feature card description reads "Automated Test Infographic Spanish - Featured Card Desc"
+        And list card row title is "List Title"
+        And list row displays the following links
+            | title                              | link                                         | description                                        |
+            | Automated Test Infographic Spanish | {TEST_SITE_SECTION}/test-infographic-spanish | Automated Test Infographic List DescriptionSpanish |
         And the thumbnail image has an image which matches the earlier selected promo image of Infographic
 
 
@@ -241,13 +363,16 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete these content items?"
         When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 content items" appears on a screen
+        Then the confirmation text "Deleted 4 content items" appears on a screen
         And the content item with url "article-to-test-infographic" does not exist in the list of content
         And the content item with url "home-and-landing-page-to-test-infographic" does not exist in the list of content
+        And the content item with url "article-to-test-infographic-spanish" does not exist in the list of content
+        And the content item with url "home-and-landing-page-to-test-infographic-spanish" does not exist in the list of content
         And user clicks on "Media" sub tab
         And user selects a checkbox next to title with url "test-infographic" from the list of content
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this media item?"
         When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 item" appears on a screen
+        Then the confirmation text "Deleted 2 items" appears on a screen
         And the content item with url "test-infographic" does not exist in the list of content
+        And the content item with url "test-infographic-spanish" does not exist in the list of content
