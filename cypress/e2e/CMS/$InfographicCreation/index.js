@@ -5,6 +5,7 @@ import { extractImgName } from "../../../utils/extractImgName.js";
 
 const siteSection = Cypress.env('test_site_section');
 const randomStr = Cypress.env('randomStr');
+const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 And('user fills out the following fields', (dataTable) => {
     for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
@@ -93,6 +94,10 @@ And(`{string} date is displaying today's date`, (dateToday) => {
     const expectedDate = `${month} ${day}, ${year}`;
     cy.get('div.document-dates li').as('dateStamp').find('strong').should('have.text', dateToday);
     cy.get('@dateStamp').find('time').should('include.text', expectedDate);
+});
+
+And('date label is displaying as {string}', (labelText) => {
+    cy.get('div.document-dates li').as('dateStamp').find('strong').should('have.text', labelText);
 });
 
 And('the infographic link {string} does not appear', (linkText) => {
@@ -290,4 +295,29 @@ And('the thumbnail image has an image which matches the earlier selected promo i
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     });
+});
+
+Then('user selects {string} option from Operations dropdown for media with title {string}', (translateOption, title) => {
+    cy.get(`td:contains('${title}')`).siblings('td').find(`ul.dropbutton >li> a:contains("${translateOption}")`).click({ force: true });
+});
+
+And('the spanish infographic displayed has the following attributes', (dataTable) => {
+    for (const { index, position, imageSource, imageAlt, descText, longDesc } of dataTable.hashes()) {
+        const regex = new RegExp(imageSource);
+        const regex1 = new RegExp(longDesc);
+        cy.get('div.centered-element').eq(index).find('img').as('image')
+            .should('have.attr', 'alt').and('eq', imageAlt);
+        cy.get('@image').parent().parent().parent().parent().should('have.attr', 'class').and('include', position);
+        cy.get('@image').should('have.attr', 'src').and('match', regex);
+        cy.get(`p:contains('${descText}')`).should('be.visible');
+        cy.get('@image').should('have.attr', 'longdesc').and('match', regex1);
+    }
+});
+
+And('feature card description reads {string}', (description) => {
+    cy.get(`div.multimedia-slot p:contains('${description}')`).should('be.visible');
+});
+
+And('user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
 });
