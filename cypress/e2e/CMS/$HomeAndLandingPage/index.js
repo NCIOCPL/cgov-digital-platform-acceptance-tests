@@ -430,13 +430,22 @@ Then('the promo image is matching the earlier selected image', () => {
     })
 });
 //-- Translation of Home and Landing Page -- //
-And('Hero Banner displays text {string}', (TextDisplay) => {
-    cy.get(`div[id*='hero-banner-text'] em:contains("${TextDisplay}")`).should('be.visible')
-})
 
-And('button to add a banner was translated as {string}', (textTranslated) => {
-    cy.get(`input[value^="${textTranslated}"]`).should('be.visible')
-})
+And('the following images are displayed with remove button translated as {string}', (removeBtn, dataTable) => {
+    for (let { image } of dataTable.hashes()) {
+        cy.get(`div[class*="image-widget-data"] a:contains("${image}")`).each($el => {
+            cy.get(`input[value = "${removeBtn}"]`).should('be.visible');
+        });
+    }
+});
+
+And('the {string} button is displayed beside the text {string}', (removeBtn, text) => {
+    cy.get(`div#edit-field-hero-banner-0-top:contains("${text}")`).find(`input[id="edit-field-hero-banner-0-top-links-remove-button"][value="${removeBtn}"]`).should('be.visible');
+});
+
+And(`Alternative text field was translated as {string}`, (altText) => {
+    cy.get(`label[for*="edit-field-hero-banner-0-subform-field-desktop-hero-0-alt"]:contains("${altText}")`).should('be.visible');
+});
 
 And('the following sections have title field translated as {string}', (spPath, dataTable) => {
     for (const { section } of dataTable.hashes()) {
@@ -461,3 +470,45 @@ And('every link in dynamic list starts with {string}', (espanolPath) => {
         expect(linkHref.startsWith(espanolPath)).to.be.true;
     })
 })
+
+And('user clicks {string} button for adding hero image', (imageBtn) => {
+    cy.get(`div.paragraphs-dropbutton-wrapper`).find(`input[value="${imageBtn}"]`).click({ force: true });
+});
+
+And('user uploads test file {string} as {string} version', (fileName, mode) => {
+    if (mode == 'desktop') {
+        cy.fixture(fileName, { encoding: null }).as('fixture')
+        cy.get('input[type="file"]').first().selectFile('@fixture');
+        cy.wait(2000);
+        cy.get(`input[id*="edit-field-hero-banner-0-subform-field-${mode}-hero-0-alt"]`).type("Alt Text")
+    }
+    if (mode == 'tablet') {
+        cy.fixture(fileName, { encoding: null }).as('fixture')
+        cy.get('input[type="file"]').first().selectFile('@fixture');
+        cy.wait(2000);
+        cy.get(`input[id*="edit-field-hero-banner-0-subform-field-${mode}-hero-0-alt"]`).type("Alt Text")
+    }
+    if (mode == 'mobile') {
+        cy.fixture(fileName, { encoding: null }).as('fixture')
+        cy.get('input[type="file"]').first().selectFile('@fixture');
+        cy.wait(2000);
+        cy.get(`input[id*="edit-field-hero-banner-0-subform-field-${mode}-hero-0-alt"]`).type("Alt Text")
+    }
+});
+
+And('user enters {string} into {string} text field in home and landing page', (tagLineText, field) => {
+    cy.get(`input[id*="edit-field-hero-banner-0-subform-field-tagline-0-value"]`).type(tagLineText);
+});
+
+And('the banner image with the name {string} is displayed at {string} breakpoint', (imageName, mode) => {
+    if (mode == 'tablet') {
+        cy.get('div#nvcgSlHeroHeader source[media="(max-width: 1024px) and (min-width: 641px)"]').should('have.attr', 'srcset').and('include', imageName);
+    }
+    if (mode == 'desktop') {
+        cy.get('div#nvcgSlHeroHeader img').should('have.attr', 'src').and('include', imageName);
+    }
+});
+
+And('{string} text is displayed at {string} breakpoint', (fieldText, mode) => {
+    cy.get('div#nvcgSlHeroHeader').find(`p:contains("${fieldText}")`).should('be.visible');
+});
