@@ -19,6 +19,17 @@ Feature: Home And Landing Page Test Creation of Content
             | Card Title               | Automated Test Home and Landing page - Card Title        | field_card_title               |
             | Meta Description         | Automated Test Home and Landing page Meta Description    | field_page_description         |
             | Feature Card Description | Automated Test Home and Landing page - Feature Card Desc | field_feature_card_description |
+        And user clicks "Add Hero Banner" button for adding hero image
+        And user uploads test file "heroimagenewsdesktop.jpg" as "desktop" version
+        And system waits for file upload process
+        And browser waits
+        And user uploads test file "heroimagenewstablet.jpg" as "tablet" version
+        And system waits for file upload process
+        And browser waits
+        And user uploads test file "heroimagenewsmobile.jpg" as "mobile" version
+        And system waits for file upload process
+        And browser waits
+        And user enters "This is to verify tagline" into "Tagline" text field in home and landing page
         And user selects 2 Promotional Image from the list of images to be displayed in mini landing pages
         And browser waits
         And user remembers the source of selected promotional image to be displayed in mini landing pages for further verification
@@ -309,6 +320,12 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "home-and-landing-page"
+        And screen breakpoint is set to "tablet"
+        And the banner image with the name "heroimagenewstablet" is displayed at "tablet" breakpoint
+        And "This is to verify tagline" text is displayed at "tablet" breakpoint
+        And screen breakpoint is set to "desktop"
+        And the banner image with the name "heroimagenewsdesktop" is displayed at "desktop" breakpoint
+        And "This is to verify tagline" text is displayed at "desktop" breakpoint
         And page title is "Automated Test Home and Landing page"
         And primary feature card row displays the following cards
             | title                             | link                        |
@@ -532,8 +549,13 @@ Feature: Home And Landing Page Test Creation of Content
             | Card Title               | field_card_title               |
             | Meta Description         | field_page_description         |
             | Feature Card Description | field_feature_card_description |
-        And Hero Banner displays text "Aún no se ha añadido ningún Paragraph."
-        And button to add a banner was translated as "Añadir Hero Banner"
+        And the following images are displayed with remove button translated as "Eliminar"
+            | image                |
+            | heroimagenewsdesktop |
+            | heroimagenewstablet  |
+            | heroimagenewsmobile  |
+        And the "Eliminar" button is displayed beside the text "Hero Banner"
+        And Alternative text field was translated as "Texto alternativo (todos los idiomas)"
         And the following sections have title field translated as "Título"
             | section                  |
             | Primary Feature Card     |
@@ -567,6 +589,13 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Verify translated content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-edited"
+        And browser waits
+        And screen breakpoint is set to "tablet"
+        And the banner image with the name "heroimagenewstablet" is displayed at "tablet" breakpoint
+        And "This is to verify tagline" text is displayed at "tablet" breakpoint
+        And screen breakpoint is set to "desktop"
+        And the banner image with the name "heroimagenewsdesktop" is displayed at "desktop" breakpoint
+        And "This is to verify tagline" text is displayed at "desktop" breakpoint
         Then page title is "Automated Test Home and Landing Page Edited"
         And primary feature card row displays the following cards
             | title                                | link                          |
@@ -612,6 +641,7 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel       | value    | field_name             |
             | Título de página | _Spanish | title                  |
             | Meta Description | _Spanish | field_page_description |
+        And user enters "Spanish" into "Tagline" text field in home and landing page
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
@@ -623,6 +653,10 @@ Feature: Home And Landing Page Test Creation of Content
         And the page contains meta tags with the following names
             | name        | content                                                              |
             | description | Automated Test Home and Landing Page Meta Description Edited_Spanish |
+        And screen breakpoint is set to "tablet"
+        And "This is to verify taglineSpanish" text is displayed at "tablet" breakpoint
+        And screen breakpoint is set to "desktop"
+        And "This is to verify taglineSpanish" text is displayed at "desktop" breakpoint
 
     Scenario: Clean up
         Given user is navigating to "/user/login"
