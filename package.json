@@ -9,7 +9,7 @@
     "cypress:run": "cypress run",
     "cypress:smoke": "cypress run --spec \"cypress/e2e/ProductionSmokeTests/*.feature\"",
     "cypress:acsf": "cypress run --spec \"**/e2e/**/[!$|!_]*.feature\"",
-    "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/*.feature\"",
+    "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/**/*.feature\"",
     "backstop:reference": "backstop reference --config='backstop.config.js'",
     "backstop:test": "backstop test --config='backstop.config.js'",
     "backstop:approve": "backstop approve --config='backstop.config.js'"
