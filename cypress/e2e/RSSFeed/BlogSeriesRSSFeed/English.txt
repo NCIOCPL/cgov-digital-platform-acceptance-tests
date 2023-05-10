@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xml:base="{BASE_URL}/">
+  <channel>
+    <title>Blog Series for promo image edge cases</title>
+    <link>{BASE_URL}/news-events/promo-images-blog</link>
+    <description>Simply dummy text of the printing and typesetting industry. It has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</description>
+    <language>en</language>
+    
+    <item>
+  <title>Blog post Lead Image with Override and No Promo</title>
+  <link>{BASE_URL}/news-events/promo-images-blog/2023-4</link>
+  <guid isPermaLink="true">{BASE_URL}/news-events/promo-images-blog/2023-4</guid>
+  <pubDate>Fri, 05 May 2023 12:00:00 +0000</pubDate>
+  <description>Blog post Lead Image with Override and No Promo</description>
+  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/2023-05/panorama-nature.jpg" length="6304" type="image/jpeg"/>
+</item>
+<item>
+  <title>Blog post No Lead Image and Promo Image With Overrides</title>
+  <link>{BASE_URL}/news-events/promo-images-blog/2023-3</link>
+  <guid isPermaLink="true">{BASE_URL}/news-events/promo-images-blog/2023-3</guid>
+  <pubDate>Fri, 05 May 2023 12:00:00 +0000</pubDate>
+  <description>Blog post No Lead Image and Promo Image With Overridess</description>
+  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/2023-05/abstract-color-wood-bridge-hill-rain-forest.jpg" length="15200" type="image/jpeg"/>
+</item>
+<item>
+  <title>Blog post Lead Image and Promo Image With Overrides</title>
+  <link>{BASE_URL}/news-events/promo-images-blog/2023-2</link>
+  <guid isPermaLink="true">{BASE_URL}/news-events/promo-images-blog/2023-2</guid>
+  <pubDate>Fri, 05 May 2023 12:00:00 +0000</pubDate>
+  <description>Blog post Lead Image and Promo Image With Overrides</description>
+  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/2023-05/abstract-color-wood-bridge-hill-rain-forest.jpg" length="15200" type="image/jpeg"/>
+</item>
+<item>
+  <title>Blog post Lead Image and Promo Image No Overrides</title>
+  <link>{BASE_URL}/news-events/promo-images-blog/2023-1</link>
+  <guid isPermaLink="true">{BASE_URL}/news-events/promo-images-blog/2023-1</guid>
+  <pubDate>Fri, 05 May 2023 12:00:00 +0000</pubDate>
+  <description>Blog post Lead Image and Promo Image No Overrides</description>
+  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/media_image/2023-05/environment-earth-day.jpg" length="7105" type="image/jpeg"/>
+</item>
+<item>
+  <title>Blog post No Lead Image and Promo Image No Overrides</title>
+  <link>{BASE_URL}/news-events/promo-images-blog/2023-0</link>
+  <guid isPermaLink="true">{BASE_URL}/news-events/promo-images-blog/2023-0</guid>
+  <pubDate>Fri, 05 May 2023 12:00:00 +0000</pubDate>
+  <description>Blog post No Lead Image and Promo Image No Overrides</description>
+  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/media_image/2023-05/gratisography-colorful-kittenfree.jpg" length="10661" type="image/jpeg"/>
+</item>
+<item>
+  <title>Blog post Lead Image with No Override and No Promo</title>
+  <link>{BASE_URL}/news-events/promo-images-blog/2023</link>
+  <guid isPermaLink="true">{BASE_URL}/news-events/promo-images-blog/2023</guid>
+  <pubDate>Fri, 05 May 2023 12:00:00 +0000</pubDate>
+  <description>Blog post Lead Image with No Override and No Promo</description>
+  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/media_image/2023-05/gratisography-colorful-kittenfree.jpg" length="10661" type="image/jpeg"/>
+</item>
+<item>
+  <title>Blog Post No Lead and No Promo</title>
+  <link>{BASE_URL}/news-events/promo-images-blog/2019</link>
+  <guid isPermaLink="true">{BASE_URL}/news-events/promo-images-blog/2019</guid>
+  <pubDate>Wed, 09 Jan 2019 12:00:00 +0000</pubDate>
+  <description>Blog Post No Lead and No Promo</description>
+  
+</item>
+
+  </channel>
+</rss>
