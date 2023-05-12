@@ -56,8 +56,8 @@ And('user clicks on {string} button to select item', (listBtn) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${listBtn}"]`).click({ force: true })
 })
 
-And('user selects {string} from {string} dropdown', (dropdown, section) => {
-    cy.get(`.placeholder:contains("${section}")`).parent().find(`input[value="${dropdown}"]`).click({ force: true })
+And('user selects {string} from View More Information dropdown', (dropdown) => {
+    cy.get('.placeholder:contains("View More Information")').parent().find(`input[value="${dropdown}"]`).click({ force: true })
 })
 
 And('user clicks on {string} link in the Internal Link text area', (link) => {

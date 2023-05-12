@@ -1,5 +1,30 @@
 Feature: Home And Landing Page Test Creation of Content
 
+    Scenario: User is creating new Mini Landing page content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Add content" action button
+        And user clicks on "Mini Landing Page" content type
+        Then page title is "Mini Landing Page"
+        When user selects test site section
+        And user fills out the following fields
+            | fieldLabel               | value                                               | field_name                     |
+            | Pretty URL               | mini-landing-page-test-home-and-landing-page        | field_pretty_url               |
+            | Page Title               | Test Resource Mini Landing Page                     | title                          |
+            | Browser Title            | Test Resource Mini Landing Page - Browser Title     | field_browser_title            |
+            | Meta Description         | Test Resource Mini Landing Page Meta Description    | field_page_description         |
+            | Feature Card Description | Test Resource Mini Landing Page - Feature Card Desc | field_feature_card_description |
+            | Card Title               | Test Resource Mini Landing Page - Card Title        | field_card_title               |
+        And user enters "Mini Landing Page List Description" into "List Description" text field
+        And user selects 1 Promotional Image for the mini landing
+        And user remembers the source of selected promo image for the mini landing
+        And user selects "Published" from "Save as" dropdown
+        Then user saves the content page
+
     Scenario: User is adding new Home and Landing page content type and adding a Primary Feature Card Row
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -24,7 +49,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user remembers the source of selected promotional image to be displayed in mini landing pages for further verification
         And browser waits
         And user enters "Home and Landing page List Description" into "List Description" text field
-        And user selects "Add Primary Feature Card Row" from "Contents" dropdown
+        And user selects "Add Primary Feature Card Row" from Contents dropdown
         And user fills out the following fields
             | fieldLabel | value                    | field_name                                                            |
             | Title      | Primary Feature Card Row | field_landing_contents[0][subform][field_container_heading][0][value] |
@@ -56,7 +81,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And browser waits
-        And user selects "Add Guide Card Row" from "Contents" dropdown
+        And user selects "Add Guide Card Row" from Contents dropdown
         And browser waits
         And user fills out the following fields under "Guide Card Row" section
             | fieldLabel      | value                          | field_name                                                                                         |
@@ -82,7 +107,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on title with url "home-and-landing-page" from the list of content
         And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
-        And user selects "Add Secondary Feature Card Row" from "Contents" dropdown
+        And user selects "Add Secondary Feature Card Row" from Contents dropdown
         And browser waits
         And user clicks on "Featured Item" link in the "Internal Feature Card" text area within "Secondary Feature Card Row" section
         And browser waits
@@ -108,7 +133,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on title with url "home-and-landing-page" from the list of content
         And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
-        And user selects "Add Multimedia Row" from "Contents" dropdown
+        And user selects "Add Multimedia Row" from Contents dropdown
         And browser waits
         And user clicks on "Multimedia Card" link in the "Multimedia Row" text area
         And browser waits
@@ -141,7 +166,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on title with url "home-and-landing-page" from the list of content
         And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
-        And user selects "Add List" from "Contents" dropdown
+        And user selects "Add List" from Contents dropdown
         And browser waits
         And user fills out the following fields
             | fieldLabel | value      | field_name                                                     |
@@ -183,7 +208,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And browser waits
-        And user selects "Add One Column Container" from "Contents" dropdown
+        And user selects "Add One Column Container" from Contents dropdown
         And browser waits
         And user fills out the following fields
             | fieldLabel | value                      | field_name                                                     |
@@ -217,7 +242,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Add Raw Html Content" option to "Main Contents" within "One Column Container" section
         And user enters '<div class="callout-box" tabindex="0"><p>This is to test Raw HTML Content in One Column container</p></div>' in Raw HTML Content under "One Column Container"
         And browser waits
-        And user selects "Add Two Column Container" from "Contents" dropdown
+        And user selects "Add Two Column Container" from Contents dropdown
         And user enters '<div class="callout-box" tabindex="0"><p>This is to test Raw HTML Content in Two Columns container</p></div>' in Raw HTML Content under "Two Column Container"
         And user clicks on "Add Content Block" option to "Main Contents" within "Two Column Container" section
         And user fills out the following fields
@@ -250,7 +275,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on title with url "home-and-landing-page" from the list of content
         And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
-        And user selects "Add Borderless Full-Width Card" from "Contents" dropdown
+        And user selects "Add Borderless Full-Width Card" from Contents dropdown
         And user clicks on "Featured Item" link in the "Borderless Full-Width Card" text area
         And browser waits
         And user clicks on "Select content" button item in the "Borderless Full-Width Card" text area
@@ -283,7 +308,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on title with url "home-and-landing-page" from the list of content
         And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
-        And user selects "Add Title First Feature Card Row" from "Contents" dropdown
+        And user selects "Add Title First Feature Card Row" from Contents dropdown
         And user selects "Add External Feature Card" from "Two Column Feature Card" dropdown "Title First Feature Card Row" section
         And browser waits
         And user fills out the following fields
@@ -429,7 +454,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select media" button to select media
         And browser waits
         And user remembers the name of media card item for future verification
-        And user selects "Add Primary Feature Card Row" from "Contents" dropdown
+        And user selects "Add Primary Feature Card Row" from Contents dropdown
         And user fills out the following fields
             | fieldLabel | value                              | field_name                                                            |
             | Title      | Verify Mini Landing Card and Promo | field_landing_contents[9][subform][field_container_heading][0][value] |
@@ -472,7 +497,7 @@ Feature: Home And Landing Page Test Creation of Content
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-home-and-landing-page" from content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
@@ -489,7 +514,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-home-and-landing-page"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Home and Landing page - Card Title Edited" with href "/about-cancer/understanding/home-and-landing-page-edited"
@@ -502,7 +527,7 @@ Feature: Home And Landing Page Test Creation of Content
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-home-and-landing-page" from content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
@@ -641,3 +666,9 @@ Feature: Home And Landing Page Test Creation of Content
         Then the confirmation text "Deleted 3 content items." appears on a screen
         And the content item with url "test-resource-mini-landing-page-for-home-landing" does not exist in the list of content
         And the content item with url "home-and-landing-page-edited" does not exist in the list of content
+        And user selects a checkbox next to title with url "mini-landing-page-test-home-and-landing-page" from content
+        And user clicks on "Apply to selected items" content action button
+        Then page title is "Are you sure you want to delete this content item?"
+        When user clicks on "Delete" button
+        Then the confirmation text "Deleted 1 content item" appears on a screen
+        And the content item with url "mini-landing-page-test-home-and-landing-page" doesn the list of content
