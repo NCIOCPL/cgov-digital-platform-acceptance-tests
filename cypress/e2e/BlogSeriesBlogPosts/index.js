@@ -79,7 +79,7 @@ And('months links are displayed', () => {
     cy.get('div#blog-archive-accordion').find('a').should('be.visible');
 });
 
-And('blog posts list doesnot appear', () => {
+And('blog posts list does not appear', () => {
     cy.get('div.item-list span').should('not.exist');
 });
 
