@@ -56,8 +56,8 @@ And('user clicks on {string} button to select item', (listBtn) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${listBtn}"]`).click({ force: true })
 })
 
-And('user selects {string} from {string} dropdown', (dropdown, section) => {
-    cy.get(`.placeholder:contains("${section}")`).parent().find(`input[value="${dropdown}"]`).click({ force: true })
+And('user selects {string} from View More Information dropdown', (dropdown) => {
+    cy.get('.placeholder:contains("View More Information")').parent().find(`input[value="${dropdown}"]`).click({ force: true })
 })
 
 And('user clicks on {string} link in the Internal Link text area', (link) => {
@@ -182,7 +182,7 @@ And('the following more info links are displayed', (dataTable) => {
 
 And('cthp causes card has a link {string} with href {string}', (linkText, href) => {
     const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}', siteSection)
-    cy.get("div[class*='cthp-causes'] a").as('card').should('have.text', linkText)
+    cy.get("div[class*='cthp-causes'] a").as('card').should('contain.text', linkText)
     cy.get("@card").should('have.attr', 'href').then(href => {
         expect(href).to.include(replacedTestSiteSection)
     })

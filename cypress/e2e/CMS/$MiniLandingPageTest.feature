@@ -1,5 +1,30 @@
 Feature: As a cms user I want to be able to create Mini Landing page content type to promote Mini Landing Page
 
+    Scenario: User is creating new Mini Landing page content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Add content" action button
+        And user clicks on "Mini Landing Page" content type
+        Then page title is "Mini Landing Page"
+        When user selects test site section
+        And user fills out the following fields
+            | fieldLabel               | value                                               | field_name                     |
+            | Pretty URL               | mini-landing-page-test-promo                        | field_pretty_url               |
+            | Page Title               | Test Resource Mini Landing Page                     | title                          |
+            | Browser Title            | Test Resource Mini Landing Page - Browser Title     | field_browser_title            |
+            | Meta Description         | Test Resource Mini Landing Page Meta Description    | field_page_description         |
+            | Feature Card Description | Test Resource Mini Landing Page - Feature Card Desc | field_feature_card_description |
+            | Card Title               | Test Resource Mini Landing Page - Card Title        | field_card_title               |
+        And user enters "Mini Landing Page List Description" into "List Description" text field
+        And user selects 1 Promotional Image for the mini landing
+        And user remembers the source of selected promo image for the mini landing
+        And user selects "Published" from "Save as" dropdown
+        Then user saves the content page
+
     Scenario: User is adding new Mini Landing page content type with Content Block
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -228,7 +253,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo" 
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Mini Landing Page - Card Title Edited" with href "/about-cancer/understanding/mini-landing-page-edited"
@@ -369,3 +394,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         When user clicks on "Delete" button
         Then the confirmation text "Deleted 2 content items." appears on a screen
         And the content item with url "mini-landing-page-edited" does not exist in the list of content
+        And user selects a checkbox next to title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on "Apply to selected items" content action button
+        Then page title is "Are you sure you want to delete this content item?"
+        When user clicks on "Delete" button
+        Then the confirmation text "Deleted 1 content item" appears on a screen
+        And the content item with url "mini-landing-page-test-promo" does not exist in the list of content

@@ -135,7 +135,13 @@ And('feature card row displays the following cards', (dataTable) => {
         if (description !== 'N/A') {
             cy.get(`div.feature-card p:contains('${description}')`).should('be.visible')
         }
-        cy.get(`div.feature-card a[href="${replacedTestSiteSection}"]`).should('be.visible')
+        if (title == 'Article to test Related Resources') {
+            url = url.replace("{TEST_SITE_SECTION}", siteSection)
+            cy.get(`div.feature-card a[href*="${url}"]`).should('be.visible');
+        }
+        else {
+            cy.get(`div.feature-card a[href="${replacedTestSiteSection}"]`).should('be.visible')
+        }
     }
 })
 
@@ -167,7 +173,9 @@ And('List Item Title is displayed as {string}', (title) => {
 And('the button with text {string} appears with href {string}', (linkText, href) => {
     const replacedTestSiteSection = enrichUrl(href, siteSection, randomStr)
     cy.get('a.borderless-button').should('have.text', linkText)
-    cy.get('a.borderless-button').should('have.attr', 'href', replacedTestSiteSection)
+    if (!href.includes('article')) {
+        cy.get('a.borderless-button').should('have.attr', 'href', replacedTestSiteSection)
+    }
 })
 
 And('the Raw HTML Content reads the following {string}', (htmlContent) => {

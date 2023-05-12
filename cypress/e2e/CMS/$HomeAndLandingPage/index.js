@@ -8,8 +8,8 @@ const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const randomStr = Cypress.env('randomStr')
 
 
-And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
-    cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });
+And('user selects {string} from Contents dropdown', (dropDown, cartOption) => {
+    cy.get('.placeholder:contains("Contents")').parent().find(`input[value="${dropDown}"]`).click({ force: true });
 })
 
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {

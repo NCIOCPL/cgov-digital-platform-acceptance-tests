@@ -1,5 +1,30 @@
 Feature: As a cms user I want to be able to create Cancer Type Homepage content type to promote Cancer Type Homepage
 
+    Scenario: User is creating new Mini Landing page content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Add content" action button
+        And user clicks on "Mini Landing Page" content type
+        Then page title is "Mini Landing Page"
+        When user selects test site section
+        And user fills out the following fields
+            | fieldLabel               | value                                               | field_name                     |
+            | Pretty URL               | mini-landing-page-test-cancer-type-home-page        | field_pretty_url               |
+            | Page Title               | Test Resource Mini Landing Page                     | title                          |
+            | Browser Title            | Test Resource Mini Landing Page - Browser Title     | field_browser_title            |
+            | Meta Description         | Test Resource Mini Landing Page Meta Description    | field_page_description         |
+            | Feature Card Description | Test Resource Mini Landing Page - Feature Card Desc | field_feature_card_description |
+            | Card Title               | Test Resource Mini Landing Page - Card Title        | field_card_title               |
+        And user enters "Mini Landing Page List Description" into "List Description" text field
+        And user selects 1 Promotional Image for the mini landing
+        And user remembers the source of selected promo image for the mini landing
+        And user selects "Published" from "Save as" dropdown
+        Then user saves the content page
+
     Scenario: User is adding new Cancer Type Homepage content type
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -65,7 +90,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Select summary" button to select item
         And browser waits
         And user remembers the title of selected summary for further verification
-        And user selects "Add Internal Link" from "View More Information" dropdown
+        And user selects "Add Internal Link" from View More Information dropdown
         And browser waits
         And user clicks on "Link" link in the Internal Link text area
         And browser waits
@@ -73,7 +98,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
-        And user selects "Add External Link" from "View More Information" dropdown
+        And user selects "Add External Link" from View More Information dropdown
         Then "External Link" section appears
         And user fills out the following fields
             | fieldLabel | value                  | field_name                                                                                          |
@@ -344,7 +369,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-cancer-type-home-page" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
@@ -361,7 +386,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-cancer-type-home-page"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Cancer Type Homepage - Card Title" with href "/about-cancer/understanding/cancer-type-homepage-edited"
@@ -374,7 +399,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-cancer-type-home-page" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
@@ -874,7 +899,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-cancer-type-home-page" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
@@ -891,7 +916,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-cancer-type-home-page"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Cancer Type Homepage HP - Card Title" with href "/about-cancer/understanding/cancer-type-homepage-hp-edited"
@@ -904,7 +929,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-cancer-type-home-page" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
@@ -1046,3 +1071,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then the confirmation text "Deleted 4 content items" appears on a screen
         And the content item with url "cancer-type-homepage-edited" does not exist in the list of content
         And the content item with url "cancer-type-homepage-hp-edited" does not exist in the list of content
+        And user selects a checkbox next to title with url "mini-landing-page-test-cancer-type-home-page" from the list of content
+        And user clicks on "Apply to selected items" content action button
+        Then page title is "Are you sure you want to delete this content item?"
+        When user clicks on "Delete" button
+        Then the confirmation text "Deleted 1 content item" appears on a screen
+        And the content item with url "mini-landing-page-test-cancer-type-home-page" does not exist in the list of content
