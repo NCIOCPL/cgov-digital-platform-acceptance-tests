@@ -108,8 +108,6 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And the infographic link "Ver e Imprimir Infografía" does not appear
         And date label is displaying as "Publicación:"
 
-
-
     Scenario: Create English test pages to embed Infographic and embed/add Infographic to test pages
         Given user is navigating to "/user/login"
         When user enters credentials

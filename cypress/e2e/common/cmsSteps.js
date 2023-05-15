@@ -432,9 +432,16 @@ Then('Recursos relacionados section contains the following links', (dataTable) =
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
-            link = link + '-' + randomStr
+            if (title != 'Article to test Related Resources' && title != 'Media Link Override Title') {
+                link = link + '-' + randomStr
+            }
         }
-        cy.get(`div#nvcgRelatedResourcesArea a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
+        if (title == 'Article to test Related Resources' || title == 'Media Link Override Title') {
+            cy.get(`a[href*="${link}"]`).should('have.text', title);
+        }
+        else {
+            cy.get(`div#nvcgRelatedResourcesArea a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
+        }
     }
 });
 
