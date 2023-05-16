@@ -86,10 +86,11 @@ And('user clicks the {string} button {int} in the WYSIWYG editor', (featuredCont
 And('user enters {string} into content title search box and clicks {string}', (nameToSearch, applyBtn) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[id*="edit-title"]`).type(nameToSearch);
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[id*="edit-submit-cgov-content-browser"][value=${applyBtn}]`).click({ force: true });
+    cy.wait(2000)
 });
 
 And('user selects {string} item from the content list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[name*="entity_browser_select"][type='checkbox']`).eq(0).check();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[name*="entity_browser_select"][type='checkbox']`).check();
 });
 
 And('user clicks on {string} button to select content', (selectContent) => {
