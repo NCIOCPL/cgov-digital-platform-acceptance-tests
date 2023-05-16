@@ -15,7 +15,7 @@
     "backstop:approve": "backstop approve --config='backstop.config.js'",
     "cy:parallel" : "cypress-parallel -s cypress:run -t 2 -m false -d \"cypress/e2e/CMS/*.feature\" -a ",
     "cypress:creation": "cypress run --spec 'cypress/e2e/CMS/RelatedResources/$ZCleanUpTestContent.feature'",
-    "cypress:cms-parallel" : "cypress run --spec 'cypress/e2e/CMS/RelatedResources/$ACreationOfTestResources.feature' && cypress-parallel -s cypress:run -t 3 -m false -d \"cypress/e2e/CMS/*.feature\" -a && cypress run --spec 'cypress/e2e/CMS/RelatedResources/$ZCleanUpTestContent.feature'"
+    "cypress:cms-parallel" : "cypress run --spec 'cypress/e2e/CMS/RelatedResources/$ACreationOfTestResources.feature' && cypress-parallel -s cypress:run -t 2 -m false -d \"cypress/e2e/CMS/*.feature\" && cypress run --spec 'cypress/e2e/CMS/RelatedResources/$ZCleanUpTestContent.feature'"
   },
   "repository": {
     "type": "git",

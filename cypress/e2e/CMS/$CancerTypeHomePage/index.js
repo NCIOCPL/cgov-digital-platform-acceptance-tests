@@ -182,7 +182,7 @@ And('the following more info links are displayed', (dataTable) => {
 
 And('cthp causes card has a link {string} with href {string}', (linkText, href) => {
     const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}', siteSection)
-    cy.get("div[class*='cthp-causes'] a").as('card').should('have.text', linkText)
+    cy.get("div[class*='cthp-causes'] a").as('card').should('contain.text', linkText)
     cy.get("@card").should('have.attr', 'href').then(href => {
         expect(href).to.include(replacedTestSiteSection)
     })

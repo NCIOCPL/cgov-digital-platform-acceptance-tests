@@ -102,7 +102,7 @@ And('{string} accordion is collapsed', (archive) => {
     cy.get('div#blog-archive-accordion').contains(archive).should('have.attr', 'aria-expanded', 'false');
 });
 
-And('blog posts list doesnot appear in the archive', () => {
+And('blog posts list does not appear in the archive', () => {
     cy.get('#blog-archive-accordion-year').invoke('css', 'display', 'none').should('have.css', 'display', 'none');
 });
 

@@ -69,7 +69,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the "Categories" managed list appears without a date
         And the "Archive" accordion is displayed
         And "Archive" accordion is collapsed
-        And blog posts list doesnot appear in the archive
+        And blog posts list does not appear in the archive
         And "< Older Post" link appears
         When user clicks on "< Older Post" link
         And "Newer Post >" link appears
@@ -326,7 +326,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the "Suscríbase" button appears
         And the "Archivo" accordion is displayed
         And the lead image is matching the earlier selected image
-        And blog posts list doesnot appear in the archive
+        And blog posts list does not appear in the archive
         And "< Artículo anterior" link appears
         When user clicks on "< Artículo anterior" link
         And "Artículo siguiente >" link appears
