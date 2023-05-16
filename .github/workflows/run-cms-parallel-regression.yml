@@ -1,4 +1,4 @@
-name: Run Cypress CMS regression tests
+name: Run Cypress CMS regression tests in parallel
 on:
   workflow_dispatch:
     inputs:
