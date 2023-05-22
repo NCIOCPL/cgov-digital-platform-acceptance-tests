@@ -95,6 +95,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Link" link in the Internal Link text area
         And browser waits
         And user clicks on "Select content" button from "Internal Link" text area
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -138,6 +141,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user clicks on "Featured Content" link in the "CTHP Internal Feature Card" text area
         And user clicks on "Select content" button from "CTHP Internal Feature Card" text area
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And user fills out the following fields
@@ -200,6 +206,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Link" link in the Internal Link text area
         And browser waits
         And user clicks on "Select content" button from "Internal Link" text area
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits for 5000
@@ -548,6 +557,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Health Professional" from Current Page Audience dropdown
         And user clicks on "Audience Toggle Link" link
         And user clicks on "Select content" button item
+        And user enters "Automated Test Cancer Type Homepage Patient" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Automated Test Cancer Type Homepage Patient" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -603,11 +615,14 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Link" link in the Internal Link text area
         And browser waits
         And user clicks on "Select content" button from "Internal Link" text area
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
-        And browser waits
+        And browser waits for 4000
         And user selects "Add External Link" from "View More Information" dropdown
-        And browser waits for 2000
+        And browser waits
         Then "External Link" section appears
         And user fills out the following fields
             | fieldLabel | value                  | field_name                                                                                          |
@@ -645,6 +660,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user clicks on "Featured Content" link in the "CTHP Internal Feature Card" text area
         And user clicks on "Select content" button from "CTHP Internal Feature Card" text area
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And user fills out the following fields
@@ -705,6 +723,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Link" link in the Internal Link text area
         And browser waits
         And user clicks on "Select content" button from "Internal Link" text area
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -785,6 +806,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks "View in edit form" button from other actions
         # And user clicks on "Audience Toggle Link" link
         And user clicks on "Select content" button item
+        And user enters "Automated Test Cancer Type Homepage HP" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Automated Test Cancer Type Homepage HP" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -906,6 +930,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
         And browser waits
         And user clicks on "Select content" button item
+        And browser waits
+        And user enters "Automated Test Cancer Type Homepage HP" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
         And browser waits
         And user selects "Automated Test Cancer Type Homepage HP" item from main page content
         And user clicks on "Select content" button to select item

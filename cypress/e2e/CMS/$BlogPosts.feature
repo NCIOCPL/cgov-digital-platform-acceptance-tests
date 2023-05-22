@@ -98,6 +98,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Then "Internal Link" section appears
         And user clicks on "Link" button to link to a resource
         And user clicks on "Select content" to choose a resource to link
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And "Article to test Related Resources" had been selected
@@ -138,6 +141,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Then "Internal Feature Card" section appears
         And user clicks on "Featured Item" button to link to Recommended Content types
         And user clicks on "Select content" to choose a Recommended Content type to link
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -216,6 +222,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
         And browser waits
         And user clicks on "Select content" button item
+        And browser waits
+        And user enters "Automated Test Blog Post Edited" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
         And browser waits
         And user selects "Automated Test Blog Post Edited" item from main page content
         And user clicks on "Select content" button to select item
@@ -372,22 +381,22 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
             | name        | content                                                  |
             | description | Automated Test Blog Post Meta Description Edited Spanish |
 
-    Scenario: Clean up
-        Given user is navigating to "/user/login"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "blog-post-edited" under "/news-events/cancer-currents-blog" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 content items." appears on a screen
-        And the content item with url "blog-post-edited" does not exist in the list of content
-        And user selects a checkbox next to title with url "mini-landing-page-test-blog-posts" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item" appears on a screen
-        And the content item with url "mini-landing-page-test-blog-posts" does not exist in the list of content
+    # Scenario: Clean up
+    #     Given user is navigating to "/user/login"
+    #     When user enters credentials
+    #     And user clicks "Log in" button
+    #     Then user is logged in and the user name "admin" is displayed in the toolbar
+    #     And the tool bar appears at the top
+    #     When user clicks on "Content" tab
+    #     And user selects a checkbox next to title with url "blog-post-edited" under "/news-events/cancer-currents-blog" from the list of content
+    #     And user clicks on "Apply to selected items" content action button
+    #     Then page title is "Are you sure you want to delete this content item?"
+    #     When user clicks on "Delete" button
+    #     Then the confirmation text "Deleted 2 content items." appears on a screen
+    #     And the content item with url "blog-post-edited" does not exist in the list of content
+    #     And user selects a checkbox next to title with url "mini-landing-page-test-blog-posts" from the list of content
+    #     And user clicks on "Apply to selected items" content action button
+    #     Then page title is "Are you sure you want to delete this content item?"
+    #     When user clicks on "Delete" button
+    #     Then the confirmation text "Deleted 1 content item" appears on a screen
+    #     And the content item with url "mini-landing-page-test-blog-posts" does not exist in the list of content

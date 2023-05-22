@@ -94,6 +94,13 @@ And('the content item with url {string} does not exist in the list of content', 
     cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
 });
 
+And('the following content items do not exist in the list of content', (dataTable) => {
+    for (const { url } of dataTable.hashes()) {
+        // cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
+        cy.get(`a[href*='${url}']`).should('not.exist');
+    }
+})
+
 And('the following drupal fields are present', (dataTable) => {
     for (const { fieldLabel, field_name } of dataTable.hashes()) {
         cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label')
@@ -509,6 +516,38 @@ And('user selects a checkbox next to title with url {string} from the list of co
     cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
 });
 
+And('if they exist user selects a checkbox next to the following urls', (dataTable) => {
+    for (const { url } of dataTable.hashes()) {
+        cy.get('body').then(($content) => {
+            if ($content.find(`a[href*='${url}']`).length) {
+                // cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+                cy.get(`a[href*='${url}']`).parent().parent().find('input.form-checkbox').check();
+            }
+        });
+    }
+});
+
+// And('if they exist user selects a checkbox next to the following titles with url', (dataTable) => {
+//     for (const { title, lastPartUrl } of dataTable.hashes()) {
+//         cy.get('body').then(($content) => {
+//             if ($content.find(`a:contains("${title}")`).length) {
+//                 // cy.get(`a:contains("${title}")`).invoke('attr', 'href').then(href => {
+//                     cy.get(`a:contains("${title}")`).parent().parent().find('input.form-checkbox').check();
+//                 // });
+//             }
+//         });
+//     }
+// });
+
+And('if it exists user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
+    cy.get('body').then(($content) => {
+        if ($content.find(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).length) {
+            cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+
+        }
+    })
+});
+
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true }, { failOnStatusCode: false });
 });
@@ -537,3 +576,11 @@ And('user deletes {string} image', (image) => {
 And('the image {string} does not exist in the list of content', (image) => {
         cy.get(`form[id^="views-form-media-media-page-list"]`).find(`a:contains("${image}")`).should('not.exist');
  });
+
+And('user enters {string} into {string} text field to filter content', (value, fieldLabel) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`div[class*="form-type-textfield"] label:contains("${fieldLabel}")`).parent().find('input').type(value);
+});
+
+And('user clicks on {string} button to select the item', (selectContent) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`input[id='edit-submit-cgov-content-browser'][value='${selectContent}']`).click({ force: true });
+});

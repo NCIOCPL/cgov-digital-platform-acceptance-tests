@@ -198,7 +198,7 @@ Then('Related Resources section contains the following links', (dataTable) => {
 
 Then('Recommended Content section contains the following links', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
-       link = link.replace("{TEST_SITE_SECTION}", siteSection);
+        link = link.replace("{TEST_SITE_SECTION}", siteSection);
         cy.get(`a[href*="${link}"]`).should('include.text', title)
     }
 });
@@ -246,16 +246,16 @@ And('{string} button is displayed', (imageDisplay) => {
 
 And('the following fields are displayed under {string} label', (titleText, dataTable) => {
     const baseUrlFromConfig = Cypress.config("baseUrl");
-       cy.get(".fieldset-legend").should('include.text', titleText).and('be.visible')
-       for (const { blogTopic } of dataTable.hashes()) {
-      if(baseUrlFromConfig.includes('cms') && blogTopic.includes('')){
-      cy.get("div[id*='cgov-edit-blog-topics-wrapper'] label:contains('Exámenes de detección y la detección temprana')").should('be.visible')  
-    
-    }else{
-            cy.get(`div[id*='cgov-edit-blog-topics-wrapper'] label:contains('${blogTopic}')`).should('be.visible') 
-           }
-       }
-   })
+    cy.get(".fieldset-legend").should('include.text', titleText).and('be.visible')
+    for (const { blogTopic } of dataTable.hashes()) {
+        if (baseUrlFromConfig.includes('cms') && blogTopic.includes('')) {
+            cy.get("div[id*='cgov-edit-blog-topics-wrapper'] label:contains('Exámenes de detección y la detección temprana')").should('be.visible')
+
+        } else {
+            cy.get(`div[id*='cgov-edit-blog-topics-wrapper'] label:contains('${blogTopic}')`).should('be.visible')
+        }
+    }
+})
 
 And('Link section under related resources was translated as {string}', (TranslatedLabel) => {
     cy.get(`span:contains("${TranslatedLabel}")`).should('be.visible')

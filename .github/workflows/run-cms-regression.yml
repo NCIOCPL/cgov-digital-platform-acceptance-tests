@@ -30,11 +30,14 @@ jobs:
           npm ci
           ### Run Cypress CMS tests
       - name: Run tests
-        run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.front_end_base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms
-        ## Upload screenshots of failed tests
+        run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.front_end_base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms-parallel
+      ## Upload screenshots of failed tests
       - uses: actions/upload-artifact@v2
         name: Upload failed tests
         if: failure()
         with:
           name: cypress-screenshots
           path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/cypress/screenshots
+      - name: Run clean-up test
+        if: always()
+        run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.front_end_base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms-clean-up

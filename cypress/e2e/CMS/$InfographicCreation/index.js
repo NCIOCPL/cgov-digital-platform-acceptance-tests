@@ -149,10 +149,6 @@ And('{string} dropdown has the following options', (labelText, dataTable) => {
     }
 });
 
-And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
-});
-
 And('{string} dropdown displays {string}', (labelText, displayOption) => {
     cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${displayOption}")`).should('have.attr', 'selected', 'selected');
 });

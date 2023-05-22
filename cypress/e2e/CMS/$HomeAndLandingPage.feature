@@ -73,6 +73,9 @@ Feature: Home And Landing Page Test Creation of Content
             | Title      | Primary Feature Card Row | field_landing_contents[0][subform][field_container_heading][0][value] |
         And user clicks on "Featured Item" link in the "Internal Feature Card" text area
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And "Article to test Related Resources" had been selected
@@ -130,6 +133,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Featured Item" link in the "Internal Feature Card" text area within "Secondary Feature Card Row" section
         And browser waits
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -168,6 +174,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Add Internal Feature Card" from "Feature Card" dropdown "Multimedia Row" section
         And user clicks on "Featured Item" link in the "Internal Feature Card" text area within "Multimedia Row" section
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -195,6 +204,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Link" link in the List Items text area under List
         And browser waits
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -248,6 +260,9 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user clicks on "Link" link in the "Internal Link" text area within "List" section for "One Column Container"
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -298,6 +313,9 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user clicks on "Select content" button item in the "Borderless Full-Width Card" text area
         And browser waits
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -339,6 +357,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Featured Item" link in the "Title First Feature Card Row" text area
         And browser waits
         And user clicks on "Select content" button item in the "Title First Feature Card Row" text area
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -521,13 +542,16 @@ Feature: Home And Landing Page Test Creation of Content
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-home-and-landing-page" from content
+        And user clicks on the title with url "mini-landing-page-test-home-and-landing-page" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
         And browser waits
         And user clicks on "Select content" button item
+        And browser waits
+        And user enters "Automated Test Home and Landing Page Edited" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
         And browser waits
         And user selects "Automated Test Home and Landing Page Edited" item from main page content
         And user clicks on "Select content" button to select item
@@ -551,7 +575,7 @@ Feature: Home And Landing Page Test Creation of Content
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-home-and-landing-page" from content
+        And user clicks on the title with url "mini-landing-page-test-home-and-landing-page" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
@@ -690,26 +714,26 @@ Feature: Home And Landing Page Test Creation of Content
         And screen breakpoint is set to "desktop"
         And "This is to verify taglineSpanish" text is displayed at "desktop" breakpoint
 
-    Scenario: Clean up
-        Given user is navigating to "/user/login"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "test-resource-mini-landing-page-for-home-landing" from the list of content
-        And user selects a checkbox next to title with url "home-and-landing-page-edited" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        And browser waits
-        When user clicks on the "Delete" button
-        And browser waits
-        Then the confirmation text "Deleted 3 content items." appears on a screen
-        And the content item with url "test-resource-mini-landing-page-for-home-landing" does not exist in the list of content
-        And the content item with url "home-and-landing-page-edited" does not exist in the list of content
-        And user selects a checkbox next to title with url "mini-landing-page-test-home-and-landing-page" from content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item" appears on a screen
-        And the content item with url "mini-landing-page-test-home-and-landing-page" doesn the list of content
+    # Scenario: Clean up
+    #     Given user is navigating to "/user/login"
+    #     When user enters credentials
+    #     And user clicks "Log in" button
+    #     Then user is logged in and the user name "admin" is displayed in the toolbar
+    #     And the tool bar appears at the top
+    #     When user clicks on "Content" tab
+    #     And user selects a checkbox next to title with url "test-resource-mini-landing-page-for-home-landing" from the list of content
+    #     And user selects a checkbox next to title with url "home-and-landing-page-edited" from the list of content
+    #     And user clicks on "Apply to selected items" content action button
+    #     Then page title is "Are you sure you want to delete these content items?"
+    #     And browser waits
+    #     When user clicks on the "Delete" button
+    #     And browser waits
+    #     Then the confirmation text "Deleted 3 content items." appears on a screen
+    #     And the content item with url "test-resource-mini-landing-page-for-home-landing" does not exist in the list of content
+    #     And the content item with url "home-and-landing-page-edited" does not exist in the list of content
+    #     And user selects a checkbox next to title with url "mini-landing-page-test-home-and-landing-page" from content
+    #     And user clicks on "Apply to selected items" content action button
+    #     Then page title is "Are you sure you want to delete this content item?"
+    #     When user clicks on "Delete" button
+    #     Then the confirmation text "Deleted 1 content item" appears on a screen
+    #     And the content item with url "mini-landing-page-test-home-and-landing-page" doesn the list of content

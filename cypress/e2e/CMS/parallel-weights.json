@@ -1,0 +1,39 @@
+{
+  "cypress/e2e/CMS/$AppModule.feature": { "time": 39000, "weight": 0 },
+  "cypress/e2e/CMS/$Article.feature": { "time": 140000, "weight": 4 },
+  "cypress/e2e/CMS/$Biography.feature": { "time": 66000, "weight": 1 },
+  "cypress/e2e/CMS/$BlogPosts.feature": { "time": 118000, "weight": 2 },
+  "cypress/e2e/CMS/$BlogSeries.feature": { "time": 165000, "weight": 3 },
+  "cypress/e2e/CMS/$CancerCenter.feature": { "time": 90000, "weight": 0 },
+  "cypress/e2e/CMS/$CancerResearchPageList.feature": {
+    "time": 84000,
+    "weight": 0
+  },
+  "cypress/e2e/CMS/$CancerTypeHomePage.feature": {
+    "time": 485000,
+    "weight": 22
+  },
+  "cypress/e2e/CMS/$ContextualImageCreation.feature": {
+    "time": 125000,
+    "weight": 3
+  },
+  "cypress/e2e/CMS/$CreateAnImage.feature": { "time": 240000, "weight": 5 },
+  "cypress/e2e/CMS/$CreatingAvideo.feature": { "time": 55000, "weight": 1 },
+  "cypress/e2e/CMS/$Event.feature": { "time": 84000, "weight": 0 },
+  "cypress/e2e/CMS/$FileCreation.feature": { "time": 262000, "weight": 8 },
+  "cypress/e2e/CMS/$HomeAndLandingPage.feature": {
+    "time": 341000,
+    "weight": 11
+  },
+  "cypress/e2e/CMS/$InfographicCreation.feature": {
+    "time": 214000,
+    "weight": 5
+  },
+  "cypress/e2e/CMS/$MiniLandingPageTest.feature": {
+    "time": 127000,
+    "weight": 11
+  },
+  "cypress/e2e/CMS/$PressRelease.feature": { "time": 120000, "weight": 2 },
+  "cypress/e2e/CMS/$SiteSections.feature": { "time": 120000, "weight": 2 },
+  "cypress/e2e/CMS/WYSIWYG/$EmbedTables.feature": { "time": 60000, "weight": 1 }
+}

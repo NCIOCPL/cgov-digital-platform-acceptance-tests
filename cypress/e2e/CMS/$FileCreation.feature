@@ -566,12 +566,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "article-to-test-files" from the list of content
-        And user selects a checkbox next to title with url "crlp-for-files" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 4 content items" appears on a screen
+        # And user selects a checkbox next to title with url "article-to-test-files" from the list of content
+        # And user selects a checkbox next to title with url "crlp-for-files" from the list of content
+        # And user clicks on "Apply to selected items" content action button
+        # Then page title is "Are you sure you want to delete these content items?"
+        # When user clicks on "Delete" button
+        # Then the confirmation text "Deleted 4 content items" appears on a screen
         And user clicks on "Media" sub tab
         And user selects a checkbox next to title with url "test-file-pdf" from the list of content
         And user selects a checkbox next to title with url "test-file-csv" from the list of content

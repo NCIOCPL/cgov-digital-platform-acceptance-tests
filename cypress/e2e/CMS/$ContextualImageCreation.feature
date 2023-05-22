@@ -168,11 +168,11 @@ Feature: As a content editor I would like to be able to create contextual image 
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "article-to-test-contextual-image" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item" appears on a screen
+        # And user selects a checkbox next to title with url "article-to-test-contextual-image" from the list of content
+        # And user clicks on "Apply to selected items" content action button
+        # Then page title is "Are you sure you want to delete this content item?"
+        # When user clicks on "Delete" button
+        # Then the confirmation text "Deleted 1 content item" appears on a screen
         And user clicks on "Media" sub tab
         And user deletes "Test Contextual Image" image
         And user clicks on "Apply to selected items" content action button

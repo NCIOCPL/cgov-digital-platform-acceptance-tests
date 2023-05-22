@@ -55,6 +55,9 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         Then "Internal Link" section appears
         And user clicks on "Link" button to link to a resource
         And user clicks on "Select content" to choose a resource to link
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And "Article to test Related Resources" had been selected
@@ -159,6 +162,8 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And browser waits
         And user clicks on "Select content" button item
         And browser waits
+        And user enters "Automated Test Cancer Research List Page Edited" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
         And user selects "Automated Test Cancer Research List Page Edited" item from main page content
         And user clicks on "Select content" button to select item
         And browser waits
@@ -269,22 +274,22 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
             | name        | content                                             |
             | description | Automated Test CRLP Meta Description Edited Spanish |
 
-    Scenario: Clean up
-        Given user is navigating to "/user/login"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "cancer-research-list-page-edited" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 content items." appears on a screen
-        And the content item with url "cancer-research-list-page-edited" does not exist in the list of content
-        And user selects a checkbox next to title with url "mini-landing-page-test-cancer-research-page-list" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item" appears on a screen
-        And the content item with url "mini-landing-page-test-cancer-research-page-list" does not exist in the list of content
+    # Scenario: Clean up
+    #     Given user is navigating to "/user/login"
+    #     When user enters credentials
+    #     And user clicks "Log in" button
+    #     Then user is logged in and the user name "admin" is displayed in the toolbar
+    #     And the tool bar appears at the top
+    #     When user clicks on "Content" tab
+    #     And user selects a checkbox next to title with url "cancer-research-list-page-edited" from the list of content
+    #     And user clicks on "Apply to selected items" content action button
+    #     Then page title is "Are you sure you want to delete this content item?"
+    #     When user clicks on "Delete" button
+    #     Then the confirmation text "Deleted 2 content items." appears on a screen
+    #     And the content item with url "cancer-research-list-page-edited" does not exist in the list of content
+    #     And user selects a checkbox next to title with url "mini-landing-page-test-cancer-research-page-list" from the list of content
+    #     And user clicks on "Apply to selected items" content action button
+    #     Then page title is "Are you sure you want to delete this content item?"
+    #     When user clicks on "Delete" button
+    #     Then the confirmation text "Deleted 1 content item" appears on a screen
+    #     And the content item with url "mini-landing-page-test-cancer-research-page-list" does not exist in the list of content
