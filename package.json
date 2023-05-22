@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run --spec \"**/e2e/**/[!$]*.feature\"",
+    "test-parallel": "cypress-parallel -s cypress:run -t 2 -m false -d \"**/e2e/**/[!$]*.feature\"",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "cypress:smoke": "cypress run --spec \"cypress/e2e/ProductionSmokeTests/*.feature\"",
