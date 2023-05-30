@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
-import {  And, Then } from 'cypress-cucumber-preprocessor/steps';
+import { And, Then } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
+
 
 const siteSection = Cypress.env('test_site_section');
 const randomStr = Cypress.env('randomStr')
@@ -180,7 +181,7 @@ And('the following more info links are displayed', (dataTable) => {
 
 And('cthp causes card has a link {string} with href {string}', (linkText, href) => {
     const replacedTestSiteSection = href.replace('{TEST_SITE_SECTION}', siteSection)
-    cy.get("div[class*='cthp-causes'] a").as('card').should('include.text', linkText)
+    cy.get("div[class*='cthp-causes'] a").as('card').should('have.text', linkText)
     cy.get("@card").should('have.attr', 'href').then(href => {
         expect(href).to.include(replacedTestSiteSection)
     })
