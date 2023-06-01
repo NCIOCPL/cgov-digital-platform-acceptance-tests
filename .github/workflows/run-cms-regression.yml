@@ -38,6 +38,7 @@ jobs:
         with:
           name: cypress-screenshots
           path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/cypress/screenshots
+      ## Run CMS clean-up task to remove all content articles
       - name: Run clean-up test
         if: always()
         run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.front_end_base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms-clean-up

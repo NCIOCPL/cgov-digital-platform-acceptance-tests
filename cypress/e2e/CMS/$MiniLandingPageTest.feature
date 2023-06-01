@@ -392,23 +392,3 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the page contains meta tags with the following names
             | name        | content                                                     |
             | description | Automated Test Mini Landing Meta Description Edited Spanish |
-
-    # Scenario: Clean up
-    #     Given user is navigating to "/user/login"
-    #     When user enters credentials
-    #     And user clicks "Log in" button
-    #     Then user is logged in and the user name "admin" is displayed in the toolbar
-    #     And the tool bar appears at the top
-    #     When user clicks on "Content" tab
-    #     And user selects a checkbox next to title with url "mini-landing-page-edited" from the list of content
-    #     And user clicks on "Apply to selected items" content action button
-    #     Then page title is "Are you sure you want to delete this content item?"
-    #     When user clicks on "Delete" button
-    #     Then the confirmation text "Deleted 2 content items." appears on a screen
-    #     And the content item with url "mini-landing-page-edited" does not exist in the list of content
-    #     And user selects a checkbox next to title with url "mini-landing-page-test-promo" from the list of content
-    #     And user clicks on "Apply to selected items" content action button
-    #     Then page title is "Are you sure you want to delete this content item?"
-    #     When user clicks on "Delete" button
-    #     Then the confirmation text "Deleted 1 content item" appears on a screen
-    #     And the content item with url "mini-landing-page-test-promo" does not exist in the list of content

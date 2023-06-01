@@ -527,18 +527,6 @@ And('if they exist user selects a checkbox next to the following urls', (dataTab
     }
 });
 
-// And('if they exist user selects a checkbox next to the following titles with url', (dataTable) => {
-//     for (const { title, lastPartUrl } of dataTable.hashes()) {
-//         cy.get('body').then(($content) => {
-//             if ($content.find(`a:contains("${title}")`).length) {
-//                 // cy.get(`a:contains("${title}")`).invoke('attr', 'href').then(href => {
-//                     cy.get(`a:contains("${title}")`).parent().parent().find('input.form-checkbox').check();
-//                 // });
-//             }
-//         });
-//     }
-// });
-
 And('if it exists user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
     cy.get('body').then(($content) => {
         if ($content.find(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).length) {

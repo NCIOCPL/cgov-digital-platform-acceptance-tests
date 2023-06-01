@@ -53,7 +53,6 @@ Feature: As a cms user I want to be able to create App Module content type to de
         And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
-
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "test-app-edited"
         Then page title is "Clinical Trials to Treat Kidney (Renal Cell) Cancer"
@@ -64,17 +63,3 @@ Feature: As a cms user I want to be able to create App Module content type to de
         And the page contains meta tags with the following names
             | name        | content                                |
             | description | Automated App Module Meta Description. |
-
-    # Scenario: Clean up
-    #     Given user is navigating to "/user/login"
-    #     When user enters credentials
-    #     And user clicks "Log in" button
-    #     Then user is logged in and the user name "admin" is displayed in the toolbar
-    #     And the tool bar appears at the top
-    #     When user clicks on "Content" tab
-    #     And user selects a checkbox next to title with url "test-app-edited" from the list of content
-    #     And user clicks on "Apply to selected items" content action button
-    #     Then page title is "Are you sure you want to delete this content item?"
-    #     When user clicks on "Delete" button
-    #     Then the confirmation text "Deleted 1 content item." appears on a screen
-    #     And the content item with url "test-app-edited" does not exist in the list of content

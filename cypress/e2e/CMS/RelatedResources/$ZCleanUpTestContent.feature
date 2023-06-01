@@ -66,9 +66,7 @@ Feature: delete all content created for testing purposes that has not yet been d
               And if it exists user selects a checkbox next to the title with spanish path "/espanol" with url "home-and-landing-page-video-spanish" from the list of content
 
               And user clicks on "Apply to selected items" content action button
-              # Then page title is "Are you sure you want to delete these content items?"
               When user clicks on "Delete" button
-              # Then the confirmation text "Deleted 2 content items" appears on a screen
               And the following content items do not exist in the list of content
                      | url                                              |
                      | test-app-edited                                  |
@@ -100,9 +98,3 @@ Feature: delete all content created for testing purposes that has not yet been d
                      | mini-landing-page-test-promo                     |
                      | press-release-edited                             |
                      | mini-landing-page-test-press-release             |
-# And user selects a checkbox next to title with url "mini-landing-page-test-article" from the list of content
-# And user clicks on "Apply to selected items" content action button
-# Then page title is "Are you sure you want to delete this content item?"
-# When user clicks on "Delete" button
-# Then the confirmation text "Deleted 1 content item" appears on a screen
-# And the content item with url "mini-landing-page-test-article" does not exist in the list of content

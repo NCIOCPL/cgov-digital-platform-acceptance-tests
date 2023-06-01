@@ -13,7 +13,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         When user selects test site section
         And user fills out the following fields
             | fieldLabel               | value                                               | field_name                     |
-            | Pretty URL               | mini-landing-page-test-cancer-research-page-list       | field_pretty_url               |
+            | Pretty URL               | mini-landing-page-test-cancer-research-page-list    | field_pretty_url               |
             | Page Title               | Test Resource Mini Landing Page                     | title                          |
             | Browser Title            | Test Resource Mini Landing Page - Browser Title     | field_browser_title            |
             | Meta Description         | Test Resource Mini Landing Page Meta Description    | field_page_description         |
@@ -273,23 +273,3 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And the page contains meta tags with the following names
             | name        | content                                             |
             | description | Automated Test CRLP Meta Description Edited Spanish |
-
-    # Scenario: Clean up
-    #     Given user is navigating to "/user/login"
-    #     When user enters credentials
-    #     And user clicks "Log in" button
-    #     Then user is logged in and the user name "admin" is displayed in the toolbar
-    #     And the tool bar appears at the top
-    #     When user clicks on "Content" tab
-    #     And user selects a checkbox next to title with url "cancer-research-list-page-edited" from the list of content
-    #     And user clicks on "Apply to selected items" content action button
-    #     Then page title is "Are you sure you want to delete this content item?"
-    #     When user clicks on "Delete" button
-    #     Then the confirmation text "Deleted 2 content items." appears on a screen
-    #     And the content item with url "cancer-research-list-page-edited" does not exist in the list of content
-    #     And user selects a checkbox next to title with url "mini-landing-page-test-cancer-research-page-list" from the list of content
-    #     And user clicks on "Apply to selected items" content action button
-    #     Then page title is "Are you sure you want to delete this content item?"
-    #     When user clicks on "Delete" button
-    #     Then the confirmation text "Deleted 1 content item" appears on a screen
-    #     And the content item with url "mini-landing-page-test-cancer-research-page-list" does not exist in the list of content

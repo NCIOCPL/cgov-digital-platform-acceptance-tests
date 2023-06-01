@@ -148,6 +148,5 @@ cypress.env.json
 /backstop_data/test
 
 #parallel outputs
-cypress/parallel-weights.json
 runner-results/*
 multi-reporter-config.json
