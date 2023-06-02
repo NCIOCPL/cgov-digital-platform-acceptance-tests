@@ -2,14 +2,12 @@ const glob = require("glob")
 const pathUtil = require('path');
 
 const args = process.env //get the process env
-
 if (!args.refBaseUrl) {
 	args.refBaseUrl = 'https://www-dev-ac.cancer.gov';
 }
 if (!args.testBaseUrl) {
 	args.testBaseUrl = 'https://www-dev-ac.cancer.gov';
 }
-
 const scenarioFiles = glob.sync('backstop_data/scenarios/**/*.js');
 
 const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
@@ -17,6 +15,7 @@ const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 	const cleanedScenarios = scenarios.map((scenario) => ({
 		...scenario,
 		url: `${args.testBaseUrl}${scenario.testPath}`,
+		referenceUrl: `${args.refBaseUrl}${scenario.testPath}`,
 	}));
 	return [...ac, ...cleanedScenarios];
 }, []);
