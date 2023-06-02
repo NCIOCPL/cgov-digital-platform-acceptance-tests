@@ -70,3 +70,46 @@ Then('NCIDS guide cards have the following attributes', (dataTable) => {
         }
     }
 })
+And('NCIDS promo blocks have the following attributes', (dataTable) => {
+
+    for (const { index, title, description, link, buttonText, source } of dataTable.hashes()) {
+
+        cy.get('div[class*="nci-promo-block "]').eq(index).as('promoBlock');
+
+        cy.get('@promoBlock').find('h2').invoke('text').then((text) => {
+            expect(text.trim()).equal(title);
+        });
+
+        if (description === 'N/A') {
+            cy.get('@promoBlock').find('p').should('not.exist')
+        }
+        else {
+            cy.get('@promoBlock').find('p').invoke('text').then((text) => {
+                expect(text.trim()).equal(description);
+            });
+        }
+
+        cy.get('@promoBlock').find('a').invoke('attr', 'href').then(href => {
+            if (href.startsWith('http')) {
+                expect(href).to.eq(link)
+            } else {
+                expect(href).to.eq(`${getBaseDirectory()}${link}`)
+            }
+        })
+
+        cy.get('@promoBlock').find('a').invoke('text').then((text) => {
+            expect(text.trim()).equal(buttonText);
+        });
+
+        if (source === 'N/A') {
+            cy.get('@promoBlock').find('img').should('not.exist');
+        }else {
+
+        cy.get('@promoBlock').find('img').invoke('attr', 'src').then((fullSrc) => {
+            const modifiedSrc = fullSrc.replace(/\?.*/, '')
+            expect(modifiedSrc).to.match(new RegExp(source))
+        });
+    }
+
+    }
+});
