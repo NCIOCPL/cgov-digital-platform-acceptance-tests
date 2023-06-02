@@ -512,3 +512,10 @@ And('the banner image with the name {string} is displayed at {string} breakpoint
 And('{string} text is displayed at {string} breakpoint', (fieldText, mode) => {
     cy.get('div#nvcgSlHeroHeader').find(`p:contains("${fieldText}")`).should('be.visible');
 });
+
+And('{string} dropdown has the following options', (labelText, dataTable) => {
+    cy.get(`label[for="edit-field-page-style"]:contains("${labelText}")`).should('be.visible');
+    for (const { options } of dataTable.hashes()) {
+        cy.get(`select[name="field_page_style"] option:contains("${options}")`).should('exist');
+    }
+});
