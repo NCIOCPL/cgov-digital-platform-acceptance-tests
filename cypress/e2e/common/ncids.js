@@ -103,13 +103,42 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
 
         if (source === 'N/A') {
             cy.get('@promoBlock').find('img').should('not.exist');
-        }else {
+        } else {
 
-        cy.get('@promoBlock').find('img').invoke('attr', 'src').then((fullSrc) => {
-            const modifiedSrc = fullSrc.replace(/\?.*/, '')
-            expect(modifiedSrc).to.match(new RegExp(source))
-        });
-    }
+            cy.get('@promoBlock').find('img').invoke('attr', 'src').then((fullSrc) => {
+                const modifiedSrc = fullSrc.replace(/\?.*/, '')
+                expect(modifiedSrc).to.match(new RegExp(source))
+            });
+        }
 
     }
+});
+
+
+And('CTA strip has the following links', (dataTable) => {
+    cy.get('ul.nci-cta-strip').as('cta').should('be.visible')
+    for (const { title, link } of dataTable.hashes()) {
+        cy.get('@cta').find(`a[href="${link}"]`).should('include.text', title);
+    }
+})
+
+And('NCIDS Hero is displayed', () => {
+    cy.get('.nci-hero > .nci-hero__image').should('be.visible')
+})
+And('tagline title reads {string}', (title) => {
+    cy.get('h2.nci-hero__cta-tagline').should('have.text', title)
+})
+And('tagline button has text {string} with link {string}', (btnText, href) => {
+    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href', href)
+})
+And("tagline button doesn't exist", () => {
+    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('not.exist')
+})
+
+When('user clicks on tagline button', () => {
+    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').trigger('click', { followRedirect: false })
+})
+
+When('user clicks on cta link at position {int}',(index)=>{
+cy.get('ul.nci-cta-strip a').eq(index-1).trigger('click', { followRedirect: false })
 });
