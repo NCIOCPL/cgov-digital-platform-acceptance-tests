@@ -52,3 +52,21 @@ And('NCIDS subheading is {string}', (subheading) => {
 And('NCIDS feature card row heading at position {int} is {string}', (index, featCardHeading) => {
     cy.get('.cgdp-feature-card-row__heading').eq(index - 1).should('have.text', featCardHeading)
 });
+
+Then('NCIDS guide cards have the following attributes', (dataTable) => {
+    for (const { index, title, description, btnLinkAndText } of dataTable.hashes()) {
+
+        cy.get('.nci-guide-card__header').eq(index).invoke('text').then((text) => {
+            expect(text.trim()).equal(title);
+        });
+        cy.get('p.nci-guide-card__description').eq(index).invoke('text').then((text) => {
+            expect(text.trim()).equal(description);
+        });
+        const button = btnLinkAndText.split(';')
+        for (let i = 0; i < button.length; i++) {
+            const linkAndText = button[i].split(',');
+            cy.get('.nci-guide-card__wrapper').eq(index).find('a').eq(i).as('link').should('include.text', linkAndText[0])
+            cy.get('@link').should('have.attr', 'href', linkAndText[1])
+        }
+    }
+})
