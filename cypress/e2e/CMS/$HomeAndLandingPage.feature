@@ -10,6 +10,13 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Add content" action button
         And user clicks on "Home and Landing" content type
         Then page title is "Home and Landing"
+        And "Home and Landing Page Style" dropdown has the following options
+            | options             |
+            | Standard            |
+            | Special Report      |
+            | DCEG Connect        |
+            | NCIDS without Title |
+            | NCIDS with Title    |
         When user selects test site section
         And user fills out the following fields
             | fieldLabel               | value                                                    | field_name                     |
