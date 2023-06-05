@@ -29,10 +29,24 @@ Then('the html response matches the contents of {string}', (fileName) => {
   });
 
   cy.readFile(fullPath).then((fileData) => {
-    expectedStr = JSON.stringify(fileData.replaceAll('{BASE_URL}',baseUrl))
- 
+    if (baseUrl.includes('dev-acsf')) {
+      fileData = fileData.replaceAll('/sites/default', '/sites/g/files/xnrzdm\\d+dev')
+
+    } else if (baseUrl.includes('test-acsf')) {
+      fileData = fileData.replaceAll('/sites/default', '/sites/g/files/xnrzdm\\d+test')
+
+    }
+    expectedStr = JSON.stringify(fileData.replaceAll('{BASE_URL}', baseUrl))
+
   });
   cy.readFile(`${featurePath}/response/response.txt`).then((fileData) => {
+    fileData = fileData.replaceAll(/\/\d{4}-\d{2}\//g, '/\d{4}-\d{2}/')
+    if (baseUrl.includes('dev-acsf')) {
+      fileData = fileData.replaceAll(/xnrzdm\d+dev/g, 'xnrzdm\\d+dev')
+
+    } else if (baseUrl.includes('test-acsf')) {
+      fileData = fileData.replaceAll(/xnrzdm\d+test/g, 'xnrzdm\\d+test')
+    }
     actualStr = JSON.stringify(fileData)
     expect(actualStr).to.deep.eq(expectedStr)
   });
