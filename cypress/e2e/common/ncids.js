@@ -149,3 +149,7 @@ When('user clicks on {string} button on a {int} NCIDS guide card', (btnText, car
 When('user clicks on NCIDS feature card at position {int}', (cardIndex) => {
     cy.get('li[class^="nci-card"]').eq(cardIndex - 1).find('a').trigger('click',{ followRedirect: false })
 })
+
+When('user clicks on NCIDS promo block at position {int}', (cardIndex) => {
+    cy.get('div[class^="nci-promo-block "]').eq(cardIndex - 1).find('a').trigger('click',{ followRedirect: false })
+})
