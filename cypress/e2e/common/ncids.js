@@ -145,3 +145,7 @@ cy.get('ul.nci-cta-strip a').eq(index-1).trigger('click', { followRedirect: fals
 When('user clicks on {string} button on a {int} NCIDS guide card', (btnText, cardIndex) => {
     cy.get('.nci-guide-card__body').eq(cardIndex - 1).find(`a:contains("${btnText}")`).trigger('click',{ followRedirect: false })
 })
+
+When('user clicks on NCIDS feature card at position {int}', (cardIndex) => {
+    cy.get('li[class^="nci-card"]').eq(cardIndex - 1).find('a').trigger('click',{ followRedirect: false })
+})
