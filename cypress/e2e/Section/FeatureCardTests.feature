@@ -82,3 +82,59 @@ Feature: Feature Card tests
             | desktop    |
             | tablet     |
             | mobile     |
+
+    Scenario: Internal Feature card click event
+        Given user is navigating to "/ncids-internal-feature-card-test"
+        When user clicks on NCIDS feature card at position 4
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                          |
+            | prop4     | D=pev1                                                         |
+            | prop8     | english                                                        |
+            | prop57    | D=v64                                                          |
+            | prop58    | D=v65                                                          |
+            | prop59    | D=v66                                                          |
+            | prop60    | D=c67                                                          |
+            | prop67    | D=pageName                                                      |
+            | prop68    | D=v68                                                          |
+            | evar2     | D=c8                                                           |
+            | evar64    | Internal\|[Lead IMG] Card Title\|Image                         |
+            | evar65    | Feature Card\|Light\|Standard Single Link                      |
+            | evar66    | 3\|2\|3\|1                                                     |
+            | evar67    | Image\|1\|1                                                    |
+            | evar68    | Body                                                           |
+            | pageName  | {CANONICAL_HOST}/ncids-internal-feature-card-test              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ncids-internal-feature-card-test |
+            | event27   |                                                                |
+            | channel   | NCI Homepage                                                   |
+            | pev2      | LP:FeatureCard:LinkClick                                       |
+            | linkType  | lnk_o                                                          |
+
+
+  Scenario: External Feature card click event
+        Given user is navigating to "/ncids-external-feature-card-test"
+        When user clicks on NCIDS feature card at position 7
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                          |
+            | prop4     | D=pev1                                                         |
+            | prop8     | english                                                        |
+            | prop57    | D=v64                                                          |
+            | prop58    | D=v65                                                          |
+            | prop59    | D=v66                                                          |
+            | prop60    | D=c67                                                          |
+            | prop67    | D=pageName                                                      |
+            | prop68    | D=v68                                                          |
+            | evar2     | D=c8                                                           |
+            | evar64    | External\|External Card Title\|Image                         |
+            | evar65    | Feature Card\|Light\|Standard Single Link                      |
+            | evar66    | 3\|3\|1\|1                                                     |
+            | evar67    | Image\|1\|1                                                    |
+            | evar68    | Body                                                           |
+            | pageName  | {CANONICAL_HOST}/ncids-external-feature-card-test              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ncids-external-feature-card-test |
+            | event27   |                                                                |
+            | channel   | NCI Homepage                                                   |
+            | pev2      | LP:FeatureCard:LinkClick                                       |
+            | linkType  | lnk_o                                                          |
+
