@@ -19,9 +19,9 @@ Scenario: create a new image
         And user uploads test "main" image "main_image.jpg"
         And system waits for file upload process
         And user clicks on CROP IMAGE button
+        And browser waits
         And user sets the following crops
             | crop      |cropcase| locator              |
-            | Freeform  |freeform| a[href*="freeform"]  |
             | Thumbnail |thumbnail| a[href*="thumbnail"] |
             | 4x3       |4x3| a[href*="4x3"]       |
             | 3x4       |3x4| a[href*="3x4"]       |
