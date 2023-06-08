@@ -17,7 +17,7 @@ And('user sets the following crops', (dataTable) => {
     for (let { crop, locator } of dataTable.hashes()) {
         cy.get(locator).should('contain.text', crop).click();
         cy.wait(500);
-        cy.get('div[class*="crop-preview-wrapper"][id="freeform"]').trigger("mouseover").find('span.cropper-face').click();
+        cy.get('div[class*="crop-preview-wrapper"][id="freeform"]').trigger("mouseover", { force: true }).find('span.cropper-face').click();
 
     }
 });

@@ -47,9 +47,9 @@ And('user clicks on CROP IMAGE button', () => {
 
 And('user sets the following crops', (dataTable) => {
     for (let { crop, cropcase, locator } of dataTable.hashes()) {
-        cy.get(locator).should('contain.text',crop).click();
+        cy.get(locator).should('contain.text',crop).click({force:true});
         cy.wait(500);
-        cy.get(`div[class*="crop-preview-wrapper"][id='${cropcase}']`).trigger("mouseover").find('span.cropper-face').click({force: true});
+        cy.get(`div[class*="crop-preview-wrapper"][id='${cropcase}']`).trigger('mouseover',{force:true}).find('span.cropper-face').click({force: true});
         
         }
 });
@@ -87,11 +87,12 @@ And('user selects {int} item from the media list', (num) => {
 
 
 And('user selects {string} as Promotional Image from the list of images', (image) => {
-    cy.get('span:contains("Promotional Image")').parent().as('imageUpload').click()
+    cy.get('span:contains("Promotional Image")').parent().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-name").type(image);
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("#edit-submit-cgov-image-media-browser").click();
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').click({ force: true }).find("input[name*='entity_browser_select'][class='form-checkbox']").check();
+    cy.wait(2000)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name*='entity_browser_select'][class='form-checkbox']").click();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
 })
 

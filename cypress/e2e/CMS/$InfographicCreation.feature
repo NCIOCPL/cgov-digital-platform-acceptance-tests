@@ -82,12 +82,12 @@ Feature: As a cms user I want to be able to create an Infographic media content 
             | Feature Card Description | Automated Test Infographic Spanish - Featured Card Desc | field_feature_card_description |
         And user enters "Spanish" into "List Description" text field
         And user types "Spanish" into Caption text field
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         And user clicks on "Moderated media" sub tab
         Then user selects "Editar" option from Operations dropdown for media with title "Automated Test Infographic Spanish"
         Then page title is "Automated Test Infographic Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
     Scenario: Verify newly created Spanish Infographic as a media item
@@ -135,6 +135,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user fills out 1 "Body" text area with "Infographic Display: Article: Large,None:"
         And user clicks the "Insert Infographic" button 1 in the WYSIWYG editor
         And user enters "Automated Test Infographic" into media title search box and clicks "Apply"
+        And browser waits
         And user selects "Automated Test Infographic" item from the media list
         And browser waits
         And user clicks on "Select Infographic" button to select media
@@ -159,6 +160,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user fills out 2 "Body" text area with "Infographic Display: Article: Medium,Left:"
         And user clicks the "Insert Infographic" button 2 in the WYSIWYG editor
         And user enters "Automated Test Infographic" into media title search box and clicks "Apply"
+         And browser waits
         And user selects "Automated Test Infographic" item from the media list
         And browser waits
         And user clicks on "Select Infographic" button to select media
@@ -174,6 +176,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user fills out 3 "Body" text area with "Infographic Display: Article: Medium,Center:"
         And user clicks the "Insert Infographic" button 3 in the WYSIWYG editor
         And user enters "Automated Test Infographic" into media title search box and clicks "Apply"
+         And browser waits
         And user selects "Automated Test Infographic" item from the media list
         And browser waits
         And user clicks on "Select Infographic" button to select media
@@ -190,6 +193,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And browser waits
         And user clicks the "Insert Infographic" button 4 in the WYSIWYG editor
         And user enters "Automated Test Infographic" into media title search box and clicks "Apply"
+         And browser waits
         And user selects "Automated Test Infographic" item from the media list
         And browser waits
         And user clicks on "Select Infographic" button to select media
@@ -221,6 +225,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clicks on "Select media" button item
         And browser waits
         And user enters "Automated Test Infographic" into media search box and clicks "Apply"
+         And browser waits
         And user selects "Automated Test Infographic" item from media list
         And browser waits
         And user clicks on "Select media" button to select media item
@@ -235,21 +240,19 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And browser waits
         And user clicks on "Link" link in the List Items text area under List
         And browser waits
-        And user clicks on "Select content" button item
-        And user selects "Article to test Related Resources" item from the list
-        And user clicks on "Select content" button to select item
-        And browser waits
         And user selects "Add Media Link" from "List Items" dropdown "External Link" section
         Then "Media Link" section appears
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Automated Test Infographic" into media search box and clicks "Apply"
+         And browser waits
         And user selects "Automated Test Infographic" item from media list
         And browser waits
         And user clicks on "Select media" button to select media item
         And browser waits
         And user removes the "Internal Link" item from the list
         And user confirms removal
+        And browser waits
         And user selects "Published" from "Save as" dropdown
         When user saves the content page
 

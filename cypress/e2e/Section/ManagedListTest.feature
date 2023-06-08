@@ -9,7 +9,7 @@ Feature: Managed Lists Tests
 
         Examples:
             | url                  | count |
-            | /                    | 4     |
+            | /cgdpl               | 4     |
             | /about-cancer        | 4     |
             | /research            | 4     |
             | /about-cancer/coping | 4     |
@@ -26,7 +26,7 @@ Feature: Managed Lists Tests
         And list items at positions "<indexes>" have "files" as "<file>"
         Examples:
             | url                  | indexes | title                                                                     | itemLink                                                                                                         | altText                                                                                                      | file                                                                                                                                                    |
-            | /                    | 0,1,2,3 | Overridden Title,External Card Title,Feelings and Cancer,Overridden Title | /about-cancer/coping/feelings,https://www.google.com,/about-cancer/coping/feelings,/about-cancer/coping/feelings | Sad Woman Looking Out Window,Find a Clinical Trial,Sad Woman Looking Out Window,Sad Woman Looking Out Window | sad-woman-looking-out-window-thumb.jpg,find-clinical-trial-blue-thumb.jpg,sad-woman-looking-out-window-thumb.jpg,sad-woman-looking-out-window-thumb.jpg |
+            | /cgdpl               | 0,1,2,3 | Overridden Title,External Card Title,Feelings and Cancer,Overridden Title | /about-cancer/coping/feelings,https://www.google.com,/about-cancer/coping/feelings,/about-cancer/coping/feelings | Sad Woman Looking Out Window,Find a Clinical Trial,Sad Woman Looking Out Window,Sad Woman Looking Out Window | sad-woman-looking-out-window-thumb.jpg,find-clinical-trial-blue-thumb.jpg,sad-woman-looking-out-window-thumb.jpg,sad-woman-looking-out-window-thumb.jpg |
             | /about-cancer        | 0,1,2,3 | Overridden Title,External Card Title,Feelings and Cancer,Overridden Title | /about-cancer/coping/feelings,https://www.google.com,/about-cancer/coping/feelings,/about-cancer/coping/feelings | Sad Woman Looking Out Window,Find a Clinical Trial,Sad Woman Looking Out Window,Sad Woman Looking Out Window | sad-woman-looking-out-window-thumb.jpg,find-clinical-trial-blue-thumb.jpg,sad-woman-looking-out-window-thumb.jpg,sad-woman-looking-out-window-thumb.jpg |
             | /research            | 0,1,2,3 | Overridden Title,External Card Title,Feelings and Cancer,Overridden Title | /about-cancer/coping/feelings,https://www.google.com,/about-cancer/coping/feelings,/about-cancer/coping/feelings | Sad Woman Looking Out Window,Find a Clinical Trial,Sad Woman Looking Out Window,Sad Woman Looking Out Window | sad-woman-looking-out-window-thumb.jpg,find-clinical-trial-blue-thumb.jpg,sad-woman-looking-out-window-thumb.jpg,sad-woman-looking-out-window-thumb.jpg |
             | /about-cancer/coping | 0,1,2,3 | Overridden Title,External Card Title,Feelings and Cancer,Overridden Title | /about-cancer/coping/feelings,https://www.google.com,/about-cancer/coping/feelings,/about-cancer/coping/feelings | Sad Woman Looking Out Window,Find a Clinical Trial,Sad Woman Looking Out Window,Sad Woman Looking Out Window | sad-woman-looking-out-window-thumb.jpg,find-clinical-trial-blue-thumb.jpg,sad-woman-looking-out-window-thumb.jpg,sad-woman-looking-out-window-thumb.jpg |
@@ -41,7 +41,7 @@ Feature: Managed Lists Tests
 
         Examples:
             | url                  | indexes | externalLinkCount | href              | titleLink              |
-            | /                    | 1       | 1                 | /policies/linking | https://www.google.com |
+            | /cgdpl               | 1       | 1                 | /policies/linking | https://www.google.com |
             | /about-cancer        | 1       | 1                 | /policies/linking | https://www.google.com |
             | /research            | 1       | 1                 | /policies/linking | https://www.google.com |
             | /about-cancer/coping | 1       | 1                 | /policies/linking | https://www.google.com |
