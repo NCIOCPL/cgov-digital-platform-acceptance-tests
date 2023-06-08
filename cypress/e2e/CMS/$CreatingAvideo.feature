@@ -40,12 +40,12 @@ Feature: User creating a video
             | fieldLabel | value              | field_name       |
             | Pretty URL | test-video-spanish | field_pretty_url |
             | Nombre     | _Spanish           | name[0][value]   |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         And user clicks on "Moderated media" sub tab
         Then user selects "Editar" option from Operations dropdown for media with title "Test Video_Spanish"
         Then page title is "Test Video_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
     Scenario: Create test pages to test video in English

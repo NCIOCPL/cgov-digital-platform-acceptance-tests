@@ -134,12 +134,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
             | Nombre     | _Spanish | name[0][value] |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File PDF"
         When user clicks on "Edit" button to edit translation of "Test File PDF_Spanish"
         Then page title is "Test File PDF_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File CSV"
@@ -148,12 +148,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
             | Nombre     | _Spanish | name[0][value] |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File CSV"
         When user clicks on "Edit" button to edit translation of "Test File CSV_Spanish"
         Then page title is "Test File CSV_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File PPTX"
@@ -162,12 +162,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
             | Nombre     | _Spanish | name[0][value] |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File PPTX"
         When user clicks on "Edit" button to edit translation of "Test File PPTX_Spanish"
         Then page title is "Test File PPTX_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File PPT"
@@ -176,12 +176,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
             | Nombre     | _Spanish | name[0][value] |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File PPT"
         When user clicks on "Edit" button to edit translation of "Test File PPT_Spanish"
         Then page title is "Test File PPT_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File XLSX"
@@ -190,12 +190,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
             | Nombre     | _Spanish | name[0][value] |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File XLSX"
         When user clicks on "Edit" button to edit translation of "Test File XLSX_Spanish"
         Then page title is "Test File XLSX_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File XLS"
@@ -204,12 +204,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
             | Nombre     | _Spanish | name[0][value] |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File XLS"
         When user clicks on "Edit" button to edit translation of "Test File XLS_Spanish"
         Then page title is "Test File XLS_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File DOCX"
@@ -218,12 +218,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
             | Nombre     | _Spanish | name[0][value] |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File DOCX"
         When user clicks on "Edit" button to edit translation of "Test File DOCX_Spanish"
         Then page title is "Test File DOCX_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File DOC"
@@ -232,12 +232,12 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
             | Nombre     | _Spanish | name[0][value] |
-        And user selects "Review" from "Change to" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
         Then user selects "Traducir" option from Operations dropdown for media with title "Test File DOC"
         When user clicks on "Edit" button to edit translation of "Test File DOC_Spanish"
         Then page title is "Test File DOC_Spanish [Español traducción]"
-        And user selects "Publicado" from "Change to" dropdown
+        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
     Scenario: Creating Article and List to test files
