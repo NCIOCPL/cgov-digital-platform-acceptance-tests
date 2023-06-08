@@ -4,7 +4,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And screen breakpoint is set to "mobile"
 
         Scenario: User is viewing the home page
-                Given user is navigating to "/"
+                Given user is navigating to "/cgdpl"
                 When user clicks on the mobile menu button
                 Then user should see the following in the mobile menu
                         | Label             |
@@ -20,11 +20,13 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 Given user is navigating to "/research/key-initiatives"
                 When user clicks on the mobile menu button
                 Then user should see the following in the mobile menu
-                        | Label                     |
-                        | Main Menu                 |
-                        | Explore Research          |
-                        | Key Initiatives           |
-                        | Resources for Researchers |
+                        | Label                         |
+                        | Main Menu                     |
+                        | Explore Research              |
+                        | NCI’s Role in Cancer Research |
+                        | Research Areas                |
+                        | Key Initiatives               |
+                        | Resources for Researchers     |
 
 
 
@@ -163,7 +165,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | Label |
                         | A     |
                         | B     |
-             
+
 
         ###Spanish
 
@@ -198,22 +200,22 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And browser waits
                 Then page click request is sent
                 And the following parameters should be captured
-                        | parameter | value                                   |
-                        | prop4     | D=pev1                                  |
-                        | prop67    | D=pageName                              |
-                        | evar68    | MobilePrimaryNav                        |
-                        | evar70    | Open                                    |
-                        | prop8     | english                                 |
-                        | evar2     | D=c8                                    |
-                        | prop68    | D=v68                                   |
-                        | prop70    | D=v70                                   |
+                        | parameter | value                                        |
+                        | prop4     | D=pev1                                       |
+                        | prop67    | D=pageName                                   |
+                        | evar68    | MobilePrimaryNav                             |
+                        | evar70    | Open                                         |
+                        | prop8     | english                                      |
+                        | evar2     | D=c8                                         |
+                        | prop68    | D=v68                                        |
+                        | prop70    | D=v70                                        |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
-                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
-                        | event28   |                                         |
-                        | channel   | NCI Homepage                            |
-                        | pev2      | MobilePrimaryNav:Open                   |
-                        | linkType  | lnk_o                                   |
-                        | link      | Menu                                    |
+                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1              |
+                        | event28   |                                              |
+                        | channel   | NCI Homepage                                 |
+                        | pev2      | MobilePrimaryNav:Open                        |
+                        | linkType  | lnk_o                                        |
+                        | link      | Menu                                         |
 
         Scenario: Click even fires when user clicks on mobile menu child link
                 Given user is navigating to "/api-test/a/1/1"
@@ -223,24 +225,24 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And browser waits
                 Then page click request is sent
                 And the following parameters should be captured
-                        | parameter | value                                   |
-                        | prop4     | D=pev1                                  |
-                        | prop67    | D=pageName                              |
-                        | evar68    | MobilePrimaryNav                        |
-                        | evar70    | ChildPageMenu\|2                        |
-                        | evar71    | A.1.1.1                                 |
-                        | prop8     | english                                 |
-                        | evar2     | D=c8                                    |
-                        | prop68    | D=v68                                   |
-                        | prop70    | D=v70                                   |
-                        | prop71    | D=v71                                   |
+                        | parameter | value                                        |
+                        | prop4     | D=pev1                                       |
+                        | prop67    | D=pageName                                   |
+                        | evar68    | MobilePrimaryNav                             |
+                        | evar70    | ChildPageMenu\|2                             |
+                        | evar71    | A.1.1.1                                      |
+                        | prop8     | english                                      |
+                        | evar2     | D=c8                                         |
+                        | prop68    | D=v68                                        |
+                        | prop70    | D=v70                                        |
+                        | prop71    | D=v71                                        |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
-                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
-                        | event26   |                                         |
-                        | channel   | NCI Homepage                            |
-                        | pev2      | MobilePrimaryNav:LinkClick              |
-                        | linkType  | lnk_o                                   |
-                        | link      | A.1.1.1                                 |
+                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1              |
+                        | event26   |                                              |
+                        | channel   | NCI Homepage                                 |
+                        | pev2      | MobilePrimaryNav:LinkClick                   |
+                        | linkType  | lnk_o                                        |
+                        | link      | A.1.1.1                                      |
 
         Scenario: Click even fires when user clicks on mobile menu explore button
                 Given user is navigating to "/api-test/a/1/1"
@@ -250,24 +252,24 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And browser waits
                 Then page click request is sent
                 And the following parameters should be captured
-                        | parameter | value                                   |
-                        | prop4     | D=pev1                                  |
-                        | prop67    | D=pageName                              |
-                        | evar68    | MobilePrimaryNav                        |
-                        | evar70    | ExplorePage\|1                          |
-                        | evar71    | Explore A.1.1                           |
-                        | prop8     | english                                 |
-                        | evar2     | D=c8                                    |
-                        | prop68    | D=v68                                   |
-                        | prop70    | D=v70                                   |
-                        | prop71    | D=v71                                   |
+                        | parameter | value                                        |
+                        | prop4     | D=pev1                                       |
+                        | prop67    | D=pageName                                   |
+                        | evar68    | MobilePrimaryNav                             |
+                        | evar70    | ExplorePage\|1                               |
+                        | evar71    | Explore A.1.1                                |
+                        | prop8     | english                                      |
+                        | evar2     | D=c8                                         |
+                        | prop68    | D=v68                                        |
+                        | prop70    | D=v70                                        |
+                        | prop71    | D=v71                                        |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
-                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
-                        | event26   |                                         |
-                        | channel   | NCI Homepage                            |
-                        | pev2      | MobilePrimaryNav:LinkClick              |
-                        | linkType  | lnk_o                                   |
-                        | link      | Explore A.1.1                           |
+                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1              |
+                        | event26   |                                              |
+                        | channel   | NCI Homepage                                 |
+                        | pev2      | MobilePrimaryNav:LinkClick                   |
+                        | linkType  | lnk_o                                        |
+                        | link      | Explore A.1.1                                |
 
         Scenario: Click even fires when user clicks on mobile menu back button
                 Given user is navigating to "/api-test/a/1/1"
@@ -277,24 +279,24 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And browser waits
                 Then page click request is sent
                 And the following parameters should be captured
-                        | parameter | value                                   |
-                        | prop4     | D=pev1                                  |
-                        | prop67    | D=pageName                              |
-                        | evar68    | MobilePrimaryNav                        |
-                        | evar70    | Back\|null                              |
-                        | evar71    | Back                                    |
-                        | prop8     | english                                 |
-                        | evar2     | D=c8                                    |
-                        | prop68    | D=v68                                   |
-                        | prop70    | D=v70                                   |
-                        | prop71    | D=v71                                   |
+                        | parameter | value                                        |
+                        | prop4     | D=pev1                                       |
+                        | prop67    | D=pageName                                   |
+                        | evar68    | MobilePrimaryNav                             |
+                        | evar70    | Back\|null                                   |
+                        | evar71    | Back                                         |
+                        | prop8     | english                                      |
+                        | evar2     | D=c8                                         |
+                        | prop68    | D=v68                                        |
+                        | prop70    | D=v70                                        |
+                        | prop71    | D=v71                                        |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
-                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
-                        | event26   |                                         |
-                        | channel   | NCI Homepage                            |
-                        | pev2      | MobilePrimaryNav:LinkClick              |
-                        | linkType  | lnk_o                                   |
-                        | link      | Back                                    |
+                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1              |
+                        | event26   |                                              |
+                        | channel   | NCI Homepage                                 |
+                        | pev2      | MobilePrimaryNav:LinkClick                   |
+                        | linkType  | lnk_o                                        |
+                        | link      | Back                                         |
 
 
         Scenario: Click even fires when user closes mobile menu by clicking X
@@ -304,21 +306,21 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And user closes mobile menu by clicking "X" button
                 Then page click request is sent
                 And the following parameters should be captured
-                        | parameter | value                                   |
-                        | prop4     | D=pev1                                  |
-                        | prop67    | D=pageName                              |
-                        | evar68    | MobilePrimaryNav                        |
-                        | evar70    | CloseX                                  |
-                        | prop8     | english                                 |
-                        | evar2     | D=c8                                    |
-                        | prop68    | D=v68                                   |
-                        | prop70    | D=v70                                   |
+                        | parameter | value                                        |
+                        | prop4     | D=pev1                                       |
+                        | prop67    | D=pageName                                   |
+                        | evar68    | MobilePrimaryNav                             |
+                        | evar70    | CloseX                                       |
+                        | prop8     | english                                      |
+                        | evar2     | D=c8                                         |
+                        | prop68    | D=v68                                        |
+                        | prop70    | D=v70                                        |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
-                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
-                        | event30   |                                         |
-                        | channel   | NCI Homepage                            |
-                        | pev2      | MobilePrimaryNav:Close                  |
-                        | linkType  | lnk_o                                   |
+                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1              |
+                        | event30   |                                              |
+                        | channel   | NCI Homepage                                 |
+                        | pev2      | MobilePrimaryNav:Close                       |
+                        | linkType  | lnk_o                                        |
 
         Scenario: Click even fires when user closes mobile menu by hitting Esc
                 Given user is navigating to "/api-test/a/1/1"
@@ -327,21 +329,21 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And user hits "Esc" key
                 Then page click request is sent
                 And the following parameters should be captured
-                        | parameter | value                                   |
-                        | prop4     | D=pev1                                  |
-                        | prop67    | D=pageName                              |
-                        | evar68    | MobilePrimaryNav                        |
-                        | evar70    | CloseEsc                                |
-                        | prop8     | english                                 |
-                        | evar2     | D=c8                                    |
-                        | prop68    | D=v68                                   |
-                        | prop70    | D=v70                                   |
+                        | parameter | value                                        |
+                        | prop4     | D=pev1                                       |
+                        | prop67    | D=pageName                                   |
+                        | evar68    | MobilePrimaryNav                             |
+                        | evar70    | CloseEsc                                     |
+                        | prop8     | english                                      |
+                        | evar2     | D=c8                                         |
+                        | prop68    | D=v68                                        |
+                        | prop70    | D=v70                                        |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
-                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
-                        | event30   |                                         |
-                        | channel   | NCI Homepage                            |
-                        | pev2      | MobilePrimaryNav:Close                  |
-                        | linkType  | lnk_o                                   |
+                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1              |
+                        | event30   |                                              |
+                        | channel   | NCI Homepage                                 |
+                        | pev2      | MobilePrimaryNav:Close                       |
+                        | linkType  | lnk_o                                        |
 
         Scenario: Click even fires when user closes mobile menu by clicking away
                 Given user is navigating to "/api-test/a/1/1"
@@ -350,19 +352,19 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And user clicks on the right side of a screen
                 Then page click request is sent
                 And the following parameters should be captured
-                        | parameter | value                                   |
-                        | prop4     | D=pev1                                  |
-                        | prop67    | D=pageName                              |
-                        | evar68    | MobilePrimaryNav                        |
-                        | evar70    | CloseClickAway                          |
-                        | prop8     | english                                 |
-                        | evar2     | D=c8                                    |
-                        | prop68    | D=v68                                   |
-                        | prop70    | D=v70                                   |
+                        | parameter | value                                        |
+                        | prop4     | D=pev1                                       |
+                        | prop67    | D=pageName                                   |
+                        | evar68    | MobilePrimaryNav                             |
+                        | evar70    | CloseClickAway                               |
+                        | prop8     | english                                      |
+                        | evar2     | D=c8                                         |
+                        | prop68    | D=v68                                        |
+                        | prop70    | D=v70                                        |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/api-test/a/1/1 |
-                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1         |
-                        | event30   |                                         |
-                        | channel   | NCI Homepage                            |
-                        | pev2      | MobilePrimaryNav:Close                  |
-                        | linkType  | lnk_o                                   |
+                        | pageName  | {CANONICAL_HOST}/api-test/a/1/1              |
+                        | event30   |                                              |
+                        | channel   | NCI Homepage                                 |
+                        | pev2      | MobilePrimaryNav:Close                       |
+                        | linkType  | lnk_o                                        |
 

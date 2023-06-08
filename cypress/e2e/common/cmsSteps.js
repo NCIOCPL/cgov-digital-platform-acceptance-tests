@@ -509,3 +509,7 @@ Given('user is navigating to the front end site with path site section plus {str
 Given('user is navigating to the front end site with spanish path {string} site section plus {string}', (spPath, purl) => {
     cy.visit(`${frontEndBaseUrl}${spPath}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
 })
+
+And('user selects {string} from Change to dropdown', (option) => {
+    cy.get('select#edit-moderation-state-0-state').select(option)
+})

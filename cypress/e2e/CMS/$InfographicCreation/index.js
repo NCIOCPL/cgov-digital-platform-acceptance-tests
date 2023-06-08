@@ -130,7 +130,12 @@ And('user enters {string} into media title search box and clicks {string}', (nam
 });
 
 And('user selects {string} item from the media list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_infographic_browser').find(`input[name*="entity_browser_select"][type='checkbox']`).eq(0).check();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_infographic_browser').find(`td:contains(${title})`).each(($el) => {
+        const text = $el[0].innerText;
+        if (text === title) {
+            cy.wrap($el).parent().find('input').click();
+        }
+    })
 });
 
 And('user clicks on {string} button to select media', (selectInfograhic) => {
