@@ -16,6 +16,7 @@ const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 		...scenario,
 		url: `${args.testBaseUrl}${scenario.testPath}`,
 		referenceUrl: `${args.refBaseUrl}${scenario.testPath}`,
+		delay: 2000
 	}));
 	return [...ac, ...cleanedScenarios];
 }, []);
@@ -62,5 +63,5 @@ module.exports = {
 	misMatchThreshold: 1,
 	resembleOutputOptions: {
 		usePreciseMatching: true,
-	},
+	}
 };
