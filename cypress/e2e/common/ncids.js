@@ -44,7 +44,7 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
 });
 
 Then('NCIDS page title is {string}', (title) => {
-    cy.get('h1.cgdp-title-area__page-title').should('have.text', title)
+    cy.get('div[class*="usa-section"] h1.cgdp-title-area__page-title').should('have.text', title)
 });
 And('NCIDS subheading is {string}', (subheading) => {
     cy.get('.cgdp-title-area__subheading').should('have.text', subheading)
@@ -56,7 +56,7 @@ And('NCIDS feature card row heading at position {int} is {string}', (index, feat
 Then('NCIDS guide cards have the following attributes', (dataTable) => {
     for (const { index, title, description, btnLinkAndText } of dataTable.hashes()) {
 
-        cy.get('.nci-guide-card__header').eq(index).invoke('text').then((text) => {
+        cy.get('div[class*="cgdp-guide-card-row"] h2.nci-guide-card__header').eq(index).invoke('text').then((text) => {
             expect(text.trim()).equal(title);
         });
         cy.get('p.nci-guide-card__description').eq(index).invoke('text').then((text) => {
@@ -116,14 +116,14 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
 
 
 And('CTA strip has the following links', (dataTable) => {
-    cy.get('ul.nci-cta-strip').as('cta').should('be.visible')
+    cy.get('div[class*="usa-section"] ul.nci-cta-strip').as('cta').should('be.visible')
     for (const { title, link } of dataTable.hashes()) {
         cy.get('@cta').find(`a[href="${link}"]`).should('include.text', title);
     }
 })
 
 And('NCIDS Hero is displayed', () => {
-    cy.get('.nci-hero > .nci-hero__image').should('be.visible')
+    cy.get('div[class*="usa-section"] .nci-hero > .nci-hero__image').should('be.visible')
 })
 And('tagline title reads {string}', (title) => {
     cy.get('h2.nci-hero__cta-tagline').should('have.text', title)
@@ -139,17 +139,34 @@ When('user clicks on tagline button', () => {
     cy.get('.nci-hero__cta.nci-hero__cta--with-button a').trigger('click', { followRedirect: false })
 })
 
-When('user clicks on cta link at position {int}',(index)=>{
-cy.get('ul.nci-cta-strip a').eq(index-1).trigger('click', { followRedirect: false })
+When('user clicks on cta link at position {int}', (index) => {
+    cy.get('ul.nci-cta-strip a').eq(index - 1).trigger('click', { followRedirect: false })
 });
 When('user clicks on {string} button on a {int} NCIDS guide card', (btnText, cardIndex) => {
-    cy.get('.nci-guide-card__body').eq(cardIndex - 1).find(`a:contains("${btnText}")`).trigger('click',{ followRedirect: false })
+    cy.get('.nci-guide-card__body').eq(cardIndex - 1).find(`a:contains("${btnText}")`).trigger('click', { followRedirect: false })
 })
 
 When('user clicks on NCIDS feature card at position {int}', (cardIndex) => {
-    cy.get('li[class^="nci-card"]').eq(cardIndex - 1).find('a').trigger('click',{ followRedirect: false })
+    cy.get('li[class^="nci-card"]').eq(cardIndex - 1).find('a').trigger('click', { followRedirect: false })
 })
 
 When('user clicks on NCIDS promo block at position {int}', (cardIndex) => {
-    cy.get('div[class^="nci-promo-block "]').eq(cardIndex - 1).find('a').trigger('click',{ followRedirect: false })
+    cy.get('div[class^="nci-promo-block "]').eq(cardIndex - 1).find('a').trigger('click', { followRedirect: false })
 })
+
+And('NCIDS {string} component does not have {string} but has header {string} attributes', (component, aria, id) => {
+    cy.get(`div[class*="${component}"]`).as('component').should('not.have.attr', aria);
+    cy.get('@component').find('h2').should('have.attr', id).then(idValue => {
+        cy.get('@component').find('ul').should('have.attr', aria, idValue)
+    });
+
+});
+
+And('NCIDS component has {string} and {string} attributes', (aria, id) => {
+    let attrValue;
+    cy.get('section[class*="usa-section"]').each($el => {
+        attrValue = $el[0].getAttribute(aria);
+        cy.wrap($el).find('h2').should('have.attr', id, attrValue)
+    })
+})
+

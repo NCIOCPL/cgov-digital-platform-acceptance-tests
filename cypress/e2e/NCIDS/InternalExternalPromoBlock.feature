@@ -14,6 +14,7 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | 6     | NCIDS Promo Block External Title 5 | This uses the 16x9 override and 1x1 crop.          | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/promo_block_dog_16x9.png)$      |
             | 7     | NCIDS Promo Block External Title 6 | This uses the placeholder image                    | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/module\/cgov_image\/img\/placeholder-16x9.png)$                                        |
             | 8     | NCIDS Promo Block External Title 7 | No Image shown because no image option selected    | https://www.google.com | Learn More | N/A                                                                                                                                        |
+        And NCIDS component has "aria-labelledby" and "id" attributes
         Examples:
             | breakpoint |
             | desktop    |
@@ -35,6 +36,8 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | 7     | Internal Promo Block Title Override | Internal Promo Block Description Override             | /test/lead-promo-img                         | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/override-placeholder-16x9.png)$   |
             | 8     | Feelings and Cancer                 | Internal Promo Block Description Override             | /about-cancer/coping/feelings                | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/sad-woman-looking-out-window-article.jpg)$ |
             | 9     | [No IMG] Card Title                 | [No IMG] List Description                             | /test/no-img                                 | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/module\/cgov_image\/img\/placeholder-16x9.png)$                                          |
+        And NCIDS component has "aria-labelledby" and "id" attributes
+        
         Examples:
             | breakpoint |
             | desktop    |
