@@ -49,6 +49,10 @@ And('user sets the following crops', (dataTable) => {
         }
 });
 
+And('user selects {string} option from Operations dropdown for media with title {string}', (translate, title) => {
+    cy.get(`td:contains('${title}')`).siblings('td').find(`ul.dropbutton >li> a:contains("${translate}")`).click({ force: true });
+});
+
 And('user selects {string} Lead Image from the list of images', (image) => {
     cy.get('span:contains("Lead Image")').parent().click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
@@ -146,5 +150,3 @@ Then('the {string} appear as override', (override) => {
      
     })
 });
-
-

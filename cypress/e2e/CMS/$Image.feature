@@ -1,6 +1,6 @@
 Feature: User creating an image
 
-   Scenario: Create test pages to test image overrides
+    Scenario: Create test pages to test image overrides
         Given user is navigating to "/user/login"
         When user enters credentials
         And user clicks "Log in" button
@@ -62,7 +62,7 @@ Feature: User creating an image
             | fieldLabel       | value                                             | field_name             |
             | Pretty URL       | home-and-landing-page-image                       | field_pretty_url       |
             | Page Title       | Home and Landing page for Image                   | title                  |
-            | Browser Title    | Home and Landing page for Image - Browser Title  | field_browser_title    |
+            | Browser Title    | Home and Landing page for Image - Browser Title   | field_browser_title    |
             | Meta Description | Home and Landing page for Image  Meta Description | field_page_description |
         And user selects "Add Multimedia Row" from Contents dropdown
         And browser waits
@@ -87,20 +87,83 @@ Feature: User creating an image
         And item in the list has an image "thumbnail_image"
         When user is navigating to the front end site with path site section plus "home-and-landing-page-image"
         Then the "feature_card_image" appear as override
-            
 
-
-Scenario: Clean up
-   Given user is navigating to "/user/login"
+  Scenario: Translate an image
+        Given user is navigating to "/user/login"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "article-to-test-image" from the list of content
-        And user selects a checkbox next to title with url "mini-landing-page-image" from the list of content
-        And user selects a checkbox next to title with url "home-and-landing-page-image" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 3 content items" appears on a screen
+        And user clicks on "Media" sub tab
+        Then user selects "Translate" option from Operations dropdown for media with title "Test Image"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Test Image"
+        And user fills out the following fields
+            | fieldLabel   | value    | field_name             |
+            | Nombre       | _Spanish | name[0][value]         |
+            | Photo Credit | _Spanish | field_credit[0][value] |
+        And user types "_Spanish" into Caption text field
+        And user selects "Publicado" from Change to dropdown
+        Then user saves the content page
+
+    Scenario:Translate test pages
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Article to test Image"
+        Then page title is "Translations of Article to test Image"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Article to test Image"
+        And user clears out "Pretty URL" field
+        And user clears out "Título de página" field
+        And user fills out the following fields
+            | fieldLabel       | value                         | field_name       |
+            | Pretty URL       | article-to-test-image-spanish | field_pretty_url |
+            | Título de página | Article to test Image Spanish | title            |
+        Then user saves the content page
+        And user clicks on the tool bar status button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+
+        When user clicks on "Contenido" tab
+        Then user selects "Traducir" option from Operations dropdown for content with title "Home and Landing page for Image"
+        Then page title is "Translations of Home and Landing page for Image"
+        When user clicks on "Add" button to add translation
+        Then page title is "Crear traducción Español de Home and Landing page for Image"
+        And user clears out "Pretty URL" field
+        And user clears out "Título de página" field
+        And user fills out the following fields
+            | fieldLabel       | value                                   | field_name       |
+            | Pretty URL       | home-and-landing-page-for-image-spanish | field_pretty_url |
+            | Título de página | Home and Landing page for Image Spanish | title            |
+        Then user saves the content page
+        And user clicks on the tool bar status button "Borrador"
+        And user selects "Quick Publish" from workflow actions
+
+    Scenario: Verify translated image overrides
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "article-to-test-image-spanish"
+        Then lead image is displayed with source "main_image"
+        And caption reads "Test Caption_Spanish"
+        And credit reads "Test Credit_Spanish"
+        And "Ampliar" button is displayed
+        When user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-for-image-spanish"
+        Then the "feature_card_image" appear as override
+
+
+Scenario: Clean up
+    Given user is navigating to "/user/login"
+    When user enters credentials
+    And user clicks "Log in" button
+    Then user is logged in and the user name "admin" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    And user selects a checkbox next to title with url "article-to-test-image" from the list of content
+    And user selects a checkbox next to title with url "mini-landing-page-image" from the list of content
+    And user selects a checkbox next to title with url "home-and-landing-page-image" from the list of content
+    And user clicks on "Apply to selected items" content action button
+    Then page title is "Are you sure you want to delete these content items?"
+    When user clicks on "Delete" button
+    Then the confirmation text "Deleted 5 content items" appears on a screen
