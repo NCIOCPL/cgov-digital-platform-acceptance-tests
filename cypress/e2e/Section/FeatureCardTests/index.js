@@ -103,13 +103,11 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
         cy.get('@featureCard').parent().find('img').should('have.attr', 'alt', altText);
 
         cy.get('@featureCard').parent().find('img').invoke('attr', 'src').then((fullSrc) => {
-            console.log('source',fullSrc)
             expect(fullSrc.includes(`${source}`)).to.be.true;
         });
 
         cy.get('@featureCard').parent().find('img').invoke('attr', 'src').then((fullSrc) => {
             const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
-            console.log(src1)
             expect(src1.endsWith(file)).to.be.true;
         });
 

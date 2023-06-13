@@ -513,3 +513,20 @@ Given('user is navigating to the front end site with spanish path {string} site 
 And('user selects {string} from Change to dropdown', (option) => {
     cy.get('select#edit-moderation-state-0-state').select(option)
 })
+
+And('user deletes {string} image', (image) => {
+    cy.get(`form[id^="views-form-media-media-page-list"]`).then(($content) => {
+        if ($content.find(`a:contains("${image}")`)) {
+            cy.get(`a:contains("${image}")`).parent().parent().find('input.form-checkbox').check();
+            cy.get(`input[value='Apply to selected items']`).first().click();
+            cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
+            cy.get(`input[value='Delete']`).click();
+            cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 item.');
+        }
+    });
+});
+
+
+And('the image {string} does not exist in the list of content', (image) => {
+        cy.get(`form[id^="views-form-media-media-page-list"]`).find(`a:contains("${image}")`).should('not.exist');
+ });

@@ -1,45 +1,5 @@
 Feature: User creating an image
 
-Scenario: create a new image
-        Given user is navigating to "/user/login"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on "Media" sub tab
-        And user clicks on "Add media" action button
-        And user clicks on Image content type
-        Then page title is "Add Image"
-        And user fills out the following fields
-            | fieldLabel   | value       | field_name             |
-            | Name         | Test Image  | name[0][value]         |
-            | Photo Credit | Test Credit | field_credit[0][value] |
-        And user types "Test Caption" into Caption text field
-        And user uploads test "main" image "main_image.jpg"
-        And system waits for file upload process
-        And user clicks on CROP IMAGE button
-        And browser waits
-        And user sets the following crops
-            | crop      |cropcase| locator              |
-            | Thumbnail |thumbnail| a[href*="thumbnail"] |
-            | 4x3       |4x3| a[href*="4x3"]       |
-            | 3x4       |3x4| a[href*="3x4"]       |
-            | 1x1       |1x1| a[href*="1x1"]       |
-            | 16x9      |16x9| a[href*="16x9"]      |
-            | 9x16      |9x16| a[href*="9x16"]      |
-        And user selects "Display" from "Display Enlarge" dropdown
-        And user uploads test "feature" image "feature_card_image.jpg"
-        And system waits for file upload process
-        And user uploads test "thumbnail" image "thumbnail_image.jpg"
-        And system waits for file upload process
-        And user uploads test "social media" image "social_media_image.jpg"
-        And system waits for file upload process
-        And user uploads test "panoramic" image "panoramic_image.jpg"
-        And system waits for file upload process
-        Then user saves the content page
-
-
    Scenario: Create test pages to test image overrides
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -144,6 +104,3 @@ Scenario: Clean up
         Then page title is "Are you sure you want to delete these content items?"
         When user clicks on "Delete" button
         Then the confirmation text "Deleted 3 content items" appears on a screen
-        And user clicks on "Media" sub tab
-        And user deletes "Test Image" image
-        And the image "Test Image" does not exist in the list of content

@@ -270,7 +270,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And cthp causes card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
         And cthp survival card has a link "Override Card Desc - External Feature Card" with href "https://www.google1.com"
         Then the video is matching the earlier selected video
-        And cthp screening card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
+        And cthp screening card has a link "Automated Test Article - Feature Card Desc" with href "{TEST_SITE_SECTION}/article"
         And cthp general card has description that is not empty
         And cthp general card has multiple links
         And cthp genetics card reads "This is to test Raw Html Content in CTHP Raw HTML Card"
@@ -463,7 +463,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And cthp causes card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
         And cthp survival card has a link "Override Card Desc - External Feature Card" with href "https://www.google1.com"
         Then the video is matching the earlier selected video
-        And cthp screening card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
+        And cthp screening card has a link "Automated Test Article - Feature Card Desc" with href "{TEST_SITE_SECTION}/article"
         And cthp general card has description that is not empty
         And the following cards have multiple spanish links that start with "/espanol"
             | cardType      |
@@ -795,7 +795,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And cthp causes card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
         And cthp survival card has a link "Override Card Desc HP - External Feature Card" with href "https://www.google1.com"
         Then the video is matching the earlier selected video
-        And cthp screening card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
+        And cthp screening card has a link "Automated Test Article - Feature Card Desc" with href "{TEST_SITE_SECTION}/article"
         And cthp general card has description that is not empty
         And cthp general card has multiple links
         And cthp genetics card reads "This is to test Raw Html Content in CTHP Raw HTML Card"
@@ -994,7 +994,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And cthp causes card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
         And cthp survival card has a link "Override Card Desc HP - External Feature Card" with href "https://www.google1.com"
         Then the video is matching the earlier selected video
-        And cthp screening card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
+        And cthp screening card has a link "Automated Test Article - Feature Card Desc" with href "{TEST_SITE_SECTION}/article"
         And cthp general card has description that is not empty
         And the following cards have multiple spanish links that start with "/espanol"
             | cardType      |
