@@ -1,11 +1,6 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
 
-const siteSection = Cypress.env('test_site_section');
-const randomStr = Cypress.env('randomStr');
-const frontEndBaseUrl = Cypress.env('front_end_base_url');
-
-
 And('user clicks on Image content type', () => {
     cy.get(`ul.admin-list span.label:contains('Image')`).then($el => {
         const content= $el[1];
@@ -152,19 +147,4 @@ Then('the {string} appear as override', (override) => {
     })
 });
 
-And('user deletes {string} image', (image) => {
-    cy.get(`form[id^="views-form-media-media-page-list"]`).then(($content) => {
-        if ($content.find(`a:contains("${image}")`)) {
-            cy.get(`a:contains("${image}")`).parent().parent().find('input.form-checkbox').check();
-            cy.get(`input[value='Apply to selected items']`).first().click();
-            cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
-            cy.get(`input[value='Delete']`).click();
-            cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 item.');
-        }
-    });
-});
 
-
-And('the image {string} does not exist in the list of content', (image) => {
-        cy.get(`form[id^="views-form-media-media-page-list"]`).find(`a:contains("${image}")`).should('not.exist');
- });
