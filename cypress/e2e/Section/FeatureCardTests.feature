@@ -56,6 +56,7 @@ Feature: Feature Card tests
             | 6     | Internal Card Title Override       | Image has no crops -> show placeholder                                        | /test/clinical-trial-test-article     | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
             | 7     | Feelings and Cancer                | Internal Card Description Override - Small Lead Article Image being scaled up | /about-cancer/coping/feelings         | Sad Woman Looking Out Window  | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | sad-woman-looking-out-window-article.jpg   |
             | 8     | [No IMG] Card Title                | [No IMG] List Description                                                     | /test/no-img                          | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
+        And NCIDS component has "aria-labelledby" and "id" attributes
 
         Examples:
             | breakpoint |
@@ -76,6 +77,7 @@ Feature: Feature Card tests
             | 4     | External Card Title | N/A                                                                    | https://www.google.com | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
             | 5     | External Card Title | External Card Description                                              | https://www.google.com | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
             | 6     | External Card Title | Image has no crop -> Show placeholder                                  | https://www.google.com | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
+        And NCIDS component has "aria-labelledby" and "id" attributes
 
         Examples:
             | breakpoint |
@@ -87,6 +89,7 @@ Feature: Feature Card tests
         Given user is navigating to "/ncids-internal-feature-card-test"
         When user clicks on NCIDS feature card at position 4
         Then page click request is sent
+        And browser waits
         And the following parameters should be captured
             | parameter | value                                                          |
             | prop4     | D=pev1                                                         |
@@ -95,7 +98,7 @@ Feature: Feature Card tests
             | prop58    | D=v65                                                          |
             | prop59    | D=v66                                                          |
             | prop60    | D=c67                                                          |
-            | prop67    | D=pageName                                                      |
+            | prop67    | D=pageName                                                     |
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
             | evar64    | Internal\|[Lead IMG] Card Title\|Image                         |
@@ -111,10 +114,11 @@ Feature: Feature Card tests
             | linkType  | lnk_o                                                          |
 
 
-  Scenario: External Feature card click event
+    Scenario: External Feature card click event
         Given user is navigating to "/ncids-external-feature-card-test"
         When user clicks on NCIDS feature card at position 7
         Then page click request is sent
+        And browser waits
         And the following parameters should be captured
             | parameter | value                                                          |
             | prop4     | D=pev1                                                         |
@@ -123,10 +127,10 @@ Feature: Feature Card tests
             | prop58    | D=v65                                                          |
             | prop59    | D=v66                                                          |
             | prop60    | D=c67                                                          |
-            | prop67    | D=pageName                                                      |
+            | prop67    | D=pageName                                                     |
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
-            | evar64    | External\|External Card Title\|Image                         |
+            | evar64    | External\|External Card Title\|Image                           |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
             | evar66    | 3\|3\|1\|1                                                     |
             | evar67    | Image\|1\|1                                                    |
