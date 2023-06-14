@@ -186,3 +186,6 @@ And('NCIDS component has {string} and {string} attributes', (aria, id) => {
     })
 })
 
+When('user clicks on link {string} in raw html block', (href) => {
+cy.get(`a[href="${href}"]`).trigger('click', { followRedirect: false })
+});
