@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 import { Then } from "cypress-cucumber-preprocessor/steps";
 import { getBaseDirectory } from '../../utils';
+const baseUrl = Cypress.config('baseUrl');
 
 Then('NCIDS feature cards are visible', () => {
     cy.get('section[class*="cgdp-feature-card-row"] .nci-card__body').should('be.visible');
@@ -66,13 +67,18 @@ Then('NCIDS guide cards have the following attributes', (dataTable) => {
         for (let i = 0; i < button.length; i++) {
             const linkAndText = button[i].split(',');
             cy.get('.nci-guide-card__wrapper').eq(index).find('a').eq(i).as('link').should('include.text', linkAndText[0])
-            cy.get('@link').should('have.attr', 'href', linkAndText[1])
+            if (linkAndText[1].includes('http')) {
+                cy.get('@link').should('have.attr', 'href', `${linkAndText[1]}`)
+            } else {
+                cy.get('@link').should('have.attr', 'href', `${getBaseDirectory()}${linkAndText[1]}`)
+            }
         }
     }
 })
 And('NCIDS promo blocks have the following attributes', (dataTable) => {
 
-    for (const { index, title, description, link, buttonText, source } of dataTable.hashes()) {
+
+    for (let { index, title, description, link, buttonText, source } of dataTable.hashes()) {
 
         cy.get('div[class*="nci-promo-block "]').eq(index).as('promoBlock');
 
@@ -104,9 +110,15 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
         if (source === 'N/A') {
             cy.get('@promoBlock').find('img').should('not.exist');
         } else {
+            if (baseUrl.includes('dev-acsf')) {
+                source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
 
+            } else if (baseUrl.includes('test-acsf')) {
+                source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
+            }
             cy.get('@promoBlock').find('img').invoke('attr', 'src').then((fullSrc) => {
                 const modifiedSrc = fullSrc.replace(/\?.*/, '')
+
                 expect(modifiedSrc).to.match(new RegExp(source))
             });
         }
@@ -118,7 +130,11 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
 And('CTA strip has the following links', (dataTable) => {
     cy.get('div[class*="usa-section"] ul.nci-cta-strip').as('cta').should('be.visible')
     for (const { title, link } of dataTable.hashes()) {
-        cy.get('@cta').find(`a[href="${link}"]`).should('include.text', title);
+        if (link.includes('http')) {
+            cy.get('@cta').find(`a[href="${link}"]`).should('include.text', title);
+        } else {
+            cy.get('@cta').find(`a[href="${getBaseDirectory()}${link}"]`).should('include.text', title);
+        }
     }
 })
 
@@ -129,7 +145,7 @@ And('tagline title reads {string}', (title) => {
     cy.get('h2.nci-hero__cta-tagline').should('have.text', title)
 })
 And('tagline button has text {string} with link {string}', (btnText, href) => {
-    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href', href)
+    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href', `${getBaseDirectory()}${href}`)
 })
 And("tagline button doesn't exist", () => {
     cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('not.exist')
