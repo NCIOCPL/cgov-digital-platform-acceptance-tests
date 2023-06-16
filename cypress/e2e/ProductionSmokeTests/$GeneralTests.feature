@@ -8,12 +8,12 @@ Feature: Basic checks to ensure production site is up and running
         And all mega menu sections have the correct "<url>"
         And footer is displayed
         Examples:
-            | url                         | titles                                                                                         |
-            | /                           | About Cancer,Cancer Types,Research,Grants & Training,News & Events,About NCI                   |
-            | /espanol                    | El cáncer,Tipos de cáncer,Investigación,Subvenciones y capacitación,Noticias,Nuestro instituto |
-            | /pediatric-adult-rare-tumor | Rare Tumors,Research,Participate,Support,News,About                                            |
-            | /rare-brain-spine-tumor     | Tumor Types,Living with a Tumor,Refer and Participate,NCI-CONNECTions Blog,About               |
-            | /nano                       | Cancer & Nanotech,Research,Grants & Training,News & Events,About NSDB                          |
+            | url                         | titles                                                                                      |
+            | /                           | About Cancer,Cancer Types,Research,Grants & Training,News & Events,About NCI                |
+            | /espanol                    | El cáncer,Tipos de cáncer,Investigación,Subvenciones y capacitación,Noticias,Acerca del NCI |
+            | /pediatric-adult-rare-tumor | Rare Tumors,Research,Participate,Support,News,About                                         |
+            | /rare-brain-spine-tumor     | Tumor Types,Living with a Tumor,Refer and Participate,NCI-CONNECTions Blog,About            |
+            | /nano                       | Cancer & Nanotech,Research,Grants & Training,News & Events,About NSDB                       |
 
 
     Scenario Outline: Different contents are loaded on all sites
