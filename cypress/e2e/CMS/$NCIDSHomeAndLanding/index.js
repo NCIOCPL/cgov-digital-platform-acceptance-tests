@@ -125,8 +125,10 @@ And('tagline button has text {string} with link {string}', (btnText, href) => {
 })
 
 Then('NCIDS guide cards have the following attributes', (dataTable) => {
-    for (const { index, title, description, btnLinkAndText } of dataTable.hashes()) {
-
+    for (let { index, title, description, btnLinkAndText,source, file } of dataTable.hashes()) {
+        if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+            source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
+        }
         cy.get('.nci-guide-card__header').eq(index).invoke('text').then((text) => {
             expect(text.trim()).equal(title);
         });
@@ -143,6 +145,21 @@ Then('NCIDS guide cards have the following attributes', (dataTable) => {
                 cy.get('@link').should('have.attr', 'href', `${linkAndText[1]}-${randomStr}`)
             }
         }
+
+        cy.get('.nci-guide-card__wrapper').eq(index).find('img').invoke('attr', 'src').then((fullSrc) => {
+
+            if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+                fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
+            }
+            expect(fullSrc.includes(`${source}`)).to.be.true;
+
+            const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+            if (file.includes('placeholder')) {
+                expect(src1).to.match(new RegExp(`.*\/${file}`))
+            } else {
+                expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
+            }
+        });
     }
 })
 
