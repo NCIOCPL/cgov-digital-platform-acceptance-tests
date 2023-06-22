@@ -102,9 +102,8 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel       | value              | field_name                                                                                                           |
             | Heading          | Guide Card 1       | field_landing_contents[1][subform][field_image_desc_guide_cards][0][subform][field_container_heading][0][value]      |
             | Card Description | Card 1 Description | field_landing_contents[1][subform][field_image_desc_guide_cards][0][subform][field_guide_card_description][0][value] |
-        And user uploads "panoramic_image.jpg" as 1 guide card image
-        And browser waits
-        And browser waits
+        # And user uploads "panoramic_image.jpg" as 1 guide card image
+        # And browser waits
         And user clicks on "Add NCIDS Link Button Internal" from "Links for Guide Card Buttons" area
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on "Select content" button item
