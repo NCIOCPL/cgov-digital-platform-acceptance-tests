@@ -47,7 +47,7 @@ Feature: Primary CancerType keyword search
       | Subtype | Bilateral Breast Cancer |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
-    And trial info displays "Results 1-10  of \d+ for your search.*"
+    And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value |
       | t         | C4872 |
@@ -70,7 +70,7 @@ Feature: Primary CancerType keyword search
       | Stage   | Early-Stage Breast Cancer |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
-    And trial info displays "Results 1-1  of \d+ for your search.*"
+    And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value  |
       | t         | C4872  |

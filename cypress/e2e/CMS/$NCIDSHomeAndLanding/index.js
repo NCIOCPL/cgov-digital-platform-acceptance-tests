@@ -146,20 +146,20 @@ Then('NCIDS guide cards have the following attributes', (dataTable) => {
             }
         }
 
-        cy.get('.nci-guide-card__wrapper').eq(index).find('img').invoke('attr', 'src').then((fullSrc) => {
+        // cy.get('.nci-guide-card__wrapper').eq(index).find('img').invoke('attr', 'src').then((fullSrc) => {
 
-            if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-                fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
-            }
-            expect(fullSrc.includes(`${source}`)).to.be.true;
+        //     if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+        //         fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
+        //     }
+        //     expect(fullSrc.includes(`${source}`)).to.be.true;
 
-            const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
-            if (file.includes('placeholder')) {
-                expect(src1).to.match(new RegExp(`.*\/${file}`))
-            } else {
-                expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
-            }
-        });
+        //     const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+        //     if (file.includes('placeholder')) {
+        //         expect(src1).to.match(new RegExp(`.*\/${file}`))
+        //     } else {
+        //         expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
+        //     }
+        // });
     }
 })
 

@@ -6,7 +6,7 @@ Feature: as a content editor, I want to ensure that I can set card title using C
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user is navigating to "/about-cancer/treatment/cam/hp/acupuncture-pdq"
-        And user clicks on the tool bar status green button "Published"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And the following fields are displayed
             | fieldLabel      | field_name            |
