@@ -36,9 +36,11 @@ Feature: Basic checks to ensure production site is up and running
         And page title is "<title>"
         And the list of posts is displayed
         Examples:
-            | url                                        | title                     |
-            | /about-nci/organization/cgh/blog?year=2020 | 2020 - CGH Spotlight Blog |
-            | /news-events/press-releases/2022           | 2022 News Releases        |
+            | url                                          | title                         |
+            | /about-nci/organization/cgh/blog?year=2020   | 2020 - CGH Spotlight Blog     |
+            | /news-events/press-releases/2022             | 2022 News Releases            |
+            | /news-events/press-releases/2023             | 2023 News Releases            |
+            | /espanol/noticias/comunicados-de-prensa/2023 | Comunicados de prensa de 2023 |
 
     Scenario Outline: App modules API's is working
         Given app sends the request "<request>"
