@@ -50,3 +50,52 @@ And('user selects a checkbox next to the title with spanish path {string} with u
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 });
+And('user clicks the {string} button {int} in the WYSIWYG editor', (videoButton, counter) => {
+    cy.get('span.cke_button__cgov_video_button_icon').eq(counter - 1).click({ force: true });
+});
+
+And('user enters {string} into content title search box and clicks {string}', (nameToSearch, applyBtn) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_video_browser').find(`input[id*="edit-name"]`).type(nameToSearch);
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_video_browser').find(`input[id*="edit-submit-cgov-video-media-browser"][value=${applyBtn}]`).click({ force: true });
+    cy.wait(2000)
+});
+
+And('user selects {string} option from the list of media', (titleVideo) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_video_browser').find(`input[name*="entity_browser_select"][type='checkbox']`).eq(0).check()
+    
+})
+
+And('user clicks on {string} button to select video', (videoBtn) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_video_browser').find(`input[value="${videoBtn}"]`).click({ force: true })
+})
+
+And('{string} dropdown displays {string}', (labelText, displayOption) => {
+    cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${displayOption}")`).should('have.attr', 'selected', 'selected');
+});
+
+And('{string} dropdown has the following options', (labelText, dataTable) => {
+    cy.get("label[for*='edit-attributes-data-entity-embed-display']").should('have.text',labelText);
+    for (const { options } of dataTable.hashes()) {
+        cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${options}")`).should('exist');
+    }
+});
+
+And('user selects {string} radio button under {string}', (label, fieldText) => {
+    cy.get(`label[for*="edit-attributes-data-align"]:contains("${label}")`).click({ force: true });
+});
+
+And('{int} section heading reads {string}', (num, title) => {
+    cy.get(`section >h2 p:contains('${title}')`).should('be.visible');
+});
+
+And('{int} video has title {string}', (num, title) => {
+    cy.get(`section > div > .video:contains('${title}')`).should('be.visible');
+});
+
+And('{int} video has no title',(index)=>{
+cy.get('figure.video').eq(index-1).find('h4').should('not.exist')
+});
+
+And('{int} video has alignment set to {string}',(index, value)=>{
+cy.get('div[data-embed-button="cgov_video_button"]').eq(index-1).should('have.attr','class',`embedded-entity${value}`)
+})
