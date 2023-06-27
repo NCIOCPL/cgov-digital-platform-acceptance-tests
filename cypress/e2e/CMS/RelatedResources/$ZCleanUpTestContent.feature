@@ -10,11 +10,8 @@ Feature: delete all content created for testing purposes that has not yet been d
               And user clicks on "Media" sub tab
               And user deletes test file with url "test-file"
               And the content item with url "test-file" does not exist in the list of content
-              # Given user is navigating to "/user/login"
-              # When user enters credentials
-              # And user clicks "Log in" button
-              # Then user is logged in and the user name "admin" is displayed in the toolbar
-              # And the tool bar appears at the top
+              And user deletes "Test Image" image
+              And the image "Test Image" does not exist in the list of content
               When user clicks on "Content" tab
               And if they exist user selects a checkbox next to the following urls
                      | url                                              |
@@ -55,15 +52,7 @@ Feature: delete all content created for testing purposes that has not yet been d
                      | blog-post2-test-blog-series                      |
                      | article                                          |
 
-              # And if it exists user selects a checkbox next to title with url "blog-post-edited" under "/news-events/cancer-currents-blog" from the list of content
-              # And if they exist user selects a checkbox next to the following titles with url
-              #        | title                                             | lastPartUrl                            |
-              #        | Automated Test Blog Series Edited                 | blog-series-edited                     |
-              #        | Automated Test Blog Post for testing Blog Series  | blog-post-test-blog-series             |
-              #        | Automated Test Blog Post2 for testing Blog Series | blog-post2-test-blog-series            |
-              #        | Article to test Site Section                      | /about-cancer/coping/test-site-section |
-              #        | Article to test Related Resources                 | /something                             |
-              And if it exists user selects a checkbox next to the title with spanish path "/espanol" with url "home-and-landing-page-video-spanish" from the list of content
+              # And if it exists user selects a checkbox next to the title with spanish path "/espanol" with url "home-and-landing-page-video-spanish" from the list of content
 
               And user clicks on "Apply to selected items" content action button
               When user clicks on "Delete" button
