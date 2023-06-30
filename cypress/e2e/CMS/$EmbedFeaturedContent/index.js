@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
-import { And, Given } from 'cypress-cucumber-preprocessor/steps';
-import { extractImgName } from "../../../../utils/extractImgName.js";
+import { And } from 'cypress-cucumber-preprocessor/steps';
+import { extractImgName } from "../../../utils/extractImgName.js";
 
 const siteSection = Cypress.env('test_site_section');
 const randomStr = Cypress.env('randomStr');
