@@ -242,7 +242,9 @@ And('user clicks on {string} to choose a resource to link', (selectContentLbl) =
 })
 
 And('user selects {string} item from the list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).parent().find('input').click({ force: true });
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find('#edit-title').type(selectContent);
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find('#edit-submit-cgov-content-browser').click();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
 });
 
 And('user clicks on {string} button to select item', (selectContent) => {
