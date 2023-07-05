@@ -558,24 +558,3 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Test File DOCX_Spanish | word     |
             | Test File DOC_Spanish  | word     |
         And each file has a size class
-
-    Scenario: Clean up related resources and mini landing page test content
-        Given user is navigating to "/user/login"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on "Media" sub tab
-        And user selects a checkbox next to title with url "test-file-pdf" from the list of content
-        And user selects a checkbox next to title with url "test-file-csv" from the list of content
-        And user selects a checkbox next to title with url "test-file-pptx" from the list of content
-        And user selects a checkbox next to title with url "test-file-ppt" from the list of content
-        And user selects a checkbox next to title with url "test-file-xlsx" from the list of content
-        And user selects a checkbox next to title with url "test-file-xls" from the list of content
-        And user selects a checkbox next to title with url "test-file-docx" from the list of content
-        And user selects a checkbox next to title with url "test-file-doc" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these media items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 16 items" appears on a screen
