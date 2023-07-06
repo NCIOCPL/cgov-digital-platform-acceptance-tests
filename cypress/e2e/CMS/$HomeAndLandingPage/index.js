@@ -415,10 +415,6 @@ And('user clicks on {string} button item {int}', (content, index) => {
     cy.get(`input[value='${content}']`).eq(index - 1).click({ force: true })
 });
 
-And('user selects {string} item from the list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
-})
-
 Then('the promo image is matching the earlier selected image', () => {
     const expectedSrc = (imageSrc2.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')

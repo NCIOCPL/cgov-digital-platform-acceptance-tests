@@ -190,11 +190,6 @@ And('user clicks on {string} button item', (content) => {
     cy.get(`input[value='${content}']`).eq(0).click({ force: true });
 });
 
-
-And('user selects {string} item from the list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
-});
-
 And('user selects {string} item from media list', (title) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_media_browser').find(`input[name*="entity_browser_select"][type='checkbox']`).eq(0).check();
 });
