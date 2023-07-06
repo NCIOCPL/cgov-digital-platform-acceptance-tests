@@ -27,6 +27,7 @@ Feature: delete all content created for testing purposes that has not yet been d
                      | mini-landing-page-edited                         |
                      | mini-landing-page-test-promo                     |
               And user clicks on "Apply to selected items" content action button
+              And browser waits
               When user clicks on "Delete" button
               And if they exist user selects a checkbox next to the following urls
                      | press-release-edited                             |
@@ -49,6 +50,7 @@ Feature: delete all content created for testing purposes that has not yet been d
                      | article-to-test-contextual-image                 |
                      | article-to-test-image                            |
               And user clicks on "Apply to selected items" content action button
+              And browser waits
               When user clicks on "Delete" button
               And the following content items do not exist in the list of content
                      | url                                              |
