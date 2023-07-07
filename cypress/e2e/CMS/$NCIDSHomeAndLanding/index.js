@@ -125,7 +125,7 @@ And('tagline button has text {string} with link {string}', (btnText, href) => {
 })
 
 Then('NCIDS guide cards have the following attributes', (dataTable) => {
-    for (let { index, title, description, btnLinkAndText,source, file } of dataTable.hashes()) {
+    for (let { index, title, description, btnLinkAndText, source, file } of dataTable.hashes()) {
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
             source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
         }
@@ -204,11 +204,11 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
             cy.get('@promoBlock').find('img').should('not.exist');
         } else {
             cy.get('@promoBlock').find('img').invoke('attr', 'src').then((fullSrc) => {
-        
+
                 if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
                     fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
 
-                } 
+                }
                 expect(fullSrc.includes(`${source}`)).to.be.true;
             });
         }
@@ -228,7 +228,7 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
         } else {
 
             cy.get('@promoBlock').find('picture source').invoke('attr', 'srcset').then((fullSrc) => {
-                
+
                 if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
                     fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
                 }
@@ -295,7 +295,7 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
         });
 
         cy.get('@featureCard').parent().find('picture source').invoke('attr', 'srcset').then((fullSrc) => {
-            
+
             if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
                 fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
             }

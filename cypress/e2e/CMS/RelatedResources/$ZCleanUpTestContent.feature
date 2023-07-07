@@ -95,7 +95,6 @@ Feature: delete all content created for testing purposes that has not yet been d
                      | test-infographic |
                      | test-file        |
               And user clicks on "Apply to selected items" content action button
-              Then page title is "Are you sure you want to delete these media items?"
               When user clicks on "Delete" button
               And the following content items do not exist in the list of content
                      | url              |

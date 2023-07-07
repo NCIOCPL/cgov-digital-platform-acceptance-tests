@@ -1,6 +1,6 @@
 Feature: Adding any necessary test resources
 
-Scenario: create a new image
+    Scenario: create a new image
         Given user is navigating to "/user/login"
         When user enters credentials
         And user clicks "Log in" button
@@ -21,13 +21,13 @@ Scenario: create a new image
         And user clicks on CROP IMAGE button
         And browser waits
         And user sets the following crops
-            | crop      |cropcase| locator              |
-            | Thumbnail |thumbnail| a[href*="thumbnail"] |
-            | 4x3       |4x3| a[href*="4x3"]       |
-            | 3x4       |3x4| a[href*="3x4"]       |
-            | 1x1       |1x1| a[href*="1x1"]       |
-            | 16x9      |16x9| a[href*="16x9"]      |
-            | 9x16      |9x16| a[href*="9x16"]      |
+            | crop      | cropcase  | locator              |
+            | Thumbnail | thumbnail | a[href*="thumbnail"] |
+            | 4x3       | 4x3       | a[href*="4x3"]       |
+            | 3x4       | 3x4       | a[href*="3x4"]       |
+            | 1x1       | 1x1       | a[href*="1x1"]       |
+            | 16x9      | 16x9      | a[href*="16x9"]      |
+            | 9x16      | 9x16      | a[href*="9x16"]      |
         And user selects "Display" from "Display Enlarge" dropdown
         And user uploads test "feature" image "feature_card_image.jpg"
         And system waits for file upload process
@@ -51,11 +51,14 @@ Scenario: create a new image
         Then page title is "Create Article"
         When user selects test site section
         And user fills out the following fields
-            | fieldLabel       | value                                                | field_name             |
-            | Pretty URL       | article                                              | field_pretty_url       |
-            | Page Title       | Article to test Related Resources                    | title[0][value]        |
-            | Browser Title    | Article to test Related Resources                    | field_browser_title    |
-            | Meta Description | Article to test Related Resources - Meta Description | field_page_description |
+            | fieldLabel               | value                                                | field_name                     |
+            | Pretty URL               | article                                              | field_pretty_url               |
+            | Page Title               | Article to test Related Resources                    | title[0][value]                |
+            | Browser Title            | Article to test Related Resources                    | field_browser_title            |
+            | Meta Description         | Article to test Related Resources - Meta Description | field_page_description         |
+            | Feature Card Description | Automated Test Article - Feature Card Desc           | field_feature_card_description |
+        And user selects "Test Image" Promotional Image from the list of images
+        And browser waits
         And user selects "Published" from "Save as" dropdown
         Then user saves the content page
         When user clicks on "Content" tab
