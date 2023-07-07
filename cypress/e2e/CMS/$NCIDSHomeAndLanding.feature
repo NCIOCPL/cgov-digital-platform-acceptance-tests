@@ -74,6 +74,9 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -107,11 +110,17 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Add NCIDS Link Button Internal" from "Links for Guide Card Buttons" area
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
         And user adds another "internal" link for 1 guide card
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -148,12 +157,18 @@ Feature: Home And Landing Page Test Creation of Content
             | Heading    | 3 Feature Card Row | field_landing_contents[2][subform][field_container_heading][0][value] |
         And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
         And user clicks on "Add NCIDS Feature Card Internal" button item
         And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -210,6 +225,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Image Right" image position for 2 block
         And user clicks on "Featured Item" in 1 "NCIDS Promo Block Internal" section
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -223,6 +241,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "No Image" image position for 3 block
         And user clicks on "Featured Item" in 2 "NCIDS Promo Block Internal" section
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits

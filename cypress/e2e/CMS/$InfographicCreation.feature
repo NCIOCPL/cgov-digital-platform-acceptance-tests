@@ -367,10 +367,3 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
-        And user selects a checkbox next to title with url "test-infographic" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this media item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 items" appears on a screen
-        And the content item with url "test-infographic" does not exist in the list of content
-        And the content item with url "test-infographic-spanish" does not exist in the list of content

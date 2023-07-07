@@ -10,6 +10,7 @@ Feature: delete all content created for testing purposes that has not yet been d
               And if they exist user selects a checkbox next to the following urls
                      | url                                              |
                      | mini-landing-page-test-biography                 |
+                     | mini-landing-page-test-article                   |
                      | mini-landing-page-test-blog-posts                |
                      | mini-landing                                     |
                      | mini-landing-page-image                          |
@@ -21,15 +22,12 @@ Feature: delete all content created for testing purposes that has not yet been d
                      | crlp-for-files                                   |
                      | test-resource-mini-landing-page-for-home-landing |
                      | home-and-landing-page-edited                     |
+                     | home-and-landing-page                            |
                      | mini-landing-page-test-home-and-landing-page     |
                      | article-to-test-infographic                      |
                      | home-and-landing-page-to-test-infographic        |
                      | mini-landing-page-edited                         |
                      | mini-landing-page-test-promo                     |
-              And user clicks on "Apply to selected items" content action button
-              And browser waits
-              When user clicks on "Delete" button
-              And if they exist user selects a checkbox next to the following urls
                      | press-release-edited                             |
                      | mini-landing-page-test-press-release             |
                      | blog-post-edited                                 |
@@ -84,19 +82,32 @@ Feature: delete all content created for testing purposes that has not yet been d
                      | press-release-edited                             |
                      | mini-landing-page-test-press-release             |
               And user clicks on "Media" sub tab
-              And user selects a checkbox next to title with url "test-file-pdf" from the list of content
-              And user selects a checkbox next to title with url "test-file-csv" from the list of content
-              And user selects a checkbox next to title with url "test-file-pptx" from the list of content
-              And user selects a checkbox next to title with url "test-file-ppt" from the list of content
-              And user selects a checkbox next to title with url "test-file-xlsx" from the list of content
-              And user selects a checkbox next to title with url "test-file-xls" from the list of content
-              And user selects a checkbox next to title with url "test-file-docx" from the list of content
-              And user selects a checkbox next to title with url "test-file-doc" from the list of content
+              And if they exist user selects a checkbox next to the following urls
+                     | url              |
+                     | test-file-pdf    |
+                     | test-file-csv    |
+                     | test-file-pptx   |
+                     | test-file-ppt    |
+                     | test-file-xlsx   |
+                     | test-file-xls    |
+                     | test-file-docx   |
+                     | test-file-doc    |
+                     | test-infographic |
+                     | test-file        |
               And user clicks on "Apply to selected items" content action button
               Then page title is "Are you sure you want to delete these media items?"
               When user clicks on "Delete" button
-              Then the confirmation text "Deleted 16 items" appears on a screen
-              And user deletes test file with url "test-file"
-              And the content item with url "test-file" does not exist in the list of content
+              And the following content items do not exist in the list of content
+                     | url              |
+                     | test-file-pdf    |
+                     | test-file-csv    |
+                     | test-file-pptx   |
+                     | test-file-ppt    |
+                     | test-file-xlsx   |
+                     | test-file-xls    |
+                     | test-file-docx   |
+                     | test-file-doc    |
+                     | test-infographic |
+                     | test-file        |
               And user deletes "Test Image" image
               And the image "Test Image" does not exist in the list of content

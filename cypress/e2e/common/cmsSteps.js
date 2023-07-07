@@ -242,9 +242,6 @@ And('user clicks on {string} to choose a resource to link', (selectContentLbl) =
 })
 
 And('user selects {string} item from the list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find('#edit-title').type(title);
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find('#edit-submit-cgov-content-browser').click();
-    cy.wait(2000);
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
 });
 
