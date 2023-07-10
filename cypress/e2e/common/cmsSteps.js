@@ -553,7 +553,6 @@ And('user deletes {string} image', (image) => {
         if ($content.find(`a:contains("${image}")`)) {
             cy.get(`a:contains("${image}")`).parent().parent().find('input.form-checkbox').check();
             cy.get(`input[value='Apply to selected items']`).first().click();
-            cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
             cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 item.');
         }

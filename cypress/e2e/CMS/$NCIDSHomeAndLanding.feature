@@ -157,6 +157,7 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel | value              | field_name                                                            |
             | Heading    | 3 Feature Card Row | field_landing_contents[2][subform][field_container_heading][0][value] |
         And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
+        And browser waits
         And user clicks on "Select content" button item
         And user enters "Article to test Related Resources" into "Title" text field to filter content
         And user clicks on "Apply" button to select the item
@@ -206,7 +207,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "NCIDS Image" as promo image for 4 block
         And browser waits
         Then user saves the content page
-        And browser waits
+        And browser waits for 3000
 
     Scenario: Add NCIDS Promo Block Internal
         Given user is navigating to "/user/login"
