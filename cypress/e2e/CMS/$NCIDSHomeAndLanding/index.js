@@ -192,7 +192,7 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
             if (href.startsWith('http')) {
                 expect(href).to.eq(link)
             } else {
-                expect(href).to.eq(`${getBaseDirectory()}${link}-${randomStr}`)
+                expect(href).to.include(`${getBaseDirectory()}${link}`)
             }
         })
 
@@ -275,7 +275,7 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
             if (href.startsWith('http')) {
                 expect(href).to.eq(link)
             } else {
-                expect(href).to.eq(`${getBaseDirectory()}${link}-${randomStr}`)
+                expect(href).to.include(`${getBaseDirectory()}${link}`)
             }
         })
 

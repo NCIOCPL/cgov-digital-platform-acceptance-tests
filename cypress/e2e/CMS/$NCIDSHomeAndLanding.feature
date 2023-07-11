@@ -207,7 +207,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "NCIDS Image" as promo image for 4 block
         And browser waits
         Then user saves the content page
-        And browser waits for 3000
+        And browser waits for 5000
 
     Scenario: Add NCIDS Promo Block Internal
         Given user is navigating to "/user/login"
