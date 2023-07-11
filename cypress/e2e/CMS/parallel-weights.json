@@ -4,14 +4,14 @@
   "cypress/e2e/CMS/$Biography.feature": { "time": 66000, "weight": 1 },
   "cypress/e2e/CMS/$BlogPosts.feature": { "time": 118000, "weight": 2 },
   "cypress/e2e/CMS/$BlogSeries.feature": { "time": 165000, "weight": 3 },
-  "cypress/e2e/CMS/$CancerCenter.feature": { "time": 90000, "weight": 0 },
+  "cypress/e2e/CMS/$CancerCenter.feature": { "time": 90000, "weight": 2 },
   "cypress/e2e/CMS/$CancerResearchPageList.feature": {
     "time": 84000,
     "weight": 0
   },
   "cypress/e2e/CMS/$CancerTypeHomePage.feature": {
     "time": 485000,
-    "weight": 22
+    "weight": 0
   },
   "cypress/e2e/CMS/$ContextualImageCreation.feature": {
     "time": 125000,
@@ -19,7 +19,7 @@
   },
   "cypress/e2e/CMS/$CreateAnImage.feature": { "time": 240000, "weight": 5 },
   "cypress/e2e/CMS/$CreatingAvideo.feature": { "time": 55000, "weight": 1 },
-  "cypress/e2e/CMS/$Event.feature": { "time": 84000, "weight": 0 },
+  "cypress/e2e/CMS/$Event.feature": { "time": 84000, "weight": 3 },
   "cypress/e2e/CMS/$FileCreation.feature": { "time": 262000, "weight": 8 },
   "cypress/e2e/CMS/$HomeAndLandingPage.feature": {
     "time": 341000,
@@ -35,5 +35,24 @@
   },
   "cypress/e2e/CMS/$PressRelease.feature": { "time": 120000, "weight": 2 },
   "cypress/e2e/CMS/$SiteSections.feature": { "time": 120000, "weight": 2 },
-  "cypress/e2e/CMS/WYSIWYG/$EmbedTables.feature": { "time": 60000, "weight": 1 }
+  "cypress/e2e/CMS/$EmbedContentBlock.feature": { "time": 141000, "weight": 3 },
+  "cypress/e2e/CMS/$EmbedExternalLinkBlock.feature": {
+    "time": 147000,
+    "weight": 3
+  },
+  "cypress/e2e/CMS/$EmbedFeaturedContent.feature": {
+    "time": 190000,
+    "weight": 4
+  },
+  "cypress/e2e/CMS/$EmbedImageCarousel.feature": {
+    "time": 109000,
+    "weight": 2
+  },
+  "cypress/e2e/CMS/$EmbedRawHtmlBlock.feature": { "time": 139000, "weight": 3 },
+  "cypress/e2e/CMS/$EmbedTables.feature": { "time": 60000, "weight": 1 },
+  "cypress/e2e/CMS/$EmbedVideoCarousel.feature": { "time": 90000, "weight": 1 },
+  "cypress/e2e/CMS/$NCIDSHomeAndLanding.feature": {
+    "time": 420000,
+    "weight": 4
+  }
 }
