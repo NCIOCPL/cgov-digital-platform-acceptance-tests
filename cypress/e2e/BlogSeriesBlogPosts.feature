@@ -89,7 +89,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
     Scenario Outline: Filtering blogs by topic - invalid
         Given user is navigating to "<url>"
         Then page title is "<title>"
-        And blog posts list doesnot appear
+        And blog posts list does not appear
         Examples:
             | url                                                             | title                  |
             | /news-events/cancer-currents-blog?topic=chicken                 | - Cancer Currents      |
@@ -110,7 +110,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
         When user is navigating to bad url "<url>"
         Then status code is 400 on "<request>"
         Then the text "<text>" appears
-        And blog posts list doesnot appear
+        And blog posts list does not appear
         Examples:
             | url                                                     | request                                                           | text                            |
             | /news-events/cancer-currents-blog?year=chicken          | {BASE_URL}/news-events/cancer-currents-blog?year=chicken          | A client error happened         |
@@ -121,7 +121,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
         When user is navigating to bad url "<url>"
         Then status code is 400 on "<request>"
         Then the text "<text>" appears
-        And blog posts list doesnot appear
+        And blog posts list does not appear
         Examples:
             | url                                                      | request                                                            | text                            |
             | /news-events/cancer-currents-blog?month=13               | {BASE_URL}/news-events/cancer-currents-blog?month=13               | A client error happened         |
@@ -140,7 +140,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
         And the "Categories" managed list appears without a date
         And the "Archive" accordion is displayed
         And "Archive" accordion is collapsed
-        And blog posts list doesnot appear
+        And blog posts list does not appear
         And "< Older Post" button appears with a link "/news-events/cancer-currents-blog/2019/transition-lowy-nci-acting-director"
         When user clicks on "< Older Post" button
         And "Newer Post >" button appears with a link "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"

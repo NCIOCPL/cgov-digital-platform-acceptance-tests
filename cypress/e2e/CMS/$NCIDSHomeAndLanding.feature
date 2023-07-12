@@ -74,6 +74,9 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -107,11 +110,18 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Add NCIDS Link Button Internal" from "Links for Guide Card Buttons" area
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
         And user adds another "internal" link for 1 guide card
+        And browser waits
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -130,7 +140,6 @@ Feature: Home And Landing Page Test Creation of Content
             | Link Button Title | Google Link            | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][0][subform][field_button_text][0][value] |
         Then user saves the content page
 
-
     Scenario: Add NCIDS 3 Feature Card Row
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -147,13 +156,22 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel | value              | field_name                                                            |
             | Heading    | 3 Feature Card Row | field_landing_contents[2][subform][field_container_heading][0][value] |
         And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
+        And browser waits
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
         And user clicks on "Add NCIDS Feature Card Internal" button item
+        And browser waits
         And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
+        And browser waits
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -169,8 +187,6 @@ Feature: Home And Landing Page Test Creation of Content
             | Featured Item Url | https://www.google1.com | field_landing_contents[2][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
             | Card Title        | Google Link             | field_landing_contents[2][subform][field_row_cards][2][subform][field_override_card_title][0][value] |
         When user saves the content page
-
-
 
     Scenario: Add NCIDS Promo Block External
         Given user is navigating to "/user/login"
@@ -192,7 +208,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "NCIDS Image" as promo image for 4 block
         And browser waits
         Then user saves the content page
-
+        And browser waits for 5000
 
     Scenario: Add NCIDS Promo Block Internal
         Given user is navigating to "/user/login"
@@ -210,6 +226,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Image Right" image position for 2 block
         And user clicks on "Featured Item" in 1 "NCIDS Promo Block Internal" section
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -223,6 +242,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "No Image" image position for 3 block
         And user clicks on "Featured Item" in 2 "NCIDS Promo Block Internal" section
         And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -230,8 +252,9 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel  | value       | field_name                                                      |
             | Button Text | Button Text | field_landing_contents[5][subform][field_button_text][0][value] |
         And user selects "Published" from Save as dropdown
+        And browser waits
         Then user saves the content page
-
+        And browser waits
 
     Scenario Outline: Verify newly created content
         And screen breakpoint is set to "<breakpoint>"
@@ -259,7 +282,6 @@ Feature: Home And Landing Page Test Creation of Content
             | desktop    |
             | tablet     |
             | mobile     |
-
 
     Scenario: Add a translation
         Given user is navigating to "/user/login"

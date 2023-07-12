@@ -8,8 +8,8 @@ const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const randomStr = Cypress.env('randomStr')
 
 
-And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
-    cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });
+And('user selects {string} from Contents dropdown', (dropDown, cartOption) => {
+    cy.get('.placeholder:contains("Contents")').parent().find(`input[value="${dropDown}"]`).click({ force: true });
 })
 
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
@@ -414,10 +414,6 @@ And('user clicks on the {string} link in {string} text area', (title, cardOption
 And('user clicks on {string} button item {int}', (content, index) => {
     cy.get(`input[value='${content}']`).eq(index - 1).click({ force: true })
 });
-
-And('user selects {string} item from the list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
-})
 
 Then('the promo image is matching the earlier selected image', () => {
     const expectedSrc = (imageSrc2.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');

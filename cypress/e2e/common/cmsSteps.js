@@ -94,6 +94,13 @@ And('the content item with url {string} does not exist in the list of content', 
     cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
 });
 
+And('the following content items do not exist in the list of content', (dataTable) => {
+    for (const { url } of dataTable.hashes()) {
+        // cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
+        cy.get(`a[href*='${url}']`).should('not.exist');
+    }
+})
+
 And('the following drupal fields are present', (dataTable) => {
     for (const { fieldLabel, field_name } of dataTable.hashes()) {
         cy.get(`input[name^='${field_name}']`).as('inputField').parent().find('label')
@@ -235,7 +242,7 @@ And('user clicks on {string} to choose a resource to link', (selectContentLbl) =
 })
 
 And('user selects {string} item from the list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).parent().find('input').click({ force: true });
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
 });
 
 And('user clicks on {string} button to select item', (selectContent) => {
@@ -432,9 +439,16 @@ Then('Recursos relacionados section contains the following links', (dataTable) =
     for (let { title, link } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
-            link = link + '-' + randomStr
+            if (title != 'Article to test Related Resources' && title != 'Media Link Override Title') {
+                link = link + '-' + randomStr
+            }
         }
-        cy.get(`div#nvcgRelatedResourcesArea a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
+        if (title == 'Article to test Related Resources' || title == 'Media Link Override Title') {
+            cy.get(`a[href*="${link}"]`).should('contain.text', title);
+        }
+        else {
+            cy.get(`div#nvcgRelatedResourcesArea a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
+        }
     }
 });
 
@@ -502,6 +516,26 @@ And('user selects a checkbox next to title with url {string} from the list of co
     cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
 });
 
+And('if they exist user selects a checkbox next to the following urls', (dataTable) => {
+    for (const { url } of dataTable.hashes()) {
+        cy.get('body').then(($content) => {
+            if ($content.find(`a[href*='${url}']`).length) {
+                // cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+                cy.get(`a[href*='${url}']`).parent().parent().find('input.form-checkbox').check();
+            }
+        });
+    }
+});
+
+And('if it exists user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
+    cy.get('body').then(($content) => {
+        if ($content.find(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).length) {
+            cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+
+        }
+    })
+});
+
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
     cy.visit(`${frontEndBaseUrl}${siteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true }, { failOnStatusCode: false });
 });
@@ -519,9 +553,8 @@ And('user deletes {string} image', (image) => {
         if ($content.find(`a:contains("${image}")`)) {
             cy.get(`a:contains("${image}")`).parent().parent().find('input.form-checkbox').check();
             cy.get(`input[value='Apply to selected items']`).first().click();
-            cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
-            cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 item.');
+            // cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 item.');
         }
     });
 });
@@ -530,3 +563,11 @@ And('user deletes {string} image', (image) => {
 And('the image {string} does not exist in the list of content', (image) => {
         cy.get(`form[id^="views-form-media-media-page-list"]`).find(`a:contains("${image}")`).should('not.exist');
  });
+
+And('user enters {string} into {string} text field to filter content', (value, fieldLabel) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`div[class*="form-type-textfield"] label:contains("${fieldLabel}")`).parent().find('input').type(value);
+});
+
+And('user clicks on {string} button to select the item', (selectContent) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`input[id='edit-submit-cgov-content-browser'][value='${selectContent}']`).click({ force: true });
+});

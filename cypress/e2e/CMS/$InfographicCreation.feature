@@ -108,8 +108,6 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And the infographic link "Ver e Imprimir Infografía" does not appear
         And date label is displaying as "Publicación:"
 
-
-
     Scenario: Create English test pages to embed Infographic and embed/add Infographic to test pages
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -240,6 +238,13 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And browser waits
         And user clicks on "Link" link in the List Items text area under List
         And browser waits
+        And user clicks on "Select content" button item
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
         And user selects "Add Media Link" from "List Items" dropdown "External Link" section
         Then "Media Link" section appears
         And user clicks on "Link" button to link to a media
@@ -361,21 +366,4 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "article-to-test-infographic" from the list of content
-        And user selects a checkbox next to title with url "home-and-landing-page-to-test-infographic" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 4 content items" appears on a screen
-        And the content item with url "article-to-test-infographic" does not exist in the list of content
-        And the content item with url "home-and-landing-page-to-test-infographic" does not exist in the list of content
-        And the content item with url "article-to-test-infographic-spanish" does not exist in the list of content
-        And the content item with url "home-and-landing-page-to-test-infographic-spanish" does not exist in the list of content
         And user clicks on "Media" sub tab
-        And user selects a checkbox next to title with url "test-infographic" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this media item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 items" appears on a screen
-        And the content item with url "test-infographic" does not exist in the list of content
-        And the content item with url "test-infographic-spanish" does not exist in the list of content

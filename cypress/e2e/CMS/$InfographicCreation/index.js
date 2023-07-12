@@ -149,10 +149,6 @@ And('{string} dropdown has the following options', (labelText, dataTable) => {
     }
 });
 
-And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
-    cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
-});
-
 And('{string} dropdown displays {string}', (labelText, displayOption) => {
     cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${displayOption}")`).should('have.attr', 'selected', 'selected');
 });
@@ -192,11 +188,6 @@ And('user clicks on {string} link in the {string} text area in home and landing 
 
 And('user clicks on {string} button item', (content) => {
     cy.get(`input[value='${content}']`).eq(0).click({ force: true });
-});
-
-
-And('user selects {string} item from the list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).first().parent().find('input').click({ force: true });
 });
 
 And('user selects {string} item from media list', (title) => {

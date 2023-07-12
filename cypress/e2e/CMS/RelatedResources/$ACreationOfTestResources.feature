@@ -1,6 +1,6 @@
 Feature: Adding any necessary test resources
 
-Scenario: create a new image
+    Scenario: create a new image
         Given user is navigating to "/user/login"
         When user enters credentials
         And user clicks "Log in" button
@@ -21,13 +21,13 @@ Scenario: create a new image
         And user clicks on CROP IMAGE button
         And browser waits
         And user sets the following crops
-            | crop      |cropcase| locator              |
-            | Thumbnail |thumbnail| a[href*="thumbnail"] |
-            | 4x3       |4x3| a[href*="4x3"]       |
-            | 3x4       |3x4| a[href*="3x4"]       |
-            | 1x1       |1x1| a[href*="1x1"]       |
-            | 16x9      |16x9| a[href*="16x9"]      |
-            | 9x16      |9x16| a[href*="9x16"]      |
+            | crop      | cropcase  | locator              |
+            | Thumbnail | thumbnail | a[href*="thumbnail"] |
+            | 4x3       | 4x3       | a[href*="4x3"]       |
+            | 3x4       | 3x4       | a[href*="3x4"]       |
+            | 1x1       | 1x1       | a[href*="1x1"]       |
+            | 16x9      | 16x9      | a[href*="16x9"]      |
+            | 9x16      | 9x16      | a[href*="9x16"]      |
         And user selects "Display" from "Display Enlarge" dropdown
         And user uploads test "feature" image "feature_card_image.jpg"
         And system waits for file upload process
@@ -74,30 +74,5 @@ Scenario: create a new image
             | Browser Title | Test File for Related Resources | field_browser_title |
         And user uploads test file "text.txt"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
-        Then user saves the content page
-
-    Scenario: User is creating new Mini Landing page content type
-        Given user is navigating to "/user/login"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on "Add content" action button
-        And user clicks on "Mini Landing Page" content type
-        Then page title is "Mini Landing Page"
-        When user selects test site section
-        And user fills out the following fields
-            | fieldLabel               | value                                               | field_name                     |
-            | Pretty URL               | mini-landing-page-test-promo                        | field_pretty_url               |
-            | Page Title               | Test Resource Mini Landing Page                     | title                          |
-            | Browser Title            | Test Resource Mini Landing Page - Browser Title     | field_browser_title            |
-            | Meta Description         | Test Resource Mini Landing Page Meta Description    | field_page_description         |
-            | Feature Card Description | Test Resource Mini Landing Page - Feature Card Desc | field_feature_card_description |
-            | Card Title               | Test Resource Mini Landing Page - Card Title        | field_card_title               |
-        And user enters "Mini Landing Page List Description" into "List Description" text field
-        And user selects 1 Promotional Image for the mini landing
-        And user remembers the source of selected promo image for the mini landing
         And user selects "Published" from "Save as" dropdown
         Then user saves the content page

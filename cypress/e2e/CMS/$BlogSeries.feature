@@ -1,5 +1,30 @@
 Feature: As a cms user I want to be able to create Blog Series content type to promote Blog Series and Blog Topic.
 
+    Scenario: User is creating new Mini Landing page content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Add content" action button
+        And user clicks on "Mini Landing Page" content type
+        Then page title is "Mini Landing Page"
+        When user selects test site section
+        And user fills out the following fields
+            | fieldLabel               | value                                               | field_name                     |
+            | Pretty URL               | mini-landing-page-test-blog-series                  | field_pretty_url               |
+            | Page Title               | Test Resource Mini Landing Page                     | title                          |
+            | Browser Title            | Test Resource Mini Landing Page - Browser Title     | field_browser_title            |
+            | Meta Description         | Test Resource Mini Landing Page Meta Description    | field_page_description         |
+            | Feature Card Description | Test Resource Mini Landing Page - Feature Card Desc | field_feature_card_description |
+            | Card Title               | Test Resource Mini Landing Page - Card Title        | field_card_title               |
+        And user enters "Mini Landing Page List Description" into "List Description" text field
+        And user selects 1 Promotional Image for the mini landing
+        And user remembers the source of selected promo image for the mini landing
+        And user selects "Published" from "Save as" dropdown
+        Then user saves the content page
+
     Scenario: User is adding new Blog Series content type
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -235,7 +260,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-blog-series" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
@@ -252,7 +277,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-blog-series"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And browser waits
@@ -266,7 +291,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-blog-series" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
@@ -451,7 +476,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | title                                            | url                                                                                                | expectedDate | author                          |
             | Automated Test Blog Post for testing Blog Series | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} | today's date | Automated Test Blog Post Author |
         And the Continue Reading link appears with the following href
-            | linkName       | linkHref                                                                                            |
+            | linkName       | linkHref                                                                                           |
             | Siga leyendo > | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} |
         And the "Categorías" managed list appears without the date
         And the "Test Blog Topic Spanish" link appears with the following href
@@ -471,17 +496,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user selects a checkbox next to title "Automated Test Blog Series Edited" with url "blog-series-edited" from the list of content
-        And user selects a checkbox next to title "Automated Test Blog Post for testing Blog Series" with url "blog-post-test-blog-series" from the list of content
-        And user selects a checkbox next to title "Automated Test Blog Post2 for testing Blog Series" with url "blog-post2-test-blog-series" from the list of content
-        And user clicks on the "Apply to selected items" action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 5 content items." appears on a screen
-        And the content item with url "blog-series-edited" does not exist in the list of content
-        And the content item with url "blog-post-test-blog-series" does not exist in the list of content
-        And the content item with url "blog-post2-test-blog-series" does not exist in the list of content
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
         And user selects "List terms" option from Operations for "Blog Topics"

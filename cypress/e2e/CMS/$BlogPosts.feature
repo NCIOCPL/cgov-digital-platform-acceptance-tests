@@ -1,5 +1,30 @@
 Feature: As a cms user I want to be able to create Blog Post content type to promote Blog Post.
 
+    Scenario: User is creating new Mini Landing page content type
+        Given user is navigating to "/user/login"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Add content" action button
+        And user clicks on "Mini Landing Page" content type
+        Then page title is "Mini Landing Page"
+        When user selects test site section
+        And user fills out the following fields
+            | fieldLabel               | value                                               | field_name                     |
+            | Pretty URL               | mini-landing-page-test-blog-posts                   | field_pretty_url               |
+            | Page Title               | Test Resource Mini Landing Page                     | title                          |
+            | Browser Title            | Test Resource Mini Landing Page - Browser Title     | field_browser_title            |
+            | Meta Description         | Test Resource Mini Landing Page Meta Description    | field_page_description         |
+            | Feature Card Description | Test Resource Mini Landing Page - Feature Card Desc | field_feature_card_description |
+            | Card Title               | Test Resource Mini Landing Page - Card Title        | field_card_title               |
+        And user enters "Mini Landing Page List Description" into "List Description" text field
+        And user selects 1 Promotional Image for the mini landing
+        And user remembers the source of selected promo image for the mini landing
+        And user selects "Published" from "Save as" dropdown
+        Then user saves the content page
+
     Scenario: User is adding new blog post content type
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -44,7 +69,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the "Categories" managed list appears without a date
         And the "Archive" accordion is displayed
         And "Archive" accordion is collapsed
-        And blog posts list doesnot appear in the archive
+        And blog posts list does not appear in the archive
         And "< Older Post" link appears
         When user clicks on "< Older Post" link
         And "Newer Post >" link appears
@@ -73,6 +98,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Then "Internal Link" section appears
         And user clicks on "Link" button to link to a resource
         And user clicks on "Select content" to choose a resource to link
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And "Article to test Related Resources" had been selected
@@ -113,6 +141,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Then "Internal Feature Card" section appears
         And user clicks on "Featured Item" button to link to Recommended Content types
         And user clicks on "Select content" to choose a Recommended Content type to link
+        And user enters "Article to test Related Resources" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -184,13 +215,16 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on the title with url "mini-landing-page-test-blog-posts" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user selects the "Add Two Item Feature Card Row" content item
         And user clicks on the "Featured Item" link in the "Internal Feature Card" text area
         And browser waits
         And user clicks on "Select content" button item
+        And browser waits
+        And user enters "Automated Test Blog Post Edited" into "Title" text field to filter content
+        And user clicks on "Apply" button to select the item
         And browser waits
         And user selects "Automated Test Blog Post Edited" item from main page content
         And user clicks on "Select content" button to select item
@@ -201,7 +235,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
-        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
+        Given user is navigating to the front end site with path site section plus "mini-landing-page-test-blog-posts"
         Then page title is "Test Resource Mini Landing Page"
         Then the promo image is matching the earlier selected image
         And the Card Title has a link "Automated Test Blog Post - Card Title Edited" with href "/news-events/cancer-currents-blog/{YEAR}/blog-post-edited"
@@ -214,7 +248,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on title with url "mini-landing-page-test-promo" from the list of content
+        And user clicks on title with url "mini-landing-page-test-blog-posts" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user removes "Two Item Feature Card Row" section
@@ -301,7 +335,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the "Suscríbase" button appears
         And the "Archivo" accordion is displayed
         And the lead image is matching the earlier selected image
-        And blog posts list doesnot appear in the archive
+        And blog posts list does not appear in the archive
         And "< Artículo anterior" link appears
         When user clicks on "< Artículo anterior" link
         And "Artículo siguiente >" link appears
@@ -346,17 +380,3 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the page contains meta tags with the following names
             | name        | content                                                  |
             | description | Automated Test Blog Post Meta Description Edited Spanish |
-
-    Scenario: Clean up
-        Given user is navigating to "/user/login"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "blog-post-edited" under "/news-events/cancer-currents-blog" from the list of content
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 content items." appears on a screen
-        And the content item with url "blog-post-edited" does not exist in the list of content
