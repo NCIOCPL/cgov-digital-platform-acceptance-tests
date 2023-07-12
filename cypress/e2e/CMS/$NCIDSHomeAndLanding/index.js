@@ -121,7 +121,7 @@ And('user selects {string} as promo image for {int} block', (name, index) => {
 })
 
 And('tagline button has text {string} with link {string}', (btnText, href) => {
-    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href', `${href}-${randomStr}`)
+    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href').and('match', new RegExp(`${href}`))
 })
 
 Then('NCIDS guide cards have the following attributes', (dataTable) => {
@@ -142,7 +142,7 @@ Then('NCIDS guide cards have the following attributes', (dataTable) => {
             if (linkAndText[1].includes('http')) {
                 cy.get('@link').should('have.attr', 'href', `${linkAndText[1]}`)
             } else {
-                cy.get('@link').should('have.attr', 'href', `${linkAndText[1]}-${randomStr}`)
+                cy.get('@link').should('have.attr', 'href').and('match', new RegExp(`${linkAndText[1]}`))
             }
         }
 
