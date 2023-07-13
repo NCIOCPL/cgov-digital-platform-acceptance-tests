@@ -13,7 +13,7 @@ Feature: Basic checks to ensure production site is up and running
             | /espanol                    | El cáncer,Tipos de cáncer,Investigación,Subvenciones y capacitación,Noticias,Acerca del NCI |
             | /pediatric-adult-rare-tumor | Rare Tumors,Research,Participate,Support,News,About                                         |
             | /rare-brain-spine-tumor     | Tumor Types,Living with a Tumor,Refer and Participate,NCI-CONNECTions Blog,About            |
-            | /nano                       | Cancer & Nanotech,Research,Grants & Training,News & Events,About NSDB                       |
+            | /nano                       | Cancer & Nanotech,Research,Grants & Training,Events,About NSDB                              |
 
 
     Scenario Outline: Different contents are loaded on all sites
