@@ -9,7 +9,7 @@ Then('NCIDS feature cards are visible', () => {
 
 And('NCIDS feature cards have the following attributes', (dataTable) => {
 
-    for (const { index, title, description, link, altText, source, file } of dataTable.hashes()) {
+    for (let { index, title, description, link, altText, source, file } of dataTable.hashes()) {
         cy.get('.nci-card__body').eq(index).as('featureCard');
 
         cy.get('@featureCard').find('.nci-card__title').invoke('text').then((text) => {
@@ -55,7 +55,7 @@ And('NCIDS feature card row heading at position {int} is {string}', (index, feat
 });
 
 Then('NCIDS guide cards have the following attributes', (dataTable) => {
-    for (const { index, title, description, btnLinkAndText } of dataTable.hashes()) {
+    for (let { index, title, description, btnLinkAndText } of dataTable.hashes()) {
 
         cy.get('div[class*="cgdp-guide-card-row"] h2.nci-guide-card__header').eq(index).invoke('text').then((text) => {
             expect(text.trim()).equal(title);
@@ -79,7 +79,6 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
 
 
     for (let { index, title, description, link, buttonText, source } of dataTable.hashes()) {
-
         cy.get('div[class*="nci-promo-block "]').eq(index).as('promoBlock');
 
         cy.get('@promoBlock').find('h2').invoke('text').then((text) => {
@@ -129,7 +128,7 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
 
 And('CTA strip has the following links', (dataTable) => {
     cy.get('div[class*="usa-section"] ul.nci-cta-strip').as('cta').should('be.visible')
-    for (const { title, link } of dataTable.hashes()) {
+    for (let { title, link } of dataTable.hashes()) {
         if (link.includes('http')) {
             cy.get('@cta').find(`a[href="${link}"]`).should('include.text', title);
         } else {
@@ -187,5 +186,5 @@ And('NCIDS component has {string} and {string} attributes', (aria, id) => {
 })
 
 When('user clicks on link {string} in raw html block', (href) => {
-cy.get(`a[href="${href}"]`).trigger('click', { followRedirect: false })
+    cy.get(`a[href="${href}"]`).trigger('click', { followRedirect: false })
 });
