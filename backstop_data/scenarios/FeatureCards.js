@@ -6,5 +6,9 @@ module.exports = [
     {
 		label: 'NCIDS 3 external feature card row',
 		testPath: '/ncids-external-feature-card-test',
+	},
+	{
+		label: 'NCIDS 3 media feature card row',
+		testPath: '/ncids-multimedia-feature-card-test',
 	}
 ]

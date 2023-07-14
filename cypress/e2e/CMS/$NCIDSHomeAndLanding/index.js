@@ -6,6 +6,7 @@ import { And, Then, When } from 'cypress-cucumber-preprocessor/steps';
 import { getBaseDirectory } from '../../../utils';
 const baseUrl = Cypress.config('baseUrl');
 const randomStr = Cypress.env('randomStr')
+const siteSection = Cypress.env('test_site_section');
 
 And('user selects {string} from style dropdown', (option) => {
     cy.get('select[name="field_page_style"]').select(option);
@@ -121,11 +122,14 @@ And('user selects {string} as promo image for {int} block', (name, index) => {
 })
 
 And('tagline button has text {string} with link {string}', (btnText, href) => {
+    if (href.includes("{TEST_SITE_SECTION}")) {
+        href = href.replace("{TEST_SITE_SECTION}", siteSection)
+    }
     cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href', `${href}-${randomStr}`)
 })
 
 Then('NCIDS guide cards have the following attributes', (dataTable) => {
-    for (let { index, title, description, btnLinkAndText,source, file } of dataTable.hashes()) {
+    for (let { index, title, description, btnLinkAndText, source, file } of dataTable.hashes()) {
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
             source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
         }
@@ -138,35 +142,41 @@ Then('NCIDS guide cards have the following attributes', (dataTable) => {
         const button = btnLinkAndText.split(';')
         for (let i = 0; i < button.length; i++) {
             const linkAndText = button[i].split(',');
+            let link = linkAndText[1];
+            if (link.includes("{TEST_SITE_SECTION}")) {
+                link = link.replace("{TEST_SITE_SECTION}", siteSection)
+            }
             cy.get('.nci-guide-card__wrapper').eq(index).find('a').eq(i).as('link').should('include.text', linkAndText[0])
             if (linkAndText[1].includes('http')) {
                 cy.get('@link').should('have.attr', 'href', `${linkAndText[1]}`)
             } else {
-                cy.get('@link').should('have.attr', 'href', `${linkAndText[1]}-${randomStr}`)
+                cy.get('@link').should('have.attr', 'href', `${link}-${randomStr}`)
             }
         }
 
-        // cy.get('.nci-guide-card__wrapper').eq(index).find('img').invoke('attr', 'src').then((fullSrc) => {
+        cy.get('.nci-guide-card__wrapper').eq(index).find('img').invoke('attr', 'src').then((fullSrc) => {
 
-        //     if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-        //         fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
-        //     }
-        //     expect(fullSrc.includes(`${source}`)).to.be.true;
+            if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+                fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
+            }
+            expect(fullSrc.includes(`${source}`)).to.be.true;
 
-        //     const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
-        //     if (file.includes('placeholder')) {
-        //         expect(src1).to.match(new RegExp(`.*\/${file}`))
-        //     } else {
-        //         expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
-        //     }
-        // });
+            const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+            if (file.includes('placeholder')) {
+                expect(src1).to.match(new RegExp(`.*\/${file}`))
+            } else {
+                expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
+            }
+        });
     }
 })
 
 And('NCIDS promo blocks have the following attributes', (dataTable) => {
 
     for (let { index, title, description, link, buttonText, source, file, srcset, srcSetImg } of dataTable.hashes()) {
-
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection)
+        }
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
             source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
             srcset = srcset.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
@@ -180,7 +190,7 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
         });
 
         if (description === 'N/A') {
-            // cy.get('@promoBlock').find('p').should('not.exist')
+            cy.get('@promoBlock').find('p').should('not.exist')
         }
         else {
             cy.get('@promoBlock').find('p').invoke('text').then((text) => {
@@ -204,11 +214,11 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
             cy.get('@promoBlock').find('img').should('not.exist');
         } else {
             cy.get('@promoBlock').find('img').invoke('attr', 'src').then((fullSrc) => {
-        
+
                 if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
                     fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
 
-                } 
+                }
                 expect(fullSrc.includes(`${source}`)).to.be.true;
             });
         }
@@ -228,7 +238,7 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
         } else {
 
             cy.get('@promoBlock').find('picture source').invoke('attr', 'srcset').then((fullSrc) => {
-                
+
                 if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
                     fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
                 }
@@ -251,6 +261,9 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
 And('NCIDS feature cards have the following attributes', (dataTable) => {
 
     for (let { index, title, description, link, source, file, srcset, srcSetImg } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection)
+        }
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
             source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
             srcset = srcset.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
@@ -295,7 +308,7 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
         });
 
         cy.get('@featureCard').parent().find('picture source').invoke('attr', 'srcset').then((fullSrc) => {
-            
+
             if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
                 fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
             }
