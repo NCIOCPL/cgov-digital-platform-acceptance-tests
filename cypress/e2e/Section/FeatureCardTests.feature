@@ -85,6 +85,31 @@ Feature: Feature Card tests
             | tablet     |
             | mobile     |
 
+    Scenario Outline: Verify NCIDS 3 multimedia feature card row components
+        Given screen breakpoint is set to "<breakpoint"
+        And user is navigating to "/ncids-multimedia-feature-card-test"
+        Then NCIDS feature cards are visible
+        And NCIDS feature cards have the following attributes
+            | index | title                                                              | description                                                                                                                                                                    | link                                       | altText                       | source                                                                   | file                                       |
+            | 0     | NCI at a Glance                                                    | Discover more about what NCI does, what we fund, and some highlights from our long history in leading cancer research in this infographic.                                     | /about-nci/organization/nci-at-a-glance    | Promo Placeholder             | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | promo-placeholder-16x9.png                 |
+            | 1     | NCI at a Glance                                                    | Discover more about what NCI does, what we fund, and some highlights from our long history in leading cancer research in this infographic.                                     | /about-nci/organization/nci-at-a-glance    | Promo Placeholder             | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | promo-placeholder-16x9.png                 |
+            | 2     | File Browser title                                                 | File description. O, for a muse of fire that would ascend the brightest heaven of invention, a kingdom for a stage, princes to act, and monarchs to behold the swelling scene. | /research/progress/discovery/test-file-url | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                        |
+            | 3     | Override Card Title                                                | Override Card Description                                                                                                                                                      | /about-nci/organization/nci-at-a-glance    | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
+            | 4     | Override Card Title                                                | Override Card Description                                                                                                                                                      | /research/progress/discovery/test-file-url | Lead Placeholder              | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | lead-placeholder-16x9.png                  |
+            | 5     | Override Card Title                                                | Override Card Description                                                                                                                                                      | /about-nci/organization/nci-at-a-glance    | 16x9 Override Image           | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | feature_card_test_cat_16x9_override.jpeg   |
+            | 6     | Drug Combo Effective for Metastatic Breast Cancer in Younger Women | Ribociclib plus hormone therapy were superior to standard chemotherapy combos in a recent trial.                                                                               | /about-nci/organization/nci-at-a-glance    | Feature Card Cat 4x3 Override | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | feature_card_test_cat_override_source.jpeg |
+            | 7     | What Causes Immunotherapy's Heart-Related Side Effects?            | A protein commonly found on heart cells may provoke immune cells to attack.                                                                                                    | /research/progress/discovery/test-file-url | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
+            | 8     | Override Card Title                                                | Override Card Description                                                                                                                                                      | /about-nci/organization/nci-at-a-glance    | 16x9 Override Image           | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | feature_card_test_cat_16x9_override.jpeg   |
+        And NCIDS component has "aria-labelledby" and "id" attributes
+
+        Examples:
+            | breakpoint |
+            | desktop    |
+            | tablet     |
+            | mobile     |
+
+
+
     Scenario: Internal Feature card click event
         Given user is navigating to "/ncids-internal-feature-card-test"
         When user clicks on NCIDS feature card at position 4
@@ -142,3 +167,30 @@ Feature: Feature Card tests
             | pev2      | LP:FeatureCard:LinkClick                                       |
             | linkType  | lnk_o                                                          |
 
+    Scenario: MM Feature card click event
+        Given user is navigating to "/ncids-multimedia-feature-card-test"
+        When user clicks on NCIDS feature card at position 4
+        Then page click request is sent
+        And browser waits
+        And the following parameters should be captured
+            | parameter | value                                                            |
+            | prop4     | D=pev1                                                           |
+            | prop8     | english                                                          |
+            | prop57    | D=v64                                                            |
+            | prop58    | D=v65                                                            |
+            | prop59    | D=v66                                                            |
+            | prop60    | D=c67                                                            |
+            | prop67    | D=pageName                                                       |
+            | prop68    | D=v68                                                            |
+            | evar2     | D=c8                                                             |
+            | evar64    | Media\|Override Card Title\|Image                                |
+            | evar65    | Feature Card\|Light\|Standard Single Link                        |
+            | evar66    | 3\|2\|3\|1                                                       |
+            | evar67    | Image\|1\|1                                                      |
+            | evar68    | Body                                                             |
+            | pageName  | {CANONICAL_HOST}/ncids-multimedia-feature-card-test              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ncids-multimedia-feature-card-test |
+            | event27   |                                                                  |
+            | channel   | NCI Homepage                                                     |
+            | pev2      | LP:FeatureCard:LinkClick                                         |
+            | linkType  | lnk_o                                                            |
