@@ -28,7 +28,7 @@ And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
 })
 
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
-    cy.get(`div.paragraph-type-title:contains('${cartOption}')`).parent().parent().find(`span:contains('${title}')`).parent().click();
+    cy.get(`div.paragraph-type-title:contains('${cartOption}')`).parent().parent().find(`summary[aria-expanded="false"]`).parent().click();
 })
 
 And('user uploads hero images as follows', (dataTable) => {
@@ -331,3 +331,30 @@ When('user clicks on the {string} button', (deleteBtn) => {
 And('user selects {string} from Save as dropdown', (dropdown) => {
     cy.get("select[name='moderation_state[0][state]").select(dropdown)
 })
+
+Then('NCIDS 3 guide card row at position {int} have the following attributes', (pos, dataTable) => {
+    for (const { index, title, btnLinkAndText } of dataTable.hashes()) {
+        cy.get('ul.nci-card-group').eq(pos - 1).as('row');
+        cy.get('@row').find('.nci-guide-card__title').eq(index).invoke('text').then((text) => {
+            expect(text.trim()).equal(title);
+        });
+
+        const button = btnLinkAndText.split(';')
+        for (let i = 0; i < button.length; i++) {
+            const linkAndText = button[i].split(',');
+            cy.get('@row').find('.nci-guide-card__wrapper').eq(index).find('a').eq(i).as('link').should('include.text', linkAndText[0])
+            let link = linkAndText[1];
+            
+            if (link.includes("{TEST_SITE_SECTION}")) {
+                link = link.replace("{TEST_SITE_SECTION}", siteSection)
+            }
+
+            if (link.includes('http')) {
+                cy.get('@link').should('have.attr', 'href', `${link}`)
+            } else {
+                cy.get('@link').should('have.attr', 'href', `${getBaseDirectory()}${link}-${randomStr}`)
+            }
+        }
+    }
+})
+

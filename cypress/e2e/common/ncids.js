@@ -65,7 +65,7 @@ Then('NCIDS guide cards have the following attributes', (dataTable) => {
         });
         const button = btnLinkAndText.split(';')
         for (let i = 0; i < button.length; i++) {
-            const linkAndText = button[i].split(',');
+            const linkAndText = button[i].split('|');
             cy.get('.nci-guide-card__wrapper').eq(index).find('a').eq(i).as('link').should('include.text', linkAndText[0])
             if (linkAndText[1].includes('http')) {
                 cy.get('@link').should('have.attr', 'href', `${linkAndText[1]}`)
@@ -188,3 +188,31 @@ And('NCIDS component has {string} and {string} attributes', (aria, id) => {
 When('user clicks on link {string} in raw html block', (href) => {
     cy.get(`a[href="${href}"]`).trigger('click', { followRedirect: false })
 });
+
+And('the {int} NCIDS 3 guide card row has a heading {string}', (pos, title) => {
+    cy.get('section[class*="cgdp-guide-card-row"] h2').eq(pos - 1).should('have.text', title)
+});
+
+And('the {int} NCIDS 3 guide card row has no heading', (pos) => {
+    cy.get('div[class*="cgdp-guide-card-row"]').eq(pos - 1).find('h2.nci-guide-card__header').should('not.exist')
+});
+
+Then('NCIDS 3 guide card row at position {int} have the following attributes', (pos, dataTable) => {
+    for (const { index, title, btnLinkAndText } of dataTable.hashes()) {
+        cy.get('ul.nci-card-group').eq(pos - 1).as('row');
+        cy.get('@row').find('.nci-guide-card__title').eq(index).invoke('text').then((text) => {
+            expect(text.trim()).equal(title);
+        });
+
+        const button = btnLinkAndText.split(';')
+        for (let i = 0; i < button.length; i++) {
+            const linkAndText = button[i].split('|');
+            cy.get('@row').find('.nci-guide-card__wrapper').eq(index).find('a').eq(i).as('link').should('include.text', linkAndText[0])
+            if (linkAndText[1].includes('http')) {
+                cy.get('@link').should('have.attr', 'href', `${linkAndText[1]}`)
+            } else {
+                cy.get('@link').should('have.attr', 'href', `${getBaseDirectory()}${linkAndText[1]}`)
+            }
+        }
+    }
+})
