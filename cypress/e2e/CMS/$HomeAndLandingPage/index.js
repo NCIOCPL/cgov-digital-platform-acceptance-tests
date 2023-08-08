@@ -13,27 +13,24 @@ And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
 })
 
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
-    cy.get(`div.paragraph-type-title:contains('${cartOption}')`).parent().parent().find(`span:contains('${title}')`).parent().click({ force: true });
+    cy.get(`summary.claro-details__summary:contains('${title}')`).click();
 })
 
 And('user clicks on {string} link in the {string} text area within {string} section', (title, cartOption, multimediaRow) => {
-    cy.get(`div:contains("${multimediaRow}")`).parent().parent().find(`div:contains("${cartOption}")`).parent().find(`span:contains('${title}')`).eq(0).click({ force: true })
+    cy.get(`summary[aria-expanded='false']:contains('${title}')`).click({ force: true })
 })
 
 And('user clicks on {string} link in the {string} text area within {string} section for {string}', (link, textArea, subSection, section) => {
-    cy.get(`div[class*="paragraph-type-title"]:contains("${section}")`).parent().parent().find(`div:contains("${subSection}")`).parent().parent().find(`div:contains("${textArea}")`).parent().find(`span:contains('${link}')`).eq(0).click({ force: true })
+    cy.get(`summary[aria-expanded='false']:contains('${link}')`).click({ force: true })
 })
 
-And('user clicks on {string} link in the {string} text area within {string} section for {string}', (title, cartOption, subSection, section) => {
-    cy.get(`div:contains("${subSection}")`).parent().parent().find(`div:contains("${cartOption}")`).parent().find(`span:contains('${title}')`).eq(0).click({ force: true })
-})
 
 And('user selects {string} from {string} dropdown {string} section for {string}', (dropDValue, dropdownLbl, subSection, section) => {
-    cy.get(`div[class*="paragraph-type-title"]:contains("${section}")`).parent().parent().find(`div:contains("${subSection}")`).parent().parent().find(`.placeholder:contains("${dropdownLbl}")`).parent().find(`input[value="${dropDValue}"]`).eq(0).click({ force: true })
+    cy.get(`input[value="${dropDValue}"]`).click({ force: true })
 })
 
 And('user clicks on {string} button item', (content) => {
-    cy.get(`input[value='${content}']`).eq(0).click({ force: true })
+    cy.get(`input[value='${content}']`).click({ force: true })
 })
 
 And('user selects {string} from {string} dropdown {string} section', (dropDown, option, section) => {
@@ -57,11 +54,11 @@ And('user enters {string} into Raw HTML Content text field under Guide Card Row'
 })
 
 And('user clicks on {string} link in the List Items text area under List', (linkBtn) => {
-    cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true });
 })
 
 And('user clicks on {string} button in the Multimedia row text area', (multimediaBtn) => {
-    cy.get(`span:contains("${multimediaBtn}")`).click({ force: true })
+    cy.get(`summary:contains("${multimediaBtn}")`).click({ force: true })
 })
 
 And('user clicks on {string} to choose a media to link', (mediaBtn) => {
@@ -105,7 +102,7 @@ And('user selects {string} from List Item Style dropdown under list', (option) =
 })
 
 And('user selects {string} from List Item Style dropdown under one column container', (listItem) => {
-    cy.get("select[name*='field_list_item_style']").eq(1).select(listItem)
+    cy.get("select[name*='field_list_item_style']").eq(0).select(listItem)
 })
 
 And('user selects {string} from main contents dropdown', (dropdown) => {
@@ -113,7 +110,7 @@ And('user selects {string} from main contents dropdown', (dropdown) => {
 })
 
 And('user clicks on {string} option to {string} within {string} section', (option, containerContents, section) => {
-    cy.get(`div[id*="top-paragraph-type-title"]:contains("${section}")`).parent().parent().find(`.placeholder:contains("${containerContents}")`).parent().find(`input[value="${option}"]`).click({ force: true })
+    cy.get(`input[value="${option}"]`).eq(0).click({ force: true })
 })
 
 And('user fills out HTML Content text area with', (value) => {
@@ -121,11 +118,11 @@ And('user fills out HTML Content text area with', (value) => {
 })
 
 And('user enters {string} in Raw HTML Content under {string}', (value, section) => {
-    cy.get(`div[class*="paragraph-type-title"]:contains("${section}")`).parent().parent().find('textarea[name*="field_raw_html"]').eq(0).type(value);
+    cy.get('textarea[name*="field_raw_html"]').type(value);
 })
 
 And('user fills out HTML Content text area with {string} under {string}', (value, section) => {
-    cy.get(`div[class*="paragraph-type-title"]:contains("${section}")`).parent().parent().find('iframe[title="Rich Text Editor, HTML Content field"]').its('0.contentDocument.body').should('not.be.empty').then(iframe => {
+    cy.get(`div[class*="html-content"] label:contains("HTML Content")`).parent().find('iframe[title="Rich Text Editor, HTML Content field"]').its('0.contentDocument.body').should('not.be.empty').then(iframe => {
         cy.wrap(iframe).find('p').type(value);
     })
 })
@@ -139,7 +136,7 @@ And('user selects {string} from Display dropdown', (dropdown) => {
 })
 
 And('user clicks {string} link in the Dynamic List area', (linkBtn) => {
-    cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).click({ force: true })
+    cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true })
 })
 
 And('user checks Include View Title checkbox', () => {
@@ -165,7 +162,7 @@ And('user selects {string} from Image Position dropdown', (dropdown) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().as('imageUpload').click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_landing_contents_7_subform_field_override_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -179,7 +176,7 @@ And('user remembers the source of selected promo image for further verification'
 
 let imageSrc2;
 And('user selects {int} Promotional Image from the list of images to be displayed in mini landing pages', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -196,7 +193,7 @@ And('user selects {string} from Button Display dropdown', (dropdown) => {
 })
 
 And('user selects {string} checkbox', (optionsVisible) => {
-    cy.get(`[class='fieldset-wrapper'] label:contains("${optionsVisible}")`).parent().find('input.form-checkbox').check({ force: true })
+    cy.get(`div#edit-field-date-display-mode label:contains("${optionsVisible}")`).parent().find('input.form-checkbox').check({ force: true })
 })
 
 And('user selects {string} from Search Engine Restrictions dropdown', (option) => {
@@ -216,7 +213,7 @@ And('user fills out the following fields under {string} section', (option, dataT
     }
 });
 And('user clicks on {string} button item in the {string} text area', (selectContentBtn, section) => {
-    cy.get(`div[id*="top-paragraph-type-title"]:contains("${section}")`).parent().parent().find(`input[value="${selectContentBtn}"]`).click()
+    cy.get(`input[value="${selectContentBtn}"]`).click()
 });
 
 And('primary feature card row displays the following cards', (dataTable) => {
@@ -355,12 +352,12 @@ And('title first feature card row has the following cards', (dataTable) => {
 });
 
 And('user removes multimedia card', () => {
-    cy.get('#edit-field-landing-contents-3-subform-field-mm-media-item-current-items-0-remove-button').click({ force: true });
+    cy.get('input[id*=edit-field-landing-contents-3-subform-field-mm-media-item-current-items-0-remove-button]').click({ force: true });
 });
 
 let imageSrc;
 And('user selects {int} Promotional Image from the list of images for mini landing page', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().as('imageUpload').click()
+    cy.get('summary:contains("Promotional Image")').first().click();
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -408,11 +405,11 @@ And('the {string} had been selected', (title) => {
 });
 
 And('user clicks on the {string} link in {string} text area', (title, cardOption) => {
-    cy.get(`div[id*="field-landing-contents-9-subform-field-row-cards-0-item"]`).find(`summary.seven-details__summary span:contains('${title}')`).click({ force: true });
+    cy.get(`div[id*="field-landing-contents-9-subform-field-row-cards-0-item"]`).find(`summary.claro-details__summary:contains('${title}')`).click({ force: true });
 });
 
 And('user clicks on {string} button item {int}', (content, index) => {
-    cy.get(`input[value='${content}']`).eq(index - 1).click({ force: true })
+    cy.get(`input[value='${content}']`).click({ force: true })
 });
 
 And('user selects {string} item from the list', (title) => {
@@ -433,9 +430,8 @@ Then('the promo image is matching the earlier selected image', () => {
 
 And('the following images are displayed with remove button translated as {string}', (removeBtn, dataTable) => {
     for (let { image } of dataTable.hashes()) {
-        cy.get(`div[class*="image-widget-data"] a:contains("${image}")`).each($el => {
-            cy.get(`input[value = "${removeBtn}"]`).should('be.visible');
-        });
+        cy.get(`a:contains("${image}")`).parent().parent().find(`input[value = "${removeBtn}"]`).should('be.visible');
+        
     }
 });
 
@@ -518,4 +514,8 @@ And('{string} dropdown has the following options', (labelText, dataTable) => {
     for (const { options } of dataTable.hashes()) {
         cy.get(`select[name="field_page_style"] option:contains("${options}")`).should('exist');
     }
+});
+
+And('user clicks on Edit button for {string}',(section)=>{
+cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find('input[value="Edit"]').click();
 });

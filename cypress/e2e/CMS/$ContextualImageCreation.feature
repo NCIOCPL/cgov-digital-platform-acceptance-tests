@@ -81,7 +81,6 @@ Feature: As a content editor I would like to be able to create contextual image 
         And user clicks on "Select image" button to select media
         And browser waits
         And user selects size "Image Display: Article: Medium"
-        And user selects none alignment
         And browser waits
         And user clicks on "Embed" button to select image
         And browser waits
@@ -127,7 +126,6 @@ Feature: As a content editor I would like to be able to create contextual image 
         And browser waits
         And user selects size "Image Display: Article: Large"
         And browser waits
-        And user selects none alignment
         And user clicks on "Embed" button to select image
         And browser waits
 

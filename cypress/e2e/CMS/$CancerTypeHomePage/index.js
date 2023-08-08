@@ -31,7 +31,7 @@ And('user fills out CTHP Guide Card Description field text area with {string}', 
 })
 
 And('user clicks on {string} link in the {string} text area', (link, linkOption) => {
-    cy.get(`div:contains("${linkOption}")`).parent().parent().find(`span:contains("${link}")`).eq(0).click({ force: true })
+    cy.get(`div:contains("${linkOption}")`).parent().parent().find(`summary:contains("${link}")`).eq(0).click({ force: true })
 })
 
 And('user selects {string} from Current Page Audience dropdown', (option) => {
@@ -60,7 +60,7 @@ And('user selects {string} from {string} dropdown', (dropdown, section) => {
 })
 
 And('user clicks on {string} link in the Internal Link text area', (link) => {
-    cy.get(`tbody summary[role='button'] span:contains("${link}")`).eq(1).click({ force: true })
+    cy.get(`summary[role='button']:contains("${link}")`).eq(1).click({ force: true })
 })
 
 And('user selects {string} item from the media list', (title) => {
@@ -237,7 +237,7 @@ And('user selects {int} Video from the list of main page videos', (num) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -267,7 +267,7 @@ And('Current Page Audience dropdown has the following values', (dataTable) => {
 });
 
 And('{string} is present', (audienceToggle) => {
-    cy.get(`summary.seven-details__summary span:contains("${audienceToggle}")`).should('be.visible');
+    cy.get(`summary.claro-details__summary:contains("${audienceToggle}")`).should('be.visible');
 });
 
 And('the following cards fields are displayed with remove button translated as {string}', (removeBtn, dataTable) => {
@@ -296,7 +296,7 @@ And('user clicks on title with url spanish path {string} site section plus {stri
 });
 
 And('user clicks on {string} link', (linkText) => {
-    cy.get(`span:contains('${linkText}')`).parent().click();
+    cy.get(`summary:contains('${linkText}')`).click();
 });
 
 And("the {string} link is displayed with href {string}", (linkText, linkHref) => {

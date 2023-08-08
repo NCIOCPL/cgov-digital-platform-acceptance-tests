@@ -74,6 +74,7 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on "Select content" button item
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -106,12 +107,14 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user clicks on "Add NCIDS Link Button Internal" from "Links for Guide Card Buttons" area
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-        And user clicks on "Select content" button item
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
         And user adds another "internal" link for 1 guide card
-        And user clicks on "Select content" button item
+        And browser waits
+        And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -147,7 +150,7 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel | value              | field_name                                                            |
             | Heading    | 3 Feature Card Row | field_landing_contents[2][subform][field_container_heading][0][value] |
         And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
-        And user clicks on "Select content" button item
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -210,7 +213,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Light" theme for 3 block
         And user selects "Image Right" image position for 2 block
         And user clicks on "Featured Item" in 1 "NCIDS Promo Block Internal" section
-        And user clicks on "Select content" button item
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -223,7 +226,7 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user selects "No Image" image position for 3 block
         And user clicks on "Featured Item" in 2 "NCIDS Promo Block Internal" section
-        And user clicks on "Select content" button item
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -250,12 +253,12 @@ Feature: Home And Landing Page Test Creation of Content
             | Heading    | 3 Guide Card Row Heading | field_landing_contents[6][subform][field_container_heading][0][value]                                |
             | Heading    | 3 Guide Card row 1       | field_landing_contents[6][subform][field_guide_cards][0][subform][field_container_heading][0][value] |
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-        And user clicks on "Select content" button item
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
-        And user adds another "internal" link for 3 guide card
-        And user clicks on "Select content" button item
+        And user adds another "internal" link for 1 guide card
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
@@ -267,11 +270,11 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel | value              | field_name                                                                                           |
             | Heading    | 3 Guide Card row 2 | field_landing_contents[6][subform][field_guide_cards][1][subform][field_container_heading][0][value] |
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-        And user clicks on "Select content" button item
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
-        And user adds another "external" link for 4 guide card
+        And user adds another "external" link for 2 guide card
         And user fills out the following fields
             | fieldLabel        | value                          | field_name                                                                                                                     |
             | Link              | https://www.google.com         | field_landing_contents[6][subform][field_guide_cards][1][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
@@ -281,11 +284,11 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel | value              | field_name                                                                                           |
             | Heading    | 3 Guide Card row 3 | field_landing_contents[6][subform][field_guide_cards][2][subform][field_container_heading][0][value] |
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-        And user clicks on "Select content" button item
+        And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
-        And user adds another "external" link for 5 guide card
+        And user adds another "external" link for 3 guide card
         And user fills out the following fields
             | fieldLabel        | value                          | field_name                                                                                                                     |
             | Link              | https://www.google.com         | field_landing_contents[6][subform][field_guide_cards][2][subform][field_link_buttons][1][subform][field_external_link][0][uri] |

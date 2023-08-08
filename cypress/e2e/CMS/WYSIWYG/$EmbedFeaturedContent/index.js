@@ -33,7 +33,7 @@ And('{int} description reads {string}', (contentText) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images for featured content article', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true });
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true });
@@ -47,7 +47,7 @@ And('user remembers the source of selected promo image for further verification 
 
 let imageSrc2;
 And('user selects {int} Lead Image from the list of images', (num) => {
-    cy.get('span:contains("Lead Image")').parent().click();
+    cy.get('summary:contains("Lead Image")').click();
     cy.wait(1000);
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()

@@ -40,7 +40,7 @@ And('{string} dropdown displays {string}', (drodownName, option) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_override_image_promotional_entity_browser_entity_browser"]').click({ force: true });
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true });

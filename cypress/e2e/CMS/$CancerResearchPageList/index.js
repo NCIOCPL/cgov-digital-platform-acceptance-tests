@@ -12,7 +12,7 @@ And('user clicks on dropdown button toggle to view all Selected Research Pages t
 
 let imageSrc
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().as('imageUpload').click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -24,7 +24,7 @@ And('user remembers the source of selected promo image for further verification'
 })
 
 And('user selects {string} checkbox', (visible) => {
-    cy.get(`[class='fieldset-wrapper'] label:contains("${visible}")`).parent().find('input.form-checkbox').check({ force: true })
+    cy.get(`div#edit-field-date-display-mode label:contains("${visible}")`).parent().find('input.form-checkbox').check({ force: true })
 })
 
 And('description reads {string}', (title) => {
@@ -70,7 +70,7 @@ Then('the promo image is matching the earlier selected image', () => {
 });
 /* ----- Translation of Cancer Research Page List -----*/
 And('body was translated as {string}', (bodyTranslated) => {
-    cy.get(`div[class*='text-format'] label:contains("${bodyTranslated}")`).should('be.visible')
+    cy.get(`label[for*="edit-body"]`).should('have.text',bodyTranslated)
 })
 
 And('Remove button for media was translated as {string}', (RemoveBtn) => {
@@ -78,7 +78,7 @@ And('Remove button for media was translated as {string}', (RemoveBtn) => {
 })
 
 And('Link section under related resources was translated as {string}', (linkTranslated) => {
-    cy.get(`summary[class*='summary'] span:contains("${linkTranslated}")`).should('be.visible')
+    cy.get(`summary[class*='summary']:contains("${linkTranslated}")`).should('be.visible')
 })
 
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {

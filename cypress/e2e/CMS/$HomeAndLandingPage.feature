@@ -240,13 +240,13 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Add Content Block" option to "Main Contents" within "Two Column Container" section
         And user fills out the following fields
             | fieldLabel      | value                                | field_name                                                                                           |
-            | Content Heading | Content Heading Two Column Container | field_landing_contents[6][subform][field_main_contents][1][subform][field_content_heading][0][value] |
+            | Content Heading | Content Heading Two Column Container | field_landing_contents[5][subform][field_main_contents][3][subform][field_content_heading][0][value] |
         And user fills out HTML Content text area with "This is Html content for Content Block Two Column" under "Two Column Container"
         And user clicks on "Add Dynamic List" option to "Main Contents" within "Two Column Container" section
         And browser waits
         And user fills out the following fields
             | fieldLabel | value              | field_name                                                                                      |
-            | List Title | Dynamic List Title | field_landing_contents[6][subform][field_main_contents][2][subform][field_list_title][0][value] |
+            | List Title | Dynamic List Title | field_landing_contents[5][subform][field_main_contents][4][subform][field_list_title][0][value] |
         And browser waits
         And user selects "Press Releases" from Source View dropdown
         And browser waits
@@ -436,11 +436,15 @@ Feature: Home And Landing Page Test Creation of Content
             | Meta Description         | Automated Test Home and Landing Page Meta Description Edited    | field_page_description         |
             | Card Title               | Automated Test Home and Landing page - Card Title Edited        | field_card_title               |
             | Feature Card Description | Automated Test Home and Landing page - Feature Card Desc Edited | field_feature_card_description |
+        And user clicks on Edit button for "Primary Feature Card Row"
         And user fills out the following fields
             | fieldLabel          | value                        | field_name                                                                                           |
             | Override Card Title | Featured Item Override Title | field_landing_contents[0][subform][field_row_cards][0][subform][field_override_card_title][0][value] |
-            | Title               | -Edited                      | field_landing_contents[1][subform][field_container_heading][0][value]                                |
-        And user enters "<div> Edited</div>" into Raw HTML Content text field under Primary Feature Card Row
+        And user clicks on Edit button for "Guide Card Row"
+        And user fills out the following fields
+            | fieldLabel | value   | field_name                                                            |
+            | Title      | -Edited | field_landing_contents[1][subform][field_container_heading][0][value] |
+        And user clicks on Edit button for "Multimedia Row"
         And user removes multimedia card
         And user clicks on "Multimedia Card" button in the Multimedia row text area
         And user clicks on "Select media" to choose a media to link
@@ -464,8 +468,6 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Test Resource Mini Landing Page for Home Landing" item from the list
         And user clicks on the "Select content" button to select item
         And browser waits
-        And the "Test Resource Mini Landing Page for Home Landing" had been selected
-        And browser waits
         Then user saves the content page
         And browser waits
         And user clicks on the tool bar status button "Editing"
@@ -479,7 +481,7 @@ Feature: Home And Landing Page Test Creation of Content
             | Featured Item Override Title | {TEST_SITE_SECTION}/article |
             | Featured Item Url            | https://www.google.com      |
         And guide card row title is "Guide Card Row Title-Edited"
-        And 3 primary feature card has text "This is to test Raw Html Content under Primary Feature Card Row Edited"
+        And 3 primary feature card has text "This is to test Raw Html Content under Primary Feature Card Row"
         And guide card row title is "Guide Card Row Title-Edited"
         And multimedia card row has a video which name matches selected multimedia card item
         And the page contains meta tags with the following names
@@ -536,7 +538,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
-    # -- Translation of Home and Landing Page --
+    -- Translation of Home and Landing Page --
     Scenario: Add a translation
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -574,7 +576,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user fills out the following fields
             | fieldLabel        | value    | field_name                                                                                       |
             | Featured Item Url | spanish  | field_landing_contents[0][subform][field_row_cards][1][subform][field_featured_url][0][uri]      |
-            | List Title        | _Spanish | field_landing_contents[6][subform][field_main_contents][2][subform][field_list_title][0][value]  |
+            | Título            | _Spanish | field_landing_contents[4][subform][field_list_title][0][value]                                   |
             | Override Title    | _Spanish | field_landing_contents[4][subform][field_list_items][2][subform][field_override_title][0][value] |
             | Button Text       | _Spanish | field_landing_contents[7][subform][field_button_text][0][value]                                  |
         And user selects "Archive Block" from Display dropdown
@@ -608,7 +610,7 @@ Feature: Home And Landing Page Test Creation of Content
             | title                                | link                          |
             | Featured Item Override Title         | {TEST_SITE_SECTION}/article   |
             | Google Link Primary Feature Card Row | https://www.google.comspanish |
-        And list row card title is "Dynamic List Title_Spanish"
+        And list row card title is "Dynamic List Title"
         And list row displays the following links
             | title                                        | link                          | description                                          |
             | Article to test Related Resources            | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |

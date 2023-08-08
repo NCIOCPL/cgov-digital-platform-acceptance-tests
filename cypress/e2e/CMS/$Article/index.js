@@ -68,7 +68,7 @@ And('{string} section is not displayed', (section) => {
 
 let imageSrc;
 And('user selects {int} Lead Image from the list of images', (num) => {
-    cy.get('span:contains("Lead Image")').parent().click()
+    cy.get('summary:contains("Lead Image")').click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -81,7 +81,7 @@ And('user remembers the source of selected lead image for further verification',
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -94,7 +94,7 @@ And('user remembers the source of selected promo image for further verification'
 });
 
 And('user selects {string} checkbox', (dateDisplay) => {
-    cy.get(`[class='fieldset-wrapper'] label:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true })
+    cy.get(`div#edit-field-date-display-mode label:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true })
 })
 
 And('the lead image is matching the earlier selected image', () => {
@@ -150,7 +150,7 @@ Then('the promo image is matching the earlier selected image', () => {
 });
 
 And('Link section under related resources was translated as {string}', (linkText) => {
-    cy.get(`summary.seven-details__summary span:contains("${linkText}")`).should('be.visible');
+    cy.get(`summary.claro-details__summary:contains("${linkText}")`).should('be.visible');
 });
 
 And('{string} label is displayed', (labelListDesc) => {
