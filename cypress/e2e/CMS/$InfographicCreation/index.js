@@ -32,7 +32,7 @@ And('user enters {string} into the {string} text field', (value, textFieldLabel)
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images to be displayed in home and landing pages', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click()
@@ -45,15 +45,15 @@ And('user remembers the source of selected promotional image to be displayed in 
 });
 
 And('user selects {string} checkbox', (dateDisplay) => {
-    cy.get(`[class='fieldset-wrapper'] label:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true });
-});
+    cy.get(`div#edit-field-date-display-mode label:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true })
+})
 
 And('the radio button {string} is selected by default under {string}', (btnType, field) => {
     cy.get(`div[id*="edit-attributes-data-align"]`).first().find(`input[id*="edit-attributes-data-align"]`).should('be.checked');
 });
 
 And('user removes the {string} item from the list', (link) => {
-    cy.get(`input[id*="edit-field-landing-contents-1-subform-field-list-items-0-top-links-remove-button"]`).click({ force: true });
+    cy.get(`input[name*="field_landing_contents_1_subform_field_list_items_0_remove"]`).click({force:true});
 });
 
 And('description reads {string}', (contentText) => {
@@ -120,9 +120,6 @@ And('user fills out {int} {string} text area with {string}', (position, sectionN
     cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
 });
 
-And('user clicks the {string} button {int} in the WYSIWYG editor', (infographicButton, position) => {
-    cy.get('span.cke_button__cgov_infographic_button_icon').eq(position - 1).click({ force: true });
-});
 
 And('user enters {string} into media title search box and clicks {string}', (nameToSearch, applyBtn) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_infographic_browser').find(`input[id*="edit-name"]`).type(nameToSearch);
@@ -140,10 +137,11 @@ And('user selects {string} item from the media list', (title) => {
 
 And('user clicks on {string} button to select media', (selectInfograhic) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_infographic_browser').find(`input[id='edit-submit'][value='${selectInfograhic}']`).click({ force: true });
+    cy.wait(2000)
 });
 
 And('{string} dropdown has the following options', (labelText, dataTable) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class="form-item__label js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
         cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${options}")`).should('exist');
     }
@@ -160,12 +158,12 @@ And('{string} dropdown displays {string}', (labelText, displayOption) => {
 And('{string} label has the following options', (labelText, dataTable) => {
     cy.get(`legend span:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
-        cy.get(`div.fieldset-wrapper label:contains("${options}")`).should('be.visible');
+        cy.get(`div.fieldset__wrapper.fieldset__wrapper--group label:contains("${options}")`).should('exist');
     }
 });
 
 And('user selects {string} radio button under {string}', (alignPosition, labelText) => {
-    cy.get(`div.fieldset-wrapper input[value='${alignPosition}']`).click({ force: true });
+    cy.get(`input[value='${alignPosition}']`).click({ force: true });
 });
 
 And('user clicks on {string} button to select infographic', (embedButton) => {
@@ -173,13 +171,7 @@ And('user clicks on {string} button to select infographic', (embedButton) => {
 });
 
 And('user select {string} from the {string} dropdown', (selectItem, labelText) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     cy.get(`select[id*="edit-attributes-data-entity-embed-display"]`).select(selectItem);
-});
-
-And('user clicks on {string} to add a body section', (option) => {
-    cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
 });
 
 And('user selects {string} from {string} dropdown in home and landing page', (dropDown, cardOption) => {
@@ -187,7 +179,7 @@ And('user selects {string} from {string} dropdown in home and landing page', (dr
 });
 
 And('user clicks on {string} link in the {string} text area in home and landing page', (title, cardOption) => {
-    cy.get(`div.paragraph-type-title:contains('${cardOption}')`).parent().parent().find(`span:contains('${title}')`).parent().click({ force: true });
+    cy.get(`summary[aria-expanded='false']:contains('${title}')`).click({ force: true })
 });
 
 And('user clicks on {string} button item', (content) => {
@@ -229,7 +221,7 @@ And('user selects {string} from List Item Style dropdown under list', (option) =
 });
 
 And('user clicks on {string} link in the List Items text area under List', (linkBtn) => {
-    cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true });
 });
 
 And('user selects {string} item from media list', (title) => {

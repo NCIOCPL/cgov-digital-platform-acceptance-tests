@@ -14,7 +14,7 @@ And('user selects {string} option from {string} dropdown', (dropdwon, section) =
 })
 
 And('user clicks on {string} link in the {string} text area', (link, linkOption) => {
-    cy.get(`div:contains("${linkOption}")`).parent().parent().find(`span:contains("${link}")`).click({ force: true })
+    cy.get(`div:contains("${linkOption}")`).parent().parent().find(`summary:contains("${link}")`).click({ force: true })
 })
 
 And('user clicks on {string} button item', (title) => {

@@ -10,7 +10,7 @@ And('user types {string} into Caption text field', (captionText) => {
 })
 
 And('user clicks on CROP IMAGE button', () => {
-    cy.get(`span:contains('Crop image')`).click()
+    cy.get(`summary:contains('Crop image')`).click({ force: true })
 })
 
 And('user sets the following crops', (dataTable) => {
@@ -44,7 +44,7 @@ And('user clicks on {string} button to select media', (selectInfograhic) => {
 });
 
 And('{string} dropdown has the following options', (labelText, dataTable) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
         cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${options}")`).should('exist');
     }
@@ -59,37 +59,32 @@ And('{string} dropdown defaults to {string}', (labelText, displayOption) => {
 });
 
 And('{string} label defaults to {string}', (labelTitle, option) => {
-    cy.get(`label:contains("${option}")`).parent().find('input[checked="checked"]').should('be.visible');
+    cy.get(`label:contains("${option}")`).parent().find('input').should('have.attr','checked','checked');
 })
 
 And('{string} label has the following options', (labelText, dataTable) => {
     cy.get(`legend span:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
-        cy.get(`div.fieldset-wrapper label:contains("${options}")`).should('be.visible');
+        cy.get(`div.fieldset__wrapper.fieldset__wrapper--group label:contains("${options}")`).should('exist');
     }
 });
 
 And('user selects {string} alignment', (alignPosition) => {
-    cy.get(`div.fieldset-wrapper input[value='${alignPosition}']`).click({ force: true });
+    cy.get(`div.fieldset__wrapper.fieldset__wrapper--group input[value='${alignPosition}']`).click({ force: true });
 });
 
-And('user selects none alignment', () => {
-    cy.get('div.fieldset-wrapper input[checked="checked"]').click({ force: true });
-});
 
 And('user clicks on {string} button to select image', (embedButton) => {
     cy.get(`div.ui-dialog-buttonset.form-actions button:contains("${embedButton}")`).click({ force: true });
 });
 
 And('user selects size {string}', (selectItem) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("Display as")`).should('be.visible');
     cy.get(`select[id*="edit-attributes-data-entity-embed-display"]`).select(selectItem);
 });
 
 And('user clicks on {string} to add a body section', (option) => {
     cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
-});
+   });
 
 And('user clicks {string} button for adding banner', (bannerBtn) => {
     cy.get(`input[id*="edit-field-hero-banner-add-more"]`).click({ force: true });

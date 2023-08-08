@@ -10,7 +10,7 @@ And('user selects {string} from CTHP Card Theme dropdown number {int}', (option,
 })
 
 And('user clicks on {string} link in the {string} text area', (link, linkOption) => {
-    cy.get(`div:contains("${linkOption}")`).parent().parent().find(`span:contains("${link}")`).eq(0).click({ force: true })
+    cy.get(`div:contains("${linkOption}")`).parent().parent().find(`summary:contains("${link}")`).eq(0).click({ force: true })
 })
 
 And('user clicks on {string} button from {string} text area', (title, option) => {

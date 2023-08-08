@@ -15,7 +15,6 @@ And('user clicks on title with url {string} under {string} from the list of cont
 Given('user is navigating to the blog {string} under {string}', (blogPost, blogSeries) => {
     const date = new Date();
     const currYear = date.getFullYear();
-    const frontEndBaseUrl = Cypress.env('front_end_base_url');
     cy.visit(`${frontEndBaseUrl}/${blogSeries}-${randomStr}/${currYear}/${blogPost}-${randomStr}`, { retryOnStatusCodeFailure: true });
 });
 
@@ -23,13 +22,6 @@ And('the content item with url {string} does not exist in the list of content', 
     cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
 });
 
-And('user enters {string} as intro text', (introText) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introText);
-});
-
-And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
-    cy.getIframeBody("iframe[title^='Rich Text Editor, Body field']").find('p').type(value);
-});
 
 And('user enters {string} into the {string} text field', (value, textFieldLabel) => {
     cy.get(`[class*='form-item-field-banner-image-0-alt']:contains("${textFieldLabel}")`).find('input.form-text').type(value);
@@ -68,7 +60,7 @@ And('user clicks on {string} button to select item', (selectContent) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images for blog series', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -94,7 +86,7 @@ And('blog series description reads {string}', (desc) => {
 });
 
 And('user clicks on {string} sub tab', (contentSubTab) => {
-    cy.get(`ul.admin-list li a:contains("${contentSubTab}")`).click({ force: true });
+    cy.get(`div.admin-item a:contains("${contentSubTab}")`).click({ force: true });
 });
 
 And('user selects {string} option from Operations for {string}', (option, label) => {
@@ -137,7 +129,7 @@ And('blog posts list does not appear in the archive', () => {
 });
 let imageSrc;
 And('user selects {int} Lead Image from the list of images for blog series', (num) => {
-    cy.get('span:contains("Lead Image")').parent().click();
+    cy.get('summary:contains("Lead Image")').click();
     cy.wait(1000);
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
@@ -300,7 +292,7 @@ And('user clicks on the {string} action button', (buttonLabel) => {
 });
 
 And('user clicks on {string} from  dropdown button under {string}', (deleteBtn, termName) => {
-    cy.get(`a.menu-item__link:contains("${termName}")`).parent().parent().find(`td li.delete.dropbutton-action a:contains("${deleteBtn}")`).click({ force: true });
+    cy.get(`a.menu-item__link:contains("${termName}")`).parent().parent().parent().parent().find(`li.delete.dropbutton-action a:contains("${deleteBtn}")`).click({ force: true });
 });
 
 And('user clicks on {string} button to select the item', (selectContent) => {
@@ -309,7 +301,7 @@ And('user clicks on {string} button to select the item', (selectContent) => {
 
 let imageSrc2;
 And('user selects {int} Promotional Image from the list of images to be displayed in mini landing pages', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -349,7 +341,7 @@ And('{string} text field label is displayed', (fieldLabel) => {
 });
 
 And('{string} button is displayed', (button) => {
-    cy.get(`div[class*="form-wrapper"] span:contains("${button}")`).should('be.visible');
+    cy.get(`summary[role='button']:contains("${button}")`).should('be.visible')
 });
 
 And('the following posts are displayed with remove button translated as {string}', (removeBtn, dataTable) => {
@@ -371,11 +363,11 @@ And('the translated banner image is displayed', () => {
 
 And('the link with the name {string} is displayed with remove button translated as {string}', (linkTitle, button) => {
     linkTitle = linkTitle.substring(0, linkTitle.length - 4)
-    cy.get(`a:contains("${linkTitle}")`).parent().parent().find('input').eq(3).should('have.attr', 'value', button)
+    cy.get(`a:contains("${linkTitle}")`).parent().parent().find('input').should('have.attr', 'value', button)
 })
 
 And('{string} button is displayed with remove button translated as {string}', (promotionalButton, translatedButton) => {
-    cy.get(`span:contains(${promotionalButton})`).should('be.visible')
+    cy.get(`summary:contains(${promotionalButton})`).should('be.visible')
     cy.get('div[class*="item-container"]').find('input').should('have.attr', 'value', translatedButton)
 })
 

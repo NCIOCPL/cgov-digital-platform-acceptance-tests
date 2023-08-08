@@ -19,7 +19,7 @@ Feature: As a user I want to be able to create tables in my content
                 | Browser Title    | Article to test Table                    | field_browser_title    |
                 | Meta Description | Article to test Table - Meta Description | field_page_description |
             And user enters "Table without headers - left aligned" as 1 body section heading
-            And user clicks the "Table" button 1 in the WYSIWYG editor
+            And user clicks "table" button 1 in the WYSIWYG editor
             And user clears out "Rows" field
             And user writes "4" into "Rows" labeled field
             And user clears out "Columns" field
@@ -32,9 +32,9 @@ Feature: As a user I want to be able to create tables in my content
             And user types "cell" in all cells of table 0
 
             And user clicks on "Add Body Section" to add a body section
-            And user enters "Table with first row headers - center aligned" as 2 body section heading
             And browser waits
-            And user clicks the "Table" button 2 in the WYSIWYG editor
+            And user enters "Table with first row headers - center aligned" as 2 body section heading
+            And user clicks "table" button 2 in the WYSIWYG editor
             And user selects "First Row" from "Headers" dropdown
             And user selects "center" from "Alignment" dropdown
             And user clicks "OK" to save table properties
@@ -43,9 +43,9 @@ Feature: As a user I want to be able to create tables in my content
             And user types "cell" in all cells of table 1
 
             And user clicks on "Add Body Section" to add a body section
-            And user enters "Table with first column headers - right aligned" as 3 body section heading
             And browser waits
-            And user clicks the "Table" button 3 in the WYSIWYG editor
+            And user enters "Table with first column headers - right aligned" as 3 body section heading
+            And user clicks "table" button 3 in the WYSIWYG editor
             And user selects "First column" from "Headers" dropdown
             And user selects "right" from "Alignment" dropdown
             And user clicks "OK" to save table properties
@@ -54,9 +54,9 @@ Feature: As a user I want to be able to create tables in my content
             And user types "cell" in all cells of table 2
 
             And user clicks on "Add Body Section" to add a body section
-            And user enters "Table with both headers - not aligned" as 4 body section heading
             And browser waits
-            And user clicks the "Table" button 4 in the WYSIWYG editor
+            And user enters "Table with both headers - not aligned" as 4 body section heading
+            And user clicks "table" button 4 in the WYSIWYG editor
             And user selects "Both" from "Headers" dropdown
             And user clicks "OK" to save table properties
             And browser waits

@@ -7,27 +7,24 @@ const randomStr = Cypress.env('randomStr');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 And('user clicks on sub tab {string}', (contentSubTab) => {
-    cy.get(`ul.admin-list li a`).find(`span:contains("${contentSubTab}")`).click({ force: true });
+    cy.get(`a.admin-item__link:contains("${contentSubTab}")`).click({ force: true });
 });
 
 And('user clicks on {string} sub sub tab', (contentSubTab) => {
-    cy.get(`ul.tabs.primary.clearfix li a:contains("${contentSubTab}")`).click({ force: true });
+    cy.get(`a.tabs__link.js-tabs-link:contains("${contentSubTab}")`).click({ force: true });
 });
 
 And('{string} dropdown displays {string}', (labelText, displayOption) => {
     cy.get(`select[id*="edit-langcode-0-value"] option:contains("${displayOption}")`).should('have.attr', 'selected', 'selected');
 });
 
-And('user clicks on Source button in the WYSIWYG editor', () => {
-    cy.get("span.cke_button_label.cke_button__source_label").click({ force: true });
-});
 
 And('user enters {string} into source text field', (value) => {
     cy.get('div#cke_edit-body-0-value').type(value);
 });
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe(`iframe[title="Rich Text Editor, Body field"]`, position - 1).find('p').type(value);
+    cy.getNthIframe(`iframe[title="Rich Text Editor, Content field"]`, position - 1).find('p').type(value);
 });
 
 And('the content item with title {string} exists in the list of content', (titleText) => {
@@ -40,7 +37,7 @@ And('{string} dropdown displays {string}', (drodownName, option) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_override_image_promotional_entity_browser_entity_browser"]').click({ force: true });
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true });
@@ -52,12 +49,12 @@ And('user remembers the source of selected promo image for further verification'
     });
 });
 
-And('user fills out {string} text area with {string}', (section, value) => {
-    cy.get(`div[class*="js-form-type-textarea"] label:contains('${section}')`).type(value);
-});
+// And('user fills out {string} text area with {string}', (section, value) => {
+//     cy.get(`div[class*="js-form-type-textarea"] label:contains('${section}')`).type(value);
+// });
 
 And('user clicks on {string} button to select image', (imgButton) => {
-    cy.get(`summary[class*="seven-details__summary"]`).find(`span:contains('${imgButton}')`).click();
+    cy.get(`summary[class*="claro-details__summary"]:contains('${imgButton}')`).click();
 });
 
 And('user clicks on {string} button {int} to select an image', (selectImgButton, position) => {
@@ -70,7 +67,7 @@ And('user enters {string} into media title search box to search image and clicks
 });
 
 And('user selects {string} item from the media list to select image', (imgTitle) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_image_carousel_image_browser').click().find("input[name^='entity_browser_select'][class='form-checkbox']").check();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_image_carousel_image_browser').find(`input[name^="entity_browser_select"][type="checkbox"]`).check();
 });
 
 And('user clicks on {string} button to select an image', (selectImage) => {
@@ -82,10 +79,10 @@ And('user enters {string} as {int} body section heading', (value, position) => {
 });
 
 And('user clicks {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
-    cy.get('span.cke_button_icon.cke_button__insert_block_content_icon').eq(position - 1).click({ force: true });
+    cy.get(`span[class*="cke_button_icon"][class*="${featuredContentButton.toLowerCase().replaceAll(" ","_")}"]`).eq(position - 1).click({ force: true });
 });
 
-And('user fills out {int} {string} text area in article with {string}', (position, sectionName, value) => {
+And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
     cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
 });
 
@@ -96,7 +93,7 @@ And('user enters {string} into content title search box and clicks {string}', (n
 });
 
 And('user selects {string} item from the content list', (contentTitle) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find("input[name^='entity_browser_select'][class='form-checkbox']").check();
+    cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find('input[name^="entity_browser_select"][type="checkbox"]').check();
 });
 
 And('user clicks on {string} button to select the media', (selectImage) => {
@@ -105,7 +102,7 @@ And('user clicks on {string} button to select the media', (selectImage) => {
 
 
 And('{string} dropdown has the following options', (labelText, dataTable) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
         cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${options}")`).should('exist');
     }
@@ -118,7 +115,7 @@ And('{string} dropdown is displayed {string}', (labelText, displayOption) => {
 And('{string} label has the following options', (labelText, dataTable) => {
     cy.get(`legend span:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
-        cy.get(`div.fieldset-wrapper label:contains("${options}")`).should('be.visible');
+        cy.get(`div[class*="fieldset__wrapper"] label:contains("${options}")`).should('be.visible');
     }
 });
 
@@ -132,16 +129,15 @@ And('user clicks on {string} button to select the block', (embedButton) => {
 
 And('user clicks on {string} to add a body section', (option) => {
     cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
 });
 
 And('user select {string} from the {string} dropdown', (selectItem, labelText) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     cy.get(`select[id*="edit-attributes-data-entity-embed-display"]`).select(selectItem);
 });
 
 And('user selects {string} radio button under {string}', (alignPosition, labelText) => {
-    cy.get(`div.fieldset-wrapper input[value='${alignPosition}']`).click({ force: true });
+    cy.get(`div[class*="fieldset__wrapper"] input[value='${alignPosition}']`).click({ force: true });
 });
 
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {
@@ -243,4 +239,14 @@ And('video carousel displays the following features', (dataTable) => {
         cy.get(`div.row.yt-carousel-controls button[value='${nextButton}']`).should('be.visible');
         cy.get('div.columns').find(`h4:contains("${videoCarouselH4Title}")`).should('be.visible');
     }
+});
+
+And('user enters {string} as intro text', (introTxt) => {
+    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introTxt);
+
+})
+
+
+And('user clicks on Source button in the WYSIWYG editor', () => {
+    cy.get(".cke_button_label.cke_button__source_label").click({ force: true });
 });

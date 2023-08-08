@@ -26,7 +26,7 @@ And('each file has a file type in the Related Resources section displayed as fol
 })
 
 And('user clicks on {string} button to link to a media', (link) => {
-    cy.get(`tbody summary[role='button'] span:contains('${link}')`).eq(0).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${link}')`).eq(0).click({ force: true });
 });
 
 And('user selects {string} item from the media list', (title) => {

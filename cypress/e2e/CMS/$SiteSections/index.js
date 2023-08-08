@@ -19,7 +19,7 @@ function waitForText(attempt = 0) {
 }
 
 And('user clicks on {string} sub tab', (contentSubTab) => {
-    cy.get(`ul.admin-list li a:contains("${contentSubTab}")`).click({ force: true });
+    cy.get(`dt.admin-item__title a:contains("${contentSubTab}")`).click({ force: true });
 });
 
 And('user selects {string} option from Operations for {string}', (option, label) => {
@@ -136,11 +136,13 @@ And('user clicks on the {string} action button', (buttonLabel) => {
 });
 
 And('user selects {string} link under {string}', (children, parentName) => {
-    cy.get(`a.menu-item__link:contains("${parentName}")`).parent().parent().find(`a:contains("${children}")`).click();
+    cy.get(`a.menu-item__link:contains("${parentName}")`).parent().parent().parent().parent().find(`a:contains("${children}")`).click();
+
+    // cy.get(`a.menu-item__link:contains("${parentName}")`).parent().parent().parent().parent().find(`a:contains("${children}")`).click();
 });
 
 And('user selects {string} operation for {string}', (btn, termName) => {
-    cy.get(`a.menu-item__link:contains("${termName}")`).parent().parent().find(`td li.dropbutton-action a:contains("${btn}")`).click({ force: true });
+    cy.get(`a.menu-item__link:contains("${termName}")`).parent().parent().parent().parent().find(`td li.dropbutton-action a:contains("${btn}")`).click({ force: true });
 });
 
 And('user checks {string} checkbox to set as a nav root', (setNavRoot) => {
@@ -160,7 +162,7 @@ And('user unchecks {string} checkbox', (checkboxLbl) => {
 });
 
 And('user drags {string} item one level down', (dragLink) => {
-    cy.get(`a.menu-item__link:contains("${dragLink}")`).parent().find('a.tabledrag-handle').trigger('mousedown', { which: 1, pageX: 200, pageY: 50 })
+    cy.get(`a.menu-item__link:contains("${dragLink}")`).parent().parent().find('a.tabledrag-handle').trigger('mousedown', { which: 1, pageX: 200, pageY: 50 })
         .trigger('mousemove', { which: 1, clientX: 50, clientY: 50, pageY: 100 })
         .trigger('mouseup')
 });

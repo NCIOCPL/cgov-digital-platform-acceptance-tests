@@ -80,7 +80,7 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
         And user enters "Article Intro Text" as intro text
         And user enters "Article Heading1" as 1 body section heading
         And user fills out 1 "Body" text area with "Embedding Featured Content: Article Feature Card: Image None"
-        And user clicks the "Featured Content" button 1 in the WYSIWYG editor
+        And user clicks "Featured Content" button 1 in the WYSIWYG editor
         And user enters "Automated Test Article for Featured Content Test" into content title search box and clicks "Apply"
         And user selects "Automated Test Article for Featured Content Test" item from the content list
         And browser waits
@@ -101,9 +101,10 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
         And user clicks on "Embed" button to select featured content
         And browser waits
         And user clicks on "Add Body Section" to add a body section
+        And browser waits
         And user enters "Article Heading2" as 2 body section heading
         And user fills out 2 "Body" text area with "Embedding Featured Content: Article Feature Card: No Image Left"
-        And user clicks the "Featured Content" button 2 in the WYSIWYG editor
+        And user clicks "Featured Content" button 2 in the WYSIWYG editor
         And user enters "Automated Test Article for Featured Content Test" into content title search box and clicks "Apply"
         And user selects "Automated Test Article for Featured Content Test" item from the content list
         And browser waits
@@ -114,9 +115,10 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
         And user clicks on "Embed" button to select featured content
         And browser waits
         And user clicks on "Add Body Section" to add a body section
+        And browser waits
         And user enters "Article Heading3" as 3 body section heading
         And user fills out 3 "Body" text area with "Embedding Featured Content: Blog Post Feature Card: Image Center"
-        And user clicks the "Featured Content" button 3 in the WYSIWYG editor
+        And user clicks "Featured Content" button 3 in the WYSIWYG editor
         And user enters "Automated Test Blog Post for Featured Content Test" into content title search box and clicks "Apply"
         And user selects "Automated Test Blog Post for Featured Content Test" item from the content list
         And browser waits
@@ -127,9 +129,10 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
         And user clicks on "Embed" button to select featured content
         And browser waits
         And user clicks on "Add Body Section" to add a body section
+        And browser waits
         And user enters "Article Heading4" as 4 body section heading
         And user fills out 4 "Body" text area with "Embedding Featured Content: Blog Post Feature Card: No Image Right"
-        And user clicks the "Featured Content" button 4 in the WYSIWYG editor
+        And user clicks "Featured Content" button 4 in the WYSIWYG editor
         And user enters "Automated Test Blog Post for Featured Content Test" into content title search box and clicks "Apply"
         And user selects "Automated Test Blog Post for Featured Content Test" item from the content list
         And browser waits

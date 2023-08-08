@@ -27,10 +27,10 @@ And('user clicks on {string} button', (block) => {
     cy.get('@addBlock').click();
 });
 Then('the list of block contents appears', () => {
-    cy.get('#block-cgov-admin-content li').should('have.length.above', 0);
+    cy.get('dl.admin-list dt').should('have.length.above', 0);
 })
 When('user clicks on {string} content', (rawHtml) => {
-    cy.get(`li a span:contains("${rawHtml}")`).click();
+    cy.get(`dt a:contains("${rawHtml}")`).click();
 });
 
 And('user enters {string} into the block description field', (descr) => {

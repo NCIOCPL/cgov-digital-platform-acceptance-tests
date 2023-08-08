@@ -59,9 +59,7 @@ Feature: Adding a custom site logo
         Then page title is "Block layout"
         When user clicks on "Configure" button for "NCIDS Header Test" block
         Then page title is "Configure block"
-        And user fills out the following fields
-            | fieldLabel          | value              | field_name                                   |
-            | Search Results Page | NCI Search Results | settings[header_config][search_results_page] |
+        And user fills out Search Results Page field with "NCI Search Results"                           
         And user selects 1 item from Search Results Page dropdown
         And user saves editing block
         Then the confirmation text "The block configuration has been saved." appears on a screen

@@ -3,10 +3,7 @@
 import { And } from 'cypress-cucumber-preprocessor/steps';
 
 And('user clicks on Image content type', () => {
-    cy.get(`ul.admin-list span.label:contains('Image')`).then($el => {
-        const content= $el[1];
-        cy.get(content).parent().click({ force: true });
-    })
+    cy.get("dl.admin-list a[href='/media/add/cgov_image']").click();
 });
 
 And('user types {string} into Caption text field', (value) => {
@@ -38,7 +35,7 @@ And('user selects {string} option from {string} dropdown', (dropdown, section) =
 })
 
 And('user clicks on CROP IMAGE button', () => {
-    cy.get(`span:contains('Crop image')`).click({ force: true })
+    cy.get(`summary:contains('Crop image')`).click({ force: true })
 })
 
 And('user sets the following crops', (dataTable) => {
@@ -51,7 +48,7 @@ And('user sets the following crops', (dataTable) => {
     })
 
     And('user selects {string} Promotional Image from the list of images', (name) => {
-        cy.get('span:contains("Promotional Image")').parent().first().click()
+        cy.get('summary:contains("Promotional Image")').first().click()
         cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
         cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input#edit-name').type(name)
         cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input[id*="edit-submit-cgov-image-media-browser"]').click()

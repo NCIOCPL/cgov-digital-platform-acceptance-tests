@@ -2,10 +2,7 @@
 import { And } from 'cypress-cucumber-preprocessor/steps';
 
 And('user clicks on Image content type', () => {
-    cy.get(`ul.admin-list span.label:contains('Image')`).then($el => {
-        const content= $el[1];
-        cy.get(content).parent().click({ force: true });
-    })
+    cy.get("dl.admin-list a[href='/media/add/cgov_image']").click();
 });
 
 And('user types {string} into Caption text field', (value) => {
@@ -54,11 +51,12 @@ And('user selects {string} option from Operations dropdown for media with title 
 });
 
 And('user selects {string} Lead Image from the list of images', (image) => {
-    cy.get('span:contains("Lead Image")').parent().click()
+    cy.get('summary:contains("Lead Image")').click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-name").type(image);
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-submit-cgov-image-media-browser").click();
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').click().find("input[name^='entity_browser_select'][class='form-checkbox']").check();
+    cy.wait(2000)
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_image_browser').find("input[type=checkbox]").eq(0).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
 });
 
@@ -68,7 +66,7 @@ And('user selects {string} content item', (dropDown) => {
 })
 
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
-    cy.get(`div.paragraph-type-title:contains('${cartOption}')`).parent().parent().find(`span:contains('${title}')`).parent().click()
+    cy.get(`summary[aria-expanded='false']:contains('${title}')`).click({ force: true })
 })
 
 And('user clicks on {string} button to select item', (title) => {
@@ -76,7 +74,7 @@ And('user clicks on {string} button to select item', (title) => {
 })
 
 And('user clicks on {string} link in the Internal Link text area within List Items', (linkBtn) => {
-    cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true });
 })
 
 
@@ -86,12 +84,12 @@ And('user selects {int} item from the media list', (num) => {
 
 
 And('user selects {string} as Promotional Image from the list of images', (image) => {
-    cy.get('span:contains("Promotional Image")').parent().click()
+    cy.get('summary:contains("Promotional Image")').parent().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-name").type(image);
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("#edit-submit-cgov-image-media-browser").click();
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-submit-cgov-image-media-browser").click();
     cy.wait(2000)
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name*='entity_browser_select'][class='form-checkbox']").click();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_image_browser').find("input[type=checkbox]").eq(0).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
 })
 
