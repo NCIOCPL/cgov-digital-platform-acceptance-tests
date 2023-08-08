@@ -35,10 +35,10 @@ When('user clicks on {string} tab', (option) => {
 });
 
 And('user clicks on {string} action button', (buttonLabel) => {
-    cy.get(`ul.action-links a:contains(${buttonLabel})`).click({ force: true });
+    cy.get(`ul.local-actions a:contains(${buttonLabel})`).click({ force: true });
 });
 And('user clicks on {string} content type', (contentType) => {
-    cy.get(`ul.admin-list span.label:contains('${contentType}')`).parent().click({ force: true });
+    cy.get(`a.admin-item__link:contains('${contentType}')`).click({ force: true });
 });
 When('user selects test site section', () => {
     cy.get("input[value='Select Site Section']").click({ force: true });
@@ -176,7 +176,7 @@ And('user selects {string} from contents dropdown', (contentsList) => {
 });
 
 And('user clicks on {string} button to add list item', (linkBtn) => {
-    cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true });
 });
 
 And('user clicks on {string} button', (contentBtn) => {
@@ -227,7 +227,7 @@ Then('{string} section appears', (resourceType) => {
 });
 
 And('user clicks on {string} button to link to a resource', (link) => {
-    cy.get(`tbody summary[role='button'] span:contains('${link}')`).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${link}')`).click({ force: true });
 });
 
 And('user clicks on {string} to choose a resource to link', (selectContentLbl) => {
@@ -247,7 +247,7 @@ And('user fills out {string} field with {string}', (fieldLbl, value) => {
 });
 
 And('user clicks on {string} button to link to a media', (link) => {
-    cy.get(`tbody summary[role='button'] span:contains('${link}')`).eq(1).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${link}')`).eq(1).click({ force: true });
 });
 
 And('{string} had been selected', (title) => {
@@ -348,12 +348,12 @@ And('citation number {int} titled {string} has no link', (num, citText) => {
 })
 
 And('user selects the {string} content item', (dropDown) => {
-    cy.get('li.dropbutton-toggle').click();
-    cy.get(`input[id*="edit-field-landing-contents-add-more-add-more-button-cgov-two-item-feature-row"]`).click();
+    // cy.get('li.dropbutton-toggle').click();
+    cy.get(`input[id*="edit-field-landing-contents-add-more-add-more-button-cgov-two-item-feature-row"]`).click({force:true});
 });
 
 And('user clicks on the {string} link in the {string} text area', (title, cardOption) => {
-    cy.get(`summary.seven-details__summary span:contains('${title}')`).parent().click();
+    cy.get(`summary.claro-details__summary:contains('${title}')`).click();
 });
 
 And('user removes {string} section', (removeSection) => {
@@ -380,7 +380,7 @@ And('user selects {string} item from main page content', (title) => {
 
 let imageSrc;
 And('user selects {int} Promotional Image for the mini landing', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().as('imageUpload').click()
+    cy.get('summary:contains("Promotional Image")').parent().as('imageUpload').click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -413,7 +413,7 @@ And('Related Resources section was translated as {string}', (relatedResources) =
 });
 
 And('dropdown to add link under related resources was translated to start with {string}', (dropDownText) => {
-    cy.get(`li.dropbutton__item.dropbutton__item--extrasmall.dropbutton-action input[value^='${dropDownText}']`).should('be.visible');
+    cy.get(`li[class*="-link dropbutton__item dropbutton-action"] input[value^='${dropDownText}']`).should('be.visible');
 });
 
 And('button to add citation was translated as {string}', (citationBtn) => {

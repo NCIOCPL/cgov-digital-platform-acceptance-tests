@@ -25,9 +25,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And Event Start Date & Time date field is displaying todays date
         And Event End Date & Time date field is displaying todays date
         And user enters "22:00:00" in the "Event End Date & Time" time field
+        And user enters "NCI Shady Grove" in the Venue field
         And user fills out the following fields
             | fieldLabel         | value              | field_name       |
-            | Venue              | NCI Shady Grove    | field_venue      |
             | Room               | 2E626              | field_room       |
             | City/State/Country | Rockville, MD, USA | field_city_state |
         And user fills out "Body" text area with "This is a description of event content type."
@@ -96,9 +96,10 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And user clears out "Card Title" field
         And user clears out "Meta Description" field
         And user clears out "Feature Card Description" field
-        And user clears out "Venue" field
         And user clears out "City/State/Country" field
         And user clears out "Room" field
+        And user clears out "Venue" field
+        And user enters "NCI Shady Grove Edited" in the Venue field
         And user fills out the following fields
             | fieldLabel               | value                                           | field_name                     |
             | Pretty URL               | test-event-edited                               | field_pretty_url               |
@@ -106,7 +107,6 @@ Feature: As a cms user I want to be able to create Event content type to promote
             | Card Title               | Automated Test Event - Card Title Edited        | field_card_title               |
             | Meta Description         | Automated Test Event Meta Description Edited    | field_page_description         |
             | Feature Card Description | Automated Test Event - Feature Card Desc Edited | field_feature_card_description |
-            | Venue                    | NCI Shady Grove Edited                          | field_venue                    |
             | Room                     | 2E626 Edited                                    | field_room                     |
             | City/State/Country       | Arlington, VA, USA                              | field_city_state               |
         And user clears out "Event Series" field

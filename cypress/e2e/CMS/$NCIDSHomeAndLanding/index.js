@@ -13,13 +13,15 @@ And('user selects {string} from style dropdown', (option) => {
 });
 
 And('user clicks on {string} from {string} area', (button, area) => {
-    cy.get(`strong:contains("${area}")`).parent().find(`input[value="${button}"]`).click({ force: true })
+
+    cy.get(`em.placeholder:contains("${area}")`).parent().find("button.dropbutton__toggle").click();
+    cy.get(`em.placeholder:contains("${area}")`).parent().find(`input[value="${button}"]`).click();
 })
 And('user expands link dropdown to add a link in {string} area of {string} component', (button, area) => {
     cy.get(`div:contains("${area}")`).parent().parent().find(`div:contains("${button}")`).parent().parent().find('summary[aria-expanded="false"]').click()
 })
 And('user expands link dropdown to add a link in {string} in CTA', (button) => {
-    cy.get('table[id*="field-cta-link-buttons"]').parent().find('summary[aria-expanded="false"]').click()
+    cy.get('summary[aria-expanded="false"]').click()
 })
 
 
@@ -28,29 +30,29 @@ And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
 })
 
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
-    cy.get(`div.paragraph-type-title:contains('${cartOption}')`).parent().parent().find(`summary[aria-expanded="false"]`).parent().click();
+    cy.get(`summary[aria-expanded="false"]:contains(${title})`).click();
 })
 
 And('user uploads hero images as follows', (dataTable) => {
     for (const { fileName, type } of dataTable.hashes()) {
-        cy.fixture(fileName, { encoding: null }).as('fixture')
-        cy.get(`input[type="file"][data-drupal-selector*="${type}"]`).selectFile('@fixture')
+         cy.fixture(fileName, { encoding: null }).as('fixture')
+        cy.get(`input[type="file"][data-drupal-selector*="${type}"]`).selectFile('@fixture');
         cy.get('.throbber', { timeout: 40000 }).should('not.exist')
     }
 });
 And('user adds another {string} link for {int} guide card', (link, index) => {
-    cy.get(`input[name*="guide_cards"][name*="_${link}_add_more"]`).eq(index - 1).click({ force: true })
+    cy.get(`input[name*="guide_cards"][name*="_${link}_add_more"]`).eq(index - 1).click({force:true})
 })
 
 And('user clicks on {string} in {int} {string} section', (featItemLink, index, section) => {
-    cy.get(`div[class*="paragraph-type-title"]:contains(${section})`).eq(index - 1).parent().parent().find(`summary:contains("${featItemLink}")`).click();
+    cy.get(`summary[aria-expanded="false"]:contains("${featItemLink}")`).click();
 });
 
 And('user selects {string} theme for {int} block', (option, index) => {
-    cy.get('select[name*="theme"]').eq(index - 1).select(option)
+    cy.get('select[name*="theme"]').select(option)
 });
 And('user selects {string} image position for {int} block', (option, index) => {
-    cy.get('select[name*="image_position"]').eq(index - 1).select(option)
+    cy.get('select[name*="image_position"]').eq(index - 2).select(option)
 });
 
 And('user uploads NCIDS image overrides as follows', (dataTable) => {
@@ -58,14 +60,12 @@ And('user uploads NCIDS image overrides as follows', (dataTable) => {
         cy.fixture(fileName, { encoding: null }).as('fixture')
         cy.get(`input[type="file"][name*="${type}"]`).selectFile('@fixture')
         cy.get('.throbber', { timeout: 40000 }).should('not.exist')
+        cy.wait(2000)
     }
 });
 
 And('user clicks on Image content type', () => {
-    cy.get(`ul.admin-list span.label:contains('Image')`).then($el => {
-        const content = $el[1];
-        cy.get(content).parent().click({ force: true });
-    })
+    cy.get("dl.admin-list a[href='/media/add/cgov_image']").click();
 });
 
 And('user types {string} into Caption text field', (value) => {
@@ -79,7 +79,7 @@ And('user uploads test {string} image {string}', (imageType, fileName) => {
 })
 
 And('user clicks on CROP IMAGE button', () => {
-    cy.get(`span:contains('Crop image')`).click({ force: true })
+    cy.get(`summary:contains('Crop image')`).click({ force: true })
 })
 
 And('user sets the following crops', (dataTable) => {
@@ -98,9 +98,9 @@ And('user uploads {string} as {int} guide card image', (fileName, index) => {
 })
 
 And('user selects {string} as promo image for {int} feature card', (name, index) => {
-    cy.get(`summary[aria-controls*="edit-field-override-image-promotional"]`).eq(index - 1).click({ force: true });
+    cy.get(`summary[aria-controls*="edit-field-override-image-promotional"]`).eq(index-1).click();
     cy.wait(500);
-    cy.get('input[name*="override_image_promotional_entity_browser"]').eq(index - 1).click({ force: true })
+    cy.get('input[name*="override_image_promotional_entity_browser"]').eq(index-1).click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input#edit-name').type(name)
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input[id*="edit-submit-cgov-image-media-browser"]').click()
     cy.wait(1500)
@@ -110,9 +110,9 @@ And('user selects {string} as promo image for {int} feature card', (name, index)
 })
 
 And('user selects {string} as promo image for {int} block', (name, index) => {
-    cy.get(`summary[aria-controls*="edit-field-override-image-promotional"]`).eq(index - 1).click();
+    cy.get(`summary[aria-controls*="edit-field-override-image-promotional"]`).click();
     cy.wait(500);
-    cy.get('input[name*="override_image_promotional_entity_browser"]').eq(index - 2).click({ force: true })
+    cy.get('input[name*="override_image_promotional_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input#edit-name').type(name)
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input[id*="edit-submit-cgov-image-media-browser"]').click()
     cy.wait(1500)
@@ -357,4 +357,12 @@ Then('NCIDS 3 guide card row at position {int} have the following attributes', (
         }
     }
 })
+
+And('user clicks on Select content button item',()=>{
+    cy.get(`input[value="Select content"]`).trigger("click")
+})
+
+And('user clicks on {string} button for {string}',(edit,section)=>{
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
+    });
 

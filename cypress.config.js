@@ -5,7 +5,7 @@ module.exports = defineConfig({
   viewportWidth: 1025,
   viewportHeight: 600,
   retries: {
-    runMode: 2,
+    runMode: 1,
     openMode: 0,
   },
   chromeWebSecurity: true,
@@ -19,7 +19,7 @@ module.exports = defineConfig({
     ocpl_password: '',
     randomStr: createRandomStr()
   },
-  defaultCommandTimeout: 20000,
+  defaultCommandTimeout: 10000,
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.

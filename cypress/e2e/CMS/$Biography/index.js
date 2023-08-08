@@ -7,7 +7,7 @@ And('user clicks on {string} to a title section', (buttonLable) => {
 
 let imageSrc;
 And('user selects {int} Biography Image from the list of images', (number) => {
-    cy.get('span:contains("Biography Image")').parent().as('imageUpload').click();
+    cy.get('summary:contains("Biography Image")').click();
     cy.get('input[value="Select Image"]').click({ force: true });
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(number - 1).check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true });
@@ -19,7 +19,7 @@ And('user remembers the source of selected biography image for further verificat
 })
 
 And('user selects {string} checkbox', (dateDisplay) => {
-    cy.get(`[class='fieldset-wrapper']:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true })
+    cy.get(`div#edit-field-date-display-mode label:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true })
 })
 
 And("{string} date is displaying today's date", (date) => {
@@ -66,6 +66,6 @@ And('the following social media links are present', (dataTable) => {
     }
 })
 And('user removes the Biography Image', () => {
-    cy.get('span:contains("Biography Image")').parent().as('imageUpload').click();
+    cy.get('summary:contains("Biography Image")').click();
     cy.get('#edit-field-image-promotional-current-items-0-remove-button').click({ force: true })
 })

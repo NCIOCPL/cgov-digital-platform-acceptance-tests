@@ -7,13 +7,6 @@ const randomStr = Cypress.env('randomStr');
 const date = new Date();
 const currYear = date.getFullYear();
 
-And('user enters {string} as intro text', (introTxt) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introTxt);
-});
-
-And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
-});
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
     cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
@@ -33,8 +26,8 @@ And('{int} description reads {string}', (contentText) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images for featured content article', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
-    cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true });
+    cy.get('summary:contains("Promotional Image")').first().click()
+    cy.get('input[name*="image_promotional_entity_browser_entity_browser"]').click({ force: true });
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true });
 });
@@ -47,7 +40,7 @@ And('user remembers the source of selected promo image for further verification 
 
 let imageSrc2;
 And('user selects {int} Lead Image from the list of images', (num) => {
-    cy.get('span:contains("Lead Image")').parent().click();
+    cy.get('summary:contains("Lead Image")').click();
     cy.wait(1000);
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
@@ -70,27 +63,20 @@ And('user selects {string} from Blog Series dropdown', (blogSeries) => {
     })
 });
 
-And('user clicks on {string} to add a body section', (option) => {
-    cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
-});
-
 And('the radio button {string} is selected by default under {string}', (btnType, field) => {
     cy.get(`div[id*="edit-attributes-data-align"]`).first().find(`input[id*="edit-attributes-data-align"]`).should('be.checked');
 });
 
-And('user clicks the {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
-    cy.get('span.cke_button__cgov_featured_content_button_icon').eq(position - 1).click({ force: true });
-});
 
 And('user enters {string} into content title search box and clicks {string}', (nameToSearch, applyBtn) => {
+    cy.wait(2000)
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[id*="edit-title"]`).type(nameToSearch);
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[id*="edit-submit-cgov-content-browser"][value=${applyBtn}]`).click({ force: true });
     cy.wait(2000)
 });
 
 And('user selects {string} item from the content list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[name*="entity_browser_select"][type='checkbox']`).check();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[name^="entity_browser_select"][type="checkbox"]`).check();
 });
 
 And('user clicks on {string} button to select content', (selectContent) => {
@@ -102,7 +88,7 @@ And('user clicks on {string} button to select featured content', (embedButton) =
 });
 
 And('{string} dropdown has the following options', (labelText, dataTable) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
         cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${options}")`).should('exist');
     }
@@ -115,16 +101,16 @@ And('{string} dropdown displays {string}', (labelText, displayOption) => {
 And('{string} label has the following options', (labelText, dataTable) => {
     cy.get(`legend span:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
-        cy.get(`div.fieldset-wrapper label:contains("${options}")`).should('be.visible');
+        cy.get(`div[class*="fieldset__wrapper"] label:contains("${options}")`).should('be.visible');
     }
 });
 
 And('user selects {string} radio button under {string}', (alignPosition, labelText) => {
-    cy.get(`div.fieldset-wrapper input[value='${alignPosition}']`).click({ force: true });
+    cy.get(`div[class*="fieldset__wrapper"] input[value='${alignPosition}']`).click({ force: true });
 });
 
 And('user select {string} from the {string} dropdown', (selectItem, labelText) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     cy.get(`select[id*="edit-attributes-data-entity-embed-display"]`).select(selectItem);
 });
 
@@ -190,4 +176,8 @@ And('{int} feature card does not display any image', (position) => {
 
 And('user selects a checkbox next to title with url {string} under {string} from the list of content', (url, blogSeries) => {
     cy.get(`a[href='${blogSeries}/${currYear}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+});
+
+And('user clicks {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
+    cy.get('span.cke_button_label.cke_button__cgov_featured_content_button_label').eq(position - 1).click({ force: true });
 });

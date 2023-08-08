@@ -4,7 +4,7 @@ import { And, Then, Given, When } from 'cypress-cucumber-preprocessor/steps';
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 And('user clicks on {string} sub tab', (contentSubTab) => {
-    cy.get(`ul.admin-list li a:contains("${contentSubTab}")`).click({ force: true });
+    cy.get(`a.admin-item__link:contains("${contentSubTab}")`).click({ force: true });
 });
 
 When('user clicks on {string} in {string} region', (placeBlock, region) => {
@@ -107,3 +107,7 @@ cy.get('input[value="Remove"]').click({force:true});
 And('user clears out {string} text field',(txtField)=>{
     cy.get(`label[for^="edit-visibility-request-path-pages"]:contains("${txtField}")`).parent().find('textarea').clear();
 })
+
+And('user fills out Search Results Page field with {string}',(text)=>{
+cy.get("input[name^='settings[header_config][search_results_page]']").type(text);
+})       

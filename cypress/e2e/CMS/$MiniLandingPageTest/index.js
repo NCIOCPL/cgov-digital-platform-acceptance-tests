@@ -10,7 +10,7 @@ const randomStr = Cypress.env('randomStr')
 
 let imageSrc;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().as('imageUpload').click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -30,11 +30,11 @@ And('user enters {string} into Content Heading text field', (value) => {
 })
 
 And('user selects {string} checkbox', (visible) => {
-    cy.get(`[class='fieldset-wrapper']:contains("${visible}")`).parent().find('input.form-checkbox').check({ force: true })
+    cy.get(`div#edit-field-date-display-mode label:contains("${visible}")`).parent().find('input.form-checkbox').check({ force: true })
 })
 
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
-    cy.get(`div.paragraph-type-title:contains('${cartOption}')`).parent().parent().find(`span:contains('${title}')`).parent().click()
+    cy.get(`summary[aria-expanded='false']:contains('${title}')`).click({ force: true })
 })
 
 And('user clicks on {string} button to select item', (title) => {
@@ -42,7 +42,7 @@ And('user clicks on {string} button to select item', (title) => {
 })
 
 And('user clicks on {string} link in the Internal Link text area within List Items', (linkBtn) => {
-    cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true });
 })
 
 And('user selects {string} from item list dropdown', (dropdown) => {
@@ -50,7 +50,7 @@ And('user selects {string} from item list dropdown', (dropdown) => {
 })
 
 And('Button Display dropdown has default value {string}', (title) => {
-    cy.get(`select[class='form-select required']:contains('${title}')`)
+    cy.get(`select[class='form-select required form-element form-element--type-select']:contains('${title}')`).should('exist')
 })
 
 And('user enters {string}', (value) => {
@@ -58,7 +58,7 @@ And('user enters {string}', (value) => {
 })
 
 And('user clicks {string} link in the Dynamic List area', (linkBtn) => {
-    cy.get(`tbody summary[role='button'] span:contains('${linkBtn}')`).click({ force: true })
+    cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true })
 })
 
 And('user clicks on {string} button item', (title) => {
@@ -205,12 +205,12 @@ And('banner image has requirements translated as follows', (dataTable) => {
 
 And('the following content sections are displayed', (dataTable) => {
     for (const { section } of dataTable.hashes()) {
-        cy.get("div[class*='paragraph-type-ti']").should('include.text', section)
+        cy.get(`div[class*='paragraph-type-title']:contains(${section})`).should('be.visible')
     }
 })
 
 And('Dynamic List has options translated as {string}', (TranslatedOption) => {
-    cy.get(`tbody summary[role='button'] span:contains("${TranslatedOption}")`).should('be.visible')
+    cy.get(`summary[role='button']:contains("${TranslatedOption}")`).should('be.visible')
 })
 
 And('button to add content was translated to start with {string}', (TranslatedOption) => {

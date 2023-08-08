@@ -8,7 +8,7 @@ const randomStr = Cypress.env('randomStr')
 
 let imageSrc;
 And('user selects {int} Lead Image from the list of images', (num) => {
-    cy.get('span:contains("Lead Image")').parent().as('imageUpload').click()
+    cy.get('summary:contains("Lead Image")').click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -21,7 +21,7 @@ And('user remembers the source of selected lead image for further verification',
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().as('imageUpload').click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -34,7 +34,7 @@ And('user remembers the source of selected promo image for further verification'
 })
 
 And('user selects {string} checkbox', (dateDisplay) => {
-    cy.get(`[class='fieldset-wrapper'] label:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true })
+    cy.get(`div#edit-field-date-display-mode label:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true })
 })
 
 And("{string} date is displaying today's date", (date) => {
@@ -141,7 +141,7 @@ And('body was translated as {string}', (title) => {
 })
 
 And('Related Resources section was translated as {string}', (dropdownLabel) => {
-    cy.get("strong[data-drupal-selector='edit-field-related-resources-title']").should('include.text', dropdownLabel)
+    cy.get('h4[class*="form-item__label form-item__label--multiple-value-form"]').should('include.text', dropdownLabel)
 })
 
 And('dates were translated as follows', (dataTable) => {

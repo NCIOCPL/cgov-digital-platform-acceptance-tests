@@ -52,7 +52,7 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
             | Meta Description         | Automated Test Article to test Raw HTML Block - Meta Description  | field_page_description         |
             | Feature Card Description | Automated Test Article to test Raw HTML Block - Feature Card Desc | field_feature_card_description |
         And user enters "Article Heading1" as 1 body section heading
-        And user fills out 1 "Body" text area in article with "Raw HTML Block: Image,None:"
+        And user fills out 1 "Body" text area with "Raw HTML Block: Image,None:"
         And user clicks "Insert Block Content" button 1 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Raw HTML Block Test" into content title search box and clicks "Apply"
@@ -76,9 +76,9 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
-        And user enters "Article Heading2" as 2 body section heading
         And browser waits
-        And user fills out 2 "Body" text area in article with "Raw HTML Block: Image,Left:"
+        And user enters "Article Heading2" as 2 body section heading
+        And user fills out 2 "Body" text area with "Raw HTML Block: Image,Left:"
         And user clicks "Insert Block Content" button 2 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Raw HTML Block Test" into content title search box and clicks "Apply"
@@ -92,9 +92,9 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
-        And user enters "Article Heading3" as 3 body section heading
         And browser waits
-        And user fills out 3 "Body" text area in article with "External Link Block: No Image,Right:"
+        And user enters "Article Heading3" as 3 body section heading
+        And user fills out 3 "Body" text area with "External Link Block: No Image,Right:"
         And user clicks "Insert Block Content" button 3 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Raw HTML Block Test" into content title search box and clicks "Apply"
@@ -108,9 +108,9 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
-        And user enters "Article Heading4" as 4 body section heading
         And browser waits
-        And user fills out 4 "Body" text area in article with "Raw HTML Block: Full, Center:"
+        And user enters "Article Heading4" as 4 body section heading
+        And user fills out 4 "Body" text area with "Raw HTML Block: Full, Center:"
         And user clicks "Insert Block Content" button 4 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Raw HTML Block Test" into content title search box and clicks "Apply"
@@ -140,17 +140,17 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And 2 description reads "Raw HTML Block: Image,Left:"
         And 2 block displays the following features
             | alignment                  | rawHTMLText                                   |
-            | embedded-entity align-left | This is to test Raw Html Block in the WYSIWYG |
+            | embedded-entity align-left  | This is to test Raw Html Block in the WYSIWYG |
         And 3 section heading reads "Article Heading3"
         And 3 description reads "Raw HTML Block: No Image,Right:"
         And 3 block displays the following features
             | alignment                   | rawHTMLText                                   |
-            | embedded-entity align-right | This is to test Raw Html Block in the WYSIWYG |
+            |   embedded-entity align-right | This is to test Raw Html Block in the WYSIWYG |
         And 4 section heading reads "Article Heading4"
         And 4 description reads "Raw HTML Block: Full,Center:"
         And 4 block displays the following features
             | alignment                    | rawHTMLText                                   |
-            | embedded-entity align-center | This is to test Raw Html Block in the WYSIWYG |
+            |  embedded-entity align-center  | This is to test Raw Html Block in the WYSIWYG |
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"

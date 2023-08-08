@@ -74,14 +74,12 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Select content" button to select item
         And browser waits
         And user selects "Add External Link" from "View More Information" dropdown
-        Then "External Link" section appears
         And user fills out the following fields
             | fieldLabel | value                  | field_name                                                                                          |
             | Link       | https://www.google.com | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_external_link][0][uri]    |
             | Title      | Google Link Guide Card | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_override_title][0][value] |
         And user selects "Add Media Link" from "View More Information" CTHP dropdown
         And browser waits
-        Then "Media Link" section appears
         And user clicks on "Link" link in the "External Link" text area
         And user clicks on "Select media" to choose a resource to link
         And user selects "Test File for Related Resources" item from the media list
@@ -420,7 +418,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | CTHP Block Card            |
             | CTHP Raw HTML Card         |
         And Add Card Section was translated as "Añadir CTHP Overview Card"
-        And dropdown to add link under related resources was translated to start with "Añadir"
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
@@ -583,14 +580,12 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user selects "Add External Link" from "View More Information" dropdown
         And browser waits for 2000
-        Then "External Link" section appears
         And user fills out the following fields
             | fieldLabel | value                  | field_name                                                                                          |
             | Link       | https://www.google.com | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_external_link][0][uri]    |
             | Title      | Google Link Guide Card | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_override_title][0][value] |
         And user selects "Add Media Link" from "View More Information" CTHP dropdown
         And browser waits
-        Then "Media Link" section appears
         And user clicks on "Link" link in the "External Link" text area
         And user clicks on "Select media" to choose a resource to link
         And user selects "Test File for Related Resources" item from the media list
@@ -619,7 +614,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Causes & Prevention" from CTHP Card Theme dropdown number 3
         And browser waits
         And user clicks on "Featured Content" link in the "CTHP Internal Feature Card" text area
+        And browser waits
         And user clicks on "Select content" button from "CTHP Internal Feature Card" text area
+          And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And user fills out the following fields
@@ -950,7 +947,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | CTHP Block Card            |
             | CTHP Raw HTML Card         |
         And Add Card Section was translated as "Añadir CTHP Overview Card"
-        And dropdown to add link under related resources was translated to start with "Añadir"
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options

@@ -49,7 +49,7 @@ And('user enters {string} in the {string} time field', (value, fieldLabel) => {
 
 let imageSrc;
 And('user selects {int} Lead Image from the list of images', (num) => {
-    cy.get('span:contains("Lead Image")').parent().click()
+    cy.get('summary:contains("Lead Image")').click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -57,7 +57,7 @@ And('user selects {int} Lead Image from the list of images', (num) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
@@ -170,4 +170,8 @@ Then('the promo image is matching the earlier selected image', () => {
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
+});
+
+And('user enters {string} in the Venue field',(venue)=>{
+cy.get('input#edit-field-venue-target-id').type(venue)
 });

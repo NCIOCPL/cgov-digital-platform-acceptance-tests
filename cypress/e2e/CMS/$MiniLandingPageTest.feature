@@ -144,6 +144,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And Pagination dropdown has default value "Default settings"
         And browser waits
         And user selects "Mini pager" from "Pagination" dropdown
+        And browser waits
         And user selects "Published" from Save as dropdown
         When user saves the content page
 

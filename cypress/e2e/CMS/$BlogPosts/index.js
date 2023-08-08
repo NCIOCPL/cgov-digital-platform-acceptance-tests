@@ -36,7 +36,7 @@ And('user fills out {string} text area with {string}', (textFieldLabel, value) =
 
 let imageSrc;
 And('user selects {int} Lead Image from the list of images', (num) => {
-    cy.get('span:contains("Lead Image")').parent().click();
+    cy.get('summary:contains("Lead Image")').click();
     cy.wait(1000);
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
@@ -45,7 +45,7 @@ And('user selects {int} Lead Image from the list of images', (num) => {
 
 let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
-    cy.get('span:contains("Promotional Image")').parent().first().click()
+    cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click()
@@ -157,7 +157,7 @@ And('user selects {string} from Recommended Content dropdwon', (resourceType) =>
 });
 
 And('user clicks on {string} button to link to Recommended Content types', (link) => {
-    cy.get(`tbody summary[role='button'] span:contains('${link}')`).parent().click({ force: true });
+    cy.get(`summary[role='button']:contains('${link}')`).click({ force: true });
 });
 
 And('user clicks on {string} to choose a Recommended Content type to link', (selectContentLbl) => {
@@ -241,12 +241,12 @@ And('body was translated as {string}', (bodyTranslated) => {
 })
 
 And('{string} button is displayed', (imageDisplay) => {
-    cy.get(`summary[role='button'] span:contains("${imageDisplay}")`).should('be.visible')
+    cy.get(`summary[role='button']:contains("${imageDisplay}")`).should('be.visible')
 })
 
 And('the following fields are displayed under {string} label', (titleText, dataTable) => {
     const baseUrlFromConfig = Cypress.config("baseUrl");
-       cy.get(".fieldset-legend").should('include.text', titleText).and('be.visible')
+       cy.get("legend.fieldset__legend span").should('include.text', titleText).and('be.visible')
        for (const { blogTopic } of dataTable.hashes()) {
       if(baseUrlFromConfig.includes('cms') && blogTopic.includes('')){
       cy.get("div[id*='cgov-edit-blog-topics-wrapper'] label:contains('Exámenes de detección y la detección temprana')").should('be.visible')  
@@ -266,7 +266,7 @@ And('{string} label is displayed in the page', (contentLabel) => {
 })
 
 And('Link section under recommended content is displayed as {string}', (LinkSection) => {
-    cy.get(`div[id*='featured-item-wrapper'] span:contains("${LinkSection}")`).should('be.visible')
+    cy.get(`summary.claro-details__summary:contains("${LinkSection}")`).should('be.visible')
 })
 
 And('dropdown to add link under recommended content was translated to start with {string}', (dropDownTranslated) => {
