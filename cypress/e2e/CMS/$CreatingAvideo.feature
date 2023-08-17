@@ -159,7 +159,6 @@ Feature: User creating a video
             | Meta Description | Article for embed Video - Meta Description | field_page_description |
         And user enters "Video Display Large with no title - none aligned" as 1 body section heading
         And user clicks the "Insert Video" button 1 in the WYSIWYG editor
-        And user enters "Test Video" into content title search box and clicks "Apply"
         And user selects "Test Video" option from the list of media
         And browser waits
         And user clicks on "Select video" button to select video
@@ -179,7 +178,7 @@ Feature: User creating a video
             | Left    |
             | Center  |
             | Right   |
-        And the radio button "Left" is selected by default under "Align"
+        And the radio button "None" is selected by default under "Align"
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
@@ -199,7 +198,6 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Medium with no title - center aligned" as 3 body section heading
         And user clicks the "Insert Video" button 1 in the WYSIWYG editor
-        And user enters "Test Video" into content title search box and clicks "Apply"
         And user selects "Test Video" option from the list of media
         And browser waits
         And user clicks on "Select video" button to select video
@@ -244,11 +242,11 @@ Feature: User creating a video
         Given user is navigating to the front end site with path site section plus "article-for-embed-video"
         And page title is "Article for embed Video"
         And 1 section heading reads "Video Display Large with no title - none aligned"
-        And 1 video has title "Test Video"
+        And 1 video has no title
         And 2 section heading reads "Video Display Large with title - left aligned"
         And 2 video has title "Test Video"
         And 3 section heading reads "Video Display Medium with no title - center aligned"
-        And 3 video has title "Test Video"
+        And 3 video has no title
         And 4 section heading reads "Video Display Medium with title - right aligned"
         And 4 video has title "Test Video"
         And 5 section heading reads "Video Display Small with title - none aligned"
