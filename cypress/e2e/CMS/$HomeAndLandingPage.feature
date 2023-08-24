@@ -562,7 +562,7 @@ Feature: Home And Landing Page Test Creation of Content
             | heroimagenewstablet  |
             | heroimagenewsmobile  |
         And the "Eliminar" button is displayed beside the text "Hero Banner"
-        And Alternative text field was translated as "Texto alternativo (todos los idiomas)"
+        And Alternative text field was translated as "Texto alternativo"
         And the following sections have title field translated as "Título"
             | section                  |
             | Primary Feature Card     |
