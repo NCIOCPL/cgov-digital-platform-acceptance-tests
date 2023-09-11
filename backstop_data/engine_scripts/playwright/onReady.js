@@ -1,14 +1,21 @@
 module.exports = async (page, scenario, viewport, isReference, browserContext) => {
   console.log('SCENARIO > ' + scenario.label);
 
-  // Attempt to force all images on the page to load.
+  // Attempt to scroll to the bottom of a page first to force all images on the page to load.
   await page.evaluate(async () => {
-    document.querySelectorAll('[loading="lazy"]').forEach((element) => {
-      element.loading = 'eager';
-    });
+    await new Promise((resolve, reject) => {
+      var totalHeight = 0;
+      var distance = 200;
+      var timer = setInterval(() => {
+        var scrollHeight = document.body.scrollHeight;
+        window.scrollBy(0, distance);
+        totalHeight += distance;
 
-    document.querySelectorAll('[decoding="async"]').forEach((element) => {
-      element.decoding = 'sync';
+        if(totalHeight >= scrollHeight){
+          clearInterval(timer);
+          resolve();
+        }
+      }, 100);
     });
   });
 

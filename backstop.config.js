@@ -8,6 +8,7 @@ if (!args.refBaseUrl) {
 if (!args.testBaseUrl) {
 	args.testBaseUrl = 'https://www-dev-ac.cancer.gov';
 }
+const isACSF = args.testBaseUrl.toLowerCase().includes('acsf') || args.refBaseUrl.toLowerCase().includes('acsf')
 const scenarioFiles = glob.sync('backstop_data/scenarios/**/*.js');
 
 const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
@@ -16,7 +17,8 @@ const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 		...scenario,
 		url: `${args.testBaseUrl}${scenario.testPath}`,
 		referenceUrl: `${args.refBaseUrl}${scenario.testPath}`,
-		delay: 2000
+		delay: 2000,
+		label: scenario.specific && isACSF ? scenario.label + '_acsf' : scenario.label
 	}));
 	return [...ac, ...cleanedScenarios];
 }, []);
@@ -56,7 +58,7 @@ module.exports = {
 		browser: 'chromium',
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 	},
-	asyncCaptureLimit: 5,
+	asyncCaptureLimit: 2,
 	asyncCompareLimit: 50,
 	debug: false,
 	debugWindow: false,
