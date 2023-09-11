@@ -1,7 +1,14 @@
 module.exports = [
     {
-        label: 'biography whole page',
-        testPath: '/about-cancer/coping/feelings/relaxation/loukissas-jen-biography',
+        label: 'event whole page',
+        testPath: '/about-cancer/coping/nci-workshop-event',
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+        ],
     },
     {
         label: 'event focus on calendar link desktop',

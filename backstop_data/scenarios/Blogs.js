@@ -1,14 +1,9 @@
 module.exports = [
-	{
-		label: 'blog all page components',
-		testPath: '/news-events/cancer-currents-blog/2019/cancer-drugs-natural-products-nci-program',
-        delay: 2000,
-	},
     {
-		label: 'blog featured posts link hover state ',
-		testPath: '/news-events/cancer-currents-blog/2019/cancer-drugs-natural-products-nci-program',
-        clickSelector: 'h2#archive',
-        postInteractionWait: 1000,
+        label: 'blog all page components',
+        testPath: '/news-events/cancer-currents-blog/2019/cancer-drugs-natural-products-nci-program',
+        specific: true,
+        delay: 2000,
         viewports: [
             {
                 label: 'desktop',
@@ -16,15 +11,29 @@ module.exports = [
                 height: 600,
             },
             {
-                label: 'mobile',
-                width: 320,
-                height: 800,
+                label: 'tablet',
+                width: 650,
+                height: 900,
             },
         ],
+
+    },
+    {
+        label: 'blog archive expanded',
+        testPath: '/news-events/cancer-currents-blog/2019/cancer-drugs-natural-products-nci-program',
+        clickSelector: 'h2#archive',
+        postInteractionWait: 1000,
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            }
+        ],
         selectors: [
-            ' #blog-archive-accordion'
+            '#blog-archive-accordion'
         ],
         selectorExpansion: true,
-       
-	},
+
+    },
 ]
