@@ -58,7 +58,7 @@ Feature: Basic checks to ensure production site is up and running
             | https://webapis.cancer.gov/triallistingsupport/v1/listing-information/breast-cancer                                                | conceptId  |
 
     Scenario: Verify cts and cts print api
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&q=breast%20cancer&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?loc=0&q=breast%20cancer&rl=2"
         Then search results page title is "Clinical Trials Search Results"
         And trial info displays "Results 1-10  of \d+ for your search.*"
         When user selects 1 result's checkbox
