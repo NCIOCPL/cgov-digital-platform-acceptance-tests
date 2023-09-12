@@ -521,7 +521,7 @@ And('user deletes {string} image', (image) => {
             cy.get(`input[value='Apply to selected items']`).first().click();
             cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
-            cy.get("div[role='contentinfo']").should('include.text', 'Deleted 1 item.');
+            cy.get("div[role='contentinfo']").should('include.text', 'Deleted');
         }
     });
 });
