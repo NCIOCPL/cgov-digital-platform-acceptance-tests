@@ -28,14 +28,14 @@ Feature: Language toggle tests
         Then language toggle does not exist
 
         Examples:
-            | url                                                             |
-            | about-nci/organization/ccct                                     |
-            | about-cancer/coping/feelings/relaxation/duke-university         |
-            | about-cancer/coping/feelings/relaxation/loukissas-jen-biography |
-            | about-cancer/treatment/clinical-trials/search                   |
-            | about-cancer/treatment/clinical-trials/disease/breast-cancer    |
-            | espanol/buscar/resultados?swKeyword=cáncer                      |
-            | about-cancer/treatment/clinical-trials/covid-19                 |
+            | url                                                               |
+            | about-nci/organization/ccct                                       |
+            | about-cancer/coping/feelings/relaxation/duke-university           |
+            | about-cancer/coping/feelings/relaxation/loukissas-jen-biography   |
+            | research/participate/clinical-trials-search                       |
+            | research/participate/clinical-trials-search/disease/breast-cancer |
+            | espanol/buscar/resultados?swKeyword=cáncer                        |
+            | research/participate/clinical-trials/covid-19                     |
 
     Scenario: Languager toggle click event
         Given user is navigating to "/"
@@ -52,7 +52,7 @@ Feature: Language toggle tests
             | evar2     | D=c8                                     |
             | evar52    | Language\|Link Click\|English to Spanish |
             | evar68    | PreHeader                                |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/           |
             | pageName  | {CANONICAL_HOST}/                        |
             | event83   |                                          |
             | channel   | NCI Homepage                             |
@@ -75,7 +75,7 @@ Feature: Language toggle tests
             | evar2     | D=c8                                     |
             | prop52    | D=v52                                    |
             | prop68    | D=v68                                    |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol         |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol    |
             | pageName  | {CANONICAL_HOST}/espanol                 |
             | event83   |                                          |
             | channel   | NCI Home - Spanish                       |

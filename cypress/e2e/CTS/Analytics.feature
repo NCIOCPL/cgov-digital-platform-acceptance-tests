@@ -1,18 +1,18 @@
 Feature: CTS App Analytics
 
     Scenario: CTS Load Basic Search form on desktop
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search" with added wait
+        Given user is navigating to "/research/participate/clinical-trials-search" with added wait
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search                                                                                                                                                                                                                                                                                                                              |
-            | prop3     | /about-cancer/treatment/clinical-trials/search                                                                                                                                                                                                                                                                                                                                                      |
+            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search                                                                                                                                                                                                                                                                                                                           |
+            | prop3     | /research/participate/clinical-trials-search                                                                                                                                                                                                                                                                                                                                                        |
             | prop6     | Find NCI-Supported Clinical Trials                                                                                                                                                                                                                                                                                                                                                                  |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Find NCI-Supported Clinical Trials - NCI                                                                                                                                                                                                                                                                                                                                                            |
             | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                                                                                                                                                                                                                                                                                                                |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Basic                                                                                                                                                                                                                                                                                                                                                                              |
             | prop74    | clinicaltrials_basic\|display                                                                                                                                                                                                                                                                                                                                                                       |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -20,8 +20,8 @@ Feature: CTS App Analytics
             | evar7     | D=c7                                                                                                                                                                                                                                                                                                                                                                                                |
             | evar5     | Desktop                                                                                                                                                                                                                                                                                                                                                                                             |
             | evar62    | D=c62                                                                                                                                                                                                                                                                                                                                                                                               |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search                                                                                                                                                                                                                                                                                                                                      |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search                                                                                                                                                                                                                                                                                                                                        |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | evar61    | nciAppModulePage                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -29,20 +29,20 @@ Feature: CTS App Analytics
 
     Scenario: CTS Load Advanced Search form on mobile
         And screen breakpoint is set to "mobile"
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced                                                                                                                                                                                                                                                                                                                     |
-            | prop3     | /about-cancer/treatment/clinical-trials/search/advanced                                                                                                                                                                                                                                                                                                                                             |
-            | prop1     | https://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced                                                                                                                                                                                                                                                                                                                     |
+            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/advanced                                                                                                                                                                                                                                                                                                                  |
+            | prop3     | /research/participate/clinical-trials-search/advanced                                                                                                                                                                                                                                                                                                                                               |
+            | prop1     | https://{CANONICAL_HOST}/research/participate/clinical-trials-search/advanced                                                                                                                                                                                                                                                                                                                       |
             | prop6     | Find NCI-Supported Clinical Trials - Advanced Search                                                                                                                                                                                                                                                                                                                                                |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Find NCI-Supported Clinical Trials - Advanced Search - NCI                                                                                                                                                                                                                                                                                                                                          |
             | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                                                                                                                                                                                                                                                                                                                |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Advanced                                                                                                                                                                                                                                                                                                                                                                           |
             | prop74    | clinicaltrials_advanced\|display                                                                                                                                                                                                                                                                                                                                                                    |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -50,21 +50,21 @@ Feature: CTS App Analytics
             | evar7     | D=c7                                                                                                                                                                                                                                                                                                                                                                                                |
             | evar5     | Mobile                                                                                                                                                                                                                                                                                                                                                                                              |
             | evar62    | D=c62                                                                                                                                                                                                                                                                                                                                                                                               |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced                                                                                                                                                                                                                                                                                                                             |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/advanced                                                                                                                                                                                                                                                                                                                               |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | evar61    | nciAppModulePage                                                                                                                                                                                                                                                                                                                                                                                    |
 
 
     Scenario: CTS Load Basic search results on tablet
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=50&loc=0&rl=1&t=C4872"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?a=50&loc=0&rl=1&t=C4872"
         And screen breakpoint is set to "tablet"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop3     | /about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                                    |
+            | prop3     | /research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                                      |
             | prop6     | Clinical Trials Search Results                                                                                                                                                                                                                                                                                                                                                                      |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Clinical Trials Search Results - NCI                                                                                                                                                                                                                                                                                                                                                                |
@@ -74,7 +74,7 @@ Feature: CTS App Analytics
             | prop18    | all                                                                                                                                                                                                                                                                                                                                                                                                 |
             | prop25    | /^\d{1,2}\/\d{1,2}\/\d{4} - \d{2}:\d{2}/                                                                                                                                                                                                                                                                                                                                                            |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Basic                                                                                                                                                                                                                                                                                                                                                                              |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -84,20 +84,20 @@ Feature: CTS App Analytics
             | evar15    | D=c15                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar17    | D=c17                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar18    | D=c18                                                                                                                                                                                                                                                                                                                                                                                               |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                    |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                      |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | evar61    | nciAppModulePage                                                                                                                                                                                                                                                                                                                                                                                    |
 
     Scenario: CTS Load Advanced search results with cancer type, stage and age specified on desktop
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2&stg=C94774&t=C4872"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?a=45&loc=0&rl=2&stg=C94774&t=C4872"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop3     | /about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                                    |
+            | prop3     | /research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                                      |
             | prop6     | Clinical Trials Search Results                                                                                                                                                                                                                                                                                                                                                                      |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Clinical Trials Search Results - NCI                                                                                                                                                                                                                                                                                                                                                                |
@@ -109,7 +109,7 @@ Feature: CTS App Analytics
             | prop20    | all\|none\|none\|none                                                                                                                                                                                                                                                                                                                                                                               |
             | prop25    | /^\d{1,2}\/\d{1,2}\/\d{4} - \d{2}:\d{2}/                                                                                                                                                                                                                                                                                                                                                            |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Advanced                                                                                                                                                                                                                                                                                                                                                                           |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -121,20 +121,20 @@ Feature: CTS App Analytics
             | evar18    | D=c18                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar19    | all\|none\|none{or}D=c19                                                                                                                                                                                                                                                                                                                                                                            |
             | evar20    | all\|none\|none\|none{or}D=c20                                                                                                                                                                                                                                                                                                                                                                      |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                    |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                      |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | evar61    | nciAppModulePage                                                                                                                                                                                                                                                                                                                                                                                    |
 
     Scenario: CTS Load Advanced search results with keyword and location at NIH on desktop
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=4&q=Breast%20Cancer&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?loc=4&q=Breast%20Cancer&rl=2"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop3     | /about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                                    |
+            | prop3     | /research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                                      |
             | prop6     | Clinical Trials Search Results                                                                                                                                                                                                                                                                                                                                                                      |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Clinical Trials Search Results - NCI                                                                                                                                                                                                                                                                                                                                                                |
@@ -146,7 +146,7 @@ Feature: CTS App Analytics
             | prop20    | all\|none\|none\|none                                                                                                                                                                                                                                                                                                                                                                               |
             | prop25    | /^\d{1,2}\/\d{1,2}\/\d{4} - \d{2}:\d{2}/                                                                                                                                                                                                                                                                                                                                                            |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Advanced                                                                                                                                                                                                                                                                                                                                                                           |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -158,20 +158,20 @@ Feature: CTS App Analytics
             | evar18    | D=c18                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar19    | all\|none\|none{or}D=c19                                                                                                                                                                                                                                                                                                                                                                            |
             | evar20    | all\|none\|none\|none{or}D=c20                                                                                                                                                                                                                                                                                                                                                                      |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                    |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                      |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
 
     Scenario: CTS Load Advanced search results with state and city specified, trial types and phase on mobile
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?lcnty=United%20States&lcty=Los%20Angeles&loc=2&lst=CA&rl=2&tp=i&tp=iv&tt=treatment&tt=diagnostic"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?lcnty=United%20States&lcty=Los%20Angeles&loc=2&lst=CA&rl=2&tp=i&tp=iv&tt=treatment&tt=diagnostic"
         And screen breakpoint is set to "mobile"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop3     | /about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                                    |
+            | prop3     | /research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                                      |
             | prop6     | Clinical Trials Search Results                                                                                                                                                                                                                                                                                                                                                                      |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Clinical Trials Search Results - NCI                                                                                                                                                                                                                                                                                                                                                                |
@@ -183,7 +183,7 @@ Feature: CTS App Analytics
             | prop20    | i,iv\|none\|none\|none                                                                                                                                                                                                                                                                                                                                                                              |
             | prop25    | /^\d{1,2}\/\d{1,2}\/\d{4} - \d{2}:\d{2}/                                                                                                                                                                                                                                                                                                                                                            |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Advanced                                                                                                                                                                                                                                                                                                                                                                           |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -195,20 +195,20 @@ Feature: CTS App Analytics
             | evar18    | D=c18                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar19    | tre,dia\|none\|none{or}D=c19                                                                                                                                                                                                                                                                                                                                                                        |
             | evar20    | i,iv\|none\|none\|none{or}D=c20                                                                                                                                                                                                                                                                                                                                                                     |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                    |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                      |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
 
     Scenario: CTS Load Advanced search results with drug and other treatment on tablet
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?d=C2039&i=C15313&loc=0&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?d=C2039&i=C15313&loc=0&rl=2"
         And screen breakpoint is set to "tablet"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop3     | /about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                                    |
+            | prop3     | /research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                                      |
             | prop6     | Clinical Trials Search Results                                                                                                                                                                                                                                                                                                                                                                      |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Clinical Trials Search Results - NCI                                                                                                                                                                                                                                                                                                                                                                |
@@ -220,7 +220,7 @@ Feature: CTS App Analytics
             | prop20    | all\|none\|none\|none                                                                                                                                                                                                                                                                                                                                                                               |
             | prop25    | /^\d{1,2}\/\d{1,2}\/\d{4} - \d{2}:\d{2}/                                                                                                                                                                                                                                                                                                                                                            |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Advanced                                                                                                                                                                                                                                                                                                                                                                           |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -232,20 +232,20 @@ Feature: CTS App Analytics
             | evar18    | D=c18                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar19    | all\|c2039\|c15313{or}D=c19                                                                                                                                                                                                                                                                                                                                                                         |
             | evar20    | all\|none\|none\|none{or}D=c20                                                                                                                                                                                                                                                                                                                                                                      |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                    |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                      |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
 
     Scenario: CTS Load Advanced search results with lead org on mobile
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?lo=ECOG-ACRIN%20Cancer%20Research%20Group&loc=0&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?lo=ECOG-ACRIN%20Cancer%20Research%20Group&loc=0&rl=2"
         And screen breakpoint is set to "mobile"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop3     | /about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                                    |
+            | prop3     | /research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                                      |
             | prop6     | Clinical Trials Search Results                                                                                                                                                                                                                                                                                                                                                                      |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Clinical Trials Search Results - NCI                                                                                                                                                                                                                                                                                                                                                                |
@@ -257,7 +257,7 @@ Feature: CTS App Analytics
             | prop20    | all\|none\|none\|ecog-acrin cancer research group                                                                                                                                                                                                                                                                                                                                                   |
             | prop25    | /^\d{1,2}\/\d{1,2}\/\d{4} - \d{2}:\d{2}/                                                                                                                                                                                                                                                                                                                                                            |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Advanced                                                                                                                                                                                                                                                                                                                                                                           |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -269,8 +269,8 @@ Feature: CTS App Analytics
             | evar18    | D=c18                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar19    | all\|none\|none{or}D=c19                                                                                                                                                                                                                                                                                                                                                                            |
             | evar20    | all\|none\|none\|ecog-acrin cancer research group{or}D=c20                                                                                                                                                                                                                                                                                                                                          |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                                                                                                                                                                                                                                                                                                                                    |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                                                                                                                                                                                                                                                                                                                                      |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | event2    |                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -280,53 +280,53 @@ Feature: CTS App Analytics
 
 
     Scenario: Page Load event fires when user navigates to trial description page on desktop
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1"
+        Given user is navigating to "/research/participate/clinical-trials-search/v?id=NCI-2015-01918&loc=0&rl=1"
         And browser waits
         When page load request is sent
         Then the following parameters should be captured
             | parameter | value                                                                                                                                                                                                                                                                                                                                                                                               |
-            | prop3     | /about-cancer/treatment/clinical-trials/search/v                                                                                                                                                                                                                                                                                                                                                    |
+            | prop3     | /research/participate/clinical-trials-search/v                                                                                                                                                                                                                                                                                                                                                      |
             | prop6     | Weight Loss Interventions in Treating Overweight and Obese Women with a Higher Risk for Breast Cancer Recurrence                                                                                                                                                                                                                                                                                    |
             | prop8     | english                                                                                                                                                                                                                                                                                                                                                                                             |
             | prop10    | Weight Loss Interventions in Treating Overweight and Obese Women with a Higher Risk for Breast Cancer Recurrence                                                                                                                                                                                                                                                                                    |
             | prop16    | NCT02750826                                                                                                                                                                                                                                                                                                                                                                                         |
             | prop25    | /^\d{1,2}\/\d{1,2}\/\d{4} - \d{2}:\d{2}/                                                                                                                                                                                                                                                                                                                                                            |
             | prop29    | /(year)=(19\|20)\d{2}\s\|\s(month)=(?:Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|May \|Jun(?:e)? \|Jul(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Oct(?:ober)? \|(Nov \|Dec)(?:ember)?)\s\|\s(date)=\d{1,2}\s\|\s(day)=(?:Sun(?:day)? \|Mon(?:day)? \|Tue(?:sday)? \|Wed(?:nesday)? \|Thu(?:rsday)? \|Fri(?:day)? \|Sat(?:urday))\s\|\s(time)=(1[0-2]\|0?[1-9]):([0-5][0-9]) ?([AP][M]) / |
-            | prop44    | Clinical Trials                                                                                                                                                                                                                                                                                                                                                                                     |
+            | prop44    | Research Landing Page                                                                                                                                                                                                                                                                                                                                                                               |
             | prop62    | Clinical Trials: Basic                                                                                                                                                                                                                                                                                                                                                                              |
             | evar44    | D=c44                                                                                                                                                                                                                                                                                                                                                                                               |
             | evar2     | D=c8                                                                                                                                                                                                                                                                                                                                                                                                |
             | evar7     | D=c7                                                                                                                                                                                                                                                                                                                                                                                                |
             | evar5     | Desktop                                                                                                                                                                                                                                                                                                                                                                                             |
             | evar62    | D=c62                                                                                                                                                                                                                                                                                                                                                                                               |
-            | channel   | About Cancer                                                                                                                                                                                                                                                                                                                                                                                        |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v                                                                                                                                                                                                                                                                                                                                    |
+            | channel   | Research                                                                                                                                                                                                                                                                                                                                                                                            |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/v                                                                                                                                                                                                                                                                                                                                      |
             | event1    |                                                                                                                                                                                                                                                                                                                                                                                                     |
             | event47   | /d{0,2}/                                                                                                                                                                                                                                                                                                                                                                                            |
             | evar61    | nciAppModulePage                                                                                                                                                                                                                                                                                                                                                                                    |
 
     Scenario: Click event fires when user clicks on Print link on trial description page on desktop
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1"
+        Given user is navigating to "/research/participate/clinical-trials-search/v?id=NCI-2015-01918&loc=0&rl=1"
         And browser waits
         When user clicks on share by "Print" button
         And browser waits
         And page click request is sent
         Then the following parameters should be captured
-            | parameter | value                                                                                                 |
-            | event17   |                                                                                                       |
-            | pev2      | UnknownLinkName                                                                                       |
-            | linkType  | lnk_o                                                                                                 |
-            | prop67    | D=pageName                                                                                            |
-            | prop4     | D=pev1                                                                                                |
-            | prop5     | print\|{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v                               |
-            | prop43    | print                                                                                                 |
-            | prop66    | print                                                                                                 |
-            | evar2     | D=c8                                                                                                  |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1 |
+            | parameter | value                                                                                                    |
+            | event17   |                                                                                                          |
+            | pev2      | UnknownLinkName                                                                                          |
+            | linkType  | lnk_o                                                                                                    |
+            | prop67    | D=pageName                                                                                               |
+            | prop4     | D=pev1                                                                                                   |
+            | prop5     | print\|{CANONICAL_HOST}/research/participate/clinical-trials-search/v                                    |
+            | prop43    | print                                                                                                    |
+            | prop66    | print                                                                                                    |
+            | evar2     | D=c8                                                                                                     |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/v?id=NCI-2015-01918&loc=0&rl=1 |
 
     # This needs work - right now we need to ensure it does not wait for a page load
     # Scenario: Click event fires when user clicks on Email link on trial description page
-    #     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1"
+    #     Given user is navigating to "/research/participate/clinical-trials-search/v?id=NCI-2015-01918&loc=0&rl=1"
     #     And screen breakpoint is set to "desktop"
     #     When user clicks on share by "Email" button
     #     And page click request is sent
@@ -338,86 +338,86 @@ Feature: CTS App Analytics
     #         | linkType  | lnk_o                                                                                                 |
     #         | prop67    | D=pageName                                                                                            |
     #         | prop4     | D=pev1                                                                                                |
-    #         | prop5     | email\|{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v                               |
+    #         | prop5     | email\|{CANONICAL_HOST}/research/participate/clinical-trials-search/v                               |
     #         | prop8     | english                                                                                               |
     #         | prop43    | email                                                                                                 |
     #         | prop66    | email                                                                                                 |
     #         | evar2     | D=c8                                                                                                  |
-    #         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v?id=NCI-2015-01918&loc=0&rl=1 |
-    #         | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/v                                      |
+    #         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/v?id=NCI-2015-01918&loc=0&rl=1 |
+    #         | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/v                                      |
 
 
     ############ Click Events ##############
 
 
     Scenario: Click Events for start over link
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?a=45&loc=0&rl=2"
         And screen breakpoint is set to "mobile"
         And browser waits
         When user clicks on "Start Over" link
         And browser waits
         And page click request is sent
         Then the following parameters should be captured
-            | parameter | value                                                                                    |
-            | link      | Start Over                                                                               |
-            | event49   |                                                                                          |
-            | pev2      | CTStartOverClick                                                                         |
-            | linkType  | lnk_o                                                                                    |
-            | prop67    | D=pageName                                                                               |
-            | prop4     | D=pev1                                                                                   |
-            | prop8     | english                                                                                  |
-            | prop74    | clinicaltrials_advanced\|start over                                                      |
-            | evar2     | D=c8                                                                                     |
-            | evar47    | clinicaltrials_advanced                                                                  |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2 |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                         |
+            | parameter | value                                                                                       |
+            | link      | Start Over                                                                                  |
+            | event49   |                                                                                             |
+            | pev2      | CTStartOverClick                                                                            |
+            | linkType  | lnk_o                                                                                       |
+            | prop67    | D=pageName                                                                                  |
+            | prop4     | D=pev1                                                                                      |
+            | prop8     | english                                                                                     |
+            | prop74    | clinicaltrials_advanced\|start over                                                         |
+            | evar2     | D=c8                                                                                        |
+            | evar47    | clinicaltrials_advanced                                                                     |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/r?a=45&loc=0&rl=2 |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                              |
 
     Scenario: Click Events for Find Trials button
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         And screen breakpoint is set to "mobile"
         When user clicks on "Find Trials" button
         And page click request is sent
         Then the following parameters should be captured
-            | parameter | value                                                                           |
-            | link      | Find Trials                                                                     |
-            | event39   |                                                                                 |
-            | pev2      | formAnalysis\|clinicaltrials_advanced\|complete                                 |
-            | linkType  | lnk_o                                                                           |
-            | prop67    | D=pageName                                                                      |
-            | prop4     | D=pev1                                                                          |
-            | prop8     | english                                                                         |
-            | prop74    | clinicaltrials_advanced\|complete                                               |
-            | evar2     | D=c8                                                                            |
-            | evar47    | clinicaltrials_advanced                                                         |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced         |
+            | parameter | value                                                                              |
+            | link      | Find Trials                                                                        |
+            | event39   |                                                                                    |
+            | pev2      | formAnalysis\|clinicaltrials_advanced\|complete                                    |
+            | linkType  | lnk_o                                                                              |
+            | prop67    | D=pageName                                                                         |
+            | prop4     | D=pev1                                                                             |
+            | prop8     | english                                                                            |
+            | prop74    | clinicaltrials_advanced\|complete                                                  |
+            | evar2     | D=c8                                                                               |
+            | evar47    | clinicaltrials_advanced                                                            |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/advanced |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/advanced              |
 
     Scenario: Click Events fires when user starts interacting with a form
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         And screen breakpoint is set to "mobile"
         When user clicks on "All" button
         And user types "c" in "Primary Cancer Type/Condition" field
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                           |
-            | link      | All                                                                             |
-            | event38   |                                                                                 |
-            | pev2      | formAnalysis\|clinicaltrials_advanced\|start                                    |
-            | linkType  | lnk_o                                                                           |
-            | prop67    | D=pageName                                                                      |
-            | prop4     | D=pev1                                                                          |
-            | prop8     | english                                                                         |
-            | prop74    | clinicaltrials_advanced\|start                                                  |
-            | evar2     | D=c8                                                                            |
-            | evar47    | clinicaltrials_advanced                                                         |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced         |
+            | parameter | value                                                                              |
+            | link      | All                                                                                |
+            | event38   |                                                                                    |
+            | pev2      | formAnalysis\|clinicaltrials_advanced\|start                                       |
+            | linkType  | lnk_o                                                                              |
+            | prop67    | D=pageName                                                                         |
+            | prop4     | D=pev1                                                                             |
+            | prop8     | english                                                                            |
+            | prop74    | clinicaltrials_advanced\|start                                                     |
+            | evar2     | D=c8                                                                               |
+            | evar47    | clinicaltrials_advanced                                                            |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/advanced |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/advanced              |
 
 
 
     # This needs work - the event is gone after reloadig the page
     # Scenario: Click Events for Clear Form button
-    #     Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    #     Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     #     When user clears form
     #     And page click request is sent
     #     Then the following parameters should be captured
@@ -432,135 +432,136 @@ Feature: CTS App Analytics
     #         | prop74    | clinicaltrials_advanced\|clear                                                  |
     #         | evar2     | D=c8                                                                            |
     #         | evar47    | clinicaltrials_advanced                                                         |
-    #         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced |
-    #         | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/advanced         |
+    #         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/advanced |
+    #         | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/advanced         |
 
     Scenario: Click Events for select all on page and print
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?loc=0&rl=2"
         And screen breakpoint is set to "tablet"
         When user checks "Select all on page" checkbox
         And user clicks on "Print Selected" button
         And page click request is sent
         Then the following parameters should be captured
-            | parameter | value                                                                               |
-            | link      | Print Selected                                                                      |
-            | event48   |                                                                                     |
-            | pev2      | CTSResultsPrintSelectedClick                                                        |
-            | linkType  | lnk_o                                                                               |
-            | prop67    | D=pageName                                                                          |
-            | prop4     | D=pev1                                                                              |
-            | prop8     | english                                                                             |
-            | prop74    | clinicaltrials_advanced\|print selected                                             |
-            | prop21    | CTSPrintSelected_top_true_10_1                                                      |
-            | evar2     | D=c8                                                                                |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                    |
+            | parameter | value                                                                                  |
+            | link      | Print Selected                                                                         |
+            | event48   |                                                                                        |
+            | pev2      | CTSResultsPrintSelectedClick                                                           |
+            | linkType  | lnk_o                                                                                  |
+            | prop67    | D=pageName                                                                             |
+            | prop4     | D=pev1                                                                                 |
+            | prop8     | english                                                                                |
+            | prop74    | clinicaltrials_advanced\|print selected                                                |
+            | prop21    | CTSPrintSelected_top_true_10_1                                                         |
+            | evar2     | D=c8                                                                                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/r?loc=0&rl=2 |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                         |
 
 
 
     Scenario: Click event fires when user inputs invalid age and submits form
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search"
+        Given user is navigating to "/research/participate/clinical-trials-search"
         And screen breakpoint is set to "desktop"
         When user types "234" in "age" field
+        And browser waits
         And user clicks on "Find Trials" button
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                  |
-            | link      | Find Trials                                                            |
-            | event41   |                                                                        |
-            | pev2      | formAnalysis\|clinicaltrials_basic\|error                              |
-            | linkType  | lnk_o                                                                  |
-            | prop67    | D=pageName                                                             |
-            | prop4     | D=pev1                                                                 |
-            | prop8     | english                                                                |
-            | prop74    | clinicaltrials_basic\|error                                            |
-            | prop75    | submit\|attempted form submit with errors\|a                           |
-            | evar2     | D=c8                                                                   |
-            | evar47    | clinicaltrials_basic                                                   |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search         |
+            | parameter | value                                                                     |
+            | link      | Find Trials                                                               |
+            | event41   |                                                                           |
+            | pev2      | formAnalysis\|clinicaltrials_basic\|error                                 |
+            | linkType  | lnk_o                                                                     |
+            | prop67    | D=pageName                                                                |
+            | prop4     | D=pev1                                                                    |
+            | prop8     | english                                                                   |
+            | prop74    | clinicaltrials_basic\|error                                               |
+            | prop75    | submit\|attempted form submit with errors\|a                              |
+            | evar2     | D=c8                                                                      |
+            | evar47    | clinicaltrials_basic                                                      |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search              |
 
     Scenario: Click Events fires when user clicks on search result item from Advanced Search results page
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?loc=0&rl=2"
         And screen breakpoint is set to "mobile"
         When user clicks on 1 trial result
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                               |
-            | event42   |                                                                                     |
-            | pev2      | UnknownLinkName                                                                     |
-            | linkType  | lnk_o                                                                               |
-            | prop67    | D=pageName                                                                          |
-            | prop4     | D=pev1                                                                              |
-            | prop8     | english                                                                             |
-            | prop12    | clinicaltrials_advanced                                                             |
-            | prop13    | 1\|page 1                                                                           |
-            | evar2     | D=c8                                                                                |
-            | evar12    | D=c12                                                                               |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                    |
+            | parameter | value                                                                                  |
+            | event42   |                                                                                        |
+            | pev2      | UnknownLinkName                                                                        |
+            | linkType  | lnk_o                                                                                  |
+            | prop67    | D=pageName                                                                             |
+            | prop4     | D=pev1                                                                                 |
+            | prop8     | english                                                                                |
+            | prop12    | clinicaltrials_advanced                                                                |
+            | prop13    | 1\|page 1                                                                              |
+            | evar2     | D=c8                                                                                   |
+            | evar12    | D=c12                                                                                  |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/r?loc=0&rl=2 |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                         |
 
     Scenario: Click Events for modify search criteria link
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?a=45&loc=0&rl=2"
         And screen breakpoint is set to "mobile"
         When user clicks on "Modify Search Criteria" button
         And browser waits
         And page click request is sent
         Then the following parameters should be captured
-            | parameter | value                                                                                    |
-            | link      | Modify Search Criteria                                                                   |
-            | event49   |                                                                                          |
-            | pev2      | CTSModifyClick                                                                           |
-            | linkType  | lnk_o                                                                                    |
-            | prop67    | D=pageName                                                                               |
-            | prop4     | D=pev1                                                                                   |
-            | prop8     | english                                                                                  |
-            | prop74    | clinicaltrials_advanced\|modify                                                          |
-            | evar2     | D=c8                                                                                     |
-            | evar47    | clinicaltrials_advanced                                                                  |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?a=45&loc=0&rl=2 |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                         |
+            | parameter | value                                                                                       |
+            | link      | Modify Search Criteria                                                                      |
+            | event49   |                                                                                             |
+            | pev2      | CTSModifyClick                                                                              |
+            | linkType  | lnk_o                                                                                       |
+            | prop67    | D=pageName                                                                                  |
+            | prop4     | D=pev1                                                                                      |
+            | prop8     | english                                                                                     |
+            | prop74    | clinicaltrials_advanced\|modify                                                             |
+            | evar2     | D=c8                                                                                        |
+            | evar47    | clinicaltrials_advanced                                                                     |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/r?a=45&loc=0&rl=2 |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                              |
 
     Scenario: Click event fires when user tries to print without selecting any trial
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?loc=0&rl=2"
         And screen breakpoint is set to "desktop"
         When user clicks on "Print Selected" button
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                               |
-            | link      | Print Selected                                                                      |
-            | event41   |                                                                                     |
-            | pev2      | CTSResultsSelectedErrorClick                                                        |
-            | linkType  | lnk_o                                                                               |
-            | prop67    | D=pageName                                                                          |
-            | prop4     | D=pev1                                                                              |
-            | prop8     | english                                                                             |
-            | prop74    | clinicaltrials_advanced\|error                                                      |
-            | prop75    | printselected\|noneselected                                                         |
-            | evar2     | D=c8                                                                                |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                    |
+            | parameter | value                                                                                  |
+            | link      | Print Selected                                                                         |
+            | event41   |                                                                                        |
+            | pev2      | CTSResultsSelectedErrorClick                                                           |
+            | linkType  | lnk_o                                                                                  |
+            | prop67    | D=pageName                                                                             |
+            | prop4     | D=pev1                                                                                 |
+            | prop8     | english                                                                                |
+            | prop74    | clinicaltrials_advanced\|error                                                         |
+            | prop75    | printselected\|noneselected                                                            |
+            | evar2     | D=c8                                                                                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/r?loc=0&rl=2 |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                         |
 
 
     Scenario: Click event fires when user reaches max number of selected trials
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?loc=0&rl=2"
         And screen breakpoint is set to "desktop"
         And browser waits
         When user checks "Select all on page" checkbox on 11 pages
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                               |
-            | event41   |                                                                                     |
-            | pev2      | CTSResultsSelectedErrorClick                                                        |
-            | linkType  | lnk_o                                                                               |
-            | prop67    | D=pageName                                                                          |
-            | prop4     | D=pev1                                                                              |
-            | prop8     | english                                                                             |
-            | prop74    | clinicaltrials_advanced\|error                                                      |
-            | prop75    | printselected\|maxselectionreached                                                  |
-            | evar2     | D=c8                                                                                |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r?loc=0&rl=2 |
-            | pageName  | {CANONICAL_HOST}/about-cancer/treatment/clinical-trials/search/r                    |
+            | parameter | value                                                                                  |
+            | event41   |                                                                                        |
+            | pev2      | CTSResultsSelectedErrorClick                                                           |
+            | linkType  | lnk_o                                                                                  |
+            | prop67    | D=pageName                                                                             |
+            | prop4     | D=pev1                                                                                 |
+            | prop8     | english                                                                                |
+            | prop74    | clinicaltrials_advanced\|error                                                         |
+            | prop75    | printselected\|maxselectionreached                                                     |
+            | evar2     | D=c8                                                                                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials-search/r?loc=0&rl=2 |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r                         |

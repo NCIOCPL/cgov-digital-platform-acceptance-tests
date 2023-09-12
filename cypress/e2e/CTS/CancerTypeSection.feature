@@ -1,14 +1,14 @@
 Feature: Primary CancerType keyword search
 
   Scenario: User is able to search for cancer type via autosuggest on desktop
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     When user clicks on "all" field
     Then cancer types dropdown is displayed
     And autosuggest component is displayed
     And placeholder text "Start typing to narrow options below" displayed
 
   Scenario: User is able to execute search for cancer type via autosuggest on tablet
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "//research/participate/clinical-trials-search/advanced"
     And screen breakpoint is set to "tablet"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
@@ -23,7 +23,7 @@ Feature: Primary CancerType keyword search
       | rl        | 2     |
 
   Scenario: After selecting cancer type, Subtype, Stage, Side Effects fields appear on desktop
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
     When user selects "Breast Cancer" from autosuggest
@@ -34,7 +34,7 @@ Feature: Primary CancerType keyword search
       | Side Effects/Biomarkers/Participant Attributes | Examples: Nausea, BRCA1          |
 
   Scenario: User is able to execute search for Cancer type and subtype on Tablet
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     And screen breakpoint is set to "tablet"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
@@ -57,7 +57,7 @@ Feature: Primary CancerType keyword search
 
 
   Scenario: User is able to execute search for Cancer type, subtype and stage on desktop
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     When user clicks on "all" field
     And user types "Breast Cancer" in the autosuggest field
     When user selects "Breast Cancer" from autosuggest
@@ -80,7 +80,7 @@ Feature: Primary CancerType keyword search
       | stg       | C94774 |
 
   Scenario: User is able to execute search for Cancer type, subtype, stage and side effects on mobile
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     And screen breakpoint is set to "mobile"
     When user clicks on "all" field
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
@@ -106,7 +106,7 @@ Feature: Primary CancerType keyword search
       | fin       | C165295               |
 
   Scenario: User is able to execute search for Cancer type, stage and side effects on Mobile
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     And screen breakpoint is set to "mobile"
     When user clicks on "all" field
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
@@ -127,7 +127,7 @@ Feature: Primary CancerType keyword search
       | fin       | C165295               |
 
   Scenario: User is able to execute search for Cancer type, subtype and side effects on desktop
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     When user clicks on "all" field
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
     When user selects "Acute Myeloid Leukemia (AML)" from autosuggest
@@ -150,7 +150,7 @@ Feature: Primary CancerType keyword search
       | fin       | C165295 |
 
   Scenario: User is able to execute search for Cancer type and side effects on desktop
-    Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+    Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     When user clicks on "all" field
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
     When user selects "Acute Myeloid Leukemia (AML)" from autosuggest

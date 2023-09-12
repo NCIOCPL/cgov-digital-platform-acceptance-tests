@@ -2,7 +2,7 @@ Feature: As an user, I should be able to see my search results displayed, select
 
     Scenario: Search results page displays general page components on desktop
         Given screen breakpoint is set to "desktop"
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&q=breast%20cancer&rl=2"
+        Given user is navigating to "/research/participate/clinical-trials-search/r?loc=0&q=breast%20cancer&rl=2"
         Then page title is "Clinical Trials Search Results"
         And trial info displays "Results 1-10  of \d+ for your search.*"
         And "Show Search Criteria" button is displayed
@@ -11,7 +11,7 @@ Feature: As an user, I should be able to see my search results displayed, select
         And search criteria table displays the following
             | Category         | Selection     |
             | Keywords/Phrases | breast cancer |
-        And "Start Over" link has a href "/about-cancer/treatment/clinical-trials/search/advanced"
+        And "Start Over" link has a href "/research/participate/clinical-trials-search/advanced"
         And "Modify Search Criteria" button is displayed
         And "top" pager is displayed
         And "bottom" pager is displayed
@@ -27,7 +27,7 @@ Feature: As an user, I should be able to see my search results displayed, select
 
     Scenario: User is able to select results on mobile breakpoint
         Given screen breakpoint is set to "mobile"
-        When user is navigating to "/about-cancer/treatment/clinical-trials/search/r?loc=0&q=breast%20cancer&rl=2"
+        When user is navigating to "/research/participate/clinical-trials-search/r?loc=0&q=breast%20cancer&rl=2"
         Then page title is "Clinical Trials Search Results"
         And all result item's checkboxes are not checked
         And "Select all on page" checkbox is displayed

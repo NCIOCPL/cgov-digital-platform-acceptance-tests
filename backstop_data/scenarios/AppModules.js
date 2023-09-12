@@ -1,11 +1,11 @@
 module.exports = [
     {
         label: 'CTS basic search form',
-        testPath: '/about-cancer/treatment/clinical-trials/search',
+        testPath: '/research/participate/clinical-trials-search',
     },
     {
         label: 'CTS advanced search form',
-        testPath: '/about-cancer/treatment/clinical-trials/search/advanced',
+        testPath: '/research/participate/clinical-trials-search/advanced',
     },
     {
         label: 'Dictionary of Cancer Terms Search Form - English No Image',

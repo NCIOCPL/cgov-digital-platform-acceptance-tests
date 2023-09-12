@@ -1,7 +1,7 @@
 Feature: Location search
 
     Scenario: When user switch on the 'Veteran Affairs" toggle, then there are only three radio buttons displayed on mobile
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         And screen breakpoint is set to "mobile"
         When user clicks on Limit results to Veterans Affairs facilities switch
         Then the following radio buttons are displayed
@@ -14,7 +14,7 @@ Feature: Location search
 
 
     Scenario: User is able to filter results using the Veteran Affairs switch on tablet
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         And screen breakpoint is set to "tablet"
         When  user clicks on Limit results to Veterans Affairs facilities switch
         And user clicks "Find Trials" button
@@ -27,7 +27,7 @@ Feature: Location search
 
 
     Scenario: User is able to filter results by ZipCode on desktop
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         When user selects "ZIP Code" radio button
         And user types "20105" in the ZipCode field
         And user selects "50 miles" in the Radius field
@@ -41,7 +41,7 @@ Feature: Location search
             | zp         | 50    |
 
     Scenario: User is able to filter results by Country, State, City on desktop
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         When user selects "Country, State, City" radio button
         And user selects "United States" in the Country field
         And user types "Virginia" in the State field
@@ -57,7 +57,7 @@ Feature: Location search
             | lcty       | Arlington     |
 
     Scenario: User is able to filter results by Hospitals/Institutions on mobile
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         And screen breakpoint is set to "mobile"
         When user selects "Hospitals/Institutions" radio button
         And user types "Massachusetts General Hospital Cancer Center" in the Hospital field
@@ -71,7 +71,7 @@ Feature: Location search
             | hos        | Massachusetts General Hospital Cancer Center |
 
     Scenario: User is able to filter results by atNIH on desktop
-        Given user is navigating to "/about-cancer/treatment/clinical-trials/search/advanced"
+        Given user is navigating to "/research/participate/clinical-trials-search/advanced"
         When user selects "At NIH (only show trials at the NIH Clinical Center in Bethesda, MD)" radio button
         And user clicks "Find Trials" button
         Then the search is executed and results page is displayed
