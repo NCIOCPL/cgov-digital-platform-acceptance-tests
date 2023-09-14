@@ -23,10 +23,6 @@ And('user types {string} in all cells of table {int}', (cellText, tableNum) => {
     })
 });
 
-And('user clicks on {string} to add a body section', (option) => {
-    cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
-})
 
 And('user types {string} in all headers of table {int}', (cellText, tableNum) => {
     cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", tableNum).find('th').each(($el) => {

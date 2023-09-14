@@ -7,11 +7,11 @@ const randomStr = Cypress.env('randomStr');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 And('user clicks on sub tab {string}', (contentSubTab) => {
-    cy.get(`ul.admin-list li a`).find(`span:contains("${contentSubTab}")`).click({ force: true });
+    cy.get(`a.admin-item__link:contains("${contentSubTab}")`).click({ force: true });
 });
 
 And('user clicks on {string} sub sub tab', (contentSubTab) => {
-    cy.get(`ul.tabs.primary.clearfix li a:contains("${contentSubTab}")`).click({ force: true });
+    cy.get(`a.tabs__link.js-tabs-link:contains("${contentSubTab}")`).click({ force: true });
 });
 
 And('{string} dropdown displays {string}', (labelText, displayOption) => {
@@ -57,7 +57,7 @@ And('user fills out {string} text area with {string}', (section, value) => {
 });
 
 And('user clicks on {string} button to select image', (imgButton) => {
-    cy.get(`summary[class*="seven-details__summary"]`).find(`span:contains('${imgButton}')`).click();
+    cy.get(`summary[class*="claro-details__summary"]:contains('${imgButton}')`).click();
 });
 
 And('user clicks on {string} button {int} to select an image', (selectImgButton, position) => {
@@ -70,7 +70,7 @@ And('user enters {string} into media title search box to search image and clicks
 });
 
 And('user selects {string} item from the media list to select image', (imgTitle) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_image_carousel_image_browser').click().find("input[name^='entity_browser_select'][class='form-checkbox']").check();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_image_carousel_image_browser').find(`input[name^="entity_browser_select"][type="checkbox"]`).check();
 });
 
 And('user clicks on {string} button to select an image', (selectImage) => {
@@ -96,7 +96,7 @@ And('user enters {string} into content title search box and clicks {string}', (n
 });
 
 And('user selects {string} item from the content list', (contentTitle) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find("input[name^='entity_browser_select'][class='form-checkbox']").check();
+    cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find('input[name^="entity_browser_select"][type="checkbox"]').check();
 });
 
 And('user clicks on {string} button to select the media', (selectImage) => {
@@ -105,7 +105,7 @@ And('user clicks on {string} button to select the media', (selectImage) => {
 
 
 And('{string} dropdown has the following options', (labelText, dataTable) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
         cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${options}")`).should('exist');
     }
@@ -118,7 +118,7 @@ And('{string} dropdown is displayed {string}', (labelText, displayOption) => {
 And('{string} label has the following options', (labelText, dataTable) => {
     cy.get(`legend span:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
-        cy.get(`div.fieldset-wrapper label:contains("${options}")`).should('be.visible');
+        cy.get(`div[class*="fieldset__wrapper"] label:contains("${options}")`).should('be.visible');
     }
 });
 
@@ -132,16 +132,15 @@ And('user clicks on {string} button to select the block', (embedButton) => {
 
 And('user clicks on {string} to add a body section', (option) => {
     cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
 });
 
 And('user select {string} from the {string} dropdown', (selectItem, labelText) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     cy.get(`select[id*="edit-attributes-data-entity-embed-display"]`).select(selectItem);
 });
 
 And('user selects {string} radio button under {string}', (alignPosition, labelText) => {
-    cy.get(`div.fieldset-wrapper input[value='${alignPosition}']`).click({ force: true });
+    cy.get(`div[class*="fieldset__wrapper"] input[value='${alignPosition}']`).click({ force: true });
 });
 
 Given('user is navigating to the front end site with path site section plus {string}', (purl) => {

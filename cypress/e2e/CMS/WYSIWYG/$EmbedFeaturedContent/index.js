@@ -70,11 +70,6 @@ And('user selects {string} from Blog Series dropdown', (blogSeries) => {
     })
 });
 
-And('user clicks on {string} to add a body section', (option) => {
-    cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
-});
-
 And('the radio button {string} is selected by default under {string}', (btnType, field) => {
     cy.get(`div[id*="edit-attributes-data-align"]`).first().find(`input[id*="edit-attributes-data-align"]`).should('be.checked');
 });
@@ -90,7 +85,7 @@ And('user enters {string} into content title search box and clicks {string}', (n
 });
 
 And('user selects {string} item from the content list', (title) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[name*="entity_browser_select"][type='checkbox']`).check();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[name^="entity_browser_select"][type="checkbox"]`).check();
 });
 
 And('user clicks on {string} button to select content', (selectContent) => {
@@ -102,7 +97,7 @@ And('user clicks on {string} button to select featured content', (embedButton) =
 });
 
 And('{string} dropdown has the following options', (labelText, dataTable) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
         cy.get(`select[id*="edit-attributes-data-entity-embed-display"] option:contains("${options}")`).should('exist');
     }
@@ -115,16 +110,16 @@ And('{string} dropdown displays {string}', (labelText, displayOption) => {
 And('{string} label has the following options', (labelText, dataTable) => {
     cy.get(`legend span:contains("${labelText}")`).should('be.visible');
     for (const { options } of dataTable.hashes()) {
-        cy.get(`div.fieldset-wrapper label:contains("${options}")`).should('be.visible');
+        cy.get(`div[class*="fieldset__wrapper"] label:contains("${options}")`).should('be.visible');
     }
 });
 
 And('user selects {string} radio button under {string}', (alignPosition, labelText) => {
-    cy.get(`div.fieldset-wrapper input[value='${alignPosition}']`).click({ force: true });
+    cy.get(`div[class*="fieldset__wrapper"] input[value='${alignPosition}']`).click({ force: true });
 });
 
 And('user select {string} from the {string} dropdown', (selectItem, labelText) => {
-    cy.get(`label[class="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
+    cy.get(`label[class*="js-form-required form-required"]:contains("${labelText}")`).should('be.visible');
     cy.get(`select[id*="edit-attributes-data-entity-embed-display"]`).select(selectItem);
 });
 

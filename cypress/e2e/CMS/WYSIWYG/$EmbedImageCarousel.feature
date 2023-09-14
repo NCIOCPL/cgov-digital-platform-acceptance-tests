@@ -19,20 +19,20 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
         And user clicks on "Images" button to select image
         And user clicks on "Select images" button 1 to select an image
         And user enters "Test Image" into media title search box to search image and clicks "Apply"
-        And user selects "Test Image" item from the media list to select image
         And browser waits
+        And user selects "Test Image" item from the media list to select image
         And user clicks on "Select Images" button to select an image
         And browser waits
         And user clicks on "Select images" button 2 to select an image
         And user enters "Test Image" into media title search box to search image and clicks "Apply"
-        And user selects "Test Image" item from the media list to select image
         And browser waits
+        And user selects "Test Image" item from the media list to select image
         And user clicks on "Select Images" button to select an image
         And browser waits
         And user clicks on "Select images" button 3 to select an image
         And user enters "Test Image" into media title search box to search image and clicks "Apply"
-        And user selects "Test Image" item from the media list to select image
         And browser waits
+        And user selects "Test Image" item from the media list to select image
         And user clicks on "Select Images" button to select an image
         And browser waits
         Then user saves the content page
