@@ -36,7 +36,6 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
             | Content types       | /admin/structure/types           |
             | Display modes       | /admin/structure/display-modes   |
             | Media types         | /admin/structure/media           |
-            | Pages               | /admin/structure/page_manager    |
             | Paragraph types     | /admin/structure/paragraphs_type |
             | Taxonomy            | /admin/structure/taxonomy        |
             | Views               | /admin/structure/views           |

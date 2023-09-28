@@ -91,10 +91,10 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then page title is "<title>"
         And blog posts list doesnot appear
         Examples:
-            | url                                                             | title                  |
-            | /news-events/cancer-currents-blog?topic=chicken                 | - Cancer Currents      |
-            | /research/key-initiatives/ras/ras-central/blog?topic=1234567898 | - RAS Dialogue         |
-            | /espanol/noticias/temas-y-relatos-blog?topic=chicken            | - Temas y relatos blog |
+            | url                                                             | title                                                 |
+            | /news-events/cancer-currents-blog?topic=chicken                 | Cancer Currents - Error: Category Does Not Exist      |
+            | /research/key-initiatives/ras/ras-central/blog?topic=1234567898 | RAS Dialogue - Error: Category Does Not Exist         |  
+            | /espanol/noticias/temas-y-relatos-blog?topic=chicken            | Temas y relatos blog - Error: Category Does Not Exist |
 
     Scenario Outline: Filtering blogs by year and month
         Given user is navigating to "<url>"
@@ -158,19 +158,19 @@ Feature: As an user, I want to see different components of the Blog Series and B
         And user clicks on blog post image number 1
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                     |
-            | prop4     | D=pev1                                                    |
-            | prop13    | 1                                                         |
-            | prop57    | Cancer Currents Blog                                      |
-            | prop58    | SearchResults                                             |
-            | prop59    | Cancer Currents Blog:1                                    |
-            | prop60    | D=pageName                                                |
-            | prop67    | D=pageName                                                |
-            | prop8     | english                                                   |
-            | evar2     | english                                                   |
-            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog         |
+            | parameter | value                                                          |
+            | prop4     | D=pev1                                                         |
+            | prop13    | 1                                                              |
+            | prop57    | Cancer Currents Blog                                           |
+            | prop58    | SearchResults                                                  |
+            | prop59    | Cancer Currents Blog:1                                         |
+            | prop60    | D=pageName                                                     |
+            | prop67    | D=pageName                                                     |
+            | prop8     | english                                                        |
+            | evar2     | english                                                        |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog |
-            | channel   | News and Events                                           |
-            | pev2      | SearchResults                                             |
-            | linkType  | lnk_o                                                     |
-            | link      | Snuggles                                                  |
+            | channel   | News and Events                                                |
+            | pev2      | SearchResults                                                  |
+            | linkType  | lnk_o                                                          |
+            | link      | Snuggles                                                       |
