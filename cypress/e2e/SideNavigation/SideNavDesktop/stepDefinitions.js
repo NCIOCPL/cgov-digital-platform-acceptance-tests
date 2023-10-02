@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+ const baseUrl = Cypress.config('baseUrl');
 Then('the current page is {string}', (label) => {
     cy.get('a[class="usa-current"]').should('have.text', label);
 });
@@ -62,3 +62,17 @@ When('user clicks on {string} link',(link)=>{
 And('section {string} is not expanded',(sectionLbl)=>{
 cy.get(`a.nci-has-children:contains("${sectionLbl}")`).should('be.visible');
 });
+
+Then('status code is {int} on {string} or {int} if it is acsf', (statusCode, badApi, statusCode2) => {
+    cy.request({
+      url: badApi,
+      failOnStatusCode: false
+    }).then((resp) => {
+        if(baseUrl.includes('acsf')){
+            expect(resp.status).to.be.eq(statusCode2);
+        } else {
+            expect(resp.status).to.be.eq(statusCode);
+        }
+     
+    })
+  });
