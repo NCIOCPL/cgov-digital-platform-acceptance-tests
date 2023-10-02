@@ -118,8 +118,8 @@ Feature: As a user, I want to be able to navigate to a different site sections u
         Given user is navigating to "/api-test/b/4/1"
         Then page title is "B.4.1 - Landing"
         And side nav is not displayed
-        And status code is 403 on "/api-test/b/4"
-        When user is navigating to "/api-test/b/3/1"
+        And status code is 403 on "/api-test/b/4" or 404 if it is acsf
+    
 
     ### the following scenarios are mimicking CTHP's nav structure
     Scenario: site section that has the same landing page as it's first child's section

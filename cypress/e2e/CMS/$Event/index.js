@@ -16,9 +16,9 @@ And('user selects {int} event series from {string} autosuggest', (position, fiel
 And('Event Start Date & Time date field is displaying todays date', () => {
     const date = new Date();
     const currYear = date.getFullYear();
-    let currMonth = date.getMonth();
-    if ((currMonth + 1) < 10) {
-        currMonth = `0${currMonth + 1}`
+    let currMonth = date.getMonth() + 1;
+    if ((currMonth) < 10) {
+        currMonth = `0${currMonth}`
     }
     let currDay = date.getDate();
     if (currDay < 10) {
@@ -31,9 +31,9 @@ And('Event Start Date & Time date field is displaying todays date', () => {
 And('Event End Date & Time date field is displaying todays date', () => {
     const date = new Date();
     const currYear = date.getFullYear();
-    let currMonth = date.getMonth();
-    if ((currMonth + 1) < 10) {
-        currMonth = `0${currMonth + 1}`
+    let currMonth = date.getMonth() + 1;
+    if ((currMonth) < 10) {
+        currMonth = `0${currMonth}`
     }
     let currDay = date.getDate();
     if (currDay < 10) {

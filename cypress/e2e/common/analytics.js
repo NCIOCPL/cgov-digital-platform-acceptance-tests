@@ -10,8 +10,8 @@ const hostName = baseURL.replace(new RegExp('(https:\/\/)|(http:\/\/)'), "")
 //date, months and weekDays are used to generate date and time value for prop29
 const systemDate = new Date();
 const dateStr = systemDate.toLocaleString('en-US', {
-  timeZone: 'America/New_York'
-}) 
+    timeZone: 'America/New_York'
+})
 const date = new Date(dateStr);
 
 const months = [
@@ -61,7 +61,11 @@ Then('the following parameters should be captured', dataTable => {
                 madeUpValue = value.replace('{CANONICAL_HOST}', hostName);
                 cy.location('protocol').then(protocol => {
                     madeUpValue = madeUpValue.replace('{PROTOCOL}:', protocol);
+                    if (parameter === 'prop1' &&  beacon['prop2']) {
+                        expect(`${beacon[parameter]}${ beacon['prop2']}`).to.be.equal(madeUpValue);
+                    } else {
                     expect(beacon[parameter]).to.eq(madeUpValue);
+                    }
                 });
             } else if (parameter.includes('event')) {
                 if (value.startsWith("/")) {
