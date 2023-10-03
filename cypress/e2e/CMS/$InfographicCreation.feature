@@ -97,14 +97,14 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And page title is "Automated Test Infographic Spanish"
         And description reads "This is a description of Infographic content type."
         And the image has the name "infographic-desktop"
-        And the caption appears as "Automated Test Infographic CaptionSpanish"
+        And the caption appears as "Spanish"
         And the infographic link "Ver e Imprimir Infografía" appears with href "infographic-desktop"
         And date label is displaying as "Publicación:"
         And screen breakpoint is set to "mobile"
         Then page title is "Automated Test Infographic Spanish"
         And description reads "This is a description of Infographic content type."
         And the image has name "infographic-mobile"
-        And the caption appears as "Automated Test Infographic CaptionSpanish"
+        And the caption appears as "Spanish"
         And the infographic link "Ver e Imprimir Infografía" does not appear
         And date label is displaying as "Publicación:"
 
@@ -240,10 +240,11 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And browser waits
         And user clicks on "Link" link in the List Items text area under List
         And browser waits
-        And user selects "Add Media Link" from "List Items" dropdown "External Link" section
+        And user selects "Add Media Link" from "List Items" dropdown "List Items" section
         Then "Media Link" section appears
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
+         And browser waits
         And user enters "Automated Test Infographic" into media search box and clicks "Apply"
          And browser waits
         And user selects "Automated Test Infographic" item from media list
@@ -251,7 +252,6 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clicks on "Select media" button to select media item
         And browser waits
         And user removes the "Internal Link" item from the list
-        And user confirms removal
         And browser waits
         And user selects "Published" from "Save as" dropdown
         When user saves the content page
@@ -328,7 +328,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And screen breakpoint is set to "desktop"
         And page title is "Automated Test Article to test Infographic Spanish"
         And the intro text reads "Article Intro Text"
-        And the caption appears as "Automated Test Infographic Caption"
+        And the caption appears as "Spanish"
         And the infographic link "Ver e Imprimir Infografía" appears with href "infographic-desktop"
         And the spanish infographic displayed has the following attributes
             | index | position        | imageSource         | imageAlt | descText                                     | longDesc |

@@ -22,22 +22,22 @@ And('the content item with url {string} does not exist in the list of content', 
     cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
 });
 
-And('user enters {string} as intro text', (introText) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introText);
-});
+And('user enters {string} as intro text', (introTxt) => {
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes('intro-text')) {
+                editor.setData(`<p>${introTxt}</p>`)
+            }
+        })
+    })
 
-And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
-    cy.getIframeBody("iframe[title^='Rich Text Editor, Body field']").find('p').type(value);
-});
+})
 
 And('user enters {string} into the {string} text field', (value, textFieldLabel) => {
     cy.get(`[class*='form-item-field-banner-image-0-alt']:contains("${textFieldLabel}")`).find('input.form-text').type(value);
     cy.wait(2000);
 });
 
-And('user fills out {string} text area with {string} in the blog series', (textFieldLabel, value) => {
-    cy.getIframeBody("iframe[title^='Rich Text Editor, About Blog field']").find('p').type(value);
-});
 
 And('user clicks on dropdown button toggle to view Featured Posts', () => {
     cy.get('details#edit-field-featured-posts').click({ force: true });
@@ -110,13 +110,13 @@ And('user checks {string} checkbox', (checkboxLbl) => {
 });
 
 And('user enters {string} into {string} field', (description, descriptionTitle) => {
-    if (descriptionTitle == 'Description') {
-        cy.getIframeBody("iframe[title='Rich Text Editor, Description field']").find('p').type(description);
-    }
-    if (descriptionTitle == 'Descripción') {
-        cy.getIframeBody("iframe[title='Editor de texto con formato, campo Descripción']").find('p').type(description);
-    }
-
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes(`edit-${descriptionTitle.toLowerCase()}`)) {
+                editor.setData(`<p>${description}</p>`)
+            }
+        })
+      })
 });
 
 And('the {string} link appears with url {string}', (subscribeLinkText, linkUrl) => {

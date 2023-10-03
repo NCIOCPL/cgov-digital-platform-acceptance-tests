@@ -28,7 +28,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user selects "Overview" from CTHP Card Theme dropdown number 1
         And browser waits
-        And user fills out Overview Card Text field text area with "Description of Overview Card of CTHP content type"
+        And user fills out "Overview" Card Text field text area with "Description of Overview Card of CTHP content type"
         And user selects 3 Promotional Image from the list of images
         And browser waits
         And user remembers the source of selected promo image for further verification
@@ -420,7 +420,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | CTHP Block Card            |
             | CTHP Raw HTML Card         |
         And Add Card Section was translated as "Añadir CTHP Overview Card"
-        And dropdown to add link under related resources was translated to start with "Añadir"
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
@@ -535,7 +534,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user selects "Overview" from CTHP Card Theme dropdown number 1
         And browser waits
-        And user fills out Overview Card Text field text area with "Description of Overview Card of CTHP HP content type"
+        And user fills out "Overview" Card Text field text area with "Description of Overview Card of CTHP HP content type"
         And user selects 3 Promotional Image from the list of images
         And browser waits
         And user remembers the source of selected promo image for further verification
@@ -950,7 +949,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | CTHP Block Card            |
             | CTHP Raw HTML Card         |
         And Add Card Section was translated as "Añadir CTHP Overview Card"
-        And dropdown to add link under related resources was translated to start with "Añadir"
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options

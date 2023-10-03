@@ -27,7 +27,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And system waits for file upload process
         And user enters "Text Alt" into the "Alternative text" text field
         And user enters "Blog Series List Description" into "List Description" text field
-        And user fills out "About Blog" text area with "This is all about Blog Series." in the blog series
+        And user fills out "About-Blog" text area with "This is all about Blog Series."
         And user selects "Published" from "Save as" dropdown
         Then user saves the content page
 

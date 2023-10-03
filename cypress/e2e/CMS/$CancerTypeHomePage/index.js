@@ -14,8 +14,15 @@ And('user selects {string} from CTHP Card Theme dropdown number {int}', (option,
     cy.get('select[id*="cthp-card-theme"]').eq(index - 1).select(option)
 })
 
-And('user fills out Overview Card Text field text area with {string}', (value) => {
-    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 0).find('p').type(value)
+And('user fills out {string} Card Text field text area with {string}', (cardTheme,value) => {
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes(`field-cthp-${cardTheme.toLowerCase()}`)) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+      })
+    
 })
 
 And('user fills out the following fields under {string} section', (option, dataTable) => {
@@ -27,7 +34,14 @@ And('user fills out the following fields under {string} section', (option, dataT
 })
 
 And('user fills out CTHP Guide Card Description field text area with {string}', (value) => {
-    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value)
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes(`field-cthp-guide-card-desc`)) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+      })
+
 })
 
 And('user clicks on {string} link in the {string} text area', (link, linkOption) => {
@@ -96,11 +110,19 @@ And('user selects {int} result from the list of autosuggest', (num) => {
 })
 
 And('user clicks on Source tool icon in the html content tool bar', () => {
-    cy.get("span.cke_button_label.cke_button__source_label").eq(2).click({ force: true })
+    cy.get("button[data-cke-tooltip-text='Source']").eq(2).click({ force: true })
 })
 
 And('user enters {string} into source text field', (value) => {
-    cy.get("textarea[title='Rich Text Editor, HTML Content field']").type(value)
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes('field-html-content')) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+    })
+
+   
 })
 
 And('user selects {string} from Search Engine Restrictions dropdown', (dropdown) => {

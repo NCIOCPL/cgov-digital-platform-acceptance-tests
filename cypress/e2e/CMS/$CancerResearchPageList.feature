@@ -94,14 +94,18 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And user clears out "Feature Card Description" field
         And user clears out "Card Title" field
         And user fills out the following fields
-            | fieldLabel               | value                                                               | field_name                                                          |
-            | Pretty URL               | cancer-research-list-page-edited                                    | field_pretty_url                                                    |
-            | Page Title               | Automated Test Cancer Research List Page Edited                     | title                                                               |
-            | Card Title               | Automated Test Cancer Research List Page - Card Title Edited        | field_card_title                                                    |
-            | Meta Description         | Automated Test Cancer Research List Page Meta Description Edited    | field_page_description                                              |
-            | Feature Card Description | Automated Test Cancer Research List Page - Feature Card Desc Edited | field_feature_card_description                                      |
-            | Override Title           | Internal Link override title                                        | field_selected_research[0][subform][field_override_title][0][value] |
+            | fieldLabel               | value                                                               | field_name                     |
+            | Pretty URL               | cancer-research-list-page-edited                                    | field_pretty_url               |
+            | Page Title               | Automated Test Cancer Research List Page Edited                     | title                          |
+            | Card Title               | Automated Test Cancer Research List Page - Card Title Edited        | field_card_title               |
+            | Meta Description         | Automated Test Cancer Research List Page Meta Description Edited    | field_page_description         |
+            | Feature Card Description | Automated Test Cancer Research List Page - Feature Card Desc Edited | field_feature_card_description |
+        And user clicks on "Edit" button for "Internal Link"
+        And user fills out the following fields
+            | fieldLabel     | value                        | field_name                                                          |
+            | Override Title | Internal Link override title | field_selected_research[0][subform][field_override_title][0][value] |
         And user enters "Internal Link List Description" into 1 "Override List Description" text field
+        And user clicks on "Edit" button for "Media Link"
         And user enters "Media Link List Description" into 2 "Override List Description" text field
         When user saves the content page
         And user clicks on the tool bar status button "Editing"

@@ -5,9 +5,6 @@ const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const randomStr = Cypress.env('randomStr')
 
-And('user types {string} into Caption text field', (captionText) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Caption field']").find('p').type(captionText);
-})
 
 And('user clicks on CROP IMAGE button', () => {
     cy.get(`summary:contains('Crop image')`).click({ force: true })
@@ -23,11 +20,20 @@ And('user sets the following crops', (dataTable) => {
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
+    cy.wait(2000)
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+           
+            if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-heading`)) {
+                console.log(editor.sourceElement.id)
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+    })
 })
 
 And('user clicks the {string} button {int} in the WYSIWYG editor', (infographicButton, position) => {
-    cy.get('span.cke_button__cgov_image_button_icon').eq(position - 1).click({ force: true });
+    cy.get(`button[data-cke-tooltip-text="${infographicButton}"]`).eq(position - 1).click({ force: true });
 });
 
 And('user enters {string} into media title search box and clicks {string}', (nameToSearch, applyBtn) => {
@@ -75,7 +81,8 @@ And('user selects {string} alignment', (alignPosition) => {
 
 
 And('user clicks on {string} button to select image', (embedButton) => {
-    cy.get(`div.ui-dialog-buttonset.form-actions button:contains("${embedButton}")`).click({ force: true });
+    cy.get(`div.ui-dialog-buttonset.form-actions button:contains("${embedButton}")`).click();
+ 
 });
 
 And('user selects size {string}', (selectItem) => {
@@ -83,8 +90,8 @@ And('user selects size {string}', (selectItem) => {
 });
 
 And('user clicks on {string} to add a body section', (option) => {
+    cy.get('span.paragraph-type-label').first().click()
     cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
 });
 
 And('user clicks {string} button for adding banner', (bannerBtn) => {

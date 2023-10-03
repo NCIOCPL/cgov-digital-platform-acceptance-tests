@@ -15,9 +15,16 @@ And('user enters {string} as {int} body section heading', (value, position) => {
     cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
 });
 
+
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
-});
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-content`)) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+    })
+})
 
 And('the intro text reads {string}', (titlText) => {
     cy.get(`div[class='blog-intro-text'] p:contains("${titlText}")`).should('be.visible');

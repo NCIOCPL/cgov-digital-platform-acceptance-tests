@@ -84,3 +84,7 @@ And('Link section under related resources was translated as {string}', (linkTran
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 })
+
+And('user clicks on Edit button for {string}',(section)=>{
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find('input[value="Edit"]').click();
+    });

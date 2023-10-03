@@ -58,8 +58,24 @@ And('user selects {string} from {string} dropdown', (option, dropdown) => {
 });
 
 And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
-    cy.getIframeBody('iframe.cke_wysiwyg_frame.cke_reset')
-        .find('p').type(value);
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes(`edit-${textFieldLabel.toLowerCase()}`)|| editor.sourceElement.id?.includes(`edit-field-${textFieldLabel.toLowerCase()}`)) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+      })
+})
+
+And('user types {string} into Caption text field', (value) => {
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes('edit-field-caption')) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+    })
+     
 })
 
 When('user saves the content page', () => {
@@ -315,16 +331,24 @@ Then('{string} label is displayed {int} times', (contentType, num) => {
 
 //this needs to be pass, the iframe locators are the same.
 And('user types {string} in the {int} citation body field', (value, num) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Citation Content field']", num - 1).find('p').type(value)
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes(`${num-1}-subform-field-citation-content`)) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+    })
+   
 })
 
 And('user clicks on icon to add a link to {int} citation', (num) => {
-    cy.get("div[id^='field-citation'] a[title^='Link']").eq(num - 1).click()
+
+   cy.get(`div[class*="${num-1}-subform-field-citation-content`).find('button[data-cke-tooltip-text*="Link"]').click()
 })
 
 And('user types {string} in the citation url field and saves it', (link) => {
-    cy.get('div#editor-link-dialog-form input').first().type(link)
-    cy.get('div.ui-dialog-buttonset.form-actions button').click()
+    cy.get('form[class*="ck ck-link-form"] input').type(link);
+    cy.get('form[class*="ck ck-link-form"] button[type="Submit"]').click()
     cy.wait(3000)
 })
 
@@ -413,7 +437,7 @@ And('Related Resources section was translated as {string}', (relatedResources) =
 });
 
 And('dropdown to add link under related resources was translated to start with {string}', (dropDownText) => {
-    cy.get(`li.dropbutton__item.dropbutton__item--extrasmall.dropbutton-action input[value^='${dropDownText}']`).should('be.visible');
+    cy.get(`li[class*="-link dropbutton__item dropbutton-action"] input[value^='${dropDownText}']`).should('be.visible');
 });
 
 And('button to add citation was translated as {string}', (citationBtn) => {

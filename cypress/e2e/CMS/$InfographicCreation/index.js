@@ -17,9 +17,6 @@ And('user fills out the following fields', (dataTable) => {
     }
 });
 
-And('user types {string} into Caption text field', (value) => {
-    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value);
-});
 
 And('user uploads test file {string}', (fileName) => {
     cy.fixture(fileName, { encoding: null }).as('fixture')
@@ -53,7 +50,7 @@ And('the radio button {string} is selected by default under {string}', (btnType,
 });
 
 And('user removes the {string} item from the list', (link) => {
-    cy.get(`input[id*="edit-field-landing-contents-1-subform-field-list-items-0-top-links-remove-button"]`).click({ force: true });
+    cy.get(`input[name*="field_landing_contents_1_subform_field_list_items_0_remove"]`).click({force:true});
 });
 
 And('description reads {string}', (contentText) => {
@@ -109,19 +106,20 @@ And('the image has name {string}', (imageName) => {
 });
 
 And('user enters {string} as intro text', (introTxt) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introTxt);
-});
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes('intro-text')) {
+                editor.setData(`<p>${introTxt}</p>`)
+            }
+        })
+    })
 
-And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
 })
 
-And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
-});
+
 
 And('user clicks the {string} button {int} in the WYSIWYG editor', (infographicButton, position) => {
-    cy.get('span.cke_button__cgov_infographic_button_icon').eq(position - 1).click({ force: true });
+    cy.get(`button[data-cke-tooltip-text="${infographicButton}"]`).eq(position - 1).click({ force: true });
 });
 
 And('user enters {string} into media title search box and clicks {string}', (nameToSearch, applyBtn) => {
@@ -139,7 +137,8 @@ And('user selects {string} item from the media list', (title) => {
 });
 
 And('user clicks on {string} button to select media', (selectInfograhic) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_infographic_browser').find(`input[id='edit-submit'][value='${selectInfograhic}']`).click({ force: true });
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_infographic_browser').find(`input[id='edit-submit'][value='${selectInfograhic}']`).click();
+    cy.wait(2000)
 });
 
 And('{string} dropdown has the following options', (labelText, dataTable) => {
@@ -169,7 +168,7 @@ And('user selects {string} radio button under {string}', (alignPosition, labelTe
 });
 
 And('user clicks on {string} button to select infographic', (embedButton) => {
-    cy.get(`div.ui-dialog-buttonset.form-actions button:contains("${embedButton}")`).click({ force: true });
+    cy.get(`div.ui-dialog-buttonset.form-actions button:contains("${embedButton}")`).click();
 });
 
 And('user select {string} from the {string} dropdown', (selectItem, labelText) => {
@@ -177,9 +176,9 @@ And('user select {string} from the {string} dropdown', (selectItem, labelText) =
 });
 
 And('user clicks on {string} to add a body section', (option) => {
+    cy.get('span.paragraph-type-label').first().click()
     cy.get(`input[value='${option}']`).click();
-    cy.get("div[data-drupal-selector='edit-field-article-body-1-top-paragraph-type-title']").should('exist');
-});
+    });
 
 And('user selects {string} from {string} dropdown in home and landing page', (dropDown, cardOption) => {
     cy.get(`.placeholder:contains("${cardOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });

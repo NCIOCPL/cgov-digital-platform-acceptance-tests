@@ -25,7 +25,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user remembers the source of selected promo image for further verification
         And user selects "Add Content Block" content item
         And user enters "Content Heading" into Content Heading text field
-        And user fills out "HTML Content" text area with "This is HTML content for Content Block."
+        And user fills out "HTML-Content" text area with "This is HTML content for Content Block."
         And user selects "Posted Date" checkbox
         And user selects "Reviewed Date" checkbox
         And user selects "Updated Date" checkbox

@@ -51,13 +51,13 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And "Article to test Related Resources" had been selected
-        And user selects "Add External Feature Card" from "Cards" dropdown "External Feature Card" section
+        And user selects "Add External Feature Card" from "Cards" dropdown "Primary Feature Card Row" section
         Then "External Feature Card" section appears
         And user fills out the following fields
             | fieldLabel        | value                                | field_name                                                                                           |
             | Featured Item Url | https://www.google.com               | field_landing_contents[0][subform][field_row_cards][1][subform][field_featured_url][0][uri]          |
             | Card Title        | Google Link Primary Feature Card Row | field_landing_contents[0][subform][field_row_cards][1][subform][field_override_card_title][0][value] |
-        And user selects "Add Raw Html Content" from "Cards" dropdown "External Feature Card" section
+        And user selects "Add Raw Html Content" from "Cards" dropdown "Primary Feature Card Row" section
         Then "Raw HTML Content" section appears
         And user enters "<div>This is to test Raw Html Content under Primary Feature Card Row</div>" into Raw HTML Content text field under Primary Feature Card Row
         When user saves the content page
@@ -109,7 +109,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select content" button to select item
         And browser waits
         And "Article to test Related Resources" had been selected
-        And user selects "Add External Feature Card" from "Cards" dropdown "External Feature Card" section
+        And user selects "Add External Feature Card" from "Cards" dropdown "Secondary Feature Card Row" section
         And user fills out the following fields
             | fieldLabel        | value                                  | field_name                                                                                           |
             | Featured Item Url | https://www.google1.com                | field_landing_contents[2][subform][field_row_cards][1][subform][field_featured_url][0][uri]          |
@@ -173,12 +173,12 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
-        And user selects "Add External Link" from "List Items" dropdown "External Link" section
+        And user selects "Add External Link" from "List Items" dropdown "List Items" section
         And user fills out the following fields
             | fieldLabel | value                   | field_name                                                                                       |
             | Link       | https://www.google2.com | field_landing_contents[4][subform][field_list_items][1][subform][field_external_link][0][uri]    |
             | Title      | Google Link List Item   | field_landing_contents[4][subform][field_list_items][1][subform][field_override_title][0][value] |
-        And user selects "Add Media Link" from "List Items" dropdown "External Link" section
+        And user selects "Add Media Link" from "List Items" dropdown "List Items" section
         Then "Media Link" section appears
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
@@ -212,7 +212,7 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel      | value                                | field_name                                                                                    |
             | Content Heading | Content Heading One Column Container | field_landing_contents[5][subform][field_main_contents][0][subform][field_content_heading][0] |
         And browser waits
-        And user fills out HTML Content text area with "This is Html content for Content Block in One Column Container" under "One Column Container"
+        And user fills out HTML Content text area with "This is Html content for Content Block in One Column Container" under One Column Container
         And browser waits
         And user clicks on "Add List" option to "Main Contents" within "One Column Container" section
         And browser waits
@@ -241,7 +241,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user fills out the following fields
             | fieldLabel      | value                                | field_name                                                                                           |
             | Content Heading | Content Heading Two Column Container | field_landing_contents[5][subform][field_main_contents][3][subform][field_content_heading][0][value] |
-        And user fills out HTML Content text area with "This is Html content for Content Block Two Column" under "Two Column Container"
+        And user fills out HTML Content text area with "This is Html content for Content Block Two Column" under Two Column Container
         And user clicks on "Add Dynamic List" option to "Main Contents" within "Two Column Container" section
         And browser waits
         And user fills out the following fields
@@ -436,15 +436,15 @@ Feature: Home And Landing Page Test Creation of Content
             | Meta Description         | Automated Test Home and Landing Page Meta Description Edited    | field_page_description         |
             | Card Title               | Automated Test Home and Landing page - Card Title Edited        | field_card_title               |
             | Feature Card Description | Automated Test Home and Landing page - Feature Card Desc Edited | field_feature_card_description |
-        And user clicks on Edit button for "Primary Feature Card Row"
+        And user clicks on "Edit" button for "Primary Feature Card Row"
         And user fills out the following fields
             | fieldLabel          | value                        | field_name                                                                                           |
             | Override Card Title | Featured Item Override Title | field_landing_contents[0][subform][field_row_cards][0][subform][field_override_card_title][0][value] |
-        And user clicks on Edit button for "Guide Card Row"
+        And user clicks on "Edit" button for "Guide Card Row"
         And user fills out the following fields
             | fieldLabel | value   | field_name                                                            |
             | Title      | -Edited | field_landing_contents[1][subform][field_container_heading][0][value] |
-        And user clicks on Edit button for "Multimedia Row"
+        And user clicks on "Edit" button for "Multimedia Row"
         And user removes multimedia card
         And user clicks on "Multimedia Card" button in the Multimedia row text area
         And user clicks on "Select media" to choose a media to link
@@ -538,7 +538,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
 
-    -- Translation of Home and Landing Page --
+    #    --Translation of Home and Landing Page --
     Scenario: Add a translation
         Given user is navigating to "/user/login"
         When user enters credentials
@@ -574,11 +574,14 @@ Feature: Home And Landing Page Test Creation of Content
             | Primary Feature Card Row |
         And user remembers the name of media card item for future verification
         And user fills out the following fields
-            | fieldLabel        | value    | field_name                                                                                       |
-            | Featured Item Url | spanish  | field_landing_contents[0][subform][field_row_cards][1][subform][field_featured_url][0][uri]      |
-            | Título            | _Spanish | field_landing_contents[4][subform][field_list_title][0][value]                                   |
-            | Override Title    | _Spanish | field_landing_contents[4][subform][field_list_items][2][subform][field_override_title][0][value] |
-            | Button Text       | _Spanish | field_landing_contents[7][subform][field_button_text][0][value]                                  |
+            | fieldLabel        | value    | field_name                                                                                  |
+            | Featured Item Url | spanish  | field_landing_contents[0][subform][field_row_cards][1][subform][field_featured_url][0][uri] |
+            | Título            | _Spanish | field_landing_contents[4][subform][field_list_title][0][value]                              |
+        And user clicks on "Editar" button for "Media Link"
+        And user fills out the following fields
+            | fieldLabel     | value    | field_name                                                                                       |
+            | Override Title | _Spanish | field_landing_contents[4][subform][field_list_items][2][subform][field_override_title][0][value] |
+            | Button Text    | _Spanish | field_landing_contents[7][subform][field_button_text][0][value]                                  |
         And user selects "Archive Block" from Display dropdown
         And user clicks "Opciones" link in the Dynamic List area
         And user checks Include View Title checkbox

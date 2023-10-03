@@ -65,9 +65,6 @@ And('user clicks on Image content type', () => {
     cy.get("dl.admin-list a[href='/media/add/cgov_image']").click();
 });
 
-And('user types {string} into Caption text field', (value) => {
-    cy.getIframeBody('iframe.cke_wysiwyg_frame.cke_reset').find('p').type(value);
-})
 
 And('user uploads test {string} image {string}', (imageType, fileName) => {
     cy.fixture(fileName, { encoding: null }).as('fixture')

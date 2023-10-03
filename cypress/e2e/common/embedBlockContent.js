@@ -26,10 +26,16 @@ And('user enters {string} into source text field', (value) => {
     cy.get('div#cke_edit-body-0-value').type(value);
 });
 
-And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe(`iframe[title="Rich Text Editor, Body field"]`, position - 1).find('p').type(value);
-});
 
+And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-content`)) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+    })
+})
 And('the content item with title {string} exists in the list of content', (titleText) => {
     cy.get('div.view-content tr').find(`a:contains('${titleText}')`).should('be.visible');
 });
@@ -52,9 +58,6 @@ And('user remembers the source of selected promo image for further verification'
     });
 });
 
-And('user fills out {string} text area with {string}', (section, value) => {
-    cy.get(`div[class*="js-form-type-textarea"] label:contains('${section}')`).type(value);
-});
 
 And('user clicks on {string} button to select image', (imgButton) => {
     cy.get(`summary[class*="claro-details__summary"]:contains('${imgButton}')`).click();
@@ -78,8 +81,14 @@ And('user clicks on {string} button to select an image', (selectImage) => {
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
-});
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-heading`)) {
+                editor.setData(`<p>${value}</p>`)
+            }
+        })
+    })
+})
 
 And('user clicks {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
     cy.get('span.cke_button_icon.cke_button__insert_block_content_icon').eq(position - 1).click({ force: true });
@@ -131,6 +140,7 @@ And('user clicks on {string} button to select the block', (embedButton) => {
 });
 
 And('user clicks on {string} to add a body section', (option) => {
+    cy.get('span.paragraph-type-label').first().click()
     cy.get(`input[value='${option}']`).click();
 });
 

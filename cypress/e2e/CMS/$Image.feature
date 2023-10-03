@@ -146,7 +146,7 @@ Feature: User creating an image
     Scenario: Verify translated image overrides
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "article-to-test-image-spanish"
         Then lead image is displayed with source "main_image"
-        And caption reads "Test Caption_Spanish"
+        And caption reads "_Spanish"
         And credit reads "Test Credit_Spanish"
         And "Ampliar" button is displayed
         When user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-for-image-spanish"

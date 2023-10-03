@@ -5,9 +5,6 @@ const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const randomStr = Cypress.env('randomStr');
 
-And('user types {string} into Caption text field', (value) => {
-    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value)
-})
 
 And('user selects {string} option from {string} dropdown', (dropdwon, section) => {
     cy.get(`.placeholder:contains("${section}")`).parent().find(`input[value="${dropdwon}"]`).click({ force: true })
