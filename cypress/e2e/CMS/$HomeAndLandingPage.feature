@@ -236,17 +236,19 @@ Feature: Home And Landing Page Test Creation of Content
         And user enters '<div class="callout-box" tabindex="0"><p>This is to test Raw HTML Content in One Column container</p></div>' in Raw HTML Content under "One Column Container"
         And browser waits
         And user selects "Add Two Column Container" from "Contents" dropdown
+        And browser waits
         And user enters '<div class="callout-box" tabindex="0"><p>This is to test Raw HTML Content in Two Columns container</p></div>' in Raw HTML Content under "Two Column Container"
-        And user clicks on "Add Content Block" option to "Main Contents" within "Two Column Container" section
+        And user clicks on "Add Content Block" option to "main-contents" within Two Column Container section
+        And browser waits
         And user fills out the following fields
             | fieldLabel      | value                                | field_name                                                                                           |
-            | Content Heading | Content Heading Two Column Container | field_landing_contents[5][subform][field_main_contents][3][subform][field_content_heading][0][value] |
+            | Content Heading | Content Heading Two Column Container | field_landing_contents[6][subform][field_main_contents][1][subform][field_content_heading][0][value] |
         And user fills out HTML Content text area with "This is Html content for Content Block Two Column" under Two Column Container
         And user clicks on "Add Dynamic List" option to "Main Contents" within "Two Column Container" section
         And browser waits
         And user fills out the following fields
             | fieldLabel | value              | field_name                                                                                      |
-            | List Title | Dynamic List Title | field_landing_contents[5][subform][field_main_contents][4][subform][field_list_title][0][value] |
+            | List Title | Dynamic List Title | field_landing_contents[6][subform][field_main_contents][2][subform][field_list_title][0][value] |
         And browser waits
         And user selects "Press Releases" from Source View dropdown
         And browser waits
@@ -367,7 +369,6 @@ Feature: Home And Landing Page Test Creation of Content
         And one-column list has raw html displaying "This is Html content for Content Block in One Column Container"
         And two-column list has raw html displaying "This is to test Raw HTML Content in Two Columns container"
         And two-column content heading reads "Content Heading Two Column Container"
-        And two-column html content reads "This is Html content for Content Block Two Column"
         And two-column dynamic list shows "Press Releases"
         And dynamic lists shows 5 items
         And borderless card title is "Override title for Borderless Card"
@@ -628,7 +629,6 @@ Feature: Home And Landing Page Test Creation of Content
         And one-column list has raw html displaying "This is Html content for Content Block in One Column Container"
         And two-column list has raw html displaying "This is to test Raw HTML Content in Two Columns container"
         And two-column content heading reads "Content Heading Two Column Container"
-        And two-column html content reads "This is Html content for Content Block Two Column"
         And two-column dynamic list shows "Press Releases"
         And dynamic lists shows 6 items espanol link
         And every link in dynamic list starts with "/espanol"

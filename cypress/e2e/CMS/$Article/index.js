@@ -36,6 +36,7 @@ And('{string} button is displayed', (optionLabel) => {
 
 
 And('user enters {string} as {int} body section heading', (value, position) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-heading`)) {

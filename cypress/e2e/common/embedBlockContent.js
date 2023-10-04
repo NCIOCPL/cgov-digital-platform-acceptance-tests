@@ -28,6 +28,7 @@ And('user enters {string} into source text field', (value) => {
 
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-content`)) {
@@ -81,6 +82,7 @@ And('user clicks on {string} button to select an image', (selectImage) => {
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-heading`)) {
@@ -255,6 +257,7 @@ And('video carousel displays the following features', (dataTable) => {
 });
 
 And('user enters {string} as intro text', (introTxt) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes('intro-text')) {

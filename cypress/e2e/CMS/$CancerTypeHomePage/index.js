@@ -15,6 +15,7 @@ And('user selects {string} from CTHP Card Theme dropdown number {int}', (option,
 })
 
 And('user fills out {string} Card Text field text area with {string}', (cardTheme,value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes(`field-cthp-${cardTheme.toLowerCase()}`)) {
@@ -34,6 +35,7 @@ And('user fills out the following fields under {string} section', (option, dataT
 })
 
 And('user fills out CTHP Guide Card Description field text area with {string}', (value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes(`field-cthp-guide-card-desc`)) {
@@ -114,6 +116,7 @@ And('user clicks on Source tool icon in the html content tool bar', () => {
 })
 
 And('user enters {string} into source text field', (value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes('field-html-content')) {

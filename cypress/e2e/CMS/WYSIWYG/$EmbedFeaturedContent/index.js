@@ -10,6 +10,7 @@ const currYear = date.getFullYear();
 
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-content`)) {

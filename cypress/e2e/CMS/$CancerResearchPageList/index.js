@@ -70,7 +70,7 @@ Then('the promo image is matching the earlier selected image', () => {
 });
 /* ----- Translation of Cancer Research Page List -----*/
 And('body was translated as {string}', (bodyTranslated) => {
-    cy.get(`label[for*="edit-body"]`).should('have.text',bodyTranslated)
+    cy.get(`label[for*="edit-body"]`).should('have.text', bodyTranslated)
 })
 
 And('Remove button for media was translated as {string}', (RemoveBtn) => {
@@ -85,6 +85,6 @@ And('user clicks on title with url spanish path {string} site section plus {stri
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 })
 
-And('user clicks on Edit button for {string}',(section)=>{
-    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find('input[value="Edit"]').click();
-    });
+And('user clicks on {string} button for {string}', (edit, section) => {
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
+});

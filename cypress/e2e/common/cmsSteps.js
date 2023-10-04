@@ -58,9 +58,10 @@ And('user selects {string} from {string} dropdown', (option, dropdown) => {
 });
 
 And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
-            if (editor.sourceElement.id?.includes(`edit-${textFieldLabel.toLowerCase()}`)|| editor.sourceElement.id?.includes(`edit-field-${textFieldLabel.toLowerCase()}`)) {
+            if (editor.sourceElement.id?.includes(`edit-${textFieldLabel.toLowerCase()}`)|| editor.sourceElement.id?.includes(`-field-${textFieldLabel.toLowerCase()}`)) {
                 editor.setData(`<p>${value}</p>`)
             }
         })
@@ -68,6 +69,7 @@ And('user fills out {string} text area with {string}', (textFieldLabel, value) =
 })
 
 And('user types {string} into Caption text field', (value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes('edit-field-caption')) {
@@ -331,6 +333,7 @@ Then('{string} label is displayed {int} times', (contentType, num) => {
 
 //this needs to be pass, the iframe locators are the same.
 And('user types {string} in the {int} citation body field', (value, num) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes(`${num-1}-subform-field-citation-content`)) {

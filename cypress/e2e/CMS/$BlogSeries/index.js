@@ -100,6 +100,7 @@ And('user checks {string} checkbox', (checkboxLbl) => {
 });
 
 And('user enters {string} into {string} field', (description, descriptionTitle) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes(`edit-${descriptionTitle.toLowerCase()}`)) {

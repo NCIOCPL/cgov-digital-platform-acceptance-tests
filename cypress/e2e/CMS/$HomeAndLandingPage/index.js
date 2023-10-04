@@ -46,6 +46,7 @@ And('user clicks on Source tool icon in the html content tool bar', () => {
 })
 
 And('user enters {string} into source text field', (value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes('field-html-content')) {
@@ -117,7 +118,8 @@ And('user selects {string} from main contents dropdown', (dropdown) => {
 })
 
 And('user clicks on {string} option to {string} within {string} section', (option, containerContents, section) => {
-    cy.get(`input[value="${option}"]`).eq(0).click({ force: true })
+    cy.get(`span.paragraph-type-label:contains("${section}")`).parent().parent().parent().find(`input[value="${option}"]`).eq(0).click({ force: true })
+    // cy.get(`input[value="${option}"]`).click({ force: true })
 })
 
 And('user fills out HTML Content text area with', (value) => {
@@ -125,10 +127,11 @@ And('user fills out HTML Content text area with', (value) => {
 })
 
 And('user enters {string} in Raw HTML Content under {string}', (value, section) => {
-    cy.get('textarea[name*="field_raw_html"]').type(value);
+    cy.get(`span.paragraph-type-label:contains("${section}")`).parent().parent().parent().find('textarea[name*="field_raw_html"]').first().type(value);
 })
 
 And('user fills out HTML Content text area with {string} under One Column Container', (value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes('5-subform-field-main-contents-0-subform-field-html-content')) {
@@ -139,6 +142,7 @@ And('user fills out HTML Content text area with {string} under One Column Contai
 })
 
 And('user fills out HTML Content text area with {string} under Two Column Container', (value) => {
+    cy.wait(1500);
     cy.window().then(win => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
             if (editor.sourceElement.id?.includes('5-subform-field-main-contents-3-subform-field-html-content')) {
@@ -540,3 +544,8 @@ And('{string} dropdown has the following options', (labelText, dataTable) => {
 And('user clicks on {string} button for {string}',(edit,section)=>{
 cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
 });
+
+
+And('user clicks on {string} option to {string} within Two Column Container section', (option, containerContents) => {
+    cy.get(`input[id*="edit-field-landing-contents-6-subform-field-${containerContents}-add-more-add-more-button-cgov-content-block`).contains(option).eq(0).click({ force: true })
+})
