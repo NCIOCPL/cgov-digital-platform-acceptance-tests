@@ -1,13 +1,9 @@
 /// <reference types="Cypress" />
 import { And } from 'cypress-cucumber-preprocessor/steps';
 
-And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value)
-})
 
-And('user clicks the {string} button {int} in the WYSIWYG editor', (infographicButton, position) => {
-    cy.get('span.cke_button__table_icon').eq(position - 1).click({ force: true });
-});
+
+
 
 And('user writes {string} into {string} labeled field', (value, fieldLabel) => {
     cy.get(`div[class*="cke_dialog_ui_text"] label:contains("${fieldLabel}")`).parent().find('div>input').type(value);

@@ -53,7 +53,7 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
             | Meta Description         | Automated Test Article to test Content Block - Meta Description  | field_page_description         |
             | Feature Card Description | Automated Test Article to test Content Block - Feature Card Desc | field_feature_card_description |
         And user enters "Article Heading1" as 1 body section heading
-        And user fills out 1 "Body" text area in article with "Content Block: Image,None:"
+        And user fills out 1 "Body" text area with "Content Block: Image,None:"
         And user clicks "Insert Block Content" button 1 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Content Block Test" into content title search box and clicks "Apply"
@@ -77,8 +77,9 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
+        And browser waits
         And user enters "Article Heading2" as 2 body section heading
-        And user fills out 2 "Body" text area in article with "Content Block: No Image,Left:"
+        And user fills out 2 "Body" text area with "Content Block: No Image,Left:"
         And user clicks "Insert Block Content" button 2 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Content Block Test" into content title search box and clicks "Apply"
@@ -92,9 +93,10 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
+        And browser waits
         And user enters "Article Heading3" as 3 body section heading
         And browser waits
-        And user fills out 3 "Body" text area in article with "Content Block Full, Center:"
+        And user fills out 3 "Body" text area with "Content Block Full, Center:"
         And user clicks "Insert Block Content" button 3 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Content Block Test" into content title search box and clicks "Apply"
@@ -108,9 +110,10 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
+        And browser waits
         And user enters "Article Heading4" as 4 body section heading
         And browser waits
-        And user fills out 4 "Body" text area in article with "Content Block Image, Right:"
+        And user fills out 4 "Body" text area with "Content Block Image, Right:"
         And user clicks "Insert Block Content" button 4 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Content Block Test" into content title search box and clicks "Apply"
@@ -139,17 +142,17 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And 2 description reads "Content Block: No Image,Left:"
         And 2 feature card displays the following features in the content block
             | alignment                  | description                                               | linkText                 | link                      |
-            | embedded-entity align-left | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
+            | align-left embedded-entity | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
         And 3 section heading reads "Article Heading3"
         And 3 description reads "Content Block: Full,Center:"
         And 3 feature card displays the following features in the content block
             | alignment                    | description                                               | linkText                 | link                      |
-            | embedded-entity align-center | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
+            | align-center embedded-entity  | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
         And 4 section heading reads "Article Heading4"
         And 4 description reads "Content Block: Image,Right:"
         And 4 feature card displays the following features in the content block
             | alignment                   | description                                               | linkText                 | link                      |
-            | embedded-entity align-right | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
+            |  align-right embedded-entity | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
 
     Scenario: Clean up
         Given user is navigating to "/user/login"

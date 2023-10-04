@@ -84,7 +84,6 @@ Then('the json response matches the modified contents of {string}', (fileName) =
   const currentFeature = Cypress.spec.relative;
   const featurePath = currentFeature.replace('.feature', '');
   const fullPath = featurePath + '/' + fileName;
-  console.log(baseUrlPath)
   cy.readFile(fullPath).then((fileData) => {
     mangleFileData(baseUrlPath, fileData);
     cy.get('@json_response').should((response) => {
@@ -97,7 +96,6 @@ Then('the json response matches the modified contents of {string} and status cod
   const currentFeature = Cypress.spec.relative;
   const featurePath = currentFeature.replace('.feature', '');
   const fullPath = featurePath + '/' + fileName;
-  console.log(baseUrlPath)
   cy.readFile(fullPath).then((fileData) => {
     cy.get('@json_response').should((response) => {
       mangleFileData(baseUrlPath, fileData);

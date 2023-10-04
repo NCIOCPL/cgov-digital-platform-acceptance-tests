@@ -105,18 +105,6 @@ And('the image has name {string}', (imageName) => {
     cy.get('div.centered-element source[media="(max-width: 768px)"]').should('have.attr', 'srcset').and('include', imageName);
 });
 
-And('user enters {string} as intro text', (introTxt) => {
-    cy.window().then(win => {
-        win.Drupal.CKEditor5Instances.forEach(editor => {
-            if (editor.sourceElement.id?.includes('intro-text')) {
-                editor.setData(`<p>${introTxt}</p>`)
-            }
-        })
-    })
-
-})
-
-
 
 And('user clicks the {string} button {int} in the WYSIWYG editor', (infographicButton, position) => {
     cy.get(`button[data-cke-tooltip-text="${infographicButton}"]`).eq(position - 1).click({ force: true });

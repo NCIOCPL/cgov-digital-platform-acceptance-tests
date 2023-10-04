@@ -22,16 +22,6 @@ And('the content item with url {string} does not exist in the list of content', 
     cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).should('not.exist');
 });
 
-And('user enters {string} as intro text', (introTxt) => {
-    cy.window().then(win => {
-        win.Drupal.CKEditor5Instances.forEach(editor => {
-            if (editor.sourceElement.id?.includes('intro-text')) {
-                editor.setData(`<p>${introTxt}</p>`)
-            }
-        })
-    })
-
-})
 
 And('user enters {string} into the {string} text field', (value, textFieldLabel) => {
     cy.get(`[class*='form-item-field-banner-image-0-alt']:contains("${textFieldLabel}")`).find('input.form-text').type(value);

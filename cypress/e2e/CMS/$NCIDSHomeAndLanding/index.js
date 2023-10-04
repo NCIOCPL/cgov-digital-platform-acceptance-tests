@@ -92,9 +92,9 @@ And('user uploads {string} as {int} guide card image', (fileName, index) => {
 })
 
 And('user selects {string} as promo image for {int} feature card', (name, index) => {
-    cy.get(`summary[aria-controls*="edit-field-override-image-promotional"]`).click({ force: true });
+    cy.get(`summary[aria-controls*="edit-field-override-image-promotional"]`).eq(index-1).click();
     cy.wait(500);
-    cy.get('input[name*="override_image_promotional_entity_browser"]').click({ force: true })
+    cy.get('input[name*="override_image_promotional_entity_browser"]').eq(index-1).click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input#edit-name').type(name)
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input[id*="edit-submit-cgov-image-media-browser"]').click()
     cy.wait(1500)
@@ -355,4 +355,8 @@ Then('NCIDS 3 guide card row at position {int} have the following attributes', (
 And('user clicks on Select content button item',()=>{
     cy.get(`input[value="Select content"]`).click()
 })
+
+And('user clicks on {string} button for {string}',(edit,section)=>{
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
+    });
 

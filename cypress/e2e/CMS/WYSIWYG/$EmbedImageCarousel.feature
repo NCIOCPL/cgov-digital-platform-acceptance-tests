@@ -70,7 +70,7 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
             | Meta Description         | Automated Test Article to test Image Carousel - Meta Description  | field_page_description         |
             | Feature Card Description | Automated Test Article to test Image Carousel - Feature Card Desc | field_feature_card_description |
         And user enters "Article Heading1" as 1 body section heading
-        And user fills out 1 "Body" text area in article with "Image Carousel: Full, Center"
+        And user fills out 1 "Body" text area with "Image Carousel: Full, Center"
         And user clicks "Insert Block Content" button 1 in the WYSIWYG editor
         And browser waits
         And user enters "Automated Image Carousel Test" into content title search box and clicks "Apply"
@@ -97,6 +97,7 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
         And browser waits
         And user clicks on "Embed" button to select the block
         And browser waits
+        And user focuses on paragraph header
         And user selects "Published" from "Save as" dropdown
         Then user saves the content page
 

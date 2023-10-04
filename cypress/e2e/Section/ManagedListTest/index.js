@@ -58,7 +58,6 @@ And('list items at positions {string} have {string} as {string}', (indexes, comp
 
             case 'sources':
                 cy.get('.list.managed > ul >li>.list-item-image.image.container a').eq(i).find('img').invoke('attr', 'src').then((fullSrc) => {
-                    console.log(fullSrc)
                     expect(fullSrc).to.include(value);
                 });
                 break;

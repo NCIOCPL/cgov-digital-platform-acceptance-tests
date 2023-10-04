@@ -141,7 +141,7 @@ And('body was translated as {string}', (title) => {
 })
 
 And('Related Resources section was translated as {string}', (dropdownLabel) => {
-    cy.get("strong[data-drupal-selector='edit-field-related-resources-title']").should('include.text', dropdownLabel)
+    cy.get('h4[class*="form-item__label form-item__label--multiple-value-form"]').should('include.text', dropdownLabel)
 })
 
 And('dates were translated as follows', (dataTable) => {

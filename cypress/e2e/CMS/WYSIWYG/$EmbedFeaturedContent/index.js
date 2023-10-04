@@ -7,13 +7,6 @@ const randomStr = Cypress.env('randomStr');
 const date = new Date();
 const currYear = date.getFullYear();
 
-And('user enters {string} as intro text', (introTxt) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introTxt);
-});
-
-And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
-});
 
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
@@ -81,9 +74,6 @@ And('the radio button {string} is selected by default under {string}', (btnType,
     cy.get(`div[id*="edit-attributes-data-align"]`).first().find(`input[id*="edit-attributes-data-align"]`).should('be.checked');
 });
 
-And('user clicks the {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
-    cy.get('span.cke_button__cgov_featured_content_button_icon').eq(position - 1).click({ force: true });
-});
 
 And('user enters {string} into content title search box and clicks {string}', (nameToSearch, applyBtn) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_content_browser').find(`input[id*="edit-title"]`).type(nameToSearch);

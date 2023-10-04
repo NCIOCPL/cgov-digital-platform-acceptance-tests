@@ -26,20 +26,6 @@ const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 
 
-And('user enters {string} as intro text', (introText) => {
-    cy.window().then(win => {
-        win.Drupal.CKEditor5Instances.forEach(editor => {
-            if (editor.sourceElement.id?.includes('intro-text')) {
-                editor.setData(`<p>${introText}</p>`)
-            }
-        })
-    })
-});
-
-// And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
-//     cy.getIframeBody("iframe[title='Rich Text Editor, Body field']").find('p').type(value);
-// });
-
 let imageSrc;
 And('user selects {int} Lead Image from the list of images', (num) => {
     cy.get('summary:contains("Lead Image")').click();

@@ -34,16 +34,6 @@ And('{string} button is displayed', (optionLabel) => {
     cy.get(`input[value='${optionLabel}']`).should('be.visible')
 })
 
-And('user enters {string} as intro text', (introTxt) => {
-    cy.window().then(win => {
-        win.Drupal.CKEditor5Instances.forEach(editor => {
-            if (editor.sourceElement.id?.includes('intro-text')) {
-                editor.setData(`<p>${introTxt}</p>`)
-            }
-        })
-    })
-
-})
 
 And('user enters {string} as {int} body section heading', (value, position) => {
     cy.window().then(win => {

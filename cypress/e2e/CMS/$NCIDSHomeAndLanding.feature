@@ -73,7 +73,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Add NCIDS Link Button Internal" from "Primary Call to Action Link" area
         And browser waits
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-        And user clicks on "Select content" button item
+        And user clicks on Select content button item
         And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
@@ -258,6 +258,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select content" button to select item
         And browser waits
         And user adds another "internal" link for 1 guide card
+         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
@@ -339,6 +340,7 @@ Feature: Home And Landing Page Test Creation of Content
         Then the page title is "Translations of NCIDS Automated Test Home and Landing page"
         When user clicks on "Add" button to add translation
         Then page title is "Crear traducción Español de NCIDS Automated Test Home and Landing page"
+        And user clicks on "Editar" button for "NCIDS Feature Card Multimedia"
         And user fills out the following fields
             | fieldLabel           | value    | field_name                                                                                                 |
             | Tagline              | _Spanish | field_landing_contents[0][subform][field_tagline][0][value]                                                |

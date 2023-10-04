@@ -56,7 +56,7 @@ Feature: As a cms user I want to be able to embed External Link Block in Article
             | Meta Description         | Automated Test Article to test External Link Block - Meta Description  | field_page_description         |
             | Feature Card Description | Automated Test Article to test External Link Block - Feature Card Desc | field_feature_card_description |
         And user enters "Article Heading1" as 1 body section heading
-        And user fills out 1 "Body" text area in article with "External Link Block Image,None:"
+        And user fills out 1 "Body" text area with "External Link Block Image,None:"
         And user clicks "Insert Block Content" button 1 in the WYSIWYG editor
         And browser waits
         And user enters "Automated External Link Block Test" into content title search box and clicks "Apply"
@@ -80,8 +80,9 @@ Feature: As a cms user I want to be able to embed External Link Block in Article
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
+        And browser waits
         And user enters "Article Heading2" as 2 body section heading
-        And user fills out 2 "Body" text area in article with "External Link Block No Image,Left:"
+        And user fills out 2 "Body" text area with "External Link Block No Image,Left:"
         And user clicks "Insert Block Content" button 2 in the WYSIWYG editor
         And browser waits
         And user enters "Automated External Link Block Test" into content title search box and clicks "Apply"
@@ -95,9 +96,9 @@ Feature: As a cms user I want to be able to embed External Link Block in Article
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
-        And user enters "Article Heading3" as 3 body section heading
         And browser waits
-        And user fills out 3 "Body" text area in article with "External Link Block: No Image,Right:"
+        And user enters "Article Heading3" as 3 body section heading
+        And user fills out 3 "Body" text area with "External Link Block: No Image,Right:"
         And user clicks "Insert Block Content" button 3 in the WYSIWYG editor
         And browser waits
         And user enters "Automated External Link Block Test" into content title search box and clicks "Apply"
@@ -112,9 +113,9 @@ Feature: As a cms user I want to be able to embed External Link Block in Article
         And user clicks on "Embed" button to select the block
         And browser waits
         And user clicks on "Add Body Section" to add a body section
-        And user enters "Article Heading4" as 4 body section heading
         And browser waits
-        And user fills out 4 "Body" text area in article with "External Link Block: Full,Center:"
+        And user enters "Article Heading4" as 4 body section heading
+        And user fills out 4 "Body" text area with "External Link Block: Full,Center:"
         And user clicks "Insert Block Content" button 4 in the WYSIWYG editor
         And browser waits
         And user enters "Automated External Link Block Test" into content title search box and clicks "Apply"

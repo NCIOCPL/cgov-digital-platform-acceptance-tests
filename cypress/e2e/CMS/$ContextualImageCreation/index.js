@@ -25,7 +25,6 @@ And('user enters {string} as {int} body section heading', (value, position) => {
         win.Drupal.CKEditor5Instances.forEach(editor => {
            
             if (editor.sourceElement.id?.includes(`${position-1}-subform-field-body-section-heading`)) {
-                console.log(editor.sourceElement.id)
                 editor.setData(`<p>${value}</p>`)
             }
         })

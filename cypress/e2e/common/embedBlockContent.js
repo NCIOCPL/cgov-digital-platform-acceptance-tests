@@ -19,11 +19,11 @@ And('{string} dropdown displays {string}', (labelText, displayOption) => {
 });
 
 And('user clicks on Source button in the WYSIWYG editor', () => {
-    cy.get("span.cke_button_label.cke_button__source_label").click({ force: true });
+    cy.get("button[data-cke-tooltip-text='Source']").click({ force: true });
 });
 
 And('user enters {string} into source text field', (value) => {
-    cy.get('div#cke_edit-body-0-value').type(value);
+    cy.get('div.ck-source-editing-area').type(value);
 });
 
 
@@ -91,10 +91,10 @@ And('user enters {string} as {int} body section heading', (value, position) => {
 })
 
 And('user clicks {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
-    cy.get('span.cke_button_icon.cke_button__insert_block_content_icon').eq(position - 1).click({ force: true });
+    cy.get(`button[data-cke-tooltip-text*="${featuredContentButton}"]`).eq(position - 1).click({ force: true });
 });
 
-And('user fills out {int} {string} text area in article with {string}', (position, sectionName, value) => {
+And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
     cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
 });
 
@@ -252,4 +252,19 @@ And('video carousel displays the following features', (dataTable) => {
         cy.get(`div.row.yt-carousel-controls button[value='${nextButton}']`).should('be.visible');
         cy.get('div.columns').find(`h4:contains("${videoCarouselH4Title}")`).should('be.visible');
     }
+});
+
+And('user enters {string} as intro text', (introTxt) => {
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement.id?.includes('intro-text')) {
+                editor.setData(`<p>${introTxt}</p>`)
+            }
+        })
+    })
+
+})
+
+And('user focuses on paragraph header',()=>{
+    cy.get('span.paragraph-type-label').first().click();
 });
