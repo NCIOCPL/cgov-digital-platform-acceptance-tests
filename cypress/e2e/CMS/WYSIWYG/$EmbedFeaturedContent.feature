@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to embed Featured contents in Article content type
 
     Scenario: User is adding new test Article content type for embedding it as a Featured Content
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -29,7 +29,7 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
 
 
     Scenario: User is adding new test Blog post content type for embedding it as a Featured Content
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -58,7 +58,7 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
 
 
     Scenario: User is adding new Article content type and embedding featured contents created above
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -174,7 +174,7 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
         And 4 feature card does not display any image
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

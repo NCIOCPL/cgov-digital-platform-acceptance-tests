@@ -1,6 +1,6 @@
 Feature: As a content editor I would like to be able to create contextual image and embed it in my content
     Scenario: Create a new contextual image
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -25,7 +25,7 @@ Feature: As a content editor I would like to be able to create contextual image 
         Then user saves the content page
 
     Scenario: Create test pages to test image overrides
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -162,7 +162,7 @@ Feature: As a content editor I would like to be able to create contextual image 
             | small  | right     |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

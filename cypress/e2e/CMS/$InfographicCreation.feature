@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create an Infographic media content type to promote Infographic media content type
 
     Scenario: Create a new English Infographic
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -59,7 +59,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
 
     Scenario: Create a Spanish Infographic translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -111,7 +111,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
 
     Scenario: Create English test pages to embed Infographic and embed/add Infographic to test pages
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -289,7 +289,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
 
     Scenario: Translate test pages to Spanish to embed Infographic and embed/add Infographic to test pages
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -355,7 +355,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

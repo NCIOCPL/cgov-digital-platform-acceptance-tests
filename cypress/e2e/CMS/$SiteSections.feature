@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create Site Section to promote Site Sections
 
     Scenario: User is adding new article to test site section and adding it as a landing page of new site section
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -59,7 +59,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And 1 level up section is "Coping with Cancer"
 
     Scenario: Making site section a nav root
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -83,7 +83,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And page title is "Article to test Site Section"
 
     Scenario: Hiding site section in section anv
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -106,7 +106,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         Then left navigation does not display "Test Site Section"
 
     Scenario: Nav label override name
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -139,7 +139,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And 1 level up section is "Coping with Cancer"
 
     Scenario: Drag and drop to reorder children
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -162,7 +162,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And "Nav Label" appears in position 2 in the side menu tree
 
     Scenario: Verify pretty url change of a site section and removal of nav label
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -197,7 +197,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And page title is "Article to test Site Section"
 
     Scenario: Changing a site section of the landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -225,7 +225,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And left navigation label "Test Site Section" has selected site section url plus "purl"
 
     Scenario: Removing a landing page from site section will cause the site section to dissapear from
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -247,7 +247,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         Then left navigation does not display "Test Site Section"
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

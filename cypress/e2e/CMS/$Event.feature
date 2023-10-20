@@ -2,7 +2,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
 
 
     Scenario: User is adding new event content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -59,7 +59,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
             | description | Automated Test Event Meta Description |
 
     Scenario: Verify the "all day event" checkbox, edit and republish
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -82,7 +82,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
 
 
     Scenario: Edit and republish event content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -136,7 +136,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
             | description | Automated Test Event Meta Description Edited |
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -166,7 +166,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And feature card description reads "Automated Test Event - Feature Card Desc Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -183,7 +183,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

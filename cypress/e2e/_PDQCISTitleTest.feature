@@ -1,6 +1,6 @@
 Feature: as a content editor, I want to ensure that I can set card title using CTHP Card Title field
     Scenario: Verify CTHP Card Title field exists
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -14,7 +14,7 @@ Feature: as a content editor, I want to ensure that I can set card title using C
         And user saves the content page
 
     Scenario: As a user I want to add a PDQ guide card and see CTHP Card Title
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -57,7 +57,7 @@ Feature: as a content editor, I want to ensure that I can set card title using C
         Then browser title is "Acupuncture (PDQ®) - NCI"
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

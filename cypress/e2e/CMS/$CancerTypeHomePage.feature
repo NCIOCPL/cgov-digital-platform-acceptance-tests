@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create Cancer Type Homepage content type to promote Cancer Type Homepage
 
     Scenario: User is adding new Cancer Type Homepage content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -35,7 +35,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding guide card
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -95,7 +95,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits for 2000
 
     Scenario: Adding Internal Feature card
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -123,7 +123,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits for 2000
 
     Scenario: Adding External feature card
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -148,7 +148,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding video card
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -181,7 +181,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding research card
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -210,7 +210,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding block and raw html cards
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -279,7 +279,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
 
     Scenario: Edit and republish Cancer Type Homepage content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -338,7 +338,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then the video is matching the earlier selected video
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -368,7 +368,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And feature card description reads "Automated Test Cancer Type Homepage - Feature Card Desc"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -385,7 +385,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Add a translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -474,7 +474,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
 
     Scenario: Edit and republish Spanish CTHP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -501,7 +501,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | description | Automated Test CTHP Meta Description Edited Spanish |
 
     Scenario: User is adding new Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -543,7 +543,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding guide card Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -602,7 +602,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding Internal Feature card Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -628,7 +628,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding External feature card Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -653,7 +653,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding video card Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -686,7 +686,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding research card Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -715,7 +715,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
 
     Scenario: Adding block and raw html cards Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -749,7 +749,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         When user saves the content page
 
    Scenario: Adding Patient/HP Toggle to Cancer Type Homepage Patient content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -804,7 +804,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
 
     Scenario: Edit and republish Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -868,7 +868,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the "Go to Health Professional Version" link is displayed with href "/about-cancer/understanding/cancer-type-homepage-hp-edited"
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -898,7 +898,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And feature card description reads "Automated Test Cancer Type Homepage HP - Feature Card Desc"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -915,7 +915,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Add a translation to Cancer Type Homepage HP content
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -1005,7 +1005,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
 
     Scenario: Edit and republish Spanish CTHP HP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -1032,7 +1032,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | description | Automated Cancer Type Homepage HP Meta Description Edited Spanish |
 
    Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

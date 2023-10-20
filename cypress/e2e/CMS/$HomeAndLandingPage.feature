@@ -1,7 +1,7 @@
 Feature: Home And Landing Page Test Creation of Content
 
     Scenario: User is adding new Home and Landing page content type and adding a Primary Feature Card Row
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -64,7 +64,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: Add Guide Card Row
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -91,7 +91,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: Add Secondary Feature Card Row
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -117,7 +117,7 @@ Feature: Home And Landing Page Test Creation of Content
         When user saves the content page
 
     Scenario: Add Multimedia Row
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -150,7 +150,7 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits for 3000
 
     Scenario: Add List
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -191,7 +191,7 @@ Feature: Home And Landing Page Test Creation of Content
         When user saves the content page
 
     Scenario: Add One and two column containers
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -259,7 +259,7 @@ Feature: Home And Landing Page Test Creation of Content
         When user saves the content page
 
     Scenario: Add Borderless Full-Width Card
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -292,7 +292,7 @@ Feature: Home And Landing Page Test Creation of Content
         When user saves the content page
 
     Scenario: Add Title First Feature Card Row
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -382,7 +382,7 @@ Feature: Home And Landing Page Test Creation of Content
             | description | Automated Test Home and Landing page Meta Description |
 
     Scenario: User is adding new Mini Landing page content type with Content Block
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -415,7 +415,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish Home and Landing Page content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -490,7 +490,7 @@ Feature: Home And Landing Page Test Creation of Content
             | Test Resource Mini Landing Page for Home Landing - Card Title | {TEST_SITE_SECTION}/test-resource-mini-landing-page-for-home-landing | Test Resource Mini Landing Page for Home Landing - Feature Card Desc |
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -520,7 +520,7 @@ Feature: Home And Landing Page Test Creation of Content
         And feature card description reads "Automated Test Home and Landing page - Feature Card Desc Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -538,7 +538,7 @@ Feature: Home And Landing Page Test Creation of Content
 
     # -- Translation of Home and Landing Page --
     Scenario: Add a translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -635,7 +635,7 @@ Feature: Home And Landing Page Test Creation of Content
             | description | Automated Test Home and Landing Page Meta Description Edited |
 
     Scenario: Edit and republish Spanish Home And Landing Page content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -666,7 +666,7 @@ Feature: Home And Landing Page Test Creation of Content
         And "This is to verify taglineSpanish" text is displayed at "desktop" breakpoint
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

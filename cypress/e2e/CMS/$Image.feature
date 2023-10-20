@@ -1,7 +1,7 @@
 Feature: User creating an image
 
     Scenario: Create test pages to test image overrides
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -89,7 +89,7 @@ Feature: User creating an image
         Then the "feature_card_image" appear as override
 
   Scenario: Translate an image
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -108,7 +108,7 @@ Feature: User creating an image
         Then user saves the content page
 
     Scenario:Translate test pages
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -154,7 +154,7 @@ Feature: User creating an image
 
 
 Scenario: Clean up
-    Given user is navigating to "/user/login"
+    Given user is navigating to "/user/login?show_login_fields=true"
     When user enters credentials
     And user clicks "Log in" button
     Then user is logged in and the user name "admin" is displayed in the toolbar

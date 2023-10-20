@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create Mini Landing page content type to promote Mini Landing Page
 
     Scenario: User is adding new Mini Landing page content type with Content Block
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -33,7 +33,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         When user saves the content page
 
     Scenario: Add Two Item Feature Card Row section
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -57,7 +57,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         When user saves the content page
 
     Scenario: Add list section
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -93,7 +93,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         When user saves the content page
 
     Scenario: Add Borderless Full-Width Card and raw html
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -120,7 +120,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         When user saves the content page
 
     Scenario: Add Dynamic List section
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -172,7 +172,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | description | Automated Test Mini Landing Page Meta Description |
 
     Scenario: Edit and republish Mini Landing Page content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -205,7 +205,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | description | Automated Test Mini Landing Page Meta Description Edited |
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -235,7 +235,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And feature card description reads "Automated Test Mini Landing Page - Feature Card Desc Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -253,7 +253,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     # Translation of Mini Landing
     Scenario: Add a translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -329,7 +329,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | description | Automated Test Mini Landing Page Meta Description Edited |
 
     Scenario: Edit and republish Spanish Mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -357,7 +357,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | description | Automated Test Mini Landing Meta Description Edited Spanish |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

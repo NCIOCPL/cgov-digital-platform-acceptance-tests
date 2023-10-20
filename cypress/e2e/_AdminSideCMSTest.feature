@@ -1,7 +1,7 @@
 Feature: As an admin, I want to be able to login to CMS and use main menu bar for any configurations
 
     Background: Login
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
 

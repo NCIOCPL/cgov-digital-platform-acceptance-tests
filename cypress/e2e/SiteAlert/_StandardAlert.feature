@@ -1,7 +1,7 @@
 Feature: As a site admin I want to configure site alert
 
     Scenario: siteadmin is creating and placing site alert
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         When user is logged in and the user name "admin" is displayed in the toolbar
@@ -37,9 +37,13 @@ Feature: As a site admin I want to configure site alert
             | </div>                                                                             |
             | </section>                                                                         |
         And user hits "Save" button
+        And browser waits
         When user clicks "Block layout" tab
+        And browser waits
         And user places the "Site Alert Area" block
+        And browser waits
         And user filters by "NCIDS Alert"
+        And browser waits
         And user unchecks show title and clicks save
 
 
@@ -69,21 +73,21 @@ Feature: As a site admin I want to configure site alert
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                     |
-            | prop4     | D=pev1                                    |
-            | prop67    | D=pageName                                |
+            | parameter | value                          |
+            | prop4     | D=pev1                         |
+            | prop67    | D=pageName                     |
             | evar52    | Standard Alert\|Expand\|Expand |
-            | evar68    | PreHeader                                 |
-            | prop8     | english                                   |
-            | evar2     | D=c8                                      |
-            | prop52    | D=v52                                     |
-            | prop68    | D=v68                                     |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                 |
-            | pageName  | {CANONICAL_HOST}/                         |
-            | event83   |                                           |
-            | channel   | NCI Homepage                              |
-            | pev2      | PreHeader:LinkClick                       |
-            | linkType  | lnk_o                                     |
+            | evar68    | PreHeader                      |
+            | prop8     | english                        |
+            | evar2     | D=c8                           |
+            | prop52    | D=v52                          |
+            | prop68    | D=v68                          |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ |
+            | pageName  | {CANONICAL_HOST}/              |
+            | event83   |                                |
+            | channel   | NCI Homepage                   |
+            | pev2      | PreHeader:LinkClick            |
+            | linkType  | lnk_o                          |
 
     Scenario: Analytics for site alert collapse click
         Given user is navigating to "/"
@@ -93,21 +97,21 @@ Feature: As a site admin I want to configure site alert
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                         |
-            | prop4     | D=pev1                                        |
-            | prop67    | D=pageName                                    |
+            | parameter | value                              |
+            | prop4     | D=pev1                             |
+            | prop67    | D=pageName                         |
             | evar52    | Standard Alert\|Minimize\|Minimize |
-            | evar68    | PreHeader                                     |
-            | prop8     | english                                       |
-            | evar2     | D=c8                                          |
-            | prop52    | D=v52                                         |
-            | prop68    | D=v68                                         |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                     |
-            | pageName  | {CANONICAL_HOST}/                             |
-            | event83   |                                               |
-            | channel   | NCI Homepage                                  |
-            | pev2      | PreHeader:LinkClick                           |
-            | linkType  | lnk_o                                         |
+            | evar68    | PreHeader                          |
+            | prop8     | english                            |
+            | evar2     | D=c8                               |
+            | prop52    | D=v52                              |
+            | prop68    | D=v68                              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/     |
+            | pageName  | {CANONICAL_HOST}/                  |
+            | event83   |                                    |
+            | channel   | NCI Homepage                       |
+            | pev2      | PreHeader:LinkClick                |
+            | linkType  | lnk_o                              |
 
     Scenario: Analytics for site alert link click
         Given user is navigating to "/"
@@ -116,22 +120,22 @@ Feature: As a site admin I want to configure site alert
         And user clicks on "What people with cancer should know" alert link
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                      |
-            | prop4     | D=pev1                                                                     |
-            | prop67    | D=pageName                                                                 |
+            | parameter | value                                                           |
+            | prop4     | D=pev1                                                          |
+            | prop67    | D=pageName                                                      |
             | evar52    | Standard Alert\|Link Click\|What people with cancer should know |
-            | evar68    | PreHeader                                                                  |
-            | prop8     | english                                                                    |
-            | evar2     | D=c8                                                                       |
-            | prop52    | D=v52                                                                      |
-            | prop68    | D=v68                                                                      |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                                                  |
-            | pageName  | {CANONICAL_HOST}/                                                          |
-            | event83   |                                                                            |
-            | channel   | NCI Homepage                                                               |
-            | pev2      | PreHeader:LinkClick                                                        |
-            | linkType  | lnk_o                                                                      |
-            | link      | What people with cancer should know                                        |
+            | evar68    | PreHeader                                                       |
+            | prop8     | english                                                         |
+            | evar2     | D=c8                                                            |
+            | prop52    | D=v52                                                           |
+            | prop68    | D=v68                                                           |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                                  |
+            | pageName  | {CANONICAL_HOST}/                                               |
+            | event83   |                                                                 |
+            | channel   | NCI Homepage                                                    |
+            | pev2      | PreHeader:LinkClick                                             |
+            | linkType  | lnk_o                                                           |
+            | link      | What people with cancer should know                             |
 
     Scenario: Analytics for site alert dismiss click
         Given user is navigating to "/"
@@ -139,26 +143,26 @@ Feature: As a site admin I want to configure site alert
         When user dismisses alert
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                       |
-            | prop4     | D=pev1                                      |
-            | prop67    | D=pageName                                  |
+            | parameter | value                            |
+            | prop4     | D=pev1                           |
+            | prop67    | D=pageName                       |
             | evar52    | Standard Alert\|Dismiss\|Dismiss |
-            | evar68    | PreHeader                                   |
-            | prop8     | english                                     |
-            | evar2     | D=c8                                        |
-            | prop52    | D=v52                                       |
-            | prop68    | D=v68                                       |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/                   |
-            | pageName  | {CANONICAL_HOST}/                           |
-            | event83   |                                             |
-            | channel   | NCI Homepage                                |
-            | pev2      | PreHeader:LinkClick                         |
-            | linkType  | lnk_o                                       |
+            | evar68    | PreHeader                        |
+            | prop8     | english                          |
+            | evar2     | D=c8                             |
+            | prop52    | D=v52                            |
+            | prop68    | D=v68                            |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/   |
+            | pageName  | {CANONICAL_HOST}/                |
+            | event83   |                                  |
+            | channel   | NCI Homepage                     |
+            | pev2      | PreHeader:LinkClick              |
+            | linkType  | lnk_o                            |
         When user is navigating to "/about-cancer/coping/feelings"
         Then standard site alert is not displayed
 
     Scenario: login to remove alert (so after hook doesn't have to)
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         When user is logged in and the user name "admin" is displayed in the toolbar

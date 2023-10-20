@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to embed Video Carousel in Article content type
 
     Scenario: User is creating new Video Carousel for verifying embedding of Video Carousel in the WYSIWYG
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -21,7 +21,7 @@ Feature: As a cms user I want to be able to embed Video Carousel in Article cont
 
 
     Scenario: Verify the newly created Video Carousel
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -32,7 +32,7 @@ Feature: As a cms user I want to be able to embed Video Carousel in Article cont
         And the content item with title "Automated Video Carousel Test" exists in the list of content
 
     Scenario: Create an English Article content type and embed the Video Carousel created above
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -93,7 +93,7 @@ Feature: As a cms user I want to be able to embed Video Carousel in Article cont
 
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

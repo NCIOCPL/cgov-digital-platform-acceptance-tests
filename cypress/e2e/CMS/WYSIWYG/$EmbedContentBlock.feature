@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to embed Content Block in Article content type
 
     Scenario: User is creating new Content Block for verifying embedding of Content Block in the WYSIWYG
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -22,7 +22,7 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
 
 
     Scenario: Verify the newly created Content Block
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -34,7 +34,7 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
 
 
     Scenario: Create an English Article content type and embed the Content Block created above
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -152,7 +152,7 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
             | embedded-entity align-right | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

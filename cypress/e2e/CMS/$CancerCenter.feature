@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create cancer center content type to promote cancer centers
 
     Scenario: Verify all the fields on the cancer center content creation page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -30,7 +30,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
 
 
     Scenario: User is adding new cancer center content
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -74,7 +74,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         When user saves the content page
 
     Scenario: Create a mini landing page and add cancer center into a list
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -127,7 +127,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
             | description | Test Cancer Center Meta Description |
 
     Scenario: Verify Related resources functionality
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -169,7 +169,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish cancer center
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -232,7 +232,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
             | Media Link Override Title         | {TEST_SITE_SECTION}/test-file |
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -261,7 +261,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And feature card description reads "Test Feature Card Description Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -279,7 +279,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
 
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -293,7 +293,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And the content item with url "cancer-center-edited" does not exist in the list of content
 
     Scenario: Clean up mini landing
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

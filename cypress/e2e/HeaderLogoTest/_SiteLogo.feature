@@ -1,7 +1,7 @@
 Feature: Adding a custom site logo
 
     Scenario: user creates a custom header block
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -25,7 +25,7 @@ Feature: Adding a custom site logo
         Then the confirmation text "The block configuration has been saved." appears on a screen
 
     Scenario: User is configuring default header to not show up on a test site section
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -49,7 +49,7 @@ Feature: Adding a custom site logo
         Then mobile site logo is displayed with image src "/files/ncids_header/logos/mobile.svg"
 
     Scenario: User is adding search page to a block
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -74,7 +74,7 @@ Feature: Adding a custom site logo
         And search box is displayed
 
     Scenario: Negative: user has to provide custom logos otherwise error will be shown
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -96,7 +96,7 @@ Feature: Adding a custom site logo
         Then error "If you use a custom logo you must supply both logos." is displayed
 
     Scenario: Clean Up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

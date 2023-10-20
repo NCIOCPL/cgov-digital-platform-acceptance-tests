@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create Cancer Research List Page content type to promote Cancer Research List Page
 
     Scenario: User is adding new Cancer Research List Page content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -79,7 +79,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And list item number 3 has pdf icon displayed
 
     Scenario: Edit and republish Cancer Research List Page content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -120,7 +120,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
             | description | Automated Test Cancer Research List Page Meta Description Edited |
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -150,7 +150,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And feature card description reads "Automated Test Cancer Research List Page - Feature Card Desc Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -168,7 +168,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
 
     # Translation of Cancer Research Page List
     Scenario: Add a translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -217,7 +217,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
             | description | Automated Test Cancer Research List Page Meta Description Edited |
 
     Scenario: Edit and republish Spanish CRLP content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -245,7 +245,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
             | description | Automated Test CRLP Meta Description Edited Spanish |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

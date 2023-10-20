@@ -1,7 +1,7 @@
 Feature: Adding any necessary test resources
 
 Scenario: create a new image
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -40,7 +40,7 @@ Scenario: create a new image
         Then user saves the content page
 
     Scenario: Create article and file to test related resources functionality
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -78,7 +78,7 @@ Scenario: create a new image
         Then user saves the content page
 
     Scenario: User is creating new Mini Landing page content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

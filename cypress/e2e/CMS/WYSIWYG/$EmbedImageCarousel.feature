@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to embed Image Carousel in Article content type
 
     Scenario: User is creating new Image Carousel for verifying embedding of Image Carousel in the WYSIWYG
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -39,7 +39,7 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
 
 
     Scenario: Verify the newly created Image Carousel
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -51,7 +51,7 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
 
 
     Scenario: Create an English Article content type and embed the Image Carousel created above
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -112,7 +112,7 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
             | embedded-entity align-center | Automated Image Carousel Title Test | Test Caption | Test Credit |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

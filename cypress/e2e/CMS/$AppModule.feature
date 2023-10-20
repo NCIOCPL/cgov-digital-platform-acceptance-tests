@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create App Module content type to deploy custom apps
 
     Scenario: User is adding new App Module content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -36,7 +36,7 @@ Feature: As a cms user I want to be able to create App Module content type to de
 
 
     Scenario: Edit and republish App Module content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -66,7 +66,7 @@ Feature: As a cms user I want to be able to create App Module content type to de
             | description | Automated App Module Meta Description. |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
