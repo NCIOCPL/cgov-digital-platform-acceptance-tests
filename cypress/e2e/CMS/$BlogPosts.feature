@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create Blog Post content type to promote Blog Post.
 
     Scenario: User is adding new blog post content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -59,7 +59,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
             | description | Automated Blog Post Meta Description |
 
     Scenario: Verify Related resources functionality
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -99,7 +99,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         When user saves the content page
 
     Scenario: Verify Recommended Content functionality
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -127,7 +127,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         When user saves the content page
 
     Scenario: Edit and republish blog post content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -178,7 +178,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
             | Google Link                       | https://www.google.com/     |
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -208,7 +208,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And feature card description reads "Automated Test Blog Post - Feature Card Desc Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -226,7 +226,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     #---- Translation of Blog Post -----#
     Scenario: Add a translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -320,7 +320,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
             | Google Link                       | https://www.google.com/     |
 
     Scenario: Edit and republish Spanish blog post content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -348,7 +348,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
             | description | Automated Test Blog Post Meta Description Edited Spanish |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

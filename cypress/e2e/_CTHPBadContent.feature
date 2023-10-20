@@ -1,6 +1,6 @@
 Feature: as a content editor, I want to ensure that unpublished content does not display on front end
     Scenario: Bad CTHP content- guide card with broken links
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

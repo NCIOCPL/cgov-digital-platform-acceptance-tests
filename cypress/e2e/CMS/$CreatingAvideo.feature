@@ -1,7 +1,7 @@
 Feature: User creating a video
 
     Scenario: Create a new video
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -24,7 +24,7 @@ Feature: User creating a video
         Then user saves the content page
 
     Scenario: Translate newly created video
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -49,7 +49,7 @@ Feature: User creating a video
         Then user saves the content page
 
     Scenario: Create test pages to test video in English
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -80,7 +80,7 @@ Feature: User creating a video
         Then the "Test Video" titles video is displayed
 
     Scenario: Translate test page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -104,7 +104,7 @@ Feature: User creating a video
         Then the "Test Video_Spanish" titles video is displayed
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

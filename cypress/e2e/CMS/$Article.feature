@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create Article content type to promote Article
 
     Scenario: User is adding new article content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -73,7 +73,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And citation number 3 titled "Plain Citation" has no link
 
     Scenario: Verify Related resources functionality
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -115,7 +115,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish article content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -182,7 +182,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | Media Link Override Title         | {TEST_SITE_SECTION}/test-file |
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -212,7 +212,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And feature card description reads "Automated Test Article - Feature Card Desc Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -229,7 +229,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Add a translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -287,7 +287,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And date published was translated as "Actualización"
 
     Scenario: Edit and republish Spansih article content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -315,7 +315,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | description | Automated Test Article Meta Description Edited Spanish |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

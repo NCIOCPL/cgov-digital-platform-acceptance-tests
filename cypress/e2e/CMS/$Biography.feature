@@ -4,7 +4,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
 
 
     Scenario: User is adding new biography content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -95,7 +95,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
             | Scientific Publications | https://www.ncbi.nlm.nih.gov/          |
 
     Scenario: Edit and republish biography content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -153,7 +153,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And individuals office is at "NCI Frederick Campus | Building 31, Room 7492"
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -182,7 +182,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And feature card description reads "Automated Test Biography - Feature Card Desc Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -199,7 +199,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

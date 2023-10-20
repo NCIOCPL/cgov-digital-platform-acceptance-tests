@@ -1,7 +1,7 @@
 Feature: As a content owner I want to be able to upload different file types to link to from any pages
 
     Scenario: Creating new media File items
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -121,7 +121,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         Then user saves the content page
 
     Scenario: Translate newly created files
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -241,7 +241,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         Then user saves the content page
 
     Scenario: Creating Article and List to test files
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -340,7 +340,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         Then user saves the content page
 
     Scenario: Create a managed list to hold files
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -489,7 +489,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And each file has a size class
 
     Scenario: Translate test pages
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -560,7 +560,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And each file has a size class
 
     Scenario: Clean up related resources and mini landing page test content
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

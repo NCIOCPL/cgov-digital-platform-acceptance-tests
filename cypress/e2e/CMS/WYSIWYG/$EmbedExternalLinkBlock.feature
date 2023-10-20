@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to embed External Link Block in Article content type
 
     Scenario: User is creating new External Link Block for verifying embedding of External Link Block in the WYSIWYG
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -26,7 +26,7 @@ Feature: As a cms user I want to be able to embed External Link Block in Article
 
 
     Scenario: Verify the newly created External Link Block
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -37,7 +37,7 @@ Feature: As a cms user I want to be able to embed External Link Block in Article
         And the content item with title "Automated External Link Block Test" exists in the list of content
 
     Scenario: Create an English Article content type and embed the External Link Block created above
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -161,7 +161,7 @@ Feature: As a cms user I want to be able to embed External Link Block in Article
         And the promo image in 4 feature card is matching the earlier selected promo image in the External Link Block used for embeddding
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

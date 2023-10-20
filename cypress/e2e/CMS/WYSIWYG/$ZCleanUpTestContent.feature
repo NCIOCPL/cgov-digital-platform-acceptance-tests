@@ -1,7 +1,7 @@
 Feature: delete all content created for testing purposes, that is shared across features
 
        Scenario: Clean up related resources and mini landing page test content
-              Given user is navigating to "/user/login"
+              Given user is navigating to "/user/login?show_login_fields=true"
               When user enters credentials
               And user clicks "Log in" button
               Then user is logged in and the user name "admin" is displayed in the toolbar

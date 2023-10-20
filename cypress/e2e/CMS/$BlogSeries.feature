@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create Blog Series content type to promote Blog Series and Blog Topic.
 
     Scenario: User is adding new Blog Series content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -44,7 +44,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | description | Automated Blog Series Meta Description |
 
     Scenario: User is adding new Blog Post content type without any image so it can be added to Blog Series
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -74,7 +74,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then user saves the content page
 
     Scenario: User is adding Blog Topic to the already created Blog Series
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -94,7 +94,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then user saves the content page
 
     Scenario: Edit and republish Blog Post content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -110,7 +110,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Edit and republish Blog Series content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -155,7 +155,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects "Quick Publish" from workflow actions
 
     Scenario: User is adding new Blog Post content type with images so it can be added to Blog Series
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -229,7 +229,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Test Blog Topic | {TEST_SITE_SECTION}/blog-series-edited-{RANDOM}?topic=test-blog-topic-{RANDOM} |
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -260,7 +260,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And feature card description reads "Automated Test Blog Post - Feature Card Desc"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -277,7 +277,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects "Quick Publish" from workflow actions
 
     Scenario: Add a translation for Blog Series
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -372,7 +372,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And description reads "This is all about Blog Series."
 
     Scenario: User is adding new Spanish Blog Post content type without any image so it can be added to Spanish Blog Series
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -402,7 +402,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects "Quick Publish" from workflow actions
 
     Scenario: User is adding Spanish Blog Topic to the already created Spanish Blog Series
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -426,7 +426,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then user saves the content page
 
     Scenario: Edit and republish Spanish Blog Post content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -466,7 +466,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Test Blog Topic Spanish | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}?topic=test-blog-topic-{RANDOM} |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

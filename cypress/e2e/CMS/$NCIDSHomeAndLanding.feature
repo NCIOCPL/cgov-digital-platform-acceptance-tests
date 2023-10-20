@@ -1,7 +1,7 @@
 Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Creating an image to use as promo
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -37,7 +37,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: User is adding new Home and Landing page content type and adding a Hero
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -86,7 +86,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: Add 2 Guide Card Row
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -132,7 +132,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: Add NCIDS 3 Feature Card Row
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -174,7 +174,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: Add NCIDS Promo Block External
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -196,7 +196,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: Add NCIDS Promo Block Internal
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -233,7 +233,7 @@ Feature: Home And Landing Page Test Creation of Content
         Then user saves the content page
 
     Scenario: Add 3 Guide Card Row
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -326,7 +326,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: Add a translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -375,7 +375,7 @@ Feature: Home And Landing Page Test Creation of Content
 
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

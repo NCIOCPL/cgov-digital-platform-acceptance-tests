@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to embed Block Contents in Article content type
 
     Scenario: User is creating new Raw HTML Block for verifying embedding of Raw HTML Block in the WYSIWYG
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -21,7 +21,7 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
 
 
     Scenario: Verify the newly created Raw HTML Block
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -33,7 +33,7 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
 
 
     Scenario: Create an English Article content type and embed the Raw HTML Block created above
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -153,7 +153,7 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
             | embedded-entity align-center | This is to test Raw Html Block in the WYSIWYG |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar

@@ -1,7 +1,7 @@
 Feature: As a cms user I want to be able to create Press Release content type to promote Press Release
 
     Scenario: User is adding new press release content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -55,7 +55,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
 
 
     Scenario: Edit and republish press release content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -111,7 +111,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And the promotional image for press release is matching the earlier selected image
 
     Scenario: Add a featured item to mini landing page
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -141,7 +141,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And feature card description reads "Automated Test Press Release - Feature Card Desc Edited"
 
     Scenario: Remove featured item
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -160,7 +160,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
 
     # translation of press release
     Scenario: Add a translation
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -208,7 +208,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
 
 
     Scenario: Edit and republish Spanish press release content type
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
@@ -236,7 +236,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
             | description | Automated Test Press Release Meta Description Edited Spanish |
 
     Scenario: Clean up
-        Given user is navigating to "/user/login"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
