@@ -2,6 +2,7 @@
 import { Given, And, Then, When } from 'cypress-cucumber-preprocessor/steps';
 import { getBaseDirectory } from '../../../utils';
 
+const baseURL = Cypress.config('baseUrl');
 // Local field map as labels are not used in the shared field map.
 const labelFieldMap = {
     Age: 'age',
@@ -30,7 +31,7 @@ And('the text {string} appears below the title', (introtext) => {
 
 And('{string} link has a href {string}', (linkText, linkHref) => {
     if(linkText === 'Steps to Find a Clinical Trial'){
-        cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', linkHref);
+        cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${baseURL}${linkHref}`);
     } else {
     cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${getBaseDirectory()}${linkHref}`);
     }
