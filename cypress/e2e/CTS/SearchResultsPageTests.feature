@@ -23,7 +23,7 @@ Feature: As an user, I should be able to see my search results displayed, select
         And the following delighters are displayed
             | delighter    | href                                                       | title                              | text                                                                  |
             | cts-livehelp | /contact                                                   | Have a question?We're here to help | Chat with us: LiveHelpCall us: 1-800-4-CANCER(1-800-422-6237)         |
-            | cts-which    | /about-cancer/treatment/clinical-trials/search/trial-guide | Which trials are right for you?    | Use the checklist in our guide to gather the information you’ll need. |
+            | cts-which    | /research/participate/clinical-trials-search/steps | Which trials are right for you?    | Use the checklist in our guide to gather the information you’ll need. |
 
     Scenario: User is able to select results on mobile breakpoint
         Given screen breakpoint is set to "mobile"
