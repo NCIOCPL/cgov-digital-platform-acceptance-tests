@@ -252,10 +252,14 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And browser waits
         And user selects "Archive Block" from Display dropdown
+        And browser waits
         And user clicks "Options" link in the Dynamic List area
+        And browser waits
         And user checks Include View Title checkbox
         And user enters "5" into Items per page dropdown
+        And browser waits
         And user selects "Mini pager" from Pagination dropdown
+        And browser waits
         When user saves the content page
 
     Scenario: Add Borderless Full-Width Card
@@ -279,6 +283,7 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user selects "Accent Warm" from Card Theme dropdown
         And user selects "Image Left" from Image Position dropdown
+        And browser waits
         And user selects 4 Promotional Image from the list of images
         And browser waits
         And user remembers the source of selected promo image for further verification
@@ -578,10 +583,14 @@ Feature: Home And Landing Page Test Creation of Content
             | Override Title    | _Spanish | field_landing_contents[4][subform][field_list_items][2][subform][field_override_title][0][value] |
             | Button Text       | _Spanish | field_landing_contents[7][subform][field_button_text][0][value]                                  |
         And user selects "Archive Block" from Display dropdown
+        And browser waits
         And user clicks "Opciones" link in the Dynamic List area
+        And browser waits
         And user checks Include View Title checkbox
         And user enters "6" into Items per page dropdown
-        And user selects "Minipaginador" from Pagination dropdown
+        And browser waits
+        And user selects "Mini pager" from Pagination dropdown
+        And browser waits
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
             | option    |
