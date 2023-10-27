@@ -89,7 +89,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And "Test File for Related Resources" had been selected
         And user fills out the following fields
             | fieldLabel     | value                                    | field_name                                                                             |
-            | Override Title | Override Test File for Related Resources | field_landing_contents[2][subform][field_list_items][0][subform][field_override_title] |
+            | Override Title | Override Test File for Related Resources | field_landing_contents[2][subform][field_list_items][2][subform][field_override_title] |
         When user saves the content page
 
     Scenario: Add Borderless Full-Width Card and raw html
@@ -135,10 +135,14 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | List Title | Dynamic List Title | field_landing_contents[5][subform][field_list_title] |
         And user selects "Press Releases" from Source View dropdown
         And user selects "Archive Block" from Display dropdown
+        And browser waits
         And user clicks "Options" link in the Dynamic List area
         And user checks Include View Title checkbox
+        And browser waits
         And user enters "5" into Items per page dropdown
+        And browser waits
         And Pagination dropdown has default value "Default settings"
+        And browser waits
         And user selects "Mini pager" from "Pagination" dropdown
         And user selects "Published" from Save as dropdown
         When user saves the content page
@@ -156,7 +160,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And List Item Title is displayed as "List Item Title"
         And managed list has the following links
             | title                                    | url                           | description                                          |
-            | Override Test File for Related Resources | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
+            | Article to test Related Resources | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
             | Google Link                              | https://www.google.com        | N/A                                                  |
             | Override Test File for Related Resources | {TEST_SITE_SECTION}/test-file | N/A                                                  |
         And borderless card with "accent-warm" accent displays the following
