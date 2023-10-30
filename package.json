@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run --spec \"**/e2e/**/[!$]*.feature\"",
+    "test-parallel": "cypress-parallel -s cypress:run -t 2 -m false -d \"**/e2e/**/[!$]*.feature\"",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "cypress:smoke": "cypress run --spec \"cypress/e2e/ProductionSmokeTests/*.feature\"",
     "cypress:acsf": "cypress run --spec \"**/e2e/**/[!$|!_]*.feature\"",
-    "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/**/*.feature\"",
+    "cypress:acsf-parallel": "cypress-parallel -s cypress:run -t 2 -m false -d \"**/e2e/**/[!$|!_]*.feature\"",
+    "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/*.feature\"",
     "backstop:reference": "backstop reference --config='backstop.config.js'",
     "backstop:test": "backstop test --config='backstop.config.js'",
     "backstop:approve": "backstop approve --config='backstop.config.js'"
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "backstopjs": "^6.0.0",
-    "cypress": "^12.7.0"
+    "cypress": "^12.7.0",
+    "cypress-parallel": "^0.13.0"
   }
 }
