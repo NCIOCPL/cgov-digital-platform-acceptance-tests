@@ -31,11 +31,11 @@ When("user logs in as a {string}", (username) => {
             "Missing password value, set using CYPRESS_admin_password=..."
         );
     }
-    cy.get("input#okta-signin-username").type(username, { log: false });
-    cy.get("input#okta-signin-password").type(password, { log: false });
+    cy.get('input[autocomplete="username"]').type(username, { log: false });
+    cy.get('input[autocomplete="current-password"]').type(password, { log: false });
 
     // user clicks log in
-    cy.get("input#okta-signin-submit").contains("Sign In").click();
+    cy.get('input[type="submit"]').click();
 });
 
 Then("user is logged in and the user name {string} is displayed in the toolbar", (admin) => {
