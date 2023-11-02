@@ -1,10 +1,10 @@
 @smoke
-Feature: Basic checks to ensure production site is up and running
+Feature: Basic checks to ensure NCP production site is up and running
 
     Scenario: Home page is loading on all sites
         Given user is navigating to "/"
         Then mega menu is displayed
-        And main categories titles are "About,Research & Funding,Advocacy & Outreach,News & Events"
+        And main categories titles are "About the Plan,Goals,Get Involved"
         And footer is displayed
 
     Scenario Outline: Different contents are loaded on all sites
@@ -14,11 +14,12 @@ Feature: Basic checks to ensure production site is up and running
         And content is displayed
 
         Examples:
-            | url                            | title                       |
-            | /research-funding/moffitt-psoc | Moffitt Cancer Center PS-OC |
+            | url    | title                      |
+            | /goals | National Cancer Plan Goals |
+
 
     Scenario: English 404 page
-        Given user is navigating to "/chicken " with a 404 status
+        Given user is navigating to "/chicken" with a 404 status
         Then page title is "Page Not Found"
         And the text "We can't find the page you're looking for." is displayed
 

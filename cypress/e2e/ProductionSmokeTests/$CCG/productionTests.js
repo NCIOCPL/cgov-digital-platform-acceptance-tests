@@ -27,7 +27,7 @@ And('footer is displayed', () => {
 
 And('page options are displayed', () => {
     cy.get('.cgdp-page-options').should('be.visible')
-    .and('have.length',2);
+        .and('have.length', 2);
 });
 
 And('content is displayed', () => {
@@ -41,3 +41,4 @@ And('page title is {string}', (title) => {
 And('the text {string} is displayed', (str) => {
     cy.get(`p:contains("${str}")`).should('be.visible');
 });
+
