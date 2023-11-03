@@ -31,7 +31,13 @@ And('the text {string} appears below the title', (introtext) => {
 
 And('{string} link has a href {string}', (linkText, linkHref) => {
     if(linkText === 'Steps to Find a Clinical Trial'){
-        cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${baseURL}${linkHref}`);
+        if(baseURL.includes('acsf')){
+            cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${baseURL.replace(new RegExp('(\.gov.*)$'),'.gov')}${linkHref}`);
+        }
+        else{
+            cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${baseURL}${linkHref}`);  
+        }
+        
     } else {
     cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${getBaseDirectory()}${linkHref}`);
     }
