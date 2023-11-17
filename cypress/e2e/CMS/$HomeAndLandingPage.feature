@@ -256,10 +256,10 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Archive Block" from Display dropdown
         And browser waits
         And user clicks "Options" link in the Dynamic List area
-         And browser waits
+        And browser waits
         And user checks Include View Title checkbox
         And user enters "5" into Items per page dropdown
-         And browser waits
+        And browser waits
         And user selects "Mini pager" from Pagination dropdown
         And browser waits
         When user saves the content page
@@ -595,8 +595,6 @@ Feature: Home And Landing Page Test Creation of Content
         And user checks Include View Title checkbox
         And user enters "6" into Items per page dropdown
         And browser waits
-        And user selects "Mini pager" from Pagination dropdown
-        And browser waits
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
             | option    |
@@ -688,6 +686,7 @@ Feature: Home And Landing Page Test Creation of Content
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "test-resource-mini-landing-page-for-home-landing" from the list of content
         And user selects a checkbox next to title with url "home-and-landing-page-edited" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete these content items?"
         And browser waits

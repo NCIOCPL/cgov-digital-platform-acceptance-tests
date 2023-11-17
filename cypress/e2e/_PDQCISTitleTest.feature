@@ -63,6 +63,7 @@ Feature: as a content editor, I want to ensure that I can set card title using C
         Then user is logged in and the user name "admin" is displayed in the toolbar
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "cthp-card-title" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks "Delete" button

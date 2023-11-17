@@ -451,7 +451,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | title                                            | url                                                                                                | expectedDate | author                          |
             | Automated Test Blog Post for testing Blog Series | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} | today's date | Automated Test Blog Post Author |
         And the Continue Reading link appears with the following href
-            | linkName       | linkHref                                                                                            |
+            | linkName       | linkHref                                                                                           |
             | Siga leyendo > | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} |
         And the "Categorías" managed list appears without the date
         And the "Test Blog Topic Spanish" link appears with the following href
@@ -475,6 +475,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects a checkbox next to title "Automated Test Blog Series Edited" with url "blog-series-edited" from the list of content
         And user selects a checkbox next to title "Automated Test Blog Post for testing Blog Series" with url "blog-post-test-blog-series" from the list of content
         And user selects a checkbox next to title "Automated Test Blog Post2 for testing Blog Series" with url "blog-post2-test-blog-series" from the list of content
+        And user selects "Delete content" action
         And user clicks on the "Apply to selected items" action button
         Then page title is "Are you sure you want to delete these content items?"
         When user clicks on "Delete" button
@@ -486,6 +487,5 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user clicks on "Taxonomy" sub tab
         And user selects "List terms" option from Operations for "Blog Topics"
         And user clicks on "Delete" from  dropdown button under "Blog Topic"
-        Then page title is "Are you sure you want to delete the taxonomy term Test Blog Topic?"
-        When user clicks on "Delete all translations" button
+        When user clicks on "Delete all translations" button to select the block
         Then the confirmation text "Deleted term Test Blog Topic." appears on a screen

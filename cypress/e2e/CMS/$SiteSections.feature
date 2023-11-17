@@ -178,7 +178,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And user clears out "Navigation Label" field
         And user clears out "Pretty URL" field
         And user fills out the following fields
-            | fieldLabel | value   | field_name       |
+            | fieldLabel | value                    | field_name       |
             | Pretty URL | test-site-section-edited | field_pretty_url |
         When user saves the content page
         When user clicks on "Content" tab
@@ -254,7 +254,8 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user selects a checkbox next to title "Article to test Site Section" with url "/about-cancer/coping/test-site-section" from the list of content
-        And user clicks on the "Apply to selected items" action button
+        And user selects "Delete content" action
+       And user clicks on the "Apply to selected items" action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button
         Then the confirmation text "Deleted 1 content item." appears on a screen
@@ -266,6 +267,5 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And user selects "children" link under "About Cancer"
         And user selects "children" link under "Coping with Cancer"
         And user selects "Delete" operation for "Test Site Section"
-        Then page title is "Are you sure you want to delete the taxonomy term Test Site Section?"
-        When user clicks on "Delete" button
+        When user clicks on "Delete" button to select the block
         Then the confirmation text "Deleted term Test Site Section." appears on a screen

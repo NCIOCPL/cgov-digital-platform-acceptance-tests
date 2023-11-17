@@ -112,6 +112,7 @@ Feature: User creating a video
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "home-and-landing-page-video" from the list of content
         And user selects a checkbox next to the title with spanish path "/espanol" with url "home-and-landing-page-video-spanish" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button
@@ -121,6 +122,7 @@ Feature: User creating a video
         And user clicks on "Media" sub tab
         And user selects a checkbox next to title with url "test-video" from the list of content
         And user selects a checkbox next to the title with spanish path "/espanol" with url "test-video-spanish" from the list of content
+        And user selects "Delete media" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this media item?"
         When user clicks on "Delete" button

@@ -6,12 +6,11 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
-        And user clicks on "Add custom block" action button
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
+        And user clicks on "Add content block" action button
         And user clicks on "Raw HTML Block" content type
-        Then page title is "Add Raw HTML Block custom block"
+        Then page title is "Add Raw HTML Block content block"
         And "Language" dropdown displays "English"
         And user fills out the following fields
             | fieldLabel        | value                         | field_name     |
@@ -26,9 +25,8 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
         And the content item with title "Automated Raw HTML Block Test" exists in the list of content
 
 
@@ -140,17 +138,17 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And 2 description reads "Raw HTML Block: Image,Left:"
         And 2 block displays the following features
             | alignment                  | rawHTMLText                                   |
-            | embedded-entity align-left  | This is to test Raw Html Block in the WYSIWYG |
+            | embedded-entity align-left | This is to test Raw Html Block in the WYSIWYG |
         And 3 section heading reads "Article Heading3"
         And 3 description reads "Raw HTML Block: No Image,Right:"
         And 3 block displays the following features
             | alignment                   | rawHTMLText                                   |
-            |   embedded-entity align-right | This is to test Raw Html Block in the WYSIWYG |
+            | embedded-entity align-right | This is to test Raw Html Block in the WYSIWYG |
         And 4 section heading reads "Article Heading4"
         And 4 description reads "Raw HTML Block: Full,Center:"
         And 4 block displays the following features
             | alignment                    | rawHTMLText                                   |
-            |  embedded-entity align-center  | This is to test Raw Html Block in the WYSIWYG |
+            | embedded-entity align-center | This is to test Raw Html Block in the WYSIWYG |
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -158,16 +156,15 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
         And user clicks on "Delete" from  dropdown button under "Automated Raw HTML Block Test"
-        Then page title is "Are you sure you want to delete the custom block Automated Raw HTML Block Test?"
-        When user clicks on "Delete" button
-        Then the confirmation text "The custom block Automated Raw HTML Block Test has been deleted." appears on a screen
+        When user clicks on "Delete" button to select the block
+        Then the confirmation text "The content block Automated Raw HTML Block Test has been deleted." appears on a screen
         And the Custom block item with title "Automated Raw HTML Block Test" does not exist in the list of Custom block library
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "article-to-test-raw-html-block" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button

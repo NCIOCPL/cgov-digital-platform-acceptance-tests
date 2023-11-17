@@ -88,7 +88,7 @@ Feature: User creating an image
         When user is navigating to the front end site with path site section plus "home-and-landing-page-image"
         Then the "feature_card_image" appear as override
 
-  Scenario: Translate an image
+    Scenario: Translate an image
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
@@ -153,17 +153,18 @@ Feature: User creating an image
         Then the "feature_card_image" appear as override
 
 
-Scenario: Clean up
-    Given user is navigating to "/user/login?show_login_fields=true"
-    When user enters credentials
-    And user clicks "Log in" button
-    Then user is logged in and the user name "admin" is displayed in the toolbar
-    And the tool bar appears at the top
-    When user clicks on "Content" tab
-    And user selects a checkbox next to title with url "article-to-test-image" from the list of content
-    And user selects a checkbox next to title with url "mini-landing-page-image" from the list of content
-    And user selects a checkbox next to title with url "home-and-landing-page-image" from the list of content
-    And user clicks on "Apply to selected items" content action button
-    Then page title is "Are you sure you want to delete these content items?"
-    When user clicks on "Delete" button
-    Then the confirmation text "Deleted 5 content items" appears on a screen
+    Scenario: Clean up
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user selects a checkbox next to title with url "article-to-test-image" from the list of content
+        And user selects a checkbox next to title with url "mini-landing-page-image" from the list of content
+        And user selects a checkbox next to title with url "home-and-landing-page-image" from the list of content
+        And user selects "Delete content" action
+        And user clicks on "Apply to selected items" content action button
+        Then page title is "Are you sure you want to delete these content items?"
+        When user clicks on "Delete" button
+        Then the confirmation text "Deleted 5 content items" appears on a screen

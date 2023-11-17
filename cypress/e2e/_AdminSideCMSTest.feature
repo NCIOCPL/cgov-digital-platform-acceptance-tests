@@ -19,6 +19,7 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
         And the following tab links appear below title
             | name    | link                 |
             | Content | /admin/content       |
+            | Blocks  | /admin/content/block |
             | Files   | /admin/content/files |
             | Media   | /admin/content/media |
         And table with existing content is displayed
@@ -51,7 +52,7 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
             | Settings | /admin/appearance/settings |
         And page's 1 subtitle is "Main page content"
         And page's 2 subtitle is "Installed themes"
-        And page's 3 subtitle is "Uninstalled themes"
+        And page's 3 subtitle is "Uninstalled theme"
 
     Scenario: user is able to access Extend configuration
         When user is logged in and the user name "admin" is displayed in the toolbar
@@ -70,17 +71,17 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
         When user clicks on "Configuration" tab
         Then page title is "Configuration"
         And the following configuration groups are displayed
-            | title                 |
-            | People                |
-            | Content authoring     |
-            | Development           |
-            | Search and metadata   |
-            | Web services          |
-            | System                |
-            | User interface        |
-            | Media                 |
-            | Regional and language |
-            | Workflow              |
+            | title               |
+            | People              |
+            | Content authoring   |
+            | Development         |
+            | Search and metadata |
+            | Web services        |
+            | System              |
+            | User interface      |
+            | Media               |
+            | Region and language |
+            | Workflow            |
 
     Scenario: user is able to access People tab
         When user is logged in and the user name "admin" is displayed in the toolbar
@@ -112,14 +113,14 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
             | Top 'page not found' errors   | /admin/reports/page-not-found  |
             | Views plugins                 | /admin/reports/views-plugins   |
 
-    # Scenario: User is trying to upload a file with virus
-    #     Then user is logged in and the user name "admin" is displayed in the toolbar
-    #     And the tool bar appears at the top
-    #     When user clicks on "Content" tab
-    #     And user clicks on "Media" sub tab
-    #     And user clicks on "Add media" action button
-    #     And user clicks on "File" content type
-    #     Then page title is "Add File"
-    #     And user uploads test file "fileWithVirus.txt"
-    #     And system waits for file upload process
-    #     Then the error message "A virus has been detected in the file. The file will be deleted." appears
+# Scenario: User is trying to upload a file with virus
+#     Then user is logged in and the user name "admin" is displayed in the toolbar
+#     And the tool bar appears at the top
+#     When user clicks on "Content" tab
+#     And user clicks on "Media" sub tab
+#     And user clicks on "Add media" action button
+#     And user clicks on "File" content type
+#     Then page title is "Add File"
+#     And user uploads test file "fileWithVirus.txt"
+#     And system waits for file upload process
+#     Then the error message "A virus has been detected in the file. The file will be deleted." appears

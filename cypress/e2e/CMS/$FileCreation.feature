@@ -568,6 +568,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "article-to-test-files" from the list of content
         And user selects a checkbox next to title with url "crlp-for-files" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete these content items?"
         When user clicks on "Delete" button
@@ -581,6 +582,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user selects a checkbox next to title with url "test-file-xls" from the list of content
         And user selects a checkbox next to title with url "test-file-docx" from the list of content
         And user selects a checkbox next to title with url "test-file-doc" from the list of content
+        And user selects "Delete media" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete these media items?"
         When user clicks on "Delete" button

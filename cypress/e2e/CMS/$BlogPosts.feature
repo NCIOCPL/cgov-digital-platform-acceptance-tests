@@ -355,6 +355,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "blog-post-edited" under "/news-events/cancer-currents-blog" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button

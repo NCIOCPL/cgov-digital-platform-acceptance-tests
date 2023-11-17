@@ -389,6 +389,7 @@ Feature: Home And Landing Page Test Creation of Content
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "ncids-home-and-landing-page" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         And browser waits

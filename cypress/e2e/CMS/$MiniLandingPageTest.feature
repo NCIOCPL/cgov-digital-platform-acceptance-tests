@@ -161,7 +161,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And List Item Title is displayed as "List Item Title"
         And managed list has the following links
             | title                                    | url                           | description                                          |
-            | Article to test Related Resources | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
+            | Article to test Related Resources        | {TEST_SITE_SECTION}/article   | Article to test Related Resources - Meta Description |
             | Google Link                              | https://www.google.com        | N/A                                                  |
             | Override Test File for Related Resources | {TEST_SITE_SECTION}/test-file | N/A                                                  |
         And borderless card with "accent-warm" accent displays the following
@@ -369,6 +369,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "mini-landing-page-edited" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button

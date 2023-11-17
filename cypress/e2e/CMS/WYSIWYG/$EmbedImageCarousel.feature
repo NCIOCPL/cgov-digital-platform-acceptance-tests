@@ -6,12 +6,11 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
-        And user clicks on "Add custom block" action button
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
+        And user clicks on "Add content block" action button
         And user clicks on "Image Carousel" content type
-        Then page title is "Add Image Carousel custom block"
+        Then page title is "Add Image Carousel content block"
         And user fills out the following fields
             | fieldLabel           | value                               | field_name                           |
             | Block description    | Automated Image Carousel Test Block | info[0][value]                       |
@@ -44,9 +43,8 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
         And the content item with title "Automated Image Carousel Test Block" exists in the list of content
 
 
@@ -117,16 +115,15 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
         And user clicks on "Delete" from  dropdown button under "Automated Image Carousel Test Block"
-        Then page title is "Are you sure you want to delete the custom block Automated Image Carousel Test Block?"
-        When user clicks on "Delete" button
-        Then the confirmation text "The custom block Automated Image Carousel Test Block has been deleted." appears on a screen
+        When user clicks on "Delete" button to select the block
+        Then the confirmation text "The content block Automated Image Carousel Test Block has been deleted." appears on a screen
         And the Custom block item with title "Automated Image Carousel Test Block" does not exist in the list of Custom block library
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "article-to-test-image-carousel" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button

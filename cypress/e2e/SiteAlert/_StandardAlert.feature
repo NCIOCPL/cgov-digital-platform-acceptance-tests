@@ -6,7 +6,7 @@ Feature: As a site admin I want to configure site alert
         And user clicks "Log in" button
         When user is logged in and the user name "admin" is displayed in the toolbar
         And user is navigating to "/admin/structure/block/block-content"
-        And user clicks on "Add custom block" button
+        And user clicks on "Add content block" button
         Then the list of block contents appears
         When user clicks on "Raw HTML Block" content
         And user enters "NCIDS Alert" into the block description field
@@ -38,7 +38,7 @@ Feature: As a site admin I want to configure site alert
             | </section>                                                                         |
         And user hits "Save" button
         And browser waits
-        When user clicks "Block layout" tab
+        When user is navigating to "/admin/structure/block"
         And browser waits
         And user places the "Site Alert Area" block
         And browser waits
