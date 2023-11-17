@@ -281,6 +281,7 @@ And('user deletes test article with url {string}', (url) => {
     cy.get(`form[id^="views-form-content-page"]`).then(($content) => {
         if ($content.find(`a[href='${siteSection}/${url}-${randomStr}']`).length) {
             cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+            cy.get('select[name="action"]').select("Delete content");
             cy.get(`input[value='Apply to selected items']`).first().click();
             cy.get('h1:contains("Are you sure you want to delete this content item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
@@ -294,6 +295,7 @@ And('user deletes test file with url {string}', (url) => {
     cy.get(`form[id^="views-form-media-media-page-list"]`).then(($content) => {
         if ($content.find(`a[href*='${siteSection}/${url}']`).length) {
             cy.get(`a[href*='${siteSection}/${url}']`).parent().parent().find('input.form-checkbox').check();
+            cy.get('select[name="action"]').select("Delete media");
             cy.get(`input[value='Apply to selected items']`).first().click();
             cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
@@ -348,8 +350,7 @@ And('citation number {int} titled {string} has no link', (num, citText) => {
 })
 
 And('user selects the {string} content item', (dropDown) => {
-    // cy.get('li.dropbutton-toggle').click();
-    cy.get(`input[id*="edit-field-landing-contents-add-more-add-more-button-cgov-two-item-feature-row"]`).click({force:true});
+    cy.get(`input[id*="edit-field-landing-contents-add-more-add-more-button-cgov-two-item-feature-row"]`).click({ force: true });
 });
 
 And('user clicks on the {string} link in the {string} text area', (title, cardOption) => {
@@ -518,6 +519,7 @@ And('user deletes {string} image', (image) => {
     cy.get(`form[id^="views-form-media-media-page-list"]`).then(($content) => {
         if ($content.find(`a:contains("${image}")`)) {
             cy.get(`a:contains("${image}")`).parent().parent().find('input.form-checkbox').check();
+            cy.get('select[name="action"]').select("Delete media");
             cy.get(`input[value='Apply to selected items']`).first().click();
             cy.get('h1:contains("Are you sure you want to delete this media item?")').should('be.visible');
             cy.get(`input[value='Delete']`).click();
@@ -528,5 +530,9 @@ And('user deletes {string} image', (image) => {
 
 
 And('the image {string} does not exist in the list of content', (image) => {
-        cy.get(`form[id^="views-form-media-media-page-list"]`).find(`a:contains("${image}")`).should('not.exist');
- });
+    cy.get(`form[id^="views-form-media-media-page-list"]`).find(`a:contains("${image}")`).should('not.exist');
+});
+
+And('user selects {string} action', (action) => {
+    cy.get('select[name="action"]').select(action);
+});

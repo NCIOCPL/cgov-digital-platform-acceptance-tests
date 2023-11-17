@@ -160,7 +160,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user fills out 2 "Body" text area with "Infographic Display: Article: Medium,Left:"
         And user clicks "Infographic" button 2 in the WYSIWYG editor
         And user enters "Automated Test Infographic" into media title search box and clicks "Apply"
-         And browser waits
+        And browser waits
         And user selects "Automated Test Infographic" item from the media list
         And browser waits
         And user clicks on "Select Infographic" button to select media
@@ -176,7 +176,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user fills out 3 "Body" text area with "Infographic Display: Article: Medium,Center:"
         And user clicks "Infographic" button 3 in the WYSIWYG editor
         And user enters "Automated Test Infographic" into media title search box and clicks "Apply"
-         And browser waits
+        And browser waits
         And user selects "Automated Test Infographic" item from the media list
         And browser waits
         And user clicks on "Select Infographic" button to select media
@@ -193,7 +193,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And browser waits
         And user clicks "Infographic" button 4 in the WYSIWYG editor
         And user enters "Automated Test Infographic" into media title search box and clicks "Apply"
-         And browser waits
+        And browser waits
         And user selects "Automated Test Infographic" item from the media list
         And browser waits
         And user clicks on "Select Infographic" button to select media
@@ -225,7 +225,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clicks on "Select media" button item
         And browser waits
         And user enters "Automated Test Infographic" into media search box and clicks "Apply"
-         And browser waits
+        And browser waits
         And user selects "Automated Test Infographic" item from media list
         And browser waits
         And user clicks on "Select media" button to select media item
@@ -244,9 +244,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         Then "Media Link" section appears
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
-         And browser waits
+        And browser waits
         And user enters "Automated Test Infographic" into media search box and clicks "Apply"
-         And browser waits
+        And browser waits
         And user selects "Automated Test Infographic" item from media list
         And browser waits
         And user clicks on "Select media" button to select media item
@@ -363,6 +363,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "article-to-test-infographic" from the list of content
         And user selects a checkbox next to title with url "home-and-landing-page-to-test-infographic" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete these content items?"
         When user clicks on "Delete" button
@@ -373,6 +374,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And the content item with url "home-and-landing-page-to-test-infographic-spanish" does not exist in the list of content
         And user clicks on "Media" sub tab
         And user selects a checkbox next to title with url "test-infographic" from the list of content
+        And user selects "Delete media" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this media item?"
         When user clicks on "Delete" button

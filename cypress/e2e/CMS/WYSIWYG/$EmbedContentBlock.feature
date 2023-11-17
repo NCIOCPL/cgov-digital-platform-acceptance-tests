@@ -6,12 +6,11 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
-        And user clicks on "Add custom block" action button
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
+        And user clicks on "Add content block" action button
         And user clicks on "Content Block" content type
-        Then page title is "Add Content Block custom block"
+        Then page title is "Add Content Block content block"
         And "Language" dropdown displays "English"
         And user fills out the following fields
             | fieldLabel        | value                        | field_name     |
@@ -27,9 +26,8 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
         And the content item with title "Automated Content Block Test" exists in the list of content
 
 
@@ -147,12 +145,12 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And 3 description reads "Content Block: Full,Center:"
         And 3 feature card displays the following features in the content block
             | alignment                    | description                                               | linkText                 | link                      |
-            |  embedded-entity align-center  | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
+            | embedded-entity align-center | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
         And 4 section heading reads "Article Heading4"
         And 4 description reads "Content Block: Image,Right:"
         And 4 feature card displays the following features in the content block
             | alignment                   | description                                               | linkText                 | link                      |
-            |   embedded-entity align-right | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
+            | embedded-entity align-right | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -160,16 +158,15 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
         And user clicks on "Delete" from  dropdown button under "Automated Content Block Test"
-        Then page title is "Are you sure you want to delete the custom block Automated Content Block Test?"
-        When user clicks on "Delete" button
-        Then the confirmation text "The custom block Automated Content Block Test has been deleted." appears on a screen
+        When user clicks on "Delete" button to select the block
+        Then the confirmation text "The content block Automated Content Block Test has been deleted." appears on a screen
         And the Custom block item with title "Automated Content Block Test" does not exist in the list of Custom block library
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "article-to-test-content-block" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button

@@ -173,7 +173,7 @@ const monthsSpanish = [
     'septiembre',
     'octubre',
     'noviembre',
-    'deciembre'
+    'diciembre'
 ];
 
 And('the {string} section is displayed with the following cards', (featuredPostsSection, dataTable) => {

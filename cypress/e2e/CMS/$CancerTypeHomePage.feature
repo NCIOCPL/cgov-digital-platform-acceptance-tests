@@ -616,7 +616,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on "Featured Content" link in the "CTHP Internal Feature Card" text area
         And browser waits
         And user clicks on "Select content" button from "CTHP Internal Feature Card" text area
-          And browser waits
+        And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And user fills out the following fields
@@ -745,7 +745,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Published" from draft "Current state" dropdown
         When user saves the content page
 
-   Scenario: Adding Patient/HP Toggle to Cancer Type Homepage Patient content type
+    Scenario: Adding Patient/HP Toggle to Cancer Type Homepage Patient content type
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
@@ -764,8 +764,8 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
-       
-#----- Cancer Type Home Page HP front end verification starts from below------#
+
+    #----- Cancer Type Home Page HP front end verification starts from below------#
     Scenario: Verify newly created Cancer Type Homepage HP content
         Given user is navigating to the front end site with path site section plus "cancer-type-homepage-hp"
         And page title is "Automated Test Cancer Type Homepage HP"
@@ -853,10 +853,10 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And PDQ link label reads "PDQ Treatment Information for HPEdited"
         When user clicks on "View more information" dropdown
         Then the following more info links are displayed
-            | title                                           | url                           |
-            | Article to test Related Resources               | {TEST_SITE_SECTION}/article   |
-            | Google Link Guide Card                          | https://www.google.com        |
-            | Media Link Override Title Guide cards HPEdited  | {TEST_SITE_SECTION}/test-file |
+            | title                                          | url                           |
+            | Article to test Related Resources              | {TEST_SITE_SECTION}/article   |
+            | Google Link Guide Card                         | https://www.google.com        |
+            | Media Link Override Title Guide cards HPEdited | {TEST_SITE_SECTION}/test-file |
         Then the video is matching the earlier selected video
 
     Scenario: Verify the Patient/HP toggle in Cancer Type Homepage Patient content
@@ -983,9 +983,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         When user clicks on "Vea más información" dropdown
         And browser waits
         Then the following more info links are displayed
-            | title                                           | url                           |
-            | Article to test Related Resources               | {TEST_SITE_SECTION}/article   |
-            | Google Link Guide Card                          | https://www.google.com        |
+            | title                                          | url                           |
+            | Article to test Related Resources              | {TEST_SITE_SECTION}/article   |
+            | Google Link Guide Card                         | https://www.google.com        |
             | Media Link Override Title Guide cards HPEdited | {TEST_SITE_SECTION}/test-file |
         And cthp causes card has a link "Article to test Related Resources" with href "{TEST_SITE_SECTION}/article"
         And cthp survival card has a link "Override Card Desc HP - External Feature Card" with href "https://www.google1.com"
@@ -1027,7 +1027,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | name        | content                                                           |
             | description | Automated Cancer Type Homepage HP Meta Description Edited Spanish |
 
-   Scenario: Clean up
+    Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials
         And user clicks "Log in" button
@@ -1036,6 +1036,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "cancer-type-homepage-edited" from the list of content
         And user selects a checkbox next to title with url "cancer-type-homepage-hp-edited" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete these content items?"
         When user clicks on "Delete" button

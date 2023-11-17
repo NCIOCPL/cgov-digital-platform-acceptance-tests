@@ -6,12 +6,11 @@ Feature: As a cms user I want to be able to embed Video Carousel in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
-        And user clicks on "Add custom block" action button
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
+        And user clicks on "Add content block" action button
         And user clicks on "Video Carousel" content type
-        Then page title is "Add Video Carousel custom block"
+        Then page title is "Add Video Carousel content block"
         And user fills out the following fields
             | fieldLabel          | value                              | field_name                          |
             | Block description   | Automated Video Carousel Test      | info[0][value]                      |
@@ -26,9 +25,8 @@ Feature: As a cms user I want to be able to embed Video Carousel in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
         And the content item with title "Automated Video Carousel Test" exists in the list of content
 
     Scenario: Create an English Article content type and embed the Video Carousel created above
@@ -89,7 +87,7 @@ Feature: As a cms user I want to be able to embed Video Carousel in Article cont
         And 1 description reads "Video Carousel: Full,Center:"
         And video carousel displays the following features
             | alignment                    | playListID                         | prevButton | nextButton | videoCarouselH4Title          |
-            |  embedded-entity align-center  | PLYKy4VbxNln5BPBg2OxeXLUo3mi7SYGJv | previous   | next       | Automated Video Carousel Test |
+            | embedded-entity align-center | PLYKy4VbxNln5BPBg2OxeXLUo3mi7SYGJv | previous   | next       | Automated Video Carousel Test |
 
 
     Scenario: Clean up
@@ -98,16 +96,15 @@ Feature: As a cms user I want to be able to embed Video Carousel in Article cont
         And user clicks "Log in" button
         Then user is logged in and the user name "admin" is displayed in the toolbar
         And the tool bar appears at the top
-        When user clicks on "Structure" tab
-        And user clicks on sub tab "Block layout"
-        And user clicks on "Custom block library" sub sub tab
+        When user clicks on "Content" tab
+        And user clicks on "Blocks" sub tab
         And user clicks on "Delete" from  dropdown button under "Automated Video Carousel Test"
-        Then page title is "Are you sure you want to delete the custom block Automated Video Carousel Test?"
-        When user clicks on "Delete" button
-        Then the confirmation text "The custom block Automated Video Carousel Test has been deleted." appears on a screen
+        When user clicks on "Delete" button to select the block
+        Then the confirmation text "The content block Automated Video Carousel Test has been deleted." appears on a screen
         And the Custom block item with title "Automated Video Carousel Test" does not exist in the list of Custom block library
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "article-to-test-video-carousel" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button

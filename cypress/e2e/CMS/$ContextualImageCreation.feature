@@ -11,16 +11,16 @@ Feature: As a content editor I would like to be able to create contextual image 
         And user clicks on "Contextual Image" content type
         Then page title is "Add Contextual Image"
         And user fills out the following fields
-            | fieldLabel   | value                  | field_name             |
-            | Name         | Test Contextual Image  | name[0][value]         |
-            | Photo Credit | Test Credit            | field_credit[0][value] |
+            | fieldLabel   | value                 | field_name             |
+            | Name         | Test Contextual Image | name[0][value]         |
+            | Photo Credit | Test Credit           | field_credit[0][value] |
         And user types "Test Caption" into Caption text field
         And user uploads test file "contextual_image.jpeg"
         And system waits for file upload process
         And user clicks on CROP IMAGE button
         And user sets the following crops
-            | crop      | locator              |
-            | Freeform  | a[href*="freeform"]  |
+            | crop     | locator             |
+            | Freeform | a[href*="freeform"] |
         And user selects "Display" from "Display Enlarge" dropdown
         Then user saves the content page
 
@@ -99,7 +99,7 @@ Feature: As a content editor I would like to be able to create contextual image 
         And user selects "left" alignment
         And user clicks on "Embed" button to select image
         And browser waits
-        
+
         And user clicks on "Add Body Section" to add a body section
         And user enters "Contextual Image Display: Article: Inline,Right" as 4 body section heading
         And user clicks the "Insert Image" button 4 in the WYSIWYG editor
@@ -150,7 +150,7 @@ Feature: As a content editor I would like to be able to create contextual image 
     Scenario: Verify image
         Given user is navigating to the front end site with path site section plus "article-to-test-contextual-image"
         Then page title is "Article to test Contextual Image"
-        And the following images are displayed 
+        And the following images are displayed
             | size   | alignment |
             | large  | center    |
             | medium | none      |
@@ -167,12 +167,14 @@ Feature: As a content editor I would like to be able to create contextual image 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user selects a checkbox next to title with url "article-to-test-contextual-image" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this content item?"
         When user clicks on "Delete" button
         Then the confirmation text "Deleted 1 content item" appears on a screen
         And user clicks on "Media" sub tab
         And user deletes "Test Contextual Image" image
+        And user selects "Delete media" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete this media item?"
         When user clicks on "Delete" button

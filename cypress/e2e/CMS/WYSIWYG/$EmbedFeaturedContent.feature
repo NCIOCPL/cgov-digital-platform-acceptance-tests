@@ -186,6 +186,7 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
         And user selects a checkbox next to title with url "test-article-for-testing" from the list of content
         And user selects a checkbox next to title with url "blog-post-for-testing" under "/news-events/cancer-currents-blog" from the list of content
         And user selects a checkbox next to title with url "test-article-featured-content" from the list of content
+        And user selects "Delete content" action
         And user clicks on "Apply to selected items" content action button
         Then page title is "Are you sure you want to delete these content items?"
         When user clicks on "Delete" button

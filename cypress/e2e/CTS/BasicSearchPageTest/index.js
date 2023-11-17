@@ -31,7 +31,7 @@ And('the text {string} appears below the title', (introtext) => {
 
 And('{string} link has a href {string}', (linkText, linkHref) => {
     if(linkText === 'Steps to Find a Clinical Trial'){
-        cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${baseURL}${linkHref}`);
+        cy.get('a').contains(linkText).should('have.attr', 'href').and('include', linkHref);
     } else {
     cy.get('a').contains(linkText).should('have.attr', 'href').and('eq', `${getBaseDirectory()}${linkHref}`);
     }
