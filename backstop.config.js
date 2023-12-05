@@ -18,7 +18,8 @@ const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 		url: `${args.testBaseUrl}${scenario.testPath}`,
 		referenceUrl: `${args.refBaseUrl}${scenario.testPath}`,
 		delay: 2000,
-		label: scenario.specific && isACSF ? scenario.label + '_acsf' : scenario.label
+		label: scenario.specific && isACSF ? scenario.label + '_acsf' : scenario.label,
+		removeSelectors: scenario.enableBackToTop ? [] : ['div.usa-footer__nci-return-to-top']
 	}));
 	return [...ac, ...cleanedScenarios];
 }, []);
@@ -62,7 +63,7 @@ module.exports = {
 	asyncCompareLimit: 50,
 	debug: false,
 	debugWindow: false,
-	misMatchThreshold: 1,
+	misMatchThreshold: 0.1,
 	resembleOutputOptions: {
 		usePreciseMatching: true,
 	}
