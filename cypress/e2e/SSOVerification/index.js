@@ -31,11 +31,13 @@ When("user logs in as a {string}", (username) => {
             "Missing password value, set using CYPRESS_admin_password=..."
         );
     }
+    cy.get('#edit-samlauth-auth-login-link').click();
     cy.get('input[autocomplete="username"]').type(username, { log: false });
-    cy.get('input[autocomplete="current-password"]').type(password, { log: false });
+    cy.get('input[value="Next"]').click();
+    cy.get('input[name="credentials.passcode"]').type(password, { log: false });
 
     // user clicks log in
-    cy.get('input[type="submit"]').click();
+    cy.get('input[value="Verify"]').click();
 });
 
 Then("user is logged in and the user name {string} is displayed in the toolbar", (admin) => {
