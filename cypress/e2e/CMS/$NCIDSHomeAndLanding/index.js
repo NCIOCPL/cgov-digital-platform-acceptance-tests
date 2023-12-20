@@ -60,7 +60,7 @@ And('user uploads NCIDS image overrides as follows', (dataTable) => {
         cy.fixture(fileName, { encoding: null }).as('fixture')
         cy.get(`input[type="file"][name*="${type}"]`).selectFile('@fixture')
         cy.get('.throbber', { timeout: 40000 }).should('not.exist')
-        cy.wait(2000)
+        cy.wait(3000)
     }
 });
 

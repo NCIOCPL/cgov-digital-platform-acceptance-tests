@@ -52,7 +52,7 @@ Feature: As a user I want to be able to add Hero and CTA components onto Home an
             | evar2     | D=c8                                                                         |
             | evar64    | Internal\|NCI is the nation's leader in cancer research\|Feelings and Cancer |
             | evar65    | Hero\|Light\|Button with no CTA Strip                                        |
-            | evar66    | 3\|1\|1\|1                                                                   |
+            | evar66    | 3\|1\|0\|0\|1\|1                                                                   |
             | evar67    | Primary Button\|1\|1-1                                                       |
             | evar68    | Body                                                                         |
             | pageName  | {CANONICAL_HOST}/ncids-hero-button-test                                      |
@@ -80,7 +80,7 @@ Feature: As a user I want to be able to add Hero and CTA components onto Home an
             | evar2     | D=c8                                                              |
             | evar64    | Internal\|Call to Action Strip\|[Internal Promo Block] Card Title |
             | evar65    | CTA Strip\|Dark\|Standard                                         |
-            | evar66    | 3\|1\|1\|1                                                        |
+            | evar66    | 3\|1\|0\|0\|1\|1                                                        |
             | evar67    | Button\|3\|2                                                      |
             | evar68    | Body                                                              |
             | pageName  | {CANONICAL_HOST}/ncids-cta-test                                   |

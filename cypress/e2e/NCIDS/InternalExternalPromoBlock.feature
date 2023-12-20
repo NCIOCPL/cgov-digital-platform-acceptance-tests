@@ -62,7 +62,7 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | evar2     | D=c8                                                          |
             | evar64    | Internal\|Internal Promo Block Title Override\|Learn More     |
             | evar65    | Promo Block\|Dark\|Image Right                                |
-            | evar66    | 10\|4\|1\|1                                                   |
+            | evar66    | 10\|4\|0\|0\|1\|1                                                   |
             | evar67    | Button\|1\|1                                                  |
             | evar68    | Body                                                          |
             | pageName  | {CANONICAL_HOST}/ncids-internal-promo-block-test              |
@@ -89,7 +89,7 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | evar2     | D=c8                                                          |
             | evar64    | External\|NCIDS Promo Block External Title\|Learn More        |
             | evar65    | Promo Block\|Light\|Image Left                                |
-            | evar66    | 9\|2\|1\|1                                                    |
+            | evar66    | 9\|2\|0\|0\|1\|1                                                    |
             | evar67    | Button\|1\|1                                                   |
             | evar68    | Body                                                          |
             | pageName  | {CANONICAL_HOST}/ncids-external-promo-block-test              |
