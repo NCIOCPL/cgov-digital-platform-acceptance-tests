@@ -179,8 +179,8 @@ And('user clicks on {string} button to add list item', (linkBtn) => {
     cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true });
 });
 
-And('user clicks on {string} button', (contentBtn) => {
-    cy.get(`[class*='form-submit '][value='${contentBtn}']`).click({ force: true })
+And('user clicks on hidden {string} button', (contentBtn) => {
+    cy.get(`[value='${contentBtn}']`).click({ force: true })
 });
 
 And('user selects {string} from content list', (title) => {
@@ -536,3 +536,15 @@ And('the image {string} does not exist in the list of content', (image) => {
 And('user selects {string} action', (action) => {
     cy.get('select[name="action"]').select(action);
 });
+
+And('user selects {string} from Display dropdown', (dropdown) => {
+    cy.get("select[name*='[display_id]").select(dropdown)
+})
+
+And('user selects {string} from Source View dropdown', (sourceDropdown) => {
+    cy.get("select[name*='[field_source_view][0][target_id]']").select(sourceDropdown)
+});
+
+And('user enters {string} in Raw HTML Content under Secondary Contents', (value) => {
+    cy.get('table[id*="field-secondary-contents"]').find('textarea[name*="field_raw_html"]').type(value);
+})

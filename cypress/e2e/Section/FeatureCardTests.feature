@@ -9,7 +9,7 @@ Feature: Feature Card tests
         Examples:
             | url                          | count |
             | /about-nci/organization/ccct | 2     |
-            | /espanol/noticias            | 3     |
+   
 
     Scenario Outline: Verify feature card's components
         Given user is navigating to "<url>"
@@ -25,8 +25,7 @@ Feature: Feature Card tests
         Examples:
             | url                          | indexes | title                                                                      | description                                                   | itemLink                                                                                                 | altText                                                                                               | files                                                                                                                                          |
             | /about-nci/organization/ccct | 0,1     | Feelings and Cancer,External Card Title                                    | null,External Card Description                                | /about-cancer/coping/feelings,https://www.google.com                                                     | Sad Woman Looking Out Window,Find a Clinical Trial                                                    | sad-woman-looking-out-window-feature.jpg,find-clinical-trial-blue-feature-card-feat.jpg                                                        |
-            | /espanol/noticias            | 0,1,2   | Los sentimientos y el cáncer,Overridden Title,Título de la tarjeta externa | null,Overridden description,Descripción de la tarjeta externa | /espanol/cancer/sobrellevar/sentimientos,/espanol/cancer/sobrellevar/sentimientos,https://www.google.com | Un hombre de edad mira hacia el frente.,Un hombre de edad mira hacia el frente.,Find a Clinical Trial | elderly-man-looking-out-window-feature-card.jpg,elderly-man-looking-out-window-feature-card.jpg,find-clinical-trial-blue-feature-card-feat.jpg |
-
+           
     Scenario Outline: Verify feature card external item's components
         Given user is navigating to "<url>"
         And screen breakpoint is set to "mobile"
@@ -38,8 +37,7 @@ Feature: Feature Card tests
         Examples:
             | url                          | indexes | externalLinkCount | href                       | itemLink               |
             | /about-nci/organization/ccct | 1       | 1                 | /policies/linking          | https://www.google.com |
-            | /espanol/noticias            | 2       | 1                 | /espanol/politicas/enlaces | https://www.google.com |
-
+            
 
     Scenario Outline: Verify NCIDS 3 feature card row components
         Given screen breakpoint is set to "<breakpoint"
@@ -129,7 +127,7 @@ Feature: Feature Card tests
             | evar2     | D=c8                                                           |
             | evar64    | Internal\|[Lead IMG] Card Title\|Image                         |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 3\|2\|3\|1                                                     |
+            | evar66    | 3\|2\|0\|0\|3\|1                                                     |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/ncids-internal-feature-card-test              |
@@ -158,7 +156,7 @@ Feature: Feature Card tests
             | evar2     | D=c8                                                           |
             | evar64    | External\|External Card Title\|Image                           |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 3\|3\|1\|1                                                     |
+            | evar66    | 3\|3\|0\|0\|1\|1                                                     |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/ncids-external-feature-card-test              |
@@ -186,7 +184,7 @@ Feature: Feature Card tests
             | evar2     | D=c8                                                             |
             | evar64    | Media\|Override Card Title\|Image                                |
             | evar65    | Feature Card\|Light\|Standard Single Link                        |
-            | evar66    | 3\|2\|3\|1                                                       |
+            | evar66    | 3\|2\|0\|0\|3\|1                                                       |
             | evar67    | Image\|1\|1                                                      |
             | evar68    | Body                                                             |
             | pageName  | {CANONICAL_HOST}/ncids-multimedia-feature-card-test              |

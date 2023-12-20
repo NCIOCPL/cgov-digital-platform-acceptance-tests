@@ -129,9 +129,6 @@ And('user fills out HTML Content text area with {string} under {string}', (value
     })
 })
 
-And('user selects {string} from Source View dropdown', (sourceDropdown) => {
-    cy.get("select[name*='[field_source_view][0][target_id]']").select(sourceDropdown)
-})
 
 And('user selects {string} from Display dropdown', (dropdown) => {
     cy.get("select[name*='[display_id]").select(dropdown)

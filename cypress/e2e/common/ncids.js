@@ -216,3 +216,28 @@ Then('NCIDS 3 guide card row at position {int} have the following attributes', (
         }
     }
 })
+
+Then('two column container is visible', () => {
+    cy.get('div.usa-section.usa-section--light div.grid-container').should('be.visible')
+})
+And('NCIDS dynamic list shows items with date and the following', (dataTable) => {
+    cy.get('div.cgdp-dynamic-list').as('list');
+    cy.get('@list').find('li.usa-collection__item').each(($el) => {
+        for (const { component } of dataTable.hashes()) {
+            cy.wrap($el).find(`.usa-collection__${component}`).should('be.visible');
+            cy.wrap($el).find('time').should('exist');
+        }
+    })
+})
+
+And('view more button {string} is a link', (linkText) => {
+    cy.get('div[class*="cgdp-dynamic-list__view-more-button"]').find('a')
+        .should('include.text', linkText).and('have.attr', 'href')
+});
+
+
+And('the right rail links have {string} attribute with value {string}', (attr, value) => {
+    cy.get('div[class*="grid-col-4 ncids"] a').each($el => {
+        cy.wrap($el).should('have.attr', attr, value)
+    })
+});

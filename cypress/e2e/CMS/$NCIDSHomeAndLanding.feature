@@ -33,6 +33,7 @@ Feature: Home And Landing Page Test Creation of Content
             | panoramic_image.jpg   | ncids_promo_art_16x9 |
             | contextual_image.jpeg | ncids_promo_art_4x3  |
             | thumbnail_image.jpg   | ncids_promo_art_1x1  |
+       And browser waits
         Then user saves the content page
 
 
@@ -296,6 +297,35 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel        | value                          | field_name                                                                                                                     |
             | Link              | https://www.google.com         | field_landing_contents[6][subform][field_guide_cards][2][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
             | Link Button Title | 3 Guide Card row Google Link 2 | field_landing_contents[6][subform][field_guide_cards][2][subform][field_link_buttons][1][subform][field_button_text][0][value] |
+        Then user saves the content page
+
+    Scenario: Add NCIDS 2 column container
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-home-and-landing-page" from the list of content
+        And user clicks on the tool bar status button "Draft"
+        And user clicks "View in edit form" button from other actions
+        And browser waits
+        And user selects "Add NCIDS 2 Column Container" from "Contents" dropdown
+        And browser waits
+        And user clicks on hidden "Add NCIDS Dynamic List" button
+        And user fills out the following fields
+            | fieldLabel     | value            | field_name                                                                                          |
+            | List Title     | List Title       | field_landing_contents[7][subform][field_main_contents][1][subform][field_list_title][0][value]     |
+            | View More Text | View More Button | field_landing_contents[7][subform][field_main_contents][1][subform][field_view_more_text][0][value] |
+        And user selects "Press Releases" from Source View dropdown
+        And user selects "NCIDS Collection Media" from Display dropdown
+        And browser waits
+        And user clicks on "View More Link" link in the "NCIDS Dynamic List" text area
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user enters '<div class="usa-section" data-eddl-landing-row><h2 class="nci-heading-h3 nci-heading--label">Media Resources</h2><ul class="usa-list--unstyled rightrail__list-links"><li><a href="/news-events/media-resources" class="usa-link font-serif-lg text-bold" data-eddl-landing-rawhtmldata-eddl-landing-rawhtml-title="Media Resources" data-eddl-landing-rawhtml-component-variant="NewsEventsRightRail" data-eddl-landing-rawhtml-link-type="Internal" data-eddl-landing-rawhtml-link-area="Text" >Resources &amp; Contacts</a></li></ul></div>' in Raw HTML Content under Secondary Contents
         And user selects "Published" from Save as dropdown
         Then user saves the content page
 
@@ -324,6 +354,13 @@ Feature: Home And Landing Page Test Creation of Content
             | 0     | 3 Guide Card row 1 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Override Button Title,{TEST_SITE_SECTION}/article |
             | 1     | 3 Guide Card row 2 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 1,https://www.google.com              |
             | 2     | 3 Guide Card row 3 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 2,https://www.google.com              |
+        Then two column container is visible
+        And NCIDS dynamic list shows items with date and the following
+            | component   |
+            | description |
+            | heading     |
+        And view more button "View More Button" is a link
+        And the right rail links have "data-eddl-landing-rawhtml-component-variant" attribute with value "NewsEventsRightRail"
         Examples:
             | breakpoint |
             | desktop    |

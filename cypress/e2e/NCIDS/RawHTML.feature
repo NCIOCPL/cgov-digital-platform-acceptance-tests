@@ -18,7 +18,7 @@ Feature: As a user I want to be able to add NCIDS Raw HTML block to my content
             | evar2     | D=c8                                                |
             | evar64    | Not Defined\|Information Sessions\|NCI SBIR Webinar |
             | evar65    | Raw HTML\|Not Defined\|Not Defined                  |
-            | evar66    | 5\|4\|1\|1                                          |
+            | evar66    | 5\|4\|0\|0\|1\|1                                          |
             | evar67    | Raw HTML\|2\|1                                   |
             | evar68    | Body                                                |
             | pageName  | {CANONICAL_HOST}/ncids-raw-html-test                |
