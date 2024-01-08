@@ -60,3 +60,49 @@ Feature: MetaData Tests
         Examples:
             | path                           |
             | /search/results?swKeyword=pact |
+
+    Scenario Outline: Verify template and domain meta tags
+        Given user is navigating to "<path>"
+        Then the page contains meta tags with the following names
+            | name          | content         |
+            | cgdp.template | <cgdp.template> |
+        And "cgdp.domain" tag contains expected environment value
+
+        Examples:
+            | path                                                                                        | cgdp.template       | type                                   |
+            | /news-events                                                                                | ncids_with_title    | Home and Landing                       |
+            | /espanol/noticias                                                                           | ncids_with_title    | Home and Landing  Spanish              |
+            | /grants-training                                                                            | ncids_without_title | Home and Landing                       |
+            | /dceg-connect                                                                               | dceg_connect        | Home and Landing                       |
+            | /espanol/special-report                                                                     | special_report      | Home and Landing Spanish               |
+            | /test/borderless-card                                                                       | standard            | Home and Landing                       |
+            | /publications/dictionaries/cancer-terms                                                     | left_nav            | App Module                             |
+            | /espanol/publicaciones/diccionarios/diccionario-cancer                                      | left_nav            | App Module Spanish                     |
+            | /research/participate/clinical-trials-search                                                | no_left_nav         | App Module                             |
+            | /espanol/buscar/resultados?swKeyword=cancer                                                 | no_left_nav         | App Module Spanish                     |
+            | /test/types/liver/what-is-liver-cancer/treatment                                            | Treatment: svpc     | PDQ Cancer Information Summary         |
+            | /espanol/test/espanol/typos/higado/que-es-el-cancer-de-higado/tratamiento                   | Treatment: svpc     | PDQ Cancer Information Summary Spanish |
+            | /types/breast/hp/breast-prevention-pdq                                                      | Prevention: default | PDQ Cancer Information Summary         |
+            | /espanol/tipos/seno/pro/prevencion-seno-pdq                                                 | Prevention: default | PDQ Cancer Information Summary Spanish |
+            | /about-cancer/treatment/drugs/blinatumomab                                                  | default             | PDQ Drug Information Summary           |
+            | /types/breast                                                                               | default             | Cancer Type Home Page                  |
+            | /espanol/tipos/seno                                                                         | default             | Cancer Type Home Page Spanish          |
+            | /news-events/cancer-currents-blog                                                           | default             | Blog Series                            |
+            | /espanol/noticias/temas-y-relatos-blog                                                      | default             | Blog Series Spanish                    |
+            | /news-events/cancer-currents-blog/2019/vitamin-d-supplement-cancer-prevention               | default             | Blog Post                              |
+            | /espanol/noticias/temas-y-relatos-blog/2019/vitamina-d-complemento-cancer-prevencion        | default             | Blog Post Spanish                      |
+            | /about-cancer/coping/feelings/relaxation/loukissas-jennifer                                 | default             | Biography                              |
+            | /about-cancer/coping/self-image                                                             | default             | Article                                |
+            | /espanol/cancer/sobrellevar/self-image                                                      | default             | Article Spanish                        |
+            | /about-cancer/coping/feelings/relaxation/duke-university                                    | default             | Cancer Center                          |
+            | /pets                                                                                       | default             | Mini Landing                           |
+            | /espanol/instituto/organizacion                                                             | default             | Mini Landing Spanish                   |
+            | /types/breast/research                                                                      | default             | Cancer Research List Page              |
+            | /espanol/tipos/seno/investigacion                                                           | default             | Cancer Research List Page Spanish      |
+            | /news-events/events/krispy-kreme                                                            | default             | Event                                  |
+            | /news-events/press-releases/2019/deep-learning-cervical-cancer-screening                    | default             | Press Release                          |
+            | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio                 | default             | Press Release Spanish                  |
+            | /about-nci/organization/nci-at-a-glance                                                     | default             | Infographic                            |
+            | /espanol/infografia-nci                                                                     | default             | Infographic Spanish                    |
+            | /research/progress/discovery/gutcheck-intro-video                                           | default             | Video                                  |
+            | /espanol/cancer/tratamiento/tipos/inmunoterapia/estimulacion-inmunitaria-noespecifica-video | default             | Video Spanish                          |

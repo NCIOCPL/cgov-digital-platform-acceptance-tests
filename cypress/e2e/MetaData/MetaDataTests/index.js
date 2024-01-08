@@ -1,6 +1,6 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+const baseUrl = Cypress.config('baseUrl');
 
 //This step is just a workaround until it gets fixed
 Given('user is navigating to {string}', (a) => {
@@ -45,6 +45,31 @@ And('the page contains dcterms.issued meta tags with the following names', (data
     });
 });
 
+
+And('{string} tag contains expected environment value', (tagName) => {
+    const domains = new Map([
+        ['ncigovcdode', 'ode'],
+        ['www-dev-ac.cancer.gov', 'dev'],
+        ['www-test-ac.cancer.gov', 'staging'],
+        ['www-int-ac.cancer.gov', 'int'],
+        ['devbox', 'local'],
+        ['www-test-acsf.cancer.gov/automation-installed', 'automation0installed-test'],
+        ['www-test-acsf.cancer.gov/automation-refreshed', 'automation0refreshed-test'],
+        ['www-dev-acsf.cancer.gov/automation-installed', 'automation0installed-dev'],
+        ['www-dev-acsf.cancer.gov/automation-refreshed', 'automation0refreshed-dev'],
+       
+    ])
+    const value = () => {
+        for (let [key, value] of domains.entries()) {
+            if (baseUrl.includes(key)) {
+                return value;
+            }
+        }
+
+    };
+    const locator = `meta[name='${tagName}']`;
+    cy.get(locator).should('have.length', 1).and('have.attr', 'content', value())
+});
 
 
 
