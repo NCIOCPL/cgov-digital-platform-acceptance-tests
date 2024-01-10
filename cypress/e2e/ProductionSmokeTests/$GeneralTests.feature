@@ -90,7 +90,7 @@ Feature: Basic checks to ensure production site is up and running
     Scenario Outline: Thumbnail images check
         Given user is navigating to "<url>"
         Then thumbnail images are displayed
-        And the image src contains "/files/styles/cgov_thumbnail/public/cgov_image/"
+        And the image src contains "/files/styles/ncids_collections_media_4x3/public/cgov_image/"
 
         Examples:
             | url               |
