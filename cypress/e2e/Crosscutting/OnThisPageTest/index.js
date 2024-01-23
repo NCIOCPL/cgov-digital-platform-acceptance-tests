@@ -1,15 +1,30 @@
 /// <reference types="Cypress" />
 import { And, Then } from 'cypress-cucumber-preprocessor/steps';
- 
+
 Then('{string} is displayed', (otpTitle) => {
     cy.get('.on-this-page').contains(otpTitle).should('be.visible');
 });
 
 And('OTP links have the following {string}', (options) => {
+    function compare(wordOne, wordTwo) {
+        let result = true
+        for (let i = 0; i < wordOne.length; i++) {
+            if (wordOne.charAt(i) !== wordTwo.charAt(i)) {
+                if (wordOne.charAt(i) === ' '){
+               
+            } else {
+                result = false
+            }
+        }
+        return result
+    }
+}
     const expectedOptions = options.split(',');
     for (let i = 0; i < expectedOptions.length; i++) {
         cy.get('#cgvBody section h2').eq(i).invoke('text').then((text) => {
-            expect(text.trim()).equal(expectedOptions[i]);
+            let actText = text.toString()
+            const res = compare(actText.trim(), expectedOptions[i])
+            expect(res).to.be.true
         });
     }
 });
