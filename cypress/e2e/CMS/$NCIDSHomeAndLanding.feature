@@ -33,7 +33,7 @@ Feature: Home And Landing Page Test Creation of Content
             | panoramic_image.jpg   | ncids_promo_art_16x9 |
             | contextual_image.jpeg | ncids_promo_art_4x3  |
             | thumbnail_image.jpg   | ncids_promo_art_1x1  |
-       And browser waits
+        And browser waits
         Then user saves the content page
 
 
@@ -59,6 +59,13 @@ Feature: Home And Landing Page Test Creation of Content
             | Meta Description         | Automated Test Home and Landing page Meta Description    | field_page_description         |
             | Feature Card Description | Automated Test Home and Landing page - Feature Card Desc | field_feature_card_description |
         And user selects "Add NCIDS Hero" from "Contents" dropdown
+        And "Theme" drop-down is displayed with "Light" option as default
+        And "Theme" dropdown has the following options
+            | options   |
+            | Light     |
+            | Dark      |
+            | DON'T USE |
+        And user select "Dark" from the "Theme" dropdown
         And user fills out the following fields
             | fieldLabel | value        | field_name                                                  |
             | Tagline    | Tagline Text | field_landing_contents[0][subform][field_tagline][0][value] |
@@ -109,6 +116,8 @@ Feature: Home And Landing Page Test Creation of Content
         And user uploads "pano_image.jpg" as 1 guide card image
         And browser waits
         And user clicks on "Add NCIDS Link Button Internal" from "Links for Guide Card Buttons" area
+        And browser waits
+        And browser waits
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
@@ -191,6 +200,13 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks "View in edit form" button from other actions
         And user selects "Add NCIDS Promo Block External" from "Contents" dropdown
         And browser waits
+        And "Theme" drop-down is displayed with the "Dark" option as default
+        And "Theme" dropdown has the following options
+            | options   |
+            | Light     |
+            | Dark      |
+            | DON'T USE |
+        And user select "Light" from the "Theme" dropdown
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                         |
             | Featured Item Url | https://www.google2.com | field_landing_contents[3][subform][field_featured_url][0][uri]     |
@@ -213,7 +229,12 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks "View in edit form" button from other actions
         And user selects "Add NCIDS Promo Block Internal" from "Contents" dropdown
         And browser waits
-        And user selects "Light" theme for 3 block
+        And "Theme" drop-down is displayed with "Dark" option as default
+        And "Theme" dropdown has the following options
+            | options   |
+            | Light     |
+            | Dark      |
+            | DON'T USE |
         And user selects "Image Right" image position for 2 block
         And user clicks on "Featured Item" in 1 "NCIDS Promo Block Internal" section
         And user clicks on Select content button item
@@ -333,6 +354,8 @@ Feature: Home And Landing Page Test Creation of Content
         And screen breakpoint is set to "<breakpoint>"
         Given user is navigating to the front end site with path site section plus "ncids-home-and-landing-page"
         And NCIDS Hero is displayed
+        And "Light" theme is displayed for Hero component
+        And "Light" theme is displayed for 3 promo block
         And tagline title reads "Tagline Text"
         And tagline button has text "Article to test Related Resources" with link "{TEST_SITE_SECTION}/article"
         Then NCIDS guide cards have the following attributes

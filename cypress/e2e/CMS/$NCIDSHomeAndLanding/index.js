@@ -12,6 +12,22 @@ And('user selects {string} from style dropdown', (option) => {
     cy.get('select[name="field_page_style"]').select(option);
 });
 
+And('{string} drop-down is displayed with {string} option as default', (dropdownText, displayOptions) => {
+    cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+    cy.get(`select[id*="edit-field-landing-contents-0-subform-field-ncids-theme"] option:contains("${displayOptions}")`).should('have.attr', 'selected', 'selected');
+});
+
+And('{string} dropdown has the following options', (dropdownText, dataTable) => {
+    for (const { options } of dataTable.hashes()) {
+        cy.get(`select[id*="edit-field-landing-contents-0-subform-field-ncids-theme"] option:contains("${options}")`).should('exist');
+    }
+});
+
+And('user select {string} from the {string} dropdown', (selectItem, dropdownText) => {
+    cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+    cy.get(`select[id*="edit-field-landing-contents-0-subform-field-ncids-theme"]`).select(selectItem);
+});
+
 And('user clicks on {string} from {string} area', (button, area) => {
 
     cy.get(`em.placeholder:contains("${area}")`).parent().find("button.dropbutton__toggle").click();
@@ -35,13 +51,13 @@ And('user clicks on {string} link in the {string} text area', (title, cartOption
 
 And('user uploads hero images as follows', (dataTable) => {
     for (const { fileName, type } of dataTable.hashes()) {
-         cy.fixture(fileName, { encoding: null }).as('fixture')
+        cy.fixture(fileName, { encoding: null }).as('fixture')
         cy.get(`input[type="file"][data-drupal-selector*="${type}"]`).selectFile('@fixture');
         cy.get('.throbber', { timeout: 40000 }).should('not.exist')
     }
 });
 And('user adds another {string} link for {int} guide card', (link, index) => {
-    cy.get(`input[name*="guide_cards"][name*="_${link}_add_more"]`).eq(index - 1).click({force:true})
+    cy.get(`input[name*="guide_cards"][name*="_${link}_add_more"]`).eq(index - 1).click({ force: true })
 })
 
 And('user clicks on {string} in {int} {string} section', (featItemLink, index, section) => {
@@ -54,6 +70,16 @@ And('user selects {string} theme for {int} block', (option, index) => {
 And('user selects {string} image position for {int} block', (option, index) => {
     cy.get('select[name*="image_position"]').eq(index - 2).select(option)
 });
+
+And('{string} drop-down is displayed with the {string} option as default', (dropdownText, displayOptions) => {
+    cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+    cy.get(`select[id*="edit-field-landing-contents-0-subform-field-ncids-theme"] option:contains("${displayOptions}")`).should('have.attr', 'selected', 'selected');
+});
+
+// And('user selects {string} theme', (selectItem) => {
+//     cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+//     cy.get(`select[id*="edit-field-landing-contents-1-subform-field-ncids-theme"]`).select(selectItem);
+// });
 
 And('user uploads NCIDS image overrides as follows', (dataTable) => {
     for (const { fileName, type } of dataTable.hashes()) {
@@ -98,9 +124,9 @@ And('user uploads {string} as {int} guide card image', (fileName, index) => {
 })
 
 And('user selects {string} as promo image for {int} feature card', (name, index) => {
-    cy.get(`summary[aria-controls*="edit-field-override-image-promotional"]`).eq(index-1).click();
+    cy.get(`summary[aria-controls*="edit-field-override-image-promotional"]`).eq(index - 1).click();
     cy.wait(500);
-    cy.get('input[name*="override_image_promotional_entity_browser"]').eq(index-1).click()
+    cy.get('input[name*="override_image_promotional_entity_browser"]').eq(index - 1).click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input#edit-name').type(name)
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input[id*="edit-submit-cgov-image-media-browser"]').click()
     cy.wait(1500)
@@ -344,7 +370,7 @@ Then('NCIDS 3 guide card row at position {int} have the following attributes', (
             const linkAndText = button[i].split(',');
             cy.get('@row').find('.nci-guide-card__wrapper').eq(index).find('a').eq(i).as('link').should('include.text', linkAndText[0])
             let link = linkAndText[1];
-            
+
             if (link.includes("{TEST_SITE_SECTION}")) {
                 link = link.replace("{TEST_SITE_SECTION}", siteSection)
             }
@@ -358,11 +384,11 @@ Then('NCIDS 3 guide card row at position {int} have the following attributes', (
     }
 })
 
-And('user clicks on Select content button item',()=>{
+And('user clicks on Select content button item', () => {
     cy.get(`input[value="Select content"]`).trigger("click")
 })
 
-And('user clicks on {string} button for {string}',(edit,section)=>{
+And('user clicks on {string} button for {string}', (edit, section) => {
     cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
-    });
+});
 
