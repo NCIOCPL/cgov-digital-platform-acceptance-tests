@@ -21,4 +21,4 @@ Feature: Basic checks to ensure production site is up and running
     Scenario: English 404 page
         Given user is navigating to "/chicken " with a 404 status
         Then page title is "Page Not Found"
-        And the text "We can't find the page you're looking for." is displayed
+        And the text "Sorry, we can't find the page you're looking for." is displayed
