@@ -73,13 +73,38 @@ And('user selects {string} image position for {int} block', (option, index) => {
 
 And('{string} drop-down is displayed with the {string} option as default', (dropdownText, displayOptions) => {
     cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
-    cy.get(`select[id*="edit-field-landing-contents-0-subform-field-ncids-theme"] option:contains("${displayOptions}")`).should('have.attr', 'selected', 'selected');
+    cy.get(`select[id*="edit-field-landing-contents-1-subform-field-ncids-theme"] option:contains("${displayOptions}")`).should('have.attr', 'selected', 'selected');
 });
 
-// And('user selects {string} theme', (selectItem) => {
-//     cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
-//     cy.get(`select[id*="edit-field-landing-contents-1-subform-field-ncids-theme"]`).select(selectItem);
-// });
+And('the {string} dropdown has the following options', (dropdownText, dataTable) => {
+    for (const { options } of dataTable.hashes()) {
+        cy.get(`select[id*="edit-field-landing-contents-1-subform-field-ncids-theme"] option:contains("${options}")`).should('exist');
+    }
+});
+
+And('the user select {string} option from the {string} dropdown', (selectItem, dropdownText) => {
+    cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+    cy.get(`select[id*="edit-field-landing-contents-1-subform-field-ncids-theme"]`).select(selectItem);
+});
+
+
+
+And('{string} drop-down is displayed with the {string} option', (dropdownText, displayOptions) => {
+    cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+    cy.get(`select[id*="edit-field-landing-contents-2-subform-field-ncids-theme"] option:contains("${displayOptions}")`).should('have.attr', 'selected', 'selected');
+});
+
+And('the {string} dropdown has following options', (dropdownText, dataTable) => {
+    for (const { options } of dataTable.hashes()) {
+        cy.get(`select[id*="edit-field-landing-contents-2-subform-field-ncids-theme"] option:contains("${options}")`).should('exist');
+    }
+});
+
+
+And('user select option {string} from the {string} dropdown', (selectItem, dropdownText) => {
+    cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+    cy.get(`select[id*="edit-field-landing-contents-3-subform-field-ncids-theme"]`).select(selectItem);
+});
 
 And('user uploads NCIDS image overrides as follows', (dataTable) => {
     for (const { fileName, type } of dataTable.hashes()) {
