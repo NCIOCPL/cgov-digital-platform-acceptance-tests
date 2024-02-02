@@ -8,8 +8,7 @@ const siteSection = Cypress.env('test_site_section');
 const randomStr = Cypress.env('randomStr');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
-When('user enters credentials', () => {
-    expect(username, 'username was set').to.be.a('string').and.not.be.empty
+When('user enters credentials of {string}', (username) => {
     // the password value should not be shown
     if (typeof password !== 'string' || !password || password === '') {
         throw new Error('Missing password value, set using CYPRESS_admin_password=...')
@@ -71,6 +70,10 @@ And('user clicks on the tool bar status button {string}', (status) => {
 });
 And('user clicks {string} button from other actions', (action) => {
     cy.get(`a:contains('${action}')`).click();
+});
+
+And('user clicks {string} button from Moderation sidebar', (action) => {
+    cy.get(`input[value='${action}']`).click();
 });
 And('user clears out {string} field', (fieldLabel) => {
     cy.get(`label:contains('${fieldLabel}')`).parent().find('input').clear();
@@ -405,6 +408,11 @@ When('user clicks on {string} button to add translation', (addBtn) => {
     cy.get(`li.add.dropbutton-action a:contains("${addBtn}")`).click({ force: true });
 });
 
+When('user clicks on {string} button to edit translation', (editBtn) => {
+    cy.get(`li.edit.dropbutton-action a:contains("${editBtn}")`).eq(1).click({ force: true });
+});
+
+
 And('Remove button for image was translated as {string}', (removeBtn) => {
     cy.get(`input[value='${removeBtn}']`).should('be.visible');
 });
@@ -499,6 +507,14 @@ And('user clicks on title with url {string} from the list of content', (contentH
     cy.get(`a[href='${siteSection}/${contentHref}-${randomStr}']`).click();
 });
 
+And('user clicks on Edit page with url {string} from the list of content', (contentHref) => {
+    cy.get(`a[href='${siteSection}/${contentHref}-${randomStr}']`).parent().parent().find("li[class*='edit']").click();
+});
+
+And('user clicks on blog with url {string} from the list of content', (contentHref) => {
+    cy.get(`td[class*='views-field'] >a[href*='${contentHref}-${randomStr}']`).click();
+});
+
 And('user selects a checkbox next to title with url {string} from the list of content', (url) => {
     cy.get(`a[href='${siteSection}/${url}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
 });
@@ -547,4 +563,33 @@ And('user selects {string} from Source View dropdown', (sourceDropdown) => {
 
 And('user enters {string} in Raw HTML Content under Secondary Contents', (value) => {
     cy.get('table[id*="field-secondary-contents"]').find('textarea[name*="field_raw_html"]').type(value);
+})
+
+When('user clicks on {string} option button', (btnText) => {
+    cy.get(`[id*='edit-${btnText.toLowerCase()}']`).click();
+});
+
+When('user confirms {string} action', (btnText) => {
+    //conditional here is to differentiate between ESP and ENG content
+    //because Drupal renders it differently based on lang
+    if (btnText.includes('Delete')) {
+        cy.get(`div[class*='ui-dialog-buttonset form-actions'] button:contains('${btnText}')`).click();
+    } else {
+        cy.get(`input[value='${btnText}']`).click()
+    }
+
+});
+
+
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
+});
+
+And('user clicks on title with url spanish path {string} plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}/${purl}-${randomStr}']`).click();
+})
+
+And('user clicks on title with url spanish path {string} plus {string} plus {string}', (spPath, series, blog) => {
+
+    cy.get(`a[href='${spPath}/${series}-${randomStr}/${blog}-${randomStr}']`).click();
 })

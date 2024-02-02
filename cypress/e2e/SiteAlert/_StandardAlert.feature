@@ -2,9 +2,9 @@ Feature: As a site admin I want to configure site alert
 
     Scenario: siteadmin is creating and placing site alert
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        When user is logged in and the user name "admin" is displayed in the toolbar
+        When user is logged in and the user name "siteadmin" is displayed in the toolbar
         And user is navigating to "/admin/structure/block/block-content"
         And user clicks on "Add content block" button
         Then the list of block contents appears
@@ -163,6 +163,6 @@ Feature: As a site admin I want to configure site alert
 
     Scenario: login to remove alert (so after hook doesn't have to)
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
         When user is logged in and the user name "admin" is displayed in the toolbar

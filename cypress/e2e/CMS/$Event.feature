@@ -3,9 +3,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
 
     Scenario: User is adding new event content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -38,8 +38,20 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And user selects 3 Promotional Image from the list of images
         And browser waits
         And user remembers the source of selected promo image for further verification
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "test-event" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
 
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "test-event"
@@ -60,9 +72,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
 
     Scenario: Verify the "all day event" checkbox, edit and republish
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-event" from the list of content
@@ -72,7 +84,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And browser waits
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify the "all day event" checkbox hides time on front end
         Given user is navigating to the front end site with path site section plus "test-event"
@@ -83,9 +97,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
 
     Scenario: Edit and republish event content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-event" from the list of content
@@ -119,7 +133,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And user remembers the source of selected lead image for further verification
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "test-event-edited"
@@ -137,9 +153,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -156,7 +172,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And "Automated Test Event Edited" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -167,9 +185,9 @@ Feature: As a cms user I want to be able to create Event content type to promote
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page-test-promo" from the list of content
@@ -180,19 +198,25 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And browser waits
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "test-event-edited" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
+        And user clicks on title with url "test-event-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "test-event-edited" does not exist in the list of content

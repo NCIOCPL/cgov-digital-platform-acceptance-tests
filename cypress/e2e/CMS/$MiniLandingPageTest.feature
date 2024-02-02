@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: User is adding new Mini Landing page content type with Content Block
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -34,9 +34,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Add Two Item Feature Card Row section
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
@@ -58,9 +58,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Add list section
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
@@ -94,9 +94,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Add Borderless Full-Width Card and raw html
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
@@ -121,9 +121,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Add Dynamic List section
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
@@ -145,8 +145,12 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And browser waits
         And user selects "Mini pager" from "Pagination" dropdown
         And browser waits
-        And user selects "Published" from Save as dropdown
-        When user saves the content page
+        Then user saves the content page
+        And user clicks on the tool bar status button "Draft"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+
 
     #-------Mini landing page test front end verification --------##
     Scenario: Verify newly created content
@@ -178,9 +182,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Edit and republish Mini Landing Page content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page" from the list of content
@@ -198,9 +202,12 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | Card Title               | Automated Test Mini Landing Page - Card Title Edited        | field_card_title               |
             | Meta Description         | Automated Test Mini Landing Page Meta Description Edited    | field_page_description         |
             | Feature Card Description | Automated Test Mini Landing Page - Feature Card Desc Edited | field_feature_card_description |
-        And user saves the content page
+        Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
 
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "mini-landing-page-edited"
@@ -211,9 +218,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -228,9 +235,11 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user clicks on "Select content" button to select item
         And browser waits
         And "Automated Test Mini Landing Page Edited" had been selected
-        Then user saves the content page
+        When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -241,9 +250,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -252,16 +261,18 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
-        Then user saves the content page
+        When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     # Translation of Mini Landing
     Scenario: Add a translation
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Mini Landing Page Edited"
@@ -296,15 +307,16 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
-            | option    |
-            | Borrador  |
-            | Review    |
-            | Publicado |
+            | option   |
+            | Borrador |
+            | Review   |
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify translated content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "mini-landing-page-edited"
@@ -335,9 +347,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Edit and republish Spanish Mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "mini-landing-page-edited"
@@ -351,7 +363,9 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
             | Meta Description | Automated Test Mini Landing Meta Description Edited Spanish | field_page_description |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify Spanish edited content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "mini-landing-page-edited"
@@ -363,15 +377,28 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "mini-landing-page-edited" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 content items." appears on a screen
+        And user clicks on title with url spanish path "/espanol" site section plus "mini-landing-page-edited"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+        When user clicks on "Content" tab
+        And user clicks on title with url "mini-landing-page-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
         And the content item with url "mini-landing-page-edited" does not exist in the list of content

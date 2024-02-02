@@ -1,13 +1,10 @@
 Feature: As a cms user I want to be able to create Biography content type to promote Biography
 
-
-
-
     Scenario: User is adding new biography content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -66,8 +63,20 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And user selects "Posted Date" checkbox
         And user selects "Reviewed Date" checkbox
         And user selects "Updated Date" checkbox
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         When user saves the content page
+        And browser waits
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "biography" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
         And browser waits
 
     Scenario: Verify newly created content
@@ -96,9 +105,9 @@ Feature: As a cms user I want to be able to create Biography content type to pro
 
     Scenario: Edit and republish biography content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "biography" from the list of content
@@ -129,11 +138,11 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And user removes the Biography Image
         And user selects 2 Biography Image from the list of images
         And user remembers the source of selected biography image for further verification
-        And user selects "Editing" from "Change to" dropdown
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
-        And browser waits
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "biography-edited"
@@ -154,9 +163,9 @@ Feature: As a cms user I want to be able to create Biography content type to pro
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -173,7 +182,10 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And "Full Name Edited" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
 
     Scenario: Verify card titles and feature card description in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -183,9 +195,9 @@ Feature: As a cms user I want to be able to create Biography content type to pro
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -196,19 +208,26 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And browser waits
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "biography-edited" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
+        And user clicks on title with url "biography-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "biography-edited" does not exist in the list of content

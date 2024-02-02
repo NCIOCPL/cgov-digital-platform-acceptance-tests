@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
     Scenario: Create a new English Infographic
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
@@ -35,9 +35,21 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And browser waits
         And user remembers the source of selected promotional image to be displayed in home and landing pages for further verification
         And user selects "Posted Date" checkbox
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
 
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Media" sub tab
+        And user clicks on title with url "test-infographic" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user clicks "Publish" button from Moderation sidebar
 
     Scenario: Verify newly created English Infographic as a media item
         Given user is navigating to the front end site with path site section plus "test-infographic"
@@ -60,9 +72,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
     Scenario: Create a Spanish Infographic translation
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
@@ -84,9 +96,17 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user types "Spanish" into Caption text field
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        And user clicks on "Moderated media" sub tab
-        Then user selects "Editar" option from Operations dropdown for media with title "Automated Test Infographic Spanish"
-        Then page title is "Automated Test Infographic Spanish [Español traducción]"
+
+    Scenario: editor is publishing spanish content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Media" sub tab
+        Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Infographic"
+        When user clicks on "Edit" button to edit translation
         And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
@@ -112,9 +132,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
     Scenario: Create English test pages to embed Infographic and embed/add Infographic to test pages
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -203,8 +223,8 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user selects "right" radio button under "Align"
         And user clicks on "Embed" button to select infographic
         And browser waits
-        And user selects "Published" from "Save as" dropdown
-        Then user saves the content page
+        And user selects "Review" from "Save as" dropdown
+        When user saves the content page
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
         And user clicks on "Home and Landing" content type
@@ -253,8 +273,25 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And browser waits
         And user removes the "Internal Link" item from the list
         And browser waits
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         When user saves the content page
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "home-and-landing-page-to-test-infographic" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
+        When user clicks on "Content" tab
+        And user clicks on title with url "article-to-test-infographic" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
 
 
     Scenario: Verify Infographic at the front end in the English Article
@@ -290,9 +327,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
     Scenario: Translate test pages to Spanish to embed Infographic and embed/add Infographic to test pages
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Article to test Infographic"
@@ -307,7 +344,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
             | Título de página | Automated Test Article to test Infographic Spanish | title            |
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
         When user clicks on "Contenido" tab
         Then user selects "Traducir" option from Operations dropdown for content with title "Automated Test Home and Landing page to test Infographic"
         When user clicks on "Add" button to add translation
@@ -320,7 +359,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
             | Título de página | Automated Test Home and Landing page to test Infographic Spanish | title            |
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
 
     Scenario: Verify Infographic at the front end in the Spanish Article
@@ -356,22 +397,61 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
+
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "article-to-test-infographic" from the list of content
-        And user selects a checkbox next to title with url "home-and-landing-page-to-test-infographic" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 4 content items" appears on a screen
+        And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-to-test-infographic-spanish"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "article-to-test-infographic-spanish"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "home-and-landing-page-to-test-infographic" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "article-to-test-infographic" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
         And the content item with url "article-to-test-infographic" does not exist in the list of content
         And the content item with url "home-and-landing-page-to-test-infographic" does not exist in the list of content
         And the content item with url "article-to-test-infographic-spanish" does not exist in the list of content
         And the content item with url "home-and-landing-page-to-test-infographic-spanish" does not exist in the list of content
+
+
+        When user clicks on "Content" tab
         And user clicks on "Media" sub tab
         And user selects a checkbox next to title with url "test-infographic" from the list of content
         And user selects "Delete media" action

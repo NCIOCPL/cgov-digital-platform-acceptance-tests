@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: User is adding new article content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -50,8 +50,10 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user types "https://www.yahoo.com/" in the citation url field and saves it
         And user types "Plain Citation" in the 3 citation body field
         And user selects "Display" from "Public Use Text" dropdown
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
+        And user clicks on the tool bar status button "Review"
+        And user clicks "Publish" button from Moderation sidebar
 
 
     Scenario: Verify newly created content
@@ -74,9 +76,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Verify Related resources functionality
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-article" from the list of content
@@ -112,13 +114,15 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | Override Title | Media Link Override Title | field_related_resources[2][subform][field_override_title][0][value] |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Edit and republish article content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-article" from the list of content
@@ -155,7 +159,10 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
 
 
     Scenario: Verify edited content
@@ -183,9 +190,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -202,7 +209,10 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And "Automated Test Article Edited" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
 
     Scenario: Verify promo image and card titles in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -213,9 +223,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -226,13 +236,15 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And browser waits
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Add a translation
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Article Edited"
@@ -260,15 +272,16 @@ Feature: As a cms user I want to be able to create Article content type to promo
         And "Public Use Text" dropdown displays "Presentación"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
-            | option    |
-            | Borrador  |
-            | Review    |
-            | Publicado |
+            | option   |
+            | Borrador |
+            | Review   |
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify translated content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "test-article-edited"
@@ -288,9 +301,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Edit and republish Spansih article content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "test-article-edited"
@@ -304,7 +317,10 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | Meta Description | Automated Test Article Meta Description Edited Spanish | field_page_description |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publicar" from workflow actions
+
 
     Scenario: Verify Spanish edited content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "test-article-edited"
@@ -316,15 +332,29 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "test-article-edited" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 content items" appears on a screen
+        And user clicks on title with url spanish path "/espanol" site section plus "test-article-edited"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+        When user clicks on "Content" tab
+        And user clicks on title with url "test-article-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "test-article-edited" does not exist in the list of content

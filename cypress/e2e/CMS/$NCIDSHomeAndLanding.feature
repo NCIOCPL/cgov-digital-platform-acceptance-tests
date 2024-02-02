@@ -2,9 +2,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Creating an image to use as promo
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
@@ -33,15 +33,15 @@ Feature: Home And Landing Page Test Creation of Content
             | panoramic_image.jpg   | ncids_promo_art_16x9 |
             | contextual_image.jpeg | ncids_promo_art_4x3  |
             | thumbnail_image.jpg   | ncids_promo_art_1x1  |
-       And browser waits
+        And browser waits
         Then user saves the content page
 
 
     Scenario: User is adding new Home and Landing page content type and adding a Hero
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -91,9 +91,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add 2 Guide Card Row
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "ncids-home-and-landing-page" from the list of content
@@ -139,9 +139,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add NCIDS 3 Feature Card Row
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "ncids-home-and-landing-page" from the list of content
@@ -181,9 +181,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add NCIDS Promo Block External
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "ncids-home-and-landing-page" from the list of content
@@ -203,9 +203,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add NCIDS Promo Block Internal
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "ncids-home-and-landing-page" from the list of content
@@ -240,9 +240,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add 3 Guide Card Row
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "ncids-home-and-landing-page" from the list of content
@@ -301,9 +301,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add NCIDS 2 column container
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "ncids-home-and-landing-page" from the list of content
@@ -326,8 +326,11 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select content" button to select item
         And browser waits
         And user enters '<div class="usa-section" data-eddl-landing-row><h2 class="nci-heading-h3 nci-heading--label">Media Resources</h2><ul class="usa-list--unstyled rightrail__list-links"><li><a href="/news-events/media-resources" class="usa-link font-serif-lg text-bold" data-eddl-landing-rawhtmldata-eddl-landing-rawhtml-title="Media Resources" data-eddl-landing-rawhtml-component-variant="NewsEventsRightRail" data-eddl-landing-rawhtml-link-type="Internal" data-eddl-landing-rawhtml-link-area="Text" >Resources &amp; Contacts</a></li></ul></div>' in Raw HTML Content under Secondary Contents
-        And user selects "Published" from Save as dropdown
         Then user saves the content page
+        And user clicks on the tool bar status button "Draft"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
 
     Scenario Outline: Verify newly created content
         And screen breakpoint is set to "<breakpoint>"
@@ -370,9 +373,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add a translation
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "NCIDS Automated Test Home and Landing page"
@@ -390,7 +393,9 @@ Feature: Home And Landing Page Test Creation of Content
             | Card Description     | _Spanish | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_description][0][value] |
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify Spanish content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "ncids-home-and-landing-page"
@@ -420,19 +425,33 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "ncids-home-and-landing-page" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        And browser waits
-        When user clicks on the "Delete" button
-        And browser waits
-        Then the confirmation text "Deleted 2 content items." appears on a screen
+        And user clicks on title with url spanish path "/espanol" site section plus "ncids-home-and-landing-page"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-home-and-landing-page" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+        When user clicks on "Content" tab
         And user clicks on "Media" sub tab
         And user deletes "NCIDS Image" image
         And the image "NCIDS Image" does not exist in the list of content
