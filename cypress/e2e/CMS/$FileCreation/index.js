@@ -98,3 +98,7 @@ And('user deletes test file and translation with url {string}', (url) => {
         }
     });
 });
+
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
+});

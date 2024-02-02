@@ -2,9 +2,9 @@ Feature: Adding a custom site logo
 
     Scenario: user creates a custom header block
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab
@@ -26,9 +26,9 @@ Feature: Adding a custom site logo
 
     Scenario: User is configuring default header to not show up on a test site section
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab
@@ -50,9 +50,9 @@ Feature: Adding a custom site logo
 
     Scenario: User is adding search page to a block
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab
@@ -73,9 +73,9 @@ Feature: Adding a custom site logo
 
     Scenario: Negative: user has to provide custom logos otherwise error will be shown
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab
@@ -95,9 +95,9 @@ Feature: Adding a custom site logo
 
     Scenario: Clean Up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab

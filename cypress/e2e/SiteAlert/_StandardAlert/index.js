@@ -4,8 +4,7 @@ import { And, Then } from 'cypress-cucumber-preprocessor/steps';
 const username = Cypress.env('admin_username');
 const password = Cypress.env('admin_password');
 
-When('user enters credentials', () => {
-    expect(username, 'username was set').to.be.a('string').and.not.be.empty
+When('user enters credentials of {string}', (username) => {
     // the password value should not be shown
     if (typeof password !== 'string' || !password || password === '') {
         throw new Error('Missing password value, set using CYPRESS_admin_password=...')
@@ -18,8 +17,8 @@ And('user clicks {string} button', (loginButton) => {
     cy.get('input#edit-submit').contains(loginButton).click();
 });
 
-When('user is logged in and the user name {string} is displayed in the toolbar', (admin) => {
-    cy.get('#toolbar-item-user').should('include.text', admin).and('be.visible');
+When('user is logged in and the user name {string} is displayed in the toolbar', (username) => {
+    cy.get('#toolbar-item-user').should('include.text', username).and('be.visible');
 });
 
 And('user clicks on {string} button', (block) => {

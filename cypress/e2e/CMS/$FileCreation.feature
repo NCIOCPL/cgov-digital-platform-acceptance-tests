@@ -2,9 +2,9 @@ Feature: As a content owner I want to be able to upload different file types to 
 
     Scenario: Creating new media File items
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
@@ -19,7 +19,7 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Browser Title | Test File PDF | field_browser_title |
         And user uploads test file "pdf-file.pdf"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
         And user clicks on "Media" sub tab
         And user clicks on "Add media" action button
@@ -33,7 +33,7 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Browser Title | Test File CSV | field_browser_title |
         And user uploads test file "csv-file.csv"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
         And user clicks on "Media" sub tab
         And user clicks on "Add media" action button
@@ -47,7 +47,7 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Browser Title | Test File PPTX | field_browser_title |
         And user uploads test file "pptx-file.pptx"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
         And user clicks on "Media" sub tab
         And user clicks on "Add media" action button
@@ -61,7 +61,7 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Browser Title | Test File PPT | field_browser_title |
         And user uploads test file "ppt-file.ppt"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
         And user clicks on "Media" sub tab
         And user clicks on "Add media" action button
@@ -75,7 +75,7 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Browser Title | Test File XLSX | field_browser_title |
         And user uploads test file "xlsx-file.xlsx"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
         And user clicks on "Media" sub tab
         And user clicks on "Add media" action button
@@ -89,7 +89,7 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Browser Title | Test File XLS | field_browser_title |
         And user uploads test file "xls-file.xls"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
         And user clicks on "Media" sub tab
         And user clicks on "Add media" action button
@@ -103,7 +103,7 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Browser Title | Test File DOCX | field_browser_title |
         And user uploads test file "docx-file.docx"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
         And user clicks on "Media" sub tab
         And user clicks on "Add media" action button
@@ -117,14 +117,59 @@ Feature: As a content owner I want to be able to upload different file types to 
             | Browser Title | Test File DOC | field_browser_title |
         And user uploads test file "doc-file.doc"
         And system waits for file upload process
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Media" sub tab
+        And user clicks on Edit page with url "test-file-pdf" from the list of content
+        And user selects "Published" from "Change to" dropdown
+        Then user saves the content page
+
+        And user clicks on Edit page with url "test-file-csv" from the list of content
+        And user selects "Published" from "Change to" dropdown
+        Then user saves the content page
+
+        And user clicks on Edit page with url "test-file-pptx" from the list of content
+        And user selects "Published" from "Change to" dropdown
+        Then user saves the content page
+
+        And user clicks on Edit page with url "test-file-ppt" from the list of content
+        And user selects "Published" from "Change to" dropdown
+        Then user saves the content page
+
+        And user clicks on Edit page with url "test-file-xlsx" from the list of content
+        And user selects "Published" from "Change to" dropdown
+        Then user saves the content page
+
+        And user clicks on Edit page with url "test-file-xls" from the list of content
+        And user selects "Published" from "Change to" dropdown
+        Then user saves the content page
+
+        And user clicks on Edit page with url "test-file-docx" from the list of content
+        And user selects "Published" from "Change to" dropdown
+        Then user saves the content page
+
+        And user clicks on Edit page with url "test-file-doc" from the list of content
+        And user selects "Published" from "Change to" dropdown
+        Then user saves the content page
+
+
+
+
+
 
     Scenario: Translate newly created files
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
@@ -242,9 +287,9 @@ Feature: As a content owner I want to be able to upload different file types to 
 
     Scenario: Creating Article and List to test files
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -336,14 +381,26 @@ Feature: As a content owner I want to be able to upload different file types to 
         And browser waits
         And user clicks on "Select media" button to select media
         And browser waits
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from Change to dropdown
         Then user saves the content page
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "article-to-test-files" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
 
     Scenario: Create a managed list to hold files
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -438,8 +495,22 @@ Feature: As a content owner I want to be able to upload different file types to 
         And browser waits
         And user clicks on "Select media" button to select media
         And browser waits
-        And user selects "Published" from "Save as" dropdown
-        Then user saves the content page
+        And user selects "Review" from "Save as" dropdown
+        When user saves the content page
+
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "crlp-for-files" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
+
 
     Scenario: Verify files are displayed on the front end
         Given user is navigating to the front end site with path site section plus "article-to-test-files"
@@ -490,9 +561,9 @@ Feature: As a content owner I want to be able to upload different file types to 
 
     Scenario: Translate test pages
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Article to test Files"
@@ -501,7 +572,9 @@ Feature: As a content owner I want to be able to upload different file types to 
         Then page title is "Crear traducción Español de Article to test Files"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
         When user clicks on "Contenido" tab
         Then user selects "Traducir" option from Operations dropdown for content with title "Cancer Research List Page to Test Files"
@@ -510,7 +583,9 @@ Feature: As a content owner I want to be able to upload different file types to 
         Then page title is "Crear traducción Español de Cancer Research List Page to Test Files"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify translated pages
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "article-to-test-files"
@@ -561,18 +636,55 @@ Feature: As a content owner I want to be able to upload different file types to 
 
     Scenario: Clean up related resources and mini landing page test content
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "article-to-test-files" from the list of content
-        And user selects a checkbox next to title with url "crlp-for-files" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 4 content items" appears on a screen
+        And user clicks on title with url spanish path "/espanol" site section plus "article-to-test-files"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "crlp-for-files"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "article-to-test-files" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "crlp-for-files" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+        When user clicks on "Content" tab
         And user clicks on "Media" sub tab
         And user selects a checkbox next to title with url "test-file-pdf" from the list of content
         And user selects a checkbox next to title with url "test-file-csv" from the list of content

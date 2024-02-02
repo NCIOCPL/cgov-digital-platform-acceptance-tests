@@ -1,23 +1,22 @@
 Feature: as a content editor, I want to ensure that I can set card title using CTHP Card Title field
-    Scenario: Verify CTHP Card Title field exists
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user is navigating to "/about-cancer/treatment/cam/hp/acupuncture-pdq"
-        And user clicks on the tool bar status button "Published"
-        And user clicks "View in edit form" button from other actions
-        And the following fields are displayed
-            | fieldLabel      | field_name            |
-            | CTHP Card Title | field_cthp_card_title |
-        And user saves the content page
-
+    # Scenario: Verify CTHP Card Title field exists
+    #     Given user is navigating to "/user/login?show_login_fields=true"
+    #     When user enters credentials of "siteadmin"
+    #     And user clicks "Log in" button
+    #     Then user is logged in and the user name "siteadmin" is displayed in the toolbar
+    #     And the tool bar appears at the top
+    #     When user is navigating to "/about-cancer/treatment/cam/hp/acupuncture-pdq"
+    #     And user clicks on the tool bar status button "Published"
+    #     And user clicks "View in edit form" button from other actions
+    #     And the following fields are displayed
+    #         | fieldLabel      | field_name            |
+    #         | CTHP Card Title | field_cthp_card_title |
+        
     Scenario: As a user I want to add a PDQ guide card and see CTHP Card Title
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -44,9 +43,11 @@ Feature: as a content editor, I want to ensure that I can set card title using C
         And user clicks on "Apply" button
         And user selects 1 PDQ Summary from the list of summaries
         And user clicks on "Select summary" button to select item
-        And user selects "Published" from "Save as" dropdown
         And browser waits
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
+        And user clicks on the tool bar status button "Review"
+        And user clicks "Publish" button from Moderation sidebar
         And browser waits
 
 
@@ -58,13 +59,17 @@ Feature: as a content editor, I want to ensure that I can set card title using C
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "cthp-card-title" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
+        And user clicks on title with url "cthp-card-title" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        

@@ -46,3 +46,7 @@ Given('user is navigating to the front end site with spanish path {string} site 
 And('user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
 });
+
+And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
+});

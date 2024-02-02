@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: User is adding new Cancer Type Homepage content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -32,13 +32,13 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects 3 Promotional Image from the list of images
         And browser waits
         And user remembers the source of selected promo image for further verification
-        Then user saves the content page
+        When user saves the content page
 
     Scenario: Adding guide card
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
@@ -94,9 +94,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding Internal Feature card
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
@@ -122,9 +122,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding External feature card
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
@@ -147,9 +147,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding video card
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
@@ -180,9 +180,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding research card
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
@@ -209,9 +209,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding block and raw html cards
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
@@ -238,8 +238,11 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user enters "<div>This is to test Raw Html Content in CTHP Raw HTML Card</div>" into source text field
         And user selects "Include in search" from Search Engine Restrictions dropdown
-        And user selects "Published" from draft "Current state" dropdown
-        When user saves the content page
+        Then user saves the content page
+        And user clicks on the tool bar status button "Draft"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
 
     #----- Cancer Type Home Page front end verification starts from below------#
     Scenario: Verify newly created content
@@ -278,9 +281,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Edit and republish Cancer Type Homepage content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage" from the list of content
@@ -312,8 +315,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user remembers the title of selected video for further verification
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And browser waits for 5000
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "cancer-type-homepage-edited"
@@ -337,9 +341,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -356,7 +360,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And "Automated Test Cancer Type Homepage Patient" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -367,9 +373,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -380,13 +386,15 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Add a translation
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Cancer Type Homepage Patient"
@@ -421,10 +429,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
-            | option    |
-            | Borrador  |
-            | Review    |
-            | Publicado |
+            | option   |
+            | Borrador |
+            | Review   |
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         And user remembers the title of selected summary for further verification
@@ -432,7 +439,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user remembers title of selected Cancer Research List Page for future verification
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify translated content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-edited"
@@ -472,9 +481,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Edit and republish Spanish CTHP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-edited"
@@ -488,7 +497,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Meta Description | Automated Test CTHP Meta Description Edited Spanish | field_page_description |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify Spanish edited CTHP content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-edited"
@@ -499,9 +510,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: User is adding new Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -541,9 +552,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding guide card Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
@@ -598,9 +609,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding Internal Feature card Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
@@ -626,9 +637,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding External feature card Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
@@ -651,9 +662,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding video card Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
@@ -684,9 +695,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding research card Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
@@ -713,9 +724,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Adding block and raw html cards Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
@@ -742,20 +753,22 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user enters "<div>This is to test Raw Html Content in CTHP Raw HTML Card</div>" into source text field
         And user selects "Include in search" from Search Engine Restrictions dropdown
-        And user selects "Published" from draft "Current state" dropdown
-        When user saves the content page
+        Then user saves the content page
+        And user clicks on the tool bar status button "Draft"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Adding Patient/HP Toggle to Cancer Type Homepage Patient content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
-        # And user clicks on "Audience Toggle Link" link
         And user clicks on "Select content" button item
         And user selects "Automated Test Cancer Type Homepage HP" item from the list
         And user clicks on "Select content" button to select item
@@ -763,7 +776,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And "Automated Test Cancer Type Homepage HP" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     #----- Cancer Type Home Page HP front end verification starts from below------#
     Scenario: Verify newly created Cancer Type Homepage HP content
@@ -802,9 +817,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Edit and republish Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-hp" from the list of content
@@ -836,7 +851,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user remembers the title of selected video for further verification
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify edited Cancer Type Homepage HP content
         Given user is navigating to the front end site with path site section plus "cancer-type-homepage-hp-edited"
@@ -866,9 +883,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -885,7 +902,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And "Automated Test Cancer Type Homepage HP" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -896,9 +915,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -909,13 +928,15 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Add a translation to Cancer Type Homepage HP content
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Cancer Type Homepage HP"
@@ -950,10 +971,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
-            | option    |
-            | Borrador  |
-            | Review    |
-            | Publicado |
+            | option   |
+            | Borrador |
+            | Review   |
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         And user remembers the title of selected summary for further verification
@@ -961,7 +981,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user remembers title of selected Cancer Research List Page for future verification
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify translated Cancer Type Homepage HP content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
@@ -1002,9 +1024,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Edit and republish Spanish CTHP HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
@@ -1018,7 +1040,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Meta Description | Automated Cancer Type Homepage HP Meta Description Edited Spanish | field_page_description |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify Spanish edited CTHP HP content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
@@ -1029,17 +1053,54 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "cancer-type-homepage-edited" from the list of content
-        And user selects a checkbox next to title with url "cancer-type-homepage-hp-edited" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 4 content items" appears on a screen
+        And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-edited"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "cancer-type-homepage-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "cancer-type-homepage-edited" does not exist in the list of content
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "cancer-type-homepage-hp-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "cancer-type-homepage-hp-edited" does not exist in the list of content

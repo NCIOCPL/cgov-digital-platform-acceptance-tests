@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
     Scenario: User is adding new Blog Series content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -30,6 +30,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user fills out "About Blog" text area with "This is all about Blog Series." in the blog series
         And user selects "Published" from "Save as" dropdown
         Then user saves the content page
+        And browser waits
 
     Scenario: Verify newly created content Blog Series
         Given user is navigating to the front end site with path site section plus "blog-series"
@@ -45,9 +46,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
     Scenario: User is adding new Blog Post content type without any image so it can be added to Blog Series
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -70,14 +71,17 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user enters "Blog Post List Description" into "List Description" text field
         And user enters "Blog Post Intro Text" as intro text
         And user fills out "Body" text area with "This is a description of Blog Post content type."
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
+        And user clicks on the tool bar status button "Review"
+        And user clicks "Publish" button from Moderation sidebar
+        And browser waits
 
     Scenario: User is adding Blog Topic to the already created Blog Series
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
@@ -95,9 +99,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
     Scenario: Edit and republish Blog Post content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post-test-blog-series" under "/about-cancer/understanding/blog-series" from the list of content
@@ -107,13 +111,16 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
 
     Scenario: Edit and republish Blog Series content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-series" from the list of content
@@ -153,12 +160,13 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
+        And browser waits
 
     Scenario: User is adding new Blog Post content type with images so it can be added to Blog Series
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -184,8 +192,11 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects 2 Promotional Image from the list of images for blog series
         And browser waits
         And user remembers the source of selected promo image for blog series for further verification
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
+        And user clicks on the tool bar status button "Review"
+        And user clicks "Publish" button from Moderation sidebar
+        And browser waits
 
     Scenario: Verify edited content and Blog Topic in the Blog Series
         Given user is navigating to the front end site with path site section plus "blog-series-edited"
@@ -230,9 +241,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -249,7 +260,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And "Automated Test Blog Series Edited" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -261,9 +274,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -274,13 +287,15 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And browser waits
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Add a translation for Blog Series
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Blog Series Edited"
@@ -353,7 +368,10 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And preview button was translated as "Vista previa"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
+        And browser waits
 
     Scenario: Verify translated Blog Series
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "blog-series-edited"
@@ -373,9 +391,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
     Scenario: User is adding new Spanish Blog Post content type without any image so it can be added to Spanish Blog Series
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Blog Post for testing Blog Series"
@@ -399,13 +417,16 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And preview button was translated as "Vista previa"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
+        And browser waits
 
     Scenario: User is adding Spanish Blog Topic to the already created Spanish Blog Series
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
@@ -427,9 +448,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
     Scenario: Edit and republish Spanish Blog Post content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post-test-blog-series" under "/espanol/about-cancer/understanding/blog-series-edited" from the list of content
@@ -438,7 +459,9 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user checks "Test Blog Topic Spanish" checkbox
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify edited content and Blog Topic in the Blog Series
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "blog-series-edited"
@@ -467,22 +490,67 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title "Automated Test Blog Series Edited" with url "blog-series-edited" from the list of content
-        And user selects a checkbox next to title "Automated Test Blog Post for testing Blog Series" with url "blog-post-test-blog-series" from the list of content
-        And user selects a checkbox next to title "Automated Test Blog Post2 for testing Blog Series" with url "blog-post2-test-blog-series" from the list of content
-        And user selects "Delete content" action
-        And user clicks on the "Apply to selected items" action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 5 content items." appears on a screen
-        And the content item with url "blog-series-edited" does not exist in the list of content
-        And the content item with url "blog-post-test-blog-series" does not exist in the list of content
-        And the content item with url "blog-post2-test-blog-series" does not exist in the list of content
+        And user clicks on title with url spanish path "/espanol" plus "about-cancer/understanding/blog-series-edited" plus "2024/blog-post-test-blog-series"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+
+        When user clicks on "Content" tab
+        And user clicks on blog with url "blog-post-test-blog-series" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+
+        When user clicks on "Content" tab
+        And user clicks on blog with url "blog-post2-test-blog-series" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "blog-series-edited"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "blog-series-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
         And user selects "List terms" option from Operations for "Blog Topics"

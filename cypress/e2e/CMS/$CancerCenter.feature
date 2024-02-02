@@ -1,39 +1,11 @@
 Feature: As a cms user I want to be able to create cancer center content type to promote cancer centers
 
-    Scenario: Verify all the fields on the cancer center content creation page
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on "Add content" action button
-        And user clicks on "Cancer Center" content type
-        Then page title is "Create Cancer Center"
-        And List Description text area is displayed
-        And today date is displayed for the following fields
-            | date          |
-            | Posted Date   |
-            | Updated Date  |
-            | Reviewed Date |
-        And Date Display Mode has the following checkboxes
-            | checkbox      |
-            | Posted Date   |
-            | Reviewed Date |
-            | Updated Date  |
-        And Search Engine Restrictions dropdown has default value "IncludeSearch"
-        And Related Resources dropdown is displayed with the following options
-            | option            |
-            | Add Internal Link |
-            | Add External Link |
-            | Add Media Link    |
-
 
     Scenario: User is adding new cancer center content
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -70,14 +42,28 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user selects 1 Cancer Center Image from the list of images
         And user remembers the source of selected image for further verification
         And user checks "Updated Date" checkbox
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         When user saves the content page
+
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "cancer-center" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
+
 
     Scenario: Create a mini landing page and add cancer center into a list
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -96,8 +82,10 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user clicks on "Select content" button
         And user selects "Automated Test Cancer Center" from content list
         And "Automated Test Cancer Center" had been selected
-        And user selects "Published" from "Save as" dropdown
-        When user saves the content page
+        And user selects "Review" from "Save as" dropdown
+        Then user saves the content page
+        And user clicks on the tool bar status button "Review"
+        And user clicks "Publish" button from Moderation sidebar
 
     Scenario: Verify that list description is displayed
         Given user is navigating to the front end site with path site section plus "mini-landing"
@@ -128,9 +116,9 @@ Feature: As a cms user I want to be able to create cancer center content type to
 
     Scenario: Verify Related resources functionality
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-center" from the list of content
@@ -166,13 +154,16 @@ Feature: As a cms user I want to be able to create cancer center content type to
             | Override Title | Media Link Override Title | field_related_resources[2][subform][field_override_title][0][value] |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
 
     Scenario: Edit and republish cancer center
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-center" from the list of content
@@ -205,7 +196,10 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user remembers the source of selected image for further verification
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
 
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "cancer-center-edited"
@@ -233,9 +227,9 @@ Feature: As a cms user I want to be able to create cancer center content type to
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -252,7 +246,9 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And "Automated Test Cancer Center" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify card titles and feature card description in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -262,9 +258,9 @@ Feature: As a cms user I want to be able to create cancer center content type to
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -275,35 +271,38 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And browser waits
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
 
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "cancer-center-edited" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
+        And user clicks on title with url "cancer-center-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "cancer-center-edited" does not exist in the list of content
-
-    Scenario: Clean up mini landing
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
+        And user clicks on title with url "mini-landing" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "mini-landing" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
         And the content item with url "mini-landing" does not exist in the list of content

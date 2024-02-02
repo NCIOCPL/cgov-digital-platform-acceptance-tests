@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create App Module content type to de
 
     Scenario: User is adding new App Module content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -20,8 +20,10 @@ Feature: As a cms user I want to be able to create App Module content type to de
         And user selects "JS-Only App Module" from the "Application Module" dropdown
         And user clears out "App Module Instance Settings" text field
         And user enters '{"drupalConfig":{"appName":"test-app-kidney-cancer","rootId":"NCI-trial-listing-app-root","initFnName":"window.ClinicalTrialsListingApp","appCssUri":"https://react-app-dev.cancer.gov/clinical-trials-listing-app/develop/static/css/main.css","appJsUri":"https://react-app-dev.cancer.gov/clinical-trials-listing-app/develop/static/js/main.js","removeHeadElements":["canonical_url","robots","title_tag","og_title","og_url","og_description","description"],"validAppPaths":[]},"frontEndConfig":{"analyticsChannel":"@@TOKEN@@[cgov_tokens:cgov-analytics-channel]","analyticsContentGroup":"@@TOKEN@@[cgov_tokens:cgov-analytics-group]","analyticsPublishedDate":"@@TOKEN@@[node:field_date_posted:date:short]","browserTitle":"Automated App Module Test - Browser Title","ctsApiEndpoint":"@@LITERAL@@window.CDEConfig.ctsConfig.apiServer","itemsPerPage":25,"metaDescription":"Automated App Module Meta Description.","noTrialsHtml":"<p><strong>There are currently no available trials.</strong></p>","pageTitle":"Clinical Trials to Treat Kidney (Renal Cell) Cancer","detailedViewPagePrettyUrlFormatter":"/clinicaltrials/{{nci_id}}","siteName":"@@TOKEN@@[cgov_tokens:cgov-trans-org-name]","title":"@@TOKEN@@[node:field_browser_title:value]","trialListingPageType":"Manual","requestFilters":{"diseases.nci_thesaurus_concept_id":["C4033","C9385"],"primary_purpose":"treatment"}}}' into app config text field
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         Then user saves the content page
+        And user clicks on the tool bar status button "Review"
+        And user clicks "Publish" button from Moderation sidebar
 
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "test-app"
@@ -37,9 +39,9 @@ Feature: As a cms user I want to be able to create App Module content type to de
 
     Scenario: Edit and republish App Module content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-app" from the list of content
@@ -67,15 +69,19 @@ Feature: As a cms user I want to be able to create App Module content type to de
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "test-app-edited" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
+        And user clicks on title with url "test-app-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "test-app-edited" does not exist in the list of content

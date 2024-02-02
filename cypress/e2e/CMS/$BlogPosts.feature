@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     Scenario: User is adding new blog post content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -32,8 +32,20 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And user remembers the source of selected promo image for further verification
         And user selects "Display" from "Public Use Text" dropdown
         And user selects "Include in search" from "Search Engine Restrictions"
-        And user selects "Published" from "Save as" dropdown
-        Then user saves the content page
+        And user selects "Review" from "Save as" dropdown
+        When user saves the content page
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on blog with url "blog-post" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
 
     Scenario: Verify newly created content
         Given user is navigating to the blog "blog-post" under "news-events/cancer-currents-blog"
@@ -60,9 +72,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     Scenario: Verify Related resources functionality
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post" under "/news-events/cancer-currents-blog" from the list of content
@@ -100,9 +112,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     Scenario: Verify Recommended Content functionality
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post" under "/news-events/cancer-currents-blog" from the list of content
@@ -128,9 +140,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     Scenario: Edit and republish blog post content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post" under "/news-events/cancer-currents-blog" from the list of content
@@ -155,9 +167,11 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And browser waits
         And user remembers the source of selected lead image for further verification
         And user selects "Do Not Display" from "Public Use Text" dropdown
-        When user saves the content page
+        Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify edited content
         Given user is navigating to the blog "blog-post-edited" under "/news-events/cancer-currents-blog"
@@ -179,9 +193,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -198,7 +212,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And "Automated Test Blog Post Edited" had been selected
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -209,9 +225,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "mini-landing-page-test-promo" from the list of content
@@ -222,14 +238,16 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And browser waits
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     #---- Translation of Blog Post -----#
     Scenario: Add a translation
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Blog Post Edited"
@@ -284,15 +302,16 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And "Posted Date" label is displayed under search Engine
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
-            | option    |
-            | Borrador  |
-            | Review    |
-            | Publicado |
+            | option   |
+            | Borrador |
+            | Review   |
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify translated content
         Given user is navigating to the blog "blog-post-edited" under "espanol/noticias/temas-y-relatos-blog"
@@ -321,9 +340,9 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     Scenario: Edit and republish Spanish blog post content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2024/blog-post-edited"
@@ -337,7 +356,10 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
             | Meta Description | Automated Test Blog Post Meta Description Edited Spanish | field_page_description |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publicar" from workflow actions
+
 
     Scenario: Verify Spanish edited content
         Given user is navigating to the front end site with spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2024/blog-post-edited"
@@ -349,15 +371,30 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "blog-post-edited" under "/news-events/cancer-currents-blog" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 2 content items." appears on a screen
+        And user clicks on title with url spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2024/blog-post-edited"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on blog with url "blog-post-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "blog-post-edited" does not exist in the list of content

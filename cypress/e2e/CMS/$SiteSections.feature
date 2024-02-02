@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: User is adding new article to test site section and adding it as a landing page of new site section
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -60,9 +60,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Making site section a nav root
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
@@ -84,9 +84,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Hiding site section in section anv
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
@@ -107,9 +107,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Nav label override name
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
@@ -140,9 +140,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Drag and drop to reorder children
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
@@ -163,9 +163,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Verify pretty url change of a site section and removal of nav label
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
@@ -198,9 +198,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Changing a site section of the landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with the url "/about-cancer/coping/test-site-section-edited" from the list of content
@@ -226,9 +226,9 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Removing a landing page from site section will cause the site section to dissapear from
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
@@ -248,18 +248,21 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "adveditor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title "Article to test Site Section" with url "/about-cancer/coping/test-site-section" from the list of content
-        And user selects "Delete content" action
-       And user clicks on the "Apply to selected items" action button
-        Then page title is "Are you sure you want to delete this content item?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 1 content item." appears on a screen
-        And the content item with url "/about-cancer/coping/test-site-section" does not exist in the list of content
+        And user clicks on title with the url "/about-cancer/coping/feelings/purl" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         When user clicks on "Structure" tab
         And user clicks on "Taxonomy" sub tab
         And user selects "List terms" option from Operations for "Site Sections"

@@ -2,9 +2,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: User is adding new Home and Landing page content type and adding a Primary Feature Card Row
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -65,9 +65,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add Guide Card Row
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
@@ -87,14 +87,14 @@ Feature: Home And Landing Page Test Creation of Content
         And user enters "<div>This is to test Raw Html Content under Guide Card Row</div>" into Raw HTML Content text field under Guide Card Row
         And browser waits
         When user saves the content page
-        And browser waits for 3000
+
 
 
     Scenario: Add Secondary Feature Card Row
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
@@ -118,9 +118,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add Multimedia Row
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
@@ -147,13 +147,13 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select content" button to select item
         And browser waits
         When user saves the content page
-        And browser waits for 3000
+
 
     Scenario: Add List
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
@@ -192,9 +192,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add One and two column containers
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
@@ -266,9 +266,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add Borderless Full-Width Card
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
@@ -300,9 +300,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add Title First Feature Card Row
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
@@ -329,8 +329,12 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Reviewed Date" checkbox
         And user selects "Updated Date" checkbox
         And user selects "Include in search" from Search Engine Restrictions dropdown
-        And user selects "Published" from Save as dropdown
-        When user saves the content page
+        Then user saves the content page
+        And user clicks on the tool bar status button "Draft"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+
 
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "home-and-landing-page"
@@ -389,9 +393,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: User is adding new Mini Landing page content type with Content Block
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -417,14 +421,27 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Updated Date" checkbox
         And user selects "Include in search" from Search Engine Restrictions dropdown
         When user saves the content page
+
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "test-resource-mini-landing-page-for-home-landing" from the list of content
         And user clicks on the tool bar status button "Draft"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+
 
     Scenario: Edit and republish Home and Landing Page content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page" from the list of content
@@ -475,9 +492,10 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on the "Select content" button to select item
         And browser waits
         Then user saves the content page
-        And browser waits
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "home-and-landing-page-edited"
@@ -499,9 +517,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -516,9 +534,11 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on "Select content" button to select item
         And browser waits
         And "Automated Test Home and Landing Page Edited" had been selected
-        Then user saves the content page
+        When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify promo image and card titles in mini landing page
         Given user is navigating to the front end site with path site section plus "mini-landing-page-test-promo"
@@ -529,9 +549,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -540,16 +560,18 @@ Feature: Home And Landing Page Test Creation of Content
         And user removes "Two Item Feature Card Row" section
         And user confirms removal
         And browser waits
-        Then user saves the content page
+        When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     #    --Translation of Home and Landing Page --
     Scenario: Add a translation
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Home and Landing Page Edited"
@@ -597,15 +619,16 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
-            | option    |
-            | Borrador  |
-            | Review    |
-            | Publicado |
+            | option   |
+            | Borrador |
+            | Review   |
         And Save button was translated as "Guardar (esta traducción)"
         And preview button was translated as "Vista previa"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify translated content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-edited"
@@ -648,9 +671,9 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Edit and republish Spanish Home And Landing Page content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-edited"
@@ -663,7 +686,9 @@ Feature: Home And Landing Page Test Creation of Content
         And user enters "Spanish" into "Tagline" text field in home and landing page
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify Spanish edited content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-edited"
@@ -679,19 +704,43 @@ Feature: Home And Landing Page Test Creation of Content
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "test-resource-mini-landing-page-for-home-landing" from the list of content
-        And user selects a checkbox next to title with url "home-and-landing-page-edited" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        And browser waits
-        When user clicks on the "Delete" button
-        And browser waits
-        Then the confirmation text "Deleted 3 content items." appears on a screen
+
+        And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-edited"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "home-and-landing-page-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "test-resource-mini-landing-page-for-home-landing" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And the content item with url "test-resource-mini-landing-page-for-home-landing" does not exist in the list of content
         And the content item with url "home-and-landing-page-edited" does not exist in the list of content

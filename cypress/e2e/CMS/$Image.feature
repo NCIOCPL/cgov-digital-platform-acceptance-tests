@@ -2,9 +2,9 @@ Feature: User creating an image
 
     Scenario: Create test pages to test image overrides
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "author"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "author" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -20,8 +20,8 @@ Feature: User creating an image
             | Meta Description | Article to test Image - Meta Description | field_page_description |
         And user selects "Test Image" Lead Image from the list of images
         And browser waits
-        And user selects "Published" from "Save as" dropdown
-        Then user saves the content page
+        And user selects "Review" from "Save as" dropdown
+        When user saves the content page
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
         And user clicks on "Mini Landing Page" content type
@@ -51,7 +51,7 @@ Feature: User creating an image
         And user selects "Article to test Image" item from main page content
         And user clicks on "Select content" button to select item
         And browser waits
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         When user saves the content page
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -73,8 +73,30 @@ Feature: User creating an image
         And user selects "Mini Landing Page to test Image" item from main page content
         And user clicks on "Select content" button to select item
         And browser waits
-        And user selects "Published" from "Save as" dropdown
+        And user selects "Review" from "Save as" dropdown
         When user saves the content page
+
+    Scenario: editor is publishing content
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "home-and-landing-page-image" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
+        When user clicks on "Content" tab
+        And user clicks on title with url "mini-landing-page-image" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
+        When user clicks on "Content" tab
+        And user clicks on title with url "article-to-test-image" from the list of content
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
+        And browser waits
 
     Scenario: Verify image overrides
         Given user is navigating to the front end site with path site section plus "article-to-test-image"
@@ -90,9 +112,9 @@ Feature: User creating an image
 
     Scenario: Translate an image
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
@@ -104,14 +126,13 @@ Feature: User creating an image
             | Nombre       | _Spanish | name[0][value]         |
             | Photo Credit | _Spanish | field_credit[0][value] |
         And user types "_Spanish" into Caption text field
-        And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
     Scenario:Translate test pages
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Article to test Image"
@@ -126,7 +147,9 @@ Feature: User creating an image
             | Título de página | Article to test Image Spanish | title            |
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
         When user clicks on "Contenido" tab
         Then user selects "Traducir" option from Operations dropdown for content with title "Home and Landing page for Image"
@@ -141,7 +164,9 @@ Feature: User creating an image
             | Título de página | Home and Landing page for Image Spanish | title            |
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
-        And user selects "Quick Publish" from workflow actions
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publicar" from workflow actions
 
     Scenario: Verify translated image overrides
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "article-to-test-image-spanish"
@@ -155,16 +180,62 @@ Feature: User creating an image
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
+        When user enters credentials of "editor"
         And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
+        Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user selects a checkbox next to title with url "article-to-test-image" from the list of content
-        And user selects a checkbox next to title with url "mini-landing-page-image" from the list of content
-        And user selects a checkbox next to title with url "home-and-landing-page-image" from the list of content
-        And user selects "Delete content" action
-        And user clicks on "Apply to selected items" content action button
-        Then page title is "Are you sure you want to delete these content items?"
-        When user clicks on "Delete" button
-        Then the confirmation text "Deleted 5 content items" appears on a screen
+
+        And user clicks on title with url spanish path "/espanol" site section plus "article-to-test-image-spanish"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-for-image-spanish"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "article-to-test-image" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "home-and-landing-page-image" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
+
+        When user clicks on "Content" tab
+        And user clicks on title with url "mini-landing-page-image" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
