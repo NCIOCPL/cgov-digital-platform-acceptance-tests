@@ -45,8 +45,8 @@ And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
     cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });
 })
 
-And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
-    cy.get(`summary[aria-expanded="false"]:contains(${title})`).click();
+And('user clicks on {string} link in the {string} text area {int}', (title, cartOption, index) => {
+    cy.get(`summary[aria-controls*="edit-field-internal-link"]:contains(${title})`).eq(index-1).click({ force: true });
 })
 
 And('user uploads hero images as follows', (dataTable) => {
@@ -94,7 +94,7 @@ And('{string} drop-down is displayed with the {string} option', (dropdownText, d
     cy.get(`select[id*="edit-field-landing-contents-2-subform-field-ncids-theme"] option:contains("${displayOptions}")`).should('have.attr', 'selected', 'selected');
 });
 
-And('the {string} dropdown has following options', (dropdownText, dataTable) => {
+And('{string} dropdown has following options', (dropdownText, dataTable) => {
     for (const { options } of dataTable.hashes()) {
         cy.get(`select[id*="edit-field-landing-contents-2-subform-field-ncids-theme"] option:contains("${options}")`).should('exist');
     }
@@ -179,6 +179,10 @@ And('tagline button has text {string} with link {string}', (btnText, href) => {
     cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href', `${href}-${randomStr}`)
 })
 
+And('{string} theme is displayed for Hero component', () => {
+    cy.get('.nci-hero__cta-container [class*="nci-hero__cta--dark"]').should('be.visible');
+});
+
 Then('NCIDS guide cards have the following attributes', (dataTable) => {
     for (let { index, title, description, btnLinkAndText, source, file } of dataTable.hashes()) {
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
@@ -221,6 +225,14 @@ Then('NCIDS guide cards have the following attributes', (dataTable) => {
         });
     }
 })
+
+And('the {string} theme is displayed for {int} promo block', (theme, index) => {
+    cy.get('div[class*="nci-promo-block"]').eq(index - 1).parent().should('not.have.html', "nci-promo-block--dark");
+});
+
+And('{string} theme is displayed for {int} promo block', (theme, index) => {
+    cy.get('div[class*="nci-promo-block--dark"]').should('exist');
+});
 
 And('NCIDS promo blocks have the following attributes', (dataTable) => {
 
