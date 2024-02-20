@@ -1,14 +1,6 @@
 [
   {
-    "domain": ".www.yourdomain.com",
-    "path": "/",
-    "name": "yourCookieName",
-    "value": "yourCookieValue",
-    "expirationDate": 1798790400,
-    "hostOnly": false,
-    "httpOnly": false,
-    "secure": false,
-    "session": false,
-    "sameSite": "Lax"
+    "name": "s_campaign",
+    "value": "eb_gov"
   }
 ]
