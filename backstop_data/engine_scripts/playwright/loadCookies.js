@@ -7,6 +7,10 @@ module.exports = async (browserContext, scenario) => {
   // Read Cookies from File, if exists
   if (fs.existsSync(cookiePath)) {
     cookies = JSON.parse(fs.readFileSync(cookiePath));
+    cookies = cookies.map(cookie => {
+      cookie.url = scenario.url
+      return cookie;
+    });
   }
 
   // Add cookies to browser
