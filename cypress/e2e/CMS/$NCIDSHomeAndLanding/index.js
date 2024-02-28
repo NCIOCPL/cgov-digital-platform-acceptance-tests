@@ -46,8 +46,17 @@ And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
 })
 
 And('user clicks on {string} link in the {string} text area {int}', (title, cartOption, index) => {
-    cy.get(`summary[aria-controls*="edit-field-internal-link"]:contains(${title})`).eq(index-1).click({ force: true });
+    cy.get(`summary[aria-controls*="edit-field-internal-link"]:contains(${title})`).eq(index - 1).click({ force: true });
 })
+
+And('user clicks on {string} link in the {string} text area', (title, cartOption, index) => {
+    cy.get(`summary[aria-controls*="edit-field-internal-link"]:contains(${title})`).click({ force: true });
+})
+
+And('user clicks on {string} link in {string} text area', (title, cartOption, index) => {
+    cy.get(`summary[aria-controls*="edit-field-internal-link"]:contains(${title})`).click({ force: true });
+})
+
 
 And('user uploads hero images as follows', (dataTable) => {
     for (const { fileName, type } of dataTable.hashes()) {

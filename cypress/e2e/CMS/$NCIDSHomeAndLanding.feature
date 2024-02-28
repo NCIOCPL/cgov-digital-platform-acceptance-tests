@@ -69,8 +69,6 @@ Feature: Home And Landing Page Test Creation of Content
         And user fills out the following fields
             | fieldLabel | value        | field_name                                                  |
             | Tagline    | Tagline Text | field_landing_contents[0][subform][field_tagline][0][value] |
-
-
         And user clicks on "Add NCIDS Link Button Internal" from "Primary Call to Action Link" area
         And browser waits
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
@@ -116,7 +114,7 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel       | value              | field_name                                                                                                           |
             | Heading          | Guide Card 1       | field_landing_contents[1][subform][field_image_desc_guide_cards][0][subform][field_container_heading][0][value]      |
             | Card Description | Card 1 Description | field_landing_contents[1][subform][field_image_desc_guide_cards][0][subform][field_guide_card_description][0][value] |
-        # And user uploads "pano_image.jpg" as 1 guide card image
+        # And user uploads "pano_image.jpg" as 0 guide card image
         And browser waits
         And user clicks on "Add NCIDS Link Button Internal" from "Links for Guide Card Buttons" area
         And browser waits
@@ -128,7 +126,7 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user adds another "internal" link for 1 guide card
         And browser waits
-        And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
+        And user clicks on "Link" link in "NCIDS Link Button Internal" text area
         And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
