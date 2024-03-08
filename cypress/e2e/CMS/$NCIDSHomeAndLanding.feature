@@ -114,7 +114,8 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel       | value              | field_name                                                                                                           |
             | Heading          | Guide Card 1       | field_landing_contents[1][subform][field_image_desc_guide_cards][0][subform][field_container_heading][0][value]      |
             | Card Description | Card 1 Description | field_landing_contents[1][subform][field_image_desc_guide_cards][0][subform][field_guide_card_description][0][value] |
-        # And user uploads "pano_image.jpg" as 0 guide card image
+        # And browser waits
+        # And user uploads "pano_image.jpg" as 2 guide card image
         And browser waits
         And user clicks on "Add NCIDS Link Button Internal" from "Links for Guide Card Buttons" area
         And browser waits
@@ -126,7 +127,7 @@ Feature: Home And Landing Page Test Creation of Content
         And browser waits
         And user adds another "internal" link for 1 guide card
         And browser waits
-        And user clicks on "Link" link in "NCIDS Link Button Internal" text area
+        And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
         And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
@@ -148,45 +149,45 @@ Feature: Home And Landing Page Test Creation of Content
         Then user saves the content page
 
 
-    # Scenario: Add NCIDS 3 Feature Card Row
-    #     Given user is navigating to "/user/login?show_login_fields=true"
-    #     When user enters credentials
-    #     And user clicks "Log in" button
-    #     Then user is logged in and the user name "admin" is displayed in the toolbar
-    #     And the tool bar appears at the top
-    #     When user clicks on "Content" tab
-    #     And user clicks on title with url "ncids-home-and-landing-page" from the list of content
-    #     And user clicks on the tool bar status button "Draft"
-    #     And user clicks "View in edit form" button from other actions
-    #     And user selects "Add NCIDS 3 Feature Card Row" from "Contents" dropdown
-    #     And browser waits
-    #     And user fills out the following fields
-    #         | fieldLabel | value              | field_name                                                            |
-    #         | Heading    | 3 Feature Card Row | field_landing_contents[2][subform][field_container_heading][0][value] |
-    #     And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
-    #     And user clicks on Select content button item
-    #     And user selects "Article to test Related Resources" item from the list
-    #     And user clicks on "Select content" button to select item
-    #     And browser waits
-    #     And user clicks on "Add NCIDS Feature Card Multimedia" button item
-    #     And user clicks on "Featured Media" in 1 "NCIDS Feature Card Multimedia" section
-    #     And user clicks on "Select media" button item
-    #     And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
-    #     And user selects "Test File for Related Resources" item from the media list
-    #     And user clicks on "Select media" button to select media
-    #     And browser waits
-    #     And user fills out the following fields
-    #         | fieldLabel       | value                         | field_name                                                                                                 |
-    #         | Card Title       | Multimedia Feature Card Title | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_title][0][value]       |
-    #         | Card Description | Multimedia Feature Card Desc  | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_description][0][value] |
-    #     And user selects "NCIDS Image" as promo image for 2 feature card
-    #     And browser waits
-    #     And user clicks on "Add NCIDS Feature Card External" button item
-    #     And user fills out the following fields
-    #         | fieldLabel        | value                   | field_name                                                                                           |
-    #         | Featured Item Url | https://www.google1.com | field_landing_contents[2][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
-    #         | Card Title        | Google Link             | field_landing_contents[2][subform][field_row_cards][2][subform][field_override_card_title][0][value] |
-    #     When user saves the content page
+    Scenario: Add NCIDS 3 Feature Card Row
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-home-and-landing-page" from the list of content
+        And user clicks on the tool bar status button "Draft"
+        And user clicks "View in edit form" button from other actions
+        And user selects "Add NCIDS 3 Feature Card Row" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel | value              | field_name                                                            |
+            | Heading    | 3 Feature Card Row | field_landing_contents[2][subform][field_container_heading][0][value] |
+        And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user clicks on "Add NCIDS Feature Card Multimedia" button item
+        And user clicks on "Featured Media" in 1 "NCIDS Feature Card Multimedia" section
+        And user clicks on "Select media" button item
+        And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
+        And user selects "Test File for Related Resources" item from the media list
+        And user clicks on "Select media" button to select media
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel       | value                         | field_name                                                                                                 |
+            | Card Title       | Multimedia Feature Card Title | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_title][0][value]       |
+            | Card Description | Multimedia Feature Card Desc  | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_description][0][value] |
+        And user selects "NCIDS Image" as promo image for 2 feature card
+        And browser waits
+        And user clicks on "Add NCIDS Feature Card External" button item
+        And user fills out the following fields
+            | fieldLabel        | value                   | field_name                                                                                           |
+            | Featured Item Url | https://www.google1.com | field_landing_contents[2][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
+            | Card Title        | Google Link             | field_landing_contents[2][subform][field_row_cards][2][subform][field_override_card_title][0][value] |
+        When user saves the content page
 
 
 
@@ -264,66 +265,66 @@ Feature: Home And Landing Page Test Creation of Content
         And user selects "Published" from Save as dropdown
         Then user saves the content page
 
-    # Scenario: Add 3 Guide Card Row
-    #     Given user is navigating to "/user/login?show_login_fields=true"
-    #     When user enters credentials
-    #     And user clicks "Log in" button
-    #     Then user is logged in and the user name "admin" is displayed in the toolbar
-    #     And the tool bar appears at the top
-    #     When user clicks on "Content" tab
-    #     And user clicks on title with url "ncids-home-and-landing-page" from the list of content
-    #     And user clicks on the tool bar status button "Draft"
-    #     And user clicks "View in edit form" button from other actions
-    #     And browser waits
-    #     And user selects "Add NCIDS 3 Guide Card Row" from "Contents" dropdown
-    #     And browser waits
-    #     And user fills out the following fields
-    #         | fieldLabel | value                    | field_name                                                                                           |
-    #         | Heading    | 3 Guide Card Row Heading | field_landing_contents[6][subform][field_container_heading][0][value]                                |
-    #         | Heading    | 3 Guide Card row 1       | field_landing_contents[6][subform][field_guide_cards][0][subform][field_container_heading][0][value] |
-    #     And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-    #     And user clicks on Select content button item
-    #     And user selects "Article to test Related Resources" item from the list
-    #     And user clicks on "Select content" button to select item
-    #     And browser waits
-    #     And user adds another "internal" link for 1 guide card
-    #     And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-    #     And user clicks on Select content button item
-    #     And user selects "Article to test Related Resources" item from the list
-    #     And user clicks on "Select content" button to select item
-    #     And browser waits
-    #     And user fills out the following fields
-    #         | fieldLabel                 | value                                  | field_name                                                                                                                     |
-    #         | Override Link Button Title | 3 Guide Card row Override Button Title | field_landing_contents[6][subform][field_guide_cards][0][subform][field_link_buttons][1][subform][field_button_text][0][value] |
-    #     And user clicks on "Add NCIDS Guide Card" button item
-    #     And user fills out the following fields
-    #         | fieldLabel | value              | field_name                                                                                           |
-    #         | Heading    | 3 Guide Card row 2 | field_landing_contents[6][subform][field_guide_cards][1][subform][field_container_heading][0][value] |
-    #     And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-    #     And user clicks on Select content button item
-    #     And user selects "Article to test Related Resources" item from the list
-    #     And user clicks on "Select content" button to select item
-    #     And browser waits
-    #     And user adds another "external" link for 2 guide card
-    #     And user fills out the following fields
-    #         | fieldLabel        | value                          | field_name                                                                                                                     |
-    #         | Link              | https://www.google.com         | field_landing_contents[6][subform][field_guide_cards][1][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
-    #         | Link Button Title | 3 Guide Card row Google Link 1 | field_landing_contents[6][subform][field_guide_cards][1][subform][field_link_buttons][1][subform][field_button_text][0][value] |
-    #     And user clicks on "Add NCIDS Guide Card" button item
-    #     And user fills out the following fields
-    #         | fieldLabel | value              | field_name                                                                                           |
-    #         | Heading    | 3 Guide Card row 3 | field_landing_contents[6][subform][field_guide_cards][2][subform][field_container_heading][0][value] |
-    #     And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
-    #     And user clicks on Select content button item
-    #     And user selects "Article to test Related Resources" item from the list
-    #     And user clicks on "Select content" button to select item
-    #     And browser waits
-    #     And user adds another "external" link for 3 guide card
-    #     And user fills out the following fields
-    #         | fieldLabel        | value                          | field_name                                                                                                                     |
-    #         | Link              | https://www.google.com         | field_landing_contents[6][subform][field_guide_cards][2][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
-    #         | Link Button Title | 3 Guide Card row Google Link 2 | field_landing_contents[6][subform][field_guide_cards][2][subform][field_link_buttons][1][subform][field_button_text][0][value] |
-    #     Then user saves the content page
+    Scenario: Add 3 Guide Card Row
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials
+        And user clicks "Log in" button
+        Then user is logged in and the user name "admin" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-home-and-landing-page" from the list of content
+        And user clicks on the tool bar status button "Draft"
+        And user clicks "View in edit form" button from other actions
+        And browser waits
+        And user selects "Add NCIDS 3 Guide Card Row" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel | value                    | field_name                                                                                           |
+            | Heading    | 3 Guide Card Row Heading | field_landing_contents[6][subform][field_container_heading][0][value]                                |
+            | Heading    | 3 Guide Card row 1       | field_landing_contents[6][subform][field_guide_cards][0][subform][field_container_heading][0][value] |
+        And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user adds another "internal" link for 1 guide card
+        And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel                 | value                                  | field_name                                                                                                                     |
+            | Override Link Button Title | 3 Guide Card row Override Button Title | field_landing_contents[6][subform][field_guide_cards][0][subform][field_link_buttons][1][subform][field_button_text][0][value] |
+        And user clicks on "Add NCIDS Guide Card" button item
+        And user fills out the following fields
+            | fieldLabel | value              | field_name                                                                                           |
+            | Heading    | 3 Guide Card row 2 | field_landing_contents[6][subform][field_guide_cards][1][subform][field_container_heading][0][value] |
+        And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user adds another "external" link for 2 guide card
+        And user fills out the following fields
+            | fieldLabel        | value                          | field_name                                                                                                                     |
+            | Link              | https://www.google.com         | field_landing_contents[6][subform][field_guide_cards][1][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
+            | Link Button Title | 3 Guide Card row Google Link 1 | field_landing_contents[6][subform][field_guide_cards][1][subform][field_link_buttons][1][subform][field_button_text][0][value] |
+        And user clicks on "Add NCIDS Guide Card" button item
+        And user fills out the following fields
+            | fieldLabel | value              | field_name                                                                                           |
+            | Heading    | 3 Guide Card row 3 | field_landing_contents[6][subform][field_guide_cards][2][subform][field_container_heading][0][value] |
+        And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user adds another "external" link for 3 guide card
+        And user fills out the following fields
+            | fieldLabel        | value                          | field_name                                                                                                                     |
+            | Link              | https://www.google.com         | field_landing_contents[6][subform][field_guide_cards][2][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
+            | Link Button Title | 3 Guide Card row Google Link 2 | field_landing_contents[6][subform][field_guide_cards][2][subform][field_link_buttons][1][subform][field_button_text][0][value] |
+        Then user saves the content page
 
     # Scenario: Add NCIDS 2 column container
     #     Given user is navigating to "/user/login?show_login_fields=true"
@@ -399,54 +400,54 @@ Feature: Home And Landing Page Test Creation of Content
             | mobile     |
 
 
-# Scenario: Add a translation
-#     Given user is navigating to "/user/login?show_login_fields=true"
-#     When user enters credentials
-#     And user clicks "Log in" button
-#     Then user is logged in and the user name "admin" is displayed in the toolbar
-#     And the tool bar appears at the top
-#     When user clicks on "Content" tab
-#     Then user selects "Translate" option from Operations dropdown for content with title "NCIDS Automated Test Home and Landing page"
-#     Then the page title is "Translations of NCIDS Automated Test Home and Landing page"
-#     When user clicks on "Add" button to add translation
-#     Then page title is "Crear traducción Español de NCIDS Automated Test Home and Landing page"
-#     And user clicks on "Editar" button for "NCIDS Feature Card Multimedia"
-#     And user fills out the following fields
-#         | fieldLabel           | value    | field_name                                                                                                 |
-#         | Tagline              | _Spanish | field_landing_contents[0][subform][field_tagline][0][value]                                                |
-#         | Override Title       | _Spanish | field_landing_contents[4][subform][field_override_title][0][value]                                         |
-#         | Override Description | _Spanish | field_landing_contents[4][subform][field_override_description][0][value]                                   |
-#         | Button Text          | _Spanish | field_landing_contents[4][subform][field_button_text][0][value]                                            |
-#         | Card Title           | _Spanish | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_title][0][value]       |
-#         | Card Description     | _Spanish | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_description][0][value] |
-#     Then user saves the content page
-#     And user clicks on the tool bar status button "Borrador"
-#     And user selects "Quick Publish" from workflow actions
+Scenario: Add a translation
+    Given user is navigating to "/user/login?show_login_fields=true"
+    When user enters credentials
+    And user clicks "Log in" button
+    Then user is logged in and the user name "admin" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    Then user selects "Translate" option from Operations dropdown for content with title "NCIDS Automated Test Home and Landing page"
+    Then the page title is "Translations of NCIDS Automated Test Home and Landing page"
+    When user clicks on "Add" button to add translation
+    Then page title is "Crear traducción Español de NCIDS Automated Test Home and Landing page"
+    And user clicks on "Editar" button for "NCIDS Feature Card Multimedia"
+    And user fills out the following fields
+        | fieldLabel           | value    | field_name                                                                                                 |
+        | Tagline              | _Spanish | field_landing_contents[0][subform][field_tagline][0][value]                                                |
+        | Override Title       | _Spanish | field_landing_contents[4][subform][field_override_title][0][value]                                         |
+        | Override Description | _Spanish | field_landing_contents[4][subform][field_override_description][0][value]                                   |
+        | Button Text          | _Spanish | field_landing_contents[4][subform][field_button_text][0][value]                                            |
+        | Card Title           | _Spanish | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_title][0][value]       |
+        | Card Description     | _Spanish | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_description][0][value] |
+    Then user saves the content page
+    And user clicks on the tool bar status button "Borrador"
+    And user selects "Quick Publish" from workflow actions
 
-# Scenario: Verify Spanish content
-#     Given user is navigating to the front end site with spanish path "/espanol" site section plus "ncids-home-and-landing-page"
-#     And NCIDS Hero is displayed
-#     And tagline title reads "Tagline Text_Spanish"
-#     And tagline button has text "Article to test Related Resources" with link "{TEST_SITE_SECTION}/article"
-#     Then NCIDS guide cards have the following attributes
-#         | index | title        | description        | btnLinkAndText                                                                                                  | source                                                                                                    | file             |
-#         | 0     | Guide Card 1 | Card 1 Description | Article to test Related Resources,{TEST_SITE_SECTION}/article;Override Button Title,{TEST_SITE_SECTION}/article | /sites/default/files/styles/ncids_guide_card_16x9/public/ncids_guide_card_img_desc/field_image_guide_card | pano_image       |
-#         | 1     | Guide Card 2 | Card 2 Description | Google Link,https://www.google.com                                                                              | /sites/default/files/styles/ncids_guide_card_16x9/module/cgov_image/img                                   | placeholder-16x9 |
-#     And NCIDS promo blocks have the following attributes
-#         | index | title                                 | description                                 | link                        | buttonText          | source                                                                              | file            | srcset                                                                            | srcSetImg       |
-#         | 0     | External Link Title                   | N/A                                         | https://www.google2.com     | Button Text         | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
-#         | 1     | Internal Block Override Title_Spanish | Internal Block Override Description_Spanish | {TEST_SITE_SECTION}/article | Button Text_Spanish | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/media_image          | main_image      | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
-#         | 2     | Article to test Related Resources     | Automated Test Article - Feature Card Desc  | {TEST_SITE_SECTION}/article | Button Text         | N/A                                                                                 | N/A             | N/A                                                                               | N/A             |
-#     And NCIDS feature cards have the following attributes
-#         | index | title                                 | description                                | link                          | source                                                                                 | file             | srcset                                                                               | srcSetImg        |
-#         | 0     | Article to test Related Resources     | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | /sites/default/files/styles/ncids_featured_4x3/public/cgov_image/media_image         | main_image       |
-#         | 1     | Multimedia Feature Card Title_Spanish | Multimedia Feature Card Desc_Spanish       | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | /sites/default/files/styles/ncids_featured_4x3/public/cgov_image/ncids_promo_art_4x3 | contextual_image |
-#         | 2     | Google Link                           | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | /sites/default/files/styles/ncids_featured_4x3/module/cgov_image/img                 | placeholder-4x3  |
-#     Then NCIDS 3 guide card row at position 2 have the following attributes
-#         | index | title              | btnLinkAndText                                                                                                                   |
-#         | 0     | 3 Guide Card row 1 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Override Button Title,{TEST_SITE_SECTION}/article |
-#         | 1     | 3 Guide Card row 2 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 1,https://www.google.com              |
-#         | 2     | 3 Guide Card row 3 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 2,https://www.google.com              |
+Scenario: Verify Spanish content
+    Given user is navigating to the front end site with spanish path "/espanol" site section plus "ncids-home-and-landing-page"
+    And NCIDS Hero is displayed
+    And tagline title reads "Tagline Text_Spanish"
+    And tagline button has text "Article to test Related Resources" with link "{TEST_SITE_SECTION}/article"
+    Then NCIDS guide cards have the following attributes
+        | index | title        | description        | btnLinkAndText                                                                                                  | source                                                                                                    | file             |
+        | 0     | Guide Card 1 | Card 1 Description | Article to test Related Resources,{TEST_SITE_SECTION}/article;Override Button Title,{TEST_SITE_SECTION}/article | /sites/default/files/styles/ncids_guide_card_16x9/public/ncids_guide_card_img_desc/field_image_guide_card | pano_image       |
+        | 1     | Guide Card 2 | Card 2 Description | Google Link,https://www.google.com                                                                              | /sites/default/files/styles/ncids_guide_card_16x9/module/cgov_image/img                                   | placeholder-16x9 |
+    And NCIDS promo blocks have the following attributes
+        | index | title                                 | description                                 | link                        | buttonText          | source                                                                              | file            | srcset                                                                            | srcSetImg       |
+        | 0     | External Link Title                   | N/A                                         | https://www.google2.com     | Button Text         | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
+        | 1     | Internal Block Override Title_Spanish | Internal Block Override Description_Spanish | {TEST_SITE_SECTION}/article | Button Text_Spanish | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/media_image          | main_image      | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
+        | 2     | Article to test Related Resources     | Automated Test Article - Feature Card Desc  | {TEST_SITE_SECTION}/article | Button Text         | N/A                                                                                 | N/A             | N/A                                                                               | N/A             |
+    And NCIDS feature cards have the following attributes
+        | index | title                                 | description                                | link                          | source                                                                                 | file             | srcset                                                                               | srcSetImg        |
+        | 0     | Article to test Related Resources     | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | /sites/default/files/styles/ncids_featured_4x3/public/cgov_image/media_image         | main_image       |
+        | 1     | Multimedia Feature Card Title_Spanish | Multimedia Feature Card Desc_Spanish       | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | /sites/default/files/styles/ncids_featured_4x3/public/cgov_image/ncids_promo_art_4x3 | contextual_image |
+        | 2     | Google Link                           | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | /sites/default/files/styles/ncids_featured_4x3/module/cgov_image/img                 | placeholder-4x3  |
+    Then NCIDS 3 guide card row at position 2 have the following attributes
+        | index | title              | btnLinkAndText                                                                                                                   |
+        | 0     | 3 Guide Card row 1 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Override Button Title,{TEST_SITE_SECTION}/article |
+        | 1     | 3 Guide Card row 2 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 1,https://www.google.com              |
+        | 2     | 3 Guide Card row 3 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 2,https://www.google.com              |
 
 
 # Scenario: Clean up
