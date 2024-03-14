@@ -15,7 +15,7 @@ const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 	const scenarios = require(pathUtil.resolve(__dirname, scenarioFile));
 	const cleanedScenarios = scenarios.map((scenario) => ({
 		...scenario,
-		url: `${args.testBaseUrl}${scenario.testPath}`,
+		url: scenario.prodPath? `${args.testBaseUrl.replace('/automation-installed','')}${scenario.testPath}` : `${args.testBaseUrl}${scenario.testPath}`,
 		referenceUrl: `${args.refBaseUrl}${scenario.testPath}`,
 		delay: 2000,
 		label: scenario.specific && isACSF ? scenario.label + '_acsf' : scenario.label,
