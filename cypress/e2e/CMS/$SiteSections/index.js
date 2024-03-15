@@ -175,6 +175,10 @@ And('user clicks on title with the url {string} from the list of content', (cont
     cy.get(`a[href='${contentHref}-${randomStr}']`).click();
 });
 
+And('user clicks on title with selected url {string} from the list of content', (contentHref) => {
+    cy.get(`a[href='${firstSiteSection}${contentHref}-${randomStr}']`).click();
+});
+
 Then('the current left navigation label has url {string}', (currentHref) => {
     cy.get(`ul.usa-sidenav__sublist li a[href='${currentHref}']`).should('have.class', 'usa-current');
 });

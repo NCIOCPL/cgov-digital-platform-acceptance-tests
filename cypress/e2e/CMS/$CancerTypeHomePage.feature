@@ -200,6 +200,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user clicks on "Select content" button from "CTHP Research Card" text area
         And browser waits
+        And user filters results by "Cancer Research List Page" type
         And user types "Breast Cancer Research" into title field search area
         And browser waits
         And user clicks on "Select content" button to select item
