@@ -18,8 +18,8 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And Date Display Mode has the following checkboxes
             | checkbox      |
             | Posted Date   |
-            | Reviewed Date |
             | Updated Date  |
+            | Reviewed Date | 
         And Search Engine Restrictions dropdown has default value "IncludeSearch"
         And Related Resources dropdown is displayed with the following options
             | option            |
@@ -82,7 +82,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "biography"
         Then page title is "Full Name"
-        And "Updated" date is displaying today's date
+        And "Reviewed:" date is displaying today's date
         And description reads "This is a description of biography content type."
         And the Biography image is matching the earlier selected image
         And the individual 1 title is displayed as "Title 1"
@@ -147,7 +147,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
     Scenario: Verify edited content
         Given user is navigating to the front end site with path site section plus "biography-edited"
         Then page title is "Full Name Edited"
-        And "Updated" date is displaying today's date
+        And "Reviewed:" date is displaying today's date
         And description reads "This is a description of biography content type."
         And the Biography image is matching the earlier selected image
         And the individual 1 title is displayed as "Title 1 Edited"

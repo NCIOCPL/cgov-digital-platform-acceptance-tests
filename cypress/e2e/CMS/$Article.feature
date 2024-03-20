@@ -59,7 +59,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "test-article"
         Then page title is "Automated Test Article"
-        And "Updated:" date is displaying today's date
+        And "Reviewed:" date is displaying today's date
         And intro text reads "Article Intro Text"
         And 1 section heading reads "Article Heading1"
         And 1 description reads "This is a description of article content type under heading1."
@@ -297,7 +297,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
             | Article to test Related Resources | {TEST_SITE_SECTION}/article   |
             | Google Link                       | https://www.google.com/       |
             | Media Link Override Title         | {TEST_SITE_SECTION}/test-file |
-        And date published was translated as "Actualización"
+        And date published was translated as "Revisión"
 
     Scenario: Edit and republish Spansih article content type
         Given user is navigating to "/user/login?show_login_fields=true"
