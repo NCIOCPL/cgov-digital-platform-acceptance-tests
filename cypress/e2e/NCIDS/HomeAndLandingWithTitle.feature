@@ -17,3 +17,17 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
             | desktop    |
             | tablet     |
             | mobile     |
+
+
+    Scenario: Home and landing with additional library
+        Given user is navigating to "/test/landing-page-library-test"
+        Then NCIDS page title is "Landing Page Library Test"
+        And console log outputs "Hello World"
+        And tagline displays in color "rgb(0, 0, 255)"
+
+    Scenario: Spanish Home and landing with additional library
+        Given user is navigating to "/espanol/test-es/landing-page-library-test"
+        Then NCIDS page title is "Spanish Landing Page Library Test"
+        And console log outputs "Hello World"
+        And tagline displays in color "rgb(0, 0, 255)"
+

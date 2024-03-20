@@ -14,5 +14,9 @@ module.exports = [
     {
         label: 'Home and Landing without title CTA',
         testPath: '/ncids-cta-test',
+    },
+    {
+        label: 'Home and Landing with additional library',
+        testPath: '/test/landing-page-library-test',
     } 
 ]
