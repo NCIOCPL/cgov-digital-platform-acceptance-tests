@@ -51,7 +51,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "press-release"
         Then page title is "Automated Test Press Release"
-        And "Updated:" date is displaying today's date
+        And "Posted:Updated:Reviewed:" date is displaying today's date
         And Contact "NCI Press Office" link has a href "mailto:ncipressofficers@mail.nih.gov"
         And description reads "This is a description of press release content type."
         And the lead image for press release is matching the earlier selected image

@@ -22,9 +22,28 @@ And('user selects {string} checkbox', (dateDisplay) => {
     cy.get(`div#edit-field-date-display-mode label:contains("${dateDisplay}")`).parent().find('input.form-checkbox').check({ force: true })
 })
 
-And("{string} date is displaying today's date", (date) => {
-    cy.get('ul.clearfix li strong').should('be.visible').and('include.text', date)
-
+And("{string} date is displaying today's date", (stampLabel) => {
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ];
+    const date = new Date()
+    const year = date.getFullYear()
+    const month = months[date.getMonth()]
+    const day = date.getDate()
+    const expectedDate = `${month} ${day}, ${year}`
+    cy.get('ul.clearfix li').as('dateStamp').find('strong').should('have.text', stampLabel)
+    cy.get('@dateStamp').find('time').should('include.text', expectedDate)
 })
 And('description reads {string}', (description) => {
     cy.get(`[class='resize-content'] p:contains("${description}")`).should('be.visible')
