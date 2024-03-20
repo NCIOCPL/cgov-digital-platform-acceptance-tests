@@ -241,3 +241,19 @@ And('the right rail links have {string} attribute with value {string}', (attr, v
         cy.wrap($el).should('have.attr', attr, value)
     })
 });
+
+
+And('console log outputs {string}', (message) => {
+    cy.window().then((win) => {
+        expect(win.console.log).to.have.callCount(1);
+        expect(win.console.log).to.be.calledWith(message)
+    });
+
+
+});
+
+And('tagline displays in color {string}', (color) => {
+    cy.get('.nci-hero__cta-tagline')
+        .should('have.css', 'color')
+        .and('eq', color)
+});
