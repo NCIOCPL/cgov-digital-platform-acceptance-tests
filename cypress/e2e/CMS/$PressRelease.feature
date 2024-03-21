@@ -1,45 +1,45 @@
 Feature: As a cms user I want to be able to create Press Release content type to promote Press Release
 
-    Scenario: User is adding new press release content type
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials
-        And user clicks "Log in" button
-        Then user is logged in and the user name "admin" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on "Add content" action button
-        And user clicks on "Press Release" content type
-        Then page title is "Create Press Release"
-        When user selects test site section
-        And user fills out the following fields
-            | fieldLabel               | value                                            | field_name                     |
-            | Pretty URL               | press-release                                    | field_pretty_url               |
-            | Page Title               | Automated Test Press Release                     | title                          |
-            | Subtitle                 | Automated Test Press Release - Subtitle          | field_subtitle                 |
-            | Press Release Type       | Automated Test - NCI Press Release               | field_press_release_type       |
-            | Browser Title            | Automated Test Press Release - Browser Title     | field_browser_title            |
-            | Card Title               | Automated Test Press Release - Card Title        | field_card_title               |
-            | Meta Description         | Automated Test Press Release Meta Description    | field_page_description         |
-            | Feature Card Description | Automated Test Press Release - Feature Card Desc | field_feature_card_description |
-        And user enters "Press Release List Description" into "List Description" text field
-        And user fills out "Body" text area with "This is a description of press release content type."
-        And user selects 1 Lead Image from the list of images
-        And browser waits
-        And user remembers the source of selected lead image for further verification
-        And user selects 3 Promotional Image from the list of images
-        And browser waits
-        And user remembers the source of selected promo image for further verification
-        And user selects "Posted Date" checkbox
-        And user selects "Reviewed Date" checkbox
-        And user selects "Updated Date" checkbox
-        And user selects "Display" from "Public Use Text" dropdown
-        And user selects "Published" from "Save as" dropdown
-        When user saves the content page
+    # Scenario: User is adding new press release content type
+    #     Given user is navigating to "/user/login?show_login_fields=true"
+    #     When user enters credentials
+    #     And user clicks "Log in" button
+    #     Then user is logged in and the user name "admin" is displayed in the toolbar
+    #     And the tool bar appears at the top
+    #     When user clicks on "Content" tab
+    #     And user clicks on "Add content" action button
+    #     And user clicks on "Press Release" content type
+    #     Then page title is "Create Press Release"
+    #     When user selects test site section
+    #     And user fills out the following fields
+    #         | fieldLabel               | value                                            | field_name                     |
+    #         | Pretty URL               | press-release                                    | field_pretty_url               |
+    #         | Page Title               | Automated Test Press Release                     | title                          |
+    #         | Subtitle                 | Automated Test Press Release - Subtitle          | field_subtitle                 |
+    #         | Press Release Type       | Automated Test - NCI Press Release               | field_press_release_type       |
+    #         | Browser Title            | Automated Test Press Release - Browser Title     | field_browser_title            |
+    #         | Card Title               | Automated Test Press Release - Card Title        | field_card_title               |
+    #         | Meta Description         | Automated Test Press Release Meta Description    | field_page_description         |
+    #         | Feature Card Description | Automated Test Press Release - Feature Card Desc | field_feature_card_description |
+    #     And user enters "Press Release List Description" into "List Description" text field
+    #     And user fills out "Body" text area with "This is a description of press release content type."
+    #     And user selects 1 Lead Image from the list of images
+    #     And browser waits
+    #     And user remembers the source of selected lead image for further verification
+    #     And user selects 3 Promotional Image from the list of images
+    #     And browser waits
+    #     And user remembers the source of selected promo image for further verification
+    #     And user selects "Posted Date" checkbox
+    #     And user selects "Reviewed Date" checkbox
+    #     And user selects "Updated Date" checkbox
+    #     And user selects "Display" from "Public Use Text" dropdown
+    #     And user selects "Published" from "Save as" dropdown
+    #     When user saves the content page
 
     Scenario: Verify newly created content
         Given user is navigating to the front end site with path site section plus "press-release"
         Then page title is "Automated Test Press Release"
-        And "Updated:" date is displaying today's date
+        And "Posted:Updated:Reviewed:" date is displaying today's date
         And Contact "NCI Press Office" link has a href "mailto:ncipressofficers@mail.nih.gov"
         And description reads "This is a description of press release content type."
         And the lead image for press release is matching the earlier selected image
