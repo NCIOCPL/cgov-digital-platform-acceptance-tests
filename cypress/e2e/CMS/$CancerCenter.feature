@@ -19,8 +19,8 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And Date Display Mode has the following checkboxes
             | checkbox      |
             | Posted Date   |
-            | Reviewed Date |
             | Updated Date  |
+              | Reviewed Date |
         And Search Engine Restrictions dropdown has default value "IncludeSearch"
         And Related Resources dropdown is displayed with the following options
             | option            |
