@@ -302,3 +302,8 @@ And('user clicks on {string} link', (linkText) => {
 And("the {string} link is displayed with href {string}", (linkText, linkHref) => {
     cy.get('.toggle-arrow-link').contains(linkText).should('have.attr', 'href').and('include', linkHref);
 });
+
+And('user filters results by {string} type', (contentType) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("select[id*='edit-type']").select(`${contentType}`);
+});
+      

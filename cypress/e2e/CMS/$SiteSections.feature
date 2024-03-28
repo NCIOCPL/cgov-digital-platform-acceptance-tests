@@ -253,7 +253,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         Then user is logged in and the user name "adveditor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on title with the url "/about-cancer/coping/feelings/purl" from the list of content
+        And user clicks on title with selected url "/purl" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
