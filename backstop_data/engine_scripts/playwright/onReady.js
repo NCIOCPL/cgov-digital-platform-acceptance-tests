@@ -3,6 +3,7 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
 
   // Attempt to scroll to the bottom of a page first to force all images on the page to load.
   await page.evaluate(async () => {
+    localStorage.setItem('USNIHNCI_38_subscribe_overlay', 1);
     await new Promise((resolve, reject) => {
       var totalHeight = 0;
       var distance = 200;
@@ -11,7 +12,7 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
         window.scrollBy(0, distance);
         totalHeight += distance;
 
-        if(totalHeight >= scrollHeight){
+        if (totalHeight >= scrollHeight) {
           clearInterval(timer);
           resolve();
         }
@@ -20,6 +21,5 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
   });
 
   await require('./clickAndHoverHelper')(page, scenario);
-
   // add more ready handlers here...
 };

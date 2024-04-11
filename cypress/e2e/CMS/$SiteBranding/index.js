@@ -15,6 +15,7 @@ And('user clicks on {string} sub tab', (contentSubTab) => {
 });
 
 Then('the title tag should be {string}', (expectedTitle) => {
+    cy.wait(3000)
     cy.reload(true);
     cy.get('head>title').invoke('text').should('be.eq', expectedTitle);
 });

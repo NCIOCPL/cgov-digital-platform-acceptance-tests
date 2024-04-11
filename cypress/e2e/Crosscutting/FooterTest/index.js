@@ -50,7 +50,7 @@ And('clicking on {string} link in the footer opens a {string} survey', (linkName
     cy.get(`#nci-footer a:contains(${linkName})`).should('have.attr', 'href').and('include', href);
 });
 And('{string} heading is present', (heading) => {
-    cy.get('#nci-footer h3').should('include.text', heading);
+    cy.get('#nci-footer div.usa-sign-up__heading').should('include.text', heading);
 });
 And('the {string} input box is present', (label) => {
     cy.get(`#nci-footer input#${label}`).should('be.visible');
