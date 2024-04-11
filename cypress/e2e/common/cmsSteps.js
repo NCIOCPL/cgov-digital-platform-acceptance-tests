@@ -590,6 +590,10 @@ And('user clicks on title with url spanish path {string} plus {string}', (spPath
 })
 
 And('user clicks on title with url spanish path {string} plus {string} plus {string}', (spPath, series, blog) => {
-
     cy.get(`a[href='${spPath}/${series}-${randomStr}/${blog}-${randomStr}']`).click();
+})
+
+Given('user is navigating to the front end site with path {string}', (path) => {
+    cy.reload(true);
+    cy.visit(`${frontEndBaseUrl}${path}`, { retryOnStatusCodeFailure: true });
 })

@@ -287,6 +287,7 @@ Feature: User creating a video
         When user clicks on "Delete" option button
         When user confirms "Delete" action
 
+        When user clicks on "Content" tab
         And user clicks on title with url "article-for-embed-video" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

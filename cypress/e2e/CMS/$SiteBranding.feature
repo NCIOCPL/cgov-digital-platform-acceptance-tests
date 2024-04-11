@@ -12,7 +12,7 @@ Feature: as a site admin I should be able to set site brand either to NCI, no ti
         And user saves the content page
 
     Scenario: Verify no title option on FE
-        Given user is navigating to "/"
+        Given user is navigating to the front end site with path "/"
         Then the title tag should be "Comprehensive Cancer Information"
 
     Scenario: User is setting site name to custom
@@ -28,7 +28,7 @@ Feature: as a site admin I should be able to set site brand either to NCI, no ti
         And user saves the content page
 
     Scenario: Verify custom option on FE
-        Given user is navigating to "/"
+        Given user is navigating to the front end site with path "/"
         Then the title tag should be "Comprehensive Cancer Information - Test"
 
 
@@ -43,7 +43,7 @@ Feature: as a site admin I should be able to set site brand either to NCI, no ti
         And user saves the content page
 
     Scenario: Verify default option on FE
-        Given user is navigating to "/"
+        Given user is navigating to the front end site with path "/"
         Then the title tag should be "Comprehensive Cancer Information - NCI"
 
 
