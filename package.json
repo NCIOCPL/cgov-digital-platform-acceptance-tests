@@ -36,6 +36,6 @@
   },
   "devDependencies": {
     "backstopjs": "^6.0.0",
-    "cypress": "^12.7.0"
+    "cypress": "^13.4.0"
   }
 }
