@@ -27,8 +27,12 @@ And('correct {int} of top-level menu items is displayed', (number) => {
 And('all mega menu sections have the correct {string}', (path) => {
     const regex = new RegExp(`^\\${path}`);
     cy.get('.nci-header-nav__primary-item button,.nci-header-nav__primary-item a').each(el => {
-        const href = el[0].getAttribute('data-href') ? (el[0].getAttribute('data-href')).replace(baseUrl, "") : el[0].getAttribute('href');
-        expect(href).to.match(regex);
+        //expand megamenu first to check links
+        cy.wrap(el).trigger('click', { followRedirect: false });
+        cy.get("a[class='nci-megamenu__primary-link'],.nci-megamenu__list-item-link").each(el => {
+            const href = el[0].getAttribute('data-href') ? (el[0].getAttribute('data-href')).replace(baseUrl, "") : el[0].getAttribute('href');
+            expect(href).to.match(regex);
+        })
     })
 });
 
