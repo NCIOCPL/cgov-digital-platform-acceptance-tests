@@ -18,5 +18,9 @@ module.exports = [
     {
         label: 'Home and Landing with additional library',
         testPath: '/test/landing-page-library-test',
+    },
+    {
+        label: 'Cancer types home and landing',
+        testPath: '/types',
     } 
 ]
