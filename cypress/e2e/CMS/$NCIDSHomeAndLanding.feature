@@ -59,11 +59,16 @@ Feature: Home And Landing Page Test Creation of Content
             | Meta Description         | Automated Test Home and Landing page Meta Description    | field_page_description         |
             | Feature Card Description | Automated Test Home and Landing page - Feature Card Desc | field_feature_card_description |
         And user selects "Add NCIDS Hero" from "Contents" dropdown
+        And "Theme" drop-down is displayed with "Light" option as default
+        And "Theme" dropdown has the following options
+            | options   |
+            | Light     |
+            | Dark      |
+            | DON'T USE |
+        And user select "Dark" from the "Theme" dropdown
         And user fills out the following fields
             | fieldLabel | value        | field_name                                                  |
             | Tagline    | Tagline Text | field_landing_contents[0][subform][field_tagline][0][value] |
-
-
         And user clicks on "Add NCIDS Link Button Internal" from "Primary Call to Action Link" area
         And browser waits
         And user clicks on "Link" link in the "NCIDS Link Button Internal" text area
@@ -190,6 +195,14 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on the tool bar status button "Draft"
         And user clicks "View in edit form" button from other actions
         And user selects "Add NCIDS Promo Block External" from "Contents" dropdown
+        And browser waits
+        And "Theme" drop-down is displayed with the "Dark" option as default
+        And the "Theme" dropdown has the following options
+            | options   |
+            | Light     |
+            | Dark      |
+            | DON'T USE |
+        And the user select "Light" option from the "Theme" dropdown
         And browser waits
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                         |
