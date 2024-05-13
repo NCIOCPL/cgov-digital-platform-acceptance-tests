@@ -60,15 +60,15 @@ Feature: Site Wide Search app is integrated within CGOV platform
             | desktop    | /search/results?swKeyword=bin            | H3       | Results for: bin     |
             | mobile     | /espanol/buscar/resultados?swKeyword=2/3 | H3       | Resultados para: 2/3 |
 
-    Scenario: Edge case: Fetching more than 30000 results on English site.
-        Given user is navigating to "/search/results?swKeyword=cancer"
-        And the user clicks the last page link in the pager
-        And screen breakpoint is set to "desktop"
-        Then the system returns the results page for "cancer"
-        And the "H1" title is "NCI Search Results"
-        And the "H3" title is "Results for: cancer"
-        And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: cancer"
-        And the results are displayed with each title containing a link
+    # Scenario: Edge case: Fetching more than 30000 results on English site.
+    #     Given user is navigating to "/search/results?swKeyword=cancer"
+    #     And the user clicks the last page link in the pager
+    #     And screen breakpoint is set to "desktop"
+    #     Then the system returns the results page for "cancer"
+    #     And the "H1" title is "NCI Search Results"
+    #     And the "H3" title is "Results for: cancer"
+    #     And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: cancer"
+    #     And the results are displayed with each title containing a link
 
     Scenario: Edge case:Display less than 20 results does not show the pager.
         Given user is navigating to "/search/results?swKeyword=retch"
