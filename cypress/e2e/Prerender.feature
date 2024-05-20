@@ -35,3 +35,28 @@ Feature: Prerender's handling of servers errors
             | /research/participate/clinical-trials/intervention/trastuzumab             |
             | /research/participate/clinical-trials/covid-19                             |
             | /research/participate/clinical-trials/adult-metastatic-brain-tumors        |
+
+
+    Scenario Outline: glossaries and drug dictionary server is sending 500
+        Given the server sends a 500 response to "<api>"
+        When user is navigating to the front end site with path "<path>"
+        Then the page contains meta tags with the following names
+            | name                  | content |
+            | prerender-status-code | 500     |
+
+        Examples:
+            | path                                                                    | api                                                                                                                                |
+            | /publications/dictionaries/cancer-terms/def/a33                         | https://webapis.cancer.gov/glossary/v1/Terms/Cancer.gov/Patient/en/a33                                                             |
+            | /publications/dictionaries/cancer-terms/expand/A                        | https://webapis.cancer.gov/glossary/v1/Terms/expand/Cancer.gov/Patient/en/A?size=10000                                             |
+            | /publications/dictionaries/cancer-terms                                 | https://webapis.cancer.gov/glossary/v1/Terms/count/Cancer.gov/Patient/en                                                           |
+            | /espanol/publicaciones/diccionarios/diccionario-cancer/def/a33          | https://webapis.cancer.gov/glossary/v1/Terms/Cancer.gov/Patient/es/a33                                                             |
+            | /espanol/publicaciones/diccionarios/diccionario-cancer/ampliar/A        | https://webapis.cancer.gov/glossary/v1/Terms/expand/Cancer.gov/Patient/es/A?size=10000                                             |
+            | /espanol/publicaciones/diccionarios/diccionario-cancer                  | https://webapis.cancer.gov/glossary/v1/Terms/count/Cancer.gov/Patient/es                                                           |
+            | /espanol/publicaciones/diccionarios/diccionario-genetica/def/acrocordon | https://webapis.cancer.gov/glossary/v1/Terms/Genetics/HealthProfessional/es/acrocordon                                             |
+            | /espanol/publicaciones/diccionarios/diccionario-genetica/ampliar/B      | https://webapis.cancer.gov/glossary/v1/Terms/expand/Genetics/HealthProfessional/es/B?size=10000                                    |
+            | /espanol/publicaciones/diccionarios/diccionario-genetica                | https://webapis.cancer.gov/glossary/v1/Terms/count/Genetics/HealthProfessional/es                                                  |
+            | /publications/dictionaries/genetics-dictionary/def/acrochordon          | https://webapis.cancer.gov/glossary/v1/Terms/Genetics/HealthProfessional/en/acrochordon                                            |
+            | /publications/dictionaries/genetics-dictionary/expand/C                 | https://webapis.cancer.gov/glossary/v1/Terms/expand/Genetics/HealthProfessional/en/C?size=10000                                    |
+            | /publications/dictionaries/genetics-dictionary                          | https://webapis.cancer.gov/glossary/v1/Terms/count/Genetics/HealthProfessional/en                                                  |
+            | /publications/dictionaries/cancer-drug                                  | https://webapis.cancer.gov/drugdictionary/v1/Drugs/expand/A?includeNameTypes=USBrandName&includeNameTypes=PreferredName&size=10000 |
+            | /publications/dictionaries/cancer-drug/def/a-101-topical-solution       | https://webapis.cancer.gov/drugdictionary/v1/Drugs/a-101-topical-solution                                                          |

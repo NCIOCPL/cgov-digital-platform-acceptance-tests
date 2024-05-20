@@ -69,21 +69,21 @@ Feature: Drug Dictionary app is integrated within CGOV platform
         And user clicks "Search" button
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                          |
-            | event2    |                                                                |
-            | prop4     | D=pev1                                                         |
-            | prop8     | english                                                        |
-            | prop11    | Drug                                                           |
-            | prop22    | bevacizumab                                                    |
-            | prop23    | /Selected\|[1-9]\|10\|2\|3\|bev\|bevacizumab/                  |
-            | prop24    | starts with                                                    |
-            | prop67    | D=pageName                                                     |
-            | evar2     | D=c8                                                           |
-            | evar11    | D=c11                                                          |
-            | evar26    | D=c24                                                          |
-            | link      | Search                                                         |
+            | parameter | value                                                               |
+            | event2    |                                                                     |
+            | prop4     | D=pev1                                                              |
+            | prop8     | english                                                             |
+            | prop11    | Drug                                                                |
+            | prop22    | bevacizumab                                                         |
+            | prop23    | /Selected\|[1-9]\|10\|2\|3\|bev\|bevacizumab/                       |
+            | prop24    | starts with                                                         |
+            | prop67    | D=pageName                                                          |
+            | evar2     | D=c8                                                                |
+            | evar11    | D=c11                                                               |
+            | evar26    | D=c24                                                               |
+            | link      | Search                                                              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
-            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/        |
+            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/             |
 
     Scenario: When user uses Autosuggest, modifies the suggestion and search -  analytics events are fired
         Given screen breakpoint is set to "desktop"
@@ -98,21 +98,21 @@ Feature: Drug Dictionary app is integrated within CGOV platform
         And user hits "enter" key
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                          |
-            | event2    |                                                                |
-            | prop4     | D=pev1                                                         |
-            | prop8     | english                                                        |
-            | prop11    | Drug                                                           |
-            | prop22    | bevacizuma                                                     |
-            | prop23    | /Modified\|[1-9]\|10\|1\|3\|bev\|bevacizumab/                  |
-            | prop24    | starts with                                                    |
-            | prop67    | D=pageName                                                     |
-            | evar2     | D=c8                                                           |
-            | evar11    | D=c11                                                          |
-            | evar26    | D=c24                                                          |
-            | link      | Search                                                         |
+            | parameter | value                                                               |
+            | event2    |                                                                     |
+            | prop4     | D=pev1                                                              |
+            | prop8     | english                                                             |
+            | prop11    | Drug                                                                |
+            | prop22    | bevacizuma                                                          |
+            | prop23    | /Modified\|[1-9]\|10\|1\|3\|bev\|bevacizumab/                       |
+            | prop24    | starts with                                                         |
+            | prop67    | D=pageName                                                          |
+            | evar2     | D=c8                                                                |
+            | evar11    | D=c11                                                               |
+            | evar26    | D=c24                                                               |
+            | link      | Search                                                              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
-            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/        |
+            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/             |
 
     Scenario: When user does not use autosuggest and search -  analytics events are fired
         Given screen breakpoint is set to "desktop"
@@ -125,19 +125,19 @@ Feature: Drug Dictionary app is integrated within CGOV platform
         And user clicks "Search" button
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                          |
-            | event2    |                                                                |
-            | prop4     | D=pev1                                                         |
-            | prop11    | Drug                                                           |
-            | prop22    | bev                                                            |
-            | prop23    | /Offered\|[1-9]\|10\|0\|undefined\|undefined\|undefined/       |
-            | prop24    | contains                                                       |
-            | prop67    | D=pageName                                                     |
-            | evar2     | D=c8                                                           |
-            | evar11    | D=c11                                                          |
-            | evar26    | D=c24                                                          |
+            | parameter | value                                                               |
+            | event2    |                                                                     |
+            | prop4     | D=pev1                                                              |
+            | prop11    | Drug                                                                |
+            | prop22    | bev                                                                 |
+            | prop23    | /Offered\|[1-9]\|10\|0\|undefined\|undefined\|undefined/            |
+            | prop24    | contains                                                            |
+            | prop67    | D=pageName                                                          |
+            | evar2     | D=c8                                                                |
+            | evar11    | D=c11                                                               |
+            | evar26    | D=c24                                                               |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug |
-            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/        |
+            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/             |
 
     Scenario: When user clicks a term from result list -  analytics events are fired
         Given screen breakpoint is set to "mobile"
@@ -145,12 +145,34 @@ Feature: Drug Dictionary app is integrated within CGOV platform
         When user clicks on result number 2
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                   |
-            | event42   |                                                                         |
-            | prop4     | D=pev1                                                                  |
-            | prop8     | english                                                                 |
-            | prop13    | 2                                                                       |
-            | prop67    | D=pageName                                                              |
-            | link      | A-Hydrocort                                                             |
+            | parameter | value                                                                        |
+            | event42   |                                                                              |
+            | prop4     | D=pev1                                                                       |
+            | prop8     | english                                                                      |
+            | prop13    | 2                                                                            |
+            | prop67    | D=pageName                                                                   |
+            | link      | A-Hydrocort                                                                  |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug/expand/A |
-            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/expand/A         |
+            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-drug/expand/A              |
+
+
+    Scenario Outline: 404 handling with pre-render
+        When user is navigating to bad url "<url>"
+        Then status code is 404 on "<api>"
+        And the page contains meta tags with the following names
+            | name                  | content |
+            | prerender-status-code | 404     |
+        Examples:
+            | url                                                | api                                                        |
+            | /publications/dictionaries/cancer-drug/def/chicken | https://webapis.cancer.gov/drugdictionary/v1/Drugs/chicken |
+
+
+    Scenario Outline: redirect handling with pre-render
+        When user is navigating to "<url>"
+        And the page contains meta tags with the following names
+            | name                  | content           |
+            | prerender-status-code | 301               |
+            | prerender-header      | <prerenderHeader> |
+        Examples:
+            | url                                              | prerenderHeader                                                                                                   |
+            | /publications/dictionaries/cancer-drug/def/39861 | Location: {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-drug/def/hydrocortisone-sodium-succinate |
