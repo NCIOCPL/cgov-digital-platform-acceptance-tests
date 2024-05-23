@@ -10,14 +10,14 @@ Feature: As an user, I should see the chat popup in Spanish
         And the following parameters should be captured
             | parameter | value                                                    |
             | event44   |                                                          |
-            | link      | ProactiveChat                                            |
+            | pev2      | Legacy:ProactiveChat                                            |
             | linkType  | lnk_o                                                    |
             | prop67    | D=pageName                                               |
             | prop4     | D=pev1                                                   |
             | prop8     | spanish                                                  |
             | prop5     | livehelp_proactive chat - launch\|D=pageName             |
             | pageName  | {CANONICAL_HOST}/espanol/cancer/tratamiento/medicamentos |
-            | evar2     | spanish                                                  |
+            | evar2     | D=c8                                                  |
 
     Scenario: Clicking on chat now will fire an analytics event English
         Given screen breakpoint is set to "desktop"
@@ -29,11 +29,11 @@ Feature: As an user, I should see the chat popup in Spanish
         And the following parameters should be captured
             | parameter | value                                                          |
             | event44   |                                                                |
-            | link      | ProactiveChat                                                  |
+            | pev2      | Legacy:ProactiveChat                                                  |
             | linkType  | lnk_o                                                          |
             | prop67    | D=pageName                                                     |
             | prop4     | D=pev1                                                         |
             | prop8     | english                                                        |
             | prop5     | livehelp_proactive chat - launch\|D=pageName                   |
             | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r |
-            | evar2     | english                                                        |
+            | evar2     | D=c8                                                        |

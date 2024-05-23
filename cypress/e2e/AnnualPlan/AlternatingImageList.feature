@@ -86,18 +86,18 @@ Feature: As a content editor, I would like to be able to embed an alternating im
         When user clicks on a list item at position 1
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                   |
-            | event27   |                                         |
-            | prop4     | D=pev1                                  |
-            | prop8     | english                                 |
-            | prop59    | alternatingImage:1                      |
-            | prop60    | D=pageName                              |
-            | prop67    | D=pageName                              |
-            | evar2     | english                                 |
-            | channel   | NCI Homepage                            |
-            | pageName  | {CANONICAL_HOST}/special-report         |
+            | parameter | value                                        |
+            | event27   |                                              |
+            | prop4     | D=pev1                                       |
+            | prop8     | english                                      |
+            | prop59    | alternatingImage:1                           |
+            | prop60    | D=pageName                                   |
+            | prop67    | D=pageName                                   |
+            | evar2     | D=c8                                         |
+            | channel   | NCI Homepage                                 |
+            | pageName  | {CANONICAL_HOST}/special-report              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
-            | prop58    | /\n*\t*\Molecular Diagnostics\n*\t*/    |
-            | prop57    | /\n*\t*\Molecular Diagnostics\n*\t*/    |
+            | prop58    | /\n*\t*\Molecular Diagnostics\n*\t*/         |
+            | prop57    | /\n*\t*\Molecular Diagnostics\n*\t*/         |
 
 

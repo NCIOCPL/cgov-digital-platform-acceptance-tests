@@ -40,17 +40,17 @@ Feature: As a content editor, I would like to be able to embed a title-first fea
         When user clicks on a "two column" feature card row
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                   |
-            | event27   |                                         |
-            | evar2     | english                                 |
-            | prop4     | D=pev1                                  |
-            | prop8     | english                                 |
-            | prop57    | Stories of Cancer Research              |
-            | prop58    | Stories of Cancer Research              |
-            | prop59    | titleFirst:1                            |
-            | prop60    | D=pageName                              |
-            | prop67    | D=pageName                              |
-            | pageName  | {CANONICAL_HOST}/special-report         |
+            | parameter | value                                        |
+            | event27   |                                              |
+            | evar2     | D=c8                                         |
+            | prop4     | D=pev1                                       |
+            | prop8     | english                                      |
+            | prop57    | Stories of Cancer Research                   |
+            | prop58    | Stories of Cancer Research                   |
+            | prop59    | titleFirst:1                                 |
+            | prop60    | D=pageName                                   |
+            | prop67    | D=pageName                                   |
+            | pageName  | {CANONICAL_HOST}/special-report              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
 
     Scenario: Click events for feature card row clicks on Mobile Spanish Page
@@ -59,15 +59,15 @@ Feature: As a content editor, I would like to be able to embed a title-first fea
         When user clicks on a "one column" feature card row
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                           |
-            | event27   |                                                 |
-            | evar2     | spanish                                         |
-            | prop4     | D=pev1                                          |
-            | prop8     | spanish                                         |
-            | prop57    | Budget Proposal                                 |
-            | prop58    | Budget Proposal                                 |
-            | prop59    | titleFirst:2                                    |
-            | prop60    | D=pageName                                      |
-            | prop67    | D=pageName                                      |
-            | pageName  | {CANONICAL_HOST}/espanol/special-report         |
+            | parameter | value                                                |
+            | event27   |                                                      |
+            | evar2     | D=c8                                                 |
+            | prop4     | D=pev1                                               |
+            | prop8     | spanish                                              |
+            | prop57    | Budget Proposal                                      |
+            | prop58    | Budget Proposal                                      |
+            | prop59    | titleFirst:2                                         |
+            | prop60    | D=pageName                                           |
+            | prop67    | D=pageName                                           |
+            | pageName  | {CANONICAL_HOST}/espanol/special-report              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/espanol/special-report |

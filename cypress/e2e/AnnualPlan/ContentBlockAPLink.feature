@@ -32,7 +32,7 @@ Feature: Tests for embed a content block
             | prop8     | english                                 |
             | prop66    | filedownload_icon                       |
             | prop67    | D=pageName                              |
-            | evar2     | english                                 |
+            | evar2     | D=c8                                 |
             | channel   | NCI Homepage                            |
             | pageName  | {CANONICAL_HOST}/special-report         |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
