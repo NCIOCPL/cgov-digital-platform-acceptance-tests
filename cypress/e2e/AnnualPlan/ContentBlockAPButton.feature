@@ -4,7 +4,7 @@ Feature: Tests for AP button on a content block
     Given user is navigating to "<url>"
     And screen breakpoint is set to "<screenBreakpoint>"
     Then the button to download At a Glance should appear at the bottom of the page
-     And a PDF icon located at "/profiles/custom/cgov_site/themes/custom/ncids_trans/dist/.svg#file-pdf-blue-o-thick" should be displayed with a text "Annual Plan & Budget Proposal At A Glance"
+    And a PDF icon located at "/profiles/custom/cgov_site/themes/custom/ncids_trans/dist/.svg#file-pdf-blue-o-thick" should be displayed with a text "Annual Plan & Budget Proposal At A Glance"
     And clicking on the link will open the PDF in a new window
 
     Examples:
@@ -26,12 +26,12 @@ Feature: Tests for AP button on a content block
     When user clicks on bottom "Annual Plan & Budget Proposal At-A-Glance" button
     Then page click request is sent
     And the following parameters should be captured
-      | parameter | value                                   |
-      | event52   |                                         |
-      | prop8     | english                                 |
-      | prop66    | filedownload_button                     |
-      | prop67    | D=pageName                              |
-      | evar2     | english                                 |
-      | channel   | NCI Homepage                            |
-      | pageName  | {CANONICAL_HOST}/special-report         |
+      | parameter | value                                        |
+      | event52   |                                              |
+      | prop8     | english                                      |
+      | prop66    | filedownload_button                          |
+      | prop67    | D=pageName                                   |
+      | evar2     | D=c8                                         |
+      | channel   | NCI Homepage                                 |
+      | pageName  | {CANONICAL_HOST}/special-report              |
       | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |

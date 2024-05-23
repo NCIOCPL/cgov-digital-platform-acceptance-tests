@@ -57,7 +57,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | title | isExpanded |
             | 2019  | true       |
             | 2018  | true       |
-          
+
 
 
     Scenario Outline: RAS blog main page elements are present
@@ -92,7 +92,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Examples:
             | url                                                             | title                                                 |
             | /news-events/cancer-currents-blog?topic=chicken                 | Cancer Currents - Error: Category Does Not Exist      |
-            | /research/key-initiatives/ras/ras-central/blog?topic=1234567898 | RAS Dialogue - Error: Category Does Not Exist         |  
+            | /research/key-initiatives/ras/ras-central/blog?topic=1234567898 | RAS Dialogue - Error: Category Does Not Exist         |
             | /espanol/noticias/temas-y-relatos-blog?topic=chicken            | Temas y relatos blog - Error: Category Does Not Exist |
 
     Scenario Outline: Filtering blogs by year and month
@@ -166,10 +166,10 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | prop60    | D=pageName                                                     |
             | prop67    | D=pageName                                                     |
             | prop8     | english                                                        |
-            | evar2     | english                                                        |
+            | evar2     | D=c8                                                           |
             | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog |
             | channel   | News and Events                                                |
-            | pev2      | SearchResults                                                  |
+            | pev2      | Legacy:DynamicListItemClick                                    |
             | linkType  | lnk_o                                                          |
             | link      | Snuggles                                                       |

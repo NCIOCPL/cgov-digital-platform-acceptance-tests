@@ -12,7 +12,7 @@ Feature: Analytics should fire when user click on title, image or button of a bo
             | prop59    | fullwidth:1                                   |
             | prop60    | D=pageName                                    |
             | prop67    | D=pageName                                    |
-            | evar2     | english                                       |
+            | evar2     | D=c8                                      |
             | channel   | NCI Homepage                                  |
             | pageName  | {CANONICAL_HOST}/test/borderless-card         |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/borderless-card |
@@ -39,7 +39,7 @@ Feature: Analytics should fire when user click on title, image or button of a bo
             | prop59    | fullwidth:3                                   |
             | prop60    | D=pageName                                    |
             | prop67    | D=pageName                                    |
-            | evar2     | english                                       |
+            | evar2     | D=c8                                       |
             | channel   | NCI Homepage                                  |
             | pageName  | {CANONICAL_HOST}/test/borderless-card         |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/borderless-card |

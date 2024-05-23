@@ -45,7 +45,7 @@ Feature: As a content editor, I would like to be able to embed a raw HTML block,
             | prop59    | rawHTML:1                               |
             | prop60    | D=pageName                              |
             | prop67    | D=pageName                              |
-            | evar2     | english                                 |
+            | evar2     | D=c8                                 |
             | channel   | NCI Homepage                            |
             | pageName  | {CANONICAL_HOST}/special-report         |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
@@ -70,7 +70,7 @@ Feature: As a content editor, I would like to be able to embed a raw HTML block,
             | prop59    | rawHTML:1                               |
             | prop60    | D=pageName                              |
             | prop67    | D=pageName                              |
-            | evar2     | english                                 |
+            | evar2     | D=c8                                 |
             | channel   | NCI Homepage                            |
             | pageName  | {CANONICAL_HOST}/special-report         |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/special-report |
