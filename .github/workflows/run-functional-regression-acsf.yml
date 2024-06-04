@@ -6,6 +6,10 @@ on:
         description: ".../automation-installed test base url"
         required: true
         type: string
+      akamai_staging:
+        description: "Run test on Akamai staging network"
+        type: boolean
+        default: false
 jobs:
   cypress_regression_acsf:
     name: Running cypress regression tests on ACSF
@@ -20,6 +24,22 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
+      ## Override for Akamai staging
+      - name: Update hosts file
+        if: ${{ inputs.akamai_staging }}
+        run: |
+          # Retrieve the Akamai staging network IP
+          domain=$(echo ${{ inputs.base_url }} | sed -E 's|https?://([^/]+)/.*|\1|')
+          subdomain=$(echo ${{ inputs.base_url }} | sed -E 's|https?://([^/]+)\.cancer\.gov.*|\1|')
+          ip_address=$(nslookup $subdomain.cancer.gov.edgekey-staging.net | awk '/^Address: / {print $2; exit}')
+
+          # Check if an IP address was found
+          if [ -n "$ip_address" ]; then
+            echo "$ip_address $domain" | sudo tee -a /etc/hosts
+          else
+              echo "No IP address found."
+              exit 1
+          fi
         ## Install using CI
       - name: Install Dependencies
         run: npm ci
