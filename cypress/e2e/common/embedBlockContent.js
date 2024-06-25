@@ -67,7 +67,7 @@ And('user enters {string} into media title search box to search image and clicks
 });
 
 And('user selects {string} item from the media list to select image', (imgTitle) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_cgov_image_carousel_image_browser').find(`input[name^="entity_browser_select"][type="checkbox"]`).check();
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_image_carousel_image_browser').find(`input[name^="entity_browser_select"][type="checkbox"]`).first().check();
 });
 
 And('user clicks on {string} button to select an image', (selectImage) => {

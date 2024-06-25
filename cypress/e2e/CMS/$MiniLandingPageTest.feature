@@ -296,7 +296,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And Remove button for image was translated as "Eliminar"
         And the following content sections are displayed
             | section                    |
-            | Content Block              |
+            | Bloque de contenido        |
             | Two Item Feature Card Row  |
             | Listado                    |
             | Borderless Full-Width Card |
@@ -391,7 +391,7 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
         When user confirms "Borrar la traduccion Español" action
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on title with url "mini-landing-page-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
