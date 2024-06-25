@@ -286,7 +286,7 @@ Feature: As a cms user I want to be able to create Cancer Research List Page con
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
         When user confirms "Borrar la traduccion Español" action
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on title with url "cancer-research-list-page-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

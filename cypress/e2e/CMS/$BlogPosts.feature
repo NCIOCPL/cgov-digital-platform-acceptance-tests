@@ -174,7 +174,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And user selects "Publish" from workflow actions
 
     Scenario: Verify edited content
-        Given user is navigating to the blog "blog-post-edited" under "/news-events/cancer-currents-blog"
+        Given user is navigating to the blog "blog-post-edited" under "news-events/cancer-currents-blog"
         Then page title is "Automated Test Blog Post Edited"
         And the lead image is matching the earlier selected image
         And public use text is not displayed
@@ -386,7 +386,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         When user clicks on "Delete" option button
         When user confirms "Borrar la traduccion Español" action
 
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on blog with url "blog-post-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
