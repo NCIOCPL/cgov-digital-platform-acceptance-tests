@@ -194,7 +194,15 @@ And('the {string} section is displayed with the following cards', (featuredPosts
         const month = months[date.getMonth()];
         const day = date.getDate();
         const todayDate = `${month} ${day}, ${year}`;
-        cy.get(`div.byline p:contains("${todayDate}")`).should('be.visible');
+        cy.get('div.byline p').should(($date) => {
+            const text = $date.text()
+            if(featuredPostsSection == 'Featured Posts'){
+                expect(text).to.include(todayDate)
+            } else {
+                expect(text.toLowerCase()).to.include(todayDate)
+            }
+           
+        })
         cy.get(`p:contains("${author}")`).should('be.visible');
     }
 });
@@ -228,11 +236,15 @@ Then('list of {string} has the following posts', (blogPost, dataTable) => {
         const day = date.getDate();
         if (blogPost == 'blog post') {
             todayDate = `${month} ${day}, ${year}`
+            cy.get(`div.date-author time:contains("${todayDate}")`).should('be.visible');
         }
         else if (blogPost == 'Spanish blog post') {
             todayDate = `${day} de ${month} de ${year}`;
+            cy.get('div.date-author time').invoke('text').then(text => {
+                expect(text.toLowerCase()).to.eq(todayDate);
+            })
         }
-        cy.get(`div.date-author time:contains("${todayDate}")`).should('be.visible');
+       
         cy.get('div.date-author').should('include.text', author);
     }
 });

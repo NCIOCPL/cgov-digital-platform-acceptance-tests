@@ -196,7 +196,7 @@ Scenario: Clean up
     When user clicks on "Delete" option button
     When user confirms "Borrar la traduccion Español" action
 
-    When user clicks on "Content" tab
+    When user clicks on "Contenido" tab
     And user clicks on title with url "ncids-mini-landing-page-edited" from the list of content
     And user clicks on the tool bar status button "Published"
     And user clicks "Request Archive" button from Moderation sidebar

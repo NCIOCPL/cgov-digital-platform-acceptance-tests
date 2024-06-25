@@ -233,7 +233,6 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
         }
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
             source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
-
         }
         cy.get('.nci-card__body').eq(index).as('featureCard');
 

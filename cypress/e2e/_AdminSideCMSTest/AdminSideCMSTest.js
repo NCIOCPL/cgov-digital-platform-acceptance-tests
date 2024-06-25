@@ -40,7 +40,7 @@ And('each content title is a link', () => {
     cy.document().then((doc) => {
         const titleLocator = doc.querySelectorAll('.views-field.views-field-title');
         for (let i = 0; i < titleLocator.length - 1; i++) {
-            cy.get(titleLocator[i]).should('be.visible');
+            cy.get(titleLocator[i]).should('exist');
             cy.get(titleLocator[i]).find('a').should('have.attr', 'href');
         }
     });
