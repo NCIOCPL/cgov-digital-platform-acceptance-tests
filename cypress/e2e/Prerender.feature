@@ -60,3 +60,15 @@ Feature: Prerender's handling of servers errors
             | /publications/dictionaries/genetics-dictionary                          | https://webapis.cancer.gov/glossary/v1/Terms/count/Genetics/HealthProfessional/en                                                  |
             | /publications/dictionaries/cancer-drug                                  | https://webapis.cancer.gov/drugdictionary/v1/Drugs/expand/A?includeNameTypes=USBrandName&includeNameTypes=PreferredName&size=10000 |
             | /publications/dictionaries/cancer-drug/def/a-101-topical-solution       | https://webapis.cancer.gov/drugdictionary/v1/Drugs/a-101-topical-solution                                                          |
+
+    Scenario Outline: clinical trial server is sending 500
+        Given the server sends a 500 response to "<api>"
+        When user is navigating to the front end site with path "<path>"
+        Then the page contains meta tags with the following names
+            | name                  | content |
+            | prerender-status-code | 500     |
+
+        Examples:
+            | path                                                                        | api                                                               |
+            | /research/participate/clinical-trials-search/v?id=NCI-2023-04529&loc=0&rl=1 | https://clinicaltrialsapi.cancer.gov/api/v2/trials/NCI-2023-04529 |
+            | /research/participate/clinical-trials-search/v?id=NCT05879926               | https://clinicaltrialsapi.cancer.gov/api/v2/trials/NCT05879926    |
