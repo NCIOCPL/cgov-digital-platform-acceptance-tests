@@ -54,3 +54,10 @@ Feature: As an user, I should be able to see trial description page and all it's
             | delighter    | href                                               | title                              | text                                                                  |
             | cts-livehelp | /contact                                           | Have a question?We're here to help | Chat with us: LiveHelpCall us: 1-800-4-CANCER(1-800-422-6237)         |
             | cts-which    | /research/participate/clinical-trials-search/steps | Which trials are right for you?    | Use the checklist in our guide to gather the information you’ll need. |
+
+      Scenario: 404 handling with pre-render
+        When user is navigating to bad url "/research/participate/clinical-trials-search/v?id=NCI-0000-00000&loc=0&rl=1"
+        And the page contains meta tags with the following names
+            | name                  | content |
+            | prerender-status-code | 404     |
+     
