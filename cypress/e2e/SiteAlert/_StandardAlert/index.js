@@ -67,7 +67,7 @@ And('user unchecks show title and clicks save', () => {
 });
 
 Then('standard site alert is displayed', () => {
-    cy.get("section[class*='standard usa-site-alert']").should('be.visible');
+    cy.get("section[class*='usa-site-alert usa-site-alert--info']").should('be.visible');
 });
 And('alert has {string} button', (btnLbl) => {
     cy.get('button[class*="usa-alert__nci-button--close"]').should('be.visible').and('have.attr', 'aria-label', btnLbl);
@@ -81,16 +81,16 @@ Then('alert is {string}', (isExpanded) => {
 });
 And('the following links are exposed', (dataTable) => {
     for (const { linkText, href } of dataTable.hashes()) {
-        cy.get(`section[class*='standard usa-site-alert'] li a:contains("${linkText}")`).should('be.visible').and('have.attr','href').and('include',href);
+        cy.get(`section[class*='usa-site-alert usa-site-alert--info'] li a:contains("${linkText}")`).should('be.visible').and('have.attr','href').and('include',href);
     }
 });
 
 And('alert links are hidden', () => {
-    cy.get(`section[class*='standard usa-site-alert'] li a`).should('not.be.visible');
+    cy.get(`section[class*='usa-site-alert usa-site-alert--info'] li a`).should('not.be.visible');
 });
 
 When('user clicks on {string} alert link', (linkText) => {
-    cy.get(`section[class*='standard usa-site-alert'] li a:contains("${linkText}")`).click();
+    cy.get(`section[class*='usa-site-alert usa-site-alert--info'] li a:contains("${linkText}")`).click();
 });
 
 When('user dismisses alert', () => {
@@ -98,7 +98,7 @@ When('user dismisses alert', () => {
 });
 
 Then('standard site alert is not displayed', () => {
-    cy.get("section[class*='standard usa-site-alert']").should('not.be.visible');
+    cy.get("section[class*='usa-site-alert usa-site-alert--info']").should('not.be.visible');
 });
 
 

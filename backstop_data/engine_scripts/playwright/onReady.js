@@ -1,6 +1,7 @@
 module.exports = async (page, scenario, viewport, isReference, browserContext) => {
   console.log('SCENARIO > ' + scenario.label);
 
+
   // Attempt to scroll to the bottom of a page first to force all images on the page to load.
   await page.evaluate(async () => {
     localStorage.setItem('USNIHNCI_38_subscribe_overlay', 1);
@@ -18,8 +19,15 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
         }
       }, 100);
     });
+
   });
 
+  if (!scenario.enableBackToTop) {
+    await page.evaluate(async () => {
+      const selector = document.querySelector('div[class*="usa-footer__nci-return-to-top"]');
+      selector.setAttribute('hidden', 'hidden');
+    })
+  }
   await require('./clickAndHoverHelper')(page, scenario);
   // add more ready handlers here...
 };

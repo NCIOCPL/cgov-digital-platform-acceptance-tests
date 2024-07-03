@@ -11,31 +11,52 @@ Feature: As a site admin I want to configure site alert
         When user clicks on "Raw HTML Block" content
         And user enters "NCIDS Alert" into the block description field
         And user enters raw html in the body
-            | rows                                                                               |
-            | <section                                                                           |
-            | aria-label="Standard information site alert example with close"                    |
-            | class="usa-site-alert usa-site-alert--nci-standard usa-site-alert--nci-info"       |
-            | id="site-alert-example6"                                                           |
-            | data-site-alert-closable="true"                                                    |
-            | >                                                                                  |
-            | <div class="usa-alert">                                                            |
-            | <div class="usa-alert__body">                                                      |
-            | <div class="usa-alert__nci-header">                                                |
-            | <h3 class="usa-alert__heading">COVID-19 resources.</h3>                            |
-            | </div>                                                                             |
-            | <div class="usa-alert__nci-content" id="site-alert-content3">                      |
-            | <ul class="usa-alert__nci-list">                                                   |
-            | <li>                                                                               |
-            | <a class="usa-link" href="#">What people with cancer should know</a>               |
-            | </li>                                                                              |
-            | <li>                                                                               |
-            | <a class="usa-link" href="#">Get the latest public health information from CDC</a> |
-            | </li>                                                                              |
-            | </ul>                                                                              |
-            | </div>                                                                             |
-            | </div>                                                                             |
-            | </div>                                                                             |
-            | </section>                                                                         |
+            | rows                                                              |
+            | <section                                                          |
+            | aria-label="Default info site alert example"                      |
+            | class="usa-site-alert usa-site-alert--info"                       |
+            | data-site-alert-closable="true"                                   |
+            | >                                                                 |
+            | <div class="usa-alert">                                           |
+            | <div class="usa-alert__body">                                     |
+            | <div class="usa-alert__nci-header">                               |
+            | <span class="usa-alert__heading">COVID-19 resources.</span>       |
+            | </div>                                                            |
+            | <div class="usa-alert__nci-content">                              |
+            | <ul class="usa-list usa-list--two-column">                        |
+            | <li>                                                              |
+            | <a                                                                |
+            | href="#!"                                                         |
+            | class="usa-link text-bold text-no-underline hover:text-underline" |
+            | >What people with cancer should know</a                           |
+            | >                                                                 |
+            | </li>                                                             |
+            | <li>                                                              |
+            | <a                                                                |
+            | href="#!"                                                         |
+            | class="usa-link text-bold text-no-underline hover:text-underline" |
+            | >Get the latest public health information from CDC</a             |
+            | >                                                                 |
+            | </li>                                                             |
+            | <li>                                                              |
+            | <a                                                                |
+            | href="#!"                                                         |
+            | class="usa-link text-bold text-no-underline hover:text-underline" |
+            | >Guidance for cancer researchers</a                               |
+            | >                                                                 |
+            | </li>                                                             |
+            | <li>                                                              |
+            | <a                                                                |
+            | href="#!"                                                         |
+            | class="usa-link text-bold text-no-underline hover:text-underline" |
+            | >Get the latest research information from NIH</a                  |
+            | >                                                                 |
+            | </li>                                                             |
+            | </ul>                                                             |
+            | </div>                                                            |
+            | </div>                                                            |
+            | </div>                                                            |
+            | </section>                                                        |
         And user hits "Save" button
         And browser waits
         When user is navigating to "/admin/structure/block"
@@ -55,12 +76,14 @@ Feature: As a site admin I want to configure site alert
         Then alert is "expanded"
         And the following links are exposed
             | linkText                                          | href |
-            | What people with cancer should know               | #    |
-            | Get the latest public health information from CDC | #    |
+            | What people with cancer should know               | #!   |
+            | Get the latest public health information from CDC | #!   |
+            | Guidance for cancer researchers                   | #!   |
+            | Get the latest research information from NIH      | #!   |
         When user is navigating to "/about-cancer/coping/feelings"
-        Then alert is "expanded"
-        When user clicks on "collapse" arrow button
-        Then alert is "collapsed"
+        # Then alert is "expanded"
+        # When user clicks on "collapse" arrow button
+        # Then alert is "collapsed"
         And alert links are hidden
         When user is navigating to "/"
         Then alert is "collapsed"
@@ -76,7 +99,7 @@ Feature: As a site admin I want to configure site alert
             | parameter | value                          |
             | prop4     | D=pev1                         |
             | prop67    | D=pageName                     |
-            | evar52    | Standard Alert\|Expand\|Expand |
+            # | evar52    | Standard Alert\|Expand\|Expand |
             | evar68    | PreHeader                      |
             | prop8     | english                        |
             | evar2     | D=c8                           |

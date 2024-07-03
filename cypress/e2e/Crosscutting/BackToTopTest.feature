@@ -4,7 +4,7 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
         Given screen breakpoint is set to "<screenBreakpoint>"
         When user is navigating to "<url>"
         And user scrolls 1 px "down"
-        Then back-to-top arrow appears with text "Back To Top" and href "#"
+        Then back-to-top arrow appears with text "Back to Top" and href "#top"
         When user scrolls 1 px "up"
         Then back-to-top arrow is not displayed
         Examples:
@@ -30,7 +30,7 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
         Given screen breakpoint is set to "<screenBreakpoint>"
         When user is navigating to "<url>"
         And user scrolls 1 px "down"
-        Then back-to-top arrow appears with text "Volver arriba" and href "#"
+        Then back-to-top arrow appears with text "Volver Arriba" and href "#top"
         When user scrolls 1 px "up"
         Then back-to-top arrow is not displayed
         Examples:
@@ -67,7 +67,7 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
     Scenario: Click event on back to top
         Given user is navigating to "/"
         When user scrolls 5 px "down"
-        Then back-to-top arrow appears with text "Back To Top" and href "#"
+        Then back-to-top arrow appears with text "Back to Top" and href "#top"
         When user clicks on back-to-top button
         And browser waits
         Then page click request is sent
@@ -81,7 +81,7 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
             | evar2     | D=c8                                 |
             | evar38    | Right Edge\|Back To Top\|Back To Top |
             | evar68    | Right Edge                           |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/            |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/       |
             | pageName  | {CANONICAL_HOST}/                    |
             | event21   |                                      |
             | channel   | NCI Homepage                         |
