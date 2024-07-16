@@ -48,6 +48,7 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
             | prop67    | D=pageName                                   |
             | prop68    | D=v68                                        |
             | evar2     | D=c8                                         |
+            | evar61    | cgvHomeLanding\|ncids_with_title             |
             | evar64    | Internal\|Common Cancer Types\|Breast Cancer |
             | evar65    | Raw HTML\|Not Defined\|SummaryBox            |
             | evar66    | 3\|2\|2\|1\|1\|1                             |
@@ -77,6 +78,7 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
             | prop67    | D=pageName                            |
             | prop68    | D=v68                                 |
             | evar2     | D=c8                                  |
+            | evar61    | cgvHomeLanding\|ncids_with_title      |
             | evar64    | Anchor\|Cancer Types A-Z Accordion\|B |
             | evar65    | Raw HTML\|Not Defined\|Accordion      |
             | evar66    | 3\|3\|0\|0\|22\|2                     |
@@ -106,6 +108,7 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
             | prop67    | D=pageName                                                     |
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
+            | evar61    | cgvHomeLanding\|ncids_with_title                               |
             | evar64    | Internal\|Cancer Types A-Z Accordion\|Adrenocortical Carcinoma |
             | evar65    | Raw HTML\|Not Defined\|Accordion                               |
             | evar66    | 3\|3\|0\|0\|22\|1                                              |
@@ -135,6 +138,7 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
             | prop67    | D=pageName                                   |
             | prop68    | D=v68                                        |
             | evar2     | D=c8                                         |
+            | evar61    | cgvHomeLanding\|ncids_with_title             |
             | evar64    | Interaction\|Cancer Types Search\|Form Focus |
             | evar65    | Raw HTML\|Not Defined\|Cancer Type Search    |
             | evar66    | 3\|1\|0\|0\|1\|1                             |
@@ -165,6 +169,7 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
             | prop67    | D=pageName                                      |
             | prop68    | D=v68                                           |
             | evar2     | D=c8                                            |
+            | evar61    | cgvHomeLanding\|ncids_with_title                |
             | evar64    | Interaction\|Cancer Types Search\|Selected Item |
             | evar65    | Raw HTML\|Not Defined\|Cancer Type Search       |
             | evar66    | 3\|1\|0\|0\|1\|1                                |
@@ -197,6 +202,7 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
             | prop67    | D=pageName                                   |
             | prop68    | D=v68                                        |
             | evar2     | D=c8                                         |
+            | evar61    | cgvHomeLanding\|ncids_with_title             |
             | evar64    | Interaction\|Cancer Types Search\|Clear Form |
             | evar65    | Raw HTML\|Not Defined\|Cancer Type Search    |
             | evar66    | 3\|1\|0\|0\|1\|1                             |

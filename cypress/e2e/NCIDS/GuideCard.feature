@@ -43,9 +43,10 @@ Feature: As a user I want to be able to add a NCIDS guide card component onto a 
             | prop60    | D=c67                                                                                                                                                              |
             | prop68    | D=v68                                                                                                                                                              |
             | evar2     | D=c8                                                                                                                                                               |
+            | evar61    | cgvHomeLanding\|ncids_without_title                                                                                                                                |
             | evar64    | External\|Patients and Caregivers, with a Title Long Enough \|Lorem ipsum dolor sit amet, consectetuer adipiscin |
             | evar65    | Guide Card\|Light\|Image and Description                                                                                                                           |
-            | evar66    | 5\|1\|0\|0\|2\|1                                                                                                                                                         |
+            | evar66    | 5\|1\|0\|0\|2\|1                                                                                                                                                   |
             | evar67    | Button\|1\|1                                                                                                                                                       |
             | evar68    | Body                                                                                                                                                               |
             | pageName  | {CANONICAL_HOST}/ncids-guide-card-test                                                                                                                             |
@@ -70,9 +71,10 @@ Feature: As a user I want to be able to add a NCIDS guide card component onto a 
             | prop60    | D=c67                                               |
             | prop68    | D=v68                                               |
             | evar2     | D=c8                                                |
+            | evar61    | cgvHomeLanding\|ncids_without_title                 |
             | evar64    | Internal\|Researchers\|Feelings and Cancer          |
             | evar65    | Guide Card\|Light\|Image and Description            |
-            | evar66    | 5\|1\|0\|0\|2\|2                                          |
+            | evar66    | 5\|1\|0\|0\|2\|2                                    |
             | evar67    | Button\|6\|6                                        |
             | evar68    | Body                                                |
             | pageName  | {CANONICAL_HOST}/ncids-guide-card-test              |
