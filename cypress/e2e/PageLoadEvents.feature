@@ -73,7 +73,31 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping |
             | event1    |                                                   |
             | event47   | /d{0,2}/                                          |
-            | evar61    | cgvMiniLanding\|default |
+            | evar61    | cgvMiniLanding\|standard |
+
+    Scenario: Load Event NCIDS MiniLanding
+        Given user is navigating to "/test/raw-html-sample-page"
+        And screen breakpoint is set to "desktop"
+        When page load request is sent
+        Then the following parameters should be captured
+            | parameter | value                                             |
+            | prop6     | Mini Landing Page with Title                      |
+            | prop10    | Mini Landing Page with Title - NCI                |
+            | prop44    | NCI Homepage                                      |
+            | prop3     | /test/raw-html-sample-page                        |
+            | prop65    | /^\d{1,4}$/                                       |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/              |
+            | prop29    |                                                   |
+            | prop8     | english                                           |
+            | evar44    | D=c44                                             |
+            | evar2     | D=c8                                              |
+            | evar5     | Desktop                                           |
+            | channel   | NCI Homepage                                      |
+            | pageName  | {CANONICAL_HOST}/about-cancer/coping              |
+            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping |
+            | event1    |                                                   |
+            | event47   | /d{0,2}/                                          |
+            | evar61    | cgvMiniLanding\|ncids_default |
 
 
     Scenario: Load Event Article
