@@ -93,8 +93,8 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | evar2     | D=c8                                              |
             | evar5     | Desktop                                           |
             | channel   | NCI Homepage                                      |
-            | pageName  | {CANONICAL_HOST}/about-cancer/coping              |
-            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping |
+            | pageName  | {CANONICAL_HOST}/test/raw-html-sample-page        |
+            | prop1     | {PROTOCOL}://{CANONICAL_HOST}/test/raw-html-sample-page |
             | event1    |                                                   |
             | event47   | /d{0,2}/                                          |
             | evar61    | cgvMiniLanding\|ncids_default |
