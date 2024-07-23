@@ -56,18 +56,30 @@ And('the user clicks the last page link in the pager', () => {
 });
 
 Then('user is clicking on a BestBets title link at position {int}', (positionNumber) => {
-    cy.get('div.best-bet').eq(positionNumber - 1).find('a').trigger('click', { followRedirect: false });
-    cy.wait(2000);
+    cy.get('div.best-bet').eq(positionNumber - 1).find('a').then(link$ => {
+        link$.on('click', e => {
+            e.preventDefault();
+        });
+    })
+    .click({ followRedirect: false });
 });
 
 Then('user is clicking on a search result item at position {int}', (positionNumber) => {
-    cy.get('.result__list-item').eq(positionNumber - 1).find('a').trigger('click', { followRedirect: false });
-    cy.wait(2000);
+    cy.get('.result__list-item').eq(positionNumber - 1).find('a').then(link$ => {
+        link$.on('click', e => {
+            e.preventDefault();
+        });
+    })
+    .click({ followRedirect: false });
 });
 
 Then('user is clicking on a glossary term link {string}', (termLink) => {
-    cy.get('div.definition p').find('a').trigger('click', { followRedirect: false });
-    cy.wait(2000);
+    cy.get('div.definition p').find('a').then(link$ => {
+        link$.on('click', e => {
+            e.preventDefault();
+        });
+    })
+    .click({ followRedirect: false });
 });
 
 When('user types {string} in the site search box', (searchText) => {
