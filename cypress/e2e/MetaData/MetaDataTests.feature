@@ -92,8 +92,8 @@ Feature: MetaData Tests
             | /about-cancer/coping/self-image                                                             | default             | Article                                |
             | /espanol/cancer/sobrellevar/self-image                                                      | default             | Article Spanish                        |
             | /about-cancer/coping/feelings/relaxation/duke-university                                    | default             | Cancer Center                          |
-            | /pets                                                                                       | default             | Mini Landing                           |
-            | /espanol/instituto/organizacion                                                             | default             | Mini Landing Spanish                   |
+            | /pets                                                                                       | standard            | Mini Landing                           |
+            | /espanol/instituto/organizacion                                                             | standard            | Mini Landing Spanish                   |
             | /types/breast/research                                                                      | default             | Cancer Research List Page              |
             | /espanol/tipos/seno/investigacion                                                           | default             | Cancer Research List Page Spanish      |
             | /news-events/events/krispy-kreme                                                            | default             | Event                                  |

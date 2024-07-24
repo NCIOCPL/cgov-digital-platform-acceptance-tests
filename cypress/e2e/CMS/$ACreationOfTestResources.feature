@@ -39,6 +39,43 @@ Feature: Adding any necessary test resources
         And system waits for file upload process
         Then user saves the content page
 
+          Scenario: create a new NCIDS image
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "author"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "author" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Media" sub tab
+        And user clicks on "Add media" action button
+        And user clicks on Image content type
+        Then page title is "Add Image"
+        And user fills out the following fields
+            | fieldLabel   | value       | field_name             |
+            | Name         | NCIDS Image | name[0][value]         |
+            | Photo Credit | Test Credit | field_credit[0][value] |
+        And user types "Test Caption" into Caption text field
+        And user uploads test "main" image "social_media_image.jpg"
+        And system waits for file upload process
+        And browser waits
+        And user clicks on CROP IMAGE button
+        And browser waits
+        And user sets the following crops
+            | crop      | cropcase  | locator              |
+            | Thumbnail | thumbnail | a[href*="thumbnail"] |
+            | 4x3       | 4x3       | a[href*="4x3"]       |
+            | 3x4       | 3x4       | a[href*="3x4"]       |
+            | 1x1       | 1x1       | a[href*="1x1"]       |
+            | 16x9      | 16x9      | a[href*="16x9"]      |
+            | 9x16      | 9x16      | a[href*="9x16"]      |
+        And user uploads NCIDS image overrides as follows
+            | fileName              | type                 |
+            | panoramic_image.jpg   | ncids_promo_art_16x9 |
+            | contextual_image.jpeg | ncids_promo_art_4x3  |
+            | thumbnail_image.jpg   | ncids_promo_art_1x1  |
+        And browser waits
+        Then user saves the content page
+
     Scenario: Create article and file to test related resources functionality
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "editor"

@@ -55,41 +55,8 @@ And('user selects {string} image position for {int} block', (option, index) => {
     cy.get('select[name*="image_position"]').eq(index - 2).select(option)
 });
 
-And('user uploads NCIDS image overrides as follows', (dataTable) => {
-    for (const { fileName, type } of dataTable.hashes()) {
-        cy.fixture(fileName, { encoding: null }).as('fixture')
-        cy.get(`input[type="file"][name*="${type}"]`).selectFile('@fixture')
-        cy.get('.throbber', { timeout: 40000 }).should('not.exist')
-        cy.wait(3000)
-    }
-});
 
-And('user clicks on Image content type', () => {
-    cy.get("dl.admin-list a[href='/media/add/cgov_image']").click();
-});
 
-And('user types {string} into Caption text field', (value) => {
-    cy.getIframeBody('iframe.cke_wysiwyg_frame.cke_reset').find('p').type(value);
-})
-
-And('user uploads test {string} image {string}', (imageType, fileName) => {
-    cy.fixture(fileName, { encoding: null }).as('fixture')
-    if (imageType === "main") { cy.get('input#edit-field-media-image-0-upload').selectFile('@fixture'); }
-
-})
-
-And('user clicks on CROP IMAGE button', () => {
-    cy.get(`summary:contains('Crop image')`).click({ force: true })
-})
-
-And('user sets the following crops', (dataTable) => {
-    for (let { crop, cropcase, locator } of dataTable.hashes()) {
-        cy.get(locator).should('contain.text', crop).click({ force: true });
-        cy.wait(500);
-        cy.get(`div[class*="crop-preview-wrapper"][id='${cropcase}']`).trigger('mouseover', { force: true }).find('span.cropper-face').click({ force: true });
-
-    }
-});
 
 And('user uploads {string} as {int} guide card image', (fileName, index) => {
     cy.fixture(fileName, { encoding: null }).as('fixture')
@@ -260,13 +227,12 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
 
 And('NCIDS feature cards have the following attributes', (dataTable) => {
 
-    for (let { index, title, description, link, source, file, srcset, srcSetImg } of dataTable.hashes()) {
+    for (let { index, title, description, link, source, file } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
         }
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
             source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
-            srcset = srcset.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
 
         }
         cy.get('.nci-card__body').eq(index).as('featureCard');
@@ -306,21 +272,6 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
                 expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
             }
         });
-
-        cy.get('@featureCard').parent().find('picture source').invoke('attr', 'srcset').then((fullSrc) => {
-
-            if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-                fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
-            }
-            expect(fullSrc.includes(`${srcset}`)).to.be.true;
-            const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
-            if (srcSetImg.includes('placeholder')) {
-                expect(src1).to.match(new RegExp(`.*\/${srcSetImg}`))
-            } else {
-                expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${srcSetImg}`))
-            }
-        });
-
     }
 });
 

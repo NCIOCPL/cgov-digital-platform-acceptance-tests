@@ -88,6 +88,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | Label                |
                         | Main Menu            |
                         | Explore About Cancer |
+                        | Understanding Cancer   |
                         | Coping with Cancer   |
 
         Scenario: Verify that the right parents and children are displayed when navigating back in the tree
