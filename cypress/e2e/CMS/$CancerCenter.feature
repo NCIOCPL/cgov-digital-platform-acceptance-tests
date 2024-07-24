@@ -35,7 +35,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
             | Phone 2 Number                     | 888-111-1111                        | field_phone_number_2                     |
             | Website Title                      | Website Title                       | field_website_title                      |
             | Website URL                        | https://www.google.com              | field_website_url                        |
-        And user selects "Cancer Center" from "Institution Type" dropdown
+        And user selects "Comprehensive Cancer Center" from "Institution Type" dropdown
         And user selects "Virginia" from "State" dropdown
         And user selects "Pacific" from "Region" dropdown
         And user fills out "Body" text area with "This is a description of cancer institute"
@@ -97,7 +97,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         Given user is navigating to the front end site with path site section plus "cancer-center"
         Then page title is "Automated Test Cancer Center"
         And institution title reads "NIH"
-        And cancer center type is "Cancer Center"
+        And cancer center type is "Comprehensive Cancer Center"
         And head name and title reads "Organization Head Name, Organization Head Title"
         And the address reads "123 Magnolia Str"
         And the address reads "Apt 2222"
@@ -189,7 +189,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
             | Phone 1 Label            | Main Phone Edited                          | field_phone_label_1                      |
             | Phone 2 Number           | 888-111-1234                               | field_phone_number_2                     |
             | Zip code                 | 76001                                      | field_address[0][address][postal_code]   |
-        And user selects "Comprehensive Cancer Center" from "Institution Type" dropdown
+        And user selects "Basic Laboratory Cancer Center" from "Institution Type" dropdown
         And user selects "Texas" from "State" dropdown
         And user removes Cancer Center Image
         And user selects 2 Cancer Center Image from the list of images
@@ -205,7 +205,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         Given user is navigating to the front end site with path site section plus "cancer-center-edited"
         Then page title is "Automated Test Cancer Center"
         And institution title reads "NIH"
-        And cancer center type is "Comprehensive Cancer Center"
+        And cancer center type is "Basic Laboratory Cancer Center"
         And head name and title reads "Organization Head Name Edited, Organization Head Title"
         And the address reads "123 Magnolia Str Edited"
         And city, state and zipcode reads "Arlington, Texas 76001"

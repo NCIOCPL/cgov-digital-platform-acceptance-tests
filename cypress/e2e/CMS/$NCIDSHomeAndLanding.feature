@@ -1,42 +1,5 @@
 Feature: Home And Landing Page Test Creation of Content
 
-    Scenario: Creating an image to use as promo
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "author"
-        And user clicks "Log in" button
-        Then user is logged in and the user name "author" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on "Media" sub tab
-        And user clicks on "Add media" action button
-        And user clicks on Image content type
-        Then page title is "Add Image"
-        And user fills out the following fields
-            | fieldLabel   | value       | field_name             |
-            | Name         | NCIDS Image | name[0][value]         |
-            | Photo Credit | Test Credit | field_credit[0][value] |
-        And user types "Test Caption" into Caption text field
-        And user uploads test "main" image "social_media_image.jpg"
-        And system waits for file upload process
-        And user clicks on CROP IMAGE button
-        And browser waits
-        And user sets the following crops
-            | crop      | cropcase  | locator              |
-            | Thumbnail | thumbnail | a[href*="thumbnail"] |
-            | 4x3       | 4x3       | a[href*="4x3"]       |
-            | 3x4       | 3x4       | a[href*="3x4"]       |
-            | 1x1       | 1x1       | a[href*="1x1"]       |
-            | 16x9      | 16x9      | a[href*="16x9"]      |
-            | 9x16      | 9x16      | a[href*="9x16"]      |
-        And user uploads NCIDS image overrides as follows
-            | fileName              | type                 |
-            | panoramic_image.jpg   | ncids_promo_art_16x9 |
-            | contextual_image.jpeg | ncids_promo_art_4x3  |
-            | thumbnail_image.jpg   | ncids_promo_art_1x1  |
-        And browser waits
-        Then user saves the content page
-
-
     Scenario: User is adding new Home and Landing page content type and adding a Hero
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "author"
@@ -348,10 +311,10 @@ Feature: Home And Landing Page Test Creation of Content
             | 1     | Internal Block Override Title     | Internal Block Override Description        | {TEST_SITE_SECTION}/article | Button Text | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/media_image          | main_image      | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
             | 2     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article | Button Text | N/A                                                                                 | N/A             | N/A                                                                               | N/A             |
         And NCIDS feature cards have the following attributes
-            | index | title                             | description                                | link                          | source                                                                                 | file             | srcset                                                                               | srcSetImg        |
-            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | /sites/default/files/styles/ncids_featured_4x3/public/cgov_image/media_image         | main_image       |
-            | 1     | Multimedia Feature Card Title     | Multimedia Feature Card Desc               | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | /sites/default/files/styles/ncids_featured_4x3/public/cgov_image/ncids_promo_art_4x3 | contextual_image |
-            | 2     | Google Link                       | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | /sites/default/files/styles/ncids_featured_4x3/module/cgov_image/img                 | placeholder-4x3  |
+            | index | title                             | description                                | link                          | source                                                                                 | file             | 
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
+            | 1     | Multimedia Feature Card Title     | Multimedia Feature Card Desc               | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | 
+            | 2     | Google Link                       | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | 
         Then NCIDS 3 guide card row at position 2 have the following attributes
             | index | title              | btnLinkAndText                                                                                                                   |
             | 0     | 3 Guide Card row 1 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Override Button Title,{TEST_SITE_SECTION}/article |
@@ -412,10 +375,10 @@ Feature: Home And Landing Page Test Creation of Content
             | 1     | Internal Block Override Title_Spanish | Internal Block Override Description_Spanish | {TEST_SITE_SECTION}/article | Button Text_Spanish | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/media_image          | main_image      | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
             | 2     | Article to test Related Resources     | Automated Test Article - Feature Card Desc  | {TEST_SITE_SECTION}/article | Button Text         | N/A                                                                                 | N/A             | N/A                                                                               | N/A             |
         And NCIDS feature cards have the following attributes
-            | index | title                                 | description                                | link                          | source                                                                                 | file             | srcset                                                                               | srcSetImg        |
-            | 0     | Article to test Related Resources     | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | /sites/default/files/styles/ncids_featured_4x3/public/cgov_image/media_image         | main_image       |
-            | 1     | Multimedia Feature Card Title_Spanish | Multimedia Feature Card Desc_Spanish       | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | /sites/default/files/styles/ncids_featured_4x3/public/cgov_image/ncids_promo_art_4x3 | contextual_image |
-            | 2     | Google Link                           | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | /sites/default/files/styles/ncids_featured_4x3/module/cgov_image/img                 | placeholder-4x3  |
+            | index | title                                 | description                                | link                          | source                                                                                 | file             | 
+            | 0     | Article to test Related Resources     | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | 
+            | 1     | Multimedia Feature Card Title_Spanish | Multimedia Feature Card Desc_Spanish       | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | 
+            | 2     | Google Link                           | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | 
         Then NCIDS 3 guide card row at position 2 have the following attributes
             | index | title              | btnLinkAndText                                                                                                                   |
             | 0     | 3 Guide Card row 1 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Override Button Title,{TEST_SITE_SECTION}/article |
@@ -450,8 +413,3 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
         When user confirms "Delete" action
-
-        When user clicks on "Content" tab
-        And user clicks on "Media" sub tab
-        And user deletes "NCIDS Image" image
-        And the image "NCIDS Image" does not exist in the list of content

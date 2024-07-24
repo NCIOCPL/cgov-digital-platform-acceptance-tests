@@ -89,21 +89,21 @@ Feature: Primary CancerType keyword search
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
     When user types following value and selects matched option in the corresponding field
-      | field        | value                                   |
-      | Subtype      | Secondary Acute Myeloid Leukemia (AML)  |
-      | Stage        | Recurrent Acute Myeloid Leukemia (AML)  |
-      | Side Effects | High Risk Acute Myeloid Leukemia        |
+      | field        | value                                  |
+      | Subtype      | Acute Myeloid Leukemia (AML)           |
+      | Stage        | Recurrent Acute Myeloid Leukemia (AML) |
+      | Side Effects | High Risk Myelodysplastic Syndrome     |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
-    And trial info displays "Results 1-1  of \d+ for your search.*"
+    And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value                 |
       | t         | C3171                 |
       | loc       | 0                     |
       | rl        | 2                     |
-      | st        | C25765                |
+      | st        | C9154                 |
       | stg       | C148427\|C7882\|C9068 |
-      | fin       | C156292               |
+      | fin       | C138962               |
 
   Scenario: User is able to execute search for Cancer type, stage and side effects on Mobile
     Given user is navigating to "/research/participate/clinical-trials-search/advanced"
@@ -112,19 +112,19 @@ Feature: Primary CancerType keyword search
     And user types "Acute Myeloid Leukemia (AML)" in the autosuggest field
     When user selects "Acute Myeloid Leukemia (AML)" from autosuggest
     When user types following value and selects matched option in the corresponding field
-      | field        | value                                   |
-      | Stage        | Recurrent Acute Myeloid Leukemia (AML)  |
-      | Side Effects | High Risk Acute Myeloid Leukemia        |
+      | field        | value                                  |
+      | Stage        | Recurrent Acute Myeloid Leukemia (AML) |
+      | Side Effects | High Risk Myelodysplastic Syndrome     |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
-    And trial info displays "Results 1-1  of \d+ for your search.*"
+    And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value                 |
       | t         | C3171                 |
       | loc       | 0                     |
       | rl        | 2                     |
       | stg       | C148427\|C7882\|C9068 |
-      | fin       | C156292               |
+      | fin       | C138962               |
 
   Scenario: User is able to execute search for Cancer type, subtype and side effects on desktop
     Given user is navigating to "/research/participate/clinical-trials-search/advanced"
@@ -135,19 +135,19 @@ Feature: Primary CancerType keyword search
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
     When user types following value and selects matched option in the corresponding field
-      | field        | value                                   |
-      | Subtype      | Secondary Acute Myeloid Leukemia (AML)  |
-      | Side Effects | High Risk Acute Myeloid Leukemia        |
+      | field        | value                              |
+      | Subtype      | Acute Myeloid Leukemia (AML)       |
+      | Side Effects | High Risk Myelodysplastic Syndrome |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
-    And trial info displays "Results 1-1  of \d+ for your search.*"
+    And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value   |
       | t         | C3171   |
       | loc       | 0       |
       | rl        | 2       |
-      | st        | C25765  |
-      | fin       | C156292 |
+      | st        | C9154   |
+      | fin       | C138962 |
 
   Scenario: User is able to execute search for Cancer type and side effects on desktop
     Given user is navigating to "/research/participate/clinical-trials-search/advanced"
@@ -158,15 +158,15 @@ Feature: Primary CancerType keyword search
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
     When user types following value and selects matched option in the corresponding field
-      | field        | value                                   |
-      | Side Effects | High Risk Acute Myeloid Leukemia        |
+      | field        | value                              |
+      | Side Effects | High Risk Myelodysplastic Syndrome |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
-    And trial info displays "Results 1-1  of \d+ for your search.*"
+    And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
       | parameter | value   |
       | t         | C3171   |
       | loc       | 0       |
       | rl        | 2       |
-      | fin       | C156292 |
+      | fin       | C138962 |
 

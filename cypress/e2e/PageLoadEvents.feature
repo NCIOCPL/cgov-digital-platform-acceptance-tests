@@ -22,7 +22,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | prop1     | {PROTOCOL}://{CANONICAL_HOST}/espanol |
             | event1    |                                       |
             | event47   | /d{0,2}/                              |
-            | evar61    | cgvHomeLanding\|ncids_without_title |
+            | evar61    | cgvHomeLanding\|ncids_without_title   |
 
 
 
@@ -48,7 +48,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | prop1     | {PROTOCOL}://{CANONICAL_HOST}/         |
             | event47   | /d{0,2}/                               |
             | event1    |                                        |
-            | evar61    | cgvHomeLanding\|ncids_without_title |
+            | evar61    | cgvHomeLanding\|ncids_without_title    |
 
 
     Scenario: Load Event MiniLanding
@@ -73,7 +73,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping |
             | event1    |                                                   |
             | event47   | /d{0,2}/                                          |
-            | evar61    | cgvMiniLanding\|default |
+            | evar61    | cgvMiniLanding\|standard                          |
 
 
     Scenario: Load Event Article
@@ -98,4 +98,4 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping/feelings |
             | event1    |                                                            |
             | event47   | /d{0,2}/                                                   |
-            | evar61    | cgvArticle\|default |
+            | evar61    | cgvArticle\|default                                        |
