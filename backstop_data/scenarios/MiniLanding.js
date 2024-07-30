@@ -55,5 +55,9 @@ module.exports = [
             'div[class*="desktop:grid-col-9"]'
         ],
         selectorExpansion: false,
-	}
+	},
+    {
+		label: 'NCIDS mini landing page',
+		testPath: '/test/ncids-mini-landing-template',
+	}   
 ]
