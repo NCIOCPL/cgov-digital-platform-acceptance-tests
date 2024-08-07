@@ -290,18 +290,18 @@ Given('user is navigating to the blog {string} under {string}', (blogPost, blogS
 
 And(`espanol blog's posted date is today's date`, () => {
     const esMonths = [
-        'enero',
-        'febrero',
-        'marzo',
-        'abril',
-        'mayo',
-        'junio',
-        'julio',
-        'agosto',
-        'septiembre',
-        'octubre',
-        'noviembre',
-        'diciembre'
+        'Enero',
+        'Febrero',
+        'Marzo',
+        'Abril',
+        'Mayo',
+        'Junio',
+        'Julio',
+        'Agosto',
+        'Septiembre',
+        'Octubre',
+        'Noviembre',
+        'Diciembre'
     ];
     const esMonth = esMonths[date.getMonth()];
     const expectedDate = `${day} de ${esMonth} de ${currYear}`;

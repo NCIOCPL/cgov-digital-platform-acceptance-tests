@@ -196,7 +196,7 @@ Feature: User creating an image
         When user clicks on "Delete" option button
         When user confirms "Borrar la traduccion Español" action
 
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-for-image-spanish"
         And user clicks on the tool bar status button "Publicado"
         And user clicks "Request Archive" button from Moderation sidebar
@@ -207,7 +207,7 @@ Feature: User creating an image
         When user clicks on "Delete" option button
         When user confirms "Borrar la traduccion Español" action
 
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on title with url "article-to-test-image" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

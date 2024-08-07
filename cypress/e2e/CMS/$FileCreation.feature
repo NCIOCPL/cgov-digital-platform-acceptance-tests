@@ -651,7 +651,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         When user clicks on "Delete" option button
         When user confirms "Borrar la traduccion Español" action
 
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on title with url spanish path "/espanol" site section plus "crlp-for-files"
         And user clicks on the tool bar status button "Publicado"
         And user clicks "Request Archive" button from Moderation sidebar
@@ -662,7 +662,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         When user clicks on "Delete" option button
         When user confirms "Borrar la traduccion Español" action
 
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on title with url "article-to-test-files" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

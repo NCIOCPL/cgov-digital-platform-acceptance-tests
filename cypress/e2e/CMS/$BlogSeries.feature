@@ -506,7 +506,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         When user confirms "Borrar la traduccion Español" action
 
 
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on blog with url "blog-post-test-blog-series" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
@@ -540,7 +540,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         When user clicks on "Delete" option button
         When user confirms "Borrar la traduccion Español" action
 
-        When user clicks on "Content" tab
+        When user clicks on "Contenido" tab
         And user clicks on title with url "blog-series-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

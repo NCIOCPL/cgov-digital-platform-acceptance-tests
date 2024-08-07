@@ -11,7 +11,7 @@ Feature: Adding a custom site logo
         Then page title is "Block layout"
         When user clicks on "Place block" in "Site Header" region
         And user clicks on "Place block" for "NCIDS Header" block
-        And user types " Test" in the block title field
+        And user types "Test" in the block title field
         And user checks "Display title" checkbox
         And user types " Test alt tag" in the "The accessible label for the home page link." field
         And user checks "Use a custom logo?" checkbox
@@ -57,7 +57,7 @@ Feature: Adding a custom site logo
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab
         Then page title is "Block layout"
-        When user clicks on "Configure" button for "NCIDS Header Test" block
+        When user clicks on "Configure" button for "TestNCIDS Header" block
         Then page title is "Configure block"
         And user fills out Search Results Page field with "NCI Search Results"                           
         And user selects 1 item from Search Results Page dropdown
@@ -80,7 +80,7 @@ Feature: Adding a custom site logo
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab
         Then page title is "Block layout"
-        When user clicks on "Configure" button for "NCIDS Header Test" block
+        When user clicks on "Configure" button for "TestNCIDS Header" block
         Then page title is "Configure block"
         When user clicks on Remove logo for "desktop"
         And user saves editing block
@@ -102,9 +102,9 @@ Feature: Adding a custom site logo
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab
         Then page title is "Block layout"
-        When user clicks on "Remove" button for "NCIDS Header Test" block
+        When user clicks on "Remove" button for "TestNCIDS Header" block
         And user confirms removal of block
-        Then the confirmation text "The block NCIDS Header Test has been removed from the Site Header region." appears on a screen
+        Then the confirmation text "The block TestNCIDS Header has been removed from the Site Header region." appears on a screen
         When user clicks on "Structure" tab
         And user clicks on "Block layout" sub tab
         Then page title is "Block layout"
