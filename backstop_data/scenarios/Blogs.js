@@ -36,4 +36,16 @@ module.exports = [
         selectorExpansion: true,
 
     },
+
+    {
+        label: 'blog with recommended content',
+        testPath: '/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly',
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            }
+        ]
+    }
 ]
