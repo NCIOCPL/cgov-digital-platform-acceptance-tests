@@ -18,7 +18,7 @@ module.exports = [
         chainedActionSelectors: [
             {
                 action: 'click',
-                selector: '.related-resources.list h6',
+                selector: '.related-resources.list h2',
             },
             {
                 action: 'hover',
