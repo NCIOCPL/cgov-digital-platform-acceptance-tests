@@ -42,4 +42,8 @@ module.exports = [
         ],
         selectorExpansion: false,
 	},
+    {
+		label: 'spanish cancer info summary with OTP links',
+		testPath: '/espanol/tipos/seno/paciente/tratamiento-seno-pdq',
+	},
 ]

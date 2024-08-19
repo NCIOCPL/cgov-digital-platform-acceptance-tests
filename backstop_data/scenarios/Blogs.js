@@ -47,5 +47,21 @@ module.exports = [
                 height: 600,
             }
         ]
+    },
+    {
+        label: 'blog with citations and Related Resources',
+        testPath: '/news-events/cancer-currents-blog/2019/transition-lowy-nci-acting-director',
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+            {
+                label: 'tablet',
+                width: 650,
+                height: 900,
+            }
+        ]
     }
 ]
