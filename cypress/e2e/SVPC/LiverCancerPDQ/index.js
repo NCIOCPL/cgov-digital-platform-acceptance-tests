@@ -16,16 +16,17 @@ Given("user is navigating to {string}", (a) => {
 Then(
   "{string} section displays below the intro text {string}",
   (onThisPage, introText) => {
-    cy.get("nav.on-this-page h6")
+    cy.get("nav.on-this-page span")
       .should("be.visible")
       .and("include.text", onThisPage);
     cy.get("nav.on-this-page").prev().should("include.text", introText);
+    
   }
 );
 And(
   "{string} section displays before the first body section titled {string}",
   (onThisPage, title) => {
-    cy.get("nav.on-this-page h6").should("include.text", onThisPage);
+    cy.get("nav.on-this-page span").should("include.text", onThisPage);
     cy.get("nav.on-this-page")
       .next()
       .find("section h2")

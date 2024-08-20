@@ -112,7 +112,7 @@ And('user removes the Promo Image', () => {
 })
 
 And('{string} section is displayed with the following anchor links', (OTP, dataTable) => {
-    cy.get('nav.on-this-page h6').should('have.text', OTP);
+    cy.get('nav.on-this-page span').should('have.text', OTP);
     for (const { title, href } of dataTable.hashes()) {
         cy.get(`nav.on-this-page a[href='${href}']`).should('include.text', title)
     }
