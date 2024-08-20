@@ -6,7 +6,8 @@ Then('citation section is visible', () => {
 });
 
 And('citation header text is {string}', (headerText) => {
-    cy.get('#cgvCitationSl div').find('h6').invoke('text').then((text) => {
+    cy.get('#cgvCitationSl div').find('h2').invoke('text').then((text) => {
+
         expect(text.trim()).equal(headerText);
     });
 });
