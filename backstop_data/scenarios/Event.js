@@ -81,4 +81,16 @@ module.exports = [
             },
         ],
     },
+    {
+        label: 'focus on event title in dynamic list',
+        testPath: '/news-events/events/past-events',
+        focusSelector: 'span.event-title__heading a[href="/news-events/events/krispy-kreme"]',
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+        ]
+    }
 ]
