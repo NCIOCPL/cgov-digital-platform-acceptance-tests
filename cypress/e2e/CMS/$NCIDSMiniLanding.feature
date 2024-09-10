@@ -28,7 +28,9 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And user fills out the following fields
             | fieldLabel       | value    | field_name                                                        |
             | Alternative text | Alt Text | field_landing_contents[0][subform][field_slim_hero_image][0][alt] |
+        And browser waits
         Then user saves the content page
+        And browser waits
 
 
     Scenario: Add Page title and content block
@@ -48,6 +50,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And browser waits
         And user clicks on Source tool icon in the html content tool bar
         And user enters '<div class="usa-section" data-eddl-landing-row=""><div class="usa-prose"><h2 class="nci-heading-h3 nci-heading--label">Test for Raw HTML & Analytics</h2><ul class="usa-list--unstyled"><li><a href="/news-events/media-resources" class="usa-link font-serif-lg text-bold" data-eddl-landing-rawhtml="" data-eddl-landing-rawhtml-title="Test for Raw HTML & Analytics" data-eddl-landing-rawhtml-component-variant="RawHTMLTest" data-eddl-landing-rawhtml-link-type="Internal" data-eddl-landing-rawhtml-link-area="Text">Resources &amp; Contacts</a></li><li><a href="https://visualsonline.cancer.gov/" class="usa-link font-serif-lg text-bold" data-eddl-landing-rawhtml="" data-eddl-landing-rawhtml-title="Test for Raw HTML & Analytics" data-eddl-landing-rawhtml-component-variant="RawHTMLTest" data-eddl-landing-rawhtml-link-type="External" data-eddl-landing-rawhtml-link-area="Text">Images and B-roll</a></li></ul></div></div>' into source text field
+        And browser waits
         Then user saves the content page
 
     Scenario: Add NCIDS 3 Feature Card Row
@@ -84,15 +87,93 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And user selects "NCIDS Image" as promo image for 2 feature card
         And browser waits
         And user clicks on "Add NCIDS Feature Card External" button item
+        And browser waits
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                                                           |
             | Featured Item Url | https://www.google1.com | field_landing_contents[3][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
             | Card Title        | Google Link             | field_landing_contents[3][subform][field_row_cards][2][subform][field_override_card_title][0][value] |
         When user saves the content page
+
+    Scenario: Add NCIDS List Title and Description
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-mini-landing-page" from the list of content
         And user clicks on the tool bar status button "Draft"
-        And user selects "Submit for Review" from workflow actions
-        And user clicks on the tool bar status button "Review"
-        And user selects "Publish" from workflow actions
+        And user clicks "View in edit form" button from other actions
+        And user selects "Add List" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel | value                      | field_name                                                     |
+            | Title      | Title and Description List | field_landing_contents[4][subform][field_list_title][0][value] |
+        And user selects "NCIDS Title and Description" from 1 list style dropdown
+        And user clicks on "Link" in 1 "Internal Link" section
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user selects "Add External Link" from 1 item list dropdown
+        And user fills out the following fields
+            | fieldLabel | value                  | field_name                                                                                       |
+            | Link       | https://www.google.com | field_landing_contents[4][subform][field_list_items][1][subform][field_external_link][0][uri]    |
+            | Title      | Google Link            | field_landing_contents[4][subform][field_list_items][1][subform][field_override_title][0][value] |
+        And user selects "Add Media Link" from 1 item list dropdown
+        And user clicks on "Link" button to link to a media
+        And user clicks on "Select media" to choose a resource to link
+        And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
+        And user selects "Test File for Related Resources" item from the media list
+        And user clicks on "Select media" button to select media
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel     | value                                    | field_name                                                                             |
+            | Override Title | Override Test File for Related Resources | field_landing_contents[4][subform][field_list_items][2][subform][field_override_title] |
+        When user saves the content page
+         And browser waits
+
+    Scenario: Add NCIDS List Title, Image and Description
+    Given user is navigating to "/user/login?show_login_fields=true"
+    When user enters credentials of "editor"
+    And user clicks "Log in" button
+    Then user is logged in and the user name "editor" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    And user clicks on title with url "ncids-mini-landing-page" from the list of content
+    And user clicks on the tool bar status button "Draft"
+    And user clicks "View in edit form" button from other actions
+    And user selects "Add List" from "Contents" dropdown
+    And browser waits
+    And user fills out the following fields
+        | fieldLabel | value                      | field_name                                                     |
+        | Title      | Title, Description and Image List | field_landing_contents[5][subform][field_list_title][0][value] |
+    And user selects "NCIDS Title, Description, and Image" from 2 list style dropdown
+    And user clicks on "Link" in 1 "Internal Link" section
+    And user clicks on Select content button item
+    And user selects "Article to test Related Resources" item from the list
+    And user clicks on "Select content" button to select item
+    And browser waits
+    And user selects "Add External Link" from 2 item list dropdown
+    And user fills out the following fields
+        | fieldLabel | value                  | field_name                                                                                       |
+        | Link       | https://www.google1.com | field_landing_contents[5][subform][field_list_items][1][subform][field_external_link][0][uri]    |
+        | Title      | Google Link            | field_landing_contents[5][subform][field_list_items][1][subform][field_override_title][0][value] |
+    And user selects "Add Media Link" from 2 item list dropdown
+    And user clicks on "Link" button to link to a media
+    And user clicks on "Select media" to choose a resource to link
+    And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
+    And user selects "Test File for Related Resources" item from the media list
+    And user clicks on "Select media" button to select media
+    And browser waits
+    And user fills out the following fields
+        | fieldLabel     | value                                    | field_name                                                                             |
+        | Override Title | Override Test File for Related Resources | field_landing_contents[5][subform][field_list_items][2][subform][field_override_title] |
+    When user saves the content page
+    And user clicks on the tool bar status button "Draft"
+    And user selects "Submit for Review" from workflow actions
+    And user clicks on the tool bar status button "Review"
+    And user selects "Publish" from workflow actions
 
     Scenario Outline: Verify newly created content
         And screen breakpoint is set to "<breakpoint>"
@@ -109,6 +190,11 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
             | 1     | Multimedia Feature Card Title     | Multimedia Feature Card Desc               | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  |
             | 2     | Google Link                       | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 |
+        And NCIDS 1 list is displayed with title "Title and Description List"
+        And each 1 list item out of 3 has a heading and description except items 2 and 3
+        And NCIDS 2 list is displayed with title "Title, Description and Image List"
+        And each 2 list item has a heading and an image
+        And each 2 list item out of 3 has a heading and description except items 2 and 3
 
         Examples:
             | breakpoint |
@@ -116,69 +202,76 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | tablet     |
 
 
-    Scenario: Add a translation
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
-        And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        Then user selects "Translate" option from Operations dropdown for content with title "NCIDS Automated Test Mini Landing page"
-        Then the page title is "Translations of NCIDS Automated Test Mini Landing page"
-        When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de NCIDS Automated Test Mini Landing page"
-        And user clicks on "Editar" button for "NCIDS Feature Card Internal"
-        And user fills out the following fields
-            | fieldLabel       | value                    | field_name                                                                                                 |
-            | Card Title       | Card Title Spanish       | field_landing_contents[3][subform][field_row_cards][0][subform][field_override_card_title][0][value]       |
-            | Card Description | Card Description Spanish | field_landing_contents[3][subform][field_row_cards][0][subform][field_override_card_description][0][value] |
-        Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
-        And user selects "Submit for Review" from workflow actions
-        And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+Scenario: Add a translation
+    Given user is navigating to "/user/login?show_login_fields=true"
+    When user enters credentials of "editor"
+    And user clicks "Log in" button
+    Then user is logged in and the user name "editor" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    Then user selects "Translate" option from Operations dropdown for content with title "NCIDS Automated Test Mini Landing page"
+    Then the page title is "Translations of NCIDS Automated Test Mini Landing page"
+    When user clicks on "Add" button to add translation
+    Then page title is "Crear traducción Español de NCIDS Automated Test Mini Landing page"
+    And user clicks on "Editar" button for "NCIDS Feature Card Internal"
+    And browser waits
+    And user fills out the following fields
+        | fieldLabel       | value                    | field_name                                                                                                 |
+        | Card Title       | Card Title Spanish       | field_landing_contents[3][subform][field_row_cards][0][subform][field_override_card_title][0][value]       |
+        | Card Description | Card Description Spanish | field_landing_contents[3][subform][field_row_cards][0][subform][field_override_card_description][0][value] |
+    Then user saves the content page
+    And user clicks on the tool bar status button "Borrador"
+    And user selects "Submit for Review" from workflow actions
+    And user clicks on the tool bar status button "Review"
+    And user selects "Publicar" from workflow actions
 
 Scenario: Verify Spanish content
-        Given user is navigating to the front end site with spanish path "/espanol" site section plus "ncids-mini-landing-page"
-        And page title is "NCIDS Automated Test Mini Landing page"
-        And NCIDS Slim Hero is displayed with alt text "Alt Text"
-        And content block has a title "Test for Raw HTML & Analytics"
-        And content block has the following links
-            | title                | href                              |
-            | Resources & Contacts | /news-events/media-resources      |
-            | Images and B-roll    | https://visualsonline.cancer.gov/ |
-        And NCIDS feature cards have the following attributes
-            | index | title                         | description                  | link                          | source                                                                                 | file             |
-            | 0     | Card Title Spanish            | Card Description Spanish     | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
-            | 1     | Multimedia Feature Card Title | Multimedia Feature Card Desc | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  |
-            | 2     | Google Link                   | N/A                          | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 |
+    Given user is navigating to the front end site with spanish path "/espanol" site section plus "ncids-mini-landing-page"
+    And page title is "NCIDS Automated Test Mini Landing page"
+    And NCIDS Slim Hero is displayed with alt text "Alt Text"
+    And content block has a title "Test for Raw HTML & Analytics"
+    And content block has the following links
+        | title                | href                              |
+        | Resources & Contacts | /news-events/media-resources      |
+        | Images and B-roll    | https://visualsonline.cancer.gov/ |
+    And NCIDS feature cards have the following attributes
+        | index | title                         | description                  | link                          | source                                                                                 | file             |
+        | 0     | Card Title Spanish            | Card Description Spanish     | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
+        | 1     | Multimedia Feature Card Title | Multimedia Feature Card Desc | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  |
+        | 2     | Google Link                   | N/A                          | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 |
+  And NCIDS 1 list is displayed with title "Title and Description List"
+        And each 1 list item out of 3 has a heading and description except items 2 and 3
+        And NCIDS 2 list is displayed with title "Title, Description and Image List"
+        And each 2 list item has a heading and an image
+        And each 2 list item out of 3 has a heading and description except items 2 and 3
 
-    Scenario: Edit and republish english content
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
-        And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on title with url "ncids-mini-landing-page" from the list of content
-        And user clicks on the tool bar status button "Published"
-        And user clicks "View in edit form" button from other actions
-        And user clears out "Pretty URL" field
-        And user fills out the following fields
-            | fieldLabel               | value                                      | field_name                               |
-            | Pretty URL               | ncids-mini-landing-page-edited             | field_pretty_url                         |
-        And user removes page title block
-        When user saves the content page
-        And user clicks on the tool bar status button "Editing"
-        And user selects "Submit for Review" from workflow actions
-        And user clicks on the tool bar status button "Post-Publication Review"
-        And user selects "Publish" from workflow actions
+Scenario: Edit and republish english content
+    Given user is navigating to "/user/login?show_login_fields=true"
+    When user enters credentials of "editor"
+    And user clicks "Log in" button
+    Then user is logged in and the user name "editor" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    And user clicks on title with url "ncids-mini-landing-page" from the list of content
+    And user clicks on the tool bar status button "Published"
+    And user clicks "View in edit form" button from other actions
+    And user clears out "Pretty URL" field
+    And user fills out the following fields
+        | fieldLabel | value                          | field_name       |
+        | Pretty URL | ncids-mini-landing-page-edited | field_pretty_url |
+    And user removes page title block
+    And browser waits
+    When user saves the content page
+    And user clicks on the tool bar status button "Editing"
+    And user selects "Submit for Review" from workflow actions
+    And user clicks on the tool bar status button "Post-Publication Review"
+    And user selects "Publish" from workflow actions
 
-    
- Scenario: Verify no title appears on english page
-        Given user is navigating to the front end site with path site section plus "ncids-mini-landing-page-edited"
-        And page title does not exist
-       
+
+Scenario: Verify no title appears on english page
+    Given user is navigating to the front end site with path site section plus "ncids-mini-landing-page-edited"
+    And page title does not exist
+
 Scenario: Clean up
     Given user is navigating to "/user/login?show_login_fields=true"
     When user enters credentials of "editor"
