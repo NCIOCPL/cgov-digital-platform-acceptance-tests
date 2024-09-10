@@ -16,9 +16,9 @@ Feature: User creating a video
             | fieldLabel        | value                                       | field_name                         |
             | Youtube Video URL | https://www.youtube.com/watch?v=zXE7rexUCeI | field_media_oembed_video[0][value] |
             | Pretty URL        | test-video                                  | field_pretty_url                   |
-            | Name              | Test Video                                  | name[0][value]                     |
-            | Browser Title     | Test Video - Browser Title                  | field_browser_title                |
-            | Meta Description  | Test Video - Meta Description               | field_page_description             |
+            | Name              | Automated Test Video                        | name[0][value]                     |
+            | Browser Title     | Automated Test Video - Browser Title                  | field_browser_title                |
+            | Meta Description  | Automated Test Video - Meta Description               | field_page_description             |
         And user types "Test Caption" into Caption text field
         And user selects "Review" from "Save as" dropdown
         Then user saves the content page
@@ -43,10 +43,10 @@ Feature: User creating a video
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
-        Then user selects "Translate" option from Operations dropdown for media with title "Test Video"
-        Then the page title is "Translations of Test Video"
+        Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Video"
+        Then the page title is "Translations of Automated Test Video"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test Video"
+        Then page title is "Crear traducción Español de Automated Test Video"
         And user clears out "Pretty URL" field
         And user fills out the following fields
             | fieldLabel | value              | field_name       |
@@ -64,14 +64,14 @@ Feature: User creating a video
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
-        Then user selects "Translate" option from Operations dropdown for media with title "Test Video"
+        Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Video"
         When user clicks on "Edit" button to edit translation
         And user selects "Publicado" from Change to dropdown
         Then user saves the content page
 
 
 
-    Scenario: Create test pages to test video in English
+    Scenario: Create test pages to Automated Test Video in English
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "author"
         And user clicks "Log in" button
@@ -91,7 +91,7 @@ Feature: User creating a video
         And user selects "Add Multimedia Row" option from "Contents" dropdown
         And user clicks on "Multimedia Card" link in the "Multimedia Row" text area
         And user clicks on "Select media" button item
-        And user selects "Test Video" from the list of media
+        And user selects "Automated Test Video" from the list of media
         And browser waits
         And user clicks on "Select media" button to select media
         And browser waits
@@ -112,7 +112,7 @@ Feature: User creating a video
 
     Scenario: Verify English video
         When user is navigating to the front end site with path site section plus "home-and-landing-page-video"
-        Then the "Test Video" titles video is displayed
+        Then the "Automated Test Video" titles video is displayed
 
     Scenario: Translate test page
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -138,9 +138,9 @@ Feature: User creating a video
 
     Scenario: Verify spanish video
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-video-spanish"
-        Then the "Test Video_Spanish" titles video is displayed
+        Then the "Automated Test Video_Spanish" titles video is displayed
 
-    Scenario: Create article to test video embed
+    Scenario: Create article to Automated Test Video embed
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "editor"
         And user clicks "Log in" button
@@ -159,8 +159,8 @@ Feature: User creating a video
             | Meta Description | Article for embed Video - Meta Description | field_page_description |
         And user enters "Video Display Large with no title - none aligned" as 1 body section heading
         And user clicks the "Insert Video" button 1 in the WYSIWYG editor
-        And user enters "Test Video" into content title search box and clicks "Apply"
-        And user selects "Test Video" option from the list of media
+        And user enters "Automated Test Video" into content title search box and clicks "Apply"
+        And user selects "Automated Test Video" option from the list of media
         And browser waits
         And user clicks on "Select video" button to select video
         And browser waits
@@ -185,8 +185,8 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Large with title - left aligned" as 2 body section heading
         And user clicks the "Insert Video" button 2 in the WYSIWYG editor
-        And user enters "Test Video" into content title search box and clicks "Apply"
-        And user selects "Test Video" option from the list of media
+        And user enters "Automated Test Video" into content title search box and clicks "Apply"
+        And user selects "Automated Test Video" option from the list of media
         And browser waits
         And user clicks on "Select video" button to select video
         And browser waits
@@ -199,8 +199,8 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Medium with no title - center aligned" as 3 body section heading
         And user clicks the "Insert Video" button 3 in the WYSIWYG editor
-        And user enters "Test Video" into content title search box and clicks "Apply"
-        And user selects "Test Video" option from the list of media
+        And user enters "Automated Test Video" into content title search box and clicks "Apply"
+        And user selects "Automated Test Video" option from the list of media
         And browser waits
         And user clicks on "Select video" button to select video
         And browser waits
@@ -212,8 +212,8 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Medium with title - right aligned" as 4 body section heading
         And user clicks the "Insert Video" button 4 in the WYSIWYG editor
-        And user enters "Test Video" into content title search box and clicks "Apply"
-        And user selects "Test Video" option from the list of media
+        And user enters "Automated Test Video" into content title search box and clicks "Apply"
+        And user selects "Automated Test Video" option from the list of media
         And browser waits
         And user clicks on "Select video" button to select video
         And browser waits
@@ -225,8 +225,8 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Small with title - none aligned" as 5 body section heading
         And user clicks the "Insert Video" button 5 in the WYSIWYG editor
-        And user enters "Test Video" into content title search box and clicks "Apply"
-        And user selects "Test Video" option from the list of media
+        And user enters "Automated Test Video" into content title search box and clicks "Apply"
+        And user selects "Automated Test Video" option from the list of media
         And browser waits
         And user clicks on "Select video" button to select video
         And browser waits
@@ -247,16 +247,16 @@ Feature: User creating a video
         And 1 video has no title
         And 1 video has alignment set to ""
         And 2 section heading reads "Video Display Large with title - left aligned"
-        And 2 video has title "Test Video"
+        And 2 video has title "Automated Test Video"
         And 2 video has alignment set to " align-left"
         And 3 section heading reads "Video Display Medium with no title - center aligned"
         And 3 video has no title
         And 3 video has alignment set to " align-center"
         And 4 section heading reads "Video Display Medium with title - right aligned"
-        And 4 video has title "Test Video"
+        And 4 video has title "Automated Test Video"
         And 4 video has alignment set to " align-right"
         And 5 section heading reads "Video Display Small with title - none aligned"
-        And 5 video has title "Test Video"
+        And 5 video has title "Automated Test Video"
         And 5 video has alignment set to ""
 
 

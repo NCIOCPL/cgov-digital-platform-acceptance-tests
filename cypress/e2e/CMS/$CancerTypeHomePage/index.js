@@ -63,6 +63,10 @@ And('user clicks on {string} link in the Internal Link text area', (link) => {
     cy.get(`summary[role='button']:contains("${link}")`).eq(1).click({ force: true })
 })
 
+And('user clicks on {string} link in the Media Link text area', (link) => {
+    cy.get("[id*='edit-field-media-link'] summary[aria-expanded='false']").click({ force: true })
+})
+
 And('user selects {string} item from the media list', (title) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name='name']").type(title)
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-submit-cgov-media-browser']").click()

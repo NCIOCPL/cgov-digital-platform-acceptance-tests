@@ -40,20 +40,15 @@ And('content block has the following links', (dataTable) => {
 
     }
 });
- And('user removes page title block', ()=>{
+And('user removes page title block', () => {
     cy.get('[id*="edit-field-landing-contents-1-top-paragraph-type-title"]').parent().find('input[value="Remove"]').click();
     cy.get('input[value="Confirm removal"]').click()
- })
+})
 
- And('page title does not exist',()=>{
-cy.get('h1').should('not.exist')
- })
+And('page title does not exist', () => {
+    cy.get('h1').should('not.exist')
+})
 
-// And('user clicks on {string} from {string} area', (button, area) => {
-
-//     cy.get(`em.placeholder:contains("${area}")`).parent().find("button.dropbutton__toggle").click();
-//     cy.get(`em.placeholder:contains("${area}")`).parent().find(`input[value="${button}"]`).click();
-// })
 
 And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
     cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });
@@ -133,3 +128,33 @@ And('user clicks on {string} button for {string}', (edit, section) => {
     cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
 });
 
+And('user selects {string} from {int} list style dropdown', (option, index) => {
+    cy.get('select[id*="subform-field-list-item-style"]').eq(index - 1).select(option);
+})
+
+And('user selects {string} from {int} item list dropdown', (dropdown, index) => {
+    cy.get(`input[value='${dropdown}']`).eq(index - 1).click({ force: true })
+})
+
+And('user clicks on {string} button to link to a media', (link) => {
+    cy.get(`summary[aria-controls^="edit-field-media-link"]`).click({ force: true });
+});
+
+And('NCIDS {int} list is displayed with title {string}', (index, title) => {
+    cy.get('.cgdp-list h2').eq(index - 1).should('be.visible').and('include.text', title)
+})
+And('each {int} list item has a heading and an image', (listIndex) => {
+    cy.get('.cgdp-list').eq(listIndex - 1).find('li.usa-collection__item').each(item => {
+        cy.wrap(item).find('a').invoke('text').should('have.length.above', 0);
+        cy.wrap(item).find('img').should('have.attr', 'src')
+    })
+})
+
+And('each {int} list item out of {int} has a heading and description except items {int} and {int}', (listIndex,totalNum, index1, index2) => {
+    for (let i = 0; i < totalNum; i++) {
+        if (i !== (index1 - 1) && i !== (index2 - 1)) {
+            cy.get('.cgdp-list').eq(listIndex - 1).find('li.usa-collection__item').eq(i).find('p.usa-collection__description').invoke('text').should('have.length.above', 0);
+        }
+        cy.get('.cgdp-list').eq(listIndex - 1).find('li.usa-collection__item').eq(i).find('a').invoke('text').should('have.length.above', 0);
+    }
+})
