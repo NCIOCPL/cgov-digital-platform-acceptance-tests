@@ -32,7 +32,7 @@ jobs:
       - name: Run tests
         run: CYPRESS_baseUrl=${{ inputs.front_end_base_url }}/automation-installed CYPRESS_front_end_base_url=${{ inputs.front_end_base_url }}/automation-installed CYPRESS_ocpl_password='${{ secrets.ocpl_password }}' CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:acsf
       ## Upload screenshots of failed tests
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         name: Upload failed tests
         if: failure()
         with:
@@ -43,7 +43,7 @@ jobs:
         if: always()
         run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.front_end_base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms
       ## Upload screenshots of failed tests
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         name: Upload failed CMS tests
         if: failure()
         with:
