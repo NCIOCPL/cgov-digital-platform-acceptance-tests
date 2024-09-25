@@ -12,9 +12,9 @@ Feature: Adding any necessary test resources
         And user clicks on Image content type
         Then page title is "Add Image"
         And user fills out the following fields
-            | fieldLabel   | value       | field_name             |
-            | Name         | Test Image  | name[0][value]         |
-            | Photo Credit | Test Credit | field_credit[0][value] |
+            | fieldLabel   | value                | field_name             |
+            | Name         | Automated Test Image | name[0][value]         |
+            | Photo Credit | Test Credit          | field_credit[0][value] |
         And user types "Test Caption" into Caption text field
         And user uploads test "main" image "main_image.jpg"
         And system waits for file upload process
@@ -39,7 +39,7 @@ Feature: Adding any necessary test resources
         And system waits for file upload process
         Then user saves the content page
 
-          Scenario: create a new NCIDS image
+    Scenario: create a new NCIDS image
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "author"
         And user clicks "Log in" button
@@ -94,7 +94,7 @@ Feature: Adding any necessary test resources
             | Browser Title            | Article to test Related Resources                    | field_browser_title            |
             | Meta Description         | Article to test Related Resources - Meta Description | field_page_description         |
             | Feature Card Description | Automated Test Article - Feature Card Desc           | field_feature_card_description |
-        And user selects "Test Image" Promotional Image from the list of images
+        And user selects "Automated Test Image" Promotional Image from the list of images
         And browser waits
         And user selects "Review" from "Save as" dropdown
         Then user saves the content page

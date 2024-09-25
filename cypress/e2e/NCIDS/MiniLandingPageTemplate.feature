@@ -4,7 +4,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
         Given screen breakpoint is set to "<breakpoint>"
         When user is navigating to "/test/ncids-mini-landing-template"
         Then NCIDS Page Title Block is displayed with text "The Adventures and Chronicles of the Quick Brown Fox Who Jumped Over the Lazy Dog and Their Friends the Tortoise and the Hare With Interludes from Alice in Wonderland"
-        And there are 4 content blocks on a page
+        And there are 5 content blocks on a page
         And the following types of links are present
             | index | dataEntityType | title              | link                                       |
             | 0     | node           | About Cancer       | /about-cancer                              |
@@ -76,7 +76,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Internal\|Internal Link Testing\|About Cancer                  |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 7\|3\|0\|0\|1\|1                                               |
+            | evar66    | 8\|3\|0\|0\|1\|1\|undefined                                    |
             | evar67    | Text\|6\|2                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -104,7 +104,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | External\|External Link Testing\|Google                        |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 7\|3\|0\|0\|1\|1                                               |
+            | evar66    | 8\|3\|0\|0\|1\|1\|undefined                                    |
             | evar67    | Text\|6\|4                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -133,7 +133,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Media\|Media Link Testing\|Test File Download                  |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 7\|3\|0\|0\|1\|1                                               |
+            | evar66    | 8\|3\|0\|0\|1\|1\|undefined                                    |
             | evar67    | Text\|6\|3                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -161,7 +161,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                              |
             | evar64    | External\|Test for Raw HTML & Analytics\|Images and B-roll |
             | evar65    | Raw HTML\|Not Defined\|RawHTMLTest                         |
-            | evar66    | 2\|1\|0\|0\|1\|1                                           |
+            | evar66    | 2\|1\|0\|0\|1\|1\|undefined                                |
             | evar67    | Text\|6\|2                                                 |
             | evar68    | Body                                                       |
             | pageName  | {CANONICAL_HOST}/test/raw-html-sample-page                 |
@@ -191,7 +191,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Internal\|About Cancer\|Image                                  |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 7\|5\|0\|0\|3\|1                                               |
+            | evar66    | 8\|5\|0\|0\|3\|1\|undefined                                    |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -221,7 +221,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | External\|External Card Title\|Image                           |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 7\|5\|0\|0\|3\|2                                               |
+            | evar66    | 8\|5\|0\|0\|3\|2\|undefined                                    |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -251,7 +251,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Media\|NCI at a Glance\|Image                                  |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 7\|5\|0\|0\|3\|3                                               |
+            | evar66    | 8\|5\|0\|0\|3\|3\|undefined                                    |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -281,7 +281,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                          |
             | evar64    | Internal\|NCIDS List Item: Title Desc\|[No IMG] Title  |
             | evar65    | List\|Not Defined\|Title and Description               |
-            | evar66    | 4\|2\|0\|0\|1\|1                                       |
+            | evar66    | 4\|2\|0\|0\|1\|1\|undefined                            |
             | evar67    | Title\|5\|1                                            |
             | evar68    | Body                                                   |
             | pageName  | {CANONICAL_HOST}/test/ncids-li-title-desc              |
@@ -311,7 +311,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                               |
             | evar64    | Internal\|NCIDS List Item: Title Desc Image\|[No IMG] Title |
             | evar65    | List\|Not Defined\|Title, Description, and Image            |
-            | evar66    | 4\|2\|0\|0\|1\|1                                            |
+            | evar66    | 4\|2\|0\|0\|1\|1\|undefined                                 |
             | evar67    | Title\|11\|1                                                |
             | evar68    | Body                                                        |
             | pageName  | {CANONICAL_HOST}/test/ncids-li-title-desc-img               |

@@ -18,7 +18,7 @@ Feature: User creating an image
             | Page Title       | Article to test Image                    | title[0][value]        |
             | Browser Title    | Article to test Image                    | field_browser_title    |
             | Meta Description | Article to test Image - Meta Description | field_page_description |
-        And user selects "Test Image" Lead Image from the list of images
+        And user selects "Automated Test Image" Lead Image from the list of images
         And browser waits
         And user selects "Review" from "Save as" dropdown
         When user saves the content page
@@ -33,7 +33,7 @@ Feature: User creating an image
             | Page Title       | Mini Landing Page to test Image                   | title                  |
             | Browser Title    | Mini Landing Page to test Image                   | field_browser_title    |
             | Meta Description | Mini Landing Page to test Image  Meta Description | field_page_description |
-        And user selects "Test Image" as Promotional Image from the list of images
+        And user selects "Automated Test Image" as Promotional Image from the list of images
         And browser waits
         And user selects "Add Two Item Feature Card Row" content item
         And user clicks on "Featured Item" link in the "Internal Feature Card" text area
@@ -118,9 +118,9 @@ Feature: User creating an image
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Media" sub tab
-        Then user selects "Translate" option from Operations dropdown for media with title "Test Image"
+        Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Image"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test Image"
+        Then page title is "Crear traducción Español de Automated Test Image"
         And user fills out the following fields
             | fieldLabel   | value    | field_name             |
             | Nombre       | _Spanish | name[0][value]         |

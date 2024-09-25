@@ -68,13 +68,13 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And user fills out the following fields
             | fieldLabel | value              | field_name                                                            |
             | Heading    | 3 Feature Card Row | field_landing_contents[3][subform][field_container_heading][0][value] |
-        And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
+        And user clicks on "Featured Item" in 1 "NCIDS Card Internal" section
         And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
-        And user clicks on "Add NCIDS Feature Card Multimedia" button item
-        And user clicks on "Featured Media" in 1 "NCIDS Feature Card Multimedia" section
+        And user clicks on "Add NCIDS Card Multimedia" button item
+        And user clicks on "Featured Media" in 1 "NCIDS Card Multimedia" section
         And user clicks on "Select media" button item
         And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
         And user selects "Test File for Related Resources" item from the media list
@@ -86,7 +86,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | Card Description | Multimedia Feature Card Desc  | field_landing_contents[3][subform][field_row_cards][1][subform][field_override_card_description][0][value] |
         And user selects "NCIDS Image" as promo image for 2 feature card
         And browser waits
-        And user clicks on "Add NCIDS Feature Card External" button item
+        And user clicks on "Add NCIDS Card External" button item
         And browser waits
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                                                           |
@@ -131,49 +131,91 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | fieldLabel     | value                                    | field_name                                                                             |
             | Override Title | Override Test File for Related Resources | field_landing_contents[4][subform][field_list_items][2][subform][field_override_title] |
         When user saves the content page
-         And browser waits
+        And browser waits
 
     Scenario: Add NCIDS List Title, Image and Description
-    Given user is navigating to "/user/login?show_login_fields=true"
-    When user enters credentials of "editor"
-    And user clicks "Log in" button
-    Then user is logged in and the user name "editor" is displayed in the toolbar
-    And the tool bar appears at the top
-    When user clicks on "Content" tab
-    And user clicks on title with url "ncids-mini-landing-page" from the list of content
-    And user clicks on the tool bar status button "Draft"
-    And user clicks "View in edit form" button from other actions
-    And user selects "Add List" from "Contents" dropdown
-    And browser waits
-    And user fills out the following fields
-        | fieldLabel | value                      | field_name                                                     |
-        | Title      | Title, Description and Image List | field_landing_contents[5][subform][field_list_title][0][value] |
-    And user selects "NCIDS Title, Description, and Image" from 2 list style dropdown
-    And user clicks on "Link" in 1 "Internal Link" section
-    And user clicks on Select content button item
-    And user selects "Article to test Related Resources" item from the list
-    And user clicks on "Select content" button to select item
-    And browser waits
-    And user selects "Add External Link" from 2 item list dropdown
-    And user fills out the following fields
-        | fieldLabel | value                  | field_name                                                                                       |
-        | Link       | https://www.google1.com | field_landing_contents[5][subform][field_list_items][1][subform][field_external_link][0][uri]    |
-        | Title      | Google Link            | field_landing_contents[5][subform][field_list_items][1][subform][field_override_title][0][value] |
-    And user selects "Add Media Link" from 2 item list dropdown
-    And user clicks on "Link" button to link to a media
-    And user clicks on "Select media" to choose a resource to link
-    And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
-    And user selects "Test File for Related Resources" item from the media list
-    And user clicks on "Select media" button to select media
-    And browser waits
-    And user fills out the following fields
-        | fieldLabel     | value                                    | field_name                                                                             |
-        | Override Title | Override Test File for Related Resources | field_landing_contents[5][subform][field_list_items][2][subform][field_override_title] |
-    When user saves the content page
-    And user clicks on the tool bar status button "Draft"
-    And user selects "Submit for Review" from workflow actions
-    And user clicks on the tool bar status button "Review"
-    And user selects "Publish" from workflow actions
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-mini-landing-page" from the list of content
+        And user clicks on the tool bar status button "Draft"
+        And user clicks "View in edit form" button from other actions
+        And user selects "Add List" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel | value                             | field_name                                                     |
+            | Title      | Title, Description and Image List | field_landing_contents[5][subform][field_list_title][0][value] |
+        And user selects "NCIDS Title, Description, and Image" from 2 list style dropdown
+        And user clicks on "Link" in 1 "Internal Link" section
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user selects "Add External Link" from 2 item list dropdown
+        And user fills out the following fields
+            | fieldLabel | value                   | field_name                                                                                       |
+            | Link       | https://www.google1.com | field_landing_contents[5][subform][field_list_items][1][subform][field_external_link][0][uri]    |
+            | Title      | Google Link             | field_landing_contents[5][subform][field_list_items][1][subform][field_override_title][0][value] |
+        And user selects "Add Media Link" from 2 item list dropdown
+        And user clicks on "Link" button to link to a media
+        And user clicks on "Select media" to choose a resource to link
+        And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
+        And user selects "Test File for Related Resources" item from the media list
+        And user clicks on "Select media" button to select media
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel     | value                                    | field_name                                                                             |
+            | Override Title | Override Test File for Related Resources | field_landing_contents[5][subform][field_list_items][2][subform][field_override_title] |
+        When user saves the content page
+        And browser waits
+
+    Scenario: Add NCIDS Flag card group
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-mini-landing-page" from the list of content
+        And user clicks on the tool bar status button "Draft"
+        And user clicks "View in edit form" button from other actions
+        And user selects "Add NCIDS Flag Card Group" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel | value           | field_name                                                            |
+            | Heading    | Flag Card Group | field_landing_contents[6][subform][field_container_heading][0][value] |
+        And user clicks on "Featured Item" in 1 "NCIDS Card Internal" section
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user clicks on "Add NCIDS Card Multimedia" button item
+        And user clicks on "Featured Media" in 1 "NCIDS Card Multimedia" section
+        And user clicks on "Select media" button item
+        And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
+        And user selects "Test File for Related Resources" item from the media list
+        And user clicks on "Select media" button to select media
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel       | value                      | field_name                                                                                                           |
+            | Card Title       | Multimedia Flag Card Title | field_landing_contents[6][subform][field_row_cards_unlimited][1][subform][field_override_card_title][0][value]       |
+            | Card Description | Multimedia Flag Card Desc  | field_landing_contents[6][subform][field_row_cards_unlimited][1][subform][field_override_card_description][0][value] |
+        And user selects "NCIDS Image" as promo image for 2 feature card
+        And browser waits
+        And user clicks on "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                   | field_name                                                                                                      |
+            | Featured Item Url | https://www.google1.com | field_landing_contents[6][subform][field_row_cards_unlimited][2][subform][field_featured_url][0][uri]           |
+            | Card Title        | Google Link             | field_landing_contents[6][subform][field_row_cards_unlimited][2][subform][field_override_card_title][0][value] |
+        When user saves the content page
+        And user clicks on the tool bar status button "Draft"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Review"
+        And user selects "Publish" from workflow actions
 
     Scenario Outline: Verify newly created content
         And screen breakpoint is set to "<breakpoint>"
@@ -195,6 +237,14 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And NCIDS 2 list is displayed with title "Title, Description and Image List"
         And each 2 list item has a heading and an image
         And each 2 list item out of 3 has a heading and description except items 2 and 3
+        And the optional flag card group heading is "Flag Card Group"
+        Then NCIDS flag cards have the following attributes
+            | index | title                             | description                                | link                          | source                                                                            | file            |
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
+            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
+            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 |
+
+
 
         Examples:
             | breakpoint |
@@ -213,7 +263,7 @@ Scenario: Add a translation
     Then the page title is "Translations of NCIDS Automated Test Mini Landing page"
     When user clicks on "Add" button to add translation
     Then page title is "Crear traducción Español de NCIDS Automated Test Mini Landing page"
-    And user clicks on "Editar" button for "NCIDS Feature Card Internal"
+    And user clicks on "Editar" button for "NCIDS Card Internal"
     And browser waits
     And user fills out the following fields
         | fieldLabel       | value                    | field_name                                                                                                 |
@@ -239,11 +289,18 @@ Scenario: Verify Spanish content
         | 0     | Card Title Spanish            | Card Description Spanish     | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
         | 1     | Multimedia Feature Card Title | Multimedia Feature Card Desc | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  |
         | 2     | Google Link                   | N/A                          | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 |
-  And NCIDS 1 list is displayed with title "Title and Description List"
-        And each 1 list item out of 3 has a heading and description except items 2 and 3
-        And NCIDS 2 list is displayed with title "Title, Description and Image List"
-        And each 2 list item has a heading and an image
-        And each 2 list item out of 3 has a heading and description except items 2 and 3
+    And NCIDS 1 list is displayed with title "Title and Description List"
+    And each 1 list item out of 3 has a heading and description except items 2 and 3
+    And NCIDS 2 list is displayed with title "Title, Description and Image List"
+    And each 2 list item has a heading and an image
+    And each 2 list item out of 3 has a heading and description except items 2 and 3
+     And the optional flag card group heading is "Flag Card Group"
+        Then NCIDS flag cards have the following attributes
+            | index | title                             | description                                | link                          | source                                                                            | file            |
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
+            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
+            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 |
+
 
 Scenario: Edit and republish english content
     Given user is navigating to "/user/login?show_login_fields=true"
