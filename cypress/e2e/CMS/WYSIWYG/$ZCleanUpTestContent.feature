@@ -32,8 +32,8 @@ Feature: delete all content created for testing purposes, that is shared across 
               And user clicks on "Media" sub tab
               And user deletes test file with url "test-file"
               And the content item with url "test-file" does not exist in the list of content
-              And user deletes "Test Image" image
-              And the image "Test Image" does not exist in the list of content
+              And user deletes "Automated Test Image" image
+              And the image "Automated Test Image" does not exist in the list of content
               When user clicks on "Content" tab
               And user clicks on "Media" sub tab
               And user deletes "NCIDS Image" image

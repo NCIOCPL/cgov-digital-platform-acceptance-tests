@@ -115,13 +115,13 @@ Feature: Home And Landing Page Test Creation of Content
         And user fills out the following fields
             | fieldLabel | value              | field_name                                                            |
             | Heading    | 3 Feature Card Row | field_landing_contents[2][subform][field_container_heading][0][value] |
-        And user clicks on "Featured Item" in 1 "NCIDS Feature Card Internal" section
+        And user clicks on "Featured Item" in 1 "NCIDS Card Internal" section
         And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
-        And user clicks on "Add NCIDS Feature Card Multimedia" button item
-        And user clicks on "Featured Media" in 1 "NCIDS Feature Card Multimedia" section
+        And user clicks on "Add NCIDS Card Multimedia" button item
+        And user clicks on "Featured Media" in 1 "NCIDS Card Multimedia" section
         And user clicks on "Select media" button item
         And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
         And user selects "Test File for Related Resources" item from the media list
@@ -133,7 +133,7 @@ Feature: Home And Landing Page Test Creation of Content
             | Card Description | Multimedia Feature Card Desc  | field_landing_contents[2][subform][field_row_cards][1][subform][field_override_card_description][0][value] |
         And user selects "NCIDS Image" as promo image for 2 feature card
         And browser waits
-        And user clicks on "Add NCIDS Feature Card External" button item
+        And user clicks on "Add NCIDS Card External" button item
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                                                           |
             | Featured Item Url | https://www.google1.com | field_landing_contents[2][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
@@ -345,7 +345,7 @@ Feature: Home And Landing Page Test Creation of Content
         Then the page title is "Translations of NCIDS Automated Test Home and Landing page"
         When user clicks on "Add" button to add translation
         Then page title is "Crear traducción Español de NCIDS Automated Test Home and Landing page"
-        And user clicks on "Editar" button for "NCIDS Feature Card Multimedia"
+        And user clicks on "Editar" button for "NCIDS Card Multimedia"
         And user fills out the following fields
             | fieldLabel           | value    | field_name                                                                                                 |
             | Tagline              | _Spanish | field_landing_contents[0][subform][field_tagline][0][value]                                                |

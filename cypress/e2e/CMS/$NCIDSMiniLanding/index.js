@@ -158,3 +158,60 @@ And('each {int} list item out of {int} has a heading and description except item
         cy.get('.cgdp-list').eq(listIndex - 1).find('li.usa-collection__item').eq(i).find('a').invoke('text').should('have.length.above', 0);
     }
 })
+
+When('the optional flag card group heading is {string}', (title) => {
+    cy.get(`h2.nci-heading-h2.padding-bottom-2`).should('have.text', title);
+});
+
+
+And('NCIDS flag cards have the following attributes', (dataTable) => {
+
+    for (let { index, title, description, link, source, file } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection)
+        }
+        if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+            source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
+
+        }
+
+        cy.get('.cgdp-flag-card').eq(index).as('featureCard');
+
+        cy.get('@featureCard').find('.cgdp-flag-card__title').invoke('text').then((text) => {
+            expect(text.trim()).equal(title);
+        });
+
+        if (description === 'none') {
+            cy.get('@featureCard').find('p').should('not.exist');
+        }
+        else {
+            cy.get('@featureCard').find('p').invoke('text').then((text) => {
+                expect(text.trim()).equal(description);
+            });
+        }
+        cy.get('@featureCard').find('a').invoke('attr', 'href').then(href => {
+            if (link.startsWith('http')) {
+                expect(href).to.eq(link)
+            } else {
+                expect(href).to.eq(`${getBaseDirectory()}${link}-${randomStr}`)
+            }
+        })
+
+        cy.get('@featureCard').find('img').invoke('attr', 'src').then((fullSrc) => {
+console.log(fullSrc)
+console.log("expected",source)
+            if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+                fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
+            }
+            expect(fullSrc.includes(`${source}`)).to.be.true;
+            
+            const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+            if (file.includes('placeholder')) {
+                expect(src1).to.match(new RegExp(`.*\/${file}`))
+            } else {
+                expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
+            }
+        });
+
+    }
+});
