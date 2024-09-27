@@ -43,3 +43,11 @@ Cypress.Commands.add('getNthIframe', (locator, position) => {
     // https://on.cypress.io/wrap
     .then(cy.wrap)
 })
+
+//stripping out leading and trailing white spaces from baseUrl and front_end_base_url
+before(() => {
+  const cleanBaseUrl = Cypress.config('baseUrl').trim();
+  const cleanFrontEndBaseUrl = Cypress.env('front_end_base_url').trim();
+  Cypress.config('baseUrl',cleanBaseUrl);
+  Cypress.env('front_end_base_url',cleanFrontEndBaseUrl);
+})
