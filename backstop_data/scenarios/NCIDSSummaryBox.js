@@ -15,4 +15,8 @@ module.exports = [
             }
         ],
     },
+    {
+        label: 'NCIDS two column layout box',
+        testPath: '/test/ncids-mini-landing-2-column-layout',
+    },
 ]

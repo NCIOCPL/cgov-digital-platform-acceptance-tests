@@ -198,8 +198,7 @@ And('NCIDS flag cards have the following attributes', (dataTable) => {
         })
 
         cy.get('@featureCard').find('img').invoke('attr', 'src').then((fullSrc) => {
-console.log(fullSrc)
-console.log("expected",source)
+
             if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
                 fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
             }
