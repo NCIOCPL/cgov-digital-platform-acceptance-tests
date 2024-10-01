@@ -18,7 +18,7 @@ Feature: As a user I want to be able to see NCIDS Summary Box on the site
             | evar2     | D=c8                                                                       |
             | evar64    | Internal\|This is an example of a very long heading using th\|About Cancer |
             | evar65    | Summary Box\|Not Defined\|Not Defined                                      |
-            | evar66    | 2\|1\|0\|0\|1\|1\|undefined                                                |
+            | evar66    | 2\|1\|0\|0\|1\|1\|Not Defined                                                |
             | evar67    | Text\|4\|1                                                                 |
             | evar68    | Body                                                                       |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-summary-box                       |
@@ -46,7 +46,7 @@ Feature: As a user I want to be able to see NCIDS Summary Box on the site
                 | evar2     | D=c8                                                                       |
                 | evar64    | External\|This is an example of a very long heading using th\|Google |
                 | evar65    | Summary Box\|Not Defined\|Not Defined                                      |
-                | evar66    | 2\|1\|0\|0\|1\|1\|undefined                                                |
+                | evar66    | 2\|1\|0\|0\|1\|1\|Not Defined                                                |
                 | evar67    | Text\|4\|4                                                                 |
                 | evar68    | Body                                                                       |
                 | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-summary-box                       |
@@ -74,7 +74,7 @@ Feature: As a user I want to be able to see NCIDS Summary Box on the site
             | evar2     | D=c8                                                                             |
             | evar64    | Internal\|This is an example of a very long heading using th\|Test File Download |
             | evar65    | Summary Box\|Not Defined\|Not Defined                                            |
-            | evar66    | 2\|1\|0\|0\|1\|1\|undefined                                                      |
+            | evar66    | 2\|1\|0\|0\|1\|1\|Not Defined                                                      |
             | evar67    | Text\|4\|3                                                                       |
             | evar68    | Body                                                                             |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-summary-box                             |
@@ -102,7 +102,7 @@ Feature: As a user I want to be able to see NCIDS Summary Box on the site
             | evar2     | D=c8                                                              |
             | evar64    | Other\|Not Defined\|Call Jenny                                    |
             | evar65    | Summary Box\|Not Defined\|Not Defined                             |
-            | evar66    | 2\|2\|0\|0\|1\|1\|undefined                                       |
+            | evar66    | 2\|2\|0\|0\|1\|1\|Not Defined                                       |
             | evar67    | Text\|2\|2                                                        |
             | evar68    | Body                                                              |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-summary-box              |
