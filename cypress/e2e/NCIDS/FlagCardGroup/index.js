@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 import { When } from "cypress-cucumber-preprocessor/steps";
 import { getBaseDirectory } from '../../../utils';
-
+const baseUrl = Cypress.config('baseUrl');
 When('the optional flag card group heading is {string}', (title) => {
     cy.get(`h2`).should('have.text', title);
 });
@@ -9,7 +9,15 @@ When('the optional flag card group heading is {string}', (title) => {
 
 And('NCIDS flag cards have the following attributes', (dataTable) => {
 
-    for (const { index, title, description, link, altText, source, file } of dataTable.hashes()) {
+    for (let { index, title, description, link, altText, source, file } of dataTable.hashes()) {
+        
+        if (baseUrl.includes('dev-acsf')) {
+            source = source.replace('\/sites\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
+            console.log(source)
+        } else if (baseUrl.includes('test-acsf')) {
+            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
+           
+        }
         cy.get('.cgdp-flag-card').eq(index).as('featureCard');
 
         cy.get('@featureCard').find('.cgdp-flag-card__title').invoke('text').then((text) => {
@@ -35,8 +43,12 @@ And('NCIDS flag cards have the following attributes', (dataTable) => {
 
         cy.get('@featureCard').find('img').should('have.attr', 'alt', altText);
 
+       
         cy.get('@featureCard').find('img').invoke('attr', 'src').then((fullSrc) => {
-            expect(fullSrc.includes(`${source}`)).to.be.true;
+            const modifiedSrc = fullSrc.replace(/\?.*/, '')
+
+            expect(modifiedSrc).to.match(new RegExp(source))
+            // expect(fullSrc.includes(`${source}`)).to.be.true;
         });
 
         cy.get('@featureCard').find('img').invoke('attr', 'src').then((fullSrc) => {

@@ -64,8 +64,8 @@ And('user selects {string} as {int} column Layout display', (value, index) => {
 And('user removes the following section', (dataTable) => {
     for (let { fieldLabel, field_name } of dataTable.hashes()) {
         cy.get(`input[name^='${field_name}']`).as('inputField').parent().parent().find('div[class*="paragraph-type-title"]').should('include.text', fieldLabel);
-        cy.get('@inputField').click();
-        cy.get('input[value="Confirm removal"]').click();
+        cy.get('@inputField').click({force:true});
+        cy.get('input[value="Confirm removal"]').click({force:true});
     }
 })
 
