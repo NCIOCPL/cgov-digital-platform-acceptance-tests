@@ -41,8 +41,8 @@ And('content block has the following links', (dataTable) => {
     }
 });
 And('user removes page title block', () => {
-    cy.get('[id*="edit-field-landing-contents-1-top-paragraph-type-title"]').parent().find('input[value="Remove"]').click();
-    cy.get('input[value="Confirm removal"]').click()
+    cy.get('[id*="edit-field-landing-contents-1-top-paragraph-type-title"]').parent().find('input[value="Remove"]').click({force:true});
+    cy.get('input[value="Confirm removal"]').click({force:true})
 })
 
 And('page title does not exist', () => {
@@ -125,7 +125,7 @@ And('user clicks on Select content button item', () => {
 })
 
 And('user clicks on {string} button for {string}', (edit, section) => {
-    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click({force:true});
 });
 
 And('user selects {string} from {int} list style dropdown', (option, index) => {
