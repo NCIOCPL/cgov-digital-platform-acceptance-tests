@@ -4,7 +4,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
         Given screen breakpoint is set to "<breakpoint>"
         When user is navigating to "/test/ncids-mini-landing-template"
         Then NCIDS Page Title Block is displayed with text "The Adventures and Chronicles of the Quick Brown Fox Who Jumped Over the Lazy Dog and Their Friends the Tortoise and the Hare With Interludes from Alice in Wonderland"
-        And there are 5 content blocks on a page
+        And there are 8 content blocks on a page
         And the following types of links are present
             | index | dataEntityType | title              | link                                       |
             | 0     | node           | About Cancer       | /about-cancer                              |
@@ -53,7 +53,13 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
         And NCIDS list is displayed with title "NCIDS List Item: Title Desc"
         And each list item out of 16 has a heading and description except items 10 and 5
 
-
+    Scenario: Mini landing page with NCIDS Wide Guide card
+        When user is navigating to "/test/ncids-mini-landing-wide-guide-card"
+        And there are the following wide guide cards
+            | index | title                                                                                                                          | numberOfLinks | source                                                                                                                                                |
+            | 0     | none                                                                                                                           | 3             | (\/sites\/default\/files\/styles\/ncids_guide_card_1x1\/public\/ncids_wide_guide_card\/field_image_guide_card\/\d*-\d*\/wide-guide-card-image-2.png)$ |
+            | 1     | Optional Heading for Wide Guide Card                                                                                           | 1             | (\/sites\/default\/files\/styles\/ncids_guide_card_1x1\/module\/cgov_image\/img\/placeholder-1x1.png)$                                                |
+            | 2     | This is a Very Long Heading That Will Cause the Wide Guide Card to Look Badly, but This Scenario Will be Prevented by Guidance | 2             | (\/sites\/default\/files\/styles\/ncids_guide_card_1x1\/module\/cgov_image\/img\/placeholder-1x1.png)$                                                |
 
     ###ANALYTICS####
 
@@ -76,7 +82,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Internal\|Internal Link Testing\|About Cancer                  |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 8\|3\|0\|0\|1\|1\|Not Defined                                  |
+            | evar66    | 11\|3\|0\|0\|1\|1\|Not Defined                                 |
             | evar67    | Text\|6\|2                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -104,7 +110,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | External\|External Link Testing\|Google                        |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 8\|3\|0\|0\|1\|1\|Not Defined                                  |
+            | evar66    | 11\|3\|0\|0\|1\|1\|Not Defined                                 |
             | evar67    | Text\|6\|4                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -133,7 +139,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Media\|Media Link Testing\|Test File Download                  |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 8\|3\|0\|0\|1\|1\|Not Defined                                  |
+            | evar66    | 11\|3\|0\|0\|1\|1\|Not Defined                                 |
             | evar67    | Text\|6\|3                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -161,7 +167,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                              |
             | evar64    | External\|Test for Raw HTML & Analytics\|Images and B-roll |
             | evar65    | Raw HTML\|Not Defined\|RawHTMLTest                         |
-            | evar66    | 2\|1\|0\|0\|1\|1\|undefined                              |
+            | evar66    | 2\|1\|0\|0\|1\|1\|undefined                                |
             | evar67    | Text\|6\|2                                                 |
             | evar68    | Body                                                       |
             | pageName  | {CANONICAL_HOST}/test/raw-html-sample-page                 |
@@ -191,7 +197,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Internal\|About Cancer\|Image                                  |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 8\|5\|0\|0\|3\|1\|Not Defined                                  |
+            | evar66    | 11\|5\|0\|0\|3\|1\|Not Defined                                 |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -221,7 +227,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | External\|External Card Title\|Image                           |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 8\|5\|0\|0\|3\|2\|Not Defined                                  |
+            | evar66    | 11\|5\|0\|0\|3\|2\|Not Defined                                 |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -251,7 +257,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Media\|NCI at a Glance\|Image                                  |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 8\|5\|0\|0\|3\|3\|Not Defined                                  |
+            | evar66    | 11\|5\|0\|0\|3\|3\|Not Defined                                 |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
@@ -320,3 +326,61 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | channel   | NCI Homepage                                                |
             | pev2      | MLP:List:LinkClick                                          |
             | linkType  | lnk_o                                                       |
+
+    Scenario: Wide guide card internal link click
+        Given user is navigating to "/test/ncids-mini-landing-wide-guide-card"
+        And browser waits
+        When user clicks on 1 NCIDS Wide guide card link at position 1
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                 |
+            | prop4     | D=pev1                                                                |
+            | prop8     | english                                                               |
+            | prop57    | D=v64                                                                 |
+            | prop58    | D=v65                                                                 |
+            | prop59    | D=v66                                                                 |
+            | prop60    | D=c67                                                                 |
+            | prop67    | D=pageName                                                            |
+            | prop68    | D=v68                                                                 |
+            | evar2     | D=c8                                                                  |
+            | evar61    | cgvMiniLanding\|ncids_default                                         |
+            | evar64    | Internal\|Not Defined\|Cancer Homepage                                |
+            | evar65    | Wide Guide Card\|Not Defined\|Not Defined                             |
+            | evar66    | 5\|2\|0\|0\|1\|1\|Not Defined                                         |
+            | evar67    | Button\|3\|1                                                          |
+            | evar68    | Body                                                                  |
+            | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-wide-guide-card              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-mini-landing-wide-guide-card |
+            | event112  |                                                                       |
+            | channel   | NCI Homepage                                                          |
+            | pev2      | MLP:WideGuideCard:LinkClick                                           |
+            | linkType  | lnk_o                                                                 |
+
+    Scenario: Wide guide card external link click
+        Given user is navigating to "/test/ncids-mini-landing-wide-guide-card"
+        And browser waits
+        When user clicks on 1 NCIDS Wide guide card link at position 2
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                 |
+            | prop4     | D=pev1                                                                |
+            | prop8     | english                                                               |
+            | prop57    | D=v64                                                                 |
+            | prop58    | D=v65                                                                 |
+            | prop59    | D=v66                                                                 |
+            | prop60    | D=c67                                                                 |
+            | prop67    | D=pageName                                                            |
+            | prop68    | D=v68                                                                 |
+            | evar2     | D=c8                                                                  |
+            | evar61    | cgvMiniLanding\|ncids_default                                         |
+            | evar64    | External\|Not Defined\|External Link to Google                        |
+            | evar65    | Wide Guide Card\|Not Defined\|Not Defined                             |
+            | evar66    | 5\|2\|0\|0\|1\|1\|Not Defined                                         |
+            | evar67    | Button\|3\|2                                                          |
+            | evar68    | Body                                                                  |
+            | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-wide-guide-card              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-mini-landing-wide-guide-card |
+            | event112  |                                                                       |
+            | channel   | NCI Homepage                                                          |
+            | pev2      | MLP:WideGuideCard:LinkClick                                           |
+            | linkType  | lnk_o                                                                 |

@@ -64,8 +64,8 @@ And('user selects {string} as {int} column Layout display', (value, index) => {
 And('user removes the following section', (dataTable) => {
     for (let { fieldLabel, field_name } of dataTable.hashes()) {
         cy.get(`input[name^='${field_name}']`).as('inputField').parent().parent().find('div[class*="paragraph-type-title"]').should('include.text', fieldLabel);
-        cy.get('@inputField').click({force:true});
-        cy.get('input[value="Confirm removal"]').click({force:true});
+        cy.get('@inputField').click({ force: true });
+        cy.get('input[value="Confirm removal"]').click({ force: true });
     }
 })
 
@@ -98,14 +98,46 @@ And('the sections have the following', (dataTable) => {
     }
 })
 
-And('user clicks on {string} link',(href)=>{
-cy.get("div[class*='cgdp-two-column-layout']").find(`a[href*='${href}']`).then(link$ => {
-    link$.on('click', e => {
-        e.preventDefault();
-    });
-})
-    .click({ followRedirect: false });
+And('user clicks on {string} link', (href) => {
+    cy.get("div[class*='cgdp-two-column-layout']").find(`a[href*='${href}']`).then(link$ => {
+        link$.on('click', e => {
+            e.preventDefault();
+        });
+    })
+        .click({ followRedirect: false });
+});
+
+And('user uploads {string} as wide guide card image', (fileName) => {
+    cy.fixture(fileName, { encoding: null }).as('fixture')
+    cy.get('input[id*="edit-field-landing-contents-4-subform-field-image-guide-card-0-upload').eq(0).selectFile('@fixture');
 });
 
 
+And('user fills out WGC description field with {string}', (descr) => {
+    cy.getIframeBody('iframe[title="Rich Text Editor, Description field"]').find('p').type(descr);
+});
 
+And('user selects {string} to add to WGC', (linkType) => {
+    cy.get(`input[value='${linkType}']`).click({ force: true })
+});
+
+And('there are the following wide guide cards', (dataTable) => {
+    for (let { index, title, description, numberOfLinks, source } of dataTable.hashes()) {
+        cy.get(`div[class="nci-guide-card nci-guide-card--cgdp-wide"]`).eq(index).as('wideCard');
+        cy.get('@wideCard').find('h2').should('have.text',title)
+        cy.get('@wideCard').find('.nci-guide-card__description.usa-prose p').should('have.text',description)
+        
+        cy.get('@wideCard').find('li').should('have.length', numberOfLinks);
+
+        if (baseUrl.includes('dev-acsf')) {
+            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
+
+        } else if (baseUrl.includes('test-acsf')) {
+            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
+        }
+        cy.get('@wideCard').should('have.attr', 'style').then(img => {
+            const imgSrc = img.replace('background-image: url', '').replace(/\?.*/, '')
+            expect(imgSrc).to.match(new RegExp(source))
+        })
+    }
+});
