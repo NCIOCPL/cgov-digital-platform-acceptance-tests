@@ -13,9 +13,9 @@ And('NCIDS flag cards have the following attributes', (dataTable) => {
         
         if (baseUrl.includes('dev-acsf')) {
             source = source.replace('\/sites\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
-            console.log(source)
+
         } else if (baseUrl.includes('test-acsf')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
+            source = source.replace('\/sites\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
            
         }
         cy.get('.cgdp-flag-card').eq(index).as('featureCard');
