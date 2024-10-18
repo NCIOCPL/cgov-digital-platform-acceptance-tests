@@ -81,12 +81,13 @@ And('there are {int} two column layout sections', (num) => {
     cy.get("div[class*='cgdp-two-column-layout']").should('have.length', num)
 })
 And('the sections have the following', (dataTable) => {
-    for (let { sectionIndex, splitRatio, columnIndex, type, link } of dataTable.hashes()) {
+    for (let { sectionIndex, splitRatio, columnIndex, type, link, mediaType,title,description } of dataTable.hashes()) {
         cy.get("div[class*='cgdp-two-column-layout']>div").eq(sectionIndex).should('have.attr', 'data-eddl-landing-row-variant', `TwoColumn${splitRatio}`)
         cy.get("div[class*='cgdp-two-column-layout']").eq(sectionIndex).find('div[class*="cgdp-column"]')
             .eq(columnIndex).as('column')
         if (type !== 'rawHtml') {
-            cy.get('@column').find(`div[class*='${type}']`).should('be.visible')
+            if (type !== 'none')
+                cy.get('@column').find(`div[class*='${type}']`).should('be.visible')
             if (link !== 'none') {
                 cy.get('@column').find('a').should('have.attr', 'data-eddl-landing-item-link-type', link)
             }
@@ -94,7 +95,16 @@ And('the sections have the following', (dataTable) => {
             cy.get('@column').find('div').should('have.text', link)
         }
 
+        if (mediaType !== 'none') {
+            cy.get('@column').find(`figure[class="${mediaType}"]`).should('exist')
+        }
 
+        if(title){
+            cy.get('@column').find('.nci-card__title').should('have.text',title)
+        }
+        if(description){
+            cy.get('@column').find('.nci-card__description').should('have.text',description)
+        }
     }
 })
 
@@ -124,9 +134,9 @@ And('user selects {string} to add to WGC', (linkType) => {
 And('there are the following wide guide cards', (dataTable) => {
     for (let { index, title, description, numberOfLinks, source } of dataTable.hashes()) {
         cy.get(`div[class="nci-guide-card nci-guide-card--cgdp-wide"]`).eq(index).as('wideCard');
-        cy.get('@wideCard').find('h2').should('have.text',title)
-        cy.get('@wideCard').find('.nci-guide-card__description.usa-prose p').should('have.text',description)
-        
+        cy.get('@wideCard').find('h2').should('have.text', title)
+        cy.get('@wideCard').find('.nci-guide-card__description.usa-prose p').should('have.text', description)
+
         cy.get('@wideCard').find('li').should('have.length', numberOfLinks);
 
         if (baseUrl.includes('dev-acsf')) {
@@ -141,3 +151,81 @@ And('there are the following wide guide cards', (dataTable) => {
         })
     }
 });
+
+And('user selects {string} from the list of media', (titleVideo) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name='name']").type(titleVideo)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit-cgov-video-media-browser']").click()
+    cy.wait(1500)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains(${titleVideo})`).parent().find('input').eq(0).click({ foce: true })
+    cy.wait(1500)
+})
+
+And('user selects {string} from the list of images', (titleVideo) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name='name']").type(titleVideo)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit-cgov-image-media-browser']").click()
+    cy.wait(1500)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains(${titleVideo})`).parent().find('input').eq(0).click({ foce: true })
+    cy.wait(1500)
+})
+
+And('user clicks on {string} button to select media', (listBtn) => {
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${listBtn}"]`).click({ force: true })
+})
+
+And('user types {string} into Caption text field', (value) => {
+    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value)
+})
+
+And('user selects {string} from the {int} {string} dropdown', (option, index, dropdown) => {
+    cy.get(`label:contains('${dropdown}')`).eq(index - 1).parent().find('select').select(option)
+});
+
+And('user selects {string} from the {string} dropdown', (option, dropdown) => {
+    cy.get(`label:contains('${dropdown}')`).parent().find('select').select(option)
+});
+
+And('user clicks on {int} add {string} button item', (index, lbl) => {
+    cy.get(`summary:contains('${lbl}')`).eq(index - 1).click();
+})
+
+And('user clicks on {int} {string} button item', (index, label) => {
+    cy.get(`input[value="${label}"]`).eq(index - 1).trigger("click")
+})
+
+And('the following image overrides are displayed on two column layout items', (dataTable) => {
+    for (let { sectionIndex, columnIndex, imageCrop, source, caption, credit } of dataTable.hashes()) {
+
+        cy.get("div[class*='cgdp-two-column-layout']").eq(sectionIndex).find('div[class*="cgdp-column"]')
+            .eq(columnIndex).as('column')
+
+
+        if (baseUrl.includes('dev-acsf')) {
+            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
+
+        } else if (baseUrl.includes('test-acsf')) {
+            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
+        }
+        cy.get('@column').find('figure img').should('have.attr', 'src').then(img => {
+            const imgSrc = img.replace(/\?.*/, '')
+            expect(imgSrc).to.match(new RegExp(source))
+        })
+  if(credit.includes("|")){
+    credit= credit.split("|")
+  }
+        cy.get('@column').find('figure figcaption p').eq(0).should('have.text',caption)
+        cy.get('@column').find('figure figcaption p').eq(1).should('include.text',credit[0]).should('include.text',credit[1])
+    }
+});
+
+Then('user selects {string} option from Operations dropdown for media with title {string}', (translateOption, title) => {
+    cy.get(`td:contains('${title}')`).siblings('td').find(`ul.dropbutton >li> a:contains("${translateOption}")`).click({ force: true });
+});
+
+Then('the video caption reads {string}', (caption)=>{
+    cy.get('figcaption.cgdp-video__caption.usa-prose p').should('have.text',caption)
+})
+
+And('user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
+    cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+});
+
