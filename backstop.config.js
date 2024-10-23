@@ -19,7 +19,7 @@ const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 		referenceUrl: `${args.refBaseUrl}${scenario.testPath}`,
 		delay: 2000,
 		label: scenario.specific && isACSF ? scenario.label + '_acsf' : scenario.label,
-		removeSelectors: scenario.enableBackToTop ? [] : ['div.usa-footer__nci-return-to-top'],
+		removeSelectors: scenario.enableBackToTop ? ['button[class="usa-button usa-button--slider-button usa-button--nci-icon"]'] : ['div.usa-footer__nci-return-to-top','button[class="usa-button usa-button--slider-button usa-button--nci-icon"]'],
 		cookiePath:'backstop_data/engine_scripts/cookies.json'
 	}));
 	return [...ac, ...cleanedScenarios];
