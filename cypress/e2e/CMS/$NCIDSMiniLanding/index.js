@@ -214,3 +214,36 @@ And('NCIDS flag cards have the following attributes', (dataTable) => {
 
     }
 });
+
+When('the following imageless cards are displayed', (dataTable) => {
+    for (let { cardIndex, componentVariant, cardType, linkHref, title, description } of dataTable.hashes()) {
+
+        if (linkHref.includes("{TEST_SITE_SECTION}")) {
+            linkHref = linkHref.replace("{TEST_SITE_SECTION}", siteSection)
+        }
+        cy.get(`[class='cgdp-imageless-card-group cgdp-imageless-card-group--${componentVariant}']`)
+            .find('.nci-card').eq(cardIndex).as('card')
+
+        cy.get('@card').find('a').should('have.attr', 'data-eddl-landing-item-link-type', cardType);
+
+        if (linkHref.startsWith('http')) {
+            cy.get('@card').find('a').should('have.attr', 'href', linkHref)
+        } else {
+            cy.get('@card').find('a').should('have.attr', 'href').then(href=>{
+                expect(href).to.eq(`${getBaseDirectory()}${linkHref}-${randomStr}`)
+            })
+        
+        }
+   
+        cy.get('@card').find('.nci-card__body').find('.nci-card__title').should('have.text', title)
+        if (description !== 'none')
+            cy.get('@card').find('.nci-card__body').find('.nci-card__description').should('have.text', description)
+        else
+            cy.get('@card').find('.nci-card__body').find('.nci-card__description').should('not.exist')
+    }
+})
+
+And('user clicks on {string} button for {string}',(edit,section)=>{
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
+    });
+
