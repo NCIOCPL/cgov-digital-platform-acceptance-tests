@@ -120,4 +120,7 @@ Feature: Basic checks to ensure production site is up and running
             | /espanol/chicken                        |
             | /rare-brain-spine-tumor/espanol/chicken |
 
+Scenario: Spanish dates check
+   Given user is navigating to "/espanol/noticias/temas-y-relatos-blog/2024/fda-tecelra-sarcoma-sinovial-mage-a4"
+   Then date is displayed as "15 de octubre de 2024"
 
