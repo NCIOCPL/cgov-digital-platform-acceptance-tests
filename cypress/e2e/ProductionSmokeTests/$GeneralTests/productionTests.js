@@ -151,3 +151,7 @@ Then('search results page title is {string}', (title) => {
     })
     cy.get(`h1:contains('${title}')`).should('be.visible');
 });
+
+Then('date is displayed as {string}',(date)=>{
+    cy.get('time').should('have.text',date)
+})
