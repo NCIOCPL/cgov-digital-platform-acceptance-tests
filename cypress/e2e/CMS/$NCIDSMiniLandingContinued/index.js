@@ -81,7 +81,7 @@ And('there are {int} two column layout sections', (num) => {
     cy.get("div[class*='cgdp-two-column-layout']").should('have.length', num)
 })
 And('the sections have the following', (dataTable) => {
-    for (let { sectionIndex, splitRatio, columnIndex, type, link, mediaType,title,description } of dataTable.hashes()) {
+    for (let { sectionIndex, splitRatio, columnIndex, type, link, mediaType, title, description } of dataTable.hashes()) {
         cy.get("div[class*='cgdp-two-column-layout']>div").eq(sectionIndex).should('have.attr', 'data-eddl-landing-row-variant', `TwoColumn${splitRatio}`)
         cy.get("div[class*='cgdp-two-column-layout']").eq(sectionIndex).find('div[class*="cgdp-column"]')
             .eq(columnIndex).as('column')
@@ -99,11 +99,11 @@ And('the sections have the following', (dataTable) => {
             cy.get('@column').find(`figure[class="${mediaType}"]`).should('exist')
         }
 
-        if(title){
-            cy.get('@column').find('.nci-card__title').should('have.text',title)
+        if (title) {
+            cy.get('@column').find('.nci-card__title').should('have.text', title)
         }
-        if(description){
-            cy.get('@column').find('.nci-card__description').should('have.text',description)
+        if (description) {
+            cy.get('@column').find('.nci-card__description').should('have.text', description)
         }
     }
 })
@@ -139,11 +139,9 @@ And('there are the following wide guide cards', (dataTable) => {
 
         cy.get('@wideCard').find('li').should('have.length', numberOfLinks);
 
-        if (baseUrl.includes('dev-acsf')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
+        if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+')
 
-        } else if (baseUrl.includes('test-acsf')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
         }
         cy.get('@wideCard').should('have.attr', 'style').then(img => {
             const imgSrc = img.replace('background-image: url', '').replace(/\?.*/, '')
@@ -199,21 +197,19 @@ And('the following image overrides are displayed on two column layout items', (d
             .eq(columnIndex).as('column')
 
 
-        if (baseUrl.includes('dev-acsf')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
+        if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+')
 
-        } else if (baseUrl.includes('test-acsf')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
-        }
+        } 
         cy.get('@column').find('figure img').should('have.attr', 'src').then(img => {
             const imgSrc = img.replace(/\?.*/, '')
             expect(imgSrc).to.match(new RegExp(source))
         })
-  if(credit.includes("|")){
-    credit= credit.split("|")
-  }
-        cy.get('@column').find('figure figcaption p').eq(0).should('have.text',caption)
-        cy.get('@column').find('figure figcaption p').eq(1).should('include.text',credit[0]).should('include.text',credit[1])
+        if (credit.includes("|")) {
+            credit = credit.split("|")
+        }
+        cy.get('@column').find('figure figcaption p').eq(0).should('have.text', caption)
+        cy.get('@column').find('figure figcaption p').eq(1).should('include.text', credit[0]).should('include.text', credit[1])
     }
 });
 
@@ -221,8 +217,8 @@ Then('user selects {string} option from Operations dropdown for media with title
     cy.get(`td:contains('${title}')`).siblings('td').find(`ul.dropbutton >li> a:contains("${translateOption}")`).click({ force: true });
 });
 
-Then('the video caption reads {string}', (caption)=>{
-    cy.get('figcaption.cgdp-video__caption.usa-prose p').should('have.text',caption)
+Then('the video caption reads {string}', (caption) => {
+    cy.get('figcaption.cgdp-video__caption.usa-prose p').should('have.text', caption)
 })
 
 And('user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
