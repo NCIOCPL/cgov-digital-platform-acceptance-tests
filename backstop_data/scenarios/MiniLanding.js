@@ -95,5 +95,13 @@ module.exports = [
     {
 		label: 'NCIDS mini landing page with Wide Guide Cards',
 		testPath: '/test/ncids-mini-landing-wide-guide-card',
+	},
+    {
+		label: 'NCIDS mini landing page imageless cards',
+		testPath: '/test/ncids-imageless-card-test',
+	},
+    {
+		label: 'NCIDS  mini landing page flag cards',
+		testPath: '/test/ncids-flag-card-test',
 	}
 ]
