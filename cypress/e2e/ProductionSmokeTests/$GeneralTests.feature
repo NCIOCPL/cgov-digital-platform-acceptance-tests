@@ -120,7 +120,18 @@ Feature: Basic checks to ensure production site is up and running
             | /espanol/chicken                        |
             | /rare-brain-spine-tumor/espanol/chicken |
 
-Scenario: Spanish dates check
-   Given user is navigating to "/espanol/noticias/temas-y-relatos-blog/2024/fda-tecelra-sarcoma-sinovial-mage-a4"
-   Then date is displayed as "15 de octubre de 2024"
+    Scenario: Spanish dates check
+        Given user is navigating to "/espanol/noticias/temas-y-relatos-blog/2024/fda-tecelra-sarcoma-sinovial-mage-a4"
+        Then date is displayed as "15 de octubre de 2024"
+
+
+    Scenario: Verify favicons
+        Given user is navigating to "/"
+        Then the following favicons links are present
+            | rel              | href                                                                                                                                  | sizes | type          |
+            | icon             | https://www.cancer.gov/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/favicon.ico          | 32x32 | none          |
+            | icon             | https://www.cancer.gov/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/favicon.svg          | none  | image/svg+xml |
+            | apple-touch-icon | https://www.cancer.gov/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/apple-touch-icon.png | none  | none          |
+            | manifest         | https://www.cancer.gov/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/site.webmanifest     | none  | none          |
+
 
