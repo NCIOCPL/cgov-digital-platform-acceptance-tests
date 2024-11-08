@@ -1,4 +1,5 @@
 import { And, Then } from "cypress-cucumber-preprocessor/steps";
+const baseUrl = Cypress.config('baseUrl');
 
 Given('user is navigating to {string}', (a) => {
   cy.visit(a);
@@ -21,8 +22,8 @@ And('browser waits', () => {
   cy.wait(2000);
 });
 
-And('page title is {string}',(title)=>{
-cy.get(`h1:contains('${title}')`).should('be.visible');
+And('page title is {string}', (title) => {
+  cy.get(`h1:contains('${title}')`).should('be.visible');
 });
 
 And('system waits for file upload process', () => {
@@ -33,7 +34,7 @@ And('browser waits for {int}', (time) => {
   cy.wait(time);
 })
 
-And('user refreshes the page',()=>{
+And('user refreshes the page', () => {
   cy.reload()
 })
 
@@ -44,4 +45,14 @@ Then('correct status code {int} is received for the {string}', (code, path) => {
     expect(resp.status).to.eq(code);
   })
 
+});
+
+Then('the following favicons links are present', (dataTable) => {
+  for (const { rel, href, sizes, type } of dataTable.hashes()) {
+    cy.get(`link[rel='${rel}'][href='${href}']`).as('link').should('exist');
+    if (sizes !== 'none')
+      cy.get('@link').should('have.attr', 'sizes', sizes)
+    if (type !== 'none')
+      cy.get('@link').should('have.attr', 'type', type)
+  }
 });
