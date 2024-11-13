@@ -7,7 +7,10 @@ And('user clicks on Image content type', () => {
 });
 
 And('user types {string} into Caption text field', (value) => {
-    cy.getIframeBody('iframe.cke_wysiwyg_frame.cke_reset').find('p').type(value);
+    cy.get('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set('Typing some stuff')
+    });
 })
 
 And('user uploads test {string} image {string}', (imageType, fileName) => {

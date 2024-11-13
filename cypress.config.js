@@ -14,7 +14,7 @@ module.exports = defineConfig({
     admin_username: 'admin',
     admin_password: '',
     test_site_section: '/about-cancer/understanding',
-    front_end_base_url: 'https://www-dev-ac.cancer.gov',
+    front_end_base_url: 'https://ncigovcdode861.prod.acquia-sites.com',
     ocpl_username: 'ocpl-test',
     ocpl_password: '',
     randomStr: createRandomStr()
@@ -27,7 +27,7 @@ module.exports = defineConfig({
       return require('./cypress/plugins/index.js')(on, config)
     },
     specPattern: 'cypress/e2e/**/*.feature',
-    baseUrl: 'https://www-dev-ac.cancer.gov',
+    baseUrl: 'https://ncigovcdode861.prod.acquia-sites.com',
   },
 })
 
