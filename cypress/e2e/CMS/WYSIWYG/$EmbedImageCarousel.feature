@@ -103,7 +103,7 @@ Feature: As a cms user I want to be able to embed Image Carousel in Article cont
         And 1 description reads "Image Carousel: Full, Center"
         And 1 image carousel displays the following features
             | alignment                    | title                               | caption      | credit      |
-            | embedded-entity align-center | Automated Image Carousel Title Test | Test Caption | Test Credit |
+            | align-center embedded-entity | Automated Image Carousel Title Test | Test Caption | Test Credit |
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"

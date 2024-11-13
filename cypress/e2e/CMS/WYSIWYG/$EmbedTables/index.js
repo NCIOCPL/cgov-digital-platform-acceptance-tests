@@ -2,32 +2,44 @@
 import { And } from 'cypress-cucumber-preprocessor/steps';
 
 
+And('user selects {string} rows and {string} columns', (rows, columns) => {
+    cy.get(`button[data-row='${rows}'][data-column='${columns}']`).click()
+})
 
+And('user selects {string} from {string} dropdown for {int} table', (alignment, property,index) => {
 
+    cy.get("div.ck-balloon-rotator__content :nth-child(6)").click({ force: true })
+    cy.get(`button[data-cke-tooltip-text="${alignment}"]`).click({ force: true })
+    cy.get('div[class="ck ck-form__row ck-table-form__action-row"] button').first().click({ force: true })
+})
 
 And('user writes {string} into {string} labeled field', (value, fieldLabel) => {
-    cy.get(`div[class*="cke_dialog_ui_text"] label:contains("${fieldLabel}")`).parent().find('div>input').type(value);
+    cy.get("div.ck-balloon-rotator__content :nth-child(4)").click()
+    cy.get('.ck-content[contenteditable=true] figcaption').realType(value)
 });
 
-And('user clicks "OK" to save table properties', () => {
-    cy.get('span:contains("OK")').click({ force: true })
-});
 
 And('user types {string} in all cells of table {int}', (cellText, tableNum) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", tableNum).find('td').each(($el) => {
-        cy.wrap($el).type(cellText)
-    })
+    cy.get('.ck-content[contenteditable=true] figure table').eq(tableNum).find('td').each(cell => {
+        cy.wrap(cell).focus().realType(cellText)
+    });
 });
 
+And('user toggles Header Row for {int} table',(headerRow, index)=>{
+    cy.get("div.ck-balloon-rotator__content div.ck.ck-dropdown").eq(1).click().find('button:contains("Header row")').click()
+})
+And('user toggles Header Column for {int} table',(headerRow, index)=>{
+    cy.get("div.ck-balloon-rotator__content div.ck.ck-dropdown").eq(0).click().find('button:contains("Header column")').click()
+})
 
 And('user types {string} in all headers of table {int}', (cellText, tableNum) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", tableNum).find('th').each(($el) => {
-        cy.wrap($el).type(cellText)
-    })
+    cy.get('.ck-content[contenteditable=true] figure table').eq(tableNum).find('th').each(cell => {
+        cy.wrap(cell).focus().realType(cellText)
+    });
 });
 
 And('the following tables are displayed', (dataTable) => {
-    for (const { index, rowCount, columnCount, headerCount, caption, summary, alignment } of dataTable.hashes()) {
+    for (const { index, rowCount, columnCount, headerCount, caption, alignment } of dataTable.hashes()) {
         cy.get('div.accordion').find('section').eq(index)
             .find('tr').should('have.length', rowCount)
         cy.get('div.accordion').find('section').eq(index)
@@ -40,20 +52,11 @@ And('the following tables are displayed', (dataTable) => {
             cy.get('div.accordion').find('section').eq(index)
                 .find('figure').find('figcaption').should('not.exist')
         }
-        if (summary != 'null') {
-            cy.get('div.accordion').find('section').eq(index)
-                .find('figure').find('div').find('div').find('table')
-                .should('have.attr', 'summary', summary)
-        }
-        else {
-            cy.get('div.accordion').find('section').eq(index)
-                .find('figure').find('div').find('div').find('table')
-                .should('not.have.attr', 'summary')
-        }
+    
         if (alignment != 'null') {
             cy.get('div.accordion').find('section').eq(index)
                 .find('figure').find('div').find('div').find('table')
-                .should('have.attr', 'align', alignment)
+                .should('have.attr', 'style', `float:${alignment};`)
         }
         else {
             cy.get('div.accordion').find('section').eq(index)

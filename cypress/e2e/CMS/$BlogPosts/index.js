@@ -27,11 +27,17 @@ const frontEndBaseUrl = Cypress.env('front_end_base_url');
 
 
 And('user enters {string} as intro text', (introText) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introText);
+    cy.get('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(introText)
+    });
 });
 
 And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Body field']").find('p').type(value);
+    cy.get('.ck-content[contenteditable=true]').eq(1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 });
 
 let imageSrc;
@@ -258,7 +264,7 @@ And('the following fields are displayed under {string} label', (titleText, dataT
 })
 
 And('Link section under related resources was translated as {string}', (TranslatedLabel) => {
-    cy.get(`span:contains("${TranslatedLabel}")`).should('be.visible')
+    cy.get(`summary.claro-details__summary:contains("${TranslatedLabel}")`).should('be.visible');
 })
 
 And('{string} label is displayed in the page', (contentLabel) => {

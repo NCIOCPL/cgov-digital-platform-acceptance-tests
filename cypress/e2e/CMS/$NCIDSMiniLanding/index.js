@@ -19,13 +19,13 @@ And('user uploads slim hero {string}', (fileName) => {
 });
 
 And('user clicks on Source tool icon in the html content tool bar', () => {
-    cy.get("span.cke_button_label.cke_button__source_label").click({ force: true })
-    cy.wait(2000)
+    cy.get("button[data-cke-tooltip-text*='Source']").click()
 })
 
 And('user enters {string} into source text field', (value) => {
-    cy.get("textarea[title='Rich Text Editor, HTML Content field']").type(value)
+    cy.get(".ck-source-editing-area textarea[aria-label='Source code editing area']").type(value)
 })
+
 And('NCIDS Slim Hero is displayed with alt text {string}', (altText) => {
     cy.get("div[class='usa-section cgdp-slim-hero']").as('slimHero').should('be.visible');
     cy.get('@slimHero').find('img').should('have.attr', 'alt', altText)

@@ -18,7 +18,10 @@ And('user fills out the following fields', (dataTable) => {
 });
 
 And('user types {string} into Caption text field', (value) => {
-    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value);
+    cy.get('.ck-content[contenteditable=true]').eq(1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 });
 
 And('user uploads test file {string}', (fileName) => {
@@ -108,18 +111,26 @@ And('the image has name {string}', (imageName) => {
     cy.get('div.centered-element source[media="(max-width: 768px)"]').should('have.attr', 'srcset').and('include', imageName);
 });
 
-And('user enters {string} as intro text', (introTxt) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introTxt);
-});
-
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 });
 
+And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
+    cy.get('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
+})
 
 And('user enters {string} into media title search box and clicks {string}', (nameToSearch, applyBtn) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_embedded_infographic_browser').find(`input[id*="edit-name"]`).type(nameToSearch);

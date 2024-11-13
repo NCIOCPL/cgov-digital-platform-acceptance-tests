@@ -42,11 +42,11 @@ And('user enters {string} into Raw HTML Content text field under Primary Feature
 })
 
 And('user clicks on Source tool icon in the html content tool bar', () => {
-    cy.get("span.cke_button_label.cke_button__source_label").click()
+    cy.get("button[data-cke-tooltip-text*='Source']").click()
 })
 
 And('user enters {string} into source text field', (value) => {
-    cy.get("textarea[title='Rich Text Editor, HTML Content field']").type(value)
+    cy.get(".ck-source-editing-area textarea[aria-label='Source code editing area']").type(value)
 })
 
 And('user enters {string} into Raw HTML Content text field under Guide Card Row', (value) => {
@@ -111,11 +111,7 @@ And('user selects {string} from main contents dropdown', (dropdown) => {
 
 And('user clicks on {string} option to {string} within {string} section', (option, containerContents, section) => {
     cy.get(`span.paragraph-type-label:contains("${section}")`).parent().parent().parent().find(`input[value="${option}"]`).eq(0).click({ force: true })
-    // cy.get(`input[value="${option}"]`).click({ force: true })
-})
-
-And('user fills out HTML Content text area with', (value) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, HTML Content field']", 1).find('p').type(value)
+   
 })
 
 And('user enters {string} in Raw HTML Content under {string}', (value, section) => {
@@ -124,9 +120,10 @@ And('user enters {string} in Raw HTML Content under {string}', (value, section) 
 
 And('user fills out HTML Content text area with {string} under {string}', (value, section) => {
     cy.get(`span.paragraph-type-label:contains("${section}")`).parent().parent().parent().as('section')
-    cy.get('@section').find(`div[class*="html-content"] label:contains("HTML Content")`).parent().find('iframe[title="Rich Text Editor, HTML Content field"]').its('0.contentDocument.body').should('not.be.empty').then(iframe => {
-        cy.wrap(iframe).find('p').type(value);
-    })
+    cy.get('@section').find('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })
 
 

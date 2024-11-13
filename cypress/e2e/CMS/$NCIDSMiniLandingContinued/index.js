@@ -31,7 +31,10 @@ And('user clicks on {string} button for {string}', (edit, section) => {
 });
 
 And('user enters {string} into {int} HTML Content', (htmlContent, index) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, HTML Content field']", index - 1).find('p').type(htmlContent)
+    cy.get(`div[id*='edit-field-landing-contents-${index-1}-subform-field']`).find('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(htmlContent)
+    });
 })
 
 And('user selects {string} to add to column Right Content', (dropdown) => {
@@ -41,8 +44,11 @@ And('user selects {string} to add to column Right Content', (dropdown) => {
 And('user selects {string} to add to column Left Content', (dropdown) => {
     cy.get(`input[value='${dropdown}']`).eq(0).click({ force: true })
 })
-And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Body field']").find('p').type(value);
+And('user fills out {int} {string} text area with {string}', (index,textFieldLabel, value) => {
+    cy.get(`div[id*='edit-field-landing-contents-${index}-subform-field-${textFieldLabel}']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 });
 
 And('user selects {string} as promo image for {int} feature card', (name, index) => {
@@ -124,7 +130,10 @@ And('user uploads {string} as wide guide card image', (fileName) => {
 
 
 And('user fills out WGC description field with {string}', (descr) => {
-    cy.getIframeBody('iframe[title="Rich Text Editor, Description field"]').find('p').type(descr);
+    cy.get(`div[id*='edit-field-landing-contents-4-subform-field-html-content']`).find('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(descr)
+    });
 });
 
 And('user selects {string} to add to WGC', (linkType) => {
@@ -171,7 +180,10 @@ And('user clicks on {string} button to select media', (listBtn) => {
 })
 
 And('user types {string} into Caption text field', (value) => {
-    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value)
+    cy.get('.ck-content[contenteditable=true]').eq(1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })
 
 And('user selects {string} from the {int} {string} dropdown', (option, index, dropdown) => {

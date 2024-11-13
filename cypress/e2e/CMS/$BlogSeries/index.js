@@ -29,7 +29,10 @@ And('user enters {string} into the {string} text field', (value, textFieldLabel)
 });
 
 And('user fills out {string} text area with {string} in the blog series', (textFieldLabel, value) => {
-    cy.getIframeBody("iframe[title^='Rich Text Editor, About Blog field']").find('p').type(value);
+    cy.get('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 });
 
 And('user clicks on dropdown button toggle to view Featured Posts', () => {
@@ -103,12 +106,10 @@ And('user checks {string} checkbox', (checkboxLbl) => {
 });
 
 And('user enters {string} into {string} field', (description, descriptionTitle) => {
-    if (descriptionTitle == 'Description') {
-        cy.getIframeBody("iframe[title='Rich Text Editor, Description field']").find('p').type(description);
-    }
-    if (descriptionTitle == 'Descripción') {
-        cy.getIframeBody("iframe[title='Editor de texto con formato, campo Descripción']").find('p').type(description);
-    }
+    cy.get('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(description)
+    });
 
 });
 
