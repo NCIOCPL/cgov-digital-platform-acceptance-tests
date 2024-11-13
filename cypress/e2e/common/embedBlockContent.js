@@ -242,8 +242,10 @@ And('video carousel displays the following features', (dataTable) => {
 });
 
 And('user enters {string} as intro text', (introTxt) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introTxt);
-
+    cy.get('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(introTxt)
+    });
 })
 
 

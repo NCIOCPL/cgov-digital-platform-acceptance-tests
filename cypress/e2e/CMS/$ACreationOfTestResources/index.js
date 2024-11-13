@@ -9,7 +9,7 @@ And('user clicks on Image content type', () => {
 And('user types {string} into Caption text field', (value) => {
     cy.get('.ck-content[contenteditable=true]').then(el => {
         const editor = el[0].ckeditorInstance
-        editor.data.set('Typing some stuff')
+        editor.data.set(value)
     });
 })
 
