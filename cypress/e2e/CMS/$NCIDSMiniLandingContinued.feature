@@ -64,7 +64,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And browser waits
         And user selects "Add NCIDS Summary Box" to add to column Left Content
         And browser waits
-        And user fills out "Body" text area with "This is Summary box"
+        And user fills out 2 "left" text area with "This is Summary box"
         And user selects "Add NCIDS Card Multimedia" to add to column Right Content
         And user clicks on "Featured Media" in 1 "NCIDS Card Multimedia" section
         And user clicks on "Select media" button item
@@ -102,6 +102,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And browser waits
         And user enters "<div>This is to test Raw Html Content</div>" into Raw HTML Content text field
         And user selects "Add NCIDS Content Block" to add to column Right Content
+        And browser waits
         And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit consequat. Suspendisse sagittis leo eu elit vestibulum, feugiat cursus nisl finibus.' into 3 HTML Content
         When user saves the content page
         And browser waits
@@ -183,7 +184,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And browser waits
         And user selects "Add NCIDS 2 Column Layout" from "Contents" dropdown
         And browser waits
-        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' into 4 HTML Content
+        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' into 5 HTML Content
         And user selects "Add NCIDS Video" to add to column Right Content
         And user clicks on 1 add "Featured Video" button item
         And user clicks on "Select video" button item
@@ -207,11 +208,12 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And browser waits
         And user selects "Add NCIDS 2 Column Layout" from "Contents" dropdown
         And browser waits
-        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' into 5 HTML Content
+        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' into 6 HTML Content
         And user selects "Add NCIDS Image" to add to column Right Content
         And user selects "1x1" from the 1 "Image Crop Display" dropdown
         And user clicks on 5 add "Promotional Image" button item
         And user clicks on 4 "Select Image" button item
+         And browser waits
         And user selects "NCIDS Image" from the list of images
         And browser waits
         And user clicks on "Select image" button to select media
@@ -232,7 +234,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And browser waits
         And user selects "Add NCIDS 2 Column Layout" from "Contents" dropdown
         And browser waits
-        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' into 6 HTML Content
+        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' into 7 HTML Content
         And user selects "Add NCIDS Image" to add to column Right Content
         And user selects "4x3" from the 2 "Image Crop Display" dropdown
         And user clicks on 6 add "Promotional Image" button item
@@ -240,7 +242,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user selects "NCIDS Image" from the list of images
         And browser waits
         And user clicks on "Select image" button to select media
-        And browser waits
+        And browser waits for 3000
         When user saves the content page
         And browser waits
 
@@ -257,7 +259,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And browser waits
         And user selects "Add NCIDS 2 Column Layout" from "Contents" dropdown
         And browser waits
-        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' into 7 HTML Content
+        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' into 8 HTML Content
         And user selects "Add NCIDS Image" to add to column Right Content
         And user selects "16x9" from the 3 "Image Crop Display" dropdown
         And user clicks on 7 add "Promotional Image" button item
@@ -345,7 +347,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
             | fieldLabel | value                    | field_name       |
             | Pretty URL | ncids-test-video-spanish | field_pretty_url |
             | Nombre     | _Spanish                 | name[0][value]   |
-        And user types "_Spanish" into Caption text field
+        And user types "Test Caption_Spanish" into Caption text field
         And user selects "Review" from Change to dropdown
         Then user saves the content page
 

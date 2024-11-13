@@ -2,11 +2,33 @@
 import { And } from 'cypress-cucumber-preprocessor/steps';
 
 
+And('user selects {string} rows and {string} columns',(rows,columns)=>{
+    cy.get(`button[data-row='${rows}'][data-column='${columns}']`).click()
+})
 
-
+And('user selects {string} from {string} dropdown',(alignment, property)=>{
+cy.get("div.ck-balloon-rotator__content :nth-child(6)").click({force:true})
+cy.get(`button[data-cke-tooltip-text="Align table to the ${alignment}"]`).click({force:true})
+cy.get('div[class="ck ck-form__row ck-table-form__action-row"] button').first().click({force:true})
+})
 
 And('user writes {string} into {string} labeled field', (value, fieldLabel) => {
-    cy.get(`div[class*="cke_dialog_ui_text"] label:contains("${fieldLabel}")`).parent().find('div>input').type(value);
+    cy.get("div.ck-balloon-rotator__content :nth-child(4)").click()
+    cy.window().then(win => {
+        win.Drupal.CKEditor5Instances.forEach(editor => {
+            if (editor.sourceElement && editor.sourceElement.id === "edit-body-0-value") {
+                // Set data for the specific CKEditor instance
+                editor.setData('<p>Test</p>');
+              }
+            }
+        )
+      })
+    // cy.get('figcaption').then($el => {
+    //     const editor = $el.ckeditorInstance
+    //     editor.data.set(value)
+     
+    // });
+    // cy.get(`div[class*="cke_dialog_ui_text"] label:contains("${fieldLabel}")`).parent().find('div>input').type(value);
 });
 
 And('user clicks "OK" to save table properties', () => {
