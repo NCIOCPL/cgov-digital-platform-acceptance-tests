@@ -5,9 +5,6 @@ const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const randomStr = Cypress.env('randomStr');
 
-And('user types {string} into Caption text field', (value) => {
-    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value)
-})
 
 And('user selects {string} option from {string} dropdown', (dropdwon, section) => {
     cy.get(`.placeholder:contains("${section}")`).parent().find(`input[value="${dropdwon}"]`).click({ force: true })
@@ -50,8 +47,9 @@ And('user selects a checkbox next to the title with spanish path {string} with u
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 });
-And('user clicks the {string} button {int} in the WYSIWYG editor', (videoButton, counter) => {
-    cy.get('span.cke_button__cgov_video_button_icon').eq(counter - 1).click({ force: true });
+And('user clicks the {string} button {int} in the WYSIWYG editor', (toolTip, position) => {
+    cy.get(`table[id*='field-article-body-value'] button[data-cke-tooltip-text*='${toolTip}']`).eq(position - 1).click()
+    
 });
 
 And('user enters {string} into content title search box and clicks {string}', (nameToSearch, applyBtn) => {
@@ -97,5 +95,5 @@ cy.get('figure.video').eq(index-1).find('h4').should('not.exist')
 });
 
 And('{int} video has alignment set to {string}',(index, value)=>{
-cy.get('div[data-embed-button="cgov_video_button"]').eq(index-1).should('have.attr','class',`embedded-entity${value}`)
+cy.get('div[data-embed-button="cgov_video_button"]').eq(index-1).should('have.attr','class',`${value}embedded-entity`)
 })

@@ -142,17 +142,17 @@ Feature: As a cms user I want to be able to embed Content Block in Article conte
         And 2 description reads "Content Block: No Image,Left:"
         And 2 feature card displays the following features in the content block
             | alignment                  | description                                               | linkText                 | link                      |
-            | embedded-entity align-left | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
+            | align-left embedded-entity | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
         And 3 section heading reads "Article Heading3"
         And 3 description reads "Content Block: Full,Center:"
         And 3 feature card displays the following features in the content block
             | alignment                    | description                                               | linkText                 | link                      |
-            | embedded-entity align-center | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
+            | align-center embedded-entity | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
         And 4 section heading reads "Article Heading4"
         And 4 description reads "Content Block: Image,Right:"
         And 4 feature card displays the following features in the content block
             | alignment                   | description                                               | linkText                 | link                      |
-            | embedded-entity align-right | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
+            | align-right embedded-entity | This content block is for testing embedded block contents | Reuse of NCI Information | /policies/copyright-reuse |
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"

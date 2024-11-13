@@ -140,17 +140,17 @@ Feature: As a cms user I want to be able to embed Block Contents in Article cont
         And 2 description reads "Raw HTML Block: Image,Left:"
         And 2 block displays the following features
             | alignment                  | rawHTMLText                                   |
-            | embedded-entity align-left | This is to test Raw Html Block in the WYSIWYG |
+            | align-left embedded-entity | This is to test Raw Html Block in the WYSIWYG |
         And 3 section heading reads "Article Heading3"
         And 3 description reads "Raw HTML Block: No Image,Right:"
         And 3 block displays the following features
             | alignment                   | rawHTMLText                                   |
-            | embedded-entity align-right | This is to test Raw Html Block in the WYSIWYG |
+            | align-right embedded-entity | This is to test Raw Html Block in the WYSIWYG |
         And 4 section heading reads "Article Heading4"
         And 4 description reads "Raw HTML Block: Full,Center:"
         And 4 block displays the following features
             | alignment                    | rawHTMLText                                   |
-            | embedded-entity align-center | This is to test Raw Html Block in the WYSIWYG |
+            | align-center embedded-entity | This is to test Raw Html Block in the WYSIWYG |
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"

@@ -5,9 +5,6 @@ const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const randomStr = Cypress.env('randomStr')
 
-And('user types {string} into Caption text field', (captionText) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Caption field']").find('p').type(captionText);
-})
 
 And('user clicks on CROP IMAGE button', () => {
     cy.get(`summary:contains('Crop image')`).click({ force: true })
@@ -23,11 +20,15 @@ And('user sets the following crops', (dataTable) => {
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })
 
-And('user clicks the {string} button {int} in the WYSIWYG editor', (infographicButton, position) => {
-    cy.get('span.cke_button__cgov_image_button_icon').eq(position - 1).click({ force: true });
+And('user clicks the {string} button {int} in the WYSIWYG editor', (toolTip, position) => {
+    cy.get(`table[id*='field-article-body-value'] button[data-cke-tooltip-text*='${toolTip}']`).eq(position - 1).click()
+    
 });
 
 And('user enters {string} into media title search box and clicks {string}', (nameToSearch, applyBtn) => {

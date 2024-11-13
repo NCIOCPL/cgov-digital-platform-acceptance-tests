@@ -146,19 +146,19 @@ Feature: As a cms user I want to be able to embed External Link Block in Article
         And 2 description reads "External Link Block No Image,Left:"
         And 2 feature card displays the following features in external link block
             | alignment                  | description                          | linkText                       | link                         |
-            | embedded-entity align-left | External Link Block Card Description | External Link Block Card Title | https://combatcovid.hhs.gov/ |
+            | align-left embedded-entity | External Link Block Card Description | External Link Block Card Title | https://combatcovid.hhs.gov/ |
         And 2 feature card does not display any image
         And 3 section heading reads "Article Heading3"
         And 3 description reads "External Link Block No Image,Right:"
         And 3 feature card displays the following features in external link block
             | alignment                   | description                          | linkText                       | link                         |
-            | embedded-entity align-right | External Link Block Card Description | External Link Block Card Title | https://combatcovid.hhs.gov/ |
+            | align-right embedded-entity | External Link Block Card Description | External Link Block Card Title | https://combatcovid.hhs.gov/ |
         And 3 feature card does not display any image
         And 4 section heading reads "Article Heading4"
         And 4 description reads "External Link Block: Full,Center:"
         And 4 feature card displays the following features in external link block
             | alignment                    | link                         | descTitleText                                                      |
-            | embedded-entity align-center | https://combatcovid.hhs.gov/ | External Link Block Card TitleExternal Link Block Card Description |
+            | align-center embedded-entity | https://combatcovid.hhs.gov/ | External Link Block Card TitleExternal Link Block Card Description |
         And the promo image in 4 feature card is matching the earlier selected promo image in the External Link Block used for embeddding
 
     Scenario: Clean up

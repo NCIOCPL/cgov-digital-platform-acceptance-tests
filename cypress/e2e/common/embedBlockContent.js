@@ -20,12 +20,15 @@ And('{string} dropdown displays {string}', (labelText, displayOption) => {
 
 
 And('user enters {string} into source text field', (value) => {
-    cy.get('div#cke_edit-body-0-value').type(value);
-});
+    cy.get(".ck-source-editing-area textarea[aria-label='Source code editing area']").type(value)
+})
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe(`iframe[title="Rich Text Editor, Content field"]`, position - 1).find('p').type(value);
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
+    const editor = el[0].ckeditorInstance
+    editor.data.set(value)
 });
+})
 
 And('the content item with title {string} exists in the list of content', (titleText) => {
     cy.get('div.view-content tr').find(`a:contains('${titleText}')`).should('be.visible');
@@ -49,9 +52,6 @@ And('user remembers the source of selected promo image for further verification'
     });
 });
 
-// And('user fills out {string} text area with {string}', (section, value) => {
-//     cy.get(`div[class*="js-form-type-textarea"] label:contains('${section}')`).type(value);
-// });
 
 And('user clicks on {string} button to select image', (imgButton) => {
     cy.get(`summary[class*="claro-details__summary"]:contains('${imgButton}')`).click();
@@ -75,16 +75,17 @@ And('user clicks on {string} button to select an image', (selectImage) => {
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
+})
+
+And('user clicks {string} button {int} in the WYSIWYG editor', (toolTip, position) => {
+    cy.get(`table[id*='field-article-body-value'] button[data-cke-tooltip-text*='${toolTip}']`).eq(position - 1).click()
+    
 });
 
-And('user clicks {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
-    cy.get(`span[class*="cke_button_icon"][class*="${featuredContentButton.toLowerCase().replaceAll(" ","_")}"]`).eq(position - 1).click({ force: true });
-});
-
-And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
-});
 
 And('user enters {string} into content title search box and clicks {string}', (nameToSearch, applyBtn) => {
     cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find(`input[id*="edit-info"]`).type(nameToSearch);
@@ -172,7 +173,7 @@ And('{int} feature card displays the following features in external link block',
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace('{TEST_SITE_SECTION}', siteSection)
         }
-        if (alignment !== 'embedded-entity align-center') {
+        if (alignment !== 'align-center embedded-entity') {
             cy.get('@card').find(`a:contains("${linkText}")`).should('be.visible').and('have.attr', 'href').then(href => {
                 expect(href).to.include(link);
             });
@@ -242,11 +243,13 @@ And('video carousel displays the following features', (dataTable) => {
 });
 
 And('user enters {string} as intro text', (introTxt) => {
-    cy.getIframeBody("iframe[title='Rich Text Editor, Intro Text field']").find('p').type(introTxt);
-
+    cy.get('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(introTxt)
+    });
 })
 
 
 And('user clicks on Source button in the WYSIWYG editor', () => {
-    cy.get(".cke_button_label.cke_button__source_label").click({ force: true });
+    cy.get("button[data-cke-tooltip-text='Source']").click({ force: true });
 });
