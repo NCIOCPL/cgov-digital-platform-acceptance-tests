@@ -34,7 +34,7 @@ Feature: NCIDS imageless card row container
             | evar2     | D=c8                                                                    |
             | evar64    | Internal\|The Optional Imageless Card Group Heading - One Ca\|About NCI |
             | evar65    | Imageless Card\|Not Defined\|1 Card Row                                 |
-            | evar66    | 6\|2\|0\|0\|3\|1\|Not Defined                                           |
+            | evar66    | 7\|3\|0\|0\|3\|1\|Not Defined                                           |
             | evar67    | Title\|1\|1                                                             |
             | evar68    | Body                                                                    |
             | pageName  | {CANONICAL_HOST}/test/ncids-imageless-card-test                         |
@@ -61,7 +61,7 @@ Feature: NCIDS imageless card row container
             | evar2     | D=c8                                                                                                         |
             | evar64    | External\|The Optional Imageless Card Group Heading - Two Ca\|Second Test of External Card with Longer Title |
             | evar65    | Imageless Card\|Not Defined\|2 Card Row                                                                      |
-            | evar66    | 6\|4\|0\|0\|3\|1\|Not Defined                                                                              |
+            | evar66    | 7\|5\|0\|0\|3\|1\|Not Defined                                                                              |
             | evar67    | Title\|1\|1                                                                                                  |
             | evar68    | Body                                                                                                         |
             | pageName  | {CANONICAL_HOST}/test/ncids-imageless-card-test                                                              |
@@ -91,7 +91,7 @@ Feature: NCIDS imageless card row container
             | evar2     | D=c8                                                                                                         |
             | evar64    | Media\|The Optional Imageless Card Group Heading - Three \|Override Title for Multimedia|
             | evar65    | Imageless Card\|Not Defined\|3 Card Row                                                                      |
-            | evar66    | 6\|6\|0\|0\|5\|1\|Not Defined                                                                            |
+            | evar66    | 7\|7\|0\|0\|5\|1\|Not Defined                                                                            |
             | evar67    | Title\|1\|1                                                                                                  |
             | evar68    | Body                                                                                                         |
             | pageName  | {CANONICAL_HOST}/test/ncids-imageless-card-test                                                              |
