@@ -138,7 +138,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
             | Link              | https://www.google.com | field_landing_contents[4][subform][field_three_link_buttons][1][subform][field_external_link][0][uri] |
             | Link Button Title | WGC Google Link        | field_landing_contents[4][subform][field_three_link_buttons][1][subform][field_button_text][0][value] |
         When user saves the content page
-       And browser waits
+        And browser waits
 
     Scenario: Create a new video
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -162,11 +162,11 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user types "Test Caption" into Caption text field
         And user selects "Review" from the "Save as" dropdown
         Then user saves the content page
-         When user clicks on "Content" tab
+        When user clicks on "Content" tab
         And user clicks on "Media" sub tab
         And user clicks on title with url "test-video" from the list of content
         And user clicks on the tool bar status button "Review"
-         And user clicks "Publish" button from Moderation sidebar
+        And user clicks "Publish" button from Moderation sidebar
 
 
 
@@ -190,11 +190,11 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user selects "NCIDS Automated Test Video" from the list of media
         And browser waits
         And user clicks on "Select video" button to select media
-         And browser waits
+        And browser waits
         When user saves the content page
         And browser waits
 
-     Scenario: Add two column layout with content block and image
+    Scenario: Add two column layout with content block and image
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "editor"
         And user clicks "Log in" button
@@ -215,11 +215,11 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user selects "NCIDS Image" from the list of images
         And browser waits
         And user clicks on "Select image" button to select media
-         And browser waits
+        And browser waits
         When user saves the content page
         And browser waits
 
-         Scenario: Add two column layout with content block and image 4x3
+    Scenario: Add two column layout with content block and image 4x3
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "editor"
         And user clicks "Log in" button
@@ -240,11 +240,11 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user selects "NCIDS Image" from the list of images
         And browser waits
         And user clicks on "Select image" button to select media
-         And browser waits
+        And browser waits
         When user saves the content page
         And browser waits
 
-           Scenario: Add two column layout with content block and image 16:9
+    Scenario: Add two column layout with content block and image 16:9
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "editor"
         And user clicks "Log in" button
@@ -265,10 +265,10 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user selects "NCIDS Image" from the list of images
         And browser waits
         And user clicks on "Select image" button to select media
-         And browser waits
+        And browser waits
         When user saves the content page
         And browser waits
-         And user clicks on the tool bar status button "Draft"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
         And user selects "Publish" from workflow actions
@@ -320,7 +320,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
             | evar61    | cgvMiniLanding\|ncids_default                      |
             | evar64    | Internal\|Article to test Related Resources\|Image |
             | evar65    | Feature Card\|Light\|Standard Single Link          |
-            | evar66    | 9\|1\|2\|2\|1\|1\|TwoColumn50:50                   |
+            | evar66    | 10\|2\|2\|2\|1\|1\|TwoColumn50:50                  |
             | evar67    | Image\|1\|1                                        |
             | evar68    | Body                                               |
             | event112  |                                                    |
@@ -349,19 +349,19 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user selects "Review" from Change to dropdown
         Then user saves the content page
 
-     Scenario: Publish translated video
-            Given user is navigating to "/user/login?show_login_fields=true"
-            When user enters credentials of "editor"
-            And user clicks "Log in" button
-            Then user is logged in and the user name "editor" is displayed in the toolbar
-            And the tool bar appears at the top
-             When user clicks on "Content" tab
-             And user clicks on "Media" sub tab
-            Then user selects "Translate" option from Operations dropdown for media with title "NCIDS Automated Test Video"
-            When user clicks on "Edit" button to edit translation
-            And user selects "Publicado" from Change to dropdown
-            Then user saves the content page
-            And browser waits
+    Scenario: Publish translated video
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on "Media" sub tab
+        Then user selects "Translate" option from Operations dropdown for media with title "NCIDS Automated Test Video"
+        When user clicks on "Edit" button to edit translation
+        And user selects "Publicado" from Change to dropdown
+        Then user saves the content page
+        And browser waits
 
     Scenario: Add a translation
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -417,36 +417,36 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
             | 0     | Wide Guide Card Title | This is WGC description | 2             | (\/sites\/default\/files\/styles\/ncids_guide_card_1x1\/public\/ncids_wide_guide_card\/field_image_guide_card\/\d*-\d*\/wgcImage.*.jpg)$ |
 
 
-Scenario: Clean up
-    Given user is navigating to "/user/login?show_login_fields=true"
-    When user enters credentials of "editor"
-    And user clicks "Log in" button
-    Then user is logged in and the user name "editor" is displayed in the toolbar
-    And the tool bar appears at the top
-    When user clicks on "Content" tab
-    And user clicks on title with url spanish path "/espanol" site section plus "ncids-mini-landing-page-two-column"
-    And user clicks on the tool bar status button "Publicado"
-    And user clicks "Request Archive" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archive Requested"
-    And user clicks "Approve Archive Request" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archivado"
-    And user clicks "View in edit form" button from other actions
-    When user clicks on "Delete" option button
-    When user confirms "Borrar la traduccion Español" action
+    Scenario: Clean up
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "ncids-mini-landing-page-two-column"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
 
-    When user clicks on "Contenido" tab
-    And user clicks on title with url "ncids-mini-landing-page-two-column" from the list of content
-    And user clicks on the tool bar status button "Published"
-    And user clicks "Request Archive" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archive Requested"
-    And user clicks "Approve Archive Request" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archived"
-    And user clicks "View in edit form" button from other actions
-    When user clicks on "Delete" option button
-    Then user confirms "Delete" action
-  
-  When user clicks on "Content" tab
-     And user clicks on "Media" sub tab
+        When user clicks on "Contenido" tab
+        And user clicks on title with url "ncids-mini-landing-page-two-column" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        Then user confirms "Delete" action
+
+        When user clicks on "Content" tab
+        And user clicks on "Media" sub tab
         And user selects a checkbox next to title with url "test-video" from the list of content
         And user selects a checkbox next to the title with spanish path "/espanol" with url "ncids-test-video-spanish" from the list of content
         And user selects "Delete media" action
