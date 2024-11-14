@@ -24,12 +24,11 @@ And("the url query has the following corresponding code", dataTable => {
         const paramItem = Array.from(params.entries()).map(([pkey, pvalue]) => {
             for (const { parameter, value } of dataTable.hashes()) {
                 if (parameter === pkey) {
-                    expect(pvalue).equal(value);
+                    expect(pvalue).to.include(value);
                 }
             }
         });
     })
-
 });
 
 

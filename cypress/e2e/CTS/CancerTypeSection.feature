@@ -97,14 +97,17 @@ Feature: Primary CancerType keyword search
     Then the search is executed and results page is displayed
     And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
-      | parameter | value                 |
-      | t         | C3171                 |
-      | loc       | 0                     |
-      | rl        | 2                     |
-      | st        | C9154\|C9160          |
-      | stg       | C148427\|C7882\|C9068 |
-      | fin       | C138962               |
-
+      | parameter | value   |
+      | t         | C3171   |
+      | loc       | 0       |
+      | rl        | 2       |
+      | st        | C9154   |
+      | st        | C9160   |
+      | stg       | C148427 |
+      | stg       | C7882   |
+      | stg       | C9068   |
+      | fin       | C138962 |
+  
   Scenario: User is able to execute search for Cancer type, stage and side effects on Mobile
     Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     And screen breakpoint is set to "mobile"
@@ -119,13 +122,15 @@ Feature: Primary CancerType keyword search
     Then the search is executed and results page is displayed
     And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
-      | parameter | value                 |
-      | t         | C3171                 |
-      | loc       | 0                     |
-      | rl        | 2                     |
-      | stg       | C148427\|C7882\|C9068 |
-      | fin       | C138962               |
-
+      | parameter | value   |
+      | t         | C3171   |
+      | loc       | 0       |
+      | rl        | 2       |
+      | stg       | C148427 |
+      | stg       | C7882   |
+      | stg       | C9068   |
+      | fin       | C138962 |
+  
   Scenario: User is able to execute search for Cancer type, subtype and side effects on desktop
     Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     When user clicks on "all" field
@@ -142,13 +147,14 @@ Feature: Primary CancerType keyword search
     Then the search is executed and results page is displayed
     And trial info displays "Results 1-\d+  of \d+ for your search.*"
     And the url query has the following corresponding code
-      | parameter | value        |
-      | t         | C3171        |
-      | loc       | 0            |
-      | rl        | 2            |
-      | st        | C9154\|C9160 |
-      | fin       | C138962      |
-
+      | parameter | value   |
+      | t         | C3171   |
+      | loc       | 0       |
+      | rl        | 2       |
+      | st        | C9154   |
+      | st        | C9160   |
+      | fin       | C138962 |
+  
   Scenario: User is able to execute search for Cancer type and side effects on desktop
     Given user is navigating to "/research/participate/clinical-trials-search/advanced"
     When user clicks on "all" field
@@ -169,4 +175,4 @@ Feature: Primary CancerType keyword search
       | loc       | 0       |
       | rl        | 2       |
       | fin       | C138962 |
-
+      

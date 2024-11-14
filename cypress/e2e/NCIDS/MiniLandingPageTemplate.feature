@@ -292,7 +292,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar68    | Body                                                   |
             | pageName  | {CANONICAL_HOST}/test/ncids-li-title-desc              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-li-title-desc |
-            | event27   |                                                        |
+            | event112  |                                                        |
             | channel   | NCI Homepage                                           |
             | pev2      | MLP:List:LinkClick                                     |
             | linkType  | lnk_o                                                  |
@@ -322,7 +322,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar68    | Body                                                        |
             | pageName  | {CANONICAL_HOST}/test/ncids-li-title-desc-img               |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-li-title-desc-img  |
-            | event27   |                                                             |
+            | event112  |                                                             |
             | channel   | NCI Homepage                                                |
             | pev2      | MLP:List:LinkClick                                          |
             | linkType  | lnk_o                                                       |
