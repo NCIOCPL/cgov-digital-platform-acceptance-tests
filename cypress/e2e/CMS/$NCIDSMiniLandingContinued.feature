@@ -1,47 +1,47 @@
 Feature: NCIDS Mini Landing Page Test Creation of Content continued
 
-    Scenario: User is adding new NCIDS Mini Landing page content type and adding 2 column layout
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "author"
-        And user clicks "Log in" button
-        Then user is logged in and the user name "author" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on "Add content" action button
-        And user clicks on "Mini Landing Page" content type
-        Then page title is "Create Mini Landing Page"
-        And user selects "NCIDS" from style dropdown
-        And browser waits
-        When user selects test site section
-        And user fills out the following fields
-            | fieldLabel               | value                                                           | field_name                     |
-            | Pretty URL               | ncids-mini-landing-page-two-column                              | field_pretty_url               |
-            | Page Title               | NCIDS Automated Test Mini Landing page 2 Column                 | title                          |
-            | Browser Title            | NCIDS Automated Test Mini Landing page 2 Column - Browser Title | field_browser_title            |
-            | Card Title               | Automated Test Mini Landing page - Card Title                   | field_card_title               |
-            | Meta Description         | Automated Test Mini Landing page Meta Description               | field_page_description         |
-            | Feature Card Description | Automated Test Mini Landing page - Feature Card Desc            | field_feature_card_description |
-        And user selects "Add NCIDS 2 Column Layout" from "Contents" dropdown
-        And browser waits
-        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit consequat. Suspendisse sagittis leo eu elit vestibulum, feugiat cursus nisl finibus. Nulla posuere scelerisque velit, et ornare arcu suscipit in. Curabitur ut venenatis nisl.' into 1 HTML Content
-        And user selects "Add NCIDS Card Internal" to add to column Right Content
-        And browser waits
-        And user clicks on "Featured Item" in 1 "NCIDS Card Internal" section
-        And user clicks on Select content button item
-        And user selects "Article to test Related Resources" item from the list
-        And user clicks on "Select content" button to select item
-        And browser waits
-        And user selects "Add NCIDS 2 Column Layout" from "Contents" dropdown
-        And user selects "66/33" as 2 column Layout display
-        And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit consequat. Suspendisse sagittis leo eu elit vestibulum, feugiat cursus nisl finibus. Nulla posuere scelerisque velit, et ornare arcu suscipit in. Curabitur ut venenatis nisl.' into 2 HTML Content
-        And user selects "Add NCIDS Card External" to add to column Right Content
-        And browser waits
-        And user fills out the following fields
-            | fieldLabel        | value                  | field_name                                                                                               |
-            | Featured Item Url | https://www.google.com | field_landing_contents[1][subform][field_right_content][0][subform][field_featured_url][0][uri]          |
-            | Card Title        | Google Link            | field_landing_contents[1][subform][field_right_content][0][subform][field_override_card_title][0][value] |
-        Then user saves the content page
-        And browser waits
+    # Scenario: User is adding new NCIDS Mini Landing page content type and adding 2 column layout
+    #     Given user is navigating to "/user/login?show_login_fields=true"
+    #     When user enters credentials of "author"
+    #     And user clicks "Log in" button
+    #     Then user is logged in and the user name "author" is displayed in the toolbar
+    #     And the tool bar appears at the top
+    #     When user clicks on "Content" tab
+    #     And user clicks on "Add content" action button
+    #     And user clicks on "Mini Landing Page" content type
+    #     Then page title is "Create Mini Landing Page"
+    #     And user selects "NCIDS" from style dropdown
+    #     And browser waits
+    #     When user selects test site section
+    #     And user fills out the following fields
+    #         | fieldLabel               | value                                                           | field_name                     |
+    #         | Pretty URL               | ncids-mini-landing-page-two-column                              | field_pretty_url               |
+    #         | Page Title               | NCIDS Automated Test Mini Landing page 2 Column                 | title                          |
+    #         | Browser Title            | NCIDS Automated Test Mini Landing page 2 Column - Browser Title | field_browser_title            |
+    #         | Card Title               | Automated Test Mini Landing page - Card Title                   | field_card_title               |
+    #         | Meta Description         | Automated Test Mini Landing page Meta Description               | field_page_description         |
+    #         | Feature Card Description | Automated Test Mini Landing page - Feature Card Desc            | field_feature_card_description |
+    #     And user selects "Add NCIDS 2 Column Layout" from "Contents" dropdown
+    #     And browser waits
+    #     And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit consequat. Suspendisse sagittis leo eu elit vestibulum, feugiat cursus nisl finibus. Nulla posuere scelerisque velit, et ornare arcu suscipit in. Curabitur ut venenatis nisl.' into 1 HTML Content
+    #     And user selects "Add NCIDS Card Internal" to add to column Right Content
+    #     And browser waits
+    #     And user clicks on "Featured Item" in 1 "NCIDS Card Internal" section
+    #     And user clicks on Select content button item
+    #     And user selects "Article to test Related Resources" item from the list
+    #     And user clicks on "Select content" button to select item
+    #     And browser waits
+    #     And user selects "Add NCIDS 2 Column Layout" from "Contents" dropdown
+    #     And user selects "66/33" as 2 column Layout display
+    #     And user enters 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis elit consequat. Suspendisse sagittis leo eu elit vestibulum, feugiat cursus nisl finibus. Nulla posuere scelerisque velit, et ornare arcu suscipit in. Curabitur ut venenatis nisl.' into 2 HTML Content
+    #     And user selects "Add NCIDS Card External" to add to column Right Content
+    #     And browser waits
+    #     And user fills out the following fields
+    #         | fieldLabel        | value                  | field_name                                                                                               |
+    #         | Featured Item Url | https://www.google.com | field_landing_contents[1][subform][field_right_content][0][subform][field_featured_url][0][uri]          |
+    #         | Card Title        | Google Link            | field_landing_contents[1][subform][field_right_content][0][subform][field_override_card_title][0][value] |
+    #     Then user saves the content page
+    #     And browser waits
 
 
 

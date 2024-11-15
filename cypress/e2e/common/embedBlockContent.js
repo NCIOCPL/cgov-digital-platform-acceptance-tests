@@ -24,7 +24,10 @@ And('user enters {string} into source text field', (value) => {
 });
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe(`iframe[title="Rich Text Editor, Content field"]`, position - 1).find('p').type(value);
+    cy.get('.ck-content[contenteditable=true]').eq(position-1).then(el => {
+                const editor = el[0].ckeditorInstance
+                editor.data.set(value)
+            });
 });
 
 And('the content item with title {string} exists in the list of content', (titleText) => {
@@ -75,16 +78,17 @@ And('user clicks on {string} button to select an image', (selectImage) => {
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value);
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
+})
+
+And('user clicks {string} button {int} in the WYSIWYG editor', (toolTip, position) => {
+    cy.get(`table[id*='field-article-body-value'] button[data-cke-tooltip-text*='${toolTip}']`).eq(position - 1).click()
+    
 });
 
-And('user clicks {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
-    cy.get(`span[class*="cke_button_icon"][class*="${featuredContentButton.toLowerCase().replaceAll(" ","_")}"]`).eq(position - 1).click({ force: true });
-});
-
-And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
-});
 
 And('user enters {string} into content title search box and clicks {string}', (nameToSearch, applyBtn) => {
     cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find(`input[id*="edit-info"]`).type(nameToSearch);

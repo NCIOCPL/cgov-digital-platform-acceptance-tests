@@ -6,12 +6,12 @@ And('user clicks on Image content type', () => {
     cy.get("dl.admin-list a[href='/media/add/cgov_image']").click();
 });
 
-And('user types {string} into Caption text field', (value) => {
-    cy.get('.ck-content[contenteditable=true]').then(el => {
-        const editor = el[0].ckeditorInstance
-        editor.data.set(value)
-    });
-})
+// And('user types {string} into Caption text field', (value) => {
+//     cy.get('.ck-content[contenteditable=true]').then(el => {
+//         const editor = el[0].ckeditorInstance
+//         editor.data.set(value)
+//     });
+// })
 
 And('user uploads test {string} image {string}', (imageType, fileName) => {
     if (imageType === "main")

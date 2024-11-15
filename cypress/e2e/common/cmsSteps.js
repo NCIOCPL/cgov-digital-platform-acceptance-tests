@@ -604,3 +604,10 @@ Given('user is navigating to the front end site with path {string}', (path) => {
     cy.reload(true);
     cy.visit(`${frontEndBaseUrl}${path}`, { retryOnStatusCodeFailure: true });
 })
+
+And('user types {string} into Caption text field', (value) => {
+    cy.get('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
+})
