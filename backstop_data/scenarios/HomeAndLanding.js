@@ -22,5 +22,9 @@ module.exports = [
     {
         label: 'Cancer types home and landing',
         testPath: '/types',
+    },
+    {
+        label: 'Home and landing with NCIDS raw html',
+        testPath: '/espanol/subvenciones-capacitacion',
     } 
 ]
