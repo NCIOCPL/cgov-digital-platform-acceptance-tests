@@ -135,7 +135,7 @@ And('there are the following wide guide cards', (dataTable) => {
     for (let { index, title, description, numberOfLinks, source } of dataTable.hashes()) {
         cy.get(`div[class="nci-guide-card nci-guide-card--cgdp-wide"]`).eq(index).as('wideCard');
         cy.get('@wideCard').find('h2').should('have.text', title)
-        cy.get('@wideCard').find('.nci-guide-card__description.usa-prose p').should('have.text', description)
+        cy.get('@wideCard').find('.nci-guide-card__description p').should('have.text', description)
 
         cy.get('@wideCard').find('li').should('have.length', numberOfLinks);
 
@@ -218,7 +218,7 @@ Then('user selects {string} option from Operations dropdown for media with title
 });
 
 Then('the video caption reads {string}', (caption) => {
-    cy.get('figcaption.cgdp-video__caption.usa-prose p').should('have.text', caption)
+    cy.get('figcaption.cgdp-video__caption p').should('have.text', caption)
 })
 
 And('user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
