@@ -93,7 +93,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
             | Card Title               | Automated Test Infographic Spanish - Card Title         | field_card_title               |
             | Feature Card Description | Automated Test Infographic Spanish - Featured Card Desc | field_feature_card_description |
         And user enters "Spanish" into "List Description" text field
-        And user types "Spanish" into Caption text field
+        And user types "Automated Test Infographic CaptionSpanish" into Caption text field
         And user selects "Review" from Change to dropdown
         Then user saves the content page
 

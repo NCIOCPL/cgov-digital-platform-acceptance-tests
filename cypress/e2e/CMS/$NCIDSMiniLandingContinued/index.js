@@ -31,7 +31,10 @@ And('user clicks on {string} button for {string}', (edit, section) => {
 });
 
 And('user enters {string} into {int} HTML Content', (htmlContent, index) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, HTML Content field']", index - 1).find('p').type(htmlContent)
+    cy.get('.ck-content[contenteditable=true]').eq(index-1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(htmlContent)
+    });
 })
 
 And('user selects {string} to add to column Right Content', (dropdown) => {
@@ -170,9 +173,9 @@ And('user clicks on {string} button to select media', (listBtn) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`input[value="${listBtn}"]`).click({ force: true })
 })
 
-And('user types {string} into Caption text field', (value) => {
-    cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value)
-})
+// And('user types {string} into Caption text field', (value) => {
+//     cy.getNthIframe("iframe[class='cke_wysiwyg_frame cke_reset']", 1).find('p').type(value)
+// })
 
 And('user selects {string} from the {int} {string} dropdown', (option, index, dropdown) => {
     cy.get(`label:contains('${dropdown}')`).eq(index - 1).parent().find('select').select(option)
