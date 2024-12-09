@@ -76,7 +76,7 @@ And('mobile site logo is displayed with image src {string}', (src) => {
 });
 
 And('{string} logo attribute has a value {string}', (attr, value) => {
-    cy.get('.nci-logo a').should('have.attr', attr, value);
+    cy.get('.nci-logo img').should('have.attr', attr, value);
 });
 
 And('search box does not exist', () => {
