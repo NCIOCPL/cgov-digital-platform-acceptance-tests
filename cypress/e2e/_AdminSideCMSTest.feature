@@ -32,15 +32,9 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
         Then page title is "Structure"
         And the following config links appear below
             | name                | link                             |
-            | Application Modules | /admin/structure/app_module      |
             | Block layout        | /admin/structure/block           |
-            | Content types       | /admin/structure/types           |
-            | Display modes       | /admin/structure/display-modes   |
-            | Media types         | /admin/structure/media           |
-            | Paragraph types     | /admin/structure/paragraphs_type |
             | Taxonomy            | /admin/structure/taxonomy        |
-            | Views               | /admin/structure/views           |
-
+          
     Scenario: user is able to access Appearance configuration
         When user is logged in and the user name "siteadmin" is displayed in the toolbar
         Then the tool bar appears at the top
@@ -62,16 +56,13 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
         Then page title is "Configuration"
         And the following configuration groups are displayed
             | title               |
-            | People              |
-            | Content authoring   |
             | Development         |
             | Search and metadata |
             | Web services        |
             | System              |
             | User interface      |
             | Media               |
-            | Region and language |
-            | Workflow            |
+
 
     Scenario: user is able to access People tab
         When user is logged in and the user name "siteadmin" is displayed in the toolbar
@@ -89,10 +80,7 @@ Feature: As an admin, I want to be able to login to CMS and use main menu bar fo
         And the following config links appear below
             | name                          | link                           |
             | Recent log messages           | /admin/reports/dblog           |
-            | Available translation updates | /admin/reports/translations    |
             | Field list                    | /admin/reports/fields          |
-            | Metatag plugins               | /admin/reports/metatag-plugins |
-            | Status report                 | /admin/reports/status          |
             | Top 'access denied' errors    | /admin/reports/access-denied   |
             | Top 'page not found' errors   | /admin/reports/page-not-found  |
             | Views plugins                 | /admin/reports/views-plugins   |

@@ -28,19 +28,19 @@ Feature: Blog series RSS Feed
         Examples:
             ## It is expected that all site map entries point to www.cancer.gov as this is the URL we want indexed if a search engine
             ## indexes a lower-tier server.
-            | path                                                                              | type                           |
-            | https://www.cancer.gov/                                                           | Home and Landing page          |
-            | https://www.cancer.gov/espanol                                                    |                                |
-            | https://www.cancer.gov/about-cancer/coping/feelings/relaxation                    | Article                        |
-            | https://www.cancer.gov/about-cancer/coping/feelings/relaxation/loukissas-jennifer | Biography                      |
-            | https://www.cancer.gov/about-cancer/coping/feelings/relaxation/duke-university    | Cancer Center                  |
-            | https://www.cancer.gov/types/breast/research                                      | Cancer Research List Page      |
-            | https://www.cancer.gov/espanol/tipos/seno/pro                                     | Cancer Type Home Page          |
-            | https://www.cancer.gov/about-cancer/coping/nci-workshop-event                     | Event                          |
-            | https://www.cancer.gov/news-events                                                | Home and Landing Page          |
-            | https://www.cancer.gov/pets                                                       | Mini Landing Page              |
-            | https://www.cancer.gov/test/types/liver/what-is-liver-cancer                      | PDQ Cancer Information Summary |
-            | https://www.cancer.gov/about-cancer/treatment/drugs/bevacizumab                   | PDQ Drug Information Summary   |
+            | path                                                                  | type                           |
+            | {BASE_URL}/                                                           | Home and Landing page          |
+            | {BASE_URL}/espanol                                                    |                                |
+            | {BASE_URL}/about-cancer/coping/feelings/relaxation                    | Article                        |
+            | {BASE_URL}/about-cancer/coping/feelings/relaxation/loukissas-jennifer | Biography                      |
+            | {BASE_URL}/about-cancer/coping/feelings/relaxation/duke-university    | Cancer Center                  |
+            | {BASE_URL}/types/breast/research                                      | Cancer Research List Page      |
+            | {BASE_URL}/espanol/tipos/seno/pro                                     | Cancer Type Home Page          |
+            | {BASE_URL}/about-cancer/coping/nci-workshop-event                     | Event                          |
+            | {BASE_URL}/news-events                                                | Home and Landing Page          |
+            | {BASE_URL}/pets                                                       | Mini Landing Page              |
+            | {BASE_URL}/test/types/liver/what-is-liver-cancer                      | PDQ Cancer Information Summary |
+            | {BASE_URL}/about-cancer/treatment/drugs/bevacizumab                   | PDQ Drug Information Summary   |
 
 
     Scenario Outline: Some content types should not appear in the sitemap.
@@ -50,7 +50,7 @@ Feature: Blog series RSS Feed
         Then the sitemap has no entry for "<path>"
 
         Examples:
-            | path                                 | type             |
-            | /search/results                      | Application page |
-            | /news-events/promo-images-blog/2019  | Blog Post        |
-            | /news-events/promo-images-blog       | Blog Series      |
+            | path                                | type             |
+            | /search/results                     | Application page |
+            | /news-events/promo-images-blog/2019 | Blog Post        |
+            | /news-events/promo-images-blog      | Blog Series      |
