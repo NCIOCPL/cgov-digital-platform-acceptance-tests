@@ -392,7 +392,7 @@ And('user selects {int} Promotional Image for the mini landing', (num) => {
 
 And('user remembers the source of selected promo image for the mini landing', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src')
+        imageSrc = $el[0].getAttribute('src').replace('.webp','')
     })
 });
 

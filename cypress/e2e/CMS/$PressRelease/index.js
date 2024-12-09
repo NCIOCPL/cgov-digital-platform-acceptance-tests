@@ -15,7 +15,7 @@ And('user selects {int} Lead Image from the list of images', (num) => {
 });
 And('user remembers the source of selected lead image for further verification', () => {
     cy.get('details img').eq(0).then($el => {
-        imageSrc = $el[0].getAttribute('src')
+        imageSrc = $el[0].getAttribute('src').replace('.webp','')
     })
 })
 
@@ -29,7 +29,7 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src')
+        imageSrc1 = $el[0].getAttribute('src').replace('.webp','')
     })
 })
 

@@ -169,7 +169,7 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('details img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src')
+        imageSrc1 = $el[0].getAttribute('src').replace('.webp','')
     })
 })
 
@@ -183,7 +183,7 @@ And('user selects {int} Promotional Image from the list of images to be displaye
 
 And('user remembers the source of selected promotional image to be displayed in mini landing pages for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc2 = $el[0].getAttribute('src')
+        imageSrc2 = $el[0].getAttribute('src').replace('.webp','')
     });
 });
 
@@ -363,7 +363,7 @@ And('user selects {int} Promotional Image from the list of images for mini landi
 });
 And('user remembers the source of selected promo image for further verification for mini landing page', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src');
+        imageSrc = $el[0].getAttribute('src').replace('.webp','');
     });
 });
 

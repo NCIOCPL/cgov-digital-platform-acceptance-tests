@@ -14,7 +14,7 @@ And('user selects {int} Biography Image from the list of images', (number) => {
 });
 And('user remembers the source of selected biography image for further verification', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src');
+        imageSrc = $el[0].getAttribute('src').replace('.webp','');
     })
 })
 
