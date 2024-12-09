@@ -40,7 +40,7 @@ And('user selects {int} Promotional Image from the list of images to be displaye
 
 And('user remembers the source of selected promotional image to be displayed in home and landing pages for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src');
+        imageSrc1 = $el[0].getAttribute('src').replace('.webp','');
     });
 });
 
