@@ -43,7 +43,7 @@ Feature: Adding a custom site logo
 
     Scenario: Verify site logo
         Given user is navigating to the front end site with path "/about-cancer/coping/feelings"
-        And "aria-label" logo attribute has a value "Home Page Test alt tag"
+        And "alt" logo attribute has a value "Home Page Test alt tag"
         And site logo is displayed with image src "/files/ncids_header/logos/desktopTest.svg"
         And search box does not exist
         Then mobile site logo is displayed with image src "/files/ncids_header/logos/mobile.svg"

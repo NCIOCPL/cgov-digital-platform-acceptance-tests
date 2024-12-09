@@ -184,6 +184,7 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
         And user selects 1 item in dropdown
         And analytics storage is cleared
         And user clears combobox
+        And browser waits
         Then page click request is sent
         And browser waits
         And the following parameters should be captured
