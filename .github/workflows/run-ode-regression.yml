@@ -27,7 +27,7 @@ jobs:
       - name: Run tests
         run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.base_url }} CYPRESS_ocpl_password='${{ secrets.ocpl_password }}' CYPRESS_admin_password='${{ secrets.admin_password }}' npm test
       ## Upload screenshots of failed tests
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload failed tests
         if: failure()
         with:
@@ -37,9 +37,9 @@ jobs:
         if: always()
         run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms
       ## Upload screenshots of failed tests
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload failed CMS tests
         if: failure()
         with:
-          name: cypress-screenshots
+          name: cypress-screenshots-cms
           path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/cypress/screenshots
