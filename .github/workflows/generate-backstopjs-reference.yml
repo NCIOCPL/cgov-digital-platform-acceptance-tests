@@ -28,7 +28,7 @@ jobs:
       - name: Run image generation
         run: refBaseUrl=${{ inputs.base_url }} npm run backstop:reference
       ## Upload ref images
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload reference images
         with:
           name: backstopjs-reference
