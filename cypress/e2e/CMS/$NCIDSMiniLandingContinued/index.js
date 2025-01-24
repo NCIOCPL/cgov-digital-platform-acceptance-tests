@@ -96,7 +96,7 @@ And('the sections have the following', (dataTable) => {
         }
 
         if (mediaType !== 'none') {
-            cy.get('@column').find(`figure[class="${mediaType}"]`).should('exist')
+            cy.get('@column').find(`figure[class*="${mediaType}"]`).should('exist')
         }
 
         if (title) {
