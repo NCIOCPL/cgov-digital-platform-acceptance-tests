@@ -14,9 +14,9 @@ Feature: Basic checks to ensure production site is up and running
         And content is displayed
 
         Examples:
-            | url                                                     | title                     |
-            | /news-events/events                                     | Meetings & Events         |
-            | /about/diversity-inclusion/inclusivity-minute?year=2019 | 2019 - Inclusivity Minute |
+            | url                                                     | title                         |
+            | /news-events/events                                     | Meetings & Events             |
+            | /about/organization/tdrp/meb/tools                      | Tools, Methods, and Resources |
 
     Scenario: English 404 page
         Given user is navigating to "/chicken " with a 404 status
