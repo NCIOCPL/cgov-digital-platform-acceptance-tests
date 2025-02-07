@@ -83,7 +83,7 @@ And('public use text has a link {string} with href {string}', (linkText, link) =
 });
 
 And('{string} is a link with href that contains site section and {string}', (linkText, itemHref) => {
-    cy.get('.views-element-container > ul> li').find(`a:contains("${linkText}")`).should('have.attr', 'href').then((link) => {
+    cy.get('.cgdp-dynamic-list > ul> li').find(`a:contains("${linkText}")`).should('have.attr', 'href').then((link) => {
         expect(link).to.include(itemHref).and.to.include(siteSection);
     })
 
@@ -109,19 +109,19 @@ And('today date is displayed in format {string}', (format) => {
     const month = months[date.getMonth()];
     const day = date.getDate();
     const expectedDate = `${month} ${day}, ${year}`;
-    cy.get('.views-element-container > ul> li').find('time').first().should('have.text', expectedDate);
+    cy.get('.cgdp-dynamic-list > ul> li').find('time').first().should('have.text', expectedDate);
 
 });
 
 And('the list item description reads {string}', (desc) => {
-    cy.get('.views-element-container > ul> li').find('p').first().should('have.text', desc);
+    cy.get('.cgdp-dynamic-list > ul> li').find('p').first().should('have.text', desc);
 });
 
 And('the promotional image for press release is matching the earlier selected image', () => {
     const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
-    cy.get('.views-element-container > ul> li').find('img').then($el => {
+    cy.get('.cgdp-dynamic-list > ul> li').find('img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))

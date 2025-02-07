@@ -18,17 +18,17 @@ And('{string} box is displayed with a link {string}', (linkText, linkHref) => {
 });
 
 And('the list of press release pages is displayed', () => {
-    cy.get('.views-element-container').should('be.visible');
+    cy.get('div.dynamic.list').should('be.visible');
 });
 
 And('each title is a link with href that starts with {string}', (itemHref) => {
-    cy.get('.views-element-container > ul> li').find('a').should('have.attr', 'href').then((link) => {
+    cy.get('div.dynamic.list > ul> li').find('a').should('have.attr', 'href').then((link) => {
         expect(link).to.include(itemHref)
     })
 });
 
 And('each date is for year {string}', (year) => {
-    cy.get('.views-element-container > ul> li').find('time').should('contain.text', year);
+    cy.get('div.dynamic.list > ul> li').find('time').should('contain.text', year);
 });
 
 And('posted date is not displayed', () => {
