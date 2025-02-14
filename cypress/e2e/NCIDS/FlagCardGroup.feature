@@ -36,7 +36,7 @@ Feature: As a user I want to be able to add a NCIDS flag card group component on
             | evar64    | External\|The Optional Flag Card Group Heading\|External Card to Google |
             | evar65    | Flag Card\|Not Defined\|Not Defined                                     |
             | evar66    | 3\|3\|0\|0\|5\|2\|Not Defined                                           |
-            | evar67    | Card\|1\|1                                                              |
+            | evar67    | Description\|1\|1                                                       |
             | evar68    | Body                                                                    |
             | pageName  | {CANONICAL_HOST}/test/ncids-flag-card-test                              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-flag-card-test                 |
@@ -63,7 +63,7 @@ Feature: As a user I want to be able to add a NCIDS flag card group component on
             | evar64    | Internal\|The Optional Flag Card Group Heading\|About Cancer |
             | evar65    | Flag Card\|Not Defined\|Not Defined                          |
             | evar66    | 3\|3\|0\|0\|5\|1\|Not Defined                                |
-            | evar67    | Card\|1\|1                                                   |
+            | evar67    | Description\|1\|1                                            |
             | evar68    | Body                                                         |
             | pageName  | {CANONICAL_HOST}/test/ncids-flag-card-test                   |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-flag-card-test      |
@@ -90,7 +90,7 @@ Feature: As a user I want to be able to add a NCIDS flag card group component on
             | evar64    | Media\|The Optional Flag Card Group Heading\|NCI at a Glance |
             | evar65    | Flag Card\|Not Defined\|Not Defined                          |
             | evar66    | 3\|3\|0\|0\|5\|3\|Not Defined                                |
-            | evar67    | Card\|1\|1                                                   |
+            | evar67    | Description\|1\|1                                            |
             | evar68    | Body                                                         |
             | pageName  | {CANONICAL_HOST}/test/ncids-flag-card-test                   |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-flag-card-test      |

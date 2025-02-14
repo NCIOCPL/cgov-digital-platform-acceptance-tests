@@ -195,7 +195,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
             | evar61    | cgvMiniLanding\|ncids_default                                  |
-            | evar64    | Internal\|About Cancer\|Image                                  |
+            | evar64    | Internal\|Test Links\|About Cancer                             |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
             | evar66    | 11\|5\|0\|0\|3\|1\|Not Defined                                 |
             | evar67    | Image\|1\|1                                                    |
@@ -225,7 +225,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
             | evar61    | cgvMiniLanding\|ncids_default                                  |
-            | evar64    | External\|External Card Title\|Image                           |
+            | evar64    | External\|Test Links\|External Card Title                      |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
             | evar66    | 11\|5\|0\|0\|3\|2\|Not Defined                                 |
             | evar67    | Image\|1\|1                                                    |
@@ -255,7 +255,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
             | evar61    | cgvMiniLanding\|ncids_default                                  |
-            | evar64    | Media\|NCI at a Glance\|Image                                  |
+            | evar64    | Media\|Test Links\|NCI at a Glance                             |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
             | evar66    | 11\|5\|0\|0\|3\|3\|Not Defined                                 |
             | evar67    | Image\|1\|1                                                    |
