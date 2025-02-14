@@ -170,6 +170,7 @@ Feature: As a user I want to select NCIDS with Title from Home and Landing Page 
             | evar66    | 3\|1\|0\|0\|1\|1                                |
             | evar67    | Dropdown\|127\|1                                |
             | evar68    | Body                                            |
+            | evar80    | Cancer Types Search\|Selected Item\|1\|0\|0\|0  |
             | pageName  | {CANONICAL_HOST}/types                          |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/types             |
             | event88   |                                                 |

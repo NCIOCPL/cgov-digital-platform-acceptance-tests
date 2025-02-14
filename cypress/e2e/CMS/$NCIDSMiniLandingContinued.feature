@@ -307,26 +307,26 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         When user clicks on "/about-cancer/understanding/article" link
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                              |
-            | prop4     | D=pev1                                             |
-            | prop8     | english                                            |
-            | prop57    | D=v64                                              |
-            | prop58    | D=v65                                              |
-            | prop59    | D=v66                                              |
-            | prop60    | D=c67                                              |
-            | prop67    | D=pageName                                         |
-            | prop68    | D=v68                                              |
-            | evar2     | D=c8                                               |
-            | evar61    | cgvMiniLanding\|ncids_default                      |
-            | evar64    | Internal\|Article to test Related Resources\|Image |
-            | evar65    | Feature Card\|Light\|Standard Single Link          |
-            | evar66    | 10\|2\|2\|2\|1\|1\|TwoColumn50:50                  |
-            | evar67    | Image\|1\|1                                        |
-            | evar68    | Body                                               |
-            | event112  |                                                    |
-            | channel   | About Cancer                                       |
-            | pev2      | MLP:FeatureCard:LinkClick                          |
-            | linkType  | lnk_o                                              |
+            | parameter | value                                                    |
+            | prop4     | D=pev1                                                   |
+            | prop8     | english                                                  |
+            | prop57    | D=v64                                                    |
+            | prop58    | D=v65                                                    |
+            | prop59    | D=v66                                                    |
+            | prop60    | D=c67                                                    |
+            | prop67    | D=pageName                                               |
+            | prop68    | D=v68                                                    |
+            | evar2     | D=c8                                                     |
+            | evar61    | cgvMiniLanding\|ncids_default                            |
+            | evar64    | Internal\|Not Defined\|Article to test Related Resources |
+            | evar65    | Feature Card\|Light\|Standard Single Link                |
+            | evar66    | 10\|2\|2\|2\|1\|1\|TwoColumn50:50                        |
+            | evar67    | Image\|1\|1                                              |
+            | evar68    | Body                                                     |
+            | event112  |                                                          |
+            | channel   | About Cancer                                             |
+            | pev2      | MLP:FeatureCard:LinkClick                                |
+            | linkType  | lnk_o                                                    |
 
     Scenario: Translate created video
         Given user is navigating to "/user/login?show_login_fields=true"

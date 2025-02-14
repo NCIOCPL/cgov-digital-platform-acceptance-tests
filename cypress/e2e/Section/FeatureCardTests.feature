@@ -9,7 +9,7 @@ Feature: Feature Card tests
         Examples:
             | url                          | count |
             | /about-nci/organization/ccct | 2     |
-   
+
 
     Scenario Outline: Verify feature card's components
         Given user is navigating to "<url>"
@@ -23,9 +23,9 @@ Feature: Feature Card tests
         And feature cards at positions "<indexes>" have "files" as "<files>"
 
         Examples:
-            | url                          | indexes | title                                                                      | description                                                   | itemLink                                                                                                 | altText                                                                                               | files                                                                                                                                          |
-            | /about-nci/organization/ccct | 0,1     | Feelings and Cancer,External Card Title                                    | null,External Card Description                                | /about-cancer/coping/feelings,https://www.google.com                                                     | Sad Woman Looking Out Window,Find a Clinical Trial                                                    | sad-woman-looking-out-window-feature.jpg,find-clinical-trial-blue-feature-card-feat.jpg                                                        |
-           
+            | url                          | indexes | title                                   | description                    | itemLink                                             | altText                                            | files                                                                                   |
+            | /about-nci/organization/ccct | 0,1     | Feelings and Cancer,External Card Title | null,External Card Description | /about-cancer/coping/feelings,https://www.google.com | Sad Woman Looking Out Window,Find a Clinical Trial | sad-woman-looking-out-window-feature.jpg,find-clinical-trial-blue-feature-card-feat.jpg |
+
     Scenario Outline: Verify feature card external item's components
         Given user is navigating to "<url>"
         And screen breakpoint is set to "mobile"
@@ -35,9 +35,9 @@ Feature: Feature Card tests
         And feature cards at positions "<indexes>" have "exit notification link href" as "<href>"
 
         Examples:
-            | url                          | indexes | externalLinkCount | href                       | itemLink               |
-            | /about-nci/organization/ccct | 1       | 1                 | /policies/linking          | https://www.google.com |
-            
+            | url                          | indexes | externalLinkCount | href              | itemLink               |
+            | /about-nci/organization/ccct | 1       | 1                 | /policies/linking | https://www.google.com |
+
 
     Scenario Outline: Verify NCIDS 3 feature card row components
         Given screen breakpoint is set to "<breakpoint"
@@ -125,7 +125,7 @@ Feature: Feature Card tests
             | prop67    | D=pageName                                                     |
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
-            | evar64    | Internal\|[Lead IMG] Card Title\|Image                         |
+            | evar64    | Internal\|Feature Card Row 2\|[Lead IMG] Card Title            |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
             | evar66    | 3\|2\|0\|0\|3\|1                                                     |
             | evar67    | Image\|1\|1                                                    |
@@ -154,7 +154,7 @@ Feature: Feature Card tests
             | prop67    | D=pageName                                                     |
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
-            | evar64    | External\|External Card Title\|Image                           |
+            | evar64    | External\|Feature Card Row 3\|External Card Title              |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
             | evar66    | 3\|3\|0\|0\|1\|1                                                     |
             | evar67    | Image\|1\|1                                                    |
@@ -182,7 +182,7 @@ Feature: Feature Card tests
             | prop67    | D=pageName                                                       |
             | prop68    | D=v68                                                            |
             | evar2     | D=c8                                                             |
-            | evar64    | Media\|Override Card Title\|Image                                |
+            | evar64    | Media\|Multimedia Feature Card Row 2\|Override Card Title        |
             | evar65    | Feature Card\|Light\|Standard Single Link                        |
             | evar66    | 3\|2\|0\|0\|3\|1                                                       |
             | evar67    | Image\|1\|1                                                      |
