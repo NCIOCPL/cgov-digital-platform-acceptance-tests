@@ -68,14 +68,14 @@ Feature: Basic checks to ensure production site is up and running
         Then page load request is sent
         And the following parameters should be captured
             | parameter | value                                |
-            | prop6     | Comprehensive Cancer Information     |
+            | prop6     | Clinical Trials Print Results Page   |
             | prop10    | Clinical Trial Search Results        |
             | prop44    | Clinical Trials                      |
             | prop8     | english                              |
             | prop3     | /                                    |
             | prop65    | /^\d{1,2}$/                          |
             | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/ |
-            | prop62    | Clinical Trials: Print Results Page  |
+            | prop62    | Clinical Trials: Direct  |
             | evar1     | {CANONICAL_HOST}/cts.print/display   |
             | evar44    | Clinical Trials                      |
             | evar2     | english                              |
