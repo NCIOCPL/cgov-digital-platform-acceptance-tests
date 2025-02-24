@@ -32,6 +32,9 @@ module.exports = async (page, scenario) => {
     for (const clickSelectorIndex of [].concat(clickSelector)) {
       await page.waitForSelector(clickSelectorIndex);
       await page.click(clickSelectorIndex);
+      if (postInteractionWait) {
+        await page.waitForTimeout(postInteractionWait)
+      }
     }
   }
 
