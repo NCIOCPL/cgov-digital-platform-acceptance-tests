@@ -9,8 +9,11 @@ const currYear = date.getFullYear();
 
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value);
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
+    const editor = el[0].ckeditorInstance
+    editor.data.set(value)
 });
+})
 
 And('the intro text reads {string}', (titlText) => {
     cy.get(`div[class='blog-intro-text'] p:contains("${titlText}")`).should('be.visible');
@@ -178,5 +181,5 @@ And('user selects a checkbox next to title with url {string} under {string} from
 });
 
 And('user clicks {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
-    cy.get('span.cke_button_label.cke_button__cgov_featured_content_button_label').eq(position - 1).click({ force: true });
+    cy.get(`button[data-cke-tooltip-text='Insert ${featuredContentButton}']`).eq(position-1).click({ force: true });
 });
