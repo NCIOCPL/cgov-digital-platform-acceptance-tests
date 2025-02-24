@@ -3,8 +3,9 @@ module.exports = [
         label: 'AIDS Funding History factbook',
         testPath: '/about-nci/budget/fact-book/historical-trends/aids-funding',
         prodPath: true,
+        readySelector:'#NCI-Chart__aids-funding',
         selectors: [
-            'div[id*="NCI-Chart__aids-funding"]'
+            '#NCI-Chart__aids-funding'
         ]
     },
     {
@@ -23,8 +24,9 @@ module.exports = [
                 height: 900,
             },
         ],
+        readySelector:'#NCI-Chart__appropriations',
         selectors: [
-            'div[id*="NCI-Chart__appropriations"]'
+            '#NCI-Chart__appropriations'
         ] 
     },
     // {
@@ -47,54 +49,71 @@ module.exports = [
         label: 'Comparison of Dollars, Positions & Space factbook',
         testPath: '/about-nci/budget/fact-book/historical-trends/comparison',
         prodPath: true,
+        readySelector:'#NCI-Chart__compare-html-amount',
         selectors: [
-            'div[id*="NCI-Chart__compare-html-amount"]'
+            '#NCI-Chart__compare-html-amount'
         ] 
     },
     {
         label: 'Research Career "K" Awards factbook',
         testPath: '/about-nci/budget/fact-book/extramural-programs/k-awards',
         prodPath: true,
+        readySelector:'#NCI-Chart__kawards-pie',
         selectors: [
-            'div[id*="NCI-Chart__kawards-pie"]'
+            '#NCI-Chart__kawards-pie'
         ] 
     },
     {
         label: 'Extramural Funding factbook',
         testPath: '/about-nci/budget/fact-book/data/extramural',
         prodPath: true,
+        readySelector:'#NCI-Chart__html-extramural',
         selectors: [
-            'div[id*="NCI-Chart__html-extramural"]'
+            '#NCI-Chart__html-extramural'
         ] 
     },
     {
         label: 'Dr. Ruth L. Kirschstein National Research Service Awards factbook',
         testPath: '/about-nci/budget/fact-book/extramural-programs/nrsa',
         prodPath: true,
+        postInteractionWait:4000,
+        readySelector:'#NCI-Chart__html-nrsa',
         selectors: [
-            'div[id*="NCI-Chart__html-nrsa"]'
+            '#NCI-Chart__html-nrsa'
         ] 
     },
     {
         label: 'NIH Management Fund factbook',
         testPath: '/about-nci/budget/fact-book/data/management-fund',
         prodPath: true,
+        postInteractionWait:4000,
         selectors: [
-            'div[id*="NCI-Chart__management-fund"]'
-        ] 
+            '#NCI-Chart__management-fund'
+        ],
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+        ],
     },
     {
         label: 'Obligations factbook',
         testPath: '/about-nci/budget/fact-book/cancer-moonshot/moonshot-obligations',
         prodPath: true,
+        postInteractionWait:4000,
+        readySelector: '#NCI-Chart__moonshot-obligations',
         selectors: [
-            'div[id*="NCI-Chart__moonshot-obligations"]'
+            '#NCI-Chart__moonshot-obligations'
         ] 
     },
     {
         label: 'Research Project Grants factbook',
         testPath: '/about-nci/budget/fact-book/extramural-programs/rpg',
         prodPath: true,
+        postInteractionWait:4000,
+        readySelector:'#NCI-Chart__number-rpg-awards',
         viewports: [
             {
                 label: 'desktop',
@@ -108,7 +127,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[id*="NCI-Chart__number-rpg-awards"]'
+            '#NCI-Chart__number-rpg-awards'
         ]
     },
     {
@@ -127,32 +146,63 @@ module.exports = [
                 height: 900,
             },
         ],
+        readySelector:'g.highcharts-series-group',
         selectors: [
-            'div[id*="NCI-Chart_obligations-mechanism"]'
+            '#NCI-Chart_obligations-mechanism'
         ] 
     },
     {
         label: 'Program Structure factbook',
         testPath: '/about-nci/budget/fact-book/data/program-structure',
         prodPath: true,
+        readySelector: '#NCI-Chart__program-structure',
         selectors: [
-            'div[id*="NCI-Chart__program-structure"]'
+            '#NCI-Chart__program-structure'
         ] 
     },
     {
         label: 'Extramural vs Intramural & RMS Funding factbook',
         testPath: '/about-nci/budget/fact-book/historical-trends/extramural-intramural-rms',
         prodPath: true,
+        readySelector:'#NCI-Chart__rms-funding',
         selectors: [
-            'div[id*="NCI-Chart__rms-funding"]'
-        ] 
+            '#NCI-Chart__rms-funding'
+        ],
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+        ], 
     },
+    {
+        label: 'Extramural vs Intramural & RMS Funding factbook tab and mob',
+        testPath: '/about-nci/budget/fact-book/historical-trends/extramural-intramural-rms',
+        prodPath: true,
+        selectors: [
+            '#NCI-Chart__rms-funding'
+        ],
+        viewports: [
+                    {
+                        label: 'mobile',
+                        width: 320,
+                        height: 800,
+                    },
+                    {
+                        label: 'tablet',
+                        width: 650,
+                        height: 900,
+                    },
+                ],
+    },
+
      {
         label: 'Professional Judgment and Appropriation factbook mobile breakpoint',
         testPath: '/about-nci/budget/fact-book/historical-trends/bypass-appropriations',
         prodPath: true,
         clickSelector:'section#comparison h2',
-        postInteractionWait:2000,
+        postInteractionWait:4000,
         viewports: [
             {
                 label: 'mobile',
@@ -161,8 +211,9 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[id*="NCI-Chart__appropriations"]'
-        ] 
+            '#NCI-Chart__appropriations'
+        ],
+        selectorExpansion: false
     },
     // {
     //  label: 'Grant and Contract Awards factbook mobile breakpoint',
@@ -192,7 +243,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[id*="NCI-Chart__number-rpg-awards"]'
+            '#NCI-Chart__number-rpg-awards'
         ] 
     },
     {
@@ -200,7 +251,7 @@ module.exports = [
         testPath: '/about-nci/budget/fact-book/data/obligations',
         prodPath: true,
         clickSelector: 'section[id*="nci-oligations-by-mechanism"] h2',
-        postInteractionWait:2000,
+        postInteractionWait:4000,
         viewports: [
             {
                 label: 'mobile',
@@ -209,8 +260,9 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[id*="NCI-Chart_obligations-mechanism"]'
-        ] 
+            '#NCI-Chart_obligations-mechanism'
+        ],
+        selectorExpansion: false,
     },
 
 
@@ -245,8 +297,9 @@ module.exports = [
                 height: 900,
             },
         ],
+        readySelector:'#NCI-Chart__appropriations',
         selectors: [
-            'div[aria-label*="Highcharts interactive chart"]'
+            '#NCI-Chart__appropriations'
         ],
         selectorExpansion: false,
        

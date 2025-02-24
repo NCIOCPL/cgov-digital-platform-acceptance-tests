@@ -28,6 +28,9 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
       selector.setAttribute('hidden', 'hidden');
     })
   }
+  if (scenario.postInteractionWait) {
+    await page.waitForTimeout(scenario.postInteractionWait)
+  }
   await require('./clickAndHoverHelper')(page, scenario);
   // add more ready handlers here...
 };
