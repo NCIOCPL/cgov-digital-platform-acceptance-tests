@@ -1,13 +1,13 @@
-// module.exports = [
-//     {
-//         label: 'AIDS Funding History factbook',
-//         testPath: '/about-nci/budget/fact-book/historical-trends/aids-funding',
-//         prodPath: true,
-//         readySelector:'div[id*="NCI-Chart__aids-funding"]',
-//         selectors: [
-//             'div[id*="NCI-Chart__aids-funding"]'
-//         ]
-//     },
+module.exports = [
+    {
+        label: 'AIDS Funding History factbook',
+        testPath: '/about-nci/budget/fact-book/historical-trends/aids-funding',
+        prodPath: true,
+        readySelector:'div[id*="NCI-Chart__aids-funding"]',
+        selectors: [
+            'div[id*="NCI-Chart__aids-funding"]'
+        ]
+    },
 //     {
 //         label: 'Professional Judgment and Appropriation factbook',
 //         testPath: '/about-nci/budget/fact-book/historical-trends/bypass-appropriations',
@@ -269,4 +269,4 @@
        
 //     },
 
-// ]
+]
