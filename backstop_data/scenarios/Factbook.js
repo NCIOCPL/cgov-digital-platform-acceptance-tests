@@ -100,7 +100,7 @@ module.exports = [
         label: 'Obligations factbook',
         testPath: '/about-nci/budget/fact-book/cancer-moonshot/moonshot-obligations',
         prodPath: true,
-        readySelector: 'g.highcharts-series-group',
+        readySelector: 'div[id*="NCI-Chart__moonshot-obligations"]',
         selectors: [
             'div[id*="NCI-Chart__moonshot-obligations"]'
         ] 
@@ -199,7 +199,7 @@ module.exports = [
         testPath: '/about-nci/budget/fact-book/historical-trends/bypass-appropriations',
         prodPath: true,
         clickSelector:'section#comparison h2',
-        postInteractionWait:2000,
+        postInteractionWait:4000,
         viewports: [
             {
                 label: 'mobile',
@@ -248,7 +248,7 @@ module.exports = [
         testPath: '/about-nci/budget/fact-book/data/obligations',
         prodPath: true,
         clickSelector: 'section[id*="nci-oligations-by-mechanism"] h2',
-        postInteractionWait:2000,
+        postInteractionWait:4000,
         viewports: [
             {
                 label: 'mobile',
@@ -294,8 +294,9 @@ module.exports = [
                 height: 900,
             },
         ],
+        readySelector:'div#NCI-Chart__appropriations',
         selectors: [
-            'div[aria-label*="Highcharts interactive chart"]'
+            'div#NCI-Chart__appropriations'
         ],
         selectorExpansion: false,
        
