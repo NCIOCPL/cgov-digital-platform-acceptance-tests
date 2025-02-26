@@ -76,7 +76,7 @@ module.exports = [
         label: 'Dr. Ruth L. Kirschstein National Research Service Awards factbook',
         testPath: '/about-nci/budget/fact-book/extramural-programs/nrsa',
         prodPath: true,
-        readySelector:'g.highcharts-grid.highcharts-yaxis-grid',
+        readySelector:'div[id*="NCI-Chart__html-nrsa"]',
         selectors: [
             'div[id*="NCI-Chart__html-nrsa"]'
         ] 
@@ -109,7 +109,7 @@ module.exports = [
         label: 'Research Project Grants factbook',
         testPath: '/about-nci/budget/fact-book/extramural-programs/rpg',
         prodPath: true,
-        readySelector:'g.highcharts-axis.highcharts-xaxis',
+        readySelector:'div[id*="NCI-Chart__number-rpg-awards"]',
         viewports: [
             {
                 label: 'desktop',
@@ -160,7 +160,7 @@ module.exports = [
         label: 'Extramural vs Intramural & RMS Funding factbook',
         testPath: '/about-nci/budget/fact-book/historical-trends/extramural-intramural-rms',
         prodPath: true,
-        readySelector:'g.highcharts-axis.highcharts-yaxis',
+        readySelector:'div[id*="NCI-Chart__rms-funding"]',
         selectors: [
             'div[id*="NCI-Chart__rms-funding"]'
         ],
