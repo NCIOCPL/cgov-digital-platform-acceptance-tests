@@ -76,6 +76,7 @@ module.exports = [
         label: 'Dr. Ruth L. Kirschstein National Research Service Awards factbook',
         testPath: '/about-nci/budget/fact-book/extramural-programs/nrsa',
         prodPath: true,
+        postInteractionWait:4000,
         readySelector:'div[id*="NCI-Chart__html-nrsa"]',
         selectors: [
             'div[id*="NCI-Chart__html-nrsa"]'
@@ -85,6 +86,7 @@ module.exports = [
         label: 'NIH Management Fund factbook',
         testPath: '/about-nci/budget/fact-book/data/management-fund',
         prodPath: true,
+        postInteractionWait:4000,
         selectors: [
             'div[id*="NCI-Chart__management-fund"]'
         ],
@@ -100,6 +102,7 @@ module.exports = [
         label: 'Obligations factbook',
         testPath: '/about-nci/budget/fact-book/cancer-moonshot/moonshot-obligations',
         prodPath: true,
+        postInteractionWait:4000,
         readySelector: 'div[id*="NCI-Chart__moonshot-obligations"]',
         selectors: [
             'div[id*="NCI-Chart__moonshot-obligations"]'
@@ -109,6 +112,7 @@ module.exports = [
         label: 'Research Project Grants factbook',
         testPath: '/about-nci/budget/fact-book/extramural-programs/rpg',
         prodPath: true,
+        postInteractionWait:4000,
         readySelector:'div[id*="NCI-Chart__number-rpg-awards"]',
         viewports: [
             {
