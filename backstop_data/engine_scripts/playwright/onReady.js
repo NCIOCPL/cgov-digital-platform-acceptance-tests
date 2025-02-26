@@ -29,7 +29,7 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
     })
   }
   if (scenario.postInteractionWait) {
-    await page.waitForTimeout(postInteractionWait)
+    await page.waitForTimeout(scenario.postInteractionWait)
   }
   await require('./clickAndHoverHelper')(page, scenario);
   // add more ready handlers here...
