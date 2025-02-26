@@ -19,7 +19,7 @@ Feature: Basic checks to ensure CCG production site is up and running
             | /funding-opportunities | CCG Funding Opportunities                  |
             | /blog                  | Updates & Insights Blog                    |
             | /about                 | About The Center for Cancer Genomics (CCG) |
-            | /contacts              | CCG Contacts and Help                      |
+            | /contacts              | OCG Contacts and Help                      |
 
 
     Scenario: English 404 page
