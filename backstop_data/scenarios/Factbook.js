@@ -3,9 +3,9 @@ module.exports = [
         label: 'AIDS Funding History factbook',
         testPath: '/about-nci/budget/fact-book/historical-trends/aids-funding',
         prodPath: true,
-        readySelector:'div[id*="NCI-Chart__aids-funding"]',
+        readySelector:'#NCI-Chart__aids-funding',
         selectors: [
-            'div[id*="NCI-Chart__aids-funding"]'
+            '#NCI-Chart__aids-funding'
         ]
     },
     {
@@ -24,9 +24,9 @@ module.exports = [
                 height: 900,
             },
         ],
-        readySelector:'div[id*="NCI-Chart__appropriations"]',
+        readySelector:'#NCI-Chart__appropriations',
         selectors: [
-            'div[id*="NCI-Chart__appropriations"]'
+            '#NCI-Chart__appropriations'
         ] 
     },
     // {
@@ -49,27 +49,27 @@ module.exports = [
         label: 'Comparison of Dollars, Positions & Space factbook',
         testPath: '/about-nci/budget/fact-book/historical-trends/comparison',
         prodPath: true,
-        readySelector:'div[id*="NCI-Chart__compare-html-amount"]',
+        readySelector:'#NCI-Chart__compare-html-amount',
         selectors: [
-            'div[id*="NCI-Chart__compare-html-amount"]'
+            '#NCI-Chart__compare-html-amount'
         ] 
     },
     {
         label: 'Research Career "K" Awards factbook',
         testPath: '/about-nci/budget/fact-book/extramural-programs/k-awards',
         prodPath: true,
-        readySelector:'div[id*="NCI-Chart__kawards-pie"]',
+        readySelector:'#NCI-Chart__kawards-pie',
         selectors: [
-            'div[id*="NCI-Chart__kawards-pie"]'
+            '#NCI-Chart__kawards-pie'
         ] 
     },
     {
         label: 'Extramural Funding factbook',
         testPath: '/about-nci/budget/fact-book/data/extramural',
         prodPath: true,
-        readySelector:'div[id*="NCI-Chart__html-extramural"]',
+        readySelector:'#NCI-Chart__html-extramural',
         selectors: [
-            'div[id*="NCI-Chart__html-extramural"]'
+            '#NCI-Chart__html-extramural'
         ] 
     },
     {
@@ -77,9 +77,9 @@ module.exports = [
         testPath: '/about-nci/budget/fact-book/extramural-programs/nrsa',
         prodPath: true,
         postInteractionWait:4000,
-        readySelector:'div[id*="NCI-Chart__html-nrsa"]',
+        readySelector:'#NCI-Chart__html-nrsa',
         selectors: [
-            'div[id*="NCI-Chart__html-nrsa"]'
+            '#NCI-Chart__html-nrsa'
         ] 
     },
     {
@@ -88,7 +88,7 @@ module.exports = [
         prodPath: true,
         postInteractionWait:4000,
         selectors: [
-            'div[id*="NCI-Chart__management-fund"]'
+            '#NCI-Chart__management-fund'
         ],
         viewports: [
             {
@@ -103,9 +103,9 @@ module.exports = [
         testPath: '/about-nci/budget/fact-book/cancer-moonshot/moonshot-obligations',
         prodPath: true,
         postInteractionWait:4000,
-        readySelector: 'div[id*="NCI-Chart__moonshot-obligations"]',
+        readySelector: '#NCI-Chart__moonshot-obligations',
         selectors: [
-            'div[id*="NCI-Chart__moonshot-obligations"]'
+            '#NCI-Chart__moonshot-obligations'
         ] 
     },
     {
@@ -113,7 +113,7 @@ module.exports = [
         testPath: '/about-nci/budget/fact-book/extramural-programs/rpg',
         prodPath: true,
         postInteractionWait:4000,
-        readySelector:'div[id*="NCI-Chart__number-rpg-awards"]',
+        readySelector:'#NCI-Chart__number-rpg-awards',
         viewports: [
             {
                 label: 'desktop',
@@ -127,7 +127,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[id*="NCI-Chart__number-rpg-awards"]'
+            '#NCI-Chart__number-rpg-awards'
         ]
     },
     {
@@ -148,25 +148,25 @@ module.exports = [
         ],
         readySelector:'g.highcharts-series-group',
         selectors: [
-            'div[id*="NCI-Chart_obligations-mechanism"]'
+            '#NCI-Chart_obligations-mechanism'
         ] 
     },
     {
         label: 'Program Structure factbook',
         testPath: '/about-nci/budget/fact-book/data/program-structure',
         prodPath: true,
-        readySelector: 'div[id*="NCI-Chart__program-structure"]',
+        readySelector: '#NCI-Chart__program-structure',
         selectors: [
-            'div[id*="NCI-Chart__program-structure"]'
+            '#NCI-Chart__program-structure'
         ] 
     },
     {
         label: 'Extramural vs Intramural & RMS Funding factbook',
         testPath: '/about-nci/budget/fact-book/historical-trends/extramural-intramural-rms',
         prodPath: true,
-        readySelector:'div[id*="NCI-Chart__rms-funding"]',
+        readySelector:'#NCI-Chart__rms-funding',
         selectors: [
-            'div[id*="NCI-Chart__rms-funding"]'
+            '#NCI-Chart__rms-funding'
         ],
         viewports: [
             {
@@ -182,7 +182,7 @@ module.exports = [
         prodPath: true,
         // readySelector:'g.highcharts-axis.highcharts-yaxis',
         selectors: [
-            'div[id*="NCI-Chart__rms-funding"]'
+            '#NCI-Chart__rms-funding'
         ],
         viewports: [
                     {
@@ -212,7 +212,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[id*="NCI-Chart__appropriations"]'
+            '#NCI-Chart__appropriations'
         ],
         selectorExpansion: false
     },
@@ -244,7 +244,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[id*="NCI-Chart__number-rpg-awards"]'
+            '#NCI-Chart__number-rpg-awards'
         ] 
     },
     {
@@ -261,7 +261,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[id*="NCI-Chart_obligations-mechanism"]'
+            '#NCI-Chart_obligations-mechanism'
         ],
         selectorExpansion: false,
     },
@@ -281,7 +281,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[aria-label*="Highcharts interactive chart"]'
+            'div[aria-label*="Highcharts interactive chart'
         ],
         selectorExpansion: false,
        
