@@ -87,9 +87,6 @@ And('only {int} blog appear', (count) => {
     cy.get('div.item-list a.title').should('be.visible').and('have.length', count);
 });
 
-Then('the text {string} appears', (errorText) => {
-    cy.get(`div#content`).should('be.visible').and('include.text',errorText);
-});
 
 And(`blog's posted date is {string}`, (postedDate) => {
     cy.get('div.cgvblogpost p').find('time').should('have.text', postedDate);
@@ -110,6 +107,15 @@ const replacedUrl = badApi.replace("{BASE_URL}",baseUrlFromConfig);
     }).then((resp) => {
       expect(resp.status).to.be.eq(statusCode);
     }) 
+  });
+
+  Then('user is requesting bad url {string} and receives {string}', (badApi, text) => {
+    cy.request({
+      url: badApi,
+      failOnStatusCode: false
+    }).then((resp) => {
+      expect(resp.body).to.eq(text)
+    })
   });
 
 
