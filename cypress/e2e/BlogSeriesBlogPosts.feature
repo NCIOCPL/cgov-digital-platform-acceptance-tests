@@ -105,26 +105,24 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | /espanol/noticias/temas-y-relatos-blog?year=2018&month=05         | May 2018 - Temas y relatos blog |
 
     Scenario Outline: Filtering blogs by year - invalid
-        When user is navigating to bad url "<url>"
+        When user is requesting bad url "<url>" and receives "<text>"
         Then status code is 400 on "<request>"
-        Then the text "<text>" appears
         And blog posts list doesnot appear
         Examples:
-            | url                                                     | request                                                           | text                            |
-            | /news-events/cancer-currents-blog?year=chicken          | {BASE_URL}/news-events/cancer-currents-blog?year=chicken          | A client error happened         |
-            | /research/key-initiatives/ras/ras-central/blog?year=sdf | {BASE_URL}/research/key-initiatives/ras/ras-central/blog?year=sdf | A client error happened         |
-            | /espanol/noticias/temas-y-relatos-blog?year=ghjk        | {BASE_URL}/espanol/noticias/temas-y-relatos-blog?year=ghjk        | Ha ocurrido un error de cliente |
+            | url                                                     | request                                                           | text            |
+            | /news-events/cancer-currents-blog?year=chicken          | {BASE_URL}/news-events/cancer-currents-blog?year=chicken          | year is invalid |
+            | /research/key-initiatives/ras/ras-central/blog?year=sdf | {BASE_URL}/research/key-initiatives/ras/ras-central/blog?year=sdf | year is invalid |
+            | /espanol/noticias/temas-y-relatos-blog?year=ghjk        | {BASE_URL}/espanol/noticias/temas-y-relatos-blog?year=ghjk        | year is invalid |
 
     Scenario Outline: Filtering blogs by month - invalid range
-        When user is navigating to bad url "<url>"
+        When user is requesting bad url "<url>" and receives "<text>"
         Then status code is 400 on "<request>"
-        Then the text "<text>" appears
         And blog posts list doesnot appear
         Examples:
-            | url                                                      | request                                                            | text                            |
-            | /news-events/cancer-currents-blog?month=13               | {BASE_URL}/news-events/cancer-currents-blog?month=13               | A client error happened         |
-            | /research/key-initiatives/ras/ras-central/blog?month=sdf | {BASE_URL}/research/key-initiatives/ras/ras-central/blog?month=sdf | A client error happened         |
-            | /espanol/noticias/temas-y-relatos-blog?month=0           | {BASE_URL}/espanol/noticias/temas-y-relatos-blog?month=0           | Ha ocurrido un error de cliente |
+            | url                                                      | request                                                            | text             |
+            | /news-events/cancer-currents-blog?month=13               | {BASE_URL}/news-events/cancer-currents-blog?month=13               | month is invalid |
+            | /research/key-initiatives/ras/ras-central/blog?month=sdf | {BASE_URL}/research/key-initiatives/ras/ras-central/blog?month=sdf | month is invalid |
+            | /espanol/noticias/temas-y-relatos-blog?month=0           | {BASE_URL}/espanol/noticias/temas-y-relatos-blog?month=0           | month is invalid |
 
     ### blog
     ##reccomended content is tested in a separate test
