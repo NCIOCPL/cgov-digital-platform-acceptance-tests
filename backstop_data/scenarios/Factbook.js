@@ -180,7 +180,6 @@ module.exports = [
         label: 'Extramural vs Intramural & RMS Funding factbook tab and mob',
         testPath: '/about-nci/budget/fact-book/historical-trends/extramural-intramural-rms',
         prodPath: true,
-        // readySelector:'g.highcharts-axis.highcharts-yaxis',
         selectors: [
             '#NCI-Chart__rms-funding'
         ],
@@ -281,7 +280,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[aria-label*="Highcharts interactive chart'
+            'div[aria-label*="Highcharts interactive chart"]'
         ],
         selectorExpansion: false,
        
@@ -298,9 +297,9 @@ module.exports = [
                 height: 900,
             },
         ],
-        readySelector:'div#NCI-Chart__appropriations',
+        readySelector:'#NCI-Chart__appropriations',
         selectors: [
-            'div#NCI-Chart__appropriations'
+            '#NCI-Chart__appropriations'
         ],
         selectorExpansion: false,
        
