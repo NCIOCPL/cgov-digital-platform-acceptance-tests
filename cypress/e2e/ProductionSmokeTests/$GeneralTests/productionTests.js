@@ -131,12 +131,12 @@ And('page title is {string}', (title) => {
 });
 
 Then('thumbnail images are displayed', () => {
-    cy.get("div[class*='views-element-container'] img").each(el => {
+    cy.get("div[class*='cgdp-dynamic-list'] img").each(el => {
         cy.wrap(el).should('be.visible');
     })
 });
 And('the image src contains {string}', (source) => {
-    cy.get("div[class*='views-element-container'] img").each(el => {
+    cy.get("div[class*='cgdp-dynamic-list'] img").each(el => {
         cy.wrap(el).should('have.attr', 'src').and('include', source)
     })
 });
