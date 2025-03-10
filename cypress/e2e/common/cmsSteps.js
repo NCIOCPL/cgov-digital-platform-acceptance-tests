@@ -57,8 +57,10 @@ And('user selects {string} from {string} dropdown', (option, dropdown) => {
 });
 
 And('user fills out {string} text area with {string}', (textFieldLabel, value) => {
-    cy.getIframeBody('iframe.cke_wysiwyg_frame.cke_reset')
-        .find('p').type(value);
+    cy.get('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })
 
 When('user saves the content page', () => {
@@ -320,16 +322,21 @@ Then('{string} label is displayed {int} times', (contentType, num) => {
 
 //this needs to be pass, the iframe locators are the same.
 And('user types {string} in the {int} citation body field', (value, num) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Citation Content field']", num - 1).find('p').type(value)
+    
+    cy.get('table[id*="field-citation-values"]').find('.ck-content[contenteditable=true]').eq(num-1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
+    
 })
 
 And('user clicks on icon to add a link to {int} citation', (num) => {
-    cy.get("div[id^='field-citation'] a[title^='Link']").eq(num - 1).click()
+    cy.get("table[id*='field-citation-values'] button[data-cke-tooltip-text*='Link']").eq(num - 1).click()
 })
 
 And('user types {string} in the citation url field and saves it', (link) => {
-    cy.get('div#editor-link-dialog-form input').first().type(link)
-    cy.get('div.ui-dialog-buttonset.form-actions button').click()
+    cy.get("div[class='ck ck-labeled-field-view__input-wrapper']").find('input[class*="form-linkit"]').focus().type(link)
+    cy.get('button[data-cke-tooltip-text*="Save"]').click({force:true})
     cy.wait(3000)
 })
 
@@ -596,4 +603,11 @@ And('user clicks on title with url spanish path {string} plus {string} plus {str
 Given('user is navigating to the front end site with path {string}', (path) => {
     cy.reload(true);
     cy.visit(`${frontEndBaseUrl}${path}`, { retryOnStatusCodeFailure: true });
+})
+
+And('user types {string} into Caption text field', (value) => {
+    cy.get('.ck-content[contenteditable=true]').then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })

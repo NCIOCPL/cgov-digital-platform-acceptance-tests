@@ -20,14 +20,9 @@ Feature: As a user I want to be able to create tables in my content
             | Meta Description | Article to test Table - Meta Description | field_page_description |
         And user enters "Table without headers - left aligned" as 1 body section heading
         And user clicks "table" button 1 in the WYSIWYG editor
-        And user clears out "Rows" field
-        And user writes "4" into "Rows" labeled field
-        And user clears out "Columns" field
-        And user writes "4" into "Columns" labeled field
-        And user selects "left" from "Alignment" dropdown
+        And user selects "4" rows and "4" columns
+        And user selects "Align table to the left" from "Alignment" dropdown for 1 table
         And user writes "Table Caption" into "Caption" labeled field
-        And user writes "This is a table summary" into "Summary" labeled field
-        And user clicks "OK" to save table properties
         And browser waits
         And user types "cell" in all cells of table 0
 
@@ -35,9 +30,9 @@ Feature: As a user I want to be able to create tables in my content
         And browser waits
         And user enters "Table with first row headers - center aligned" as 2 body section heading
         And user clicks "table" button 2 in the WYSIWYG editor
-        And user selects "First Row" from "Headers" dropdown
-        And user selects "center" from "Alignment" dropdown
-        And user clicks "OK" to save table properties
+        And user selects "4" rows and "4" columns
+        And user selects "Center table" from "Alignment" dropdown for 2 table
+        And user toggles Header Row for 2 table
         And browser waits
         And user types "header" in all headers of table 1
         And user types "cell" in all cells of table 1
@@ -46,9 +41,9 @@ Feature: As a user I want to be able to create tables in my content
         And browser waits
         And user enters "Table with first column headers - right aligned" as 3 body section heading
         And user clicks "table" button 3 in the WYSIWYG editor
-        And user selects "First column" from "Headers" dropdown
-        And user selects "right" from "Alignment" dropdown
-        And user clicks "OK" to save table properties
+        And user selects "4" rows and "4" columns
+        And user selects "Align table to the right" from "Alignment" dropdown for 3 table
+        And user toggles Header Column for 3 table
         And browser waits
         And user types "header" in all headers of table 2
         And user types "cell" in all cells of table 2
@@ -57,8 +52,9 @@ Feature: As a user I want to be able to create tables in my content
         And browser waits
         And user enters "Table with both headers - not aligned" as 4 body section heading
         And user clicks "table" button 4 in the WYSIWYG editor
-        And user selects "Both" from "Headers" dropdown
-        And user clicks "OK" to save table properties
+        And user selects "4" rows and "4" columns
+        And user toggles Header Row for 4 table
+        And user toggles Header Column for 4 table
         And browser waits
         And user types "header" in all headers of table 3
         And user types "cell" in all cells of table 3
@@ -71,11 +67,11 @@ Feature: As a user I want to be able to create tables in my content
         Given user is navigating to the front end site with path site section plus "article-to-test-table"
         And page title is "Article to test Table"
         And the following tables are displayed
-            | index | rowCount | columnCount | headerCount | caption       | summary                 | alignment |
-            | 0     | 4        | 4           | 0           | Table Caption | This is a table summary | left      |
-            | 1     | 3        | 2           | 2           | null          | null                    | center    |
-            | 2     | 3        | 2           | 3           | null          | null                    | right     |
-            | 3     | 3        | 2           | 4           | null          | null                    | null      |
+            | index | rowCount | columnCount | headerCount | caption       | alignment |
+            | 0     | 4        | 4           | 0           | Table Caption | left      |
+            | 1     | 4        | 4           | 4           | null          | null      |
+            | 2     | 4        | 4           | 4           | null          | right     |
+            | 3     | 4        | 4           | 7           | null          | null      |
         And table at position 0 has 0 headers
         And the rest of the tables have the following table contents
             | index | row                                      |

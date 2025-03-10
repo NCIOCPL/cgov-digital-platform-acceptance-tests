@@ -90,7 +90,7 @@ Feature: As a cms user I want to be able to embed Video Carousel in Article cont
         And 1 description reads "Video Carousel: Full,Center:"
         And video carousel displays the following features
             | alignment                    | playListID                         | prevButton | nextButton | videoCarouselH4Title          |
-            | embedded-entity align-center | PLYKy4VbxNln5BPBg2OxeXLUo3mi7SYGJv | previous   | next       | Automated Video Carousel Test |
+            | align-center embedded-entity | PLYKy4VbxNln5BPBg2OxeXLUo3mi7SYGJv | previous   | next       | Automated Video Carousel Test |
 
 
     Scenario: Clean up
