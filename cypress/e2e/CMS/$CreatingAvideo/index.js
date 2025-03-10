@@ -95,5 +95,5 @@ cy.get('figure.video').eq(index-1).find('h4').should('not.exist')
 });
 
 And('{int} video has alignment set to {string}',(index, value)=>{
-cy.get('div[data-embed-button="cgov_video_button"]').eq(index-1).should('have.attr','class',`embedded-entity${value}`)
+cy.get('div[data-embed-button="cgov_video_button"]').eq(index-1).should('have.attr','class',`${value}embedded-entity`)
 })

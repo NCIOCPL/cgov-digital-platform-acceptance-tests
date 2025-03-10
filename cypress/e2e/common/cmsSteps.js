@@ -335,8 +335,8 @@ And('user clicks on icon to add a link to {int} citation', (num) => {
 })
 
 And('user types {string} in the citation url field and saves it', (link) => {
-    cy.get("div[class='ck ck-labeled-field-view__input-wrapper']").find('input[class*="form-linkit"]').type(link)
-    cy.get('button[data-cke-tooltip-text*="Save"]').click()
+    cy.get("div[class='ck ck-labeled-field-view__input-wrapper']").find('input[class*="form-linkit"]').focus().type(link)
+    cy.get('button[data-cke-tooltip-text*="Save"]').click({force:true})
     cy.wait(3000)
 })
 
