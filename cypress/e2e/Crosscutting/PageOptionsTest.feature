@@ -23,8 +23,8 @@ Feature: Page Options tests
             | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq                           | Imprimir,Enviar por correo electrónico |
             | /news-events/cancer-currents-blog                                                           | Print,Email                            |
             | /espanol/noticias/temas-y-relatos-blog                                                      | Imprimir,Enviar por correo electrónico |
-            | /news-events/press-releases/2019                                                            | Print,Email                            |
-            | /espanol/noticias/comunicados-de-prensa/2019                                                | Imprimir,Enviar por correo electrónico |
+            | /news-events/press-releases/2018                                                            | Print,Email                            |
+            | /espanol/noticias/comunicados-de-prensa/2018                                                | Imprimir,Enviar por correo electrónico |
             | /about-nci/organization/nci-at-a-glance                                                     | Print,Email                            |
             | /espanol/infografia-nci                                                                     | Imprimir,Enviar por correo electrónico |
             | /about-cancer/coping/feelings/relaxation/hedge-maze                                         | Print,Email                            |
