@@ -37,10 +37,10 @@ Feature: As a user I want to see breadcrumb links so I can navigate website more
   Scenario: Encoding of page titles in breadcrumbs
     Given user is navigating to "/test/breadcrumb-test"
     Then the following breadcrumbs are displayed
-      | label                                  | link  |
-      | Home                                   | /     |
-      | Test Content                           | /test |
-      | Breadcrumb tests ':;<>?`~!@#$%^&*()_+/ | none  |
+      | label                                  | link    |
+      | Home                                   | /       |
+      | Test Content                           | /test-0 |
+      | Breadcrumb tests ':;<>?`~!@#$%^&*()_+/ | none    |
 
 
   Scenario: Breadcrumb click event
@@ -48,18 +48,18 @@ Feature: As a user I want to see breadcrumb links so I can navigate website more
     When user clicks on "Hidden Pets" breadcrumb link
     Then page click request is sent
     And the following parameters should be captured
-      | parameter | value                                |
-      | link      | Hidden Pets                          |
-      | event18   |                                      |
-      | pev2      | Breadcrumbs:LinkClick                |
-      | linkType  | lnk_o                                |
-      | prop67    | D=pageName                           |
-      | prop4     | D=pev1                               |
-      | prop8     | english                              |
-      | prop68    | D=v68                                |
-      | prop46    | D=v46                                |
-      | evar46    | L2\|Hidden Pets                      |
-      | evar2     | D=c8                                 |
-      | evar68    | Breadcrumbs                          |
+      | parameter | value                                     |
+      | link      | Hidden Pets                               |
+      | event18   |                                           |
+      | pev2      | Breadcrumbs:LinkClick                     |
+      | linkType  | lnk_o                                     |
+      | prop67    | D=pageName                                |
+      | prop4     | D=pev1                                    |
+      | prop8     | english                                   |
+      | prop68    | D=v68                                     |
+      | prop46    | D=v46                                     |
+      | evar46    | L2\|Hidden Pets                           |
+      | evar2     | D=c8                                      |
+      | evar68    | Breadcrumbs                               |
       | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/pets/frisco |
-      | pageName  | {CANONICAL_HOST}/pets/frisco         |
+      | pageName  | {CANONICAL_HOST}/pets/frisco              |
