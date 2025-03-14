@@ -38,8 +38,8 @@ Feature: As a site visitor, I want HSTS to be in place, so HTTPS is always enfor
             | /espanol/investigacion/iniciativas-clave                                             |
             | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq                    |
             | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pro-pdq                |
-            | /news-events/press-releases/2019                                                     |
-            | /espanol/noticias/comunicados-de-prensa/2019                                         |
+            | /news-events/press-releases/2018                                                     |
+            | /espanol/noticias/comunicados-de-prensa/2018                                         |
             | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial                        |
             | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio          |
             | /about-cancer/coping/feelings/relaxation/loukissas-jennifer                          |

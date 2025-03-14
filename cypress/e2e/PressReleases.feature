@@ -2,20 +2,20 @@ Feature: As an user, I want to see different components of the Press Releases
 
         Scenario Outline: Press Release landing page components
                 Given screen breakpoint is set to "<breakpoint>"
-                When user is navigating to "/news-events/press-releases/2019"
-                Then page title is "2019 Press Releases"
-                And the 2019 release doesnt have a link
+                When user is navigating to "/news-events/press-releases/2018"
+                Then page title is "2018 Press Releases"
                 And the following press releases are displayed
                         | title | link                             |
-                        | 2018  | /news-events/press-releases/2018 |
-                        | 2017  | /news-events/press-releases/2017 |
-                        | 2016  | /news-events/press-releases/2016 |
-                        | 2015  | /news-events/press-releases/2015 |
-                        | 2014  | /news-events/press-releases/2014 |
+                        | 2020  | /news-events/press-releases/2020 |
+                        | 2021  | /news-events/press-releases/2021 |
+                        | 2022  | /news-events/press-releases/2022 |
+                        | 2023  | /news-events/press-releases/2023 |
+                        | 2024  | /news-events/press-releases/2024 |
+                        | 2025  | /news-events/press-releases/2025 |
                 And "Get Email Updates From NCI" box is displayed with a link "https://public.govdelivery.com/accounts/USNIHNCI/subscriber/new"
                 And the list of press release pages is displayed
-                And each title is a link with href that starts with "/news-events/press-releases/2019"
-                And each date is for year "2019"
+                And each title is a link with href that starts with "/news-events/press-releases/2018"
+                And each date is for year "2018"
 
                 Examples:
                         | breakpoint |
