@@ -69,12 +69,12 @@ Feature: Feature Card tests
         And NCIDS feature cards have the following attributes
             | index | title               | description                                                            | link                   | altText                       | source                                                                   | file                                       |
             | 0     | External Card Title | Image using 16x9 and 4x3 Override Fields                               | https://www.google.com | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
-            | 1     | External Card Title | This is a use case of the card using the images crops for 16x9 and 4x3 | https://www.google.com | Feature Card Cat              | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | feature_card_test_cat_override_source.jpeg |
-            | 2     | External Card Title | This uses the 4x3 crop and the 16x9 override                           | https://www.google.com | 16x9 Override Image           | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | feature_card_test_cat_16x9_override.jpeg   |
+            | 1     | Force Hide Icon     | This is a use case of the card using the images crops for 16x9 and 4x3 | https://www.google.com | Feature Card Cat              | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | feature_card_test_cat_override_source.jpeg |
+            | 2     | Force Display Icon  | This uses the 4x3 crop and the 16x9 override                           | https://www.cancer.gov | 16x9 Override Image           | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | feature_card_test_cat_16x9_override.jpeg   |
             | 3     | External Card Title | Image using 16x9 crop and 4x3 Override Fields                          | https://www.google.com | Feature Card Cat 4x3 Override | /files/styles/ncids_featured_16x9/public/cgov_image/media_image          | feature_card_test_cat_override_source.jpeg |
-            | 4     | External Card Title | N/A                                                                    | https://www.google.com | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
-            | 5     | External Card Title | External Card Description                                              | https://www.google.com | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
-            | 6     | External Card Title | Image has no crop -> Show placeholder                                  | https://www.google.com | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
+            | 4     | Force Hide Icon     | N/A                                                                    | https://www.google.com | Override Placeholder          | /files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | override-placeholder-16x9.png              |
+            | 5     | Force Display Icon  | External Card Description                                              | https://www.cancer.gov | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
+            | 6     | Gov Default         | Image has no crop -> Show placeholder                                  | https://www.nih.gov    | No Image Placeholder          | /files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9.png                       |
         And NCIDS component has "aria-labelledby" and "id" attributes
 
         Examples:
@@ -127,7 +127,7 @@ Feature: Feature Card tests
             | evar2     | D=c8                                                           |
             | evar64    | Internal\|Feature Card Row 2\|[Lead IMG] Card Title            |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 3\|2\|0\|0\|3\|1                                                     |
+            | evar66    | 3\|2\|0\|0\|3\|1                                               |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/ncids-internal-feature-card-test              |
@@ -154,9 +154,9 @@ Feature: Feature Card tests
             | prop67    | D=pageName                                                     |
             | prop68    | D=v68                                                          |
             | evar2     | D=c8                                                           |
-            | evar64    | External\|Feature Card Row 3\|External Card Title              |
+            | evar64    | External\|Feature Card Row 3\|Gov Default                      |
             | evar65    | Feature Card\|Light\|Standard Single Link                      |
-            | evar66    | 3\|3\|0\|0\|1\|1                                                     |
+            | evar66    | 3\|3\|0\|0\|1\|1                                               |
             | evar67    | Image\|1\|1                                                    |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/ncids-external-feature-card-test              |
@@ -184,7 +184,7 @@ Feature: Feature Card tests
             | evar2     | D=c8                                                             |
             | evar64    | Media\|Multimedia Feature Card Row 2\|Override Card Title        |
             | evar65    | Feature Card\|Light\|Standard Single Link                        |
-            | evar66    | 3\|2\|0\|0\|3\|1                                                       |
+            | evar66    | 3\|2\|0\|0\|3\|1                                                 |
             | evar67    | Image\|1\|1                                                      |
             | evar68    | Body                                                             |
             | pageName  | {CANONICAL_HOST}/ncids-multimedia-feature-card-test              |
