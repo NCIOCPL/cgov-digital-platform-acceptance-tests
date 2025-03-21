@@ -36,11 +36,17 @@ And('{string} button is displayed', (optionLabel) => {
 
 
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Heading field']", position - 1).find('p').type(value)
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.getNthIframe("iframe[title='Rich Text Editor, Content field']", position - 1).find('p').type(value)
+    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
+    const editor = el[0].ckeditorInstance
+    editor.data.set(value)
+});
 })
 
 And('intro text reads {string}', (titlText) => {

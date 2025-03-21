@@ -159,6 +159,7 @@ Feature: User creating a video
             | Meta Description | Article for embed Video - Meta Description | field_page_description |
         And user enters "Video Display Large with no title - none aligned" as 1 body section heading
         And user clicks the "Insert Video" button 1 in the WYSIWYG editor
+         And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -185,6 +186,7 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Large with title - left aligned" as 2 body section heading
         And user clicks the "Insert Video" button 2 in the WYSIWYG editor
+         And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -199,6 +201,7 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Medium with no title - center aligned" as 3 body section heading
         And user clicks the "Insert Video" button 3 in the WYSIWYG editor
+         And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -212,6 +215,7 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Medium with title - right aligned" as 4 body section heading
         And user clicks the "Insert Video" button 4 in the WYSIWYG editor
+         And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -225,6 +229,7 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Small with title - none aligned" as 5 body section heading
         And user clicks the "Insert Video" button 5 in the WYSIWYG editor
+         And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -248,13 +253,13 @@ Feature: User creating a video
         And 1 video has alignment set to ""
         And 2 section heading reads "Video Display Large with title - left aligned"
         And 2 video has title "Automated Test Video"
-        And 2 video has alignment set to " align-left"
+        And 2 video has alignment set to "align-left "
         And 3 section heading reads "Video Display Medium with no title - center aligned"
         And 3 video has no title
-        And 3 video has alignment set to " align-center"
+        And 3 video has alignment set to "align-center "
         And 4 section heading reads "Video Display Medium with title - right aligned"
         And 4 video has title "Automated Test Video"
-        And 4 video has alignment set to " align-right"
+        And 4 video has alignment set to "align-right "
         And 5 section heading reads "Video Display Small with title - none aligned"
         And 5 video has title "Automated Test Video"
         And 5 video has alignment set to ""

@@ -125,7 +125,7 @@ Feature: User creating an image
             | fieldLabel   | value    | field_name             |
             | Nombre       | _Spanish | name[0][value]         |
             | Photo Credit | _Spanish | field_credit[0][value] |
-        And user types "_Spanish" into Caption text field
+        And user types "Test Caption_Spanish" into Caption text field
         Then user saves the content page
 
     Scenario:Translate test pages
