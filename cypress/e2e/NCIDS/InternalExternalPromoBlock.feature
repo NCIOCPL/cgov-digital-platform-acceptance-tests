@@ -6,8 +6,8 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
         And NCIDS promo blocks have the following attributes
             | index | title                              | description                                        | link                   | buttonText | source                                                                                                                                     |
             | 0     | NCIDS Promo Block External Title   | Promotional image has no crops -> show placeholder | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/module\/cgov_image\/img\/placeholder-16x9.png)$                                        |
-            | 1     | NCIDS Promo Block External Title   | NCIDS Promo Block External Description             | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/override-placeholder-16x9.png)$ |
-            | 2     | NCIDS Promo Block External         | No image variant with light theme                  | https://www.google.com | Learn More | N/A                                                                                                                                        |
+            | 1     | NCIDS Promo Block External Title   | NCIDS Promo Block External Description             | https://www.google.com | Force Hide | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/override-placeholder-16x9.png)$ |
+            | 2     | NCIDS Promo Block External         | No image variant with light theme                  | https://www.cancer.gov | Force Show | N/A                                                                                                                                        |
             | 3     | NCIDS Promo Block External Title 2 | N/A                                                | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/override-placeholder-16x9.png)$ |
             | 4     | NCIDS Promo Block External Title 3 | This uses the 16x9 and 1x1 crops.                  | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/promo_block_dog_source.png)$             |
             | 5     | NCIDS Promo Block External Title 4 | This uses the 16x9 crop and 1x1 override.          | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/promo_block_dog_source.png)$             |
@@ -87,10 +87,10 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | prop67    | D=pageName                                                    |
             | prop68    | D=v68                                                         |
             | evar2     | D=c8                                                          |
-            | evar64    | External\|NCIDS Promo Block External Title\|Learn More        |
+            | evar64    | External\|NCIDS Promo Block External Title\|Force Hide        |
             | evar65    | Promo Block\|Light\|Image Left                                |
-            | evar66    | 9\|2\|0\|0\|1\|1                                                    |
-            | evar67    | Button\|1\|1                                                   |
+            | evar66    | 9\|2\|0\|0\|1\|1                                              |
+            | evar67    | Button\|1\|1                                                  |
             | evar68    | Body                                                          |
             | pageName  | {CANONICAL_HOST}/ncids-external-promo-block-test              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ncids-external-promo-block-test |
