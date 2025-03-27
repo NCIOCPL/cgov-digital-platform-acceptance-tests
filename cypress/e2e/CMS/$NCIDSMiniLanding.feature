@@ -354,6 +354,57 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  |
             | 2         | three-card       | External | https://www.google1.com       | Google Link                       | Google Link Description Spanish            |
 
+    Scenario: Edit existing content and test external links override
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "mini-landing-page-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user clears out "Pretty URL" field
+        And user clears out "Page Title" field
+        And user fills out the following fields
+            | fieldLabel | value                                   | field_name       |
+            | Pretty URL | ncids-mini-landing-page-edited          | field_pretty_url |
+            | Page Title | Automated Test Mini Landing Page Edited | title            |
+
+        And user selects "Add NCIDS Optional Heading 3 Feature Card Row" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel | value                             | field_name                                                            |
+            | Heading    | 3 Feature Card Row External cards | field_landing_contents[7][subform][field_container_heading][0][value] |
+        And user removes 8 internal card field
+        And browser waits
+        And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                              | field_name                                                                                           |
+            | Featured Item Url | https://www.google1.com            | field_landing_contents[7][subform][field_row_cards][1][subform][field_featured_url][0][uri]          |
+            | Card Title        | Google Link No external disclaimer | field_landing_contents[7][subform][field_row_cards][1][subform][field_override_card_title][0][value] |
+        And user selects "do_not_display" from 8 External Link Display dropdown number 1
+        And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                           |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[7][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
+            | Card Title        | Gov link default       | field_landing_contents[7][subform][field_row_cards][2][subform][field_override_card_title][0][value] |
+        And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                           |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[7][subform][field_row_cards][3][subform][field_featured_url][0][uri]          |
+            | Card Title        | Gov link force display | field_landing_contents[7][subform][field_row_cards][3][subform][field_override_card_title][0][value] |
+        And user selects "force_display" from 8 External Link Display dropdown number 3
+        And browser waits
+
+        Then user saves the content page
+        And user clicks on the tool bar status button "Editing"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"

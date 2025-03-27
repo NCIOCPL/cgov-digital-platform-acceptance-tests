@@ -247,3 +247,16 @@ And('user clicks on {string} button for {string}',(edit,section)=>{
     cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
     });
 
+
+    And('user removes {int} internal card field',(index)=>{
+        cy.get(`input[id*='field-landing-contents-${index-1}-subform-field-row-cards-0-remove']`).click({force:true})
+    })
+
+    And('user clicks on {int} {string} button item', (index,title) => {
+        cy.get(`input[value="${title}"]`).eq(index-1).click({ force: true })
+    });
+
+    And('user selects {string} from {int} External Link Display dropdown number {int}',(option, index,dropdownIndex)=>{
+        cy.get(`select[id*='edit-field-landing-contents-${index-1}-subform-field-row-cards-${dropdownIndex}-subform-field-external-link-display']`).select(option)
+
+    })
