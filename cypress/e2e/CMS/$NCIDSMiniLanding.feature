@@ -269,10 +269,10 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | Resources & Contacts | /news-events/media-resources      |
             | Images and B-roll    | https://visualsonline.cancer.gov/ |
         And NCIDS feature cards have the following attributes
-            | index | title                             | description                                | link                          | source                                                                                 | file             |
-            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
-            | 1     | Multimedia Feature Card Title     | Multimedia Feature Card Desc               | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  |
-            | 2     | Google Link                       | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 |
+            | index | title                             | description                                | link                          | source                                                                                 | file             | exitDisclaimer |
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | N/A            |
+            | 1     | Multimedia Feature Card Title     | Multimedia Feature Card Desc               | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | N/A            |
+            | 2     | Google Link                       | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | yes            |
         And NCIDS 1 list is displayed with title "Title and Description List"
         And each 1 list item out of 3 has a heading and description except items 2 and 3
         And NCIDS 2 list is displayed with title "Title, Description and Image List"
@@ -333,10 +333,10 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | Resources & Contacts | /news-events/media-resources      |
             | Images and B-roll    | https://visualsonline.cancer.gov/ |
         And NCIDS feature cards have the following attributes
-            | index | title                         | description                  | link                          | source                                                                                 | file             |
-            | 0     | Card Title Spanish            | Card Description Spanish     | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
-            | 1     | Multimedia Feature Card Title | Multimedia Feature Card Desc | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  |
-            | 2     | Google Link                   | N/A                          | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 |
+            | index | title                         | description                  | link                          | source                                                                                 | file             | exitDisclaimer |
+            | 0     | Card Title Spanish            | Card Description Spanish     | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | N/A            |
+            | 1     | Multimedia Feature Card Title | Multimedia Feature Card Desc | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | N/A            |
+            | 2     | Google Link                   | N/A                          | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | yes            |
         And NCIDS 1 list is displayed with title "Title and Description List"
         And each 1 list item out of 3 has a heading and description except items 2 and 3
         And NCIDS 2 list is displayed with title "Title, Description and Image List"
@@ -353,6 +353,94 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc |
             | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  |
             | 2         | three-card       | External | https://www.google1.com       | Google Link                       | Google Link Description Spanish            |
+
+    Scenario: Edit existing content and test external links override
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-mini-landing-page" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user clears out "Pretty URL" field
+        And user clears out "Page Title" field
+        And user fills out the following fields
+            | fieldLabel | value                                   | field_name       |
+            | Pretty URL | ncids-mini-landing-page-edited          | field_pretty_url |
+            | Page Title | Automated Test Mini Landing Page Edited | title            |
+
+        And user selects "Add NCIDS Optional Heading 3 Feature Card Row" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel | value                             | field_name                                                            |
+            | Heading    | 3 Feature Card Row External cards | field_landing_contents[7][subform][field_container_heading][0][value] |
+        And user removes 8 internal card field
+        And browser waits
+        And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                              | field_name                                                                                           |
+            | Featured Item Url | https://www.google1.com            | field_landing_contents[7][subform][field_row_cards][1][subform][field_featured_url][0][uri]          |
+            | Card Title        | Google Link No external disclaimer | field_landing_contents[7][subform][field_row_cards][1][subform][field_override_card_title][0][value] |
+        And user selects "do_not_display" from 8 External Link Display dropdown number 1
+        And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                           |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[7][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
+            | Card Title        | Gov link default       | field_landing_contents[7][subform][field_row_cards][2][subform][field_override_card_title][0][value] |
+        And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                           |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[7][subform][field_row_cards][3][subform][field_featured_url][0][uri]          |
+            | Card Title        | Gov link force display | field_landing_contents[7][subform][field_row_cards][3][subform][field_override_card_title][0][value] |
+        And user selects "force_display" from 8 External Link Display dropdown number 3
+        And browser waits
+        Then user saves the content page
+        And user clicks on the tool bar status button "Editing"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
+
+    Scenario Outline: Verify edited content
+        And screen breakpoint is set to "<breakpoint>"
+        Given user is navigating to the front end site with path site section plus "ncids-mini-landing-page-edited"
+        And page title is "Automated Test Mini Landing Page Edited"
+        And NCIDS Slim Hero is displayed with alt text "Alt Text"
+        And content block has a title "Test for Raw HTML & Analytics"
+        And content block has the following links
+            | title                | href                              |
+            | Resources & Contacts | /news-events/media-resources      |
+            | Images and B-roll    | https://visualsonline.cancer.gov/ |
+        And NCIDS feature cards have the following attributes
+            | index | title                              | description | link                    | source                                                                | file             | exitDisclaimer |
+            | 6     | Google Link No external disclaimer | N/A         | https://www.google1.com | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
+            | 7     | Gov link default                   | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
+        # | 8     | Gov link force display                     | N/A                                        | https://www.cancer.gov      | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                 | placeholder-16x9  |yes|
+        And NCIDS 1 list is displayed with title "Title and Description List"
+        And each 1 list item out of 3 has a heading and description except items 2 and 3
+        And NCIDS 2 list is displayed with title "Title, Description and Image List"
+        And each 2 list item has a heading and an image
+        And each 2 list item out of 3 has a heading and description except items 2 and 3
+        And the optional flag card group heading is "Flag Card Group"
+        Then NCIDS flag cards have the following attributes
+            | index | title                             | description                                | link                          | source                                                                            | file            |
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
+            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
+            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 |
+        Then the following imageless cards are displayed
+            | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                |
+            | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc |
+            | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  |
+            | 2         | three-card       | External | https://www.google1.com       | Google Link                       | none                                       |
+
+        Examples:
+            | breakpoint |
+            | desktop    |
 
 
     Scenario: Clean up
@@ -373,7 +461,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         When user confirms "Borrar la traduccion Español" action
 
         When user clicks on "Contenido" tab
-        And user clicks on title with url "ncids-mini-landing-page" from the list of content
+        And user clicks on title with url "ncids-mini-landing-page-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"

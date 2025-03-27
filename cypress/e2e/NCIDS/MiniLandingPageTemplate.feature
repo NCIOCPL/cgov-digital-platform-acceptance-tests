@@ -344,7 +344,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | prop68    | D=v68                                                                 |
             | evar2     | D=c8                                                                  |
             | evar61    | cgvMiniLanding\|ncids_default                                         |
-            | evar64    | Internal\|Not Defined\|Cancer Homepage                                |
+            | evar64    | External\|Not Defined\|External Link Default                          |
             | evar65    | Wide Guide Card\|Not Defined\|Not Defined                             |
             | evar66    | 5\|2\|0\|0\|1\|1\|Not Defined                                         |
             | evar67    | Button\|3\|1                                                          |
@@ -373,7 +373,7 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | prop68    | D=v68                                                                 |
             | evar2     | D=c8                                                                  |
             | evar61    | cgvMiniLanding\|ncids_default                                         |
-            | evar64    | External\|Not Defined\|External Link to Google                        |
+            | evar64    | External\|Not Defined\|Force Display                                  |
             | evar65    | Wide Guide Card\|Not Defined\|Not Defined                             |
             | evar66    | 5\|2\|0\|0\|1\|1\|Not Defined                                         |
             | evar67    | Button\|3\|2                                                          |

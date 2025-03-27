@@ -43,3 +43,7 @@ Cypress.Commands.add('getNthIframe', (locator, position) => {
     // https://on.cypress.io/wrap
     .then(cy.wrap)
 })
+
+Cypress.Commands.add('hasPseudoElement', {prevSubject:true}, (subject, pseudo) => {
+  return window.getComputedStyle(subject[0], pseudo).content !== 'none'
+})

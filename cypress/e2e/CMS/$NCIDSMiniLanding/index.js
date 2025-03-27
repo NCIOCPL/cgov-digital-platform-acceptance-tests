@@ -41,8 +41,8 @@ And('content block has the following links', (dataTable) => {
     }
 });
 And('user removes page title block', () => {
-    cy.get('[id*="edit-field-landing-contents-1-top-paragraph-type-title"]').parent().find('input[value="Remove"]').click({force:true});
-    cy.get('input[value="Confirm removal"]').click({force:true})
+    cy.get('[id*="edit-field-landing-contents-1-top-paragraph-type-title"]').parent().find('input[value="Remove"]').click({ force: true });
+    cy.get('input[value="Confirm removal"]').click({ force: true })
 })
 
 And('page title does not exist', () => {
@@ -72,7 +72,7 @@ And('user selects {string} as promo image for {int} feature card', (name, index)
 
 And('NCIDS feature cards have the following attributes', (dataTable) => {
 
-    for (let { index, title, description, link, source, file } of dataTable.hashes()) {
+    for (let { index, title, description, link, source, file, exitDisclaimer } of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
         }
@@ -117,6 +117,15 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
                 expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
             }
         });
+
+        if (exitDisclaimer === 'N/A') {
+            cy.get('@featureCard').find('span').hasPseudoElement('::after')
+                .should('eq', false)
+        } else {
+            cy.get('@featureCard').find('span').hasPseudoElement('::after')
+                .should('eq', true)
+        }
+
     }
 });
 
@@ -125,7 +134,7 @@ And('user clicks on Select content button item', () => {
 })
 
 And('user clicks on {string} button for {string}', (edit, section) => {
-    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click({force:true});
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click({ force: true });
 });
 
 And('user selects {string} from {int} list style dropdown', (option, index) => {
@@ -150,7 +159,7 @@ And('each {int} list item has a heading and an image', (listIndex) => {
     })
 })
 
-And('each {int} list item out of {int} has a heading and description except items {int} and {int}', (listIndex,totalNum, index1, index2) => {
+And('each {int} list item out of {int} has a heading and description except items {int} and {int}', (listIndex, totalNum, index1, index2) => {
     for (let i = 0; i < totalNum; i++) {
         if (i !== (index1 - 1) && i !== (index2 - 1)) {
             cy.get('.cgdp-list').eq(listIndex - 1).find('li.usa-collection__item').eq(i).find('p.usa-collection__description').invoke('text').should('have.length.above', 0);
@@ -203,7 +212,7 @@ And('NCIDS flag cards have the following attributes', (dataTable) => {
                 fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
             }
             expect(fullSrc.includes(`${source}`)).to.be.true;
-            
+
             const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
             if (file.includes('placeholder')) {
                 expect(src1).to.match(new RegExp(`.*\/${file}`))
@@ -229,12 +238,12 @@ When('the following imageless cards are displayed', (dataTable) => {
         if (linkHref.startsWith('http')) {
             cy.get('@card').find('a').should('have.attr', 'href', linkHref)
         } else {
-            cy.get('@card').find('a').should('have.attr', 'href').then(href=>{
+            cy.get('@card').find('a').should('have.attr', 'href').then(href => {
                 expect(href).to.eq(`${getBaseDirectory()}${linkHref}-${randomStr}`)
             })
-        
+
         }
-   
+
         cy.get('@card').find('.nci-card__body').find('.nci-card__title').should('have.text', title)
         if (description !== 'none')
             cy.get('@card').find('.nci-card__body').find('.nci-card__description').should('have.text', description)
@@ -243,7 +252,20 @@ When('the following imageless cards are displayed', (dataTable) => {
     }
 })
 
-And('user clicks on {string} button for {string}',(edit,section)=>{
+And('user clicks on {string} button for {string}', (edit, section) => {
     cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
-    });
+});
 
+
+And('user removes {int} internal card field', (index) => {
+    cy.get(`input[id*='field-landing-contents-${index - 1}-subform-field-row-cards-0-remove']`).click({ force: true })
+})
+
+And('user clicks on {int} {string} button item', (index, title) => {
+    cy.get(`input[value="${title}"]`).eq(index - 1).click({ force: true })
+});
+
+And('user selects {string} from {int} External Link Display dropdown number {int}', (option, index, dropdownIndex) => {
+    cy.get(`select[id*='edit-field-landing-contents-${index - 1}-subform-field-row-cards-${dropdownIndex}-subform-field-external-link-display']`).select(option)
+
+})
