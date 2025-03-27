@@ -69,7 +69,7 @@ Feature: MetaData Tests
             | path                                                                                        | cgdp.template       | type                                   |
             | /news-events                                                                                | ncids_with_title    | Home and Landing                       |
             | /espanol/noticias                                                                           | ncids_with_title    | Home and Landing  Spanish              |
-            | /grants-training                                                                            | ncids_without_title | Home and Landing                       |
+            | /grants-training                                                                            | ncids_with_title    | Home and Landing                       |
             | /dceg-connect                                                                               | dceg_connect        | Home and Landing                       |
             | /espanol/special-report                                                                     | special_report      | Home and Landing Spanish               |
             | /test/borderless-card                                                                       | standard            | Home and Landing                       |

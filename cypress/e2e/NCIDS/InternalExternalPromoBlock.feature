@@ -4,16 +4,16 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
         Given screen breakpoint is set to "<breakpoint>"
         Given user is navigating to "/ncids-external-promo-block-test"
         And NCIDS promo blocks have the following attributes
-            | index | title                              | description                                        | link                   | buttonText | source                                                                                                                                     |
-            | 0     | NCIDS Promo Block External Title   | Promotional image has no crops -> show placeholder | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/module\/cgov_image\/img\/placeholder-16x9.png)$                                        |
-            | 1     | NCIDS Promo Block External Title   | NCIDS Promo Block External Description             | https://www.google.com | Force Hide | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/override-placeholder-16x9.png)$ |
-            | 2     | NCIDS Promo Block External         | No image variant with light theme                  | https://www.cancer.gov | Force Show | N/A                                                                                                                                        |
-            | 3     | NCIDS Promo Block External Title 2 | N/A                                                | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/override-placeholder-16x9.png)$ |
-            | 4     | NCIDS Promo Block External Title 3 | This uses the 16x9 and 1x1 crops.                  | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/promo_block_dog_source.png)$             |
-            | 5     | NCIDS Promo Block External Title 4 | This uses the 16x9 crop and 1x1 override.          | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/promo_block_dog_source.png)$             |
-            | 6     | NCIDS Promo Block External Title 5 | This uses the 16x9 override and 1x1 crop.          | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/promo_block_dog_16x9.png)$      |
-            | 7     | NCIDS Promo Block External Title 6 | This uses the placeholder image                    | https://www.google.com | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/module\/cgov_image\/img\/placeholder-16x9.png)$                                        |
-            | 8     | NCIDS Promo Block External Title 7 | No Image shown because no image option selected    | https://www.google.com | Learn More | N/A                                                                                                                                        |
+            | index | title                              | description                                        | link                   | buttonText             | source                                                                                                                                     |
+            | 0     | NCIDS Promo Block External Title   | Promotional image has no crops -> show placeholder | https://www.google.com | Default External       | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/module\/cgov_image\/img\/placeholder-16x9.png)$                                        |
+            | 1     | NCIDS Promo Block External Title   | NCIDS Promo Block External Description             | https://www.cancer.gov | Default Internal       | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/override-placeholder-16x9.png)$ |
+            | 2     | NCIDS Promo Block External         | No image variant with light theme                  | https://www.google.com | Force Display External | N/A                                                                                                                                        |
+            | 3     | NCIDS Promo Block External Title 2 | N/A                                                | https://www.cancer.gov | Force Display Internal | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/override-placeholder-16x9.png)$ |
+            | 4     | NCIDS Promo Block External Title 3 | This uses the 16x9 and 1x1 crops.                  | https://www.google.com | Force Hide External    | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/promo_block_dog_source.png)$             |
+            | 5     | NCIDS Promo Block External Title 4 | This uses the 16x9 crop and 1x1 override.          | https://www.cancer.gov | Force Hide Internal    | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/promo_block_dog_source.png)$             |
+            | 6     | NCIDS Promo Block External Title 5 | This uses the 16x9 override and 1x1 crop.          | https://www.google.com | Learn More             | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/ncids_promo_art_16x9\/\d{4}-\d{2}\/promo_block_dog_16x9.png)$      |
+            | 7     | NCIDS Promo Block External Title 6 | This uses the placeholder image                    | https://www.google.com | Learn More             | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/module\/cgov_image\/img\/placeholder-16x9.png)$                                        |
+            | 8     | NCIDS Promo Block External Title 7 | No Image shown because no image option selected    | https://www.google.com | Learn More             | N/A                                                                                                                                        |
         And NCIDS component has "aria-labelledby" and "id" attributes
         Examples:
             | breakpoint |
@@ -37,7 +37,7 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | 8     | Feelings and Cancer                 | Internal Promo Block Description Override             | /about-cancer/coping/feelings                | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/public\/cgov_image\/media_image\/\d{4}-\d{2}\/sad-woman-looking-out-window-article.jpg)$ |
             | 9     | [No IMG] Card Title                 | [No IMG] List Description                             | /test/no-img                                 | Learn More | (\/sites\/default\/files\/styles\/ncids_promo_16x9\/module\/cgov_image\/img\/placeholder-16x9.png)$                                          |
         And NCIDS component has "aria-labelledby" and "id" attributes
-        
+
         Examples:
             | breakpoint |
             | desktop    |
@@ -62,7 +62,7 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | evar2     | D=c8                                                          |
             | evar64    | Internal\|Internal Promo Block Title Override\|Learn More     |
             | evar65    | Promo Block\|Dark\|Image Right                                |
-            | evar66    | 10\|4\|0\|0\|1\|1                                                   |
+            | evar66    | 10\|4\|0\|0\|1\|1                                             |
             | evar67    | Button\|1\|1                                                  |
             | evar68    | Body                                                          |
             | pageName  | {CANONICAL_HOST}/ncids-internal-promo-block-test              |
@@ -87,7 +87,7 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | prop67    | D=pageName                                                    |
             | prop68    | D=v68                                                         |
             | evar2     | D=c8                                                          |
-            | evar64    | External\|NCIDS Promo Block External Title\|Force Hide        |
+            | evar64    | External\|NCIDS Promo Block External Title\|Default Internal  |
             | evar65    | Promo Block\|Light\|Image Left                                |
             | evar66    | 9\|2\|0\|0\|1\|1                                              |
             | evar67    | Button\|1\|1                                                  |
@@ -96,7 +96,6 @@ Feature: As a user I want to be able to add Internal and External promo blocks t
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/ncids-external-promo-block-test |
             | event27   |                                                               |
             | channel   | NCI Homepage                                                  |
-            | pev2      | LP:PromoBlock:LinkClick                                      |
+            | pev2      | LP:PromoBlock:LinkClick                                       |
             | linkType  | lnk_o                                                         |
 
- 
