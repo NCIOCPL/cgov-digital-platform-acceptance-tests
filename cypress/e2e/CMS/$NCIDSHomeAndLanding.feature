@@ -138,6 +138,7 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel        | value                   | field_name                                                                                           |
             | Featured Item Url | https://www.google1.com | field_landing_contents[2][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
             | Card Title        | Google Link             | field_landing_contents[2][subform][field_row_cards][2][subform][field_override_card_title][0][value] |
+        And user selects "do_not_display" from 3 External Link Display dropdown number 2
         When user saves the content page
 
 
@@ -301,25 +302,26 @@ Feature: Home And Landing Page Test Creation of Content
         And NCIDS Hero is displayed
         And tagline title reads "Tagline Text"
         And tagline button has text "Article to test Related Resources" with link "{TEST_SITE_SECTION}/article"
+        And cta strip link has text "CTA External Link" with a link "https://www.google.com" and exit disclaimer is "displayed"
         Then NCIDS guide cards have the following attributes
-            | index | title        | description        | btnLinkAndText                                                                                                  | source                                                                                                    | file             |
-            | 0     | Guide Card 1 | Card 1 Description | Article to test Related Resources,{TEST_SITE_SECTION}/article;Override Button Title,{TEST_SITE_SECTION}/article | /sites/default/files/styles/ncids_guide_card_16x9/public/ncids_guide_card_img_desc/field_image_guide_card | pano_image       |
-            | 1     | Guide Card 2 | Card 2 Description | Google Link,https://www.google.com                                                                              | /sites/default/files/styles/ncids_guide_card_16x9/module/cgov_image/img                                   | placeholder-16x9 |
+            | index | title        | description        | btnLinkAndText                                                                                                  | source                                                                                                    | file             | exitDisclaimer |
+            | 0     | Guide Card 1 | Card 1 Description | Article to test Related Resources,{TEST_SITE_SECTION}/article;Override Button Title,{TEST_SITE_SECTION}/article | /sites/default/files/styles/ncids_guide_card_16x9/public/ncids_guide_card_img_desc/field_image_guide_card | pano_image       | 0,1;N/A        |
+            | 1     | Guide Card 2 | Card 2 Description | Google Link,https://www.google.com                                                                              | /sites/default/files/styles/ncids_guide_card_16x9/module/cgov_image/img                                   | placeholder-16x9 | 0;yes          |
         And NCIDS promo blocks have the following attributes
             | index | title                             | description                                | link                        | buttonText  | source                                                                              | file            | srcset                                                                            | srcSetImg       |
             | 0     | External Link Title               | N/A                                        | https://www.google2.com     | Button Text | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
             | 1     | Internal Block Override Title     | Internal Block Override Description        | {TEST_SITE_SECTION}/article | Button Text | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/media_image          | main_image      | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
             | 2     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article | Button Text | N/A                                                                                 | N/A             | N/A                                                                               | N/A             |
         And NCIDS feature cards have the following attributes
-            | index | title                             | description                                | link                          | source                                                                                 | file             | 
-            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
-            | 1     | Multimedia Feature Card Title     | Multimedia Feature Card Desc               | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | 
-            | 2     | Google Link                       | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | 
+            | index | title                             | description                                | link                          | source                                                                                 | file             | exitDisclaimer |
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | N/A            |
+            | 1     | Multimedia Feature Card Title     | Multimedia Feature Card Desc               | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | N/A            |
+            | 2     | Google Link                       | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | N/A            |
         Then NCIDS 3 guide card row at position 2 have the following attributes
-            | index | title              | btnLinkAndText                                                                                                                   |
-            | 0     | 3 Guide Card row 1 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Override Button Title,{TEST_SITE_SECTION}/article |
-            | 1     | 3 Guide Card row 2 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 1,https://www.google.com              |
-            | 2     | 3 Guide Card row 3 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 2,https://www.google.com              |
+            | index | title              | btnLinkAndText                                                                                                                   | exitDisclaimer |
+            | 0     | 3 Guide Card row 1 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Override Button Title,{TEST_SITE_SECTION}/article | 0,N/A;1,N/A    |
+            | 1     | 3 Guide Card row 2 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 1,https://www.google.com              | 0,N/A;1,yes    |
+            | 2     | 3 Guide Card row 3 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 2,https://www.google.com              | 0,N/A;1,yes    |
         Then two column container is visible
         And NCIDS dynamic list shows items with date and the following
             | component   |
@@ -375,16 +377,109 @@ Feature: Home And Landing Page Test Creation of Content
             | 1     | Internal Block Override Title_Spanish | Internal Block Override Description_Spanish | {TEST_SITE_SECTION}/article | Button Text_Spanish | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/media_image          | main_image      | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
             | 2     | Article to test Related Resources     | Automated Test Article - Feature Card Desc  | {TEST_SITE_SECTION}/article | Button Text         | N/A                                                                                 | N/A             | N/A                                                                               | N/A             |
         And NCIDS feature cards have the following attributes
-            | index | title                                 | description                                | link                          | source                                                                                 | file             | 
-            | 0     | Article to test Related Resources     | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       | 
-            | 1     | Multimedia Feature Card Title_Spanish | Multimedia Feature Card Desc_Spanish       | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  | 
-            | 2     | Google Link                           | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 | 
+            | index | title                                 | description                                | link                          | source                                                                                 | file             |
+            | 0     | Article to test Related Resources     | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/media_image          | main_image       |
+            | 1     | Multimedia Feature Card Title_Spanish | Multimedia Feature Card Desc_Spanish       | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image  |
+            | 2     | Google Link                           | N/A                                        | https://www.google1.com       | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                  | placeholder-16x9 |
         Then NCIDS 3 guide card row at position 2 have the following attributes
             | index | title              | btnLinkAndText                                                                                                                   |
             | 0     | 3 Guide Card row 1 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Override Button Title,{TEST_SITE_SECTION}/article |
             | 1     | 3 Guide Card row 2 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 1,https://www.google.com              |
             | 2     | 3 Guide Card row 3 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 2,https://www.google.com              |
 
+    Scenario: Edit existing content and test external links override
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-home-and-landing-page" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user clears out "Pretty URL" field
+        And user fills out the following fields
+            | fieldLabel | value                              | field_name       |
+            | Pretty URL | ncids-home-and-landing-page-edited | field_pretty_url |
+        And user clicks on 1 edit paragraph button
+        And user clicks on 1 edit cta strip
+        And user selects "do_not_display" from cta External Link Display dropdown number 1
+        And user clicks on "Add NCIDS Link Button External" from "Call to Action Strip" area
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                          |
+            | Link              | https://www.google.gov | field_landing_contents[0][subform][field_cta_link_buttons][1][subform][field_external_link][0][uri] |
+            | Link Button Title | CTA Gov Link  Default  | field_landing_contents[0][subform][field_cta_link_buttons][1][subform][field_button_text][0][value] |
+        And user clicks on "Add NCIDS Link Button External" from "Call to Action Strip" area
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                          |
+            | Link              | https://www.google.gov | field_landing_contents[0][subform][field_cta_link_buttons][2][subform][field_external_link][0][uri] |
+            | Link Button Title | CTA Gov Link           | field_landing_contents[0][subform][field_cta_link_buttons][2][subform][field_button_text][0][value] |
+        And user selects "force_display" from cta External Link Display dropdown number 3
+
+        And user clicks on 2 edit paragraph button
+        And user adds another "external" link for 2 guide card
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                                                                |
+            | Link              | https://www.google.gov | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
+            | Link Button Title | Gov Link               | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][1][subform][field_button_text][0][value] |
+        And user adds another "external" link for 2 guide card
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                                                                |
+            | Link              | https://www.google.gov | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][2][subform][field_external_link][0][uri] |
+            | Link Button Title | Gov Link               | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][2][subform][field_button_text][0][value] |
+        And user selects "force_display" from 2 guide card External Link Display dropdown number 2
+        And user clicks on 4 edit paragraph button
+        And user selects "do_not_display" from promo block External Link Display dropdown number 4
+        And user selects "Add NCIDS Promo Block External" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                   | field_name                                                         |
+            | Featured Item Url | https://www.google2.gov | field_landing_contents[8][subform][field_featured_url][0][uri]     |
+            | Title             | Gov link default        | field_landing_contents[8][subform][field_override_title][0][value] |
+            | Button Text       | Button Text             | field_landing_contents[8][subform][field_button_text][0][value]    |
+        And browser waits
+        And user selects "No Image" image position for 3 block
+        And user selects "Add NCIDS Promo Block External" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                         |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[9][subform][field_featured_url][0][uri]     |
+            | Title             | Gov link force show    | field_landing_contents[9][subform][field_override_title][0][value] |
+            | Button Text       | Button Text            | field_landing_contents[9][subform][field_button_text][0][value]    |
+        And browser waits
+        And user selects "force_display" from promo block External Link Display dropdown number 10
+        And user selects "No Image" image position for 4 block
+        Then user saves the content page
+        And user clicks on the tool bar status button "Editing"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
+
+    Scenario Outline: Verify edited content
+        And screen breakpoint is set to "<breakpoint>"
+        Given user is navigating to the front end site with path site section plus "ncids-home-and-landing-page-edited"
+        And NCIDS Hero is displayed
+        And tagline title reads "Tagline Text"
+        And tagline button has text "Article to test Related Resources" with link "{TEST_SITE_SECTION}/article"
+        And 1 cta strip link has text "CTA External Link" with a link "https://www.google.com" and exit disclaimer is "not displayed"
+        And 2 cta strip link has text "CTA Gov Link  Default" with a link "https://www.google.gov" and exit disclaimer is "not displayed"
+        And 3 cta strip link has text "CTA Gov Link" with a link "https://www.google.gov" and exit disclaimer is "displayed"
+        Then NCIDS guide cards have the following attributes
+            | index | title        | description        | btnLinkAndText                                                                                                  | source                                                                                                    | file             | exitDisclaimer    |
+            | 0     | Guide Card 1 | Card 1 Description | Article to test Related Resources,{TEST_SITE_SECTION}/article;Override Button Title,{TEST_SITE_SECTION}/article | /sites/default/files/styles/ncids_guide_card_16x9/public/ncids_guide_card_img_desc/field_image_guide_card | pano_image       | 0,1;N/A,N/A       |
+            | 1     | Guide Card 2 | Card 2 Description | Google Link,https://www.google.com;Gov Link,https://www.google.gov;Gov Link,https://www.google.gov              | /sites/default/files/styles/ncids_guide_card_16x9/module/cgov_image/img                                   | placeholder-16x9 | 0,1,2;yes,N/A,yes |
+        And NCIDS promo blocks have the following attributes
+            | index | title                             | description                                | link                        | buttonText  | source                                                                              | file            | srcset                                                                            | srcSetImg       | exitDisclaimer |
+            | 0     | External Link Title               | N/A                                        | https://www.google2.com     | Button Text | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/ncids_promo_art_16x9 | panoramic_image | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image | N/A            |
+            | 1     | Internal Block Override Title     | Internal Block Override Description        | {TEST_SITE_SECTION}/article | Button Text | /sites/default/files/styles/ncids_promo_16x9/public/cgov_image/media_image          | main_image      | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      | N/A            |
+            | 2     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article | Button Text | N/A                                                                                 | N/A             | N/A                                                                               | N/A             | N/A            |
+            | 3     | Gov link default                  | N/A                                        | https://www.google2.gov     | Button Text | N/A                                                                                 | N/A             | N/A                                                                               | N/A             | N/A            |
+            | 4     | Gov link force show               | N/A                                        | https://www.cancer.gov      | Button Text | N/A                                                                                 | N/A             | N/A                                                                               | N/A             | yes            |
+
+
+        Examples:
+            | breakpoint |
+            | desktop    |
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -404,7 +499,7 @@ Feature: Home And Landing Page Test Creation of Content
         When user confirms "Borrar la traduccion Español" action
 
         When user clicks on "Contenido" tab
-        And user clicks on title with url "ncids-home-and-landing-page" from the list of content
+        And user clicks on title with url "ncids-home-and-landing-page-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
