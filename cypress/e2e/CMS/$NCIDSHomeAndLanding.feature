@@ -138,7 +138,7 @@ Feature: Home And Landing Page Test Creation of Content
             | fieldLabel        | value                   | field_name                                                                                           |
             | Featured Item Url | https://www.google1.com | field_landing_contents[2][subform][field_row_cards][2][subform][field_featured_url][0][uri]          |
             | Card Title        | Google Link             | field_landing_contents[2][subform][field_row_cards][2][subform][field_override_card_title][0][value] |
-         And user selects "do_not_display" from 3 External Link Display dropdown number 2
+        And user selects "do_not_display" from 3 External Link Display dropdown number 2
         When user saves the content page
 
 
@@ -387,73 +387,73 @@ Feature: Home And Landing Page Test Creation of Content
             | 1     | 3 Guide Card row 2 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 1,https://www.google.com              |
             | 2     | 3 Guide Card row 3 | Article to test Related Resources,{TEST_SITE_SECTION}/article;3 Guide Card row Google Link 2,https://www.google.com              |
 
-            Scenario: Edit existing content and test external links override
-                Given user is navigating to "/user/login?show_login_fields=true"
-                When user enters credentials of "editor"
-                And user clicks "Log in" button
-                Then user is logged in and the user name "editor" is displayed in the toolbar
-                And the tool bar appears at the top
-                When user clicks on "Content" tab
-                And user clicks on title with url "ncids-home-and-landing-page" from the list of content
-                And user clicks on the tool bar status button "Published"
-                And user clicks "View in edit form" button from other actions
-                And user clears out "Pretty URL" field
-                And user fills out the following fields
-                    | fieldLabel | value                              | field_name       |
-                    | Pretty URL | ncids-home-and-landing-page-edited | field_pretty_url |
-                And user clicks on 1 edit paragraph button
-                And user clicks on 1 edit cta strip
-                And user selects "do_not_display" from cta External Link Display dropdown number 1
-                And user clicks on "Add NCIDS Link Button External" from "Call to Action Strip" area
-                And user fills out the following fields
-                    | fieldLabel        | value                  | field_name                                                                                          |
-                    | Link              | https://www.google.gov | field_landing_contents[0][subform][field_cta_link_buttons][1][subform][field_external_link][0][uri] |
-                    | Link Button Title | CTA Gov Link  Default  | field_landing_contents[0][subform][field_cta_link_buttons][1][subform][field_button_text][0][value] |
-                And user clicks on "Add NCIDS Link Button External" from "Call to Action Strip" area
-                And user fills out the following fields
-                    | fieldLabel        | value                  | field_name                                                                                          |
-                    | Link              | https://www.google.gov | field_landing_contents[0][subform][field_cta_link_buttons][2][subform][field_external_link][0][uri] |
-                    | Link Button Title | CTA Gov Link           | field_landing_contents[0][subform][field_cta_link_buttons][2][subform][field_button_text][0][value] |
-                And user selects "force_display" from cta External Link Display dropdown number 3
+    Scenario: Edit existing content and test external links override
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-home-and-landing-page" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "View in edit form" button from other actions
+        And user clears out "Pretty URL" field
+        And user fills out the following fields
+            | fieldLabel | value                              | field_name       |
+            | Pretty URL | ncids-home-and-landing-page-edited | field_pretty_url |
+        And user clicks on 1 edit paragraph button
+        And user clicks on 1 edit cta strip
+        And user selects "do_not_display" from cta External Link Display dropdown number 1
+        And user clicks on "Add NCIDS Link Button External" from "Call to Action Strip" area
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                          |
+            | Link              | https://www.google.gov | field_landing_contents[0][subform][field_cta_link_buttons][1][subform][field_external_link][0][uri] |
+            | Link Button Title | CTA Gov Link  Default  | field_landing_contents[0][subform][field_cta_link_buttons][1][subform][field_button_text][0][value] |
+        And user clicks on "Add NCIDS Link Button External" from "Call to Action Strip" area
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                          |
+            | Link              | https://www.google.gov | field_landing_contents[0][subform][field_cta_link_buttons][2][subform][field_external_link][0][uri] |
+            | Link Button Title | CTA Gov Link           | field_landing_contents[0][subform][field_cta_link_buttons][2][subform][field_button_text][0][value] |
+        And user selects "force_display" from cta External Link Display dropdown number 3
 
-                And user clicks on 2 edit paragraph button
-                And user adds another "external" link for 2 guide card
-                And user fills out the following fields
-                    | fieldLabel        | value                  | field_name                                                                                                                                |
-                    | Link              | https://www.google.gov | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
-                    | Link Button Title | Gov Link               | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][1][subform][field_button_text][0][value] |
-                And user adds another "external" link for 2 guide card
-                And user fills out the following fields
-                    | fieldLabel        | value                  | field_name                                                                                                                                |
-                    | Link              | https://www.google.gov | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][2][subform][field_external_link][0][uri] |
-                    | Link Button Title | Gov Link               | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][2][subform][field_button_text][0][value] |
-                And user selects "force_display" from 2 guide card External Link Display dropdown number 2
-                And user clicks on 4 edit paragraph button
-                And user selects "do_not_display" from promo block External Link Display dropdown number 4
-                And user selects "Add NCIDS Promo Block External" from "Contents" dropdown
-                And browser waits
-                And user fills out the following fields
-                    | fieldLabel        | value                   | field_name                                                         |
-                    | Featured Item Url | https://www.google2.gov | field_landing_contents[8][subform][field_featured_url][0][uri]     |
-                    | Title             | Gov link default        | field_landing_contents[8][subform][field_override_title][0][value] |
-                    | Button Text       | Button Text             | field_landing_contents[8][subform][field_button_text][0][value]    |
-                And browser waits
+        And user clicks on 2 edit paragraph button
+        And user adds another "external" link for 2 guide card
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                                                                |
+            | Link              | https://www.google.gov | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][1][subform][field_external_link][0][uri] |
+            | Link Button Title | Gov Link               | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][1][subform][field_button_text][0][value] |
+        And user adds another "external" link for 2 guide card
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                                                                |
+            | Link              | https://www.google.gov | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][2][subform][field_external_link][0][uri] |
+            | Link Button Title | Gov Link               | field_landing_contents[1][subform][field_image_desc_guide_cards][1][subform][field_link_buttons][2][subform][field_button_text][0][value] |
+        And user selects "force_display" from 2 guide card External Link Display dropdown number 2
+        And user clicks on 4 edit paragraph button
+        And user selects "do_not_display" from promo block External Link Display dropdown number 4
+        And user selects "Add NCIDS Promo Block External" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                   | field_name                                                         |
+            | Featured Item Url | https://www.google2.gov | field_landing_contents[8][subform][field_featured_url][0][uri]     |
+            | Title             | Gov link default        | field_landing_contents[8][subform][field_override_title][0][value] |
+            | Button Text       | Button Text             | field_landing_contents[8][subform][field_button_text][0][value]    |
+        And browser waits
         And user selects "No Image" image position for 3 block
-                And user selects "Add NCIDS Promo Block External" from "Contents" dropdown
-                And browser waits
-                And user fills out the following fields
-                    | fieldLabel        | value                   | field_name                                                         |
-                    | Featured Item Url | https://www.cancer.gov | field_landing_contents[9][subform][field_featured_url][0][uri]     |
-                    | Title             | Gov link force show     | field_landing_contents[9][subform][field_override_title][0][value] |
-                    | Button Text       | Button Text             | field_landing_contents[9][subform][field_button_text][0][value]    |
-                And browser waits
-                 And user selects "force_display" from promo block External Link Display dropdown number 10
+        And user selects "Add NCIDS Promo Block External" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                         |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[9][subform][field_featured_url][0][uri]     |
+            | Title             | Gov link force show    | field_landing_contents[9][subform][field_override_title][0][value] |
+            | Button Text       | Button Text            | field_landing_contents[9][subform][field_button_text][0][value]    |
+        And browser waits
+        And user selects "force_display" from promo block External Link Display dropdown number 10
         And user selects "No Image" image position for 4 block
-    Then user saves the content page
-    And user clicks on the tool bar status button "Editing"
-    And user selects "Submit for Review" from workflow actions
-    And user clicks on the tool bar status button "Post-Publication Review"
-    And user selects "Publish" from workflow actions
+        Then user saves the content page
+        And user clicks on the tool bar status button "Editing"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario Outline: Verify edited content
         And screen breakpoint is set to "<breakpoint>"
@@ -481,30 +481,30 @@ Feature: Home And Landing Page Test Creation of Content
             | breakpoint |
             | desktop    |
 
-Scenario: Clean up
-    Given user is navigating to "/user/login?show_login_fields=true"
-    When user enters credentials of "editor"
-    And user clicks "Log in" button
-    Then user is logged in and the user name "editor" is displayed in the toolbar
-    And the tool bar appears at the top
-    When user clicks on "Content" tab
-    And user clicks on title with url spanish path "/espanol" site section plus "ncids-home-and-landing-page"
-    And user clicks on the tool bar status button "Publicado"
-    And user clicks "Request Archive" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archive Requested"
-    And user clicks "Approve Archive Request" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archivado"
-    And user clicks "View in edit form" button from other actions
-    When user clicks on "Delete" option button
-    When user confirms "Borrar la traduccion Español" action
+    Scenario: Clean up
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "ncids-home-and-landing-page"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Borrar la traduccion Español" action
 
-    When user clicks on "Contenido" tab
-    And user clicks on title with url "ncids-home-and-landing-page-edited" from the list of content
-    And user clicks on the tool bar status button "Published"
-    And user clicks "Request Archive" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archive Requested"
-    And user clicks "Approve Archive Request" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archived"
-    And user clicks "View in edit form" button from other actions
-    When user clicks on "Delete" option button
-    When user confirms "Delete" action
+        When user clicks on "Contenido" tab
+        And user clicks on title with url "ncids-home-and-landing-page-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action
