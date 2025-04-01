@@ -142,7 +142,7 @@ And('the lead image is matching the earlier selected image', () => {
 });
 
 And('public use text has a link {string} with href {string}', (linkText, linkUrl) => {
-    cy.get(`div[class='public-use'] a:contains('${linkText}')`).should('be.visible').and('have.attr', 'href', linkUrl)
+    cy.get(`div[class='cgdp-public-use'] a:contains('${linkText}')`).should('be.visible').and('have.attr', 'href', linkUrl)
 })
 
 And('user clicks on title with url {string} under {string} from the list of content', (blogPost, blogSeries) => {
@@ -192,7 +192,7 @@ And('user clicks on the tool bar status red button {string}', (status) => {
 });
 
 And('public use text is not displayed', () => {
-    cy.get("div[class='public-use']").should('not.exist');
+    cy.get("div[class='cgdp-public-use']").should('not.exist');
 });
 
 Then('Related Resources section contains the following links', (dataTable) => {
