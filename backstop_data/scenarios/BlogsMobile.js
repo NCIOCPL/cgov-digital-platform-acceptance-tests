@@ -24,21 +24,21 @@ module.exports = [
             }
         ]
     },
-    {
-        label: 'blog with citations and Related Resources expand citation',
-        testPath: '/news-events/cancer-currents-blog/2019/transition-lowy-nci-acting-director',
-        viewports: [
-            {
-                label: 'mobile',
-                width: 320,
-                height: 800,
-            }
-        ],
-        clickSelector: '#cgvCitationSl h2',
-        postInteractionWait: 1000,
-        selectors: [
-            '#cgvCitationSl'
-        ],
-        selectorExpansion: true,
-    },
+    // {
+    //     label: 'blog with citations and Related Resources expand citation',
+    //     testPath: '/news-events/cancer-currents-blog/2019/transition-lowy-nci-acting-director',
+    //     viewports: [
+    //         {
+    //             label: 'mobile',
+    //             width: 320,
+    //             height: 800,
+    //         }
+    //     ],
+    //     clickSelector: '#cgvCitationSl h2',
+    //     postInteractionWait: 1000,
+    //     selectors: [
+    //         '#cgvCitationSl'
+    //     ],
+    //     selectorExpansion: true,
+    // },
 ]

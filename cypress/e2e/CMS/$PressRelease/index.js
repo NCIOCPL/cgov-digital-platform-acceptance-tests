@@ -79,7 +79,7 @@ And('the lead image for press release is matching the earlier selected image', (
 });
 
 And('public use text has a link {string} with href {string}', (linkText, link) => {
-    cy.get(`div.public-use a:contains("${linkText}")`).should('have.attr', 'href', link)
+    cy.get(`div.cgdp-public-use a:contains("${linkText}")`).should('have.attr', 'href', link)
 });
 
 And('{string} is a link with href that contains site section and {string}', (linkText, itemHref) => {
@@ -137,7 +137,7 @@ And('user removes the Promotional Image', () => {
 })
 
 And('public use text is not displayed', () => {
-    cy.get("div[class='public-use']").should('not.exist');
+    cy.get("div[class='cgdp-public-use']").should('not.exist');
 });
 
 And('user is navigating to the front end site plus {string}', (path) => {

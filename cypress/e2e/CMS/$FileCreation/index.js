@@ -17,10 +17,10 @@ And('each file has a file type in the Related Resources section displayed as fol
     for (let { link, fileType } of dataTable.hashes()) {
         const replacedTestSiteSection = enrichUrl(link, siteSection, randomStr)
         if (fileType === 'csv') {
-            cy.get(`a[href="${replacedTestSiteSection}"]`).parent().find(".filetype").should('include.text', fileType)
+            cy.get(`a[href="${replacedTestSiteSection}"]`).parent().find("span[class*='cgdp-media-link__filetype']").should('include.text', fileType)
         }
         else {
-            cy.get(`a[href="${replacedTestSiteSection}"]`).parent().find(".filetype").should('have.class', `filetype ${fileType}`)
+            cy.get(`a[href="${replacedTestSiteSection}"]`).parent().find("span[class*='cgdp-media-link__filetype']").should('have.class', `cgdp-media-link__filetype ${fileType}`)
         }
     }
 })

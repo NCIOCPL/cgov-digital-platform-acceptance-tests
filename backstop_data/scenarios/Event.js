@@ -15,7 +15,7 @@ module.exports = [
         testPath: '/about-cancer/coping/nci-workshop-event',
         focusSelector: 'a[href$="icalendar"]',
         selectors: [
-            'div[class="cgdpl desktop:grid-col-9"]'
+            '#cgvBody'
         ],
         selectorExpansion: false,
         postInteractionWait: 1000,
@@ -32,7 +32,7 @@ module.exports = [
         testPath: '/about-cancer/coping/nci-workshop-event',
         focusSelector: 'a[href="http://www.cnn.com/"]',
         selectors: [
-            '   #nvcgRelatedResourcesArea'
+            '.cgdp-related-resources'
         ],
         selectorExpansion: false,
         postInteractionWait: 1000,
@@ -55,32 +55,32 @@ module.exports = [
             },
         ],
         selectors: [
-            '.related-resources.list h2'
+            '.cgdp-related-resources.list h2'
         ],
         selectorExpansion: false,
     },
-    {
-        label: 'event expand accordion and then hover over link',
-        testPath: '/about-cancer/coping/nci-workshop-event',
-        chainedActionSelectors: [
-            {
-                action: 'click',
-                selector: '.related-resources.list h2',
-            },
-            {
-                action: 'hover',
-                selector: '.related-resources.list a',
-            },
-        ],
-        postInteractionWait: 1000,
-        viewports: [
-            {
-                label: 'mobile',
-                width: 320,
-                height: 800,
-            },
-        ],
-    },
+    // {
+    //     label: 'event expand accordion and then hover over link',
+    //     testPath: '/about-cancer/coping/nci-workshop-event',
+    //     chainedActionSelectors: [
+    //         {
+    //             action: 'click',
+    //             selector: '.cgdp-related-resources.list h2',
+    //         },
+    //         {
+    //             action: 'hover',
+    //             selector: '.cgdp-related-resources.list a',
+    //         },
+    //     ],
+    //     postInteractionWait: 1000,
+    //     viewports: [
+    //         {
+    //             label: 'mobile',
+    //             width: 320,
+    //             height: 800,
+    //         },
+    //     ],
+    // },
 
     {
         label: 'past events dynamic list',

@@ -26,7 +26,7 @@ And("{string} date is displaying today's date", (stampLabel) => {
     const month = months[date.getMonth()]
     const day = date.getDate()
     const expectedDate = `${month} ${day}, ${year}`
-    cy.get('ul.clearfix li').as('dateStamp').find('strong').should('have.text', stampLabel)
+    cy.get('.cgdp-document-dates li').as('dateStamp').find('strong').should('have.text', stampLabel)
     cy.get('@dateStamp').find('time').should('include.text', expectedDate)
 })
 
@@ -62,7 +62,7 @@ And('{int} description reads {string}', (contentText) => {
 })
 
 And('public use text has a link {string} with href {string}', (linkText, linkUrl) => {
-    cy.get(`div[class='public-use'] a:contains('${linkText}')`).should('be.visible').and('have.attr', 'href', linkUrl)
+    cy.get(`div[class='cgdp-public-use'] a:contains('${linkText}')`).should('be.visible').and('have.attr', 'href', linkUrl)
 })
 
 And('{string} section is not displayed', (section) => {
@@ -125,7 +125,7 @@ And('{string} section is displayed with the following anchor links', (OTP, dataT
 });
 
 And('public use text is not displayed', () => {
-    cy.get("div[class='public-use']").should('not.exist');
+    cy.get("div[class='cgdp-public-use']").should('not.exist');
 });
 
 And('user selects {string} content item', (dropDown) => {

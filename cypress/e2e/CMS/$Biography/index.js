@@ -42,11 +42,11 @@ And("{string} date is displaying today's date", (stampLabel) => {
     const month = months[date.getMonth()]
     const day = date.getDate()
     const expectedDate = `${month} ${day}, ${year}`
-    cy.get('ul.clearfix li').as('dateStamp').find('strong').should('have.text', stampLabel)
+    cy.get('.cgdp-document-dates li').as('dateStamp').find('strong').should('have.text', stampLabel)
     cy.get('@dateStamp').find('time').should('include.text', expectedDate)
 })
 And('description reads {string}', (description) => {
-    cy.get(`[class='resize-content'] p:contains("${description}")`).should('be.visible')
+    cy.get(`div#cgvBody p:contains("${description}")`).should('be.visible')
 
 })
 And('the Biography image is matching the earlier selected image', () => {

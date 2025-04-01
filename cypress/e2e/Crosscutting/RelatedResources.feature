@@ -21,17 +21,16 @@ Feature: Related Resources Tests
         Given user is navigating to "<url>"
         And screen breakpoint is set to "<breakpoint>"
         Then related resources section is visible
-        And exit disclaimer is visible
-        And the number of external links is <count>
+        And exit disclaimer is visible "<exitDisclaimer>"
 
         Examples:
-            | breakpoint | url                                                                                        | count |
-            | mobile     | news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                                | 3     |
-            | mobile     | about-cancer/coping/feelings                                                               | 1     |
-            | tablet     | espanol/cancer/sobrellevar/sentimientos                                                    | 1     |
-            | tablet     | news-events/cancer-currents-blog/2019/hpv-vaccine-presidents-cancer-panel-improving-uptake | 1     |
-            | desktop    | about-cancer/coping/feelings/relaxation/duke-university                                    | 2     |
-            | desktop    | about-cancer/coping/feelings/relaxation/loukissas-jen-biography                            | 2     |
+            | breakpoint | url                                                                                        | exitDisclaimer                |
+            | mobile     | news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                                | 0,N/A;1,N/A;2,yes;3,yes;4,yes |
+            | mobile     | about-cancer/coping/feelings                                                               | 0,N/A;1,N/A;2,yes             |
+            | tablet     | espanol/cancer/sobrellevar/sentimientos                                                    | 0,N/A;1,N/A;2,yes             |
+            | tablet     | news-events/cancer-currents-blog/2019/hpv-vaccine-presidents-cancer-panel-improving-uptake | 0,N/A;1,N/A;2,N/A;3,yes       |
+            | desktop    | about-cancer/coping/feelings/relaxation/duke-university                                    | 0,N/A;1,N/A;2,N/A;3,yes;4,yes |
+            | desktop    | about-cancer/coping/feelings/relaxation/loukissas-jen-biography                            | 0,N/A;1,N/A;2,N/A;3,yes;4,yes |
 
     Scenario Outline: Negative: Verify pages without related resources
         Given user is navigating to "<url>"
