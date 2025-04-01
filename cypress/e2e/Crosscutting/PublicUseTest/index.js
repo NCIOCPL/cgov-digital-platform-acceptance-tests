@@ -15,19 +15,19 @@ Given('user is navigating to {string}', (a) => {
 });
 
 Then('public use text is displayed', () => {
-    cy.get('div.public-use').should('be.visible');
+    cy.get('div.cgdp-public-use').should('be.visible');
 });
 
 And('the public use text contains {string}', (title) => {
-    cy.get('div.public-use').should('include.text', title);
+    cy.get('div.cgdp-public-use').should('include.text', title);
 });
 
 Then('public use text is not displayed', () => {
-    cy.get('div.public-use').should('not.exist');
+    cy.get('div.cgdp-public-use').should('not.exist');
 });
 
 Then('the length of public use text is within correct range', () => {
-    cy.get('div.public-use p em').invoke('text').then((text) => {
+    cy.get('div.cgdp-public-use p em').invoke('text').then((text) => {
         expect(text.length).to.be.greaterThan(300).lessThan(500);
     });
 });

@@ -32,7 +32,7 @@ module.exports = [
         testPath: '/about-cancer/coping/nci-workshop-event',
         focusSelector: 'a[href="http://www.cnn.com/"]',
         selectors: [
-            '   #nvcgRelatedResourcesArea'
+            '   .cgdp-related-resources'
         ],
         selectorExpansion: false,
         postInteractionWait: 1000,
