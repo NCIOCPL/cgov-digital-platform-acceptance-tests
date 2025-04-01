@@ -2,11 +2,11 @@
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 
 Then('date is displayed', () => {
-    cy.get('div.document-dates').should('be.visible');
+    cy.get('div.cgdp-document-dates').should('be.visible');
 });
 
 And('the date {string} is {string}', (field, value) => {
-    cy.get('div.document-dates > ul >li').as('timestamp');
+    cy.get('div.cgdp-document-dates > ul >li').as('timestamp');
     if (field == "text") {
         cy.get('@timestamp').find('time').should('have.attr', 'datetime').and('eq', value);
     }
@@ -19,5 +19,5 @@ And('the date {string} is {string}', (field, value) => {
 });
 
 Then('dates do not appear', () => {
-    cy.get('div.document-dates').should('not.exist');
+    cy.get('div.cgdp-document-dates').should('not.exist');
 });

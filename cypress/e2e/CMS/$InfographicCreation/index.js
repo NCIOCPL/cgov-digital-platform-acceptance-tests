@@ -95,12 +95,12 @@ And(`{string} date is displaying today's date`, (dateToday) => {
     const month = months[date.getMonth()];
     const day = date.getDate();
     const expectedDate = `${month} ${day}, ${year}`;
-    cy.get('div.document-dates li').as('dateStamp').find('strong').should('have.text', dateToday);
+    cy.get('div.cgdp-document-dates li').as('dateStamp').find('strong').should('have.text', dateToday);
     cy.get('@dateStamp').find('time').should('include.text', expectedDate);
 });
 
 And('date label is displaying as {string}', (labelText) => {
-    cy.get('div.document-dates li').as('dateStamp').find('strong').should('have.text', labelText);
+    cy.get('div.cgdp-document-dates li').as('dateStamp').find('strong').should('have.text', labelText);
 });
 
 And('the infographic link {string} does not appear', (linkText) => {
