@@ -28,7 +28,7 @@ And('each date is for year {string}', (year) => {
 });
 
 And('posted date is not displayed', () => {
-    cy.get('div.document-dates.horizontal').should('not.exist');
+    cy.get('.document-dates').should('not.exist');
 });
 
 And('the contact {string} is displayed with a link to email {string}', (pressText, email) => {
@@ -48,7 +48,7 @@ And('the contact {string} is not displayed', (pressText) => {
 });
 
 And('{string} date is displayed as {string}', (label, stamp) => {
-    cy.get('div.document-dates > ul >li').as('timestamp');
+    cy.get('.document-dates > ul >li').as('timestamp');
     cy.get('@timestamp').find('strong').should('include.text', label);
     cy.get('@timestamp').find('time').should('include.text', stamp);
 
