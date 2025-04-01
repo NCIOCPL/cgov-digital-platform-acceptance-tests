@@ -167,7 +167,7 @@ And('{string} date stamp displays todays date', (stampLbl) => {
     const month = months[date.getMonth()];
     const day = date.getDate();
     const expectedDate = `${month} ${day}, ${year}`;
-    cy.get('div.document-dates li').as('dateStamp').find('strong').should('have.text', stampLbl);
+    cy.get('.cgdp-document-dates li').as('dateStamp').find('strong').should('have.text', stampLbl);
     cy.get('@dateStamp').find('time').should('include.text', expectedDate);
 });
 
@@ -341,21 +341,21 @@ And('user types {string} in the citation url field and saves it', (link) => {
 })
 
 And('{string} titled citation paragraph is displayed', (title) => {
-    cy.get(`#cgvCitationSl`).should('include.text', title)
+    cy.get(`.cgdp-article-footer-citation`).should('include.text', title)
 })
 
 And('citation number {int} titled {string} is a {string} link with an url {string}', (num, citationText, pubMed, link) => {
-    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text', citationText);
+    cy.get(`.cgdp-article-footer-citation ol li`).eq(num - 1).as('cit').find('p').should('have.text', citationText);
     cy.get('@cit').find('a').should('include.text', pubMed).and('have.attr', 'href', link);
 })
 // this step does not exist in the front end 
 And('citation number {int} titled {string} links to {string} and exit disclaimer is displayed', (num, citText, linkUrl) => {
-    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('include.text', citText);
+    cy.get(`.cgdp-article-footer-citation ol li`).eq(num - 1).as('cit').find('p').should('include.text', citText);
     cy.get('@cit').find('a').should('have.attr', 'href', linkUrl);
 })
 
 And('citation number {int} titled {string} has no link', (num, citText) => {
-    cy.get(`ol[class='article-citation'] li`).eq(num - 1).as('cit').find('p').should('have.text', citText);
+    cy.get(`.cgdp-article-footer-citation ol li`).eq(num - 1).as('cit').find('p').should('have.text', citText);
     cy.get('@cit').find('a').should('not.exist')
 })
 
@@ -450,7 +450,7 @@ Then('Recursos relacionados section contains the following links', (dataTable) =
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
             link = link + '-' + randomStr
         }
-        cy.get(`div#nvcgRelatedResourcesArea a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
+        cy.get(`.cgdp-related-resources a:contains("${title}")`).should('be.visible').and('have.attr', 'href', link);
     }
 });
 
@@ -484,7 +484,7 @@ And('preview button was translated as {string}', (previewBtn) => {
 });
 
 And('date published was translated as {string}', (datePublished) => {
-    cy.get('ul.clearfix li strong').should('be.visible').and('include.text', datePublished);
+    cy.get('.cgdp-document-dates li strong').should('be.visible').and('include.text', datePublished);
 });
 
 And('the Card Title has a link {string} with href {string}', (linkText, linkHref) => {
