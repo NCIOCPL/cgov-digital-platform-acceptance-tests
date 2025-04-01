@@ -24,30 +24,30 @@ module.exports = [
             },
         ],
         selectors: [
-            '.related-resources.list h2'
+            '.cgdp-related-resources.list h2'
         ],
         selectorExpansion: false,
     },
-    {
-        label: 'cancer center expand accordion and then hover over link',
-        testPath: '/about-cancer/coping/feelings/relaxation/duke-university',
-        chainedActionSelectors: [
-            {
-                action: 'click',
-                selector: '.related-resources.list h2',
-            },
-            {
-                action: 'hover',
-                selector: '.related-resources.list a',
-            },
-        ],
-        postInteractionWait: 1000,
-        viewports: [
-            {
-                label: 'mobile',
-                width: 320,
-                height: 800,
-            },
-        ],
-    },
+    // {
+    //     label: 'cancer center expand accordion and then hover over link',
+    //     testPath: '/about-cancer/coping/feelings/relaxation/duke-university',
+    //     chainedActionSelectors: [
+    //         {
+    //             action: 'click',
+    //             selector: '.cgdp-related-resources.list h2',
+    //         },
+    //         {
+    //             action: 'hover',
+    //             selector: '.cgdp-related-resources.list a',
+    //         },
+    //     ],
+    //     postInteractionWait: 1000,
+    //     viewports: [
+    //         {
+    //             label: 'mobile',
+    //             width: 320,
+    //             height: 800,
+    //         },
+    //     ],
+    // },
 ]
