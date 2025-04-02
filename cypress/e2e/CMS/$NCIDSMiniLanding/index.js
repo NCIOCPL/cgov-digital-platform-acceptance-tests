@@ -134,7 +134,7 @@ And('user clicks on Select content button item', () => {
 })
 
 And('user clicks on {string} button for {string}', (edit, section) => {
-    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click({ force: true });
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).eq(0).click({ force: true });
 });
 
 And('user selects {string} from {int} list style dropdown', (option, index) => {
@@ -233,7 +233,7 @@ And('NCIDS flag cards have the following attributes', (dataTable) => {
 });
 
 When('the following imageless cards are displayed', (dataTable) => {
-    for (let { cardIndex, componentVariant, cardType, linkHref, title, description } of dataTable.hashes()) {
+    for (let { cardIndex, componentVariant, cardType, linkHref, title, description, exitDisclaimer } of dataTable.hashes()) {
 
         if (linkHref.includes("{TEST_SITE_SECTION}")) {
             linkHref = linkHref.replace("{TEST_SITE_SECTION}", siteSection)
@@ -257,11 +257,19 @@ When('the following imageless cards are displayed', (dataTable) => {
             cy.get('@card').find('.nci-card__body').find('.nci-card__description').should('have.text', description)
         else
             cy.get('@card').find('.nci-card__body').find('.nci-card__description').should('not.exist')
-    }
+    
+            if (exitDisclaimer === 'N/A') {
+                cy.get('@card').find('.nci-card__body').find('.nci-card__title').hasPseudoElement('::after')
+                    .should('eq', false)
+            } else {
+                cy.get('@card').find('.nci-card__body').find('.nci-card__title').hasPseudoElement('::after')
+                    .should('eq', true)
+            }
+        }
 })
 
 And('user clicks on {string} button for {string}', (edit, section) => {
-    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).click();
+    cy.get(`span.paragraph-type-label:contains('${section}')`).parent().parent().find(`input[value="${edit}"]`).eq(0).click();
 });
 
 
@@ -282,5 +290,7 @@ And('user selects {string} from {int} flag card External Link Display dropdown n
     cy.get(`select[id*='edit-field-landing-contents-${index - 1}-subform-field-row-cards-unlimited-${dropdownIndex}-subform-field-external-link-display']`).select(option)
 
 })
+
+
 
 

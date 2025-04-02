@@ -251,7 +251,41 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                                                                     |
             | Featured Item Url | https://www.google1.com | field_landing_contents[6][subform][field_row_cards_unlimited][2][subform][field_featured_url][0][uri]          |
-            | Card Title        | Google Link             | field_landing_contents[6][subform][field_row_cards_unlimited][2][subform][field_override_card_title][0][value] |
+            | Card Title        | Google Link default     | field_landing_contents[6][subform][field_row_cards_unlimited][2][subform][field_override_card_title][0][value] |
+        And user clicks on "Add NCIDS Imageless Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                     | field_name                                                                                                     |
+            | Featured Item Url | https://www.google1.com   | field_landing_contents[6][subform][field_row_cards_unlimited][3][subform][field_featured_url][0][uri]          |
+            | Card Title        | Google link force display | field_landing_contents[6][subform][field_row_cards_unlimited][3][subform][field_override_card_title][0][value] |
+        And user selects "force_display" from 7 flag card External Link Display dropdown number 3
+        And user clicks on "Add NCIDS Imageless Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                   | field_name                                                                                                     |
+            | Featured Item Url | https://www.google1.com | field_landing_contents[6][subform][field_row_cards_unlimited][4][subform][field_featured_url][0][uri]          |
+            | Card Title        | Google Link force hide  | field_landing_contents[6][subform][field_row_cards_unlimited][4][subform][field_override_card_title][0][value] |
+        And user selects "do_not_display" from 7 flag card External Link Display dropdown number 4
+        And user clicks on "Add NCIDS Imageless Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                                     |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[6][subform][field_row_cards_unlimited][5][subform][field_featured_url][0][uri]          |
+            | Card Title        | gov Link default       | field_landing_contents[6][subform][field_row_cards_unlimited][5][subform][field_override_card_title][0][value] |
+        And user clicks on "Add NCIDS Imageless Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                                     |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[6][subform][field_row_cards_unlimited][6][subform][field_featured_url][0][uri]          |
+            | Card Title        | gov Link force display | field_landing_contents[6][subform][field_row_cards_unlimited][6][subform][field_override_card_title][0][value] |
+        And user selects "force_display" from 7 flag card External Link Display dropdown number 6
+        And user clicks on "Add NCIDS Imageless Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                  | field_name                                                                                                     |
+            | Featured Item Url | https://www.cancer.gov | field_landing_contents[6][subform][field_row_cards_unlimited][7][subform][field_featured_url][0][uri]          |
+            | Card Title        | gov Link force hide    | field_landing_contents[6][subform][field_row_cards_unlimited][7][subform][field_override_card_title][0][value] |
+        And user selects "do_not_display" from 7 flag card External Link Display dropdown number 7
         When user saves the content page
         And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
@@ -280,15 +314,20 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And each 2 list item out of 3 has a heading and description except items 2 and 3
         And the optional flag card group heading is "Flag Card Group"
         Then NCIDS flag cards have the following attributes
-            | index | title                             | description                                | link                          | source                                                                            | file            |
-            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
-            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
-            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 |
+            | index | title                             | description                                | link                          | source                                                                            | file            | exitDisclaimer |
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      | N/A            |
+            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image | N/A            |
+            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 | yes            |
         Then the following imageless cards are displayed
-            | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                |
-            | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc |
-            | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  |
-            | 2         | three-card       | External | https://www.google1.com       | Google Link                       | none                                       |
+            | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                | exitDisclaimer |
+            | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc | N/A            |
+            | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | N/A            |
+            | 2         | three-card       | External | https://www.google1.com       | Google Link default               | none                                       | yes            |
+            | 3         | three-card       | External | https://www.google1.com       | Google link force display         | none                                       | yes            |
+            | 4         | three-card       | External | https://www.google1.com       | Google Link force hide            | none                                       | N/A            |
+            | 5         | three-card       | External | https://www.cancer.gov        | gov Link default                  | none                                       | N/A            |
+            | 6         | three-card       | External | https://www.cancer.gov        | gov Link force display            | none                                       | yes            |
+            | 7         | three-card       | External | https://www.cancer.gov        | gov Link force hide               | none                                       | N/A            |
 
         Examples:
             | breakpoint |
@@ -344,15 +383,20 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And each 2 list item out of 3 has a heading and description except items 2 and 3
         And the optional flag card group heading is "Flag Card Group"
         Then NCIDS flag cards have the following attributes
-            | index | title                             | description                                | link                          | source                                                                            | file            |
-            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
-            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
-            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 |
-        Then the following imageless cards are displayed
-            | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                |
-            | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc |
-            | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  |
-            | 2         | three-card       | External | https://www.google1.com       | Google Link                       | Google Link Description Spanish            |
+            | index | title                             | description                                | link                          | source                                                                            | file            | exitDisclaimer |
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      | N/A            |
+            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image | N/A            |
+            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 | yes            |
+         Then the following imageless cards are displayed
+            | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                | exitDisclaimer |
+            | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc | N/A            |
+            | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | N/A            |
+            | 2         | three-card       | External | https://www.google1.com       | Google Link default               | Google Link Description Spanish                                      | yes            |
+            | 3         | three-card       | External | https://www.google1.com       | Google link force display         | none                                       | yes            |
+            | 4         | three-card       | External | https://www.google1.com       | Google Link force hide            | none                                       | N/A            |
+            | 5         | three-card       | External | https://www.cancer.gov        | gov Link default                  | none                                       | N/A            |
+            | 6         | three-card       | External | https://www.cancer.gov        | gov Link force display            | none                                       | yes            |
+            | 7         | three-card       | External | https://www.cancer.gov        | gov Link force hide               | none                                       | N/A            |
 
     Scenario: Edit existing content and test external links override
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -409,21 +453,21 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
         And user clicks on Select content button item
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
-        And browser waits
+        And browser waits for 5000
         And user clicks on 2 "Add NCIDS Card External" button item
-        And browser waits
+        And browser waits for 5000
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                                                                     |
             | Featured Item Url | https://www.google1.gov | field_landing_contents[8][subform][field_row_cards_unlimited][1][subform][field_featured_url][0][uri]          |
             | Card Title        | gov Link default        | field_landing_contents[8][subform][field_row_cards_unlimited][1][subform][field_override_card_title][0][value] |
-         And user clicks on 2 "Add NCIDS Card External" button item
+        And user clicks on 2 "Add NCIDS Card External" button item
         And browser waits
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                                                                     |
             | Featured Item Url | https://www.google1.gov | field_landing_contents[8][subform][field_row_cards_unlimited][2][subform][field_featured_url][0][uri]          |
             | Card Title        | gov link force show     | field_landing_contents[8][subform][field_row_cards_unlimited][2][subform][field_override_card_title][0][value] |
         And user selects "force_display" from 9 flag card External Link Display dropdown number 2
-       And user clicks on 2 "Add NCIDS Card External" button item
+        And user clicks on 2 "Add NCIDS Card External" button item
         And browser waits
         And user fills out the following fields
             | fieldLabel        | value                   | field_name                                                                                                     |
@@ -433,10 +477,10 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
 
 
         Then user saves the content page
-    And user clicks on the tool bar status button "Editing"
-    And user selects "Submit for Review" from workflow actions
-    And user clicks on the tool bar status button "Post-Publication Review"
-    And user selects "Publish" from workflow actions
+        And user clicks on the tool bar status button "Editing"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
 
     Scenario Outline: Verify edited content
@@ -451,9 +495,9 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | Images and B-roll    | https://visualsonline.cancer.gov/ |
         And NCIDS feature cards have the following attributes
             | index | title                              | description | link                    | source                                                                | file             | exitDisclaimer |
-            | 6     | Google Link No external disclaimer | N/A         | https://www.google1.com | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
-            | 7     | Gov link default                   | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
-            # | 8     | Gov link force display             | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | yes            |
+            | 11     | Google Link No external disclaimer | N/A         | https://www.google1.com | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
+            | 12     | Gov link default                   | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
+        # | 10     | Gov link force display             | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | yes            |
         And NCIDS 1 list is displayed with title "Title and Description List"
         And each 1 list item out of 3 has a heading and description except items 2 and 3
         And NCIDS 2 list is displayed with title "Title, Description and Image List"
@@ -470,10 +514,10 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | 6     | Google Link do not show           | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 | N/A            |
 
         Then the following imageless cards are displayed
-            | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                |
-            | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc |
-            | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  |
-            | 2         | three-card       | External | https://www.google1.com       | Google Link                       | none                                       |
+            | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                | exitDisclaimer |
+            | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc | N/A            |
+            | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | N/A            |
+            | 2         | three-card       | External | https://www.google1.com       | Google Link default                      | none                                       | yes            |
 
         Examples:
             | breakpoint |
@@ -507,4 +551,3 @@ Scenario: Clean up
     And user clicks "View in edit form" button from other actions
     When user clicks on "Delete" option button
     When user confirms "Delete" action
-
