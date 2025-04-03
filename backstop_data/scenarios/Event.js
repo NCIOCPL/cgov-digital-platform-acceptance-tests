@@ -81,4 +81,13 @@ module.exports = [
             },
         ],
     },
+
+    {
+        label: 'past events dynamic list',
+        testPath: '/news-events/events/past-events-collection',
+    },
+    {
+        label: 'future events dynamic list with pager',
+        testPath: '/news-events/events/future-events-collection-test-pager',
+    }
 ]
