@@ -62,18 +62,21 @@ Feature: As an user, I want to see different components of the Press Releases
                 And the following parameters should be captured
                         | parameter | value                                                                                           |
                         | prop4     | D=pev1                                                                                          |
-                        | prop13    | 2                                                                                               |
-                        | prop57    | 2018 Press Releases                                                                             |
-                        | prop58    | SearchResults                                                                                   |
-                        | prop59    | 2018 Press Releases:2                                                                           |
-                        | prop60    | D=pageName                                                                                      |
+                        | prop57    | D=v64                                                                                           |
+                        | prop58    | D=v65                                                                                           |
+                        | prop59    | D=v66                                                                                           |
+                        | prop60    | D=c67                                                                                           |
                         | prop67    | D=pageName                                                                                      |
                         | prop8     | english                                                                                         |
                         | evar2     | D=c8                                                                                            |
+                        | evar61    | cgvMiniLanding\|ncids_default                                                                   |
+                        | evar64    | Internal\|No Title\|Ibrutinib plus rituximab superior to standard trea                          |
+                        | evar65    | Dynamic List\|NCIDS Collection Condensed\|Press Releases                                        |
+                        | evar67    | Collection Item\|16\|2                                                                          |
                         | pageName  | {CANONICAL_HOST}/news-events/press-releases/2018                                                |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/press-releases/2018                                   |
                         | channel   | News and Events                                                                                 |
-                        | pev2      | Legacy:DynamicListItemClick                                                                     |
+                        | pev2      | MLP:Collection:LinkClick                                                                        |
                         | linkType  | lnk_o                                                                                           |
                         | link      | Ibrutinib plus rituximab superior to standard treatment for some patients with chronic leukemia |
 
