@@ -175,7 +175,7 @@ When('the optional flag card group heading is {string}', (title) => {
 
 And('NCIDS flag cards have the following attributes', (dataTable) => {
 
-    for (let { index, title, description, link, source, file } of dataTable.hashes()) {
+    for (let { index, title, description, link, source, file, exitDisclaimer} of dataTable.hashes()) {
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
         }
@@ -220,6 +220,14 @@ And('NCIDS flag cards have the following attributes', (dataTable) => {
                 expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
             }
         });
+
+        if (exitDisclaimer === 'N/A') {
+            cy.get('@featureCard').find('span').hasPseudoElement('::after')
+                .should('eq', false)
+        } else {
+            cy.get('@featureCard').find('span').hasPseudoElement('::after')
+                .should('eq', true)
+        }
 
     }
 });
@@ -269,3 +277,10 @@ And('user selects {string} from {int} External Link Display dropdown number {int
     cy.get(`select[id*='edit-field-landing-contents-${index - 1}-subform-field-row-cards-${dropdownIndex}-subform-field-external-link-display']`).select(option)
 
 })
+
+And('user selects {string} from {int} flag card External Link Display dropdown number {int}', (option, index, dropdownIndex) => {
+    cy.get(`select[id*='edit-field-landing-contents-${index - 1}-subform-field-row-cards-unlimited-${dropdownIndex}-subform-field-external-link-display']`).select(option)
+
+})
+
+
