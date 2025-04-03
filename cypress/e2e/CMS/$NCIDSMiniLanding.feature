@@ -399,11 +399,44 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | Card Title        | Gov link force display | field_landing_contents[7][subform][field_row_cards][3][subform][field_override_card_title][0][value] |
         And user selects "force_display" from 8 External Link Display dropdown number 3
         And browser waits
+
+        And user selects "Add NCIDS Flag Card Group" from "Contents" dropdown
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel | value           | field_name                                                            |
+            | Heading    | Flag Card Group | field_landing_contents[8][subform][field_container_heading][0][value] |
+        And user clicks on "Featured Item" in 1 "NCIDS Card Internal" section
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                   | field_name                                                                                                     |
+            | Featured Item Url | https://www.google1.gov | field_landing_contents[8][subform][field_row_cards_unlimited][1][subform][field_featured_url][0][uri]          |
+            | Card Title        | gov Link default        | field_landing_contents[8][subform][field_row_cards_unlimited][1][subform][field_override_card_title][0][value] |
+         And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                   | field_name                                                                                                     |
+            | Featured Item Url | https://www.google1.gov | field_landing_contents[8][subform][field_row_cards_unlimited][2][subform][field_featured_url][0][uri]          |
+            | Card Title        | gov link force show     | field_landing_contents[8][subform][field_row_cards_unlimited][2][subform][field_override_card_title][0][value] |
+        And user selects "force_display" from 9 flag card External Link Display dropdown number 2
+       And user clicks on 2 "Add NCIDS Card External" button item
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel        | value                   | field_name                                                                                                     |
+            | Featured Item Url | https://www.google1.com | field_landing_contents[8][subform][field_row_cards_unlimited][3][subform][field_featured_url][0][uri]          |
+            | Card Title        | Google Link do not show | field_landing_contents[8][subform][field_row_cards_unlimited][3][subform][field_override_card_title][0][value] |
+        And user selects "do_not_display" from 9 flag card External Link Display dropdown number 3
+
+
         Then user saves the content page
-        And user clicks on the tool bar status button "Editing"
-        And user selects "Submit for Review" from workflow actions
-        And user clicks on the tool bar status button "Post-Publication Review"
-        And user selects "Publish" from workflow actions
+    And user clicks on the tool bar status button "Editing"
+    And user selects "Submit for Review" from workflow actions
+    And user clicks on the tool bar status button "Post-Publication Review"
+    And user selects "Publish" from workflow actions
 
 
     Scenario Outline: Verify edited content
@@ -420,18 +453,22 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | index | title                              | description | link                    | source                                                                | file             | exitDisclaimer |
             | 6     | Google Link No external disclaimer | N/A         | https://www.google1.com | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
             | 7     | Gov link default                   | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
-        # | 8     | Gov link force display                     | N/A                                        | https://www.cancer.gov      | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img                 | placeholder-16x9  |yes|
+            # | 8     | Gov link force display             | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | yes            |
         And NCIDS 1 list is displayed with title "Title and Description List"
         And each 1 list item out of 3 has a heading and description except items 2 and 3
         And NCIDS 2 list is displayed with title "Title, Description and Image List"
         And each 2 list item has a heading and an image
         And each 2 list item out of 3 has a heading and description except items 2 and 3
-        And the optional flag card group heading is "Flag Card Group"
+        And the optional flag card group heading is "Flag Card GroupFlag Card Group"
         Then NCIDS flag cards have the following attributes
-            | index | title                             | description                                | link                          | source                                                                            | file            |
-            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      |
-            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image |
-            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 |
+            | index | title                             | description                                | link                          | source                                                                            | file            | exitDisclaimer |
+            | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      | N/A            |
+            | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image | N/A            |
+            | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 | yes            |
+            | 4     | gov Link default                  | none                                       | https://www.google1.gov       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 | N/A            |
+            | 5     | gov link force show               | none                                       | https://www.google1.gov       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 | yes            |
+            | 6     | Google Link do not show           | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 | N/A            |
+
         Then the following imageless cards are displayed
             | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                |
             | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc |
@@ -443,31 +480,31 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | desktop    |
 
 
-    Scenario: Clean up
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
-        And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on title with url spanish path "/espanol" site section plus "ncids-mini-landing-page"
-        And user clicks on the tool bar status button "Publicado"
-        And user clicks "Request Archive" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archive Requested"
-        And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
-        And user clicks "View in edit form" button from other actions
-        When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+Scenario: Clean up
+    Given user is navigating to "/user/login?show_login_fields=true"
+    When user enters credentials of "editor"
+    And user clicks "Log in" button
+    Then user is logged in and the user name "editor" is displayed in the toolbar
+    And the tool bar appears at the top
+    When user clicks on "Content" tab
+    And user clicks on title with url spanish path "/espanol" site section plus "ncids-mini-landing-page"
+    And user clicks on the tool bar status button "Publicado"
+    And user clicks "Request Archive" button from Moderation sidebar
+    And user clicks on the tool bar status button "Archive Requested"
+    And user clicks "Approve Archive Request" button from Moderation sidebar
+    And user clicks on the tool bar status button "Archivado"
+    And user clicks "View in edit form" button from other actions
+    When user clicks on "Delete" option button
+    When user confirms "Borrar la traduccion Español" action
 
-        When user clicks on "Contenido" tab
-        And user clicks on title with url "ncids-mini-landing-page-edited" from the list of content
-        And user clicks on the tool bar status button "Published"
-        And user clicks "Request Archive" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archive Requested"
-        And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archived"
-        And user clicks "View in edit form" button from other actions
-        When user clicks on "Delete" option button
-        When user confirms "Delete" action
+    When user clicks on "Contenido" tab
+    And user clicks on title with url "ncids-mini-landing-page-edited" from the list of content
+    And user clicks on the tool bar status button "Published"
+    And user clicks "Request Archive" button from Moderation sidebar
+    And user clicks on the tool bar status button "Archive Requested"
+    And user clicks "Approve Archive Request" button from Moderation sidebar
+    And user clicks on the tool bar status button "Archived"
+    And user clicks "View in edit form" button from other actions
+    When user clicks on "Delete" option button
+    When user confirms "Delete" action
 
