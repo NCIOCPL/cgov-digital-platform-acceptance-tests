@@ -144,7 +144,7 @@ And('user remembers the source of selected lead image for blog series for furthe
 });
 
 And('public use text is not displayed', () => {
-    cy.get("div[class='public-use']").should('not.exist');
+    cy.get("div[class='cgdp-public-use']").should('not.exist');
 });
 
 const monthsEnglish = [

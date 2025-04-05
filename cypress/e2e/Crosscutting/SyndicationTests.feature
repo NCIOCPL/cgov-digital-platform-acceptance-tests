@@ -5,7 +5,7 @@ Feature: Syndication Tests
         Given user is navigating to "<url>"
         Then the syndication text "<text>" is present
         And the link "<textLink>" has a href "<hrefLink>"
-        And syndication icon located at "/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/syndication.png" is present
+        And syndication icon is present
         Examples:
             | url                                               | breakpoint | text                                                                                                                                             | textLink                            | hrefLink             |
             | /types/breast/patient/breast-treatment-pdq        | desktop    | Want to use this content on your website or other digital platform? Our syndication services page shows you how.                                 | syndication services page           | /syndication         |

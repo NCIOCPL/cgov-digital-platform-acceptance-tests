@@ -34,7 +34,7 @@ module.exports = [
     {
     	label: 'spanish press release with related resources and citations expand citation',
     	testPath: '/espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio',
-        clickSelector: '#cgvCitationSl h2',
+        clickSelector: '.cgdp-article-footer-citation h2',
         postInteractionWait: 1000,
         viewports: [
             {
@@ -44,7 +44,7 @@ module.exports = [
             },
         ],
         selectors: [
-            '#cgvCitationSl'
+            '.cgdp-article-footer-citation'
         ],
         selectorExpansion: true,
     }
