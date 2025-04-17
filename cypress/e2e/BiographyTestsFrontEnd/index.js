@@ -41,17 +41,17 @@ And('biography description contains text {string}', (socialMedia) => {
 
 And('{string} section contains the following links', (sectionTitle, dataTable) => {
     for (const { title, href } of dataTable.hashes()) {
-        cy.get(`div#nvcgRelatedResourcesArea li a:contains('${title}')`).should('have.attr','href').and('include',`${href}`);
+        cy.get(`.cgdp-related-resources li a:contains('${title}')`).should('have.attr','href').and('include',`${href}`);
     }
 })
 
 And('{string} date stamp displays {string}', (date, timeStamp) => {
-    cy.get('ul.clearfix li strong').should('be.visible').and('include.text', date)
-    cy.get('ul.clearfix li time').should('be.visible').and('have.text', timeStamp)
+    cy.get('.cgdp-document-dates li strong').should('be.visible').and('include.text', date)
+    cy.get('.cgdp-document-dates li time').should('be.visible').and('have.text', timeStamp)
 })
 
 And('date stamp does not exist', () => {
-    cy.get('ul.clearfix li time').should('not.exist')
+    cy.get('.cgdp-document-dates li time').should('not.exist')
 })
 
 And('the following organizations with links are listed for this individual', (dataTable) => {
