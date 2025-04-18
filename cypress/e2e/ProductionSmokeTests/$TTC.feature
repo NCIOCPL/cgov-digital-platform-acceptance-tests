@@ -25,5 +25,5 @@ Feature: Basic checks to ensure TTC production site is up and running
         And the text "We can't find the page you're looking for." is displayed
 
     Scenario: Abstract Details
-        Given user is navigating to "/available-technologies?abstract=TAB-4453"
+        Given user is navigating to "/available-technologies?abstract=TAB-4452"
         Then content is displayed
