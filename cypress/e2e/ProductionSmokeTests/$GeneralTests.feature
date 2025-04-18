@@ -26,7 +26,7 @@ Feature: Basic checks to ensure production site is up and running
             | url                                                                                              | title                                                             | languageToggle |
             | /about-cancer/coping/feelings/relaxation                                                         | How to Relax Your Mind and Body                                   | Español        |
             | /news-events/cancer-currents-blog/2020/fda-foundation-one-cancer-liquid-biopsy-expanded-approval | Cancer “Liquid Biopsy” Blood Test Gets Expanded FDA Approval      | Español        |
-            | /research/infrastructure/cancer-centers/find/mayoclinic                                          | Mayo Clinic Cancer Center                                         | none           |
+            | /research/infrastructure/cancer-centers/find/mayoclinic                                          | Mayo Clinic Comprehensive Cancer Center                           | none           |
             | /espanol/tipos/higado/cancer-vias-biliares                                                       | ¿Qué es el cáncer de vías biliares (colangiocarcinoma)?           | English        |
             | /types/liver/hp/adult-liver-treatment-pdq                                                        | Primary Liver Cancer Treatment (PDQ®)–Health Professional Version | Español        |
             | /nano/about/contact/grodzinski-piotr                                                             | Piotr Grodzinski, Ph.D.                                           | none           |
