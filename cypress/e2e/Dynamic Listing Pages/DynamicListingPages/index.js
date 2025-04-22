@@ -7,14 +7,14 @@ Then('page title is {string}', (title) => {
 
 And('the page displays pager info {string}', (pagerInfo) => {
     const regex = new RegExp(pagerInfo.split('\N').join('\\d+'));
-    cy.get('.paging-section__page-info').invoke('text').then((text) => {
-        const newText = text.split('\n').join(' ').split('\t').join('');
+    cy.get('.ctla-results__count.grid-col').invoke('text').then((text) => {
+        const newText = text.trim().split('\n').join(' ').split('\t').join('').replace(/  +/g, ' ');;
         expect(newText).to.match(regex);
     })
 });
 
 And('each result displays the trial title with a link in the following format {string}', (linkFormat) => {
-    cy.get('.ct-list-item a').should('have.attr', 'href').then((link) => {
+    cy.get('a.ctla-results__list-item-title.grid-col').should('have.attr', 'href').then((link) => {
         expect(link).to.include(linkFormat)
     })
 }
@@ -25,7 +25,7 @@ And('each result displays the trial summary', () => {
 });
 
 And('each result displays {string} below the summary', (location) => {
-    cy.get('.ct-list-item .location-info')
+    cy.get('.ctla-results__list-item-location.grid-col')
         .should('include.text', location);
 });
 
@@ -48,7 +48,7 @@ Then('the text {string} appears', (text) => {
 })
 
 When('user clicks on {int} result', (resultNum) => {
-    cy.get('a.ct-list-item__title')
+    cy.get('a.ctla-results__list-item-title.grid-col')
         .eq(resultNum - 1)
         .trigger('click', { followRedirect: false });
 });
@@ -58,7 +58,7 @@ And('the pager is not displayed', () => {
 });
 
 And('intro text {int} paragraph is {string}', (num, introText) => {
-    cy.get('.intro-text').find('p').eq(num - 1).should('have.text', introText);
+    cy.get('.disease-view__intro.ctla-results__intro').find('p').eq(num - 1).should('have.text', introText);
 
 });
 

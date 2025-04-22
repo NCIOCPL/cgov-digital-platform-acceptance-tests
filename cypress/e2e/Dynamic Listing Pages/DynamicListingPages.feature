@@ -26,6 +26,8 @@ Feature: Dynamic Listing Pages
             | Disease Trial Type              | desktop           | /research/participate/clinical-trials/disease/c4872/treatment              | Treatment Clinical Trials for Breast Cancer                            | Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer treatment. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.                                               |
             | Disease Trial Type              | mobile            | /research/participate/clinical-trials/disease/breast-cancer/treatment      | Treatment Clinical Trials for Breast Cancer                            | Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer treatment. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.                                               |
 
+
+    ## TODO append back &redirect=true to the end of redirectedUrls after this is fixed
     Scenario Outline: Redirect c-code to pretty url functionality
         When user is navigating to "<path>"
         And screen breakpoint is set to "desktop"
@@ -35,14 +37,14 @@ Feature: Dynamic Listing Pages
             | prerender-status-code | 301               |
             | prerender-header      | <prerenderHeader> |
         Examples:
-            | Route                           | path                                                                        | redirectedUrl                                                                                   | prerenderHeader                                                                                                          |
-            | Disease                         | /research/participate/clinical-trials/disease/c4872                         | /research/participate/clinical-trials/disease/breast-cancer?redirect=true                       | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer                       |
-            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/c4872/treatment/trastuzumab   | /research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab?redirect=true | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
-            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/breast-cancer/treatment/c1647 | /research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab?redirect=true | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
-            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/c4872/treatment/c1647         | /research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab?redirect=true | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
-            | Intervention                    | /research/participate/clinical-trials/intervention/c1647                    | /research/participate/clinical-trials/intervention/trastuzumab?redirect=true                    | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab                    |
-            | Intervention Trial Type         | /research/participate/clinical-trials/intervention/c1647/treatment          | /research/participate/clinical-trials/intervention/trastuzumab/treatment?redirect=true          | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab/treatment          |
-            | Disease Trial Type              | /research/participate/clinical-trials/disease/c4872/treatment               | /research/participate/clinical-trials/disease/breast-cancer/treatment?redirect=true             | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment             |
+            | Route                           | path                                                                        | redirectedUrl                                                                          | prerenderHeader                                                                                                          |
+            | Disease                         | /research/participate/clinical-trials/disease/c4872                         | /research/participate/clinical-trials/disease/breast-cancer?pn=1                       | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer                       |
+            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/c4872/treatment/trastuzumab   | /research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab?pn=1 | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
+            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/breast-cancer/treatment/c1647 | /research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab?pn=1 | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
+            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/c4872/treatment/c1647         | /research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab?pn=1 | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
+            | Intervention                    | /research/participate/clinical-trials/intervention/c1647                    | /research/participate/clinical-trials/intervention/trastuzumab?pn=1                    | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab                    |
+            | Intervention Trial Type         | /research/participate/clinical-trials/intervention/c1647/treatment          | /research/participate/clinical-trials/intervention/trastuzumab/treatment?pn=1          | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab/treatment          |
+            | Disease Trial Type              | /research/participate/clinical-trials/disease/c4872/treatment               | /research/participate/clinical-trials/disease/breast-cancer/treatment?pn=1             | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment             |
 
 
     Scenario Outline: Redirect to noTrialsFound
@@ -60,13 +62,13 @@ Feature: Dynamic Listing Pages
             | robots                | noindex            |
 
         Examples:
-            | Route                           | path                                                                              | redirectedUrl                                                                                       | page title                                                    | noTrialsText                                                                                                                                                                                                         | prerender-header                                                                                                                           |
-            | Disease                         | /research/participate/clinical-trials/disease/spiroplatin                         | /research/participate/clinical-trials/disease/notrials?p1=spiroplatin                               | Spiroplatin Clinical Trials                                   | There are no NCI-supported clinical trials for spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                               | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=spiroplatin                               |
-            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/spiroplatin/treatment/trastuzumab   | /research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment&p3=trastuzumab   | Treatment Clinical Trials for Spiroplatin Using Trastuzumab   | There are no NCI-supported clinical trials for spiroplatin treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.   | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment&p3=trastuzumab   |
-            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/breast-cancer/treatment/spiroplatin | /research/participate/clinical-trials/disease/notrials?p1=breast-cancer&p2=treatment&p3=spiroplatin | Treatment Clinical Trials for Breast Cancer Using Spiroplatin | There are no NCI-supported clinical trials for breast cancer treatment using spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=breast-cancer&p2=treatment&p3=spiroplatin |
-            | Intervention                    | /research/participate/clinical-trials/intervention/spiroplatin                    | /research/participate/clinical-trials/intervention/notrials?p1=spiroplatin                          | Clinical Trials Using Spiroplatin                             | There are no NCI-supported clinical trials studying spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                          | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/notrials?p1=spiroplatin                          |
-            | Intervention Trial Type         | /research/participate/clinical-trials/intervention/spiroplatin/treatment          | /research/participate/clinical-trials/intervention/notrials?p1=spiroplatin&p2=treatment             | Treatment Clinical Trials Using Spiroplatin                   | There are no NCI-supported clinical trials for treatment using spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.               | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/notrials?p1=spiroplatin&p2=treatment             |
-            | Disease Trial Type              | /research/participate/clinical-trials/disease/spiroplatin/treatment               | /research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment                  | Treatment Clinical Trials for Spiroplatin                     | There are no NCI-supported clinical trials for spiroplatin treatment at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                     | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment                  |
+            | Route                           | path                                                                              | redirectedUrl                                                                                            | page title                                                    | noTrialsText                                                                                                                                                                                                         | prerender-header                                                                                                                           |
+            | Disease                         | /research/participate/clinical-trials/disease/spiroplatin                         | /research/participate/clinical-trials/disease/notrials?p1=spiroplatin&pn=1                               | Spiroplatin Clinical Trials                                   | There are no NCI-supported clinical trials for spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                               | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=spiroplatin                               |
+            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/spiroplatin/treatment/trastuzumab   | /research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment&p3=trastuzumab&pn=1   | Treatment Clinical Trials for Spiroplatin Using Trastuzumab   | There are no NCI-supported clinical trials for spiroplatin treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.   | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment&p3=trastuzumab   |
+            | Disease Trial Type Intervention | /research/participate/clinical-trials/disease/breast-cancer/treatment/spiroplatin | /research/participate/clinical-trials/disease/notrials?p1=breast-cancer&p2=treatment&p3=spiroplatin&pn=1 | Treatment Clinical Trials for Breast Cancer Using Spiroplatin | There are no NCI-supported clinical trials for breast cancer treatment using spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=breast-cancer&p2=treatment&p3=spiroplatin |
+            | Intervention                    | /research/participate/clinical-trials/intervention/spiroplatin                    | /research/participate/clinical-trials/intervention/notrials?p1=spiroplatin&pn=1                          | Clinical Trials Using Spiroplatin                             | There are no NCI-supported clinical trials studying spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                          | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/notrials?p1=spiroplatin                          |
+            | Intervention Trial Type         | /research/participate/clinical-trials/intervention/spiroplatin/treatment          | /research/participate/clinical-trials/intervention/notrials?p1=spiroplatin&p2=treatment&pn=1             | Treatment Clinical Trials Using Spiroplatin                   | There are no NCI-supported clinical trials for treatment using spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.               | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/notrials?p1=spiroplatin&p2=treatment             |
+            | Disease Trial Type              | /research/participate/clinical-trials/disease/spiroplatin/treatment               | /research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment&pn=1                  | Treatment Clinical Trials for Spiroplatin                     | There are no NCI-supported clinical trials for spiroplatin treatment at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.                     | Location: {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment                  |
 
 
     Scenario Outline: Meta Tags
@@ -119,28 +121,28 @@ Feature: Dynamic Listing Pages
         And screen breakpoint is set to "desktop"
         Then page load request is sent
         And the following parameters should be captured
-            | parameter | value                                                                                    |
-            | prop6     | Breast Cancer Clinical Trials                                                            |
-            | prop10    | Breast Cancer Clinical Trials - NCI                                                      |
-            | prop44    | Research Landing Page                                                                    |
-            | prop3     | /research/participate/clinical-trials/disease/breast-cancer                              |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                     |
-            | prop29    |                                                                                          |
-            | prop62    | Clinical Trials: Custom                                                                  |
-            | prop20    | /^disease\|breast-cancer\|none\|none\|\d+/                                               |
-            | prop11    | clinicaltrials_custom                                                                    |
-            | prop8     | english                                                                                  |
-            | evar44    | D=c44                                                                                    |
-            | evar11    | D=c11                                                                                    |
-            | evar20    | D=c20                                                                                    |
-            | evar47    | clinicaltrials_custom                                                                    |
-            | evar62    | D=c62                                                                                    |
-            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer              |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer |
-            | event2    |                                                                                          |
-            | event1    |                                                                                          |
-            | channel   | Research                                                                                 |
-            | evar61    | nciAppModulePage\|left_nav                                                               |
+            | parameter | value                                                                                         |
+            | prop6     | Breast Cancer Clinical Trials                                                                 |
+            | prop10    | Breast Cancer Clinical Trials - NCI                                                           |
+            | prop44    | Research Landing Page                                                                         |
+            | prop3     | /research/participate/clinical-trials/disease/breast-cancer                                   |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                          |
+            | prop29    |                                                                                               |
+            | prop62    | Clinical Trials: Custom                                                                       |
+            | prop20    | /^disease\|breast-cancer\|none\|none\|\d+/                                                    |
+            | prop11    | clinicaltrials_custom                                                                         |
+            | prop8     | english                                                                                       |
+            | evar44    | D=c44                                                                                         |
+            | evar11    | D=c11                                                                                         |
+            | evar20    | D=c20                                                                                         |
+            | evar47    | clinicaltrials_custom                                                                         |
+            | evar62    | D=c62                                                                                         |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer?pn=1 |
+            | event2    |                                                                                               |
+            | event1    |                                                                                               |
+            | channel   | Research                                                                                      |
+            | evar61    | nciAppModulePage\|ncids_no_left_nav                                                           |
 
     Scenario: Analytics page load disease trial type no trials found
         When user is navigating to "/research/participate/clinical-trials/disease/spiroplatin/treatment" with a 404 status
@@ -148,28 +150,28 @@ Feature: Dynamic Listing Pages
         And browser waits
         Then page load request is sent
         And the following parameters should be captured
-            | parameter | value                                                                                                           |
-            | prop6     | Treatment Clinical Trials for Spiroplatin                                                                       |
-            | prop10    | Treatment Clinical Trials for Spiroplatin - NCI                                                                 |
-            | prop44    | Research Landing Page                                                                                           |
-            | prop3     | /research/participate/clinical-trials/disease/notrials                                                          |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                            |
-            | prop29    |                                                                                                                 |
-            | prop62    | Clinical Trials: Custom                                                                                         |
-            | prop20    | /^disease\|spiroplatin\|treatment\|none\|0/                                                                     |
-            | prop11    | clinicaltrials_custom                                                                                           |
-            | prop8     | english                                                                                                         |
-            | evar44    | D=c44                                                                                                           |
-            | evar11    | D=c11                                                                                                           |
-            | evar20    | D=c20                                                                                                           |
-            | evar47    | clinicaltrials_custom                                                                                           |
-            | evar62    | D=c62                                                                                                           |
-            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials                                          |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment |
-            | event2    |                                                                                                                 |
-            | event1    |                                                                                                                 |
-            | channel   | Research                                                                                                        |
-            | evar61    | nciAppModulePage\|left_nav                                                                                      |
+            | parameter | value                                                                                                                |
+            | prop6     | Treatment Clinical Trials for Spiroplatin                                                                            |
+            | prop10    | Treatment Clinical Trials for Spiroplatin - NCI                                                                      |
+            | prop44    | Research Landing Page                                                                                                |
+            | prop3     | /research/participate/clinical-trials/disease/notrials                                                               |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                                 |
+            | prop29    |                                                                                                                      |
+            | prop62    | Clinical Trials: Custom                                                                                              |
+            | prop20    | /^disease\|spiroplatin\|treatment\|none\|0/                                                                          |
+            | prop11    | clinicaltrials_custom                                                                                                |
+            | prop8     | english                                                                                                              |
+            | evar44    | D=c44                                                                                                                |
+            | evar11    | D=c11                                                                                                                |
+            | evar20    | D=c20                                                                                                                |
+            | evar47    | clinicaltrials_custom                                                                                                |
+            | evar62    | D=c62                                                                                                                |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials                                               |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/notrials?p1=spiroplatin&p2=treatment&pn=1 |
+            | event2    |                                                                                                                      |
+            | event1    |                                                                                                                      |
+            | channel   | Research                                                                                                             |
+            | evar61    | nciAppModulePage\|ncids_no_left_nav                                                                                  |
 
     Scenario: Analytics page load disease trial type intervention
         When user is navigating to "/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab" with added wait
@@ -177,28 +179,28 @@ Feature: Dynamic Listing Pages
         And browser waits
         Then page load request is sent
         And the following parameters should be captured
-            | parameter | value                                                                                                          |
-            | prop6     | Treatment Clinical Trials for Breast Cancer Using Trastuzumab                                                  |
-            | prop10    | Treatment Clinical Trials for Breast Cancer Using Trastuzumab - NCI                                            |
-            | prop44    | Research Landing Page                                                                                          |
-            | prop3     | /research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab                              |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                           |
-            | prop29    |                                                                                                                |
-            | prop62    | Clinical Trials: Custom                                                                                        |
-            | prop20    | /^disease\|breast-cancer\|treatment\|trastuzumab\|\d+/                                                         |
-            | prop11    | clinicaltrials_custom                                                                                          |
-            | prop8     | english                                                                                                        |
-            | evar44    | D=c44                                                                                                          |
-            | evar11    | D=c11                                                                                                          |
-            | evar20    | D=c20                                                                                                          |
-            | evar47    | clinicaltrials_custom                                                                                          |
-            | evar62    | D=c62                                                                                                          |
-            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab              |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab |
-            | event2    |                                                                                                                |
-            | event1    |                                                                                                                |
-            | channel   | Research                                                                                                       |
-            | evar61    | nciAppModulePage\|left_nav                                                                                     |
+            | parameter | value                                                                                                               |
+            | prop6     | Treatment Clinical Trials for Breast Cancer Using Trastuzumab                                                       |
+            | prop10    | Treatment Clinical Trials for Breast Cancer Using Trastuzumab - NCI                                                 |
+            | prop44    | Research Landing Page                                                                                               |
+            | prop3     | /research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab                                   |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                                |
+            | prop29    |                                                                                                                     |
+            | prop62    | Clinical Trials: Custom                                                                                             |
+            | prop20    | /^disease\|breast-cancer\|treatment\|trastuzumab\|\d+/                                                              |
+            | prop11    | clinicaltrials_custom                                                                                               |
+            | prop8     | english                                                                                                             |
+            | evar44    | D=c44                                                                                                               |
+            | evar11    | D=c11                                                                                                               |
+            | evar20    | D=c20                                                                                                               |
+            | evar47    | clinicaltrials_custom                                                                                               |
+            | evar62    | D=c62                                                                                                               |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment/trastuzumab?pn=1 |
+            | event2    |                                                                                                                     |
+            | event1    |                                                                                                                     |
+            | channel   | Research                                                                                                            |
+            | evar61    | nciAppModulePage\|ncids_no_left_nav                                                                                 |
 
     Scenario: Analytics page load intervention trial type
         When user is navigating to "/research/participate/clinical-trials/intervention/trastuzumab/treatment" with added wait
@@ -206,28 +208,28 @@ Feature: Dynamic Listing Pages
         And browser waits
         Then page load request is sent
         And the following parameters should be captured
-            | parameter | value                                                                                                 |
-            | prop6     | Treatment Clinical Trials Using Trastuzumab                                                           |
-            | prop10    | Treatment Clinical Trials Using Trastuzumab - NCI                                                     |
-            | prop44    | Research Landing Page                                                                                 |
-            | prop3     | /research/participate/clinical-trials/intervention/trastuzumab/treatment                              |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                  |
-            | prop29    |                                                                                                       |
-            | prop62    | Clinical Trials: Custom                                                                               |
-            | prop20    | /^intervention\|trastuzumab\|treatment\|\d+/                                                          |
-            | prop11    | clinicaltrials_custom                                                                                 |
-            | prop8     | english                                                                                               |
-            | evar44    | D=c44                                                                                                 |
-            | evar11    | D=c11                                                                                                 |
-            | evar20    | D=c20                                                                                                 |
-            | evar47    | clinicaltrials_custom                                                                                 |
-            | evar62    | D=c62                                                                                                 |
-            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab/treatment              |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab/treatment |
-            | event2    |                                                                                                       |
-            | event1    |                                                                                                       |
-            | channel   | Research                                                                                              |
-            | evar61    | nciAppModulePage\|left_nav                                                                            |
+            | parameter | value                                                                                                      |
+            | prop6     | Treatment Clinical Trials Using Trastuzumab                                                                |
+            | prop10    | Treatment Clinical Trials Using Trastuzumab - NCI                                                          |
+            | prop44    | Research Landing Page                                                                                      |
+            | prop3     | /research/participate/clinical-trials/intervention/trastuzumab/treatment                                   |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                                       |
+            | prop29    |                                                                                                            |
+            | prop62    | Clinical Trials: Custom                                                                                    |
+            | prop20    | /^intervention\|trastuzumab\|treatment\|\d+/                                                               |
+            | prop11    | clinicaltrials_custom                                                                                      |
+            | prop8     | english                                                                                                    |
+            | evar44    | D=c44                                                                                                      |
+            | evar11    | D=c11                                                                                                      |
+            | evar20    | D=c20                                                                                                      |
+            | evar47    | clinicaltrials_custom                                                                                      |
+            | evar62    | D=c62                                                                                                      |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab/treatment                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab/treatment?pn=1 |
+            | event2    |                                                                                                            |
+            | event1    |                                                                                                            |
+            | channel   | Research                                                                                                   |
+            | evar61    | nciAppModulePage\|ncids_no_left_nav                                                                        |
 
     Scenario: Analytics page load no trial found
         When user is navigating to "/research/participate/clinical-trials/intervention/spiroplatin" with a 404 status
@@ -255,7 +257,7 @@ Feature: Dynamic Listing Pages
             | event2    |                                                                             |
             | event1    |                                                                             |
             | channel   | Research                                                                    |
-            | evar61    | nciAppModulePage\|left_nav                                                  |
+            | evar61    | nciAppModulePage\|ncids_no_left_nav                                         |
 
 
     Scenario Outline: Analytics click event
@@ -282,6 +284,6 @@ Feature: Dynamic Listing Pages
             | linkType  | lnk_o                 |
 
         Examples:
-            | path                                                                  | page title                                  | pageName                                                                              | pageURL                                                                                            |
-            | /research/participate/clinical-trials/intervention/trastuzumab        | Clinical Trials Using Trastuzumab           | {CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab        | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab        |
-            | /research/participate/clinical-trials/disease/breast-cancer/treatment | Treatment Clinical Trials for Breast Cancer | {CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment |
+            | path                                                                  | page title                                  | pageName                                                                              | pageURL                                                                                                 |
+            | /research/participate/clinical-trials/intervention/trastuzumab        | Clinical Trials Using Trastuzumab           | {CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab        | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/intervention/trastuzumab?pn=1        |
+            | /research/participate/clinical-trials/disease/breast-cancer/treatment | Treatment Clinical Trials for Breast Cancer | {CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/disease/breast-cancer/treatment?pn=1 |

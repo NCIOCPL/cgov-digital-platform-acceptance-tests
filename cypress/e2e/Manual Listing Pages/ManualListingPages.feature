@@ -66,36 +66,36 @@ Feature: All manual pages
         Then the text "<noTrialsText>" appears
 
         Examples:
-            | path                                              | directedUrl                                       | page title                           | noTrialsText                             |
-            | /research/participate/clinical-trials/chicken-pox | /research/participate/clinical-trials/chicken-pox | Clinical Trials to Treat Chicken Pox | There are currently no available trials. |
+            | path                                              | directedUrl                                            | page title                           | noTrialsText                             |
+            | /research/participate/clinical-trials/chicken-pox | /research/participate/clinical-trials/chicken-pox?pn=1 | Clinical Trials to Treat Chicken Pox | There are currently no available trials. |
 
 
     Scenario: Analytics
         When user is navigating to "/research/participate/clinical-trials/cam-procedures" with added wait
         Then page load request is sent
         And the following parameters should be captured
-            | parameter | value                                                                             |
-            | prop6     | Clinical Trials for Complementary or Alternative Medicine Procedure(s)            |
-            | prop10    | Clinical Trials for Complementary or Alternative Medicine Procedure(s) - NCI      |
-            | prop44    | Research Landing Page                                                             |
-            | prop3     | /research/participate/clinical-trials/cam-procedures/                             |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                              |
-            | prop29    |                                                                                   |
-            | prop62    | Clinical Trials: Custom                                                           |
-            | prop20    | /^manual parameters\|\d{1,2}/                                                     |
-            | prop11    | clinicaltrials_custom                                                             |
-            | prop8     | english                                                                           |
-            | evar44    | D=c44                                                                             |
-            | evar11    | D=c11                                                                             |
-            | evar20    | D=c20                                                                             |
-            | evar47    | clinicaltrials_custom                                                             |
-            | evar62    | D=c62                                                                             |
-            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures              |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures |
-            | event2    |                                                                                   |
-            | event1    |                                                                                   |
-            | channel   | Research                                                                          |
-            | evar61    | nciAppModulePage\|left_nav                                                        |
+            | parameter | value                                                                                  |
+            | prop6     | Clinical Trials for Complementary or Alternative Medicine Procedure(s)                 |
+            | prop10    | Clinical Trials for Complementary or Alternative Medicine Procedure(s) - NCI           |
+            | prop44    | Research Landing Page                                                                  |
+            | prop3     | /research/participate/clinical-trials/cam-procedures/                                  |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                   |
+            | prop29    |                                                                                        |
+            | prop62    | Clinical Trials: Custom                                                                |
+            | prop20    | /^manual parameters\|\d{1,2}/                                                          |
+            | prop11    | clinicaltrials_custom                                                                  |
+            | prop8     | english                                                                                |
+            | evar44    | D=c44                                                                                  |
+            | evar11    | D=c11                                                                                  |
+            | evar20    | D=c20                                                                                  |
+            | evar47    | clinicaltrials_custom                                                                  |
+            | evar62    | D=c62                                                                                  |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures?pn=1 |
+            | event2    |                                                                                        |
+            | event1    |                                                                                        |
+            | channel   | Research                                                                               |
+            | evar61    | nciAppModulePage\|ncids_left_nav                                                       |
 
     Scenario: Analytics click event
         When user is navigating to "/research/participate/clinical-trials/cam-procedures"
@@ -104,18 +104,18 @@ Feature: All manual pages
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                             |
-            | prop4     | D=pev1                                                                            |
-            | prop67    | D=pageName                                                                        |
-            | prop13    | 1\|page 1                                                                         |
-            | prop12    | clinicaltrials_custom                                                             |
-            | prop8     | english                                                                           |
-            | evar2     | D=c8                                                                              |
-            | evar12    | D=c12                                                                             |
-            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures              |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures |
-            | event42   |                                                                                   |
-            | channel   | Research                                                                          |
-            | pev2      | CTSLink                                                                           |
-            | linkType  | lnk_o                                                                             |
+            | parameter | value                                                                                  |
+            | prop4     | D=pev1                                                                                 |
+            | prop67    | D=pageName                                                                             |
+            | prop13    | 1\|page 1                                                                              |
+            | prop12    | clinicaltrials_custom                                                                  |
+            | prop8     | english                                                                                |
+            | evar2     | D=c8                                                                                   |
+            | evar12    | D=c12                                                                                  |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures?pn=1 |
+            | event42   |                                                                                        |
+            | channel   | Research                                                                               |
+            | pev2      | CTSLink                                                                                |
+            | linkType  | lnk_o                                                                                  |
 
