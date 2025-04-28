@@ -144,7 +144,7 @@ And('tagline title reads {string}', (title) => {
     cy.get('h2.nci-hero__cta-tagline').should('have.text', title)
 })
 And('tagline button has text {string} with link {string}', (btnText, href) => {
-    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href', `${getBaseDirectory()}${href}`)
+    cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('include.text', btnText).and('have.attr', 'href', href);
 })
 And("tagline button doesn't exist", () => {
     cy.get('.nci-hero__cta.nci-hero__cta--with-button a').should('not.exist')
