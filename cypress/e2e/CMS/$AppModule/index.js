@@ -15,14 +15,14 @@ And('user enters {string} into app config text field', (value) => {
 
 And('the page displays pager info {string}', (pagerInfo) => {
     const regex = new RegExp(pagerInfo.split('\N').join('\\d+'));
-    cy.get('.paging-section__page-info').invoke('text').then((text) => {
-        const newText = text.split('\n').join(' ').split('\t').join('');
+    cy.get('.ctla-results__count.grid-col').invoke('text').then((text) => {
+        const newText = text.trim().split('\n').join(' ').split('\t').join('').replace(/  +/g, ' ');;
         expect(newText).to.match(regex);
     })
 });
 
 And('each result displays the trial title with a link in the following format {string}', (linkFormat) => {
-    cy.get('.ct-list-item a').should('have.attr', 'href').then((link) => {
+    cy.get('a.ctla-results__list-item-title.grid-col').should('have.attr', 'href').then((link) => {
         expect(link).to.include(linkFormat)
     })
 }
@@ -33,8 +33,8 @@ And('each result displays the trial summary', () => {
 });
 
 And('each result displays {string} below the summary', (location) => {
-    cy.get('.ct-list-item .location-info')
-        .should('include.text', location);
+    cy.get('.ctla-results__list-item-location.grid-col')
+    .should('include.text', location);
 });
 
 
