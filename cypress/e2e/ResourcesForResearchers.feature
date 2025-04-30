@@ -186,7 +186,7 @@ Feature: Resources For Researchers app is integrated within CGOV platform
 
         Examples:
             | url                              | title                                                 | displayed   |
-            | /research/resources/resource/82  | Health Disparities Calculator (HD*Calc)               | visible     |
+            | /research/resources/resource/82  | Health Drivers Calculator (HD*Calc)                   | visible     |
             | /research/resources/resource/102 | Allele-Specific Alternative mRNA processing (ASARP)   | not visible |
             | /research/resources/resource/32  | The International Registry of Werner Syndrome         | visible     |
             | /research/resources/resource/54  | Cancer Intervention and Surveillance Modeling Network | visible     |
