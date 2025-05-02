@@ -57,7 +57,7 @@ And("{string} date is displaying today's date", (stampLabel) => {
     const month = months[date.getMonth()]
     const day = date.getDate()
     const expectedDate = `${month} ${day}, ${year}`
-    cy.get('ul.clearfix li').as('dateStamp').find('strong').should('have.text', stampLabel)
+    cy.get('.cgdp-document-dates li').as('dateStamp').find('strong').should('have.text', stampLabel)
     cy.get('@dateStamp').find('time').should('include.text', expectedDate)
 })
 
@@ -165,7 +165,7 @@ And('Related Resources section was translated as {string}', (dropdownLabel) => {
 
 And('dates were translated as follows', (dataTable) => {
     for (const { date } of dataTable.hashes()) {
-        cy.get(`div[class='document-dates horizontal'] li>strong:contains("${date}")`).should('be.visible')
+        cy.get(`div[class*='cgdp-document-dates'] li>strong:contains("${date}")`).should('be.visible')
     }
 })
 

@@ -20,7 +20,8 @@ const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 		delay: 2000,
 		label: scenario.specific && isACSF ? scenario.label + '_acsf' : scenario.label,
 		removeSelectors: scenario.enableBackToTop ? ['button[class="usa-button usa-button--slider-button usa-button--nci-icon"]'] : ['div[class*="usa-footer__nci-return-to-top"]','button[class="usa-button usa-button--slider-button usa-button--nci-icon"]'],
-		cookiePath:'backstop_data/engine_scripts/cookies.json'
+		cookiePath:'backstop_data/engine_scripts/cookies.json',
+		misMatchThreshold: scenario.misMatchThreshold? scenario.misMatchThreshold : 0.1
 	}));
 	return [...ac, ...cleanedScenarios];
 }, []);
@@ -64,7 +65,6 @@ module.exports = {
 	asyncCompareLimit: 50,
 	debug: false,
 	debugWindow: false,
-	misMatchThreshold: 0.1,
 	resembleOutputOptions: {
 		usePreciseMatching: true,
 	}
