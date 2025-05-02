@@ -28,11 +28,11 @@ And('each date is for year {string}', (year) => {
 });
 
 And('posted date is not displayed', () => {
-    cy.get('.document-dates').should('not.exist');
+    cy.get('.cgdp-document-dates').should('not.exist');
 });
 
 And('the contact {string} is displayed with a link to email {string}', (pressText, email) => {
-    cy.get('.columns.large-4.media-contact.right a').should('have.attr', 'href', email).should('have.text', pressText);
+    cy.get('.cgdp-media-contact a').should('have.attr', 'href', email).should('have.text', pressText);
 });
 
 When('user is clicking on definition for {string}', (glossTerm) => {
@@ -44,11 +44,11 @@ Then('pop-up definition box is displayed for {string}', (glossTerm) => {
 });
 
 And('the contact {string} is not displayed', (pressText) => {
-    cy.get('.columns.large-4.media-contact.right').should('not.exist');
+    cy.get('.cgdp-media-contact').should('not.exist');
 });
 
 And('{string} date is displayed as {string}', (label, stamp) => {
-    cy.get('.document-dates > ul >li').as('timestamp');
+    cy.get('.cgdp-document-dates > ul >li').as('timestamp');
     cy.get('@timestamp').find('strong').should('include.text', label);
     cy.get('@timestamp').find('time').should('include.text', stamp);
 
