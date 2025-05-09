@@ -90,5 +90,17 @@ module.exports = [
     {
         label: 'future events dynamic list with pager',
         testPath: '/news-events/events/future-events-collection-test-pager',
+    }, 
+    {
+        label: 'event with lead image, caption and enlarge',
+        testPath: '/test/event-lead-img-caption-enlarge',
+    }, 
+    {
+        label: 'event with lead image, no caption and enlarge',
+        testPath: '/test/event-lead-img-enlarge',
+    },
+    {
+        label: 'event with no lead image',
+        testPath: '/test/event-no-lead-img',
     }
 ]

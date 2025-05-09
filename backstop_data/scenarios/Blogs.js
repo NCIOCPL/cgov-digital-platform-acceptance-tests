@@ -63,5 +63,37 @@ module.exports = [
                 height: 900,
             }
         ]
-    }
+    },
+    {
+        label: 'blog no lead image',
+        testPath: '/news-events/cancer-currents-blog/2019/blog-post-no-lead-img',
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+            {
+                label: 'tablet',
+                width: 650,
+                height: 900,
+            }
+        ]
+    },
+    {
+        label: 'blog with lead image no caption',
+        testPath: '/news-events/cancer-currents-blog/2019/blog-post-lead-img-no-caption',
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+            {
+                label: 'tablet',
+                width: 650,
+                height: 900,
+            }
+        ]
+    },
 ]

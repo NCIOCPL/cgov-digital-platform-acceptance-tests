@@ -109,21 +109,21 @@ And('user selects {string} from {string} dropdown {string} section', (dropDown, 
 })
 
 Then('lead image is displayed with source {string}', (image) => {
-    cy.get('.centered-element img').should('have.attr','src').then((attrSrc) => {
+    cy.get('.cgdp-image img').should('have.attr','src').then((attrSrc) => {
         expect(attrSrc).to.include(image);
     })
 });
 
 And('caption reads {string}', (caption) => {
-    cy.get('.caption-container p').should('include.text',caption);
+    cy.get('.cgdp-image__caption p').first().should('include.text',caption);
 });
 
 And('credit reads {string}', (credit) => {
-    cy.get('.image-photo-credit').should('include.text',credit);
+    cy.get('p.cgdp-image__credit').should('include.text',credit);
 });
 
 And('{string} button is displayed', (enlarge) => {
-    cy.get('.article-image-enlarge').should('be.visible').should('have.text', enlarge);
+    cy.get('.cgdp-image__enlarge').should('be.visible').and('include.text', enlarge);
 });
 
 Then('feature card image is displaying {string}', (image) => {
