@@ -41,4 +41,27 @@ module.exports = [
     //     ],
     //     selectorExpansion: true,
     // },
+
+    {
+        label: 'blog no lead image',
+        testPath: '/news-events/cancer-currents-blog/2019/blog-post-no-lead-img',
+        viewports: [
+                    {
+                        label: 'mobile',
+                        width: 320,
+                        height: 800,
+                    }
+                ]
+    },
+    {
+        label: 'blog with lead image no caption',
+        testPath: '/news-events/cancer-currents-blog/2019/blog-post-lead-img-no-caption',
+        viewports: [
+                    {
+                        label: 'mobile',
+                        width: 320,
+                        height: 800,
+                    }
+                ]
+    }
 ]

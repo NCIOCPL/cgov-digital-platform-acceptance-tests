@@ -103,7 +103,7 @@ Feature: User creating an image
         Then lead image is displayed with source "main_image"
         And caption reads "Test Caption"
         And credit reads "Test Credit"
-        And "Enlarge" button is displayed
+        And "Enlarge Image" button is displayed
         When user is navigating to the front end site with path site section plus "mini-landing-page-image"
         Then feature card image is displaying "feature_card_image"
         And item in the list has an image "thumbnail_image"
@@ -173,7 +173,7 @@ Feature: User creating an image
         Then lead image is displayed with source "main_image"
         And caption reads "Test Caption_Spanish"
         And credit reads "Test Credit_Spanish"
-        And "Ampliar" button is displayed
+        And "Ampliar imagen" button is displayed
         When user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-for-image-spanish"
         Then the "feature_card_image" appear as override
 
