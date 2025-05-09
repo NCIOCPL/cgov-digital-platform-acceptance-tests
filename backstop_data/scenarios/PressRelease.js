@@ -31,6 +31,20 @@ module.exports = [
     	testPath: '/test/press-release-citation-norr',
         delay: 2000,
     },
+    {
+    	label: 'press release with with lead image with caption and enlarge',
+    	testPath: '/test/press-release-lead-img-caption-enlarge',
+        delay: 2000,
+    },   {
+    	label: 'press release with with lead image with caption',
+    	testPath: '/test/press-release-lead-img-caption',
+        delay: 2000,
+    },   {
+    	label: 'press release with no lead image',
+    	testPath: '/test/press-release-no-lead-img',
+        delay: 2000,
+    },
+    
     // {
     // 	label: 'spanish press release with related resources and citations expand citation',
     // 	testPath: '/espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio',
