@@ -38,7 +38,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
         And 1 blog's title and continue reading button both link to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
         And 2 blog has no image
         And 2 blog has a date as "April 28, 2019"
-        And 2 blog has an author "NCI Staff"
+        And 2 blog has an author "Goofy Guy"
 
     Scenario: Blog series accordion
         Given user is navigating to "/news-events/cancer-currents-blog"
@@ -137,7 +137,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
         And the "Archive" accordion is displayed
         And "Archive" accordion is collapsed
         And blog posts list doesnot appear
-        And "< Older Post" button appears with a link "/news-events/cancer-currents-blog/2019/blog-post-norelres-selref"
+        And "< Older Post" button appears with a link "/news-events/cancer-currents-blog/2019/blog-post-lead-img-caption"
         When user clicks on "< Older Post" button
         And "Newer Post >" button appears with a link "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
 
