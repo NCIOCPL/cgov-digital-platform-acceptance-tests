@@ -68,13 +68,13 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                         | prop8     | english                                                                 |
                         | evar2     | D=c8                                                                    |
                         | evar61    | cgvMiniLanding\|ncids_default                                           |
-                        | evar64    | Internal\|No Title\|Krispy Kreme Challenge                              |
+                        | evar64    | Internal\|No Title\|Event Page - with Lead Image and Enlarge button     |
                         | evar65    | Dynamic List\|NCIDS Collection Condensed\|Past Events                   |
                         | evar66    | 2\|2\|0\|0\|1\|1                                                        |
-                        | evar67    | Collection Item\|8\|1                                                   |
+                        | evar67    | Collection Item\|11\|1                                                  |
                         | pageName  | {CANONICAL_HOST}/news-events/events/past-events-collection              |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/events/past-events-collection |
                         | channel   | News and Events                                                         |
                         | pev2      | MLP:Collection:LinkClick                                                |
                         | linkType  | lnk_o                                                                   |
-                        | link      | Krispy Kreme Challenge                                                  |
+                        | link      | Event Page - with Lead Image and Enlarge button                         |

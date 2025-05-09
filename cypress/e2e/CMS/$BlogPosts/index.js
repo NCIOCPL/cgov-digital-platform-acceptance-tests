@@ -133,7 +133,7 @@ And('description reads {string}', (desc) => {
 });
 
 And('the lead image is matching the earlier selected image', () => {
-    cy.get('.centered-element > img').then($el => {
+    cy.get('.cgdp-image img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         const expectedSrc = (imageSrc.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
