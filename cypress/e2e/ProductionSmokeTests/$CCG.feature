@@ -15,10 +15,10 @@ Feature: Basic checks to ensure CCG production site is up and running
 
         Examples:
             | url                    | title                                      |
-            | /access-data           | Access CCG Data                            |
-            | /funding-opportunities | CCG Funding Opportunities                  |
+            | /access-data           | Access OCG Data                            |
+            | /funding-opportunities | OCG Funding Opportunities                  |
             | /blog                  | Updates & Insights Blog                    |
-            | /about                 | About The Center for Cancer Genomics (CCG) |
+            | /about                 | About The Office of Cancer Genomics (OCG)  |
             | /contacts              | OCG Contacts and Help                      |
 
 
