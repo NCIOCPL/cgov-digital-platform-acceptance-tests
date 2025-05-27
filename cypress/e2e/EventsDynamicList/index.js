@@ -26,3 +26,7 @@ Then('user is redirected to {string}', (redirectedUrl) => {
 Then('user clicks on event number {int}', (index) => {
     cy.get('.cgdp-dynamic-list li a.usa-link').eq(index-1).trigger('click', { followRedirect: false })
 })
+
+Then('user clicks on page number {int}',(page)=>{
+     cy.get(`a[href="?page=${page-1}"]`).eq(0).trigger('click', { followRedirect: false })
+})

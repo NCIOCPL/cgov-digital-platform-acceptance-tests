@@ -37,7 +37,7 @@ Feature: NCIDS two column container
             | evar64    | Internal\|Recent Press Releases\|BRCA Exchange aggregates data on thousands of BRCA |
             | evar65    | Dynamic List\|NCIDS Collection Media\|Press Releases                                |
             | evar66    | 2\|2\|2\|1\|1\|1                                                                    |
-            | evar67    | Collection Item\|6\|2                                                               |
+            | evar67    | Collection Item\|5\|2                                                               |
             | evar68    | Body                                                                                |
             | pageName  | {CANONICAL_HOST}/news-events                                                        |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events                                           |
