@@ -241,7 +241,7 @@ And('user selects {string} item from media list', (title) => {
 
 
 And('the intro text reads {string}', (titlText) => {
-    cy.get(`div[class='blog-intro-text'] p:contains("${titlText}")`).should('be.visible');
+    cy.get(`div[class*='intro-text'] p:contains("${titlText}")`).should('be.visible');
 });
 
 And('{int} description reads {string}', (contentText) => {
