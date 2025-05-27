@@ -25,8 +25,8 @@ And('institution title reads {string}', (title) => {
 And('cancer center type is {string}', (type) => {
     cy.get('div.profile-title').should('include.text', type);
 })
-And('head name and title reads {string}', (headNameAndTitle) => {
-    cy.get(`.profile-panel-content > p:contains("${headNameAndTitle}")`).should('be.visible');
+And('head name and title reads {string} and {string}', (headName, title) => {
+    cy.get(`.profile-panel-content p`).first().should('be.visible').and('include.text',headName).and('include.text',title);
 });
 And('the address reads {string}', (streetAddress) => {
     cy.get(`p.address`).should('include.text', streetAddress);
