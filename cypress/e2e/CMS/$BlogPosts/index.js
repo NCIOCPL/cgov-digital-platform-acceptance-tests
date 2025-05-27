@@ -125,7 +125,7 @@ And('the author name {string} is displayed', (authorName) => {
 });
 
 And('intro text reads {string}', (introText) => {
-    cy.get(`div[class='blog-intro-text'] p:contains("${introText}")`).should('be.visible');
+    cy.get(`div[class*='intro-text'] p:contains("${introText}")`).should('be.visible');
 });
 
 And('description reads {string}', (desc) => {

@@ -16,7 +16,7 @@ And('user fills out {int} {string} text area with {string}', (position, sectionN
 })
 
 And('the intro text reads {string}', (titlText) => {
-    cy.get(`div[class='blog-intro-text'] p:contains("${titlText}")`).should('be.visible');
+    cy.get(`div[class*='intro-text'] p:contains("${titlText}")`).should('be.visible');
 });
 
 And('{int} section heading reads {string}', (num, title) => {
