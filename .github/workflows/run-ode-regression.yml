@@ -2,15 +2,70 @@ name: Run ODE regression (FE and CMS)
 on:
   workflow_dispatch:
     inputs:
-      base_url:
-        description: "Base url (ode or ac), without trailing slash"
+      environment:
+        description: Choose an environment.
+        type: choice
         required: true
-        type: string
+        options:
+          - ODE
+          - www-dev-ac
+          - www-int-ac
+          - www-test-ac
+      ode_number:
+        description: Which ODE? (required for ODE)
+        required: false
+        type: number
+
 jobs:
+  verify:
+    name: Verify Inputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Input summary
+        run: |
+          echo '### Workflow Inputs' >> $GITHUB_STEP_SUMMARY
+          echo 'Input|Value' >> $GITHUB_STEP_SUMMARY
+          echo '---|---' >> $GITHUB_STEP_SUMMARY
+          echo 'Environment|${{ inputs.environment }}' >> $GITHUB_STEP_SUMMARY
+          echo 'ODE Number|${{ inputs.ode_number }}' >> $GITHUB_STEP_SUMMARY
+
+      - name: Verify inputs
+        shell: python
+        run: |
+          environment = "${{ inputs.environment }}".upper()
+          if environment == "ODE" and not isinstance( ${{ inputs.ode_number }}, int):
+            raise ValueError("A valid ODE number must be supplied when running on an ODE.")
+
   front-end-regression:
     name: Running cypress regression tests on ODE
     runs-on: ubuntu-latest
+    needs: verify
     steps:
+      ## Get base URL
+      - name: Get base URL
+        id: get_base_url
+        shell: python
+        run: |
+          import os
+
+          # Calculate the URL
+          environment = "${{ inputs.environment }}".upper()
+          if "${{ inputs.environment }}" == "ODE":
+            ode_number="${{ inputs.ode_number }}"
+            base_url=f"https://ncigovcdode{ode_number}.prod.acquia-sites.com"
+          else:
+            hostname="${{ inputs.environment }}"
+            if not hostname:
+              raise ValueError("Hostname must not be empty.")
+            base_url=f"https://{hostname}.cancer.gov"
+          # Save URL for use in later steps
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+            print(f"BASE_URL={base_url}", file=fh)
+
+      - name: Job summary
+        run: |
+            echo "Running on ${{ steps.get_base_url.outputs.base_url }}"  >> $GITHUB_STEP_SUMMARY
+
       ## This clones and checks out.
       - name: Checkout branch
         uses: actions/checkout@v2
@@ -25,7 +80,7 @@ jobs:
         run: npm ci
       ## Run Cypress functional tests
       - name: Run tests
-        run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.base_url }} CYPRESS_ocpl_password='${{ secrets.ocpl_password }}' CYPRESS_admin_password='${{ secrets.admin_password }}' npm test
+        run: CYPRESS_baseUrl=${{ steps.get_base_url.outputs.base_url }} CYPRESS_front_end_base_url=${{ steps.get_base_url.outputs.base_url }} CYPRESS_ocpl_password='${{ secrets.ocpl_password }}' CYPRESS_admin_password='${{ secrets.admin_password }}' npm test
       ## Upload screenshots of failed tests
       - uses: actions/upload-artifact@v4
         name: Upload failed tests
@@ -35,7 +90,7 @@ jobs:
           path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/cypress/screenshots
       - name: Run cms tests
         if: always()
-        run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms
+        run: CYPRESS_baseUrl=${{ steps.get_base_url.outputs.base_url }} CYPRESS_front_end_base_url=${{ steps.get_base_url.outputs.base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms
       ## Upload screenshots of failed tests
       - uses: actions/upload-artifact@v4
         name: Upload failed CMS tests
