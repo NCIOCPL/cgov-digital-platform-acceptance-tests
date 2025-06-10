@@ -47,6 +47,10 @@ And('footer is displayed', () => {
 })
 
 And('the list of posts is displayed', () => {
+    cy.get('.cgdp-dynamic-list span').should('be.visible').and('not.be.empty');
+});
+
+And('the list of blogs is displayed', () => {
     cy.get('.dynamic.list li').should('be.visible').and('not.be.empty');
 });
 

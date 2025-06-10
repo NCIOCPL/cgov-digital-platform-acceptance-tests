@@ -31,16 +31,23 @@ Feature: Basic checks to ensure production site is up and running
             | /types/liver/hp/adult-liver-treatment-pdq                                                        | Primary Liver Cancer Treatment (PDQ®)–Health Professional Version | Español        |
             | /nano/about/contact/grodzinski-piotr                                                             | Piotr Grodzinski, Ph.D.                                           | none           |
 
-    Scenario Outline: Blogs and Press release
+  
+    Scenario Outline: Press release
         Given user is navigating to "<url>"
         And page title is "<title>"
         And the list of posts is displayed
         Examples:
             | url                                          | title                         |
-            | /about-nci/organization/cgh/blog?year=2020   | 2020 - CGH Spotlight Blog     |
             | /news-events/press-releases/2022             | 2022 News Releases            |
             | /news-events/press-releases/2023             | 2023 News Releases            |
             | /espanol/noticias/comunicados-de-prensa/2023 | Comunicados de prensa de 2023 |
+ 
+    
+    Scenario: Blogs
+        Given user is navigating to "/about-nci/organization/cgh/blog?year=2020"
+        And page title is "2020 - CGH Spotlight Blog"
+        And the list of blogs is displayed
+  
 
     Scenario Outline: App modules API's is working
         Given app sends the request "<request>"
