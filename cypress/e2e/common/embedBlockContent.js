@@ -214,7 +214,7 @@ And('the promo image in {int} feature card is matching the earlier selected prom
 
 And('{int} image carousel displays the following features', (position, dataTable) => {
     for (let { alignment, title, caption, credit } of dataTable.hashes()) {
-        cy.get('div#cgvBody div').eq(position - 1).should('have.attr', 'class', alignment);
+        cy.get('div#cgvBody div div').eq(position - 1).should('have.attr', 'class', alignment);
         cy.get('div#cgvBody').find(`span:contains("${title}")`).should('be.visible');
         cy.get('div.ic-caption').find(`p:contains("${caption}")`).should('be.visible');
         cy.get('div.ic-carousel').find(`div:contains("${credit}")`).should('be.visible');
