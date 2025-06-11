@@ -15,7 +15,7 @@ Feature: Related Resources Tests
             | tablet     | news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                         | Clickable Content                  | /pets/test-content                                   |
             | mobile     | about-cancer/coping/feelings/relaxation/duke-university                             | Feelings and Cancer                | /about-cancer/coping/feelings                        |
             | mobile     | about-cancer/coping/feelings/relaxation/loukissas-jen-biography                     | Feelings and Cancer                | /about-cancer/coping/feelings                        |
-            | mobile     | espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres                     | Aprenda a relajarse                | /espanol/cancer/sobrellevar/sentimientos/relajarse   |
+            | mobile     | espanol/cancer/sobrellevar/sentimientos/stress-fact-sheet                     | Aprenda a relajarse                | /espanol/cancer/sobrellevar/sentimientos/relajarse   |
 
     Scenario Outline: Verify exit disclaimer
         Given user is navigating to "<url>"
