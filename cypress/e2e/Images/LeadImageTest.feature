@@ -48,6 +48,6 @@ Feature: Lead Image tests
 
         Examples:
             | url                                                               |
-            | /about-cancer/coping/feelings/relaxation/stress-fact-sheet        |
-            | /espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres  |
+            | /about-cancer/coping/feelings/stress-fact-sheet                   |
+            | /espanol/cancer/sobrellevar/sentimientos/stress-fact-sheet        |
             | /research/key-initiatives/ras/ras-central/blog/2017/ras-dependent |

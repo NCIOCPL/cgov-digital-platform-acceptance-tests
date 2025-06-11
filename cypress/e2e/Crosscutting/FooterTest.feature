@@ -16,7 +16,7 @@ Feature: Footer tests
             | desktop    | /annual-report-nation-2018                                                         | National Cancer Institute     |
             | tablet     | /types/breast/patient/breast-treatment-pdq                                         | National Cancer Institute     |
             | tablet     | /news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                       | National Cancer Institute     |
-            | mobile     | /espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres                   | Instituto Nacional del Cáncer |
+            | mobile     | /espanol/cancer/sobrellevar/sentimientos/stress-fact-sheet                   | Instituto Nacional del Cáncer |
             | mobile     | /news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly | National Cancer Institute     |
 
 
@@ -53,7 +53,7 @@ Feature: Footer tests
         Examples:
             | breakpoint | url                                                                     |
             | desktop    | /espanol/noticias/comunicados-de-prensa/2018/oropharyngeal-hpv-cisplatin |
-            | mobile     | /espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres         |
+            | mobile     | /espanol/cancer/sobrellevar/sentimientos/stress-fact-sheet         |
             | tablet     | /espanol/cancer/sobrellevar/sentimientos                                |
 
 
