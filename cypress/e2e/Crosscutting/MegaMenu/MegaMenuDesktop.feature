@@ -14,7 +14,7 @@ Feature: As a user, I want to be able to view and interact with the Mega Menu
             | desktop    | /about-cancer/coping/feelings                                            | 6      | About Cancer,Cancer Types,Research,Grants & Training,News & Events,About NCI |
             | desktop    | /annual-report-nation-2018                                               | 6      | About Cancer,Cancer Types,Research,Grants & Training,News & Events,About NCI |
             | desktop    | /news-events/press-releases/2018/oropharyngeal-hpv-cisplatin             | 6      | About Cancer,Cancer Types,Research,Grants & Training,News & Events,About NCI |
-            | desktop    | /espanol/cancer/sobrellevar/sentimientos/hoja-informativa-estres         | 6      | El cáncer,Tipos de cáncer,Investigación,Noticias,Nuestro instituto           |
+            | desktop    | /espanol/cancer/sobrellevar/sentimientos/stress-fact-sheet               | 6      | El cáncer,Tipos de cáncer,Investigación,Noticias,Nuestro instituto           |
 
 
     Scenario: Mega Menu api
