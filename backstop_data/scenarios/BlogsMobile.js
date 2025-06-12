@@ -56,6 +56,7 @@ module.exports = [
     {
         label: 'blog with lead image no caption',
         testPath: '/news-events/cancer-currents-blog/2019/blog-post-lead-img-no-caption',
+        specific: true,
         viewports: [
                     {
                         label: 'mobile',
