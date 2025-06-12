@@ -58,7 +58,7 @@ Feature: As a user, I want to be able to use On this Page links to easily naviga
         Given screen breakpoint is set to "mobile"
         When user is navigating to "<url>"
         Then legacy on this page section title is not displayed
-        And on this page accordion is displayed
+        And legacy on this page accordion is displayed
         And all of the legacy accordion items are collapsed
 
         Examples:
@@ -66,22 +66,20 @@ Feature: As a user, I want to be able to use On this Page links to easily naviga
             | pdq HP version EN      | /types/lung/hp/lung-prevention-pdq                   |
             | pdq Patient version ES | /espanol/tipos/pulmon/paciente/prevencion-pulmon-pdq |
             | pdq HP version ES      | /espanol/tipos/pulmon/pro/prevencion-pulmon-pdq      |
-  
-   #TODO implement when accordion is completed
-    # Scenario Outline: On this page section displays as an accordion on mobile breakpoint on article
-    #     Given screen breakpoint is set to "mobile"
-    #     When user is navigating to "<url>"
-    #     Then on this page section title is not displayed
-    #     And on this page accordion is displayed
-    #     And all of the accordion items are collapsed
 
-    #     Examples:
-    #         | content type | url |
-    # | article english        | /about-cancer/treatment/side-effects/                |
-    # | article spanish        | /espanol/hoja-informativa-reconstruccion             |
-    # | pdq Patient version EN | /types/lung/patient/lung-prevention-pdq              |
-    # | article english        | /research-areas-genomics                             |
-    # | article spanish        | /espanol/espanol-investigacion-areas-genomica        |
+    Scenario Outline: On this page section displays as an accordion on mobile breakpoint on article
+        Given screen breakpoint is set to "mobile"
+        When user is navigating to "<url>"
+        Then on this page section title is not displayed
+        And on this page accordion is displayed
+        And all of the accordion items are collapsed
+
+        Examples:
+            | content type    | url                                           |
+            | article english | /about-cancer/treatment/side-effects/         |
+            | article spanish | /espanol/hoja-informativa-reconstruccion      |
+            | article english | /research-areas-genomics                      |
+            | article spanish | /espanol/espanol-investigacion-areas-genomica |
 
 
     Scenario Outline: OTP section does not exist on any content types, beside article and pdq
