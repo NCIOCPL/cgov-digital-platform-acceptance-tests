@@ -41,11 +41,11 @@ Then('on this page section title is not displayed', () => {
 });
 
 And('on this page accordion is displayed', () => {
-    cy.get('div.accordion').should('be.visible');
+    cy.get('div[class*="usa-accordion usa-accordion--multiselectable"]').should('be.visible');
 });
 
 And('all of the accordion items are collapsed', () => {
-    cy.get('.cgdp-on-this-page section h2').should('have.attr', 'aria-expanded', 'false');
+    cy.get('button.usa-accordion__button').should('have.attr', 'aria-expanded', 'false');
 });
 
 Then('On This page section does not exist', () => {
@@ -101,4 +101,13 @@ And('all of the legacy accordion items are collapsed', () => {
 
 Then('legacy On This page section does not exist', () => {
     cy.get('.on-this-page').should('not.exist');
+});
+
+
+And('all of the legacy accordion items are collapsed', () => {
+    cy.get('.cgdp-on-this-page section h2').should('have.attr', 'aria-expanded', 'false');
+});
+
+And('legacy on this page accordion is displayed', () => {
+    cy.get('div.accordion').should('be.visible');
 });

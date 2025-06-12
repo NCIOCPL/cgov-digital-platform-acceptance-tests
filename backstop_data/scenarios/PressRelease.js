@@ -29,6 +29,7 @@ module.exports = [
     {
     	label: 'press release with related resources and citations',
     	testPath: '/test/press-release-citation-norr',
+        specific: true,
         delay: 2000,
     },
     {
