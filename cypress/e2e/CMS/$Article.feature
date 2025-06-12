@@ -287,7 +287,7 @@ Feature: As a cms user I want to be able to create Article content type to promo
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "test-article-edited"
         Then page title is "Automated Test Article Edited"
         And the lead image is matching the earlier selected image
-        And "En Esta Página" section is displayed with the following anchor links
+        And "En esta página" section is displayed with the following anchor links
             | title            | href              |
             | Article Heading1 | #article-heading1 |
             | Article Heading2 | #article-heading2 |
