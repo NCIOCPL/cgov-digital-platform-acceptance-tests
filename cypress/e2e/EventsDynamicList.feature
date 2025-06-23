@@ -41,8 +41,8 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                         | prop8     | english                                                                   |
                         | evar2     | D=c8                                                                      |
                         | evar61    | cgvMiniLanding\|ncids_default                                             |
-                        | evar64    | Internal\|No Title\|Test Future Event 4                                   |
-                        | evar66    | 2\|2\|0\|0\|1\|1                                                          |
+                        | evar64    | Internal\|Future Events with No Argument Value\|Test Future Event 4       |
+                        | evar66    | 5\|2\|0\|0\|1\|1                                                          |
                         | evar65    | Dynamic List\|NCIDS Collection Condensed\|Future Events                   |
                         | evar67    | Collection Item\|4\|2                                                     |
                         | pageName  | {CANONICAL_HOST}/news-events/events/future-events-collection              |
@@ -68,9 +68,9 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                         | prop8     | english                                                                 |
                         | evar2     | D=c8                                                                    |
                         | evar61    | cgvMiniLanding\|ncids_default                                           |
-                        | evar64    | Internal\|No Title\|Krispy Kreme Challenge                              |
+                        | evar64    | Internal\|Past Events with No Argument Value\|Krispy Kreme Challenge    |
                         | evar65    | Dynamic List\|NCIDS Collection Condensed\|Past Events                   |
-                        | evar66    | 2\|2\|0\|0\|1\|1                                                        |
+                        | evar66    | 5\|2\|0\|0\|1\|1                                                        |
                         | evar67    | Collection Item\|8\|1                                                   |
                         | pageName  | {CANONICAL_HOST}/news-events/events/past-events-collection              |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/events/past-events-collection |
