@@ -65,13 +65,13 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected lead image for further verification', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src').replace('.webp','')
+        imageSrc = $el[0].getAttribute('src').replace('.webp', '')
     });
 });
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp','')
+        imageSrc1 = $el[0].getAttribute('src').replace('.webp', '')
     });
 });
 
@@ -172,6 +172,10 @@ Then('the promo image is matching the earlier selected image', () => {
     })
 });
 
-And('user enters {string} in the Venue field',(venue)=>{
-cy.get('input#edit-field-venue-target-id').type(venue)
+And('user enters {string} in the Venue field', (venue) => {
+    cy.get('input#edit-field-venue-target-id').type(venue)
+});
+
+And('user selects {string} from event group dropdown', (group) => {
+    cy.get('select#edit-field-event-group').select(group)
 });

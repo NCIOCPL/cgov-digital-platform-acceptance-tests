@@ -26,6 +26,7 @@ Feature: As a cms user I want to be able to create Event content type to promote
         And Event End Date & Time date field is displaying todays date
         And user enters "22:00:00" in the "Event End Date & Time" time field
         And user enters "NCI Shady Grove" in the Venue field
+        And user selects "Default" from event group dropdown
         And user fills out the following fields
             | fieldLabel         | value              | field_name       |
             | Room               | 2E626              | field_room       |
