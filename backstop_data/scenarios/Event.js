@@ -85,6 +85,7 @@ module.exports = [
     {
         label: 'past events dynamic list',
         testPath: '/news-events/events/past-events-collection',
+        specific: true,
     },
     {
         label: 'future events dynamic list with pager',
