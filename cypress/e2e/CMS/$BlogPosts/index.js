@@ -86,10 +86,6 @@ And(`blog's posted date is today's date`, () => {
     cy.get('p>time').should('include.text', expectedDate);
 });
 
-And('the {string} button appears', (subscribeLink) => {
-    cy.get('div.subscribeRSS').find('span').should('be.visible').and('contain.text', subscribeLink);
-});
-
 And('the {string} managed list appears', (featuredPosts) => {
     cy.get('div.managed.list.with-date').find('h2').should('be.visible').and('include.text', featuredPosts);
 });
