@@ -19,7 +19,6 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
         }
       }, 100);
     });
-
   });
 
   if (!scenario.enableBackToTop) {
@@ -33,4 +32,7 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
   }
   await require('./clickAndHoverHelper')(page, scenario);
   // add more ready handlers here...
+  if (scenario.pause === true) {
+    await page.waitForTimeout(2500)
+  }
 };
