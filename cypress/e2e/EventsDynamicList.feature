@@ -58,26 +58,26 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                 And user clicks on event number 1
                 Then page click request is sent
                 And the following parameters should be captured
-                        | parameter | value                                                                   |
-                        | prop4     | D=pev1                                                                  |
-                        | prop57    | D=v64                                                                   |
-                        | prop58    | D=v65                                                                   |
-                        | prop59    | D=v66                                                                   |
-                        | prop60    | D=c67                                                                   |
-                        | prop67    | D=pageName                                                              |
-                        | prop8     | english                                                                 |
-                        | evar2     | D=c8                                                                    |
-                        | evar61    | cgvMiniLanding\|ncids_default                                           |
-                        | evar64    | Internal\|Past Events with No Argument Value\|Krispy Kreme Challenge    |
-                        | evar65    | Dynamic List\|NCIDS Collection Condensed\|Past Events                   |
-                        | evar66    | 5\|2\|0\|0\|1\|1                                                        |
-                        | evar67    | Collection Item\|8\|1                                                   |
-                        | pageName  | {CANONICAL_HOST}/news-events/events/past-events-collection              |
-                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/events/past-events-collection |
-                        | channel   | News and Events                                                         |
-                        | pev2      | MLP:Collection:LinkClick                                                |
-                        | linkType  | lnk_o                                                                   |
-                        | link      | Krispy Kreme Challenge                                                  |
+                        | parameter | value                                                                                         |
+                        | prop4     | D=pev1                                                                                        |
+                        | prop57    | D=v64                                                                                         |
+                        | prop58    | D=v65                                                                                         |
+                        | prop59    | D=v66                                                                                         |
+                        | prop60    | D=c67                                                                                         |
+                        | prop67    | D=pageName                                                                                    |
+                        | prop8     | english                                                                                       |
+                        | evar2     | D=c8                                                                                          |
+                        | evar61    | cgvMiniLanding\|ncids_default                                                                 |
+                        | evar64    | Internal\|Past Events with No Argument Value\|Event Page - with Lead Image and Enlarge button |
+                        | evar65    | Dynamic List\|NCIDS Collection Condensed\|Past Events                                         |
+                        | evar66    | 5\|2\|0\|0\|1\|1                                                                              |
+                        | evar67    | Collection Item\|11\|1                                                                        |
+                        | pageName  | {CANONICAL_HOST}/news-events/events/past-events-collection                                    |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/events/past-events-collection                       |
+                        | channel   | News and Events                                                                               |
+                        | pev2      | MLP:Collection:LinkClick                                                                      |
+                        | linkType  | lnk_o                                                                                         |
+                        | link      | Event Page - with Lead Image and Enlarge button                                               |
 
         Scenario: When user clicks a pager -  analytics event is fired
                 When user is navigating to "/news-events/events/past-events-collection-test-pager"
@@ -96,7 +96,7 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                         | evar61    | cgvMiniLanding\|ncids_default                                                      |
                         | evar65    | Dynamic List\|NCIDS Collection Condensed\|Past Events                              |
                         | evar66    | 2\|2\|0\|0\|1\|1                                                                   |
-                        | evar67    | Nav Links\|5\|2                                                                    |
+                        | evar67    | Nav Links\|7\|2                                                                    |
                         | pageName  | {CANONICAL_HOST}/news-events/events/past-events-collection-test-pager              |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/events/past-events-collection-test-pager |
                         | channel   | News and Events                                                                    |
