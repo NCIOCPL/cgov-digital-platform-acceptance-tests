@@ -24,6 +24,8 @@ jobs:
       ## Install using CI
       - name: Install Dependencies
         run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       ## Now generate the reference images
       - name: Run image generation
         run: refBaseUrl=${{ inputs.base_url }} npm run backstop:reference
