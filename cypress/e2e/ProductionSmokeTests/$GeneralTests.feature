@@ -11,9 +11,8 @@ Feature: Basic checks to ensure production site is up and running
             | url                         | titles                                                                                      |
             | /                           | About Cancer,Cancer Types,Research,Grants & Training,News & Events,About NCI                |
             | /espanol                    | El cáncer,Tipos de cáncer,Investigación,Subvenciones y capacitación,Noticias,Acerca del NCI |
-            | /pediatric-adult-rare-tumor | Rare Tumors,Participate,Support,About                                         |
+            | /pediatric-adult-rare-tumor | Rare Tumors,Participate,Support,About                                                       |
             | /rare-brain-spine-tumor     | Tumor Types,Living with a Tumor,Refer and Participate,NCI-CONNECTions Blog,About            |
-            | /nano                       | Cancer & Nanotech,Research,Grants & Training,Events,About NSDB                              |
 
 
     Scenario Outline: Different contents are loaded on all sites
@@ -29,9 +28,8 @@ Feature: Basic checks to ensure production site is up and running
             | /research/infrastructure/cancer-centers/find/mayoclinic                                          | Mayo Clinic Comprehensive Cancer Center                           | none           |
             | /espanol/tipos/higado/cancer-vias-biliares                                                       | ¿Qué es el cáncer de vías biliares (colangiocarcinoma)?           | English        |
             | /types/liver/hp/adult-liver-treatment-pdq                                                        | Primary Liver Cancer Treatment (PDQ®)–Health Professional Version | Español        |
-            | /nano/about/contact/grodzinski-piotr                                                             | Piotr Grodzinski, Ph.D.                                           | none           |
 
-  
+
     Scenario Outline: Press release
         Given user is navigating to "<url>"
         And page title is "<title>"
@@ -41,13 +39,13 @@ Feature: Basic checks to ensure production site is up and running
             | /news-events/press-releases/2022             | 2022 News Releases            |
             | /news-events/press-releases/2023             | 2023 News Releases            |
             | /espanol/noticias/comunicados-de-prensa/2023 | Comunicados de prensa de 2023 |
- 
-    
+
+
     Scenario: Blogs
         Given user is navigating to "/about-nci/organization/cgh/blog?year=2020"
         And page title is "2020 - CGH Spotlight Blog"
         And the list of blogs is displayed
-  
+
 
     Scenario Outline: App modules API's is working
         Given app sends the request "<request>"
@@ -82,7 +80,7 @@ Feature: Basic checks to ensure production site is up and running
             | prop3     | /                                    |
             | prop65    | /^\d{1,2}$/                          |
             | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/ |
-            | prop62    | Clinical Trials: Direct  |
+            | prop62    | Clinical Trials: Direct              |
             | evar1     | {CANONICAL_HOST}/cts.print/display   |
             | evar44    | Clinical Trials                      |
             | evar2     | english                              |
@@ -114,7 +112,6 @@ Feature: Basic checks to ensure production site is up and running
             | /chicken                            |
             | /pediatric-adult-rare-tumor/chicken |
             | /rare-brain-spine-tumor/chicken     |
-            | /nano/chicken                       |
             | /connect-prevention-study/chicken   |
 
     Scenario Outline: Spanish 404 page
