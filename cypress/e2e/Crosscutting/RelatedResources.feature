@@ -7,15 +7,15 @@ Feature: Related Resources Tests
         And related resources have working link "<linkText>" with the href "<linkHref>"
 
         Examples:
-            | breakpoint | url                                                                                 | linkText                           | linkHref                                             |
-            | desktop    | about-cancer/coping/feelings                                                        | Learning to Relax                  | /about-cancer/coping/feelings/relaxation             |
-            | desktop    | espanol/cancer/sobrellevar/sentimientos                                             | Aprenda a relajarse                | /espanol/cancer/sobrellevar/sentimientos/relajarse   |
-            | desktop    | espanol/noticias/temas-y-relatos-blog/2019/vitamina-d-complemento-cancer-prevencion | Vitamina D y prevención del cáncer | /espanol/hoja-informativa-vitamina-d                 |
-            | tablet     | news-events/cancer-currents-blog/2019/vitamin-d-supplement-cancer-prevention        | Vitamin D and Cancer Prevention    | /about-cancer/causes-prevention/vitamin-d-fact-sheet |
-            | tablet     | news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                         | Clickable Content                  | /pets/test-content                                   |
-            | mobile     | about-cancer/coping/feelings/relaxation/duke-university                             | Feelings and Cancer                | /about-cancer/coping/feelings                        |
-            | mobile     | about-cancer/coping/feelings/relaxation/loukissas-jen-biography                     | Feelings and Cancer                | /about-cancer/coping/feelings                        |
-            | mobile     | espanol/cancer/sobrellevar/sentimientos/stress-fact-sheet                     | Aprenda a relajarse                | /espanol/cancer/sobrellevar/sentimientos/relajarse   |
+            | breakpoint | url                                                                                 | linkText                                | linkHref                                             |
+            | desktop    | about-cancer/coping/feelings                                                        | Learning to Relax                       | /about-cancer/coping/feelings/relaxation             |
+            | desktop    | espanol/cancer/sobrellevar/sentimientos                                             | Aprenda a relajarse                     | /espanol/cancer/sobrellevar/sentimientos/relajarse   |
+            | desktop    | espanol/noticias/temas-y-relatos-blog/2019/vitamina-d-complemento-cancer-prevencion | Vitamina D y prevención del cáncer      | /espanol/hoja-informativa-vitamina-d                 |
+            | tablet     | news-events/cancer-currents-blog/2019/vitamin-d-supplement-cancer-prevention        | Vitamin D and Cancer Prevention         | /about-cancer/causes-prevention/vitamin-d-fact-sheet |
+            | tablet     | news-events/press-releases/2018/oropharyngeal-hpv-cisplatin                         | Sexual Health Issues in Men with Cancer | /about-cancer/coping/placeholder-men                 |
+            | mobile     | about-cancer/coping/feelings/relaxation/duke-university                             | Feelings and Cancer                     | /about-cancer/coping/feelings                        |
+            | mobile     | about-cancer/coping/feelings/relaxation/loukissas-jen-biography                     | Feelings and Cancer                     | /about-cancer/coping/feelings                        |
+            | mobile     | espanol/cancer/sobrellevar/sentimientos/stress-fact-sheet                           | Aprenda a relajarse                     | /espanol/cancer/sobrellevar/sentimientos/relajarse   |
 
     Scenario Outline: Verify exit disclaimer
         Given user is navigating to "<url>"

@@ -13,6 +13,7 @@ module.exports = [
 		selectors: [
             'body.has-translated-content'
         ],
+        specific: true,
 		viewports: [
             {
 				label: 'mobile',
@@ -37,6 +38,7 @@ module.exports = [
 		selectors: [
             'body.has-translated-content'
         ],
+        specific: true,
 		viewports: [
             {
                 label: 'desktop',
