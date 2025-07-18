@@ -39,5 +39,5 @@ And('page options are displayed', () => {
 });
 
 And('content is displayed', () => {
-    cy.get('div#content').should('be.visible').and('not.be.empty');
+    cy.get('div.cgdp-inner-content-area').should('be.visible').and('not.be.empty');
 });
