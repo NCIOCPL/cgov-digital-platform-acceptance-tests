@@ -14,10 +14,10 @@ Feature: Basic checks to ensure DCTD production site is up and running
         And content is displayed
 
         Examples:
-            | url                                                                    | title                                  |
-            | /programs/cip                                                          | Cancer Imaging Program (CIP)           |
-            | /about/news-events                                                     | News and Events                        |
-            | /drug-discovery-development/assays/nano/assay-cascade-characterization | Assay Cascade Characterization Service |
+            | url                                                               | title                                  |
+            | /programs/cip                                                     | Cancer Imaging Program (CIP)           |
+            | /about/news-events                                                | News and Events                        |
+            | /drug-discovery-development/assays/assay-cascade-characterization | Assay Cascade Characterization Service |
 
     Scenario: English 404 page
         Given user is navigating to "/chicken " with a 404 status
