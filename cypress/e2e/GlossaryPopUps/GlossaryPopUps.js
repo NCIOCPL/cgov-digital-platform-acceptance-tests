@@ -21,7 +21,7 @@ When('user is clicking on definition for {string}', (termName) => {
 });
 
 Then('pop-up definition box is displayed for {string}', (termName) => {
-    cy.get('div.modal__container .term').should('include.text', termName);
+    cy.get('div.usa-modal__content .cgdp-definition-term').should('include.text', termName);
 });
 
 And('definition box displays all {string} provided by glossary', (features) => {
@@ -29,16 +29,16 @@ And('definition box displays all {string} provided by glossary', (features) => {
     for (let i = 0; i < expText.length; i++) {
         switch (expText[i]) {
             case 'definition':
-                cy.get('div.modal__container dd[class="definition"]').should('be.visible');
+                cy.get('div.usa-modal__content .cgdp-definition-term').should('be.visible');
                 break;
             case 'pronunciation':
-                cy.get('div.modal__container span[class="pronunciation"]').should('be.visible');
+                cy.get('div.usa-modal__content dl span').first().should('be.visible');
                 break;
             case 'audio':
-                cy.get('div.modal__container a[class="CDR_audiofile"]').should('be.visible');
+                cy.get('div.usa-modal__content button.cgdp_audiofile').should('be.visible');
                 break;
             default:
-                cy.get('div.modal__container').find('img').as('image');
+                cy.get('div.usa-modal__content').find('img').as('image');
                 cy.get('@image').should('have.attr', 'src');
                 cy.get('@image').should('have.attr', 'alt');
                 const count = parseInt(((expText[i].replace('img[', '')).replace(']', '')));
@@ -47,6 +47,10 @@ And('definition box displays all {string} provided by glossary', (features) => {
         }
     }
 });
+
+And('definition box displays {string}',(errorMsg)=>{
+     cy.get('div.usa-modal__content').should('have.text',errorMsg)
+})
 
 
 
