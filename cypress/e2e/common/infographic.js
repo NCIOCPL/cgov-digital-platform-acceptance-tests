@@ -9,12 +9,12 @@ Then('there should be an infographic at position {int} with the following', (num
         // verify alt attribute of an image
         if (attribute === 'alt') {
             if (value === 'empty') {
-                cy.get("figure[class*='centered']").eq(index).find('img').should(($div) => {
+                cy.get(".cgdp-infographic figure").eq(index).find('img').should(($div) => {
                     const el = $div.get(0);
                     expect(el.getAttribute('alt').trimEnd()).to.be.equal('');
                 })
             } else {
-                cy.get("figure[class*='centered']").eq(index).find('img').should(($div) => {
+                cy.get(".cgdp-infographic figure").eq(index).find('img').should(($div) => {
                     const el = $div.get(0);
                     expect(el.getAttribute('alt').trimEnd()).to.be.equal(value);
                 })
@@ -23,9 +23,9 @@ Then('there should be an infographic at position {int} with the following', (num
         // verify image caption text
         if (attribute === 'caption') {
             if (value === 'none') {
-                cy.get("figure[class*='centered']").eq(index).find('figcaption div p').should('not.exist');
+                cy.get(".cgdp-infographic figure").eq(index).find('figcaption div p').should('not.exist');
             } else {
-                cy.get("figure[class*='centered']").eq(index).find('figcaption div p').should(($div) => {
+                cy.get(".cgdp-infographic figure").eq(index).find('figcaption div p').should(($div) => {
                     const el = $div.get(0);
                     expect(el.innerText).to.be.equal(value);
                 });
@@ -33,15 +33,16 @@ Then('there should be an infographic at position {int} with the following', (num
         }
         if (attribute === 'mobileImage') {
             if (value === 'none') {
-                cy.get("figure[class*='centered']").find('picture').should('not.exist');
+                cy.get(".cgdp-infographic figure").find('picture').should('not.exist');
             } else {
                 const regex = new RegExp (value);
-                cy.get("figure[class*='centered'] picture").find("source[media='(max-width: 768px)']")
-                    .should('have.attr', 'srcset').and('match', regex);
+                cy.get(".cgdp-infographic figure").find("source[media='(max-width: 768px)']")
+                   .should('have.attr', 'srcset').and('match', regex);
             }
         } if (attribute === 'desktopImage') {
             const regex = new RegExp (value);
-            cy.get("figure[class*='centered']").find('img').should('have.attr', 'src').and('match', regex);
+           cy.get(".cgdp-infographic figure']").find('img').should('have.attr', 'src').and('match', regex);
+       
         }
     }
 
@@ -50,14 +51,16 @@ Then('there should be an infographic at position {int} with the following', (num
 
 Then('{string} link appears below caption text with the href {string}', (linkText, linkHref) => {
     const regex = new RegExp (linkHref);
-    cy.get("figure[class*='centered']").find('figcaption a').should('have.text', linkText);
-    cy.get("figure[class*='centered']").find('figcaption a').should('have.attr', 'href').and('match', regex);
+    cy.get(".cgdp-infographic__link-container").find('a').should('have.text', linkText);
+    cy.get(".cgdp-infographic__link-container").find('a').should('have.attr', 'href').and('match', regex);
+
 });
 
 Then('infographic at position {int} has a link {string} with the href {string}', (number, linkText, linkHref) => {
     const regex = new RegExp (linkHref);
-    cy.get("figure[class*='centered']").eq(number - 1).find('figcaption a').invoke('text').should('be.eq', linkText);
-    cy.get("figure[class*='centered']").eq(number - 1).find('figcaption a').should('have.attr', 'href').and('match', regex);
+    cy.get(".cgdp-infographic figure").eq(number - 1).find('figcaption a').invoke('text').should('be.eq', linkText);
+    cy.get(".cgdp-infographic figure").eq(number - 1).find('figcaption a').should('have.attr', 'href').and('match', regex);
+
 });
 
 
@@ -66,12 +69,12 @@ Then('there should be an infographic with the following', (dataTable) => {
         // verify alt attribute of an image
         if (attribute === 'alt') {
             if (value === 'empty') {
-                cy.get("figure[class*='centered']").find('img').should(($div) => {
+                cy.get(".cgdp-infographic figure").find('img').should(($div) => {
                     const el = $div.get(0);
                     expect(el.getAttribute('alt').trimEnd()).to.be.equal('');
                 })
             } else {
-                cy.get("figure[class*='centered']").find('img').should(($div) => {
+                cy.get(".cgdp-infographic figure").find('img').should(($div) => {
                     const el = $div.get(0);
                     expect(el.getAttribute('alt').trimEnd()).to.be.equal(value);
                 })
@@ -81,9 +84,9 @@ Then('there should be an infographic with the following', (dataTable) => {
         if (attribute === 'caption') {
             if (attribute === 'caption') {
                 if (value === 'none') {
-                    cy.get("figure[class*='centered']").find('figcaption div p').should('not.exist');
+                    cy.get(".cgdp-infographic figure").find('figcaption div p').should('not.exist');
                 } else {
-                    cy.get("figure[class*='centered']").find('figcaption div').first().should(($div) => {
+                    cy.get(".cgdp-infographic figure").find('figcaption p').first().should(($div) => {
                         const el = $div.get(0);
                         expect(el.innerText).to.be.equal(value);
                     })
@@ -93,22 +96,23 @@ Then('there should be an infographic with the following', (dataTable) => {
         //verify srcset of mobile (if present) and desktop image 
         if (attribute === 'mobileImage') {
             if (value === 'none') {
-                cy.get("figure[class*='centered']").find('picture').should('not.exist');
+                cy.get(".cgdp-infographic figure").find('picture').should('not.exist');
             } else {
                 const regex = new RegExp (value);
-                cy.get("figure[class*='centered'] picture").find("source[media='(max-width: 768px)']")
+                cy.get(".cgdp-infographic figure").find("source[media='(max-width: 639px)']")
                     .should('have.attr', 'srcset').and('match', regex);
+
 
             }
         } if (attribute === 'desktopImage') {
             const regex = new RegExp (value);
-            cy.get("figure[class*='centered']").find('img').should('have.attr', 'src').and('match', regex);
+            cy.get(".cgdp-infographic figure").find('img').should('have.attr', 'src').and('match', regex);
         }
     }
 });
 
 Then('{string} link should not appear', (viewAndPrintLink) => {
-    cy.get("figure[class*='centered']").find('figcaption a').should('not.be.visible');
+  cy.get(".cgdp-infographic__link-container").find('a').should('not.be.visible');
 });
 
 Then('language toggle is not displayed', () => {
