@@ -40,7 +40,7 @@ When('user is clicking on definition for {string}', (glossTerm) => {
 });
 
 Then('pop-up definition box is displayed for {string}', (glossTerm) => {
-    cy.get('div[role="dialog"]').should('be.visible');
+    cy.get('div.usa-modal__content .cgdp-definition-term').should('be.visible');
 });
 
 And('the contact {string} is not displayed', (pressText) => {
