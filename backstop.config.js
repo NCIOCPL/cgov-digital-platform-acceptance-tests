@@ -64,7 +64,7 @@ module.exports = {
 	asyncCaptureLimit: 2,
 	asyncCompareLimit: 50,
 	debug: false,
-	debugWindow: false,
+	debugWindow: true,
 	resembleOutputOptions: {
 		usePreciseMatching: true,
 	}
