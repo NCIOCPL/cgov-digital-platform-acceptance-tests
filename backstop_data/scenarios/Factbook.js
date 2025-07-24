@@ -4,9 +4,9 @@ module.exports = [
         testPath: '/about-nci/budget/fact-book/historical-trends/aids-funding',
         prodPath: true,
         pause: true,
-        readySelector: '#NCI-Chart__aids-funding .highcharts-container',
+        readySelector: '.embedded-entity',
         selectors: [
-            '#NCI-Chart__aids-funding .highcharts-container'
+            '.embedded-entity'
         ]
     },
     {
