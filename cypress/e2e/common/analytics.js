@@ -61,10 +61,10 @@ Then('the following parameters should be captured', dataTable => {
                 madeUpValue = value.replace('{CANONICAL_HOST}', hostName);
                 cy.location('protocol').then(protocol => {
                     madeUpValue = madeUpValue.replace('{PROTOCOL}:', protocol);
-                    if (parameter === 'prop1' &&  beacon['prop2']) {
-                        expect(`${beacon[parameter]}${ beacon['prop2']}`).to.be.equal(madeUpValue);
+                    if (parameter === 'prop1' && beacon['prop2']) {
+                        expect(`${beacon[parameter]}${beacon['prop2']}`).to.be.equal(madeUpValue);
                     } else {
-                    expect(beacon[parameter]).to.eq(madeUpValue);
+                        expect(beacon[parameter]).to.eq(madeUpValue);
                     }
                 });
             } else if (parameter.includes('event')) {
@@ -142,5 +142,22 @@ And('analytics storage is cleared', () => {
 
 Then('page click request is sent right before page unload', () => {
     loadOrClick = getClickBeacon(cy.AnalyticsStorageBeforeUnload);
+});
+
+
+Then('page click request is sent for cts chat', () => {
+    const storage =  cy.AnalyticsStorage
+    let clickBeacon;
+    for (let i = 0; i < storage.length; i++) {
+        const singleBeacon =  storage[i];
+        console.log(singleBeacon)
+        if (!(singleBeacon.linkType === undefined)) {
+            if (singleBeacon.linkType.includes('lnk_o') && !singleBeacon.pev2.includes('Resized')) {
+                if (singleBeacon.pev2 === 'Legacy:ProactiveChat')
+                    clickBeacon = singleBeacon;
+            }
+        }
+    }
+    loadOrClick = clickBeacon
 });
 

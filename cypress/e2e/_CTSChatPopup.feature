@@ -6,18 +6,18 @@ Feature: As an user, I should see the chat popup in Spanish
         Then page title is "ES Cancer Medicamentos - Test"
         And Spanish chat pop up is displayed
         When user clicks on chat button
-        Then page click request is sent
+        Then page click request is sent for cts chat
         And the following parameters should be captured
             | parameter | value                                                    |
             | event44   |                                                          |
-            | pev2      | Legacy:ProactiveChat                                            |
+            | pev2      | Legacy:ProactiveChat                                     |
             | linkType  | lnk_o                                                    |
             | prop67    | D=pageName                                               |
             | prop4     | D=pev1                                                   |
             | prop8     | spanish                                                  |
             | prop5     | livehelp_proactive chat - launch\|D=pageName             |
             | pageName  | {CANONICAL_HOST}/espanol/cancer/tratamiento/medicamentos |
-            | evar2     | D=c8                                                  |
+            | evar2     | D=c8                                                     |
 
     Scenario: Clicking on chat now will fire an analytics event English
         Given screen breakpoint is set to "desktop"
@@ -25,15 +25,15 @@ Feature: As an user, I should see the chat popup in Spanish
         Then page title is "Clinical Trials Search Results"
         And chat pop up is displayed
         When user clicks on chat button
-        Then page click request is sent
+        Then page click request is sent for cts chat
         And the following parameters should be captured
             | parameter | value                                                          |
             | event44   |                                                                |
-            | pev2      | Legacy:ProactiveChat                                                  |
+            | pev2      | Legacy:ProactiveChat                                           |
             | linkType  | lnk_o                                                          |
             | prop67    | D=pageName                                                     |
             | prop4     | D=pev1                                                         |
             | prop8     | english                                                        |
             | prop5     | livehelp_proactive chat - launch\|D=pageName                   |
             | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials-search/r |
-            | evar2     | D=c8                                                        |
+            | evar2     | D=c8                                                           |
