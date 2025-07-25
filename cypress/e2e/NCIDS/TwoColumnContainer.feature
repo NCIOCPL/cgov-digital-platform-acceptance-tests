@@ -34,7 +34,7 @@ Feature: NCIDS two column container
             | prop67    | D=pageName                                                                          |
             | prop68    | D=v68                                                                               |
             | evar2     | D=c8                                                                                |
-            | evar64    | Internal\|Recent Press Releases\|BRCA Exchange aggregates data on thousands of BRCA |
+            | evar64    | Internal\|Recent Press Releases\|AI approach outperformed human experts in identify |
             | evar65    | Dynamic List\|NCIDS Collection Media\|Press Releases                                |
             | evar66    | 2\|2\|2\|1\|1\|1                                                                    |
             | evar67    | Collection Item\|5\|5                                                               |

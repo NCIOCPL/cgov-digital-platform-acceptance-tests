@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 import { When } from "cypress-cucumber-preprocessor/steps";
 When('user clicks on View and Print Infographic button',()=>{
-    cy.get("figure[class*='centered']").find('figcaption a').trigger('click');
+    cy.get(".cgdp-infographic__link-container").find('a').trigger('click');
     cy.wait(2000);
 });
 
