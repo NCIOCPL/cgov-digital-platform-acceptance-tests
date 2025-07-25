@@ -20,7 +20,7 @@ And('user clicks on {string} button item', (title) => {
 
 And('user selects {string} from the list of media', (titleVideo) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[name='name']").type(titleVideo)
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-submit-cgov-media-browser']").click()
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-submit-cgov-video-media-browser']").click()
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find(`td:contains(${titleVideo})`).parent().find('input').eq(0).click({ foce: true })
 })
 
@@ -97,3 +97,7 @@ cy.get('figure.video').eq(index-1).find('h4').should('not.exist')
 And('{int} video has alignment set to {string}',(index, value)=>{
 cy.get('div[data-embed-button="cgov_video_button"]').eq(index-1).should('have.attr','class',`${value}embedded-entity`)
 })
+
+And('user selects {string} from style dropdown', (option) => {
+    cy.get('select[name="field_page_style"]').select(option);
+});

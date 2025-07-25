@@ -82,18 +82,19 @@ Feature: User creating a video
         And user clicks on "Home and Landing" content type
         Then page title is "Home and Landing"
         When user selects test site section
+         And user selects "NCIDS without Title" from style dropdown
         And user fills out the following fields
             | fieldLabel       | value                                              | field_name             |
             | Pretty URL       | home-and-landing-page-video                        | field_pretty_url       |
             | Page Title       | Home and Landing page for Video                    | title                  |
             | Browser Title    | Home and Landing page for Video - Browser Title    | field_browser_title    |
             | Meta Description | Home and Landing page for Video - Meta Description | field_page_description |
-        And user selects "Add Multimedia Row" option from "Contents" dropdown
-        And user clicks on "Multimedia Card" link in the "Multimedia Row" text area
-        And user clicks on "Select media" button item
+        And user selects "Add NCIDS Inline Video" option from "Contents" dropdown
+        And user clicks on "Featured Video" link in the "NCIDS Inline Video" text area
+        And user clicks on "Select video" button item
         And user selects "Automated Test Video" from the list of media
         And browser waits
-        And user clicks on "Select media" button to select media
+        And user clicks on "Select video" button to select media
         And browser waits
         And user selects "Review" from "Save as" dropdown
         When user saves the content page

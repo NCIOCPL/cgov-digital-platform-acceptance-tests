@@ -1,11 +1,15 @@
 /// <reference types="Cypress" />
 import { And, When } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
-
+import { getBaseDirectory } from '../../../utils';
 
 const siteSection = Cypress.env('test_site_section');
 const randomStr = Cypress.env('randomStr');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
+
+
+const baseUrl = Cypress.config('baseUrl');
+
 
 And('user fills out the following fields', (dataTable) => {
     for (let { fieldLabel, value, field_name } of dataTable.hashes()) {
@@ -328,4 +332,74 @@ And('feature card description reads {string}', (description) => {
 
 And('user selects a checkbox next to the title with spanish path {string} with url {string} from the list of content', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).parent().parent().find('input.form-checkbox').check();
+});
+
+And('user selects {string} from style dropdown', (option) => {
+    cy.get('select[name="field_page_style"]').select(option);
+});
+
+And('user clicks on {string} in {int} {string} section', (featItemLink, index, section) => {
+    cy.get(`summary[aria-expanded="false"]:contains("${featItemLink}")`).click();
+});
+
+And('user clicks on Select content button item', () => {
+    cy.get(`input[value="Select content"]`).trigger("click")
+})
+
+And('NCIDS feature cards have the following attributes', (dataTable) => {
+
+    for (let { index, title, description, link, source, file, exitDisclaimer } of dataTable.hashes()) {
+        if (link.includes("{TEST_SITE_SECTION}")) {
+            link = link.replace("{TEST_SITE_SECTION}", siteSection)
+        }
+        if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+            source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
+        }
+        cy.get('.nci-card__body').eq(index).as('featureCard');
+
+        cy.get('@featureCard').find('.nci-card__title').invoke('text').then((text) => {
+            expect(text.trim()).equal(title);
+        });
+
+        if (description === 'N/A') {
+            cy.get('@featureCard').find('p').should('not.exist');
+        }
+        else {
+            cy.get('@featureCard').find('p').invoke('text').then((text) => {
+                expect(text.trim()).equal(description);
+            });
+        }
+
+        if (exitDisclaimer === 'N/A') {
+            cy.get('@featureCard').hasPseudoElement('::after')
+                .should('eq', false)
+        }
+        else {
+            cy.get('@featureCard').hasPseudoElement('::after')
+                .should('eq', true)
+        }
+
+        cy.get('@featureCard').parent().invoke('attr', 'href').then(href => {
+            if (href.startsWith('http')) {
+                expect(href).to.eq(link)
+            } else {
+                expect(href).to.eq(`${getBaseDirectory()}${link}-${randomStr}`)
+            }
+        })
+
+        cy.get('@featureCard').parent().find('img').invoke('attr', 'src').then((fullSrc) => {
+
+            if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+                fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
+            }
+            expect(fullSrc.includes(`${source}`)).to.be.true;
+
+            const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+            if (file.includes('placeholder')) {
+                expect(src1).to.match(new RegExp(`.*\/${file}`))
+            } else {
+                expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
+            }
+        });
+    }
 });
