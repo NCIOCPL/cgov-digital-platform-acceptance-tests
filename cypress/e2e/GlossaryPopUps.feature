@@ -29,6 +29,31 @@ Feature: Viewing glossary pop-ups when available while visiting cancer info summ
             | tablet     | /about-cancer/treatment/drugs/bevacizumab                         | drug                                      | definition,pronunciation,audio        |
             | tablet     | /about-cancer/treatment/drugs/bep                                 | malignant                                 | definition,pronunciation,audio        |
 
+    Scenario Outline: Glossary popup link styles
+        Given user is navigating to "<url>"
+        And screen breakpoint is set to "<breakpoint>"
+        When user is clicking on definition for "<termName>"
+        Then pop-up definition box is displayed for "<definition>"
+        And definition box displays all "<features>" provided by glossary
+
+
+        Examples:
+            | breakpoint | url                        | termName                            | features                              | definition                          |
+            | desktop    | /test/dictionary-link-test | chemotherapy                        | definition,pronunciation,audio        | chemotherapy                        |
+            | desktop    | /test/dictionary-link-test | Metastatic                          | definition,pronunciation,audio,img[1] | metastasis                          |
+            | desktop    | /test/dictionary-link-test | stage III esophageal adenocarcinoma | definition,pronunciation,audio,img[3] | stage III esophageal adenocarcinoma |
+            | desktop    | /test/dictionary-link-test | Squamous cell carcinoma             | definition,pronunciation,audio        | squamous cell carcinoma             |
+            | desktop    | /test/dictionary-link-test | pleural cavity                      | definition,audio,pronunciation        | pleural cavity                      |
+            | desktop    | /test/dictionary-link-test | first-degree relative               | definition,pronunciation,audio        | first-degree relative               |
+            | desktop    | /test/dictionary-link-test | retinoblastoma                      | definition,pronunciation,audio        | retinoblastoma                      |
+            | tablet     | /test/dictionary-link-test | autosomal dominant                  | definition,pronunciation,audio,img[1] | autosomal dominant inheritance      |
+
+    Scenario: Negative test cases for popups that 404
+        Given user is navigating to "/test/dictionary-link-test"
+        When user is clicking on definition for "unknown definition"
+        And definition box displays "Error Fetching Dictionary Data:Error: Error: HTTP error! Status: 404"
+
+
     Scenario Outline: PDQ Information summary glossary links on mobile
         Given screen breakpoint is set to "mobile"
         When user is navigating to "<url>"
