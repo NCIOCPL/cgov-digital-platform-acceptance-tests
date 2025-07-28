@@ -68,15 +68,16 @@ And('description reads {string}', (contentText) => {
 });
 
 And('the image has the name {string}', (imageName) => {
-    cy.get('div.centered-element source[media="(min-width: 769px)"]').should('have.attr', 'srcset').and('include', imageName);
+    cy.get('div.cgdp-infographic source[media="(min-width: 640px)"]').should('have.attr', 'srcset').and('include', imageName);
 });
 
 And('the caption appears as {string}', (captionText) => {
-    cy.get(`div.caption-container.no-resize`).find(`p:contains("${captionText}")`);
+    cy.get(`div.cgdp-infographic`).find(`p:contains("${captionText}")`);
 });
 
 And('the infographic link {string} appears with href {string}', (linkText, linkHref) => {
-    cy.get(`div.infographic-link-container:contains("${linkText}")`).find(`a[href*='${linkHref}']`).should('be.visible');
+    cy.get('div.cgdp-infographic__link-container').should('contain.text', linkText);  
+    cy.get('div.cgdp-infographic__link-container').find(`a[href*='${linkHref}']`).should('be.visible');
 });
 
 And(`{string} date is displaying today's date`, (dateToday) => {
@@ -108,11 +109,11 @@ And('date label is displaying as {string}', (labelText) => {
 });
 
 And('the infographic link {string} does not appear', (linkText) => {
-    cy.get(`div.infographic-link-container:contains("${linkText}")`).find('a.infographic-link').should('not.be.visible');
+    cy.get('div.cgdp-infographic__link-container').should('contain.text', linkText).should('not.be.visible');
 });
 
 And('the image has name {string}', (imageName) => {
-    cy.get('div.centered-element source[media="(max-width: 768px)"]').should('have.attr', 'srcset').and('include', imageName);
+    cy.get('div.cgdp-infographic source[media="(max-width: 639px)"]').should('have.attr', 'srcset').and('include', imageName);
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
@@ -255,9 +256,9 @@ And('{int} description reads {string}', (contentText) => {
 And('the infographic displayed has the following attributes', (dataTable) => {
     for (const { index, position, imageSource, imageAlt, descText } of dataTable.hashes()) {
         const regex = new RegExp(imageSource);
-        cy.get('div.centered-element').eq(index).find('img').as('image')
+        cy.get('div.cgdp-infographic').eq(index).find('img').as('image')
             .should('have.attr', 'alt').and('eq', imageAlt);
-        cy.get('@image').parent().parent().parent().parent().should('have.attr', 'class').and('include', position);
+        cy.get('@image').parent().parent().parent().parent().parent().should('have.attr', 'class').and('include', position);
         cy.get('@image').should('have.attr', 'src').and('match', regex);
         cy.get(`p:contains('${descText}')`).should('be.visible');
     }
@@ -317,9 +318,8 @@ And('the spanish infographic displayed has the following attributes', (dataTable
     for (const { index, position, imageSource, imageAlt, descText, longDesc } of dataTable.hashes()) {
         const regex = new RegExp(imageSource);
         const regex1 = new RegExp(longDesc);
-        cy.get('div.centered-element').eq(index).find('img').as('image')
-            .should('have.attr', 'alt').and('eq', imageAlt);
-        cy.get('@image').parent().parent().parent().parent().should('have.attr', 'class').and('include', position);
+        cy.get('div.cgdp-infographic').eq(index).find('img').as('image').should('have.attr', 'alt').and('eq', imageAlt);
+        cy.get('@image').parent().parent().parent().parent().parent().should('have.attr', 'class').and('include', position);
         cy.get('@image').should('have.attr', 'src').and('match', regex);
         cy.get(`p:contains('${descText}')`).should('be.visible');
         cy.get('@image').should('have.attr', 'longdesc').and('match', regex1);
