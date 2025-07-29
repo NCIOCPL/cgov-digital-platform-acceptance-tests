@@ -3,8 +3,8 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
     Scenario Outline: When user visits Basic Search page, all page items are present in different breakpoints
         Given screen breakpoint is set to "<breakpoint>"
         Given user is navigating to "/research/participate/clinical-trials-search"
-        Then page title is "Find NCI-Supported Clinical Trials"
-        And the text "NCI-supported clinical trials are those sponsored or otherwise financially supported by NCI. See our guide, Steps to Find a Clinical Trial, to learn about options for finding trials not included in NCI's collection." appears below the title
+        Then page title is "Find Cancer Clinical Trials"
+        And the text "Search for NCI-funded clinical trials near you, across the United States, and internationally, in addition to trials at NCI-Designated Cancer Centers supported by other organizations. See our guide, Steps to Find a Clinical Trial, to learn about options for finding trials not included in NCI's collection." appears below the title
         And "Steps to Find a Clinical Trial" link has a href "/research/participate/clinical-trials-search/steps"
         And Search tip icon is displayed and text "Search Tip: For more search options, use our advanced search." appears
         And "advanced search" link has a href "/research/participate/clinical-trials-search/advanced"
@@ -22,7 +22,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
 
     Scenario: User is able to search for and use autosuggested items for cancer type/keyword on desktop
         Given user is navigating to "/research/participate/clinical-trials-search"
-        Then page title is "Find NCI-Supported Clinical Trials"
+        Then page title is "Find Cancer Clinical Trials"
         And "Cancer Type/Keyword" input field has a placeholder "Start typing to select a cancer type or keyword"
         When user clicks on "Cancer Type/Keyword" field
         Then autocomplete dropdown is displayed
@@ -44,7 +44,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
     Scenario: Negative: User is searching for a keyword that does not exist on tablet
         Given screen breakpoint is set to "tablet"
         Given user is navigating to "/research/participate/clinical-trials-search"
-        Then page title is "Find NCI-Supported Clinical Trials"
+        Then page title is "Find Cancer Clinical Trials"
         And "Cancer Type/Keyword" input field has a placeholder "Start typing to select a cancer type or keyword"
         When user clicks on "Cancer Type/Keyword" field
         Then autocomplete dropdown is displayed
@@ -61,7 +61,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
     Scenario: Negative: User is not able to search for age out of boundaries on Tablet
         Given user is navigating to "/research/participate/clinical-trials-search"
         And screen breakpoint is set to "tablet"
-        Then page title is "Find NCI-Supported Clinical Trials"
+        Then page title is "Find Cancer Clinical Trials"
         And "Age" form section is displayed
         When user types "0" in "Age" field
         Then alert "Please enter a number between 1 and 120." is displayed in "Age" section
@@ -75,7 +75,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
     Scenario: Negative: User is not able to search for an incorrect zip code on Mobile
         Given user is navigating to "/research/participate/clinical-trials-search"
         And screen breakpoint is set to "mobile"
-        Then page title is "Find NCI-Supported Clinical Trials"
+        Then page title is "Find Cancer Clinical Trials"
         And "U.S. ZIP Code" form section is displayed
         When user types "999g9" in "U.S. Zip Code" field
         Then alert "Please enter a valid 5 digit U.S. ZIP code" is displayed in "U.S. Zip Code" section
@@ -84,7 +84,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
 
     Scenario: User is able to search for all trials without specifying any criteria on desktop
         Given user is navigating to "/research/participate/clinical-trials-search"
-        Then page title is "Find NCI-Supported Clinical Trials"
+        Then page title is "Find Cancer Clinical Trials"
         And user clicks on "Find Trials" button
         Then the search is executed and results page is displayed
         And trial info displays "Results 1-10  of \d+ for your search for: \"all trials\".*"
@@ -96,7 +96,7 @@ Feature: As a user, I want to be able to use Basic Search form fields to find cl
     Scenario: User is able to search for everything on tablet
         Given user is navigating to "/research/participate/clinical-trials-search"
         And screen breakpoint is set to "tablet"
-        Then page title is "Find NCI-Supported Clinical Trials"
+        Then page title is "Find Cancer Clinical Trials"
         When user types "30" in "Age" field
         When user types "22182" in "U.S. Zip Code" field
         When user types "aids" in "Cancer Type/Keyword" field
