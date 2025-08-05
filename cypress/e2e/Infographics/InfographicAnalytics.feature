@@ -8,7 +8,7 @@ Feature: As an analytics analyst, I want to be able embed specific tracking code
         Then the following parameters should be captured
             | parameter | value                                          |
             | event71   |                                                |
-            | prop66    | viewprint\|inline\|Pediatric MATCH Infographic |
+            | prop66    | viewPrint\|inline                              |
             | prop67    | D=pageName                                     |
 
     Scenario: Click events for “View and Print Infographic” link from the medium template spanish
@@ -19,7 +19,7 @@ Feature: As an analytics analyst, I want to be able embed specific tracking code
         Then the following parameters should be captured
             | parameter | value                                     |
             | event71   |                                           |
-            | prop66    | viewprint\|inline\|Estudio MATCH Infantil |
+            | prop66    | viewPrint\|inline                         |
             | prop67    | D=pageName                                |
 
 
@@ -32,7 +32,7 @@ Feature: As an analytics analyst, I want to be able embed specific tracking code
         Then the following parameters should be captured
             | parameter | value                                          |
             | event71   |                                                |
-            | prop66    | viewprint\|inline\|Pediatric MATCH Infographic |
+            | prop66    | viewPrint\|inline                              |
             | prop67    | D=pageName                                     |
 
     Scenario: Click events for “View and Print Infographic” link from the large template spanish
@@ -43,7 +43,7 @@ Feature: As an analytics analyst, I want to be able embed specific tracking code
         Then the following parameters should be captured
             | parameter | value                                     |
             | event71   |                                           |
-            | prop66    | viewprint\|inline\|Estudio MATCH Infantil |
+            | prop66    | viewPrint\|inline                         |
             | prop67    | D=pageName                                |
 
     Scenario: Click events for “View and Print Infographic” link from the full page infographic english
@@ -54,7 +54,7 @@ Feature: As an analytics analyst, I want to be able embed specific tracking code
         Then the following parameters should be captured
             | parameter | value                                          |
             | event71   |                                                |
-            | prop66    | viewprint\|inline\|NCI at a Glance Infographic |
+            | prop66    | viewPrint\|inline                              |
             | prop67    | D=pageName                                     |
 
     Scenario: Click events for “View and Print Infographic” link from the full page infographic spanish
@@ -65,7 +65,7 @@ Feature: As an analytics analyst, I want to be able embed specific tracking code
         Then the following parameters should be captured
             | parameter | value                                                     |
             | event71   |                                                           |
-            | prop66    | viewprint\|inline\|Instituto Nacional del Cáncer Panorama |
+            | prop66    | viewPrint\|inline                                         |
             | prop67    | D=pageName                                                |
 
 
@@ -77,5 +77,5 @@ Feature: As an analytics analyst, I want to be able embed specific tracking code
         Then the following parameters should be captured
             | parameter | value                                                                      |
             | event71   |                                                                            |
-            | prop66    | viewprint\|inline\|Cancer and the Human Tumor Atlas Network Infographic |
+            | prop66    | viewPrint\|inline                                                          |
             | prop67    | D=pageName                                                                 |

@@ -133,7 +133,7 @@ Then(
 
 Then('the search is executed and no results page is displayed', () => {
     cy.location('pathname').should('contain', 'search/r');
-    cy.get('.results-page h1').should('have.text', 'Clinical Trials Search Results');
+    cy.get('.results-page h1').should('have.text', 'Cancer Clinical Trials Search Results');
     cy.get('div[class="results-list no-results"]').should('be.visible');
 });
 

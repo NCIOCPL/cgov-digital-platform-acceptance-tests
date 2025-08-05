@@ -51,7 +51,7 @@ Feature: Viewing glossary pop-ups when available while visiting cancer info summ
     Scenario: Negative test cases for popups that 404
         Given user is navigating to "/test/dictionary-link-test"
         When user is clicking on definition for "unknown definition"
-        And definition box displays "Error Fetching Dictionary Data:Error: Error: HTTP error! Status: 404"
+        And definition box displays "Definition Not Found"
 
 
     Scenario Outline: PDQ Information summary glossary links on mobile
