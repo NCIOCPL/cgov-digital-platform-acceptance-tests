@@ -95,7 +95,7 @@ Feature: All manual pages
             | event2    |                                                                                        |
             | event1    |                                                                                        |
             | channel   | Research                                                                               |
-            | evar61    | nciAppModulePage\|left_nav                                                             |
+            | evar61    | nciAppModulePage\|ncids_left_nav                                                             |
 
     Scenario: Analytics click event
         When user is navigating to "/research/participate/clinical-trials/cam-procedures"
