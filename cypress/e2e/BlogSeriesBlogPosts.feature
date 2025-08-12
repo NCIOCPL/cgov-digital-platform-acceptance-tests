@@ -36,9 +36,9 @@ Feature: As an user, I want to see different components of the Blog Series and B
         And 1 blog has a date as "June 5, 2019"
         And 1 blog has an image with an url "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
         And 1 blog's title and continue reading button both link to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
-        And 2 blog has no image
-        And 2 blog has a date as "April 28, 2019"
-        And 2 blog has an author "Goofy Guy"
+        And 3 blog has no image
+        And 3 blog has a date as "April 28, 2019"
+        And 3 blog has an author "Goofy Guy"
 
     Scenario: Blog series accordion
         Given user is navigating to "/news-events/cancer-currents-blog"
