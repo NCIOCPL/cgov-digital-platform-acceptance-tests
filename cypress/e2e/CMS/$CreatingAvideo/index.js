@@ -87,11 +87,11 @@ And('{int} section heading reads {string}', (num, title) => {
 });
 
 And('{int} video has title {string}', (num, title) => {
-    cy.get(`section > div > .video:contains('${title}')`).should('be.visible');
+    cy.get('figure.cgdp-video__figure ').eq(num-1).find('span').should('contain.text', title);
 });
 
 And('{int} video has no title',(index)=>{
-cy.get('figure.video').eq(index-1).find('h4').should('not.exist')
+cy.get('figure.cgdp-video__figure ').eq(index-1).find('span').should('not.exist');
 });
 
 And('{int} video has alignment set to {string}',(index, value)=>{
