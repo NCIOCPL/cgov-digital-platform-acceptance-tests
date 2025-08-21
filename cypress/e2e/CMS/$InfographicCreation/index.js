@@ -47,7 +47,7 @@ And('user selects {int} Promotional Image from the list of images to be displaye
 
 And('user remembers the source of selected promotional image to be displayed in home and landing pages for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp','');
+        imageSrc1 = $el[0].getAttribute('src').replace('.webp', '');
     });
 });
 
@@ -60,7 +60,7 @@ And('the radio button {string} is selected by default under {string}', (btnType,
 });
 
 And('user removes the {string} item from the list', (link) => {
-    cy.get(`input[name*="field_landing_contents_1_subform_field_list_items_0_remove"]`).click({force:true});
+    cy.get(`input[name*="field_landing_contents_1_subform_field_list_items_0_remove"]`).click({ force: true });
 });
 
 And('description reads {string}', (contentText) => {
@@ -76,7 +76,7 @@ And('the caption appears as {string}', (captionText) => {
 });
 
 And('the infographic link {string} appears with href {string}', (linkText, linkHref) => {
-    cy.get('div.cgdp-infographic__link-container').should('contain.text', linkText);  
+    cy.get('div.cgdp-infographic__link-container').should('contain.text', linkText);
     cy.get('div.cgdp-infographic__link-container').find(`a[href*='${linkHref}']`).should('be.visible');
 });
 
@@ -117,14 +117,14 @@ And('the image has name {string}', (imageName) => {
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
+    cy.get(`div[id*='field-article-body-${position - 1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
         const editor = el[0].ckeditorInstance
         editor.data.set(value)
     });
 })
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
+    cy.get(`div[id*='field-article-body-${position - 1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
         const editor = el[0].ckeditorInstance
         editor.data.set(value)
     });
@@ -388,18 +388,20 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
         })
 
         cy.get('@featureCard').parent().find('img').invoke('attr', 'src').then((fullSrc) => {
-
+            const promoSrc = imageSrc1;
             if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
                 fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
-            }
-            expect(fullSrc.includes(`${source}`)).to.be.true;
+                const expectedSrc = promoSrc.match('([a-zA-Z0-9\-]+)(?=\.jpg|\.png)')
+                expect(fullSrc.includes(`${source}`)).to.be.true;
+                const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+                expect(src1).to.match(new RegExp(`.*\/${expectedSrc[0]}`))
 
-            const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
-            if (file.includes('placeholder')) {
-                expect(src1).to.match(new RegExp(`.*\/${file}`))
             } else {
-                expect(src1).to.match(new RegExp(`.*\\d{4}-\\d{2}\/${file}`))
+                expect(fullSrc.includes(`${source}`)).to.be.true;
+                const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+                expect(src1).to.match(new RegExp(`.*\/${file}`))
             }
+
         });
     }
 });

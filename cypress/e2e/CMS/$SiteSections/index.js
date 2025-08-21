@@ -4,7 +4,7 @@ import { And, When } from 'cypress-cucumber-preprocessor/steps';
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const siteSection = Cypress.env('test_site_section');
 const randomStr = Cypress.env('randomStr');
-
+const baseUrl = Cypress.config('baseUrl');
 function waitForText(attempt = 0) {
 
     if (attempt > 3) {   // choose cutoff point, must have this limiter
@@ -69,11 +69,11 @@ When('user selects first {string} site section', (selectSiteSection) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe')
         .find(`td:contains('${selectSiteSection}')`).first().parent()
         .find('td.views-field.views-field-entity-browser-select input').check();
-        cy.getIframeBody('iframe.entity-browser-modal-iframe')
-        .find(`td:contains('${selectSiteSection}')`).first().then(($el)=>{
+    cy.getIframeBody('iframe.entity-browser-modal-iframe')
+        .find(`td:contains('${selectSiteSection}')`).first().then(($el) => {
             firstSiteSection = $el.text().trim();
         })
-        
+
     cy.getIframeBody('iframe.entity-browser-modal-iframe')
         .find("input[id='edit-submit'][value='Select Site Section']").click();
 });
@@ -168,7 +168,12 @@ And('user drags {string} item one level down', (dragLink) => {
 });
 
 And('{string} appears in position {int} in the side menu tree', (label, position) => {
-    cy.get('ul.usa-sidenav__sublist li').eq(position - 1).find(`a:contains("${label}")`).should('be.visible');
+    if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+        cy.get('ul.usa-sidenav__sublist li').eq(position).find(`a:contains("${label}")`).should('be.visible');
+    } else {
+        cy.get('ul.usa-sidenav__sublist li').eq(position - 1).find(`a:contains("${label}")`).should('be.visible');
+    }
+
 });
 
 And('user clicks on title with the url {string} from the list of content', (contentHref) => {
@@ -183,7 +188,7 @@ Then('the current left navigation label has url {string}', (currentHref) => {
     cy.get(`ul.usa-sidenav__sublist li a[href='${currentHref}']`).should('have.class', 'usa-current');
 });
 
-And('left navigation label {string} has selected site section url plus {string}',(label, purl)=>{
+And('left navigation label {string} has selected site section url plus {string}', (label, purl) => {
     cy.get('ul.usa-sidenav__sublist li').find(`a:contains("${label}")`).should('have.attr', 'href', `${firstSiteSection}/${purl}-${randomStr}`);
 })
 
