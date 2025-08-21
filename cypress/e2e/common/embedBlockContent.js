@@ -194,7 +194,7 @@ And('{int} feature card does not display any image', (position) => {
 });
 
 And('user clicks on {string} from  dropdown button under {string}', (option, title) => {
-    cy.get(`.dropbutton li a:contains("${option}")`).first().click({ force: true });
+    cy.get(`td a:contains("${title}")`).parent().parent().find(`.views-field.views-field-operations .dropbutton li a:contains("${option}")`).click({ force: true });
 });
 
 And('the Custom block item with title {string} does not exist in the list of Custom block library', (titleText) => {
