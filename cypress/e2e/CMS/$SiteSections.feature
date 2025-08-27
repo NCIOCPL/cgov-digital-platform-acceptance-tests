@@ -153,6 +153,7 @@ Feature: As a cms user I want to be able to create Site Section to promote Site 
         And browser waits
         And user drags "Test Site Section" item one level down
         And browser waits
+        And user remembers the new position of a "Test Site Section" site section
         Then user saves the content page
 
     Scenario: Verify the new tree order of a site section
