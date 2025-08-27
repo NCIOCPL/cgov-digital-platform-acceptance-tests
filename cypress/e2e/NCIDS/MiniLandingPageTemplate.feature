@@ -82,12 +82,12 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Internal\|Internal Link Testing\|About Cancer                  |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 12\|4\|0\|0\|1\|1\|Not Defined                                 |
+            | evar66    | 11\|3\|0\|0\|1\|1\|Not Defined                                 |
             | evar67    | Text\|6\|2                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-mini-landing-template |
-            | event112  |                                                                |
+            | event125  |                                                                |
             | channel   | NCI Homepage                                                   |
             | pev2      | MLP:ContentBlock:LinkClick                                     |
             | linkType  | lnk_o                                                          |
@@ -110,12 +110,12 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | External\|External Link Testing\|Google                        |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 12\|4\|0\|0\|1\|1\|Not Defined                                 |
+            | evar66    | 11\|3\|0\|0\|1\|1\|Not Defined                                 |
             | evar67    | Text\|6\|4                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-mini-landing-template |
-            | event112  |                                                                |
+            | event125  |                                                                |
             | channel   | NCI Homepage                                                   |
             | pev2      | MLP:ContentBlock:LinkClick                                     |
             | linkType  | lnk_o                                                          |
@@ -139,12 +139,12 @@ Feature: As a content owner I want to be able to create Mini Landing Page conten
             | evar61    | cgvMiniLanding\|ncids_default                                  |
             | evar64    | Media\|Media Link Testing\|Test File Download                  |
             | evar65    | Content Block\|Not Defined\|Not Defined                        |
-            | evar66    | 12\|4\|0\|0\|1\|1\|Not Defined                                 |
+            | evar66    | 11\|3\|0\|0\|1\|1\|Not Defined                                 |
             | evar67    | Text\|6\|3                                                     |
             | evar68    | Body                                                           |
             | pageName  | {CANONICAL_HOST}/test/ncids-mini-landing-template              |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/ncids-mini-landing-template |
-            | event112  |                                                                |
+            | event125  |                                                                |
             | channel   | NCI Homepage                                                   |
             | pev2      | MLP:ContentBlock:LinkClick                                     |
             | linkType  | lnk_o                                                          |

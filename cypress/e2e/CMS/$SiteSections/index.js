@@ -168,11 +168,7 @@ And('user drags {string} item one level down', (dragLink) => {
 });
 
 And('{string} appears in position {int} in the side menu tree', (label, position) => {
-    if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-        cy.get('ul.usa-sidenav__sublist li').eq(position).find(`a:contains("${label}")`).should('be.visible');
-    } else {
-        cy.get('ul.usa-sidenav__sublist li').eq(position - 1).find(`a:contains("${label}")`).should('be.visible');
-    }
+     cy.get('ul.usa-sidenav__sublist li').eq(indexOfSiteSection).find(`a:contains("${label}")`).should('be.visible');
 
 });
 
@@ -195,3 +191,11 @@ And('left navigation label {string} has selected site section url plus {string}'
 And('left navigation label {string} has url {string}', (label, contentHref) => {
     cy.get('ul.usa-sidenav__sublist li').find(`a:contains("${label}")`).should('have.attr', 'href', contentHref);
 });
+
+let indexOfSiteSection;
+And('user remembers the new position of a {string} site section',(dragLink)=>{
+ cy.get('#taxonomy').find(`a.menu-item__link:contains("${dragLink}")`).parent().parent().parent().parent().invoke('index')
+  .then((index) => {
+   indexOfSiteSection = index;
+  });
+})
