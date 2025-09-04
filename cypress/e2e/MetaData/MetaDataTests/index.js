@@ -50,7 +50,7 @@ And('{string} tag contains expected environment value', (tagName) => {
     const domains = new Map([
         ['ncigovcdode', 'ode'],
         ['www-dev-ac.cancer.gov', 'dev'],
-        ['www-test-ac.cancer.gov', 'staging'],
+        ['www-test-ac.cancer.gov', 'test'],
         ['www-int-ac.cancer.gov', 'int'],
         ['devbox', 'local'],
         ['www-test-acsf.cancer.gov/automation-installed', 'automation0installed-test'],
