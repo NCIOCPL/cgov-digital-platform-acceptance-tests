@@ -137,7 +137,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And user selects "Archive Block" from Display dropdown
         And browser waits
         And user clicks "Options" link in the Dynamic List area
-        And user checks Include View Title checkbox
         And browser waits
         And user enters "5" into Items per page dropdown
         And browser waits
@@ -175,7 +174,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the Raw HTML Content reads the following "This is to test Raw HTML Content"
         And the Dynamic List Title reads as "Dynamic List Title"
         And 5 links are displayed under the Dynamic List Title
-        And view title displays text "Press Releases"
         And the page contains meta tags with the following names
             | name        | content                                           |
             | description | Automated Test Mini Landing Page Meta Description |
@@ -340,7 +338,6 @@ Feature: As a cms user I want to be able to create Mini Landing page content typ
         And the Raw HTML Content reads the following "This is to test Raw HTML Content"
         And the Dynamic List Title reads as "Dynamic List Title"
         And 5 links are displayed under the Dynamic List Title and all starts with "/espanol"
-        And view title displays text "Press Releases"
         And the page contains meta tags with the following names
             | name        | content                                                  |
             | description | Automated Test Mini Landing Page Meta Description Edited |
