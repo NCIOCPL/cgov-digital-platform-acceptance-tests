@@ -178,7 +178,7 @@ And('{int} feature card displays the following features in external link block',
                 expect(href).to.include(link);
             });
             cy.get('@card').find(`p:contains("${description}")`).should('be.visible');
-            cy.get('div.feature-card').eq(position - 1).parent().should('have.attr', 'class').and('include', alignment);
+            cy.get('.cgdp-embed-card').eq(position - 1).parent().should('have.attr', 'class').and('include', alignment);
         }
         else {
             cy.get('div#cgvBody section a').eq(position - 1).should('have.attr', 'href').then(href => {
@@ -190,7 +190,7 @@ And('{int} feature card displays the following features in external link block',
 });
 
 And('{int} feature card does not display any image', (position) => {
-    cy.get('div.feature-card').eq(position - 1).should('not.have.css', 'img');
+    cy.get('.cgdp-embed-card').eq(position - 1).should('not.have.css', 'img');
 });
 
 And('user clicks on {string} from  dropdown button under {string}', (option, title) => {
@@ -205,7 +205,7 @@ And('the promo image in {int} feature card is matching the earlier selected prom
     const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
-    cy.get('div.feature-card').find('img').then($el => {
+    cy.get('.cgdp-embed-card').find('img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
