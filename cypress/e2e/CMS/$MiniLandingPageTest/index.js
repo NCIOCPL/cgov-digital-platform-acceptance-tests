@@ -92,9 +92,6 @@ And('user selects {string} from Button Display dropdown', (displayOption) => {
     cy.get("select[name='field_landing_contents[3][subform][field_button_display]").select(displayOption)
 })
 
-And('user checks Include View Title checkbox', () => {
-    cy.get("input[id^='edit-field-landing-contents-5-subform-field-source-view-0-options-title']").check()
-})
 
 And('user enters {string} into Items per page dropdown', (value) => {
     cy.get("input[id^='edit-field-landing-contents-5-subform-field-source-view-0-options-limit']").type(value)
