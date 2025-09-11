@@ -3,10 +3,10 @@ const pathUtil = require('path');
 
 const args = process.env //get the process env
 if (!args.refBaseUrl) {
-	args.refBaseUrl = 'https://www-dev-ac.cancer.gov';
+	args.refBaseUrl = 'https://ncigovcdode1003.prod.acquia-sites.com';
 }
 if (!args.testBaseUrl) {
-	args.testBaseUrl = 'https://www-dev-ac.cancer.gov';
+	args.testBaseUrl = 'https://ncigovcdode1003.prod.acquia-sites.com';
 }
 const isACSF = args.testBaseUrl.toLowerCase().includes('acsf') || args.refBaseUrl.toLowerCase().includes('acsf')
 const scenarioFiles = glob.sync('backstop_data/scenarios/**/*.js');
