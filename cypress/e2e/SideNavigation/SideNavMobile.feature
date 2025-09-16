@@ -4,7 +4,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                 And screen breakpoint is set to "mobile"
 
         Scenario: User is viewing the home page
-                Given user is navigating to "/cgdpl"
+                Given user is navigating to "/"
                 When user clicks on the mobile menu button
                 Then user should see the following in the mobile menu
                         | Label             |
@@ -17,16 +17,17 @@ Feature: As a user, I want to be able to navigate to different site sections on 
 
 
         Scenario: User is viewing a landing page of a section nav root that only shows 1 level
-                Given user is navigating to "/research/key-initiatives"
+                Given user is navigating to "/api-test/a/5"
                 When user clicks on the mobile menu button
                 Then user should see the following in the mobile menu
-                        | Label                         |
-                        | Main Menu                     |
-                        | Explore Research              |
-                        | NCI’s Role in Cancer Research |
-                        | Research Areas                |
-                        | Key Initiatives               |
-                        | Resources for Researchers     |
+                        | Label     |
+                        | Main Menu |
+                        | Explore A |
+                        | A.1       |
+                        | A.2       |
+                        | A.3       |
+                        | A.4       |
+                        | A.5       |
 
 
 
@@ -88,7 +89,7 @@ Feature: As a user, I want to be able to navigate to different site sections on 
                         | Label                |
                         | Main Menu            |
                         | Explore About Cancer |
-                        | Understanding Cancer   |
+                        | Understanding Cancer |
                         | Coping with Cancer   |
 
         Scenario: Verify that the right parents and children are displayed when navigating back in the tree

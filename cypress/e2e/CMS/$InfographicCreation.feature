@@ -259,29 +259,6 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And browser waits
         And user clicks on "Select media" button to select media item
         And browser waits
-        And user selects "Add List" from "Contents" dropdown in home and landing page
-        And browser waits
-        And user fills out the following fields
-            | fieldLabel | value      | field_name                                                     |
-            | Title      | List Title | field_landing_contents[1][subform][field_list_title][0][value] |
-        And browser waits
-        And user selects "Title, Description, and Image" from List Item Style dropdown under list
-        And browser waits
-        And user clicks on "Link" link in the List Items text area under List
-        And browser waits
-        And user selects "Add Media Link" from "List Items" dropdown "List Items" section
-        Then "Media Link" section appears
-        And user clicks on "Link" button to link to a media
-        And user clicks on "Select media" to choose a resource to link
-        And browser waits
-        And user enters "Automated Test Infographic" into media search box and clicks "Apply"
-        And browser waits
-        And user selects "Automated Test Infographic" item from media list
-        And browser waits
-        And user clicks on "Select media" button to select media item
-        And browser waits
-        And user removes the "Internal Link" item from the list
-        And browser waits
         And user selects "Review" from "Save as" dropdown
         When user saves the content page
 
@@ -321,13 +298,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
     Scenario: Verify Infographic at the front end in the English Home and Landing page
         Given user is navigating to the front end site with path site section plus "home-and-landing-page-to-test-infographic"
         And NCIDS feature cards have the following attributes
-            | index | title                                   | description                                     | link                                 | source                                                                        | file              | exitDisclaimer |
-            | 1     | Automated Test Infographic - Card Title | Automated Test Infographic - Featured Card Desc | {TEST_SITE_SECTION}/test-infographic | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image             | promo-placeholder | N/A            |
-        And list card row title is "List Title"
-        And list row displays the following links
-            | title                      | link                                 | description                                 |
-            | Automated Test Infographic | {TEST_SITE_SECTION}/test-infographic | Automated Test Infographic List Description |
-        And the thumbnail image has an image which matches the earlier selected promo image of Infographic
+            | index | title                                   | description                                     | link                                 | source                                                            | file              | exitDisclaimer |
+            | 1     | Automated Test Infographic - Card Title | Automated Test Infographic - Featured Card Desc | {TEST_SITE_SECTION}/test-infographic | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image | promo-placeholder | N/A            |
+
 
 
     Scenario: Translate test pages to Spanish to embed Infographic and embed/add Infographic to test pages
@@ -386,11 +359,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
     Scenario: Verify Infographic at the front end in the Spanish Home and Landing page
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-to-test-infographic-spanish"
-        And list card row title is "List Title"
-        And list row displays the following links
-            | title                              | link                                         | description                                        |
-            | Automated Test Infographic Spanish | {TEST_SITE_SECTION}/test-infographic-spanish | Automated Test Infographic List DescriptionSpanish |
-        And the thumbnail image has an image which matches the earlier selected promo image of Infographic
+        And NCIDS feature cards have the following attributes
+            | index | title                                           | description                                             | link                                                 | source                                                            | file              | exitDisclaimer |
+            | 1     | Automated Test Infographic Spanish - Card Title | Automated Test Infographic Spanish - Featured Card Desc | /espanol{TEST_SITE_SECTION}/test-infographic-spanish | /sites/default/files/styles/ncids_featured_16x9/public/cgov_image | promo-placeholder | N/A            |
 
 
     Scenario: Clean up

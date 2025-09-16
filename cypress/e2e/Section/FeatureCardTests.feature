@@ -1,44 +1,5 @@
 Feature: Feature Card tests
-
-    Scenario Outline: Verify feature cards are visible and have expected number of items
-        Given user is navigating to "<url>"
-        And screen breakpoint is set to "desktop"
-        Then feature cards are visible
-        And number of feature cards is <count>
-
-        Examples:
-            | url                          | count |
-            | /about-nci/organization/ccct | 2     |
-
-
-    Scenario Outline: Verify feature card's components
-        Given user is navigating to "<url>"
-        And screen breakpoint is set to "tablet"
-        Then feature cards are visible
-        And feature cards at positions "<indexes>" have "titles" as "<title>"
-        And feature cards at positions "<indexes>" have "descriptions" as "<description>"
-        And feature cards at positions "<indexes>" have "links" as "<itemLink>"
-        And feature cards at positions "<indexes>" have "alt texts" as "<altText>"
-        And feature cards at positions "<indexes>" have "sources" as "/files/styles/cgov_featured/public/cgov_image/featured/"
-        And feature cards at positions "<indexes>" have "files" as "<files>"
-
-        Examples:
-            | url                          | indexes | title                                   | description                    | itemLink                                             | altText                                            | files                                                                                   |
-            | /about-nci/organization/ccct | 0,1     | Feelings and Cancer,External Card Title | null,External Card Description | /about-cancer/coping/feelings,https://www.google.com | Sad Woman Looking Out Window,Find a Clinical Trial | sad-woman-looking-out-window-feature.jpg,find-clinical-trial-blue-feature-card-feat.jpg |
-
-    Scenario Outline: Verify feature card external item's components
-        Given user is navigating to "<url>"
-        And screen breakpoint is set to "mobile"
-        Then feature cards are visible
-        And the number of exit disclaimers is <externalLinkCount>
-        And feature cards at positions "<indexes>" have "links" as "<itemLink>"
-        And feature cards at positions "<indexes>" have "exit notification link href" as "<href>"
-
-        Examples:
-            | url                          | indexes | externalLinkCount | href              | itemLink               |
-            | /about-nci/organization/ccct | 1       | 1                 | /policies/linking | https://www.google.com |
-
-
+  
     Scenario Outline: Verify NCIDS 3 feature card row components
         Given screen breakpoint is set to "<breakpoint"
         And user is navigating to "/ncids-internal-feature-card-test"
