@@ -232,13 +232,6 @@ And('user clicks on {string} button item', (content) => {
     cy.get(`input[value='${content}']`).eq(0).click({ force: true });
 });
 
-And('user selects {string} from List Item Style dropdown under list', (option) => {
-    cy.get("select[name*='field_list_item_style']").eq(0).select(option);
-});
-
-And('user clicks on {string} link in the List Items text area under List', (linkBtn) => {
-    cy.get(`summary[role='button']:contains('${linkBtn}')`).click({ force: true });
-});
 
 And('user selects {string} item from media list', (title) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_media_browser').find(`input[name*="entity_browser_select"][type='checkbox']`).eq(0).check();
@@ -264,51 +257,6 @@ And('the infographic displayed has the following attributes', (dataTable) => {
     }
 });
 
-
-And('multimedia card row displays an image which matches the earlier selected promo image of Infographic', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
-    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
-
-    cy.get('div.multimedia-feature-card.cgvInfographic.non-playable').find('img').then($el => {
-        const source = $el[0].getAttribute('src');
-        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
-    });
-});
-
-And('multimedia card row displays the following cards', (dataTable) => {
-    for (let { title, link } of dataTable.hashes()) {
-        if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            cy.get(`div.multimedia-slot a[href*='${link}']`).should('be.visible').and('include.text', title);
-        }
-    }
-});
-
-And('list card row title is {string}', (cardTitle) => {
-    cy.get('div.managed.list').find(`h2:contains("${cardTitle}")`).should('be.visible');
-});
-
-And('list row displays the following links', (dataTable) => {
-    for (let { title, link, description } of dataTable.hashes()) {
-        if (link.includes("{TEST_SITE_SECTION}")) {
-            link = link.replace("{TEST_SITE_SECTION}", siteSection);
-            cy.get(`div.managed.list a[href*='${link}']`).should('be.visible').and('include.text', title);
-            cy.get('div.managed.list').find('div.description').should('be.visible').and('include.text', description);
-        }
-    }
-});
-
-And('the thumbnail image has an image which matches the earlier selected promo image of Infographic', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
-    const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
-
-    cy.get('div.managed.list').find('img').then($el => {
-        const source = $el[0].getAttribute('src');
-        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
-    });
-});
 
 Then('user selects {string} option from Operations dropdown for media with title {string}', (translateOption, title) => {
     cy.get(`td:contains('${title}')`).siblings('td').find(`ul.dropbutton >li> a:contains("${translateOption}")`).click({ force: true });

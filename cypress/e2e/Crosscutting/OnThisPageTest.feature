@@ -103,8 +103,6 @@ Feature: As a user, I want to be able to use On this Page links to easily naviga
             | /about-cancer/coping/nci-workshop-event                                              |
             | /news-events                                                                         |
             | /espanol/noticias                                                                    |
-            | /research/key-initiatives                                                            |
-            | /espanol/investigacion/iniciativas-clave                                             |
             | /about-cancer/treatment/drugs/bevacizumab                                            |
             | /news-events/press-releases/2018/leukemia-cll-ibrutinib-trial                        |
             | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio          |

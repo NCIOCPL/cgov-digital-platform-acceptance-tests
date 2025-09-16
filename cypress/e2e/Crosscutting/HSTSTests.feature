@@ -19,8 +19,6 @@ Feature: As a site visitor, I want HSTS to be in place, so HTTPS is always enfor
             | /news-events/events/schiffman-gordon-lecture                                         |
             | /about-cancer                                                                        |
             | /                                                                                    |
-            | /dceg-connect                                                                        |
-            | /sbir                                                                                |
             | /about-cancer/coping                                                                 |
             | /about-cancer/treatment/side-effects/fatigue/fatigue-pdq                             |
             | /about-cancer/treatment/side-effects/fatigue/fatigue-hp-pdq                          |
@@ -34,8 +32,6 @@ Feature: As a site visitor, I want HSTS to be in place, so HTTPS is always enfor
             | /espanol/tipos/seno/pro                                                              |
             | /espanol/cancer                                                                      |
             | /espanol                                                                             |
-            | /research/key-initiatives                                                            |
-            | /espanol/investigacion/iniciativas-clave                                             |
             | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq                    |
             | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pro-pdq                |
             | /news-events/press-releases/2018                                                     |
@@ -44,10 +40,6 @@ Feature: As a site visitor, I want HSTS to be in place, so HTTPS is always enfor
             | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio          |
             | /about-cancer/coping/feelings/relaxation/loukissas-jennifer                          |
             | /espanol/cancer/sobrellevar                                                          |
-            | /special-report                                                                      |
-            | /test/borderless-card                                                                |
-            | /espanol/test-es/borderless-card                                                     |
-            | /espanol/special-report                                                              |
             | /about-cancer/coping/feelings                                                        |
             | /about-cancer/coping/feelings/relaxation                                             |
             | /news-events/cancer-currents-blog/2019/vitamin-d-supplement-cancer-prevention        |

@@ -1,13 +1,5 @@
 module.exports = [
 	{
-		label: 'OLD home page eng',
-		testPath: '/cgdpl',
-	},
-    {
-		label: 'OLD home page spanish',
-		testPath: '/espanol/cgdpl',
-	},
-	{
 		label: 'NCIDS home page eng ',
 		testPath: '/',
 		selectors: [

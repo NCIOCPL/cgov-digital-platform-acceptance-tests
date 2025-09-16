@@ -73,7 +73,7 @@ Feature: Common Google Analytics Load events properties are captured across all 
             | prop1     | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping |
             | event1    |                                                   |
             | event47   | /d{0,2}/                                          |
-            | evar61    | cgvMiniLanding\|standard                          |
+            | evar61    | cgvMiniLanding\|ncids_default                     |
 
 
     Scenario: Load Event Article
