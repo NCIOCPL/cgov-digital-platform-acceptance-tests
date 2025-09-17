@@ -212,15 +212,6 @@ And('the promo image in {int} feature card is matching the earlier selected prom
     })
 });
 
-And('{int} image carousel displays the following features', (position, dataTable) => {
-    for (let { alignment, title, caption, credit } of dataTable.hashes()) {
-        cy.get('div#cgvBody div div').eq(position - 1).should('have.attr', 'class', alignment);
-        cy.get('div#cgvBody').find(`span:contains("${title}")`).should('be.visible');
-        cy.get('div.ic-caption').find(`p:contains("${caption}")`).should('be.visible');
-        cy.get('div.ic-carousel').find(`div:contains("${credit}")`).should('be.visible');
-    }
-});
-
 And('user fills out {string} text area in Raw HTML block with {string}', (field, value) => {
     cy.get('div.form-textarea-wrapper').find('textarea').first().type(value);
 });
@@ -229,16 +220,6 @@ And('{int} block displays the following features', (position, dataTable) => {
     for (let { alignment, rawHTMLText } of dataTable.hashes()) {
         cy.get('div#cgvBody section').eq(position - 1).find(`div[class*='${alignment}']`).should('be.visible');
         cy.get('div#cgvBody section').eq(position - 1).find(`div:contains("${rawHTMLText}")`).should('be.visible');
-    }
-});
-
-And('video carousel displays the following features', (dataTable) => {
-    for (let { alignment, playListID, prevButton, nextButton, videoCarouselH4Title } of dataTable.hashes()) {
-        cy.get('div#cgvBody').find(`div[class*='${alignment}']`).should('be.visible');
-        cy.get(`div.yt-carousel[data-playlist-id='${playListID}']`).should('be.visible');
-        cy.get(`div.row.yt-carousel-controls button[value='${prevButton}']`).should('be.visible');
-        cy.get(`div.row.yt-carousel-controls button[value='${nextButton}']`).should('be.visible');
-        cy.get('div.columns').find(`figcaption:contains("${videoCarouselH4Title}")`).should('be.visible');
     }
 });
 
