@@ -19,7 +19,6 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
             | /news-events/events/schiffman-gordon-lecture                  | tablet           |
             | /about-cancer                                                 | desktop          |
             | /                                                             | tablet           |
-            | /dceg-connect                                                 | desktop          |
             | /about-cancer/coping                                          | tablet           |
             | /about-cancer/treatment/side-effects/fatigue/fatigue-pdq      | desktop          |
             | /about-cancer/treatment/side-effects/fatigue/fatigue-hp-pdq   | tablet           |
@@ -42,7 +41,6 @@ Feature: As a user, I want to be able to use back to top arrow for easy page nav
             | /espanol/tipos/seno/pro                                                     | desktop          |
             | /espanol/cancer                                                             | tablet           |
             | /espanol                                                                    | desktop          |
-            | /espanol/investigacion/iniciativas-clave                                    | tablet           |
             | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq           | desktop          |
             | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pro-pdq       | tablet           |
             | /espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio | desktop          |

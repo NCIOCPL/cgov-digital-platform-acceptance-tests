@@ -38,7 +38,6 @@ Feature: Page Options tests
             | /                   |
             | /about-cancer       |
             | /espanol            |
-            | /special-report     |
             | /types/breast       |
             | /espanol/tipos/seno |
 
