@@ -9,10 +9,10 @@ const currYear = date.getFullYear();
 
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
-    const editor = el[0].ckeditorInstance
-    editor.data.set(value)
-});
+    cy.get(`div[id*='field-article-body-${position - 1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })
 
 And('the intro text reads {string}', (titlText) => {
@@ -28,31 +28,37 @@ And('{int} description reads {string}', (contentText) => {
 });
 
 let imageSrc1;
-And('user selects {int} Promotional Image from the list of images for featured content article', (num) => {
+And('user selects {string} Promotional Image from the list of images for featured content article', (image) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name*="image_promotional_entity_browser_entity_browser"]').click({ force: true });
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check();
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-name").type(image);
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-submit-cgov-image-media-browser").click();
+    cy.wait(2000)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[type='checkbox']").eq(0).check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true });
 });
 
 And('user remembers the source of selected promo image for further verification in the featured content article', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp','')
+        imageSrc1 = $el[0].getAttribute('src').replace('.webp', '')
     });
 });
 
 let imageSrc2;
-And('user selects {int} Lead Image from the list of images', (num) => {
+And('user selects {string} Lead Image from the list of images', (image) => {
     cy.get('summary:contains("Lead Image")').click();
     cy.wait(1000);
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click()
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(num - 1).check()
+     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-name").type(image);
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input#edit-submit-cgov-image-media-browser").click();
+    cy.wait(2000)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[type='checkbox']").eq(0).check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click()
 });
 
 And('user remembers the source of selected lead image for further verification in the featured content blog post', () => {
     cy.get('details img').then($el => {
-        imageSrc2 = $el[0].getAttribute('src').replace('.webp','');
+        imageSrc2 = $el[0].getAttribute('src').replace('.webp', '');
     });
 });
 
@@ -157,7 +163,7 @@ Then('the promo image is matching the earlier selected promo image in the articl
     cy.get('.cgdp-embed-card').find('img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
+        expect(actSrc).to.include(extractedImageName.replace('article', ''))
     })
 });
 
@@ -168,7 +174,7 @@ Then('the lead image is matching the earlier selected lead image in the blog pos
     cy.get('.cgdp-embed-card').find('img').then($el => {
         const source = $el[1].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
+        expect(actSrc).to.include(extractedImageName.replace('article', ''))
     })
 });
 
@@ -181,5 +187,5 @@ And('user selects a checkbox next to title with url {string} under {string} from
 });
 
 And('user clicks {string} button {int} in the WYSIWYG editor', (featuredContentButton, position) => {
-    cy.get(`button[data-cke-tooltip-text='Insert ${featuredContentButton}']`).eq(position-1).click({ force: true });
+    cy.get(`button[data-cke-tooltip-text='Insert ${featuredContentButton}']`).eq(position - 1).click({ force: true });
 });

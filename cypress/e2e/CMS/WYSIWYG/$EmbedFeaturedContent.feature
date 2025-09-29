@@ -21,7 +21,7 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
         And user enters "Article Heading1" as 1 body section heading
         And user fills out 1 "Body" text area with "This article will be used for testing Featured Content"
         And browser waits
-        And user selects 4 Promotional Image from the list of images for featured content article
+        And user selects "Automated Test Image" Promotional Image from the list of images for featured content article
         And browser waits
         And user remembers the source of selected promo image for further verification in the featured content article
         And user selects "Review" from "Save as" dropdown
@@ -51,7 +51,7 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
             | Feature Card Description | Automated Test Blog Post for Featured Content Test - Feature Card Desc | field_feature_card_description |
             | Author                   | Automated Test Blog Post for Featured Content Test Author              | field_author                   |
         And user fills out "Body" text area with "This blog post will be used for testing featured content"
-        And user selects 4 Lead Image from the list of images
+        And user selects "Automated Test Image" Lead Image from the list of images
         And browser waits
         And user remembers the source of selected lead image for further verification in the featured content blog post
         And browser waits
