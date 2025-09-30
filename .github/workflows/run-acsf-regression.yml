@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
     inputs:
       base_url:
-        description: "CMS base url (without trailing slash)"
+        description: "CMS base url"
         required: true
         type: string
       front_end_base_url:
-        description: "Front end base url (without trailing slash)"
+        description: "Front end base url"
         required: true
         type: string
 jobs:
@@ -50,4 +50,3 @@ jobs:
         with:
           name: failed-screenshots-cms
           path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/cypress/screenshots
- 
