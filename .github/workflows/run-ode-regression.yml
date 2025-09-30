@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       base_url:
-        description: "Base url (ode or ac), without trailing slash"
+        description: "Base url (ode or ac)"
         required: true
         type: string
 jobs:

@@ -17,19 +17,31 @@ module.exports = defineConfig({
     front_end_base_url: 'https://www-dev-ac.cancer.gov',
     ocpl_username: 'ocpl-test',
     ocpl_password: '',
-    randomStr: createRandomStr()
+    randomStr: createRandomStr(),
   },
   defaultCommandTimeout: 10000,
   e2e: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
-    setupNodeEvents(on, config) {
-      return require('./cypress/plugins/index.js')(on, config)
-    },
     specPattern: 'cypress/e2e/**/*.feature',
     baseUrl: 'https://www-dev-ac.cancer.gov',
+
+    // Pre-Cypress setup.
+    setupNodeEvents(on, config) {
+      // Remove any trailing slashes or spaces from base URL.
+      // This runs before Cypress starts, but after overrides are applied.
+      config.baseUrl = config.baseUrl.trim().replace(/\/+$/, '');
+
+      // If a front end base URL is set, remove trailing slashes and spaces.
+      // The Cypress object isn't available yet, so we use Node's process.env.
+      const front_end_base_url = process.env.CYPRESS_front_end_base_url;
+      if (front_end_base_url) {
+        process.env.CYPRESS_front_end_base_url = front_end_base_url.trim().replace(/\/+$/, '');
+      }
+
+      // Delegate further configuration to plugin initialization.
+      return require('./cypress/plugins/index.js')(on, config);
+    },
   },
-})
+});
 
 function createRandomStr() {
   var result = '';
