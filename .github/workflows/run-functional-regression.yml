@@ -10,6 +10,8 @@ jobs:
   cypress_regression:
     name: Running cypress regression tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       ## This clones and checks out.
       - name: Checkout branch

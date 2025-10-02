@@ -14,6 +14,8 @@ jobs:
   cypress_cms_regression:
     name: Running cypress CMS regression tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       ## This clones and checks out.
       - name: Checkout branch
