@@ -14,6 +14,8 @@ jobs:
   front-end-regression:
     name: Running cypress regression tests on ACSF
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       ## This clones and checks out.
       - name: Checkout branch

@@ -10,6 +10,8 @@ jobs:
   generate_images:
     name: Running backstopjs tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       ## This clones and checks out.
       - name: Checkout branch
