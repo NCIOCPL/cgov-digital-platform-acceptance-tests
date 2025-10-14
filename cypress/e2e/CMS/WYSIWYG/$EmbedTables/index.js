@@ -46,21 +46,21 @@ And('the following tables are displayed', (dataTable) => {
             .find('td').should('have.length', (rowCount * columnCount) - headerCount)
         if (caption != 'null') {
             cy.get('div.cgdp-article-body.cgdp-article-body--multiple').find('section').eq(index)
-                .find('figure').find('figcaption').should('have.text', caption)
+                .find('table').find('caption').should('have.text', caption)
         }
         else {
             cy.get('div.cgdp-article-body.cgdp-article-body--multiple').find('section').eq(index)
-                .find('figure').find('figcaption').should('not.exist')
+                .find('table').find('caption').should('not.exist')
         }
     
         if (alignment != 'null') {
             cy.get('div.cgdp-article-body.cgdp-article-body--multiple').find('section').eq(index)
-                .find('figure').find('div').find('div').find('table')
+                .find('table')
                 .should('have.attr', 'style', `float:${alignment};`)
         }
         else {
             cy.get('div.cgdp-article-body.cgdp-article-body--multiple').find('section').eq(index)
-                .find('figure').find('div').find('div').find('table')
+                .find('table')
                 .should('not.have.attr', 'align')
         }
     }
