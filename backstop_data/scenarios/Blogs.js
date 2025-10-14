@@ -97,4 +97,22 @@ module.exports = [
             }
         ]
     },
+
+    {
+        label: 'blog with lead image and caption',
+        testPath: '/news-events/cancer-currents-blog/2019/blog-post-lead-img-caption',
+        specific: true,
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+            {
+                label: 'tablet',
+                width: 650,
+                height: 900,
+            }
+        ]
+    },
 ]
