@@ -268,20 +268,20 @@ Feature: Dynamic Listing Pages
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                 |
-            | prop4     | D=pev1                |
-            | prop67    | D=pageName            |
-            | prop13    | 1\|page 1             |
-            | prop12    | clinicaltrials_custom |
-            | prop8     | english               |
-            | evar2     | D=c8                  |
-            | evar12    | D=c12                 |
-            | pageName  | <pageName>            |
-            | pageURL   | <pageURL>             |
-            | event42   |                       |
-            | channel   | Research              |
-            | pev2      | CTSLink               |
-            | linkType  | lnk_o                 |
+            | parameter | value                       |
+            | prop4     | D=pev1                      |
+            | prop67    | D=pageName                  |
+            | prop13    | 1\|page 1                   |
+            | prop12    | clinicaltrials_custom       |
+            | prop8     | english                     |
+            | evar2     | D=c8                        |
+            | evar12    | D=c12                       |
+            | pageName  | <pageName>                  |
+            | pageURL   | <pageURL>                   |
+            | event42   |                             |
+            | channel   | Research                    |
+            | pev2      | TrialListingApp:ResultClick |
+            | linkType  | lnk_o                       |
 
         Examples:
             | path                                                                  | page title                                  | pageName                                                                              | pageURL                                                                                                 |
