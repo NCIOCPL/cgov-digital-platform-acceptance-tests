@@ -51,11 +51,11 @@ Feature: All manual pages
         And there is a canonical link with the href "<canonical link>"
 
         Examples:
-            | path                                                                | page title                                                             | title tag                                                                    | og:title                                                               | og:url                                                                                                | og:description                                                                                                                                                                                                | description                                                                                                                                                                                                   | canonical link                                                                                        |
-            | /research/participate/clinical-trials/covid-19                      | NCI-Supported Clinical Trials for Coronavirus                          | NCI-Supported Clinical Trials for Coronavirus - NCI                          | NCI-Supported Clinical Trials for Coronavirus                          | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/covid-19?pn=1                      | List of ongoing clinical trials for coronavirus disease 2019 (COVID-19) supported by the National Cancer Institute. Some trials may be specifically for people with cancer who also have coronavirus disease. | List of ongoing clinical trials for coronavirus disease 2019 (COVID-19) supported by the National Cancer Institute. Some trials may be specifically for people with cancer who also have coronavirus disease. | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/covid-19?pn=1                      |
-            | /research/participate/clinical-trials/cam-procedures                | Clinical Trials for Complementary or Alternative Medicine Procedure(s) | Clinical Trials for Complementary or Alternative Medicine Procedure(s) - NCI | Clinical Trials for Complementary or Alternative Medicine Procedure(s) | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures?pn=1                | Find clinical trials for complementary or alternative medicine procedures.                                                                                                                                    | Find clinical trials for complementary or alternative medicine procedures.                                                                                                                                    | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures?pn=1                |
-            | /research/participate/clinical-trials/adult-metastatic-brain-tumors | Clinical Trials to Treat Adult Metastatic Brain Tumors                 | Clinical Trials to Treat Adult Metastatic Brain Tumors - NCI                 | Clinical Trials to Treat Adult Metastatic Brain Tumors                 | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/adult-metastatic-brain-tumors?pn=1 | Find clinical trials to treat adult metastatic brain tumors.                                                                                                                                                  | Find clinical trials to treat adult metastatic brain tumors.                                                                                                                                                  | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/adult-metastatic-brain-tumors?pn=1 |
-            | /research/participate/clinical-trials/kidney-cancer                 | Clinical Trials to Treat Kidney (Renal Cell) Cancer                    | Clinical Trials to Treat Kidney (Renal Cell) Cancer - NCI                    | Clinical Trials to Treat Kidney (Renal Cell) Cancer                    | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/kidney-cancer?pn=1                 | Find clinical trials to treat kidney cancer.                                                                                                                                                                  | Find clinical trials to treat kidney cancer.                                                                                                                                                                  | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/kidney-cancer?pn=1                 |
+            | path                                                                | page title                                                             | title tag                                                                    | og:title                                                               | og:url                                                                                                 | og:description                                                                                                                                                                                                | description                                                                                                                                                                                                   | canonical link                                                                                         |
+            | /research/participate/clinical-trials/covid-19                      | NCI-Supported Clinical Trials for Coronavirus                          | NCI-Supported Clinical Trials for Coronavirus - NCI                          | NCI-Supported Clinical Trials for Coronavirus                          | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/covid-19/?pn=1                      | List of ongoing clinical trials for coronavirus disease 2019 (COVID-19) supported by the National Cancer Institute. Some trials may be specifically for people with cancer who also have coronavirus disease. | List of ongoing clinical trials for coronavirus disease 2019 (COVID-19) supported by the National Cancer Institute. Some trials may be specifically for people with cancer who also have coronavirus disease. | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/covid-19/?pn=1                      |
+            | /research/participate/clinical-trials/cam-procedures                | Clinical Trials for Complementary or Alternative Medicine Procedure(s) | Clinical Trials for Complementary or Alternative Medicine Procedure(s) - NCI | Clinical Trials for Complementary or Alternative Medicine Procedure(s) | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures/?pn=1                | Find clinical trials for complementary or alternative medicine procedures.                                                                                                                                    | Find clinical trials for complementary or alternative medicine procedures.                                                                                                                                    | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures/?pn=1                |
+            | /research/participate/clinical-trials/adult-metastatic-brain-tumors | Clinical Trials to Treat Adult Metastatic Brain Tumors                 | Clinical Trials to Treat Adult Metastatic Brain Tumors - NCI                 | Clinical Trials to Treat Adult Metastatic Brain Tumors                 | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/adult-metastatic-brain-tumors/?pn=1 | Find clinical trials to treat adult metastatic brain tumors.                                                                                                                                                  | Find clinical trials to treat adult metastatic brain tumors.                                                                                                                                                  | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/adult-metastatic-brain-tumors/?pn=1 |
+            | /research/participate/clinical-trials/kidney-cancer                 | Clinical Trials to Treat Kidney (Renal Cell) Cancer                    | Clinical Trials to Treat Kidney (Renal Cell) Cancer - NCI                    | Clinical Trials to Treat Kidney (Renal Cell) Cancer                    | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/kidney-cancer/?pn=1                 | Find clinical trials to treat kidney cancer.                                                                                                                                                                  | Find clinical trials to treat kidney cancer.                                                                                                                                                                  | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/kidney-cancer/?pn=1                 |
 
 
     Scenario Outline: Redirect to noTrialsFound
@@ -74,28 +74,28 @@ Feature: All manual pages
         When user is navigating to "/research/participate/clinical-trials/cam-procedures" with added wait
         Then page load request is sent
         And the following parameters should be captured
-            | parameter | value                                                                                  |
-            | prop6     | Clinical Trials for Complementary or Alternative Medicine Procedure(s)                 |
-            | prop10    | Clinical Trials for Complementary or Alternative Medicine Procedure(s) - NCI           |
-            | prop44    | Research Landing Page                                                                  |
-            | prop3     | /research/participate/clinical-trials/cam-procedures/                                  |
-            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                   |
-            | prop29    |                                                                                        |
-            | prop62    | Clinical Trials: Custom                                                                |
-            | prop20    | /^manual parameters\|\d{1,2}/                                                          |
-            | prop11    | clinicaltrials_custom                                                                  |
-            | prop8     | english                                                                                |
-            | evar44    | D=c44                                                                                  |
-            | evar11    | D=c11                                                                                  |
-            | evar20    | D=c20                                                                                  |
-            | evar47    | clinicaltrials_custom                                                                  |
-            | evar62    | D=c62                                                                                  |
-            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures                   |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures?pn=1 |
-            | event2    |                                                                                        |
-            | event1    |                                                                                        |
-            | channel   | Research                                                                               |
-            | evar61    | nciAppModulePage\|ncids_left_nav                                                             |
+            | parameter | value                                                                                   |
+            | prop6     | Clinical Trials for Complementary or Alternative Medicine Procedure(s)                  |
+            | prop10    | Clinical Trials for Complementary or Alternative Medicine Procedure(s) - NCI            |
+            | prop44    | Research Landing Page                                                                   |
+            | prop3     | /research/participate/clinical-trials/cam-procedures/                                   |
+            | prop26    | /^\d{4}\|\d{1,2}\|\d{1,2}\|\d{1,2}$/                                                    |
+            | prop29    |                                                                                         |
+            | prop62    | Clinical Trials: Custom                                                                 |
+            | prop20    | /^manual parameters\|\d{1,2}/                                                           |
+            | prop11    | clinicaltrials_custom                                                                   |
+            | prop8     | english                                                                                 |
+            | evar44    | D=c44                                                                                   |
+            | evar11    | D=c11                                                                                   |
+            | evar20    | D=c20                                                                                   |
+            | evar47    | clinicaltrials_custom                                                                   |
+            | evar62    | D=c62                                                                                   |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures/                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures/?pn=1 |
+            | event2    |                                                                                         |
+            | event1    |                                                                                         |
+            | channel   | Research                                                                                |
+            | evar61    | nciAppModulePage\|ncids_left_nav                                                        |
 
     Scenario: Analytics click event
         When user is navigating to "/research/participate/clinical-trials/cam-procedures"
@@ -104,18 +104,18 @@ Feature: All manual pages
         And browser waits
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                                  |
-            | prop4     | D=pev1                                                                                 |
-            | prop67    | D=pageName                                                                             |
-            | prop13    | 1\|page 1                                                                              |
-            | prop12    | clinicaltrials_custom                                                                  |
-            | prop8     | english                                                                                |
-            | evar2     | D=c8                                                                                   |
-            | evar12    | D=c12                                                                                  |
-            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures                   |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures?pn=1 |
-            | event42   |                                                                                        |
-            | channel   | Research                                                                               |
-            | pev2      | CTSLink                                                                                |
-            | linkType  | lnk_o                                                                                  |
+            | parameter | value                                                                                   |
+            | prop4     | D=pev1                                                                                  |
+            | prop67    | D=pageName                                                                              |
+            | prop13    | 1\|page 1                                                                               |
+            | prop12    | clinicaltrials_custom                                                                   |
+            | prop8     | english                                                                                 |
+            | evar2     | D=c8                                                                                    |
+            | evar12    | D=c12                                                                                   |
+            | pageName  | {CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures/                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/research/participate/clinical-trials/cam-procedures/?pn=1 |
+            | event42   |                                                                                         |
+            | channel   | Research                                                                                |
+            | pev2      | TrialListingApp:ResultClick                                                             |
+            | linkType  | lnk_o                                                                                   |
 
