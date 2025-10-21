@@ -9,7 +9,7 @@ if (!args.testBaseUrl) {
 	args.testBaseUrl = 'https://www-dev-ac.cancer.gov';
 }
 const isACSF = args.testBaseUrl.toLowerCase().includes('acsf') || args.refBaseUrl.toLowerCase().includes('acsf')
-const scenarioFiles = glob.sync('backstop_data/scenarios/**/*.js');
+const scenarioFiles = glob.sync('backstop_data/scenarios/batch2/*.js');
 
 const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 	const scenarios = require(pathUtil.resolve(__dirname, scenarioFile));
@@ -52,7 +52,7 @@ module.exports = {
 		bitmaps_reference: 'backstop_data/reference',
 		bitmaps_test: 'backstop_data/test',
 		engine_scripts: 'backstop_data/engine_scripts/',
-		html_report: 'backstop_data/html-report',
+		html_report: 'backstop_data/html-report2',
 		ci_report: 'backstop_data/ci-report',
 	},
 	report: ['browser'],

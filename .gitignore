@@ -145,4 +145,6 @@ cypress.env.json
 
 #rules for backstop 
 /backstop_data/html-report
+/backstop_data/html-report1
+/backstop_data/html-report2
 /backstop_data/test

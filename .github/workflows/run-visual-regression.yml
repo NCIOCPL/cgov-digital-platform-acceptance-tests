@@ -28,8 +28,23 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
          ## Now run visual regression 
-      - name: Run backstopjs tests
-        run: testBaseUrl=${{ inputs.base_url }} npm run backstop:test
+      - name: Run first batch of backstopjs tests
+        run: testBaseUrl=${{ inputs.base_url }} npm run backstop:test:batch1
+      ## Upload failed backstopjs tests
+      - uses: actions/upload-artifact@v4
+        name: Upload failed tests
+        if: failure()
+        with:
+          name: failed-backstopjs
+          path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/backstop_data/
+      ## Upload successful backstopjs tests
+      - uses: actions/upload-artifact@v4
+        name: Upload successful tests
+        with:
+          name: success-backstopjs
+          path: /home/runner/work/cgov-digital-platform-acceptance-tests/cgov-digital-platform-acceptance-tests/backstop_data/test/**/report.json
+      - name: Run second batch of backstopjs tests
+        run: testBaseUrl=${{ inputs.base_url }} npm run backstop:test:batch2
       ## Upload failed backstopjs tests
       - uses: actions/upload-artifact@v4
         name: Upload failed tests

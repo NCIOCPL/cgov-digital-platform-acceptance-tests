@@ -11,7 +11,8 @@
     "cypress:acsf": "cypress run --spec \"**/e2e/**/[!$|!_]*.feature\"",
     "cypress:cms": "cypress run --spec \"cypress/e2e/CMS/**/*.feature\"",
     "backstop:reference": "backstop reference --config='backstop.config.js'",
-    "backstop:test": "backstop test --config='backstop.config.js'",
+    "backstop:test:batch1": "backstop test --config='backstop.config_batch1.js'",
+    "backstop:test:batch2": "backstop test --config='backstop.config_batch2.js'",
     "backstop:approve": "backstop approve --config='backstop.config.js'"
   },
   "repository": {
