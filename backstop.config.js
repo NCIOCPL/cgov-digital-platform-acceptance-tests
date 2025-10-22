@@ -62,7 +62,7 @@ module.exports = {
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 	},
 	asyncCaptureLimit: 2,
-	asyncCompareLimit: 50,
+	asyncCompareLimit: 20,
 	debug: false,
 	debugWindow: false,
 	resembleOutputOptions: {
