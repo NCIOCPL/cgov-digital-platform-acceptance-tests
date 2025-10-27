@@ -188,4 +188,45 @@ module.exports = [
         label: 'Embedded video in press release',
         testPath: '/test/press-release-video-embed-test-page',
     },
+    {
+        label: 'Embedded image in article',
+        testPath: '/test/embedded-image-test',
+         viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+            {
+                label: 'tablet',
+                width: 650,
+                height: 900,
+            }
+        ]
+    },
+    {
+        label: 'Embedded image in biography',
+        testPath: '/test/biography-image-embed-test-page',
+    },
+
+    {
+        label: 'Embedded image in blog',
+        testPath: '/news-events/cancer-currents-blog/2019/blog-post-image-embed-test-page',
+    },
+
+    {
+        label: 'Embedded image in caner center',
+        testPath: '/test/cancer-center-image-embed-test-page',
+    },
+
+    {
+        label: 'Embedded image in event',
+        testPath: '/test/event-image-embed-test-page',
+    },
+
+    {
+        label: 'Embedded image in press release',
+        testPath: '/test/press-release-image-embed-test-page',
+    }
+
 ]
