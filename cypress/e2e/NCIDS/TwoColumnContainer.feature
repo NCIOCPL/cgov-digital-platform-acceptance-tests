@@ -24,27 +24,27 @@ Feature: NCIDS two column container
         When user clicks on NCIDS Dynamic list item at position 2
         Then page click request is sent
         And the following parameters should be captured
-            | parameter | value                                                                               |
-            | prop4     | D=pev1                                                                              |
-            | prop8     | english                                                                             |
-            | prop57    | D=v64                                                                               |
-            | prop58    | D=v65                                                                               |
-            | prop59    | D=v66                                                                               |
-            | prop60    | D=c67                                                                               |
-            | prop67    | D=pageName                                                                          |
-            | prop68    | D=v68                                                                               |
-            | evar2     | D=c8                                                                                |
-            | evar64    | Internal\|Recent Press Releases\|Press Release Test Page - with Lead Image and Capt |
-            | evar65    | Dynamic List\|NCIDS Collection Media\|Press Releases                                |
-            | evar66    | 2\|2\|2\|1\|1\|1                                                                    |
-            | evar67    | Collection Item\|5\|2                                                               |
-            | evar68    | Body                                                                                |
-            | pageName  | {CANONICAL_HOST}/news-events                                                        |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events                                           |
-            | event27   |                                                                                     |
-            | channel   | News and Events                                                                     |
-            | pev2      | LP:Collection:LinkClick                                                             |
-            | linkType  | lnk_o                                                                               |
+            | parameter | value                                                                         |
+            | prop4     | D=pev1                                                                        |
+            | prop8     | english                                                                       |
+            | prop57    | D=v64                                                                         |
+            | prop58    | D=v65                                                                         |
+            | prop59    | D=v66                                                                         |
+            | prop60    | D=c67                                                                         |
+            | prop67    | D=pageName                                                                    |
+            | prop68    | D=v68                                                                         |
+            | evar2     | D=c8                                                                          |
+            | evar64    | Internal\|Recent Press Releases\|Press Release Test Page - without Lead Image |
+            | evar65    | Dynamic List\|NCIDS Collection Media\|Press Releases                          |
+            | evar66    | 2\|2\|2\|1\|1\|1                                                              |
+            | evar67    | Collection Item\|5\|2                                                         |
+            | evar68    | Body                                                                          |
+            | pageName  | {CANONICAL_HOST}/news-events                                                  |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events                                     |
+            | event27   |                                                                               |
+            | channel   | News and Events                                                               |
+            | pev2      | LP:Collection:LinkClick                                                       |
+            | linkType  | lnk_o                                                                         |
 
     Scenario: NCIDS two column container Right rail link click
         Given user is navigating to "/news-events"

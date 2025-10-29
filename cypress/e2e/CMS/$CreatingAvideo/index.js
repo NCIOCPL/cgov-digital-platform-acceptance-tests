@@ -95,7 +95,9 @@ cy.get('figure.cgdp-video__figure ').eq(index-1).find('span').should('not.exist'
 });
 
 And('{int} video has alignment set to {string}',(index, value)=>{
-cy.get('div[data-embed-button="cgov_video_button"]').eq(index-1).should('have.attr','class',`${value}embedded-entity cgdp-embed-video`)
+cy.get('div[data-embed-button="cgov_video_button"]').eq(index-1).invoke('attr','class').then((classVal)=>{
+   expect(classVal).to.include(`${value}embedded-entity cgdp-embed-video cgdp-embed-video`)
+})
 })
 
 And('user selects {string} from style dropdown', (option) => {

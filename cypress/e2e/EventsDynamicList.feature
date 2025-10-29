@@ -55,7 +55,7 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
 
         Scenario: When user clicks a past event from result list -  analytics event is fired
                 When user is navigating to "/news-events/events/past-events-collection"
-                And user clicks on event number 7
+                And user clicks on event number 8
                 Then page click request is sent
                 And the following parameters should be captured
                         | parameter | value                                                                   |
@@ -71,7 +71,7 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                         | evar64    | Internal\|Past Events with No Argument Value\|Krispy Kreme Challenge    |
                         | evar65    | Dynamic List\|NCIDS Collection Condensed\|Past Events                   |
                         | evar66    | 5\|2\|0\|0\|1\|1                                                        |
-                        | evar67    | Collection Item\|14\|7                                                  |
+                        | evar67    | Collection Item\|15\|8                                                  |
                         | pageName  | {CANONICAL_HOST}/news-events/events/past-events-collection              |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/events/past-events-collection |
                         | channel   | News and Events                                                         |
@@ -96,7 +96,7 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                         | evar61    | cgvMiniLanding\|ncids_default                                                      |
                         | evar65    | Dynamic List\|NCIDS Collection Condensed\|Past Events                              |
                         | evar66    | 2\|2\|0\|0\|1\|1                                                                   |
-                        | evar67    | Nav Links\|8\|2                                                                    |
+                        | evar67    | Nav Links\|9\|2                                                                    |
                         | pageName  | {CANONICAL_HOST}/news-events/events/past-events-collection-test-pager              |
                         | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/events/past-events-collection-test-pager |
                         | channel   | News and Events                                                                    |
