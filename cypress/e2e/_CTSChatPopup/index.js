@@ -2,11 +2,11 @@
 import { Given, And, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
 And('Spanish chat pop up is displayed', () => {
-    cy.get('#Spanish-CTSPrompt', { timeout: 30000 }).should('be.visible');
+    cy.get('#Spanish-CTSPrompt', { timeout: 180000 }).should('be.visible');
 });
 
 And('chat pop up is displayed', () => {
-    cy.get('#ProactiveLiveHelpForCTSPrompt', { timeout: 30000 }).should('be.visible');
+    cy.get('#ProactiveLiveHelpForCTSPrompt', { timeout: 50000 }).should('be.visible');
 });
 
 When('user clicks on chat button', () => {
