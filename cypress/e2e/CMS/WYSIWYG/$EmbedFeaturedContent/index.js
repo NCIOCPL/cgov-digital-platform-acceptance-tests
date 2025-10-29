@@ -124,7 +124,7 @@ And('user select {string} from the {string} dropdown', (selectItem, labelText) =
 
 And('{int} feature card displays the following features', (position, dataTable) => {
     for (let { alignment, title, link, description } of dataTable.hashes()) {
-        cy.get(`.cgdp-embed-card`).eq(position - 1).as('card');
+        cy.get(`.nci-card`).eq(position - 1).as('card');
         if (link.includes("{YEAR}")) {
             link = link.replaceAll("{YEAR}", currYear);
         }
@@ -140,7 +140,7 @@ And('{int} feature card displays the following features', (position, dataTable) 
 
 And('{int} feature card displays the following', (position, dataTable) => {
     for (let { alignment, title, link, description } of dataTable.hashes()) {
-        cy.get(`.cgdp-embed-card`).eq(position - 1).as('card');
+        cy.get(`.nci-card`).eq(position - 1).as('card');
         if (link.includes("{YEAR}")) {
             link = link.replaceAll("{YEAR}", currYear);
         }
@@ -160,7 +160,7 @@ Then('the promo image is matching the earlier selected promo image in the articl
     const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
-    cy.get('.cgdp-embed-card').find('img').then($el => {
+    cy.get('.nci-card').find('img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replace('article', ''))
@@ -171,7 +171,7 @@ Then('the lead image is matching the earlier selected lead image in the blog pos
     const expectedSrc = (imageSrc2.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
-    cy.get('.cgdp-embed-card').find('img').then($el => {
+    cy.get('.nci-card').find('img').then($el => {
         const source = $el[1].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replace('article', ''))
@@ -179,7 +179,7 @@ Then('the lead image is matching the earlier selected lead image in the blog pos
 });
 
 And('{int} feature card does not display any image', (position) => {
-    cy.get('.cgdp-embed-card').eq(position - 1).should('not.have.css', 'img');
+    cy.get('.nci-card').eq(position - 1).should('not.have.css', 'img');
 });
 
 And('user selects a checkbox next to title with url {string} under {string} from the list of content', (url, blogSeries) => {
