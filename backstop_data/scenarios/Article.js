@@ -99,4 +99,20 @@ module.exports = [
             }
         ]
     },
+    {
+        label: 'Article glossified links',
+        testPath: '/test/ncids-article-def-link-test',
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+            {
+                label: 'tablet',
+                width: 650,
+                height: 900,
+            }
+        ]
+    },
 ]
