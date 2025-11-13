@@ -21,7 +21,7 @@ Feature: NCIDS two column container
 
     Scenario: NCIDS Dynamic List item click
         Given user is navigating to "/news-events"
-        When user clicks on NCIDS Dynamic list item at position 2
+        When user clicks on NCIDS Dynamic list item at position 3
         Then page click request is sent
         And the following parameters should be captured
             | parameter | value                                                                         |
@@ -37,7 +37,7 @@ Feature: NCIDS two column container
             | evar64    | Internal\|Recent Press Releases\|Press Release Test Page - without Lead Image |
             | evar65    | Dynamic List\|NCIDS Collection Media\|Press Releases                          |
             | evar66    | 2\|2\|2\|1\|1\|1                                                              |
-            | evar67    | Collection Item\|5\|2                                                         |
+            | evar67    | Collection Item\|5\|3                                                         |
             | evar68    | Body                                                                          |
             | pageName  | {CANONICAL_HOST}/news-events                                                  |
             | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events                                     |
