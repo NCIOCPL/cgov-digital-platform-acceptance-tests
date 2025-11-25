@@ -89,10 +89,10 @@ And('there are the following wide guide cards', (dataTable) => {
         cy.get('@wideCard').find('li').should('have.length', numberOfLinks);
        
         if (baseUrl.includes('dev-acsf')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
+            source = source.replace('\\/sites\\/default', 'automation-installed\/sites\/autoinstalled')
 
         } else if (baseUrl.includes('test-acsf')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
+            source = source.replace('\\/sites\\/default', 'automation-installed\/sites\/autoinstalled')
         }
         cy.get('@wideCard').should('have.attr','style').then(img=>{
           const imgSrc = img.replace ('background-image: url','').replace(/\?.*/, '')

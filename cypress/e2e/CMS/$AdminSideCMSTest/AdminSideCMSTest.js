@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 import { And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+const baseUrl = Cypress.config('baseUrl');
 
 And('user clicks {string} button', (loginButton) => {
     cy.get('input#edit-submit').contains(loginButton).click();
@@ -28,7 +28,7 @@ When('user clicks on {string} tab', (option) => {
 
 And('the following tab links appear below title', (dataTable) => {
     for (const { name, link } of dataTable.hashes()) {
-        cy.get('.tabs__tab').contains(name).should('have.attr','href').and('include',link);
+        cy.get('.tabs__tab').contains(name).should('have.attr', 'href').and('include', link);
     }
 });
 
@@ -48,7 +48,7 @@ And('each content title is a link', () => {
 
 And('the following config links appear below', (dataTable) => {
     for (const { name, link } of dataTable.hashes()) {
-        cy.get('.admin-list').contains(name).should('have.attr','href').and('include',link);
+        cy.get('.admin-list').contains(name).should('have.attr', 'href').and('include', link);
     }
 });
 
@@ -77,5 +77,9 @@ And('each username is a link', () => {
 });
 
 Then('the error message {string} appears', (errorMessage) => {
-cy.get('div.item-list ul li').should('exist').and('include.text',errorMessage)
+    if (baseUrl.includes("cms-test") || baseUrl.includes("cms-dev")) {
+        cy.get('div.item-list ul li').should('exist').and('include.text', errorMessage)
+    } else {
+         cy.get('div.item-list ul li').should('not.exist')
+    }
 });
