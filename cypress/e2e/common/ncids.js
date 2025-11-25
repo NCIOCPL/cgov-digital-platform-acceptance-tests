@@ -109,11 +109,9 @@ And('NCIDS promo blocks have the following attributes', (dataTable) => {
         if (source === 'N/A') {
             cy.get('@promoBlock').find('img').should('not.exist');
         } else {
-            if (baseUrl.includes('dev-acsf')) {
-                source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+dev')
+            if (baseUrl.includes('acsf')) {
+                source = source.replace('\\/sites\\/default', 'automation-installed\/sites\/autoinstalled')
 
-            } else if (baseUrl.includes('test-acsf')) {
-                source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+test')
             }
             cy.get('@promoBlock').find('img').invoke('attr', 'src').then((fullSrc) => {
                 const modifiedSrc = fullSrc.replace(/\?.*/, '')

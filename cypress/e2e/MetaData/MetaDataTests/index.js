@@ -53,10 +53,10 @@ And('{string} tag contains expected environment value', (tagName) => {
         ['www-test-ac.cancer.gov', 'test'],
         ['www-int-ac.cancer.gov', 'int'],
         ['devbox', 'local'],
-        ['www-test-acsf.cancer.gov/automation-installed', 'automation0installed-test'],
-        ['www-test-acsf.cancer.gov/automation-refreshed', 'automation0refreshed-test'],
-        ['www-dev-acsf.cancer.gov/automation-installed', 'automation0installed-dev'],
-        ['www-dev-acsf.cancer.gov/automation-refreshed', 'automation0refreshed-dev'],
+        ['www-test-acsf.cancer.gov/automation-installed', 'autoinstalled-test'],
+        ['www-test-acsf.cancer.gov/automation-refreshed', 'autorefreshed-test'],
+        ['www-dev-acsf.cancer.gov/automation-installed', 'autoinstalled-dev'],
+        ['www-dev-acsf.cancer.gov/automation-refreshed', 'autorefreshed-dev'],
        
     ])
     const value = () => {

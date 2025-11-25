@@ -149,7 +149,7 @@ And('there are the following wide guide cards', (dataTable) => {
         cy.get('@wideCard').find('li').should('have.length', numberOfLinks);
 
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+')
+            source = source.replace('\\/sites\\/default', '\\/sites\\/www')
 
         }
         cy.get('@wideCard').should('have.attr', 'style').then(img => {
@@ -210,7 +210,7 @@ And('the following image overrides are displayed on two column layout items', (d
 
 
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-            source = source.replace('\\/sites\\/default', '\/sites\/g\/files\/xnrzdm\\d+')
+            source = source.replace('\\/sites\\/default', '\\/sites\\/www')
 
         } 
         cy.get('@column').find('figure img').should('have.attr', 'src').then(img => {
