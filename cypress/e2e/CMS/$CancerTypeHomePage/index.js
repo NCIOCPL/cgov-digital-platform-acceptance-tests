@@ -161,19 +161,19 @@ Then('the PDQ link is matching the earlier selected PDQ link', () => {
 
 And('user remembers the title of selected video for further verification', () => {
     cy.get("div[id*='cthp-video-current-']").then($el => {
-        const tempVar2 = $el[0].innerText
+        const videoTitle = $el[0].textContent;
         cy.task('setSharedValue', {
-            key: 'tempVar2',
-            value: tempVar2
+            key: 'videoTitle',
+            value: videoTitle
         });
     })
 })
 
 Then('the video is matching the earlier selected video', () => {
-    cy.task('getSharedValue', 'tempVar2').then((tempVar2) => {
+    cy.task('getSharedValue', 'videoTitle').then((videoTitle) => {
         cy.get('div[class*="cthp-screening"] img').then($el => {
             const video = $el[0].innerText;
-            expect(tempVar2).to.include(video)
+            expect(videoTitle).to.include(video)
         })
     })
 })
