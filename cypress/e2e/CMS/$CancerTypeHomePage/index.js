@@ -316,4 +316,8 @@ And("the {string} link is displayed with href {string}", (linkText, linkHref) =>
 And('user filters results by {string} type', (contentType) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("select[id*='edit-type']").select(`${contentType}`);
 });
+
+And('user selects {string} item from the list', (title) => {
+    cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).parent().find('input').eq(0).click({ force: true });
+});
       
