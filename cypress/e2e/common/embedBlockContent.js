@@ -169,7 +169,7 @@ And('{int} feature card displays the following features in the content block', (
 
 And('{int} feature card displays the following features in external link block', (position, dataTable) => {
     for (let { alignment, linkText, link, description, descTitleText } of dataTable.hashes()) {
-        cy.get(`div#cgvBody section`).eq(position - 1).as('card');
+        cy.get(`section.cgdp-article-body__section`).eq(position - 1).as('card');
         if (link.includes("{TEST_SITE_SECTION}")) {
             link = link.replace('{TEST_SITE_SECTION}', siteSection)
         }
