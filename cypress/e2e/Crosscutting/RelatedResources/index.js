@@ -12,9 +12,7 @@ And('related resources have working link {string} with the href {string}', (link
 
 And('exit disclaimer is visible {string}', (exitDisclaimer) => {
     const indexes = exitDisclaimer.split(';')
-console.log(indexes)
     for (let i = 0; i < indexes.length; i++) {
-        console.log(indexes[i].split(',')[0])
         cy.get('.cgdp-related-resources ul').find('a').eq(indexes[i].split(',')[0]).as('link')
         if (indexes[i].split(',')[1] === 'N/A') {
 

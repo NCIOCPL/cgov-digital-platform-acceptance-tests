@@ -150,7 +150,6 @@ Then('page click request is sent for cts chat', () => {
     let clickBeacon;
     for (let i = 0; i < storage.length; i++) {
         const singleBeacon =  storage[i];
-        console.log(singleBeacon)
         if (!(singleBeacon.linkType === undefined)) {
             if (singleBeacon.linkType.includes('lnk_o') && !singleBeacon.pev2.includes('Resized')) {
                 if (singleBeacon.pev2 === 'Legacy:ProactiveChat')

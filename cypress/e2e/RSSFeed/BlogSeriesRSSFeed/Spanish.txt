@@ -12,7 +12,7 @@
   <guid isPermaLink="true">{BASE_URL}/espanol/noticias/esp-promo-images-blog/2023-4</guid>
   <pubDate>Wed, 31 May 2023 12:00:00 +0000</pubDate>
   <description>Blog post Lead Image with Override and No Promo ES</description>
-  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/d{4}-d{2}/sun_tree_mountain.jpg" length="7343" type="image/jpeg"/>
+  <enclosure url="{BASE_URL}/sites/autoinstalled/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/d{4}-d{2}/sun_tree_mountain.jpg" length="7376" type="image/jpeg"/>
 </item>
 <item>
   <title>Blog post Lead Image and Promo Image With Overrides ES</title>
@@ -20,7 +20,7 @@
   <guid isPermaLink="true">{BASE_URL}/espanol/noticias/esp-promo-images-blog/2023-2</guid>
   <pubDate>Tue, 30 May 2023 12:00:00 +0000</pubDate>
   <description>Blog post Lead Image and Promo Image With Overrides ES</description>
-  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/d{4}-d{2}/abstract-color-wood-bridge-hill-rain-forest.jpg" length="15200" type="image/jpeg"/>
+  <enclosure url="{BASE_URL}/sites/autoinstalled/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/d{4}-d{2}/abstract-color-wood-bridge-hill-rain-forest.jpg" length="15237" type="image/jpeg"/>
 </item>
 <item>
   <title>Blog post No Lead Image and Promo Image With Overrides ES</title>
@@ -28,7 +28,7 @@
   <guid isPermaLink="true">{BASE_URL}/espanol/noticias/esp-promo-images-blog/2023-3</guid>
   <pubDate>Mon, 29 May 2023 12:00:00 +0000</pubDate>
   <description>Blog post No Lead Image and Promo Image With Overrides ES</description>
-  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/d{4}-d{2}/abstract-color-wood-bridge-hill-rain-forest.jpg" length="15200" type="image/jpeg"/>
+  <enclosure url="{BASE_URL}/sites/autoinstalled/files/styles/cgov_thumbnail/public/cgov_image/thumbnail/d{4}-d{2}/abstract-color-wood-bridge-hill-rain-forest.jpg" length="15237" type="image/jpeg"/>
 </item>
 <item>
   <title>Blog post Lead Image and Promo Image No Override ES</title>
@@ -36,7 +36,7 @@
   <guid isPermaLink="true">{BASE_URL}/espanol/noticias/esp-promo-images-blog/2023-1</guid>
   <pubDate>Sun, 28 May 2023 12:00:00 +0000</pubDate>
   <description>Blog post Lead Image and Promo Image No Overrides ES</description>
-  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/media_image/d{4}-d{2}/environment-earth-day-spanish-image.jpg" length="5822" type="image/jpeg"/>
+  <enclosure url="{BASE_URL}/sites/autoinstalled/files/styles/cgov_thumbnail/public/cgov_image/media_image/d{4}-d{2}/environment-earth-day-spanish-image.jpg" length="5832" type="image/jpeg"/>
 </item>
 <item>
   <title>Blog post No Lead Image and Promo Image No Overrides ES</title>
@@ -44,7 +44,7 @@
   <guid isPermaLink="true">{BASE_URL}/espanol/noticias/esp-promo-images-blog/2023-0</guid>
   <pubDate>Sat, 27 May 2023 12:00:00 +0000</pubDate>
   <description>Blog post No Lead Image and Promo Image No Overrides ES</description>
-  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/media_image/d{4}-d{2}/gratisography-colorful-kittenfree.jpg" length="10661" type="image/jpeg"/>
+  <enclosure url="{BASE_URL}/sites/autoinstalled/files/styles/cgov_thumbnail/public/cgov_image/media_image/d{4}-d{2}/gratisography-colorful-kittenfree.jpg" length="10663" type="image/jpeg"/>
 </item>
 <item>
   <title>Blog post Lead Image with No Override and No Promo ES</title>
@@ -52,7 +52,7 @@
   <guid isPermaLink="true">{BASE_URL}/espanol/noticias/esp-promo-images-blog/2023</guid>
   <pubDate>Fri, 05 May 2023 12:00:00 +0000</pubDate>
   <description>Blog post Lead Image with No Override and No Promo ES</description>
-  <enclosure url="{BASE_URL}/sites/default/files/styles/cgov_thumbnail/public/cgov_image/media_image/d{4}-d{2}/gratisography-colorful-kittenfree.jpg" length="10661" type="image/jpeg"/>
+  <enclosure url="{BASE_URL}/sites/autoinstalled/files/styles/cgov_thumbnail/public/cgov_image/media_image/d{4}-d{2}/gratisography-colorful-kittenfree.jpg" length="10663" type="image/jpeg"/>
 </item>
 <item>
   <title>Blog Post No Lead and No Promo ES</title>

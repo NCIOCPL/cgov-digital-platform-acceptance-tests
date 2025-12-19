@@ -71,9 +71,11 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user clicks on "Select content" button from "Internal Link" text area
         And user selects "Article to test Related Resources" item from the list
+        And browser waits
         And user clicks on "Select content" button to select item
         And browser waits
         And user selects "Add External Link" from "View More Information" dropdown
+        And browser waits for 3000
         And user fills out the following fields
             | fieldLabel | value                  | field_name                                                                                          |
             | Link       | https://www.google.com | field_cthp_cards[1][subform][field_cthp_view_more_info][1][subform][field_external_link][0][uri]    |
@@ -546,7 +548,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user fills out Overview Card Text field text area with "Description of Overview Card of CTHP HP content type"
         And browser waits
         And user selects "Overview" from CTHP Card Theme dropdown number 1
-       And browser waits
+        And browser waits
         And user selects 3 Promotional Image from the list of images
         And browser waits
         And user remembers the source of selected promo image for further verification
@@ -606,7 +608,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user selects "Test File for Related Resources" item from the media list
         And browser waits
         And user clicks on "Select media" button to select item
-            And browser waits
+        And browser waits
         And user fills out the following fields
             | fieldLabel     | value                                    | field_name                                                                                          |
             | Override Title | Media Link Override Title Guide cards HP | field_cthp_cards[1][subform][field_cthp_view_more_info][2][subform][field_override_title][0][value] |
@@ -635,7 +637,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
-         And browser waits
+        And browser waits
         And user fills out the following fields
             | fieldLabel                | value                             | field_name                                                    |
             | Override Card Description | Article to test Related Resources | field_cthp_cards[2][subform][field_cthp_override_description] |

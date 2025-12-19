@@ -301,7 +301,7 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
             link = link.replace("{TEST_SITE_SECTION}", siteSection)
         }
         if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-            source = source.replace('/sites/default', '/sites/g/files/xnrzdm\\d+')
+            source = source.replace('\\/sites\\/default', 'automation-installed\/sites\/autoinstalled')
         }
         cy.get('.nci-card__body').eq(index).as('featureCard');
 
@@ -338,7 +338,7 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
         cy.get('@featureCard').parent().find('img').invoke('attr', 'src').then((fullSrc) => {
             const promoSrc = imageSrc1;
             if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-                fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
+                fullSrc = fullSrc.replace('/sites/www', '/sites/default')
                 const expectedSrc = promoSrc.match('([a-zA-Z0-9\-]+)(?=\.jpg|\.png)')
                 expect(fullSrc.includes(`${source}`)).to.be.true;
                 const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
