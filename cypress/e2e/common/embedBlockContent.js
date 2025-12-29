@@ -24,10 +24,10 @@ And('user enters {string} into source text field', (value) => {
 })
 
 And('user fills out {int} {string} text area with {string}', (position, sectionName, value) => {
-    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
-    const editor = el[0].ckeditorInstance
-    editor.data.set(value)
-});
+    cy.get(`div[id*='field-article-body-${position - 1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(1).then(el => {
+        const editor = el[0].ckeditorInstance
+        editor.data.set(value)
+    });
 })
 
 And('the content item with title {string} exists in the list of content', (titleText) => {
@@ -48,7 +48,7 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('div[id*="edit-field-override-image-promotional-current-items"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp','');
+        imageSrc1 = $el[0].getAttribute('src').replace('.webp', '');
     });
 });
 
@@ -75,7 +75,7 @@ And('user clicks on {string} button to select an image', (selectImage) => {
 });
 
 And('user enters {string} as {int} body section heading', (value, position) => {
-    cy.get(`div[id*='field-article-body-${position-1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
+    cy.get(`div[id*='field-article-body-${position - 1}-item-wrapper']`).find('.ck-content[contenteditable=true]').eq(0).then(el => {
         const editor = el[0].ckeditorInstance
         editor.data.set(value)
     });
@@ -83,22 +83,22 @@ And('user enters {string} as {int} body section heading', (value, position) => {
 
 And('user clicks {string} button {int} in the WYSIWYG editor', (toolTip, position) => {
     cy.get(`table[id*='field-article-body-value'] button[data-cke-tooltip-text*='${toolTip}']`).eq(position - 1).click()
-    
+
 });
 
 
 And('user enters {string} into content title search box and clicks {string}', (nameToSearch, applyBtn) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find(`input[id*="edit-info"]`).type(nameToSearch);
-    cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find(`input[id*="edit-submit-block-content-browser"][value=${applyBtn}]`).click({ force: true });
+    cy.getIframeBody('iframe#entity_browser_iframe_content_block_raw_html_browser').find(`input[id*="edit-info"]`).type(nameToSearch);
+    cy.getIframeBody('iframe#entity_browser_iframe_content_block_raw_html_browser').find(`input[id*="edit-submit-block-content-browser"][value=${applyBtn}]`).click({ force: true });
     cy.wait(2000)
 });
 
 And('user selects {string} item from the content list', (contentTitle) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find('input[name^="entity_browser_select"][type="checkbox"]').check();
+    cy.getIframeBody('iframe#entity_browser_iframe_content_block_raw_html_browser').find('input[name^="entity_browser_select"][type="checkbox"]').check();
 });
 
 And('user clicks on {string} button to select the media', (selectImage) => {
-    cy.getIframeBody('iframe#entity_browser_iframe_block_content_browser').find(`input[id="edit-submit"][value='${selectImage}']`).click({ force: true });
+    cy.getIframeBody('iframe#entity_browser_iframe_content_block_raw_html_browser').find(`input[id="edit-submit"][value='${selectImage}']`).click({ force: true });
 });
 
 
@@ -218,8 +218,7 @@ And('user fills out {string} text area in Raw HTML block with {string}', (field,
 
 And('{int} block displays the following features', (position, dataTable) => {
     for (let { alignment, rawHTMLText } of dataTable.hashes()) {
-        cy.get('div#cgvBody section').eq(position - 1).find(`div[class*='${alignment}']`).should('be.visible');
-        cy.get('div#cgvBody section').eq(position - 1).find(`div:contains("${rawHTMLText}")`).should('be.visible');
+        cy.get('div.usa-prose.usa-prose--ncids-full-html').eq(position - 1).find(`div:contains("${rawHTMLText}")`).should('be.visible');
     }
 });
 
@@ -234,3 +233,15 @@ And('user enters {string} as intro text', (introTxt) => {
 And('user clicks on Source button in the WYSIWYG editor', () => {
     cy.get("button[data-cke-tooltip-text='Source']").click({ force: true });
 });
+
+And('{int} content block displays the following', (position, dataTable) => {
+    cy.get(`div.cgdp-embed-media-wrapper`).eq(position - 1).as('block')
+    for (let { alignment, description, linkText, link } of dataTable.hashes()) {
+        cy.get('@block').find('div').should('have.attr', 'class').and('include', alignment);
+        cy.get('@block').find('div em').first().should('include.text', description)
+        cy.get('@block').find('div em').eq(1).should('include.text', linkText)
+        cy.get('@block').find('div a').should('have.attr', 'href', link)
+    }
+
+
+})
