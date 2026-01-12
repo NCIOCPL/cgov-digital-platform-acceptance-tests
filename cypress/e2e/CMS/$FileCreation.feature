@@ -287,9 +287,9 @@ Feature: As a content owner I want to be able to upload different file types to 
 
     Scenario: Creating Article and List to test files
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "author"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "author" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -386,9 +386,9 @@ Feature: As a content owner I want to be able to upload different file types to 
 
     Scenario: editor is publishing content
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "article-to-test-files" from the list of content
@@ -561,9 +561,9 @@ Feature: As a content owner I want to be able to upload different file types to 
 
     Scenario: Translate test pages
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Article to test Files"
@@ -636,9 +636,9 @@ Feature: As a content owner I want to be able to upload different file types to 
 
     Scenario: Clean up related resources and mini landing page test content
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "article-to-test-files"

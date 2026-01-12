@@ -343,7 +343,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on title with url spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2025/blog-post-edited"
+        And user clicks on title with url spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2026/blog-post-edited"
         And user clicks on the tool bar status button "Publicado"
         And user clicks "View in edit form" button from other actions
         And user clears out "Título de página" field
@@ -360,7 +360,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
 
 
     Scenario: Verify Spanish edited content
-        Given user is navigating to the front end site with spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2025/blog-post-edited"
+        Given user is navigating to the front end site with spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2026/blog-post-edited"
         And browser waits
         Then page title is "Automated Test Blog Post Edited Spanish"
         And the page contains meta tags with the following names
@@ -374,7 +374,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on title with url spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2025/blog-post-edited"
+        And user clicks on title with url spanish path "/espanol" plus "noticias/temas-y-relatos-blog/2026/blog-post-edited"
         And user clicks on the tool bar status button "Publicado"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"

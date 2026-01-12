@@ -36,7 +36,7 @@ And('user clicks on {string} link in the {string} text area', (title, cartOption
 And('user uploads hero images as follows', (dataTable) => {
     for (const { fileName, type } of dataTable.hashes()) {
         cy.fixture(fileName, { encoding: null }).as('fixture')
-        cy.get(`input[type="file"][data-drupal-selector*="${type}"]`).selectFile('@fixture');
+        cy.get(`input[type="file"][data-drupal-selector*="${type}"]`).eq(0).selectFile('@fixture');
         cy.get('.throbber', { timeout: 40000 }).should('not.exist')
     }
 });
