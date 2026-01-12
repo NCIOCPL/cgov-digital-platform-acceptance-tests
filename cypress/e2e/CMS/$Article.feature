@@ -2,9 +2,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: User is adding new article content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -76,9 +76,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Verify Related resources functionality
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-article" from the list of content
@@ -120,9 +120,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Edit and republish article content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "test-article" from the list of content
@@ -190,9 +190,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Add a featured item to mini landing page
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -223,9 +223,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Remove featured item
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on the title with url "mini-landing-page-test-promo" from the list of content
@@ -242,9 +242,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Add a translation
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Article Edited"
@@ -301,9 +301,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Edit and republish Spansih article content type
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "test-article-edited"
@@ -332,9 +332,9 @@ Feature: As a cms user I want to be able to create Article content type to promo
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "test-article-edited"

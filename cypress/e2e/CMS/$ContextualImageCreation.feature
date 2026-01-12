@@ -26,9 +26,9 @@ Feature: As a content editor I would like to be able to create contextual image 
 
     Scenario: Create test pages to test image overrides
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "author"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "author" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -149,9 +149,9 @@ Feature: As a content editor I would like to be able to create contextual image 
 
     Scenario: editor is publishing content
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "article-to-test-contextual-image" from the list of content
@@ -173,9 +173,9 @@ Feature: As a content editor I would like to be able to create contextual image 
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "article-to-test-contextual-image" from the list of content

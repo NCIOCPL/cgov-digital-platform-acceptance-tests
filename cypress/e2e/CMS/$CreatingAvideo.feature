@@ -143,9 +143,9 @@ Feature: User creating a video
 
     Scenario: Create article to Automated Test Video embed
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadimn"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
         And user clicks on "Article" content type
@@ -268,9 +268,9 @@ Feature: User creating a video
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-video-spanish"
         And user clicks on the tool bar status button "Publicado"

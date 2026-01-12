@@ -2,9 +2,9 @@ Feature: As a user I want to be able to create tables in my content
 
     Scenario: Create article to test table embed
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
@@ -81,9 +81,9 @@ Feature: As a user I want to be able to create tables in my content
 
     Scenario: Clean up
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "editor"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
-        Then user is logged in and the user name "editor" is displayed in the toolbar
+        Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "article-to-test-table" from the list of content

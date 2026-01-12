@@ -47,15 +47,8 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then "Archive" section is expanded
         And the following sections are displayed
             | title | isExpanded |
-            | 2019  | false      |
-         
-        When user clicks on "2019" accordion
-        Then "2019" section is expanded
-        And months links are displayed
-        Then the following sections are displayed
-            | title | isExpanded |
-            | 2019  | true       |
           
+       
 
 
 

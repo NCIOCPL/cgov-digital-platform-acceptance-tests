@@ -495,7 +495,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on title with url spanish path "/espanol" plus "about-cancer/understanding/blog-series-edited" plus "2025/blog-post-test-blog-series"
+        And user clicks on title with url spanish path "/espanol" plus "about-cancer/understanding/blog-series-edited" plus "2026/blog-post-test-blog-series"
         And user clicks on the tool bar status button "Publicado"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
