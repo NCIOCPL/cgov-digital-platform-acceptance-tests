@@ -143,7 +143,7 @@ Feature: User creating a video
 
     Scenario: Create article to Automated Test Video embed
         Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "siteadimn"
+        When user enters credentials of "siteadmin"
         And user clicks "Log in" button
         Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         When user clicks on "Content" tab

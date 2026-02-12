@@ -183,7 +183,7 @@ Feature: As a cms user I want to be able to embed Featured contents in Article c
         And 4 feature card does not display any image
 
     Scenario: Clean up
-        Given user is navigating to "/user/siteadmin?show_login_fields=true"
+        Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "siteadmin"
         And user clicks "Log in" button
         Then user is logged in and the user name "siteadmin" is displayed in the toolbar

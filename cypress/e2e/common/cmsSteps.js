@@ -45,6 +45,7 @@ When('user selects test site section', () => {
         .find('input[name="computed_path_value"]').type(siteSection);
     cy.getIframeBody('iframe.entity-browser-modal-iframe')
         .find('input#edit-submit-site-section-browser').click({ force: true });
+        cy.wait(500)
     cy.getIframeBody('iframe.entity-browser-modal-iframe')
         .find(`td:contains('${siteSection}')`).first().parent()
         .find('td.views-field.views-field-entity-browser-select input').check();
