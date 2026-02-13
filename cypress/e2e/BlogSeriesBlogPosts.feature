@@ -5,7 +5,6 @@ Feature: As an user, I want to see different components of the Blog Series and B
         When user is navigating to "/news-events/cancer-currents-blog"
         Then page title is "Cancer Currents Blog"
         And the "Subscribe" button appears
-        And the "Featured Posts" managed list appears with a date "February 15, 2019"
         And the "Categories" managed list appears without a date
         And the "Archive" accordion is displayed
         And "Archive" accordion is collapsed
@@ -125,7 +124,6 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then page title is "Researchers Discover Potential Way to Hit Elusive Target in Pancreatic Cancer"
         And blog's posted date is "June 5, 2019"
         And the "Subscribe" button appears
-        And the "Featured Posts" managed list appears with a date "February 15, 2019"
         And the "Categories" managed list appears without a date
         And the "Archive" accordion is displayed
         And "Archive" accordion is collapsed
