@@ -138,22 +138,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Card Title               | Automated Test Blog Series - Card Title Edited     | field_card_title               |
             | Meta Description         | Automated Test Blog Series Meta Description Edited | field_page_description         |
             | Feature Card Description | Automated Test Blog Post - Feature Card Desc       | field_feature_card_description |
-        And user clicks on dropdown button toggle to view Featured Posts
-        And user clicks on "Select entities" button to link to the Featured Post
-        Then "Select entities" section appears
-        And user selects "Automated Test Blog Post for testing Blog Series" item from the list
-        And user clicks on "Add Blog content" button to select item
-        And browser waits
-        And user clicks on "Select entities" button to link to the Featured Post
-        Then "Select entities" section appears
-        And user selects "Automated Test Blog Post for testing Blog Series" item from the list
-        And user clicks on "Add Blog content" button to select item
-        And browser waits
-        And user clicks on "Select entities" button to link to the Featured Post
-        Then "Select entities" section appears
-        And user selects "Automated Test Blog Post for testing Blog Series" item from the list
-        And user clicks on "Add Blog content" button to select item
-        And browser waits
         And user selects 3 Promotional Image from the list of images to be displayed in mini landing pages
         And user remembers the source of selected promotional image to be displayed in mini landing pages for further verification
         And user selects "Do Not Display" from "Public Use Text" dropdown
@@ -201,13 +185,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
     Scenario: Verify edited content and Blog Topic in the Blog Series
         Given user is navigating to the front end site with path site section plus "blog-series-edited"
         Then page title is "Automated Test Blog Series Edited"
-        And the "Featured Posts" managed list appears
         And public use text is not displayed
-        And the "Featured Posts" section is displayed with the following cards
-            | title                                 | linkEnding | expectedDate | author                          |
-            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
-            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
-            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
         And the page contains meta tags with the following names
             | name        | content                                            |
             | description | Automated Test Blog Series Meta Description Edited |
@@ -326,12 +304,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And "Allow Comments" dropdown displays "Do Not Allow Comments"
         And "About Blog" label is displayed
         And "Subscription URL" text field label is displayed
-        And "Featured Posts" button is displayed
-        And the following posts are displayed with remove button translated as "Eliminar"
-            | posts                                            |
-            | Automated Test Blog Post for testing Blog Series |
-            | Automated Test Blog Post for testing Blog Series |
-            | Automated Test Blog Post for testing Blog Series |
         And "Recommended Content Header" label is displayed with the text "Recommended Text"
         And the translated banner image is displayed
         And "Texto alternativo" label is displayed with the text "Text Alt"
@@ -380,13 +352,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the "Archivo" accordion is displayed
         And the banner image is matching the earlier selected image
         And blog posts list does not appear in the archive
-        And the "Featured Posts" managed list appears
         And public use text is not displayed
-        And the "Spanish Featured Posts" section is displayed with the following cards
-            | title                                 | linkEnding | author                          |
-            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
-            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
-            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
         And description reads "This is all about Blog Series."
 
     Scenario: User is adding new Spanish Blog Post content type without any image so it can be added to Spanish Blog Series

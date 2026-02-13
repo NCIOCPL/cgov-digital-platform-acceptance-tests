@@ -51,7 +51,6 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         Given user is navigating to the blog "blog-post" under "news-events/cancer-currents-blog"
         Then page title is "Automated Test Blog Post"
         And blog's posted date is today's date
-        And the "Featured Posts" managed list appears
         And the "Categories" managed list appears without a date
         And the "Archive" accordion is displayed
         And "Archive" accordion is collapsed
