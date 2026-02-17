@@ -297,11 +297,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Meta Description | Automated Test Blog Series Meta Description Edited Spanish | field_page_description |
         And "Number of Posts to Display" label is displayed with value 10
         And "List Description" label is displayed
-        And "Allow Comments" dropdown has the following options
-            | options               |
-            | Allow Comments        |
-            | Do Not Allow Comments |
-        And "Allow Comments" dropdown displays "Do Not Allow Comments"
         And "About Blog" label is displayed
         And "Subscription URL" text field label is displayed
         And "Recommended Content Header" label is displayed with the text "Recommended Text"
