@@ -65,4 +65,8 @@ And('{string} icon link has a href {string}', (linkText, linkUrl) => {
 
 })
 
+When('user clicks on NCIDS feature card at position {int}', (cardIndex) => {
+    cy.get('div.nci-card').eq(cardIndex - 1).find('a').trigger('click', { followRedirect: false })
+})
+
 

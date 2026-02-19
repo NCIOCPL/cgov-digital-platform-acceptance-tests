@@ -118,4 +118,10 @@ const replacedUrl = badApi.replace("{BASE_URL}",baseUrlFromConfig);
     })
   });
 
+When('user clicks on NCIDS feature card at position {int}', (cardIndex) => {
+    cy.get('div.nci-card').eq(cardIndex - 1).find('a').trigger('click', { followRedirect: false })
+})
 
+When('user clicks on {int} video',(position)=>{
+    cy.get('div.cgdp-video .video-preview__play-button').eq(position-1).trigger('click')
+})
