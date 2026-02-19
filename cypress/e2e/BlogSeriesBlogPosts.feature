@@ -46,8 +46,8 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then "Archive" section is expanded
         And the following sections are displayed
             | title | isExpanded |
-          
-       
+
+
 
 
 
@@ -161,3 +161,73 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | pev2      | Legacy:DynamicListItemClick                                    |
             | linkType  | lnk_o                                                          |
             | link      | Snuggles                                                       |
+
+    Scenario: External Feature card click event
+        Given user is navigating to "/news-events/cancer-currents-blog/2019/blog-post-feature-card-embed-test-page"
+        When user clicks on NCIDS feature card at position 9
+        Then page click request is sent
+        And browser waits
+        And the following parameters should be captured
+            | parameter | value                                                                                                      |
+            | prop4     | D=pev1                                                                                                     |
+            | prop8     | english                                                                                                    |
+            | prop67    | D=pageName                                                                                                 |
+            | evar2     | D=c8                                                                                                       |
+            | evar60    | EmbeddedCardClick                                                                                          |
+            | evar81    | Embedded Card\|External                                                                                    |
+            | evar82    | Embedded Card\|Testing for Derek Override Title\|Testing for Derek Override Title                          |
+            | evar86    | Feature\|None\|Title                                                                                       |
+            | evar68    | Body                                                                                                       |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog/2019/blog-post-feature-card-embed-test-page              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog/2019/blog-post-feature-card-embed-test-page |
+            | event135  |                                                                                                            |
+            | channel   | News and Events                                                                                            |
+            | pev2      | Body:EmbeddedCard:LinkClick                                                                                |
+            | linkType  | lnk_o                                                                                                      |
+
+    Scenario: Internal Feature card click event
+        Given user is navigating to "/news-events/cancer-currents-blog/2019/blog-post-feature-card-embed-test-page"
+        When user clicks on NCIDS feature card at position 2
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                                                      |
+            | prop4     | D=pev1                                                                                                     |
+            | prop8     | english                                                                                                    |
+            | prop67    | D=pageName                                                                                                 |
+            | evar2     | D=c8                                                                                                       |
+            | evar60    | EmbeddedCardClick                                                                                          |
+            | evar81    | Embedded Card\|Internal                                                                                    |
+            | evar82    | Embedded Card\|Learning to Relax\|Learning to Relax                                                        |
+            | evar86    | Feature\|Left\|Image                                                                                       |
+            | evar68    | Body                                                                                                       |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog/2019/blog-post-feature-card-embed-test-page              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog/2019/blog-post-feature-card-embed-test-page |
+            | event135  |                                                                                                            |
+            | channel   | News and Events                                                                                            |
+            | pev2      | Body:EmbeddedCard:LinkClick                                                                                |
+            | linkType  | lnk_o                                                                                                      |
+
+    Scenario: Embedded video click event
+        Given user is navigating to "/news-events/cancer-currents-blog/2019/blog-post-video-embed-test-page"
+        When user clicks on 1 video
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                                               |
+            | prop4     | D=pev1                                                                                              |
+            | prop8     | english                                                                                             |
+            | prop67    | D=pageName                                                                                          |
+            | evar2     | D=c8                                                                                                |
+            | evar81    | Embedded Video\|play                                                                                |
+            | evar82    | Video\|Nonspecific Immune Stimulation\|Nonspecific Immune Stimulation                               |
+            | evar68    | Body                                                                                                |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog/2019/blog-post-video-embed-test-page              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog/2019/blog-post-video-embed-test-page |
+            | event51   |                                                                                                     |
+            | channel   | News and Events                                                                                     |
+            | pev2      | Body:EmbeddedMedia:LinkClick                                                                        |
+            | linkType  | lnk_o                                                                                               |
+
+
+
+
+
