@@ -108,7 +108,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user checks "Test Blog Topic" checkbox
-        And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Submit for Review" from workflow actions
@@ -140,7 +139,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Feature Card Description | Automated Test Blog Post - Feature Card Desc       | field_feature_card_description |
         And user selects 3 Promotional Image from the list of images to be displayed in mini landing pages
         And user remembers the source of selected promotional image to be displayed in mini landing pages for further verification
-        And user selects "Do Not Display" from "Public Use Text" dropdown
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Quick Publish" from workflow actions
@@ -185,7 +183,12 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
     Scenario: Verify edited content and Blog Topic in the Blog Series
         Given user is navigating to the front end site with path site section plus "blog-series-edited"
         Then page title is "Automated Test Blog Series Edited"
-        And public use text is not displayed
+        And the "Featured Posts" managed list appears
+        And the "Featured Posts" section is displayed with the following cards
+            | title                                 | linkEnding | expectedDate | author                          |
+            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
+            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
+            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
         And the page contains meta tags with the following names
             | name        | content                                            |
             | description | Automated Test Blog Series Meta Description Edited |
@@ -304,13 +307,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And "Texto alternativo" label is displayed with the text "Text Alt"
         And the link with the name "heroimagenewsdesktop.jpg" is displayed with remove button translated as "Eliminar"
         And "Promotional Image" button is displayed with remove button translated as "Eliminar"
-        And "Public Use Text" dropdown has the following options
-            | options        |
-            | - Ninguno -    |
-            | Presentación   |
-            | Do Not Display |
-        And "Public Use Text" dropdown displays "Do Not Display"
-        And "Search Engine Restrictions" dropdown has the following options
+         And "Search Engine Restrictions" dropdown has the following options
             | options             |
             | Include in search   |
             | Exclude from search |
@@ -347,7 +344,12 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the "Archivo" accordion is displayed
         And the banner image is matching the earlier selected image
         And blog posts list does not appear in the archive
-        And public use text is not displayed
+        And the "Featured Posts" managed list appears
+        And the "Spanish Featured Posts" section is displayed with the following cards
+            | title                                 | linkEnding | author                          |
+            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
+            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
+            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
         And description reads "This is all about Blog Series."
 
     Scenario: User is adding new Spanish Blog Post content type without any image so it can be added to Spanish Blog Series
