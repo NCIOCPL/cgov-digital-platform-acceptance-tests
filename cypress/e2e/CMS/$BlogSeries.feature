@@ -19,7 +19,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Card Title                 | Automated Test Blog Series - Card Title           | field_card_title                 |
             | Meta Description           | Automated Blog Series Meta Description            | field_page_description           |
             | Feature Card Description   | Automated Test Blog Series - Feature Card Desc    | field_feature_card_description   |
-            | Blog Series Shortname      | TestBlogSeries                                    | field_blog_series_shortname      |
             | Subscription URL           | https://feedburner-test.cancer.gov/testblogseries | field_feedburner_url             |
             | Recommended Content Header | Recommended Text                                  | field_recommended_content_header |
         And browser waits
@@ -183,12 +182,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
     Scenario: Verify edited content and Blog Topic in the Blog Series
         Given user is navigating to the front end site with path site section plus "blog-series-edited"
         Then page title is "Automated Test Blog Series Edited"
-        And the "Featured Posts" managed list appears
-        And the "Featured Posts" section is displayed with the following cards
-            | title                                 | linkEnding | expectedDate | author                          |
-            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
-            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
-            | Automated Test Blog Post - Card Title | /blog-post | today's date | Automated Test Blog Post Author |
         And the page contains meta tags with the following names
             | name        | content                                            |
             | description | Automated Test Blog Series Meta Description Edited |
@@ -291,7 +284,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Card Title               | field_card_title               |
             | Meta Description         | field_page_description         |
             | Feature Card Description | field_feature_card_description |
-            | Blog Series Shortname    | field_blog_series_shortname    |
         And user clears out "Título de página" field
         And user clears out "Meta Description" field
         And user fills out the following fields
@@ -344,12 +336,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the "Archivo" accordion is displayed
         And the banner image is matching the earlier selected image
         And blog posts list does not appear in the archive
-        And the "Featured Posts" managed list appears
-        And the "Spanish Featured Posts" section is displayed with the following cards
-            | title                                 | linkEnding | author                          |
-            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
-            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
-            | Automated Test Blog Post - Card Title | /blog-post | Automated Test Blog Post Author |
         And description reads "This is all about Blog Series."
 
     Scenario: User is adding new Spanish Blog Post content type without any image so it can be added to Spanish Blog Series

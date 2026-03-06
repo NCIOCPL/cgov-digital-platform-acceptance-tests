@@ -5,7 +5,7 @@ Feature: As a user, I want to be able to see article page components
         Given user is navigating to "/test/ncids-article-def-link-test"
         When user clicks on glossified link with id "304687" in intro text
         And popup loads
-        Then page click request is sent
+        Then "Body:Glossified:PopupLoad" page click request is sent
         And the following parameters should be captured
             | parameter | value                                                          |
             | prop4     | D=pev1                                                         |
@@ -29,7 +29,7 @@ Feature: As a user, I want to be able to see article page components
         Given user is navigating to "/test/ncids-article-def-link-test"
         When user clicks on glossified link with id "304687" in the body
         And popup loads
-        Then page click request is sent
+        Then "Body:Glossified:PopupLoad" page click request is sent
         And the following parameters should be captured
             | parameter | value                                                          |
             | prop4     | D=pev1                                                         |
