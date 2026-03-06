@@ -76,7 +76,7 @@ And('user remembers the source of selected promo image for further verification'
 });
 
 And('the Event Series title matches selected event series', () => {
-    cy.get('#cgvBody h2').then($el => {
+    cy.get('.cgdp-event-info h2').then($el => {
         expectedText = $el[0].innerText.trim();
     });
 });
@@ -101,11 +101,11 @@ And('the event date is displaying todays date', () => {
     const month = months[date.getMonth()];
     const day = date.getDate();
     const expectedDate = `${month} ${day}, ${year}`;
-    cy.get('p.event-date-time').should('include.text', expectedDate);
+    cy.get('p.cgdp-event-info__date-time').should('include.text', expectedDate);
 });
 
 And('the event start time displays in the following format {string}', (num) => {
-    cy.get('p.event-date-time').invoke('text').then((time) => {
+    cy.get('p.cgdp-event-info__date-time').invoke('text').then((time) => {
         const startAndEnd = time.split('|');
         const startAndEndtime = startAndEnd[1].split('–');
         const regex = new RegExp(num);
@@ -114,25 +114,25 @@ And('the event start time displays in the following format {string}', (num) => {
 });
 
 And('the event end time displays {string}', (num) => {
-    cy.get('p.event-date-time').should('include.text', num);
+    cy.get('p.cgdp-event-info__date-time').should('include.text', num);
 });
 
 And('the Venue location field displays {string}', (locVenue) => {
-    cy.get('span.event-location-venue').should('have.text', locVenue);
+    cy.get('span.cgdp-event-info__venue').should('have.text', locVenue);
 });
 
 And('the room location field displays {string}', (roomNum) => {
-    cy.get('span.event-location-room').should('have.text', roomNum);
+    cy.get('span.cgdp-event-info__room').should('have.text', roomNum);
 });
 
 And('the city-state location field displays {string}', (cityState) => {
-    cy.get('span.event-location-city-state').should('have.text', cityState);
+    cy.get('span.cgdp-event-info__city-state').should('have.text', cityState);
 });
 
 And('{string} is a link with href that matches {string}', (linkText, linkHref) => {
     const regex = new RegExp(linkHref);
-    cy.get('div#cgvBody p').find('a').should('have.text', linkText);
-    cy.get('div#cgvBody p').find('a').should('have.attr', 'href').and('match', regex);
+    cy.get('.cgdp-event-info').find('a').should('have.text', linkText);
+    cy.get('.cgdp-event-info').find('a').should('have.attr', 'href').and('match', regex);
 });
 
 And('description reads {string}', (desc) => {
@@ -154,7 +154,7 @@ And('user checks {string} checkbox', (targetCheckbox) => {
 });
 
 And('event date does not display time', () => {
-    cy.get('p.event-date-time', { timeout: 100 }).should('not.include.text', '|');
+    cy.get('p.cgdp-event-info__date-time', { timeout: 100 }).should('not.include.text', '|');
 });
 
 And('user removes the Lead Image', () => {

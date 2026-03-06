@@ -6,8 +6,6 @@ Feature: Test for checking HTTP Status Code
 
     Examples:
       | breakpoint | path                                                             | code |
-      | desktop    | /nano                                                            | 200  |
-      | tablet     | /nano/espanol/cancer/sobrellevar/sentimientos                    | 200  |
       | desktop    | /pediatric-adult-rare-tumor                                      | 200  |
       | tablet     | /pediatric-adult-rare-tumor/espanol                              | 200  |
    

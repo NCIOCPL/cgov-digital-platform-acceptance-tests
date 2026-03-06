@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 import { Then } from "cypress-cucumber-preprocessor/steps";
-import { getClickBeacon } from "../../utils/getClickBeacon.js"
+import { getClickBeacon } from "../../utils/getClickBeacon.js";
+import {getSpecificClickBeacon} from "../../utils/getClickBeacon.js"
 import { getLoadBeacon } from "../../utils/getLoadBeacon.js"
 
 let loadOrClick;
@@ -118,6 +119,10 @@ Then('the following parameters should be captured', dataTable => {
 
 Then('page click request is sent', () => {
     loadOrClick = getClickBeacon(cy.AnalyticsStorage);
+});
+
+Then('{string} page click request is sent', (param) => {
+    loadOrClick = getSpecificClickBeacon(cy.AnalyticsStorage,param);
 });
 
 When('page load request is sent', () => {
