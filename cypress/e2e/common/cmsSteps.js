@@ -390,7 +390,7 @@ And('user selects {string} item from main page content', (title) => {
 
 // for promo image verification
 
-let imageSrc;
+
 And('user selects {int} Promotional Image for the mini landing', (num) => {
     cy.get('summary:contains("Promotional Image")').parent().as('imageUpload').click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
@@ -400,7 +400,7 @@ And('user selects {int} Promotional Image for the mini landing', (num) => {
 
 And('user remembers the source of selected promo image for the mini landing', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src').replace('.webp','')
+         Cypress.env('tempVar3', $el[0].getAttribute('src').replace('.webp',''))
     })
 });
 

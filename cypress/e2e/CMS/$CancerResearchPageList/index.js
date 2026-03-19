@@ -10,7 +10,7 @@ And('user clicks on dropdown button toggle to view all Selected Research Pages t
     cy.get("li[class='dropbutton-toggle'] button[type='button']").click({ force: true })
 })
 
-let imageSrc
+
 And('user selects {int} Promotional Image from the list of images', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
@@ -19,7 +19,7 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 })
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src').replace('.webp','')
+         Cypress.env('tempImg', $el[0].getAttribute('src').replace('.webp',''))
     })
 })
 
@@ -59,7 +59,7 @@ And('user enters {string} into {int} {string} text field', (value, num, fieldLab
 })
 
 Then('the promo image is matching the earlier selected image', () => {
-    const expectedSrc = (imageSrc.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = ( Cypress.env('tempImg').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('div.feature-card').find('img').then($el => {

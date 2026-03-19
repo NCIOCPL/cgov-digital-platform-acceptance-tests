@@ -27,7 +27,7 @@ And('{int} description reads {string}', (contentText) => {
     cy.get(`p:contains('${contentText}')`).should('be.visible');
 });
 
-let imageSrc1;
+
 And('user selects {string} Promotional Image from the list of images for featured content article', (image) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name*="image_promotional_entity_browser_entity_browser"]').click({ force: true });
@@ -40,11 +40,11 @@ And('user selects {string} Promotional Image from the list of images for feature
 
 And('user remembers the source of selected promo image for further verification in the featured content article', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp', '')
+         Cypress.env('tempVar1', $el[0].getAttribute('src').replace('.webp', ''))
     });
 });
 
-let imageSrc2;
+
 And('user selects {string} Lead Image from the list of images', (image) => {
     cy.get('summary:contains("Lead Image")').click();
     cy.wait(1000);
@@ -58,7 +58,7 @@ And('user selects {string} Lead Image from the list of images', (image) => {
 
 And('user remembers the source of selected lead image for further verification in the featured content blog post', () => {
     cy.get('details img').then($el => {
-        imageSrc2 = $el[0].getAttribute('src').replace('.webp', '');
+         Cypress.env('tempVar2', $el[0].getAttribute('src').replace('.webp', ''))
     });
 });
 
@@ -157,7 +157,7 @@ And('{int} feature card displays the following', (position, dataTable) => {
 
 
 Then('the promo image is matching the earlier selected promo image in the article to be used for embeddding', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = ( Cypress.env('tempVar1').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('.nci-card').find('img').then($el => {
@@ -168,7 +168,7 @@ Then('the promo image is matching the earlier selected promo image in the articl
 });
 
 Then('the lead image is matching the earlier selected lead image in the blog post to be used for embeddding', () => {
-    const expectedSrc = (imageSrc2.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = ( Cypress.env('tempVar2').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('.nci-card').find('img').then($el => {

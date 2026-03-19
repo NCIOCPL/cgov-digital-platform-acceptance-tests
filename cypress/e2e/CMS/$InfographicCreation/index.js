@@ -37,7 +37,6 @@ And('user enters {string} into the {string} text field', (value, textFieldLabel)
     cy.get(`[class*='form-item-field-infographic-0-alt']:contains("${textFieldLabel}")`).find('input.form-text').type(value);
 });
 
-let imageSrc1;
 And('user selects {int} Promotional Image from the list of images to be displayed in home and landing pages', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click()
@@ -46,9 +45,15 @@ And('user selects {int} Promotional Image from the list of images to be displaye
 });
 
 And('user remembers the source of selected promotional image to be displayed in home and landing pages for further verification', () => {
-    cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp', '');
-    });
+    cy.get('div[id*="edit-field-image-promotional"] img').invoke('attr', 'src')
+        .then((src) => {
+            const imgSrc = src.replace('.webp', '');
+            cy.task('setSharedValue', {
+                key: 'tempImg',
+                value: imgSrc
+            });
+        });
+
 });
 
 And('user selects {string} checkbox', (dateDisplay) => {
@@ -336,14 +341,16 @@ And('NCIDS feature cards have the following attributes', (dataTable) => {
         })
 
         cy.get('@featureCard').parent().find('img').invoke('attr', 'src').then((fullSrc) => {
-            const promoSrc = imageSrc1;
-            if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
-                fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
-                const expectedSrc = promoSrc.match('([a-zA-Z0-9\-]+)(?=\.jpg|\.png)')
-                expect(fullSrc.includes(`${source}`)).to.be.true;
-                const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
-                expect(src1).to.match(new RegExp(`.*\/${expectedSrc[0]}`))
 
+            if (baseUrl.includes('cms-dev') || baseUrl.includes('cms-test')) {
+                cy.task('getSharedValue', 'tempImg').then((tempImg) => {
+                    expect(tempImg, 'shared image').to.exist;
+                    fullSrc = fullSrc.replace(/xnrzdm\d+/g, 'xnrzdm\\d+')
+                    const expectedSrc = tempImg.match('([a-zA-Z0-9\-]+)(?=\.jpg|\.png)')
+                    expect(fullSrc.includes(`${source}`)).to.be.true;
+                    const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));
+                    expect(src1).to.match(new RegExp(`.*\/${expectedSrc[0]}`))
+                })
             } else {
                 expect(fullSrc.includes(`${source}`)).to.be.true;
                 const src1 = fullSrc.substring(0, fullSrc.indexOf('?'));

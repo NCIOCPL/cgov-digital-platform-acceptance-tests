@@ -6,6 +6,7 @@ const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const randomStr = Cypress.env('randomStr')
 
+
 And("{string} date is displaying today's date", (stampLabel) => {
     const months = [
         'January',
@@ -69,7 +70,7 @@ And('{string} section is not displayed', (section) => {
     cy.get(`a:contains("${section}")`).should('not.exist')
 })
 
-let imageSrc;
+
 And('user selects {int} Lead Image from the list of images', (num) => {
     cy.get('summary:contains("Lead Image")').click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
@@ -78,11 +79,15 @@ And('user selects {int} Lead Image from the list of images', (num) => {
 });
 And('user remembers the source of selected lead image for further verification', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src').replace('.webp','')
+        const leadImgSrc= $el[0].getAttribute('src').replace('.webp','');
+              cy.task('setSharedValue', {
+            key: 'leadImgSrc',
+            value: leadImgSrc
+        });
     })
 })
 
-let imageSrc1;
+
 And('user selects {int} Promotional Image from the list of images', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
@@ -92,7 +97,11 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp','')
+        const promoImg = $el[0].getAttribute('src').replace('.webp','')
+         cy.task('setSharedValue', {
+            key: 'promoImgSrc',
+            value: promoImg
+        });
     });
 });
 
@@ -101,12 +110,14 @@ And('user selects {string} checkbox', (dateDisplay) => {
 })
 
 And('the lead image is matching the earlier selected image', () => {
+    cy.task('getSharedValue', 'leadImgSrc').then((leadImgSrc) => {
     cy.get('.cgdp-image img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        const expectedSrc = (imageSrc.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
+        const expectedSrc = leadImgSrc.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(expectedSrc);
     })
+})
 });
 
 And('user removes the Lead Image', () => {
@@ -137,7 +148,8 @@ And('user clicks on {string} link in the {string} text area', (title, cartOption
 });
 
 Then('the promo image is matching the earlier selected image', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+      cy.task('getSharedValue', 'promoImgSrc').then((promoImgSrc) => {
+    const expectedSrc = promoImgSrc.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('div.feature-card').find('img').then($el => {
@@ -145,6 +157,7 @@ Then('the promo image is matching the earlier selected image', () => {
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
+})
 });
 
 And('Link section under related resources was translated as {string}', (linkText) => {

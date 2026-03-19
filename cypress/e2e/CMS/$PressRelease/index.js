@@ -6,7 +6,7 @@ const siteSection = Cypress.env('test_site_section');
 const frontEndBaseUrl = Cypress.env('front_end_base_url');
 const randomStr = Cypress.env('randomStr')
 
-let imageSrc;
+
 And('user selects {int} Lead Image from the list of images', (num) => {
     cy.get('summary:contains("Lead Image")').click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
@@ -15,11 +15,11 @@ And('user selects {int} Lead Image from the list of images', (num) => {
 });
 And('user remembers the source of selected lead image for further verification', () => {
     cy.get('details img').eq(0).then($el => {
-        imageSrc = $el[0].getAttribute('src').replace('.webp','')
+         Cypress.env('tempVar2',$el[0].getAttribute('src').replace('.webp',''))
     })
 })
 
-let imageSrc1;
+
 And('user selects {int} Promotional Image from the list of images', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
@@ -29,7 +29,7 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp','')
+         Cypress.env('tempVar1', $el[0].getAttribute('src').replace('.webp',''))
     })
 })
 
@@ -73,7 +73,7 @@ And('the lead image for press release is matching the earlier selected image', (
     cy.get('.cgdp-image img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        const expectedSrc = (imageSrc.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
+        const expectedSrc = ( Cypress.env('tempVar2').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(expectedSrc);
     })
 });
@@ -118,7 +118,7 @@ And('the list item description reads {string}', (desc) => {
 });
 
 And('the promotional image for press release is matching the earlier selected image', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = ( Cypress.env('tempVar1').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('.cgdp-dynamic-list > ul> li').find('img').then($el => {
@@ -145,7 +145,7 @@ And('user is navigating to the front end site plus {string}', (path) => {
 });
 
 Then('the promo image is matching the earlier selected image', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = ( Cypress.env('tempVar1').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('div.feature-card').find('img').then($el => {

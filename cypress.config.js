@@ -1,5 +1,7 @@
 const { defineConfig } = require('cypress')
 
+let sharedData = {};
+
 module.exports = defineConfig({
   video: false,
   viewportWidth: 1025,
@@ -18,6 +20,10 @@ module.exports = defineConfig({
     ocpl_username: 'ocpl-test',
     ocpl_password: '',
     randomStr: createRandomStr(),
+    tempImg: '',
+    tempVar1: '',
+    tempVar2: '',
+    tempVar3: ''
   },
   defaultCommandTimeout: 10000,
   e2e: {
@@ -26,6 +32,15 @@ module.exports = defineConfig({
 
     // Pre-Cypress setup.
     setupNodeEvents(on, config) {
+       on('task', {
+        setSharedValue({ key, value }) {
+          sharedData[key] = value;
+          return null;
+        },
+        getSharedValue(key) {
+          return sharedData[key] || null;
+        }
+      });
       // Remove any trailing slashes or spaces from base URL.
       // This runs before Cypress starts, but after overrides are applied.
       config.baseUrl = config.baseUrl.trim().replace(/\/+$/, '');

@@ -61,7 +61,7 @@ And('user clicks on {string} button to select item', (selectContent) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_blog_browser').find(`input[id='edit-submit'][value='${selectContent}']`).click({ force: true });
 });
 
-let imageSrc1;
+
 And('user selects {int} Promotional Image from the list of images for blog series', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
@@ -71,7 +71,7 @@ And('user selects {int} Promotional Image from the list of images for blog serie
 
 And('user remembers the source of selected promo image for blog series for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp','')
+        Cypress.env('tempImg', $el[0].getAttribute('src').replace('.webp',''))
     })
 })
 
@@ -128,7 +128,7 @@ And('the {string} accordion is displayed', (archiveAccor) => {
 And('blog posts list does not appear in the archive', () => {
     cy.get('#blog-archive-accordion-year').invoke('css', 'display', 'none').should('have.css', 'display', 'none');
 });
-let imageSrc;
+
 And('user selects {int} Lead Image from the list of images for blog series', (num) => {
     cy.get('summary:contains("Lead Image")').click();
     cy.wait(1000);
@@ -139,7 +139,7 @@ And('user selects {int} Lead Image from the list of images for blog series', (nu
 
 And('user remembers the source of selected lead image for blog series for further verification', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src').replace('.webp','')
+       Cypress.env('tempVar2', $el[0].getAttribute('src').replace('.webp',''))
     });
 });
 
@@ -251,7 +251,7 @@ Then('list of {string} has the following posts', (blogPost, dataTable) => {
 });
 
 And('the promotional image is matching the earlier selected image', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = (Cypress.env('tempImg').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('div.dynamic.list ul li').find('img').then($el => {
@@ -312,7 +312,7 @@ And('user clicks on {string} button to select the item', (selectContent) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`input[id='edit-submit'][value='${selectContent}']`).click({ force: true });
 });
 
-let imageSrc2;
+
 And('user selects {int} Promotional Image from the list of images to be displayed in mini landing pages', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
@@ -322,12 +322,12 @@ And('user selects {int} Promotional Image from the list of images to be displaye
 
 And('user remembers the source of selected promotional image to be displayed in mini landing pages for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc2 = $el[0].getAttribute('src').replace('.webp','')
+        Cypress.env('tempVar1', $el[0].getAttribute('src').replace('.webp',''))
     });
 });
 
 Then('the promo image is matching the earlier selected image', () => {
-    const expectedSrc = (imageSrc2.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = (Cypress.env('tempVar1').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('div.feature-card').find('img').then($el => {

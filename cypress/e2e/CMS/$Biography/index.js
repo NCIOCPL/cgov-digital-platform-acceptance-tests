@@ -5,7 +5,7 @@ And('user clicks on {string} to a title section', (buttonLable) => {
     cy.get('#edit-field-title-add-more').contains(buttonLable).click({ force: true })
 })
 
-let imageSrc;
+
 And('user selects {int} Biography Image from the list of images', (number) => {
     cy.get('summary:contains("Biography Image")').click();
     cy.get('input[value="Select Image"]').click({ force: true });
@@ -14,7 +14,7 @@ And('user selects {int} Biography Image from the list of images', (number) => {
 });
 And('user remembers the source of selected biography image for further verification', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src').replace('.webp','');
+        Cypress.env('tempImg', $el[0].getAttribute('src').replace('.webp',''));
     })
 })
 
@@ -53,7 +53,7 @@ And('the Biography image is matching the earlier selected image', () => {
     cy.get('.profile-panel-image img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        const expectedSrc = (imageSrc.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
+        const expectedSrc = (Cypress.env('tempImg').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(expectedSrc);
     })
 })
