@@ -91,20 +91,20 @@ And('the {string} managed list appears', (featuredPosts) => {
 
 And('the {string} managed list appears without a date', (categories) => {
     const expectedDate = `${month} ${day}, ${currYear}`;
-    cy.get('div.managed.list.without-date').should('be.visible').and('contain.text', categories);
-    cy.get('div.managed.list.without-date').should('not.include.text', expectedDate);
+    cy.get('div.usa-summary-box__body').should('be.visible').and('contain.text', categories);
+    cy.get('div.usa-summary-box__body').should('not.include.text', expectedDate);
 });
 
 And('the {string} accordion is displayed', (archiveAccor) => {
-    cy.get('div#blog-archive-accordion').should('be.visible').and('contain.text', archiveAccor);
+    cy.get('.cgdp-blog-archive button').should('be.visible').and('contain.text', archiveAccor);
 });
 
 And('{string} accordion is collapsed', (archive) => {
-    cy.get('div#blog-archive-accordion').contains(archive).should('have.attr', 'aria-expanded', 'false');
+    cy.get('.cgdp-blog-archive button').contains(archive).should('have.attr', 'aria-expanded', 'false');
 });
 
 And('blog posts list doesnot appear in the archive', () => {
-    cy.get('#blog-archive-accordion-year').invoke('css', 'display', 'none').should('have.css', 'display', 'none');
+    cy.get('.cgdp-blog-archive button').should('have.attr', 'aria-expanded', 'false');
 });
 
 And('{string} link appears', (paginationBtn) => {
