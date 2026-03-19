@@ -59,7 +59,7 @@ When('user selects {string} site section', (selectSiteSection) => {
         .find("input[id='edit-submit'][value='Select Site Section']").click();
 });
 
-let firstSiteSection;
+
 When('user selects first {string} site section', (selectSiteSection) => {
     cy.get("input[value='Select Site Section']").click({ force: true });
     cy.getIframeBody('iframe.entity-browser-modal-iframe')
@@ -71,7 +71,11 @@ When('user selects first {string} site section', (selectSiteSection) => {
         .find('td.views-field.views-field-entity-browser-select input').check();
     cy.getIframeBody('iframe.entity-browser-modal-iframe')
         .find(`td:contains('${selectSiteSection}')`).first().then(($el) => {
-            firstSiteSection = $el.text().trim();
+            const tempImg = $el.text().trim()
+            cy.task('setSharedValue', {
+                key: 'tempImg',
+                value: tempImg
+            });
         })
 
     cy.getIframeBody('iframe.entity-browser-modal-iframe')
@@ -79,13 +83,15 @@ When('user selects first {string} site section', (selectSiteSection) => {
 });
 
 Given('user is navigating to the front end site with selected path {string}', (purl) => {
+     cy.task('getSharedValue', 'tempImg').then((tempImg) => {
     cy.on('uncaught:exception', (err, runnable) => {
         if (err.message.includes('Failed to load script https://assets.adobedtm.com')) {
             return false;
         }
         return true;
     })
-    cy.visit(`${frontEndBaseUrl}${firstSiteSection}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
+    cy.visit(`${frontEndBaseUrl}${tempImg}/${purl}-${randomStr}`, { retryOnStatusCodeFailure: true });
+})
 });
 
 Given('user is navigating to the front end site with path {string}', (purl) => {
@@ -168,8 +174,10 @@ And('user drags {string} item one level down', (dragLink) => {
 });
 
 And('{string} appears in position {int} in the side menu tree', (label, position) => {
-     cy.get('ul.usa-sidenav__sublist li').eq(indexOfSiteSection).find(`a:contains("${label}")`).should('be.visible');
+    cy.task('getSharedValue', 'indexSiteSect').then((indexSiteSect) => {
 
+        cy.get('ul.usa-sidenav__sublist li').eq(indexSiteSect).find(`a:contains("${label}")`).should('be.visible');
+    })
 });
 
 And('user clicks on title with the url {string} from the list of content', (contentHref) => {
@@ -177,7 +185,9 @@ And('user clicks on title with the url {string} from the list of content', (cont
 });
 
 And('user clicks on title with selected url {string} from the list of content', (contentHref) => {
-    cy.get(`a[href='${firstSiteSection}${contentHref}-${randomStr}']`).click();
+     cy.task('getSharedValue', 'tempImg').then((tempImg) => {
+    cy.get(`a[href='${tempImg}${contentHref}-${randomStr}']`).click();
+     })
 });
 
 Then('the current left navigation label has url {string}', (currentHref) => {
@@ -185,17 +195,21 @@ Then('the current left navigation label has url {string}', (currentHref) => {
 });
 
 And('left navigation label {string} has selected site section url plus {string}', (label, purl) => {
-    cy.get('ul.usa-sidenav__sublist li').find(`a:contains("${label}")`).should('have.attr', 'href', `${firstSiteSection}/${purl}-${randomStr}`);
+     cy.task('getSharedValue', 'tempImg').then((tempImg) => {
+    cy.get('ul.usa-sidenav__sublist li').find(`a:contains("${label}")`).should('have.attr', 'href', `${tempImg}/${purl}-${randomStr}`);
+     })
 })
 
 And('left navigation label {string} has url {string}', (label, contentHref) => {
     cy.get('ul.usa-sidenav__sublist li').find(`a:contains("${label}")`).should('have.attr', 'href', contentHref);
 });
 
-let indexOfSiteSection;
-And('user remembers the new position of a {string} site section',(dragLink)=>{
- cy.get('#taxonomy').find(`a.menu-item__link:contains("${dragLink}")`).parent().parent().parent().parent().invoke('index')
-  .then((index) => {
-   indexOfSiteSection = index;
-  });
+And('user remembers the new position of a {string} site section', (dragLink) => {
+    cy.get('#taxonomy').find(`a.menu-item__link:contains("${dragLink}")`).parent().parent().parent().parent().invoke('index')
+        .then((index) => {
+            cy.task('setSharedValue', {
+                key: 'indexSiteSect',
+                value: index
+            });
+        });
 })

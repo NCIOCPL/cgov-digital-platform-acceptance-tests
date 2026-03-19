@@ -38,7 +38,7 @@ And('{string} dropdown displays {string}', (drodownName, option) => {
     cy.get(`select[id='edit-langcode-0-value']`).find(`option:contains('${option}')`).should('be.visible');
 });
 
-let imageSrc1;
+
 And('user selects {int} Promotional Image from the list of images', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_override_image_promotional_entity_browser_entity_browser"]').click({ force: true });
@@ -48,7 +48,7 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('div[id*="edit-field-override-image-promotional-current-items"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp', '');
+     Cypress.env('tempImg',$el[0].getAttribute('src').replace('.webp', ''))
     });
 });
 
@@ -202,10 +202,10 @@ And('the Custom block item with title {string} does not exist in the list of Cus
 });
 
 And('the promo image in {int} feature card is matching the earlier selected promo image in the External Link Block used for embeddding', (position) => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = (Cypress.env('tempImg').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
-    cy.get('.cgdp-embed-card').find('img').then($el => {
+    cy.get('.nci-card').find('img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))

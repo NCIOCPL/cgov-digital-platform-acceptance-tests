@@ -8,7 +8,7 @@ And('user types {string} in the {string} autosuggest', (value, fieldLabel) => {
     cy.get(`div[class*="field-event-series"] label:contains("${fieldLabel}")`).type(value);
 });
 
-let expectedText;
+
 And('user selects {int} event series from {string} autosuggest', (position, fieldLabel) => {
     cy.get('li.ui-menu-item a').eq(position - 1).click({ force: true });
 });
@@ -47,7 +47,7 @@ And('user enters {string} in the {string} time field', (value, fieldLabel) => {
     cy.get('input#edit-field-event-end-date-0-value-time').type(value);
 });
 
-let imageSrc;
+
 And('user selects {int} Lead Image from the list of images', (num) => {
     cy.get('summary:contains("Lead Image")').click()
     cy.get('input[name="field_image_article_entity_browser_entity_browser"]').click({ force: true })
@@ -55,7 +55,6 @@ And('user selects {int} Lead Image from the list of images', (num) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true })
 });
 
-let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
@@ -65,19 +64,19 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected lead image for further verification', () => {
     cy.get('details img').then($el => {
-        imageSrc = $el[0].getAttribute('src').replace('.webp', '')
+         Cypress.env('tempVar2', $el[0].getAttribute('src').replace('.webp', ''))
     });
 });
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp', '')
+         Cypress.env('tempVar1',$el[0].getAttribute('src').replace('.webp', ''))
     });
 });
 
 And('the Event Series title matches selected event series', () => {
     cy.get('.cgdp-event-info h2').then($el => {
-        expectedText = $el[0].innerText.trim();
+         Cypress.env('tempVar3', $el[0].innerText.trim())
     });
 });
 
@@ -143,7 +142,7 @@ And('the lead image for event is matching earlier selected image', () => {
     cy.get('.cgdp-image img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        const expectedSrc = (imageSrc.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
+        const expectedSrc = ( Cypress.env('tempVar2').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(expectedSrc);
     })
 });
@@ -162,7 +161,7 @@ And('user removes the Lead Image', () => {
 });
 
 Then('the promo image is matching the earlier selected image', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+    const expectedSrc = ( Cypress.env('tempVar1').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('div.feature-card').find('img').then($el => {

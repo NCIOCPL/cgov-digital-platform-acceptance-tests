@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import {  And, Then  } from 'cypress-cucumber-preprocessor/steps';
+import { And, Then } from 'cypress-cucumber-preprocessor/steps';
 import { extractImgName } from "../../../utils/extractImgName.js";
 
 
@@ -137,43 +137,62 @@ And('PDQ link label reads {string}', (title) => {
     cy.get(`div[class='cardBody'] h4:contains("${title}")`).should('be.visible')
 })
 
-let summaryTitle;
+
 And('user remembers the title of selected summary for further verification', () => {
     cy.get('div[id*="pdq-links-current-items"]').then($el => {
-        summaryTitle = $el[0].innerText
+        const summaryTitle = $el[0].innerText
+        cy.task('setSharedValue', {
+            key: 'summaryTitle',
+            value: summaryTitle
+        });
+
     })
 })
 
 Then('the PDQ link is matching the earlier selected PDQ link', () => {
-    cy.get('div[class*="cthp-treatment"] a').then($el => {
-        const title = $el[0].innerText;
-        expect(summaryTitle).to.include(title);
+    cy.task('getSharedValue', 'summaryTitle').then((summaryTitle) => {
+        cy.get('div[class*="cthp-treatment"] a').then($el => {
+            const title = $el[0].innerText;
+            expect(summaryTitle).to.include(title)
+        })
     })
 })
 
-let summaryVideo;
+
 And('user remembers the title of selected video for further verification', () => {
     cy.get("div[id*='cthp-video-current-']").then($el => {
-        summaryVideo = $el[0].innerText
+        const tempVar2 = $el[0].innerText
+        cy.task('setSharedValue', {
+            key: 'tempVar2',
+            value: tempVar2
+        });
     })
 })
 
 Then('the video is matching the earlier selected video', () => {
-    cy.get('div[class*="cthp-screening"] img').then($el => {
-        const video = $el[0].innerText;
-        expect(summaryVideo).to.include(video);
+    cy.task('getSharedValue', 'tempVar2').then((tempVar2) => {
+        cy.get('div[class*="cthp-screening"] img').then($el => {
+            const video = $el[0].innerText;
+            expect(tempVar2).to.include(video)
+        })
     })
 })
 
-let summaryPageTitle;
+
 And('user remembers title of selected Cancer Research List Page for future verification', () => {
     cy.get("div[class*='cthp-research'] div[class*='label']").then($el => {
-        summaryPageTitle = $el[0].innerText
+        const crlpTitle = $el[0].innerText
+        cy.task('setSharedValue', {
+            key: 'crlpTitle',
+            value: crlpTitle
+        });
     })
 })
 
 Then('the Cancer Research List page title is matching the earlier selected Cancer Research List page title', () => {
-    cy.get("h1").should('include.text', summaryPageTitle)
+    cy.task('getSharedValue', 'crlpTitle').then((crlpTitle) => {
+        cy.get("h1").should('include.text', crlpTitle)
+    })
 })
 
 And('user clicks on {string} dropdown', (dropdown) => {
@@ -245,7 +264,6 @@ And('user selects {int} Video from the list of main page videos', (num) => {
     cy.getIframeBody('iframe.entity-browser-modal-iframe').find('input.form-checkbox').eq(num - 1).check()
 })
 
-let imageSrc1;
 And('user selects {int} Promotional Image from the list of images', (num) => {
     cy.get('summary:contains("Promotional Image")').first().click()
     cy.get('input[name="field_image_promotional_entity_browser_entity_browser"]').click({ force: true })
@@ -255,12 +273,17 @@ And('user selects {int} Promotional Image from the list of images', (num) => {
 
 And('user remembers the source of selected promo image for further verification', () => {
     cy.get('div[id*="edit-field-image-promotional"] img').then($el => {
-        imageSrc1 = $el[0].getAttribute('src').replace('.webp','')
+       const imgSrc = $el[0].getAttribute('src').replace('.webp', '')
+         cy.task('setSharedValue', {
+        key: 'tempImg',
+        value: imgSrc
+      });
     });
 });
 
 Then('the promo image is matching the earlier selected image', () => {
-    const expectedSrc = (imageSrc1.replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
+     cy.task('getSharedValue', 'tempImg').then((tempImg) => {
+    const expectedSrc = tempImg.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
     cy.get('div.feature-card').find('img').then($el => {
@@ -268,6 +291,7 @@ Then('the promo image is matching the earlier selected image', () => {
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
+})
 });
 
 And('Current Page Audience dropdown has the following values', (dataTable) => {
@@ -320,4 +344,3 @@ And('user filters results by {string} type', (contentType) => {
 And('user selects {string} item from the list', (title) => {
     cy.getIframeBody('iframe#entity_browser_iframe_cgov_content_browser').find(`td:contains(${title})`).parent().find('input').eq(0).click({ force: true });
 });
-      
