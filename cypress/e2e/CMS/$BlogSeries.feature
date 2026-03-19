@@ -37,8 +37,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then page title is "Automated Test Blog Series"
         And blog series description reads "This is all about Blog Series"
         And the "Subscribe" link appears with url "https://feedburner-test.cancer.gov/testblogseries"
-        And the "Archive" accordion is displayed
-        And blog posts list does not appear in the archive
+        And the "Archive" accordion is not displayed
         And the page contains meta tags with the following names
             | name        | content                                |
             | description | Automated Blog Series Meta Description |
@@ -309,11 +308,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Show Thumbnails        |
             | Do Not Show Thumbnails |
         And "List Thumbnails" dropdown displays "Show Thumbnails"
-        And "Archive Group By" dropdown has the following options
-            | options |
-            | Mes     |
-            | Año     |
-        And "Archive Group By" dropdown displays "Año"
         And current state was translated as "Estado actual" "Borrador"
         And Change to dropdown has the following options
             | option    |
@@ -333,9 +327,8 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "blog-series-edited"
         Then page title is "Automated Test Blog Series Edited Spanish"
         And the "Suscríbase" link appears with href "https://feedburner-test.cancer.gov/testblogseries"
-        And the "Archivo" accordion is displayed
+        And the "Archivo" accordion is not displayed
         And the banner image is matching the earlier selected image
-        And blog posts list does not appear in the archive
         And description reads "This is all about Blog Series."
 
     Scenario: User is adding new Spanish Blog Post content type without any image so it can be added to Spanish Blog Series

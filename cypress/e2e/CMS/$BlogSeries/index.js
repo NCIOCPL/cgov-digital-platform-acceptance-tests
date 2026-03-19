@@ -122,11 +122,15 @@ And('the {string} managed list appears', (featuredPosts) => {
 });
 
 And('the {string} accordion is displayed', (archiveAccor) => {
-    cy.get('div#blog-archive-accordion').should('be.visible').and('contain.text', archiveAccor);
+    cy.get('.cgdp-blog-archive button').should('be.visible').and('contain.text', archiveAccor);
+});
+
+And('the {string} accordion is not displayed', (archiveAccor) => {
+    cy.get('.cgdp-blog-archive button').should('not.exist');
 });
 
 And('blog posts list does not appear in the archive', () => {
-    cy.get('#blog-archive-accordion-year').invoke('css', 'display', 'none').should('have.css', 'display', 'none');
+    cy.get('.cgdp-blog-archive button').should('have.attr', 'aria-expanded', 'false');
 });
 
 And('user selects {int} Lead Image from the list of images for blog series', (num) => {
@@ -286,12 +290,12 @@ And('the {string} link appears with the following href', (testBlogTopic, dataTab
         if (linkHref.includes("{RANDOM}")) {
             linkHref = linkHref.replaceAll("{RANDOM}", randomStr);
         }
-        cy.get(`div.managed.list.without-date a[href='${linkHref}']`).should('be.visible').and('have.text', linkName);
+        cy.get(`div.usa-summary-box__body a[href='${linkHref}']`).should('be.visible').and('have.text', linkName);
     }
 });
 
 And('the {string} managed list appears without the date', (categories) => {
-    cy.get('div.managed.list.without-date').find('h2').should('be.visible').and('include.text', categories);
+    cy.get('div.usa-summary-box__body').should('be.visible').and('include.text', categories);
 });
 
 And('user selects a checkbox next to title {string} with url {string} from the list of content', (title, lastPartUrl) => {

@@ -10,15 +10,15 @@ And('the {string} managed list appears with a date {string}', (featuredPosts, da
 });
 
 And('the {string} managed list appears without a date', (categories) => {
-    cy.get('div.managed.list.without-date').should('be.visible').and('contain.text', categories);
+    cy.get('div.usa-summary-box__body').should('be.visible').and('contain.text', categories);
 });
 
 And('the {string} accordion is displayed', (archive) => {
-    cy.get('div#blog-archive-accordion').should('be.visible').and('contain.text', archive);
+    cy.get('.cgdp-blog-archive button').should('be.visible').and('contain.text', archive);
 });
 
 And('{string} accordion is collapsed', (archive) => {
-    cy.get('div#blog-archive-accordion').contains(archive).should('have.attr', 'aria-expanded', 'false');
+    cy.get('.cgdp-blog-archive button').contains(archive).should('have.attr', 'aria-expanded', 'false');
 });
 
 And('blog posts list appears', () => {
@@ -54,7 +54,7 @@ And(`{int} blog's title and continue reading button both link to {string}`, (blo
 });
 
 When('user clicks on {string} accordion', (archive) => {
-    cy.get('div#blog-archive-accordion').contains(archive).click();
+    cy.get('.cgdp-blog-archive button').contains(archive).click();
 });
 
 And('{int} blog has no image', (blogPosition) => {
@@ -66,17 +66,17 @@ And('{int} blog has an author {string}', (blogPosition, author) => {
 });
 
 Then('{string} section is expanded', (archive) => {
-    cy.get('div#blog-archive-accordion').contains(archive).should('have.attr', 'aria-expanded', 'true');
+    cy.get('.cgdp-blog-archive button').contains(archive).should('have.attr', 'aria-expanded', 'true');
 });
 
 And('the following sections are displayed', (dataTable) => {
     for (const { title, isExpanded } of dataTable.hashes()) {
-        cy.get('div#blog-archive-accordion').find(`h3:contains('${title}')`).should('have.attr', 'aria-expanded', isExpanded);
+        cy.get('.cgdp-blog-archive button').find(`h3:contains('${title}')`).should('have.attr', 'aria-expanded', isExpanded);
     }
 });
 
 And('months links are displayed', () => {
-    cy.get('div#blog-archive-accordion').find('a').should('be.visible');
+    cy.get('.cgdp-blog-archive button').find('a').should('be.visible');
 });
 
 And('blog posts list doesnot appear', () => {
