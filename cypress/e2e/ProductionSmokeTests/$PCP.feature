@@ -27,9 +27,9 @@ Feature: Basic checks to ensure PCP production site is up and running
     Scenario: Verify favicons
         Given user is navigating to "/"
         Then the following favicons links are present
-            | rel              | href                                                                                           | sizes | type          |
-            | icon             | https://prescancerpanel.cancer.gov/sites/g/files/xnrzdm291/files/favicons/favicon.ico          | 32x32 | none          |
-            | icon             | https://prescancerpanel.cancer.gov/sites/g/files/xnrzdm291/files/favicons/favicon.svg          | none  | image/svg+xml |
-            | apple-touch-icon | https://prescancerpanel.cancer.gov/sites/g/files/xnrzdm291/files/favicons/apple-touch-icon.png | none  | none          |
-            | manifest         | https://prescancerpanel.cancer.gov/sites/g/files/xnrzdm291/files/favicons/manifest.webmanifest | none  | none          |
+            | rel              | href                                                                             | sizes | type          |
+            | icon             | https://prescancerpanel.cancer.gov/sites/pcp/files/favicons/favicon.ico          | 32x32 | none          |
+            | icon             | https://prescancerpanel.cancer.gov/sites/pcp/files/favicons/favicon.svg          | none  | image/svg+xml |
+            | apple-touch-icon | https://prescancerpanel.cancer.gov/sites/pcp/files/favicons/apple-touch-icon.png | none  | none          |
+            | manifest         | https://prescancerpanel.cancer.gov/sites/pcp/files/favicons/manifest.webmanifest | none  | none          |
 
