@@ -119,16 +119,16 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And user clicks on the tool bar status button "Draft available"
         And user clicks "Edit draft" button from other actions
         And user clicks on dropdown button toggle 2 to view all Recommended Content types
-        And user selects "Add Internal Feature Card" from Recommended Content dropdwon
-        Then "Internal Feature Card" section appears
+        And user selects "Add NCIDS Card Internal" from Recommended Content dropdwon
+        Then "NCIDS Card Internal" section appears
         And user clicks on "Featured Item" button to link to Recommended Content types
         And user clicks on "Select content" to choose a Recommended Content type to link
         And user selects "Article to test Related Resources" item from the list
         And user clicks on "Select content" button to select item
         And browser waits
         And user clicks on dropdown button toggle 2 to view all Recommended Content types
-        And user selects "Add External Feature Card" from Recommended Content dropdwon
-        Then "External Feature Card" section appears
+        And user selects "Add NCIDS Card External" from Recommended Content dropdwon
+        Then "NCIDS Card External" section appears
         And user fills out the following Recommended Content fields
             | fieldLabel        | value                   | field_name                                                       |
             | Featured Item Url | https://www.google.com/ | field_recommended_content[1][subform][field_featured_url]        |

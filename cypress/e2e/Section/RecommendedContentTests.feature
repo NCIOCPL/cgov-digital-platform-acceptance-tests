@@ -27,11 +27,11 @@ Feature: Recommended Content tests
         Then recommended content section is visible
         And recommended content section display <totalNumber> of content cards
         And the card's title at position <cardIndex> is "<cardTitle>"
-        And the card's image at position <cardIndex> has source "/files/styles/cgov_featured/public/cgov_image/featured/" and file name "<fileName>"
+        And the card's image at position <cardIndex> has source "files/styles/ncids_featured_16x9" and file name "<fileName>" before query parameter "<queryParam>"
         And the card's image at position <cardIndex> has the alt text "<altText>" and a link "<cardLink>"
 
         Examples:
-            | totalNumber | cardIndex | cardTitle                                                                | fileName                                       | altText               | cardLink                                              |
-            | 3           | 0         | FDA Approves Lenvatinib for Radioactive Iodine-Refractory Thyroid Cancer | pet_mm_featured.jpg                            | Minnie                | /news-events/cancer-currents-blog/2015/fda-lenvatinib |
-            | 3           | 1         | FDA Approves Lenvatinib for Radioactive Iodine-Refractory Thyroid Cancer | pet_smoo_featured.jpg                          | Cat-Cat               | /news-events/cancer-currents-blog/2015/fda-lenvatinib |
-            | 3           | 2         | Pubs Locator                                                             | find-clinical-trial-blue-feature-card-feat.jpg | Find a Clinical Trial | https://pubs.cancer.gov                               |
+            | totalNumber | cardIndex | cardTitle                                                                | queryParam | fileName             | altText              | cardLink                                              |
+            | 3           | 0         | FDA Approves Lenvatinib for Radioactive Iodine-Refractory Thyroid Cancer | h          | pet_mm_article.jpg   | Minnie               | /news-events/cancer-currents-blog/2015/fda-lenvatinib |
+            | 3           | 1         | FDA Approves Lenvatinib for Radioactive Iodine-Refractory Thyroid Cancer | h          | pet_smoo_article.jpg | Cat-Cat              | /news-events/cancer-currents-blog/2015/fda-lenvatinib |
+            | 3           | 2         | Pubs Locator                                                             | itok       | placeholder-16x9.png | No Image Placeholder | https://pubs.cancer.gov                               |
