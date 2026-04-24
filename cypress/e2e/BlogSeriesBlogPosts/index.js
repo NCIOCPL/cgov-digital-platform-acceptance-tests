@@ -29,8 +29,16 @@ And('{string} button appears with a link {string}', (postLink, link) => {
     cy.get(`a:contains("${postLink}")`).should('be.visible').and('have.attr','href').and('include',`${getBaseDirectory()}${link}`);
 });
 
+And('{string} button1 appears with a link {string}', (postLink, link) => {
+    cy.get(`div.cgdp-blog-post-pager`).contains(`${postLink}`).and('include',`${getBaseDirectory()}${link}`);
+});
+
 When('user clicks on {string} button', (olderPostLink) => {
-    cy.get('div.clearfix').contains(olderPostLink).click();
+    cy.get('div.clearfix').contains(olderPostLink).click();  
+});
+
+When('user clicks on {string} button1', (olderPostLink) => {
+    cy.get('div.cgdp-blog-post-pager--older a').click();
 });
 
 And('each blog post has a title, time, description and {string} button', (linkButton) => {

@@ -129,7 +129,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
         And "Archive" accordion is collapsed
         And blog posts list doesnot appear
         And "< Older Post" button appears with a link "/news-events/cancer-currents-blog/2019/"
-        When user clicks on "< Older Post" button
+        When user clicks on "< Older Post" button1
         And "Newer Post >" button appears with a link "/news-events/cancer-currents-blog/2019/"
 
         Examples:

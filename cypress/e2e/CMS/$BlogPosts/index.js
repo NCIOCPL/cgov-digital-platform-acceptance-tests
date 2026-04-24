@@ -112,7 +112,7 @@ And('{string} link appears', (paginationBtn) => {
 });
 
 When('user clicks on {string} link', (paginationBtn) => {
-    cy.get('div.clearfix').contains(paginationBtn).click();
+    cy.get('div[class*="cgdp-blog-post-pager"] a').contains(paginationBtn).click();
 });
 
 And('the author name {string} is displayed', (authorName) => {
