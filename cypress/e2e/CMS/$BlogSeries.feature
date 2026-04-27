@@ -22,7 +22,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Subscription URL           | https://feedburner-test.cancer.gov/testblogseries | field_feedburner_url             |
             | Recommended Content Header | Recommended Text                                  | field_recommended_content_header |
         And browser waits
-        And user uploads test file "heroimagenewsdesktop.jpg"
+        And user uploads test file "blogseriesbanner.png"
         And system waits for file upload process
         And user enters "Text Alt" into the "Alternative text" text field
         And user enters "Blog Series List Description" into "List Description" text field
@@ -296,7 +296,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And "Recommended Content Header" label is displayed with the text "Recommended Text"
         And the translated banner image is displayed
         And "Texto alternativo" label is displayed with the text "Text Alt"
-        And the link with the name "heroimagenewsdesktop.jpg" is displayed with remove button translated as "Eliminar"
+        And the link with the name "blogseriesbanner.png" is displayed with remove button translated as "Eliminar"
         And "Promotional Image" button is displayed with remove button translated as "Eliminar"
          And "Search Engine Restrictions" dropdown has the following options
             | options             |

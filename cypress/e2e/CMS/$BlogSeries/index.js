@@ -44,7 +44,7 @@ And('user clicks on {string} button to link to the Featured Post', (selectBtn) =
 });
 
 And('the banner image is displayed', () => {
-    cy.get('div.blog.body-banner').find('img').should('be.visible');
+    cy.get('.cgdp-slim-hero').find('img').should('be.visible');
 });
 
 Then('{string} section appears', (selectEntitiesSection) => {
@@ -393,8 +393,8 @@ And('the {string} link appears with href {string}', (link, href) => {
 });
 
 And('the banner image is matching the earlier selected image', () => {
-    cy.get('div[class*="body-banner"').find('img').should('have.attr', 'src').then(src => {
-        expect(src).to.include('heroimagenewsdesktop')
+    cy.get('.cgdp-slim-hero').find('img').should('have.attr', 'src').then(src => {
+        expect(src).to.include('blogseriesbanner')
     })
 });
 
