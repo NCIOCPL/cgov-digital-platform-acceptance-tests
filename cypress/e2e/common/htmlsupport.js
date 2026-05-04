@@ -12,7 +12,7 @@ const currentFeature = Cypress.spec.relative;
 const featurePath = currentFeature.replace('.feature', '');
 
 
-Then('the html response matches the contents of {string}', (fileName) => {
+Then('the html response matches the contents of {string} or {string}', (fileName, fileNameACSF) => {
   // Test data should always live in a folder with the same name as the
   // feature. (Just like any step definitions.)
   //
@@ -20,8 +20,12 @@ Then('the html response matches the contents of {string}', (fileName) => {
   // of the repo. This path is also going to be turned into a URL, so
   // we can't let it try and use back slashes on windows. (So skip
   // using the node path module.)
-
-  const fullPath = featurePath + '/' + fileName;
+  let fullPath;
+  if (baseUrl.includes('acsf')) {
+    fullPath = featurePath + '/' + fileNameACSF;
+  } else {
+    fullPath = featurePath + '/' + fileName;
+  }
   let expectedStr;
   let actualStr;
   cy.get('@html_response').then((response) => {
@@ -34,6 +38,8 @@ Then('the html response matches the contents of {string}', (fileName) => {
   });
   cy.readFile(`${featurePath}/response/response.txt`).then((fileData) => {
     fileData = fileData.replaceAll(/\/\d{4}-\d{2}\//g, '/\d{4}-\d{2}/')
+    fileData = fileData.replaceAll(/(?<=length=")\d+(?=")/g, 'numbers')
+    
     actualStr = JSON.stringify(fileData)
     expect(actualStr).to.deep.eq(expectedStr)
   });
