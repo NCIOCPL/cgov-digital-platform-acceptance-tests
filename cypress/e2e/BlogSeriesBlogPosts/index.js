@@ -2,7 +2,7 @@
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 import { getBaseDirectory } from '../../utils';
 And('the {string} button appears', (linkSubscribe) => {
-    cy.get('div.subscribeRSS span').should('be.visible').and('contain.text', linkSubscribe);
+    cy.get('div.cgdp-blog-subscribe-link span').should('be.visible').and('contain.text', linkSubscribe);
 });
 
 And('the {string} managed list appears with a date {string}', (featuredPosts, date) => {
