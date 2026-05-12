@@ -86,15 +86,15 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | /research/key-initiatives/ras/ras-central/blog?topic=1234567898 | RAS Dialogue - Error: Category Does Not Exist         |
             | /espanol/noticias/temas-y-relatos-blog?topic=chicken            | Temas y relatos blog - Error: Category Does Not Exist |
 
-    Scenario Outline: Filtering blogs by year and month
+    Scenario Outline: Filtering blogs by year
         Given user is navigating to "<url>"
         Then page title is "<title>"
         And only 1 blog appear
         Examples:
             | url                                                               | title                           |
-            | /news-events/cancer-currents-blog?year=2019&month=06              | June 2019 - Cancer Currents     |
-            | /research/key-initiatives/ras/ras-central/blog?year=2018&month=12 | December 2018 - RAS Dialogue    |
-            | /espanol/noticias/temas-y-relatos-blog?year=2018&month=05         | May 2018 - Temas y relatos blog |
+            | /news-events/cancer-currents-blog?year=2017                       | 2017 - Cancer Currents          |
+            | /research/key-initiatives/ras/ras-central/blog?year=2017          | 2017 - RAS Dialogue             |
+            | /espanol/noticias/temas-y-relatos-blog?year=2018                  | 2018 - Temas y relatos blog     |
 
     Scenario Outline: Filtering blogs by year - invalid
         When user is requesting bad url "<url>" and receives "<text>"
@@ -106,15 +106,6 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | /research/key-initiatives/ras/ras-central/blog?year=sdf | {BASE_URL}/research/key-initiatives/ras/ras-central/blog?year=sdf | year is invalid |
             | /espanol/noticias/temas-y-relatos-blog?year=ghjk        | {BASE_URL}/espanol/noticias/temas-y-relatos-blog?year=ghjk        | year is invalid |
 
-    Scenario Outline: Filtering blogs by month - invalid range
-        When user is requesting bad url "<url>" and receives "<text>"
-        Then status code is 400 on "<request>"
-        And blog posts list doesnot appear
-        Examples:
-            | url                                                      | request                                                            | text             |
-            | /news-events/cancer-currents-blog?month=13               | {BASE_URL}/news-events/cancer-currents-blog?month=13               | month is invalid |
-            | /research/key-initiatives/ras/ras-central/blog?month=sdf | {BASE_URL}/research/key-initiatives/ras/ras-central/blog?month=sdf | month is invalid |
-            | /espanol/noticias/temas-y-relatos-blog?month=0           | {BASE_URL}/espanol/noticias/temas-y-relatos-blog?month=0           | month is invalid |
 
     ### blog
     ##reccomended content is tested in a separate test
