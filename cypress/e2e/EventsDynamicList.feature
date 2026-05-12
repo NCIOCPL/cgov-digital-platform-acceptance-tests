@@ -41,7 +41,7 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                         | prop8     | english                                                                   |
                         | evar2     | D=c8                                                                      |
                         | evar61    | cgvMiniLanding\|ncids_default                                             |
-                        | evar64    | Internal\|Future Events with No Argument Value\|Test Future Event 4       |
+                        | evar64    | Internal\|Future Events with No Argument Value\|Test Future Event 2       |
                         | evar66    | 5\|2\|0\|0\|1\|1                                                          |
                         | evar65    | Dynamic List\|NCIDS Collection Condensed\|Future Events                   |
                         | evar67    | Collection Item\|5\|3                                                     |
@@ -50,7 +50,7 @@ Feature: As an user, I want to see different components of the Events Dynamic Li
                         | channel   | News and Events                                                           |
                         | pev2      | MLP:Collection:LinkClick                                                  |
                         | linkType  | lnk_o                                                                     |
-                        | link      | Test Future Event 4                                                       |
+                        | link      | Test Future Event 2                                                       |
 
 
         Scenario: When user clicks a past event from result list -  analytics event is fired
