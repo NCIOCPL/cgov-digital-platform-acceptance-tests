@@ -116,7 +116,7 @@ When('user clicks on {string} link', (paginationBtn) => {
 });
 
 And('the author name {string} is displayed', (authorName) => {
-    cy.get('p.blog-post-publishing-info').should('contain.text', authorName)
+    cy.get('div.usa-prose p').should('contain.text', authorName);
 });
 
 And('intro text reads {string}', (introText) => {
