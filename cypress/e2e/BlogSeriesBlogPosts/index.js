@@ -97,7 +97,7 @@ And('only {int} blog appear', (count) => {
 
 
 And(`blog's posted date is {string}`, (postedDate) => {
-    cy.get('div.cgvblogpost p').find('time').should('have.text', postedDate);
+    cy.get('div.usa-prose p').find('time').should('have.text', postedDate);
 });
 
 And('user clicks on blog post image number {int}', (positionNumber) => {
