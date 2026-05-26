@@ -1,5 +1,8 @@
 name: CGOV Digital Platform Smoke Tests
-on:  
+on: 
+  # Manual trigger from the GitHub Actions UI
+  workflow_dispatch: 
+  
   schedule:
     # runs tests every day at 7am
     - cron: '0 12 * * *'
