@@ -17,6 +17,12 @@ jobs:
       ## This clones and checks out.
       - name: Checkout branch
         uses: actions/checkout@v2
+      - name: Normalize URL inputs
+        run: |
+          base_url="$(printf '%s' "$BASE_URL_INPUT" | sed -E 's/^[[:space:]]+//; s#[[:space:]/]*$##')"
+          echo "BASE_URL=$base_url" >> "$GITHUB_ENV"
+        env:
+          BASE_URL_INPUT: ${{ inputs.base_url }}
       ## Setup node and npm caching.
       - name: Setup Node
         uses: actions/setup-node@v4.3.0
@@ -30,7 +36,7 @@ jobs:
         run: npx playwright install --with-deps
       ## Now generate the reference images
       - name: Run image generation
-        run: refBaseUrl=${{ inputs.base_url }} npm run backstop:reference
+        run: refBaseUrl="$BASE_URL" npm run backstop:reference
       ## Upload ref images
       - uses: actions/upload-artifact@v4
         name: Upload reference images
