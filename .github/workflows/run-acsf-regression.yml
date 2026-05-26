@@ -20,6 +20,21 @@ jobs:
       ## This clones and checks out.
       - name: Checkout branch
         uses: actions/checkout@v2
+      - name: Normalize URL inputs
+        run: |
+          normalize_url() {
+            printf '%s' "$1" | sed -E 's/^[[:space:]]+//; s#[[:space:]/]*$##'
+          }
+
+          base_url="$(normalize_url "$BASE_URL_INPUT")"
+          front_end_base_url="$(normalize_url "$FRONT_END_BASE_URL_INPUT")"
+          {
+            echo "BASE_URL=$base_url"
+            echo "FRONT_END_BASE_URL=$front_end_base_url"
+          } >> "$GITHUB_ENV"
+        env:
+          BASE_URL_INPUT: ${{ inputs.base_url }}
+          FRONT_END_BASE_URL_INPUT: ${{ inputs.front_end_base_url }}
       ## Setup node and npm caching.
       - name: Setup Node
         uses: actions/setup-node@v4.3.0
@@ -31,7 +46,7 @@ jobs:
         run: npm ci
       ## Run Cypress functional tests
       - name: Run tests
-        run: CYPRESS_baseUrl=${{ inputs.front_end_base_url }}/automation-installed CYPRESS_front_end_base_url=${{ inputs.front_end_base_url }}/automation-installed CYPRESS_ocpl_password='${{ secrets.ocpl_password }}' CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:acsf
+        run: CYPRESS_baseUrl="$FRONT_END_BASE_URL/automation-installed" CYPRESS_front_end_base_url="$FRONT_END_BASE_URL/automation-installed" CYPRESS_ocpl_password='${{ secrets.ocpl_password }}' CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:acsf
       ## Upload screenshots of failed tests
       - uses: actions/upload-artifact@v4
         name: Upload failed tests
@@ -42,7 +57,7 @@ jobs:
       ## Run Cypress CMS tests
       - name: Run CMS tests
         if: always()
-        run: CYPRESS_baseUrl=${{ inputs.base_url }} CYPRESS_front_end_base_url=${{ inputs.front_end_base_url }} CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms
+        run: CYPRESS_baseUrl="$BASE_URL" CYPRESS_front_end_base_url="$FRONT_END_BASE_URL" CYPRESS_admin_password='${{ secrets.admin_password }}' npm run cypress:cms
       ## Upload screenshots of failed tests
       - uses: actions/upload-artifact@v4
         name: Upload failed CMS tests
