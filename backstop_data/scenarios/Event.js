@@ -13,9 +13,9 @@ module.exports = [
     {
         label: 'event focus on calendar link desktop',
         testPath: '/about-cancer/coping/nci-workshop-event',
-        focusSelector: 'a[href$="icalendar"]',
+        focusSelector: 'a[href*="icalendar"]',
         selectors: [
-            '#cgvBody'
+            'main#main-content'
         ],
         selectorExpansion: false,
         postInteractionWait: 1000,
