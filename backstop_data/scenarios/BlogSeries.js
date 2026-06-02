@@ -24,5 +24,30 @@ module.exports = [
             '.item-list'
         ],
         selectorExpansion: true,
-	}
+	},
+    {
+		label: 'blog series blog topic',
+		testPath: '/news-events/cancer-currents-blog?topic=biology',
+	
+     viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            }
+            ]
+        },
+        {
+		label: 'cancer currents blog spanish',
+		testPath: '/espanol/noticias/temas-y-relatos-blog',
+	
+     viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            }
+            ]
+        }
+
 ]
