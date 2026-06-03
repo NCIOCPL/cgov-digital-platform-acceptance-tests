@@ -22,7 +22,7 @@ And('{string} accordion is collapsed', (archive) => {
 });
 
 And('blog posts list appears', () => {
-    cy.get('div.item-list span').should('be.visible');
+    cy.get('.usa-collection').should('be.visible');
 });
 
 And('{string} button appears with a link {string}', (postLink, link) => {
@@ -34,31 +34,29 @@ And('{string} button1 appears with a link {string}', (postLink, link) => {
 });
 
 When('user clicks on {string} button', (olderPostLink) => {
-    cy.get('div.clearfix').contains(olderPostLink).click();  
+    cy.get('.cgdp-blog-post-pager').contains(olderPostLink).click();  
 });
 
 When('user clicks on {string} button1', (olderPostLink) => {
     cy.get('div.cgdp-blog-post-pager--older a').click();
 });
 
-And('each blog post has a title, time, description and {string} button', (linkButton) => {
-    cy.get('a.title span').should('be.visible').invoke('text').should('not.be.empty');
-    cy.get('div.date-author time').should('be.visible').invoke('text').should('not.be.empty');
-    cy.get('div.description p').should('be.visible').invoke('text').should('not.be.empty');
-    cy.get('div.description p').find('a').first().should('have.text', linkButton);
+And('each blog post has a title, time, description', () => {
+    cy.get('.usa-collection__body a.usa-link').should('be.visible').invoke('text').should('not.be.empty');
+    cy.get('.usa-collection__meta time').should('be.visible').invoke('text').should('not.be.empty');
+    cy.get('.usa-collection__description').should('be.visible').invoke('text').should('not.be.empty');
 });
 
 And('{int} blog has a date as {string}', (blogPosition, date) => {
-    cy.get('div.date-author').eq(blogPosition - 1).find('time').should('have.text', date);
+    cy.get('.usa-collection__meta').eq(blogPosition - 1).find('time').should('have.text', date);
 });
 
 And('{int} blog has an image with an url {string}', (blogPosition, link) => {
-    cy.get('div.item-list').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
+    cy.get('.usa-collection__item').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
 });
 
-And(`{int} blog's title and continue reading button both link to {string}`, (blogPosition, link) => {
-    cy.get('div.item-list').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
-    cy.get('div[class*="title-and-desc"]').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
+And(`{int} blog's title link to {string}`, (blogPosition, link) => {
+    cy.get('.usa-collection__item').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
 });
 
 When('user clicks on {string} accordion', (archive) => {
@@ -66,11 +64,11 @@ When('user clicks on {string} accordion', (archive) => {
 });
 
 And('{int} blog has no image', (blogPosition) => {
-    cy.get('div.item-list a').eq(blogPosition - 1).find('img').should('not.exist');
+    cy.get('.usa-collection__item').eq(blogPosition - 1).find('img').should('not.exist');
 });
 
 And('{int} blog has an author {string}', (blogPosition, author) => {
-    cy.get('div.date-author').eq(blogPosition - 1).should('be.visible').and('contain.text', author);
+    cy.get(`.usa-collection__meta-item:contains("${author}")`).eq(blogPosition - 1).should('be.visible');
 });
 
 Then('{string} section is expanded', (archive) => {
@@ -88,11 +86,11 @@ And('months links are displayed', () => {
 });
 
 And('blog posts list doesnot appear', () => {
-    cy.get('div.item-list span').should('not.exist');
+    cy.get('.usa-collection').should('not.exist');
 });
 
 And('only {int} blog appear', (count) => {
-    cy.get('div.item-list a.title').should('be.visible').and('have.length', count);
+    cy.get('.usa-collection__item a').should('be.visible').and('have.length', count);
 });
 
 
@@ -100,8 +98,8 @@ And(`blog's posted date is {string}`, (postedDate) => {
     cy.get('div.usa-prose p').find('time').should('have.text', postedDate);
 });
 
-And('user clicks on blog post image number {int}', (positionNumber) => {
-    cy.get('a.item-image.image').eq(positionNumber - 1).trigger('click', { followRedirect: false });
+And('user clicks on blog post number {int}', (positionNumber) => {
+    cy.get('.usa-collection__item a').eq(positionNumber - 1).trigger('click', { followRedirect: false });
 });
 
 
