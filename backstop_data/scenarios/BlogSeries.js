@@ -6,7 +6,7 @@ module.exports = [
     {
 		label: 'blog series blog title focus',
 		testPath: '/news-events/cancer-currents-blog',
-        focusSelector: '.item-list a.title',
+        focusSelector: '.usa-collection a.usa-link',
         postInteractionWait: 1000,
         viewports: [
             {
@@ -21,7 +21,7 @@ module.exports = [
             },
         ],
         selectors: [
-            '.item-list'
+            '.usa-collection'
         ],
         selectorExpansion: true,
 	},
