@@ -241,16 +241,16 @@ Then('list of {string} has the following posts', (blogPost, dataTable) => {
         const day = date.getDate();
         if (blogPost == 'blog post') {
             todayDate = `${month} ${day}, ${year}`
-            cy.get(`div.date-author time:contains("${todayDate}")`).should('be.visible');
+            cy.get(`.usa-collection__meta time:contains("${todayDate}")`).should('be.visible');
         }
         else if (blogPost == 'Spanish blog post') {
             todayDate = `${day} de ${month} de ${year}`;
-            cy.get('div.date-author time').invoke('text').then(text => {
+            cy.get('.usa-collection__meta time').invoke('text').then(text => {
                 expect(text.toLowerCase()).to.eq(todayDate);
             })
         }
        
-        cy.get('div.date-author').should('include.text', author);
+        cy.get(`.usa-collection__meta-item:contains("${author}")`).should('be.visible');
     }
 });
 
@@ -258,29 +258,14 @@ And('the promotional image is matching the earlier selected image', () => {
     const expectedSrc = (Cypress.env('tempImg').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '');
     const extractedImageName = extractImgName(expectedSrc).replace(/\.jpg|\.jpeg|\.png/, '')
 
-    cy.get('div.dynamic.list ul li').find('img').then($el => {
+    cy.get('.usa-collection__item').eq(0).find('img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(extractedImageName.replaceAll('_', '-').replace('article', ''))
     })
 });
 
-And('the Continue Reading link appears with the following href', (dataTable) => {
-    for (let { linkName, linkHref } of dataTable.hashes()) {
-        if (linkHref.includes("{TEST_SITE_SECTION}")) {
-            linkHref = linkHref.replace("{TEST_SITE_SECTION}", siteSection);
-        }
-        const date1 = new Date();
-        const currYear = date1.getFullYear();
-        if (linkHref.includes("{YEAR}")) {
-            linkHref = linkHref.replace("{YEAR}", currYear);
-        }
-        if (linkHref.includes("{RANDOM}")) {
-            linkHref = linkHref.replaceAll("{RANDOM}", randomStr);
-        }
-        cy.get(`p a[href='${linkHref}']`).should('be.visible').and('have.text', linkName);
-    }
-});
+
 
 And('the {string} link appears with the following href', (testBlogTopic, dataTable) => {
     for (let { linkName, linkHref } of dataTable.hashes()) {

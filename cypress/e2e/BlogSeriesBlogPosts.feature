@@ -25,18 +25,19 @@ Feature: As an user, I want to see different components of the Blog Series and B
         And the "Suscríbase" button appears
         And the "Archivo" accordion is displayed
         And blog posts list appears
-        And each blog post has a title, time, description and "Siga leyendo >" button
+        And each blog post has a title, time, description
 
     Scenario: Individual blog's elements
         Given user is navigating to "/news-events/cancer-currents-blog"
         Then page title is "Cancer Currents Blog"
         And blog posts list appears
-        And each blog post has a title, time, description and "Continue Reading >" button
+        And each blog post has a title, time, description
         And 1 blog has a date as "June 5, 2019"
         And 1 blog has an image with an url "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
-        And 1 blog's title and continue reading button both link to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
+        And 1 blog's title link to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
+        When user is navigating to "/news-events/cancer-currents-blog?page=1"
         And 3 blog has no image
-        And 3 blog has a date as "May 30, 2019"
+        And 3 blog has a date as "January 31, 2019"
         And 3 blog has an author "NCI Staff"
 
     Scenario: Blog series accordion
@@ -46,10 +47,6 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then "Archive" section is expanded
         And the following sections are displayed
             | title | isExpanded |
-
-
-
-
 
     Scenario Outline: RAS blog main page elements are present
         Given screen breakpoint is set to "<breakpoint>"
@@ -133,7 +130,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
 
     Scenario: When user clicks a blog post image from result list -  analytics event is fired
         When user is navigating to "/news-events/cancer-currents-blog"
-        And user clicks on blog post image number 1
+        And user clicks on blog post number 1
         Then page click request is sent
         And the following parameters should be captured
             | parameter | value                                                          |

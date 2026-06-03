@@ -189,10 +189,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Automated Test Blog Post for testing Blog Series  | {TEST_SITE_SECTION}/blog-series-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM}         | today's date | Automated Test Blog Post Author  |
             | Automated Test Blog Post2 for testing Blog Series | {TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post2-test-blog-series-{RANDOM} | today's date | Automated Test Blog Post2 Author |
         And the promotional image is matching the earlier selected image
-        And the Continue Reading link appears with the following href
-            | linkName           | linkHref                                                                                    |
-            | Continue Reading > | {TEST_SITE_SECTION}/blog-series-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM}         |
-            | Continue Reading > | {TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post2-test-blog-series-{RANDOM} |
         And the "Categories" managed list appears without the date
         And the "Test Blog Topic" link appears with the following href
             | linkName        | linkHref                                                                       |
@@ -415,9 +411,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then list of "Spanish blog post" has the following posts
             | title                                            | url                                                                                                | expectedDate | author                          |
             | Automated Test Blog Post for testing Blog Series | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} | today's date | Automated Test Blog Post Author |
-        And the Continue Reading link appears with the following href
-            | linkName       | linkHref                                                                                           |
-            | Siga leyendo > | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} |
+      
         And the "Categorías" managed list appears without the date
         And the "Test Blog Topic Spanish" link appears with the following href
             | linkName                | linkHref                                                                               |
