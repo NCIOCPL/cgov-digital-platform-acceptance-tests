@@ -3,7 +3,8 @@
   <channel>
     <title>Spanish Blog Series for promo image edge cases</title>
     <link>{BASE_URL}/espanol/noticias/esp-promo-images-blog</link>
-    <description>Blog que presenta las noticias y las últimas investigaciones del Instituto Nacional del Cáncer.</description>
+    <description>&lt;p&gt;Blog que presenta las noticias y las últimas investigaciones del Instituto Nacional del Cáncer.&lt;/p&gt;
+</description>
     <language>es</language>
     
     <item>

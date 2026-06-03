@@ -3,7 +3,7 @@
   <channel>
     <title>Blog Series for promo image edge cases</title>
     <link>{BASE_URL}/news-events/promo-images-blog</link>
-    <description>Simply dummy text of the printing and typesetting industry. It has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</description>
+    <description>&lt;p&gt;Simply dummy text of the printing and typesetting industry. It has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.&lt;/p&gt;</description>
     <language>en</language>
     
     <item>
