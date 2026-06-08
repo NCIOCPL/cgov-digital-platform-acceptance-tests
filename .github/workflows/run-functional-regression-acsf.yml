@@ -39,7 +39,11 @@ jobs:
           # Retrieve the Akamai staging network IP
           domain=$(printf '%s' "$BASE_URL" | sed -E 's|https?://([^/]+).*|\1|')
           subdomain=$(printf '%s' "$BASE_URL" | sed -E 's|https?://([^/]+)\.cancer\.gov.*|\1|')
-          ip_address=$(nslookup $subdomain.cancer.gov.edgekey-staging.net | awk '/^Address: / {print $2; exit}')
+          IFS=- read -r _ tier _ <<< "$subdomain"
+          if [[ -z "$tier" ]]; then
+            tier="prod"
+          fi
+          ip_address=$(nslookup akamai-$tier.cancer.gov.edgekey-staging.net | awk '/^Address: / {print $2; exit}')
 
           # Check if an IP address was found
           if [ -n "$ip_address" ]; then
