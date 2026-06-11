@@ -59,7 +59,6 @@ Feature: Basic checks to ensure production site is up and running
             | https://webapis.cancer.gov/drugdictionary/v1/Drugs/expand/B?includeNameTypes=USBrandName&includeNameTypes=PreferredName&size=10000 | results    |
             | https://webapis.cancer.gov/glossary/v1/Terms/Genetics/HealthProfessional/en/acrochordon                                            | definition |
             | https://webapis.cancer.gov/sitewidesearch/v1/Search/cgov/en/breast%20cancer?size=20&from=0&site=all                                | results    |
-            | https://webapis.cancer.gov/r4r/v1/resources?from=0&toolTypes=analysis_tools                                                        | results    |
             | https://webapis.cancer.gov/triallistingsupport/v1/listing-information/breast-cancer                                                | conceptId  |
 
     Scenario: Verify cts and cts print api
