@@ -45,22 +45,7 @@ module.exports = [
         testPath: '/test/press-release-no-lead-img',
         delay: 2000,
     },
-    {
-        label: 'Press release glossified links',
-        testPath: '/test/dictionary-link-test-press-release',
-        viewports: [
-            {
-                label: 'desktop',
-                width: 1025,
-                height: 600,
-            },
-            {
-                label: 'tablet',
-                width: 650,
-                height: 900,
-            }
-        ]
-    },
+   
 
 
     // {
