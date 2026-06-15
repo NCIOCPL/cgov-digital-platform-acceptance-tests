@@ -52,7 +52,7 @@ Feature: As a cms user I want to be able to create Press Release content type to
         Given user is navigating to the front end site with path site section plus "press-release"
         Then page title is "Automated Test Press Release"
         And "Posted:Updated:Reviewed:" date is displaying today's date
-        And Contact "NCI Press Office" link has a href "mailto:ncipressofficers@mail.nih.gov"
+        And Contact "NIH Press Office" link has a href "mailto:nihpress@nih.gov"
         And description reads "This is a description of press release content type."
         And the lead image for press release is matching the earlier selected image
         And public use text has a link "Reuse of NCI Information" with href "/policies/copyright-reuse"

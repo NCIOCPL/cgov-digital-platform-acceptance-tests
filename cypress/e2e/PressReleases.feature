@@ -28,7 +28,7 @@ Feature: As an user, I want to see different components of the Press Releases
                 When user is navigating to "/news-events/press-releases/2018/press-release-no-date"
                 Then page title is "[No Date] Press Release Title"
                 And posted date is not displayed
-                And the contact "NCI Press Office" is displayed with a link to email "mailto:ncipressofficers@mail.nih.gov"
+                And the contact "NIH Press Office" is displayed with a link to email "mailto:nihpress@nih.gov"
                 When user is clicking on definition for "epidemiology"
                 Then pop-up definition box is displayed for "epidemiology"
 
@@ -36,7 +36,7 @@ Feature: As an user, I want to see different components of the Press Releases
                 When user is navigating to "/espanol/noticias/comunicados-de-prensa/2018/esp-press-release-no-date"
                 Then page title is "[No Date] Press Release Title - ES"
                 And posted date is not displayed
-                And the contact "NCI Press Office" is not displayed
+                And the contact "NIH Press Office" is not displayed
 
 
         Scenario: Press Release with a date
@@ -45,7 +45,7 @@ Feature: As an user, I want to see different components of the Press Releases
                 And "Posted" date is displayed as "May 9, 2018"
                 And "Updated" date is displayed as "May 9, 2018"
                 And "Reviewed" date is displayed as "May 9, 2018"
-                And the contact "NCI Press Office" is displayed with a link to email "mailto:ncipressofficers@mail.nih.gov"
+                And the contact "NIH Press Office" is displayed with a link to email "mailto:nihpress@nih.gov"
 
 
         Scenario: Spanish Press Release with a date
@@ -53,7 +53,7 @@ Feature: As an user, I want to see different components of the Press Releases
                 Then page title is "Press Release 10 - ES"
                 And "Actualización" date is displayed as "9 de mayo de 2018"
                 And "Revisión" date is displayed as "9 de mayo de 2018"
-                And the contact "NCI Press Office" is not displayed
+                And the contact "NIH Press Office" is not displayed
 
         Scenario: When user clicks a press release from result list -  analytics event is fired
                 When user is navigating to "/news-events/press-releases/2018"

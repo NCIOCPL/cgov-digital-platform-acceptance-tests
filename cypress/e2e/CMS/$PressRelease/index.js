@@ -66,7 +66,7 @@ And('Contact {string} link has a href {string}', (linkText, link) => {
 })
 
 And('description reads {string}', (desc) => {
-    cy.get('div#cgvBody > p').should('have.text', desc)
+    cy.get('.usa-prose.usa-prose--ncids-full-html p').should('have.text', desc)
 })
 
 And('the lead image for press release is matching the earlier selected image', () => {

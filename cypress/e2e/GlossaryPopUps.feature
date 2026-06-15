@@ -39,17 +39,17 @@ Feature: Viewing glossary pop-ups when available while visiting cancer info summ
 
         Examples:
             | breakpoint | url                                      | termName                            | features                              | definition                          |
-            | desktop    | /test/dictionary-link-test-press-release | chemotherapy                        | definition,pronunciation,audio        | chemotherapy                        |
-            | desktop    | /test/dictionary-link-test-press-release | Metastatic                          | definition,pronunciation,audio,img[1] | metastasis                          |
-            | desktop    | /test/dictionary-link-test-press-release | stage III esophageal adenocarcinoma | definition,pronunciation,audio,img[3] | stage III esophageal adenocarcinoma |
-            | desktop    | /test/dictionary-link-test-press-release | Squamous cell carcinoma             | definition,pronunciation,audio        | squamous cell carcinoma             |
-            | desktop    | /test/dictionary-link-test-press-release | pleural cavity                      | definition,audio,pronunciation        | pleural cavity                      |
-            | desktop    | /test/dictionary-link-test-press-release | first-degree relative               | definition,pronunciation,audio        | first-degree relative               |
-            | desktop    | /test/dictionary-link-test-press-release | retinoblastoma                      | definition,pronunciation,audio        | retinoblastoma                      |
-            | tablet     | /test/dictionary-link-test-press-release | autosomal dominant                  | definition,pronunciation,audio,img[1] | autosomal dominant inheritance      |
+            | desktop    | /test/dictionary-link-test-cancer-research | chemotherapy                        | definition,pronunciation,audio        | chemotherapy                        |
+            | desktop    | /test/dictionary-link-test-cancer-research | Metastatic                          | definition,pronunciation,audio,img[1] | metastasis                          |
+            | desktop    | /test/dictionary-link-test-cancer-research | stage III esophageal adenocarcinoma | definition,pronunciation,audio,img[3] | stage III esophageal adenocarcinoma |
+            | desktop    | /test/dictionary-link-test-cancer-research | Squamous cell carcinoma             | definition,pronunciation,audio        | squamous cell carcinoma             |
+            | desktop    | /test/dictionary-link-test-cancer-research | pleural cavity                      | definition,audio,pronunciation        | pleural cavity                      |
+            | desktop    | /test/dictionary-link-test-cancer-research | first-degree relative               | definition,pronunciation,audio        | first-degree relative               |
+            | desktop    | /test/dictionary-link-test-cancer-research | retinoblastoma                      | definition,pronunciation,audio        | retinoblastoma                      |
+            | tablet     | /test/dictionary-link-test-cancer-research | autosomal dominant                  | definition,pronunciation,audio,img[1] | autosomal dominant inheritance      |
 
     Scenario: Negative test cases for popups that 404
-        Given user is navigating to "/test/dictionary-link-test-press-release"
+        Given user is navigating to "/test/dictionary-link-test-cancer-research"
         When user is clicking on definition for "unknown definition"
         And definition box displays "Definition Not Found"
 

@@ -36,7 +36,7 @@ And('the contact {string} is displayed with a link to email {string}', (pressTex
 });
 
 When('user is clicking on definition for {string}', (glossTerm) => {
-    cy.get('.definition').click();
+    cy.get('.cgdp-definition-link').click();
 });
 
 Then('pop-up definition box is displayed for {string}', (glossTerm) => {
