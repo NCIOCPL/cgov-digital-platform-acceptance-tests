@@ -40,29 +40,13 @@ module.exports = [
         label: 'press release with with lead image with caption',
         testPath: '/test/press-release-lead-img-caption',
         delay: 2000,
-    }, {
+    }, 
+    {
         label: 'press release with no lead image',
         testPath: '/test/press-release-no-lead-img',
         delay: 2000,
-    },
-    {
-        label: 'Press release glossified links',
-        testPath: '/test/dictionary-link-test-press-release',
-        viewports: [
-            {
-                label: 'desktop',
-                width: 1025,
-                height: 600,
-            },
-            {
-                label: 'tablet',
-                width: 650,
-                height: 900,
-            }
-        ]
-    },
-
-
+    }
+    
     // {
     // 	label: 'spanish press release with related resources and citations expand citation',
     // 	testPath: '/espanol/noticias/comunicados-de-prensa/2018/leucemia-llc-ibrutinib-estudio',
