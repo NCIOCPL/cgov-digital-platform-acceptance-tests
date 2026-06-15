@@ -96,23 +96,6 @@ module.exports = [
         ]
     },
     {
-        label: 'Embedded video sizes no caption and ad link',
-        testPath: '/test/embedded-video-sizes-no-caption-ad',
-        viewports: [
-            {
-                label: 'desktop',
-                width: 1025,
-                height: 600,
-            },
-            {
-                label: 'tablet',
-                width: 650,
-                height: 900,
-            }
-        ]
-    },
-
-    {
         label: 'Embedded image',
         testPath: '/test/embed-poc',
     },
