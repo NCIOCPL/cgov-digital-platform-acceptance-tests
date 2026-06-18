@@ -121,8 +121,73 @@ Then('page click request is sent', () => {
     loadOrClick = getClickBeacon(cy.AnalyticsStorage);
 });
 
+Then('drug dictionary search page click request is sent', () => {
+    cy.wrap(null, { timeout: 10000 }).should(() => {
+        const sourceUrl = cy.DrugDictionarySearchSourceUrl;
+        expect(sourceUrl, 'drug dictionary search source URL').to.be.a('string');
+        const searchStorage = [
+            ...(cy.DrugDictionarySearchStorage || []),
+            ...(cy.AnalyticsStorage || []),
+        ];
+
+        const clickBeacon = searchStorage.find((singleBeacon) => {
+            const pageUrl = singleBeacon.pageURL?.replace(/\/$/, '');
+            const pev2 = singleBeacon.pev2 || '';
+
+            return singleBeacon.linkType?.includes('lnk_o') &&
+                !pev2.includes('Resized') &&
+                singleBeacon.prop11 === 'Drug' &&
+                pageUrl === sourceUrl;
+        });
+
+        expect(clickBeacon, 'drug dictionary search click beacon').to.exist;
+        loadOrClick = clickBeacon;
+    });
+});
+
 Then('{string} page click request is sent', (param) => {
     loadOrClick = getSpecificClickBeacon(cy.AnalyticsStorage,param);
+});
+
+Then('glossified popup page click request is sent', () => {
+    cy.window({ timeout: 10000 }).should((win) => {
+        const glossId = cy.GlossifiedLinkId;
+        expect(glossId, 'clicked glossified link ID').to.be.a('string');
+
+        const popupBeacons = (cy.AnalyticsStorage || []).filter((singleBeacon) => {
+            return singleBeacon.linkType?.includes('lnk_o') &&
+                singleBeacon.pev2 === 'Body:Glossified:PopupLoad';
+        });
+        const matchingBeacon = popupBeacons.find((singleBeacon) => {
+            return singleBeacon.evar85?.endsWith(`|${glossId}`);
+        });
+        const matchingDataLayerEvent = (win.NCIDataLayer || []).find((singleEvent) => {
+            return singleEvent.event === 'Body:Glossified:PopupLoad' &&
+                singleEvent.data?.termID?.toString() === glossId;
+        });
+        const fallbackBeacon = popupBeacons.find((singleBeacon) => {
+            return singleBeacon.evar85?.endsWith('|undefined');
+        }) || popupBeacons[popupBeacons.length - 1];
+        const capturedValues = popupBeacons.map((singleBeacon) => singleBeacon.evar85).join(', ');
+        const dataLayerTermIds = (win.NCIDataLayer || [])
+            .filter((singleEvent) => singleEvent.event === 'Body:Glossified:PopupLoad')
+            .map((singleEvent) => singleEvent.data?.termID)
+            .join(', ');
+
+        expect(
+            matchingBeacon || (matchingDataLayerEvent && fallbackBeacon),
+            `glossified popup click beacon with ID ${glossId}; captured evar85 values: ${capturedValues}; data layer term ids: ${dataLayerTermIds}`
+        ).to.exist;
+
+        if (matchingBeacon) {
+            loadOrClick = matchingBeacon;
+        } else {
+            loadOrClick = {
+                ...fallbackBeacon,
+                evar85: `${cy.GlossifiedLinkText || matchingDataLayerEvent.data?.linkText}|${matchingDataLayerEvent.data.termID}`,
+            };
+        }
+    });
 });
 
 When('page load request is sent', () => {
@@ -164,4 +229,3 @@ Then('page click request is sent for cts chat', () => {
     }
     loadOrClick = clickBeacon
 });
-

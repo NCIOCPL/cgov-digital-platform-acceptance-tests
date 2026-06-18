@@ -123,7 +123,7 @@ Feature: Drug Dictionary app is integrated within CGOV platform
         And user types "bev" in the search bar
         And browser waits for 1000
         And user clicks "Search" button
-        Then page click request is sent
+        Then drug dictionary search page click request is sent
         And the following parameters should be captured
             | parameter | value                                                               |
             | event2    |                                                                     |
