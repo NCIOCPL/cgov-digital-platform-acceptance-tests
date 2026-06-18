@@ -5,7 +5,14 @@ import { Given, Then, And, When } from "cypress-cucumber-preprocessor/steps";
 When("user types following value and selects matched option in the corresponding field", dataTable => {
     for (const { field, value } of dataTable.hashes()) {
         if (field == 'Subtype') {
-            cy.get('input#st').as('subType').type(value).type('{enter}');
+            cy.get('label[for="st"]').parent().as('subTypeField');
+            cy.get('@subTypeField').find('input#st').type(value);
+            cy.get('@subTypeField')
+                .contains('.cts-autocomplete__menu-item', value, { timeout: 10000 })
+                .should('be.visible')
+                .click();
+            cy.get('@subTypeField').find('input#st').should('have.value', '');
+            cy.get('@subTypeField').contains(value).should('be.visible');
         }
         if (field == 'Stage') {
             cy.get('input#stg').as('stage').type(value);
@@ -30,10 +37,6 @@ And("the url query has the following corresponding code", dataTable => {
         });
     })
 });
-
-
-
-
 
 
 
