@@ -29,6 +29,22 @@ And('user selects {string} from {string} dropdown', (dropDown, cartOption) => {
     cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });
 })
 
+And('{string} drop-down is displayed with {string} option as default', (dropdownText, displayOptions) => {
+    cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+    cy.get(`select[id*="edit-field-landing-contents-0-subform-field-ncids-theme"] option:contains("${displayOptions}")`).should('have.attr', 'selected', 'selected');
+});
+
+And('{string} dropdown has the following options', (dropdownText, dataTable) => {
+    for (const { options } of dataTable.hashes()) {
+        cy.get(`select[id*="edit-field-landing-contents-0-subform-field-ncids-theme"] option:contains("${options}")`).should('exist');
+    }
+});
+
+And('user select {string} from the {string} dropdown', (selectItem, dropdownText) => {
+    cy.get(`label[class*="form-item__label js-form-required"]:contains("${dropdownText}")`).should('be.visible');
+    cy.get(`select[id*="edit-field-landing-contents-0-subform-field-ncids-theme"]`).select(selectItem);
+});
+
 And('user clicks on {string} link in the {string} text area', (title, cartOption) => {
     cy.get(`summary[aria-expanded="false"]:contains(${title})`).click();
 })
