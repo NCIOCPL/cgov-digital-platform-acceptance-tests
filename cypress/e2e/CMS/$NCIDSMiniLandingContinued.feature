@@ -341,12 +341,12 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         Then user selects "Translate" option from Operations dropdown for media with title "NCIDS Automated Test Video"
         Then the page title is "Translations of NCIDS Automated Test Video"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de NCIDS Automated Test Video"
+        Then page title is "Create Spanish translation of NCIDS Automated Test Video"
         And user clears out "Pretty URL" field
         And user fills out the following fields
             | fieldLabel | value                    | field_name       |
             | Pretty URL | ncids-test-video-spanish | field_pretty_url |
-            | Nombre     | _Spanish                 | name[0][value]   |
+            | Name       | _Spanish                 | name[0][value]   |
         And user types "Test Caption_Spanish" into Caption text field
         And user selects "Review" from Change to dropdown
         Then user saves the content page
@@ -361,7 +361,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user clicks on "Media" sub tab
         Then user selects "Translate" option from Operations dropdown for media with title "NCIDS Automated Test Video"
         When user clicks on "Edit" button to edit translation
-        And user selects "Publicado" from Change to dropdown
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
         And browser waits
 
@@ -375,7 +375,7 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         Then user selects "Translate" option from Operations dropdown for content with title "NCIDS Automated Test Mini Landing page 2 Column"
         Then the page title is "Translations of NCIDS Automated Test Mini Landing page 2 Column"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de NCIDS Automated Test Mini Landing page 2 Column"
+        Then page title is "Create Spanish translation of NCIDS Automated Test Mini Landing page 2 Column"
         And browser waits
         And user fills out the following fields
             | fieldLabel       | value    | field_name                                                                                                     |
@@ -433,10 +433,10 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         And user clicks "Approve Archive Request" button from Moderation sidebar
         And user clicks on the tool bar status button "Archivado"
         And user clicks "View in edit form" button from other actions
-        When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user clicks on "Delete-translation" option button
+        When user confirms "Delete Spanish translation" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url "ncids-mini-landing-page-two-column" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
@@ -458,4 +458,3 @@ Feature: NCIDS Mini Landing Page Test Creation of Content continued
         Then the confirmation text "Deleted 2 items." appears on a screen
         And the content item with url "test-video" does not exist in the list of content
         And the content item with url "test-video-spanish" does not exist in the list of content
-

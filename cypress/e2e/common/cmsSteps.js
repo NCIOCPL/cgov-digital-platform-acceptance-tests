@@ -578,14 +578,13 @@ When('user clicks on {string} option button', (btnText) => {
 });
 
 When('user confirms {string} action', (btnText) => {
-    //conditional here is to differentiate between ESP and ENG content
-    //because Drupal renders it differently based on lang
-    if (btnText.includes('Delete')) {
-        cy.get(`div[class*='ui-dialog-buttonset form-actions'] button:contains('${btnText}')`).click();
-    } else {
-        cy.get(`input[value='${btnText}']`).click()
-    }
+    // Drupal renders this confirm action differently based on language.
+    const confirmActionSelector = [
+        `div[class*='ui-dialog-buttonset form-actions'] button:contains('${btnText}')`,
+        `input[value='${btnText}']`
+    ].join(', ');
 
+    cy.get(confirmActionSelector).filter(':visible').first().click();
 });
 
 

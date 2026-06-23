@@ -346,8 +346,8 @@ Feature: Home And Landing Page Test Creation of Content
         Then user selects "Translate" option from Operations dropdown for content with title "NCIDS Automated Test Home and Landing page"
         Then the page title is "Translations of NCIDS Automated Test Home and Landing page"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de NCIDS Automated Test Home and Landing page"
-        And user clicks on "Editar" button for "NCIDS Card Multimedia"
+        Then page title is "Create Spanish translation of NCIDS Automated Test Home and Landing page"
+        And user clicks on "Edit" button for "NCIDS Card Multimedia"
         And user fills out the following fields
             | fieldLabel           | value    | field_name                                                                                                 |
             | Tagline              | _Spanish | field_landing_contents[0][subform][field_tagline][0][value]                                                |
@@ -495,10 +495,10 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks "Approve Archive Request" button from Moderation sidebar
         And user clicks on the tool bar status button "Archivado"
         And user clicks "View in edit form" button from other actions
-        When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user clicks on "Delete-translation" option button
+        When user confirms "Delete Spanish translation" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url "ncids-home-and-landing-page-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
