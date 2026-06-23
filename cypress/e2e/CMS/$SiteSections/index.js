@@ -176,7 +176,7 @@ And('user drags {string} item one level down', (dragLink) => {
 And('{string} appears in position {int} in the side menu tree', (label, position) => {
     cy.task('getSharedValue', 'indexSiteSect').then((indexSiteSect) => {
 
-        cy.get('ul.usa-sidenav__sublist li').eq(indexSiteSect).find(`a:contains("${label}")`).should('be.visible');
+        cy.get('ul.usa-sidenav__sublist li').eq(indexSiteSect-1).find(`a:contains("${label}")`).should('be.visible');
     })
 });
 
