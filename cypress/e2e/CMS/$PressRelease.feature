@@ -187,34 +187,34 @@ Feature: As a cms user I want to be able to create Press Release content type to
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Press Release Edited"
         Then page title is "Translations of Automated Test Press Release Edited"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Press Release Edited"
+        Then page title is "Create Spanish translation of Automated Test Press Release Edited"
         And the following fields are displayed
             | fieldLabel               | field_name                     |
             | Pretty URL               | field_pretty_url               |
-            | Título de página         | title                          |
-            | Subtítulo                | field_subtitle                 |
+            | Page Title               | title                          |
+            | Subtitle                 | field_subtitle                 |
             | Browser Title            | field_browser_title            |
             | Press Release Type       | field_press_release_type       |
             | Card Title               | field_card_title               |
             | Meta Description         | field_page_description         |
             | Feature Card Description | field_feature_card_description |
-        And body was translated as "Cuerpo"
-        And Remove button for image was translated as "Eliminar"
-        And Related Resources section was translated as "Recursos relacionados"
-        And dropdown to add link under related resources was translated to start with "Añadir"
-        And button to add citation was translated as "Añadir Citation"
-        And current state was translated as "Estado actual" "Borrador"
+        And body was translated as "Body"
+        And Remove button for image was translated as "Remove"
+        And Related Resources section was translated as "Related Resources"
+        And dropdown to add link under related resources was translated to start with "Add"
+        And button to add citation was translated as "Add Citation"
+        And current state was translated as "Current state" "Draft"
         And Change to dropdown has the following options
             | option   |
-            | Borrador |
+            | Draft |
             | Review   |
-        And Save button was translated as "Guardar (esta traducción)"
-        And preview button was translated as "Vista previa"
+        And Save button was translated as "Save (this translation)"
+        And preview button was translated as "Preview"
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify translated content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "press-release-edited"
@@ -234,19 +234,19 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "press-release-edited"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
-        And user clears out "Título de página" field
+        And user clears out "Page Title" field
         And user clears out "Meta Description" field
         And user fills out the following fields
             | fieldLabel       | value                                                        | field_name             |
-            | Título de página | Automated Test Press Release Edited Spanish                  | title                  |
+            | Page Title       | Automated Test Press Release Edited Spanish                  | title                  |
             | Meta Description | Automated Test Press Release Meta Description Edited Spanish | field_page_description |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Post-Publication Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
 
     Scenario: Verify Spanish edited content
@@ -265,15 +265,15 @@ Feature: As a cms user I want to be able to create Press Release content type to
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "press-release-edited"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
-        When user clicks on "Contenido" tab
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
         And user clicks on title with url "press-release-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

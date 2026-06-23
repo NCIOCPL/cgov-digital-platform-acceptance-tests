@@ -46,12 +46,12 @@ Feature: User creating a video
         Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Video"
         Then the page title is "Translations of Automated Test Video"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Video"
+        Then page title is "Create Spanish translation of Automated Test Video"
         And user clears out "Pretty URL" field
         And user fills out the following fields
             | fieldLabel | value              | field_name       |
             | Pretty URL | test-video-spanish | field_pretty_url |
-            | Nombre     | _Spanish           | name[0][value]   |
+            | Name       | _Spanish           | name[0][value]   |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
 
@@ -66,7 +66,7 @@ Feature: User creating a video
         And user clicks on "Media" sub tab
         Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Video"
         When user clicks on "Edit" button to edit translation
-        And user selects "Publicado" from Change to dropdown
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
 
@@ -125,17 +125,17 @@ Feature: User creating a video
         Then user selects "Translate" option from Operations dropdown for content with title "Home and Landing page for Video"
         Then page title is "Translations of Home and Landing page for Video"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Home and Landing page for Video"
+        Then page title is "Create Spanish translation of Home and Landing page for Video"
         And user clears out "Pretty URL" field
         And user fills out the following fields
             | fieldLabel       | value                               | field_name       |
             | Pretty URL       | home-and-landing-page-video-spanish | field_pretty_url |
-            | Título de página | Spanish                             | title            |
+            | Page Title       | Spanish                             | title            |
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify spanish video
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "home-and-landing-page-video-spanish"
@@ -273,15 +273,15 @@ Feature: User creating a video
         Then user is logged in and the user name "siteadmin" is displayed in the toolbar
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-video-spanish"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
-        When user clicks on "Contenido" tab
+        When user confirms "Delete" action
+        When user clicks on "Content" tab
 
         And user clicks on title with url "home-and-landing-page-video" from the list of content
         And user clicks on the tool bar status button "Published"

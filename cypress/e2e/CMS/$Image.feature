@@ -92,10 +92,10 @@ Feature: User creating an image
         And user clicks on "Media" sub tab
         Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Image"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Image"
+        Then page title is "Create Spanish translation of Automated Test Image"
         And user fills out the following fields
             | fieldLabel   | value    | field_name             |
-            | Nombre       | _Spanish | name[0][value]         |
+            | Name         | _Spanish | name[0][value]         |
             | Photo Credit | _Spanish | field_credit[0][value] |
         And user types "Test Caption_Spanish" into Caption text field
         Then user saves the content page
@@ -110,18 +110,18 @@ Feature: User creating an image
         Then user selects "Translate" option from Operations dropdown for content with title "Article to test Image"
         Then page title is "Translations of Article to test Image"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Article to test Image"
+        Then page title is "Create Spanish translation of Article to test Image"
         And user clears out "Pretty URL" field
-        And user clears out "Título de página" field
+        And user clears out "Page Title" field
         And user fills out the following fields
             | fieldLabel       | value                         | field_name       |
             | Pretty URL       | article-to-test-image-spanish | field_pretty_url |
-            | Título de página | Article to test Image Spanish | title            |
+            | Page Title       | Article to test Image Spanish | title            |
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify translated image overrides
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "article-to-test-image-spanish"
@@ -141,17 +141,17 @@ Feature: User creating an image
         When user clicks on "Content" tab
 
         And user clicks on title with url spanish path "/espanol" site section plus "article-to-test-image-spanish"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user confirms "Delete" action
 
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url "article-to-test-image" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

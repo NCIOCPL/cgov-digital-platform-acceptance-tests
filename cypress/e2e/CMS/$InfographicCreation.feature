@@ -81,15 +81,15 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Infographic"
         Then the page title is "Translations of Automated Test Infographic"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Infographic"
+        Then page title is "Create Spanish translation of Automated Test Infographic"
         And user clears out "Pretty URL" field
-        And user clears out "Nombre" field
+        And user clears out "Name" field
         And user clears out "Card Title" field
         And user clears out "Feature Card Description" field
         And user fills out the following fields
             | fieldLabel               | value                                                   | field_name                     |
             | Pretty URL               | test-infographic-spanish                                | field_pretty_url               |
-            | Nombre                   | Automated Test Infographic Spanish                      | name[0][value]                 |
+            | Name                     | Automated Test Infographic Spanish                      | name[0][value]                 |
             | Card Title               | Automated Test Infographic Spanish - Card Title         | field_card_title               |
             | Feature Card Description | Automated Test Infographic Spanish - Featured Card Desc | field_feature_card_description |
         And user enters "Spanish" into "List Description" text field
@@ -107,7 +107,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clicks on "Media" sub tab
         Then user selects "Translate" option from Operations dropdown for media with title "Automated Test Infographic"
         When user clicks on "Edit" button to edit translation
-        And user selects "Publicado" from Change to dropdown
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
     Scenario: Verify newly created Spanish Infographic as a media item
@@ -313,33 +313,33 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Article to test Infographic"
         Then page title is "Translations of Automated Test Article to test Infographic"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Article to test Infographic"
+        Then page title is "Create Spanish translation of Automated Test Article to test Infographic"
         And user clears out "Pretty URL" field
-        And user clears out "Título de página" field
+        And user clears out "Page Title" field
         And user fills out the following fields
             | fieldLabel       | value                                              | field_name       |
             | Pretty URL       | article-to-test-infographic-spanish                | field_pretty_url |
-            | Título de página | Automated Test Article to test Infographic Spanish | title            |
+            | Page Title       | Automated Test Article to test Infographic Spanish | title            |
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
-        When user clicks on "Contenido" tab
-        Then user selects "Traducir" option from Operations dropdown for content with title "Automated Test Home and Landing page to test Infographic"
+        And user selects "Publish" from workflow actions
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Home and Landing page to test Infographic"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Home and Landing page to test Infographic"
+        Then page title is "Create Spanish translation of Automated Test Home and Landing page to test Infographic"
         And user clears out "Pretty URL" field
-        And user clears out "Título de página" field
+        And user clears out "Page Title" field
         And user fills out the following fields
             | fieldLabel       | value                                                            | field_name       |
             | Pretty URL       | home-and-landing-page-to-test-infographic-spanish                | field_pretty_url |
-            | Título de página | Automated Test Home and Landing page to test Infographic Spanish | title            |
+            | Page Title       | Automated Test Home and Landing page to test Infographic Spanish | title            |
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
 
     Scenario: Verify Infographic at the front end in the Spanish Article
@@ -373,27 +373,27 @@ Feature: As a cms user I want to be able to create an Infographic media content 
 
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "home-and-landing-page-to-test-infographic-spanish"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user confirms "Delete" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "article-to-test-infographic-spanish"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user confirms "Delete" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page-to-test-infographic" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
