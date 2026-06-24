@@ -175,114 +175,114 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on "Media" sub tab
         Then user selects "Translate" option from Operations dropdown for media with title "Test File PDF"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test File PDF"
+        Then page title is "Create Spanish translation of Test File PDF"
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
-            | Nombre     | _Spanish | name[0][value] |
+            | Name       | _Spanish | name[0][value] |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File PDF"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File PDF"
         When user clicks on "Edit" button to edit translation of "Test File PDF_Spanish"
-        Then page title is "Test File PDF_Spanish [Español traducción]"
-        And user selects "Publicado" from Change to dropdown
+        Then page title is "Test File PDF_Spanish [Spanish translation]"
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File CSV"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File CSV"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test File CSV"
+        Then page title is "Create Spanish translation of Test File CSV"
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
-            | Nombre     | _Spanish | name[0][value] |
+            | Name       | _Spanish | name[0][value] |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File CSV"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File CSV"
         When user clicks on "Edit" button to edit translation of "Test File CSV_Spanish"
-        Then page title is "Test File CSV_Spanish [Español traducción]"
-        And user selects "Publicado" from Change to dropdown
+        Then page title is "Test File CSV_Spanish [Spanish translation]"
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File PPTX"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File PPTX"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test File PPTX"
+        Then page title is "Create Spanish translation of Test File PPTX"
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
-            | Nombre     | _Spanish | name[0][value] |
+            | Name       | _Spanish | name[0][value] |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File PPTX"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File PPTX"
         When user clicks on "Edit" button to edit translation of "Test File PPTX_Spanish"
-        Then page title is "Test File PPTX_Spanish [Español traducción]"
-        And user selects "Publicado" from Change to dropdown
+        Then page title is "Test File PPTX_Spanish [Spanish translation]"
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File PPT"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File PPT"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test File PPT"
+        Then page title is "Create Spanish translation of Test File PPT"
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
-            | Nombre     | _Spanish | name[0][value] |
+            | Name       | _Spanish | name[0][value] |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File PPT"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File PPT"
         When user clicks on "Edit" button to edit translation of "Test File PPT_Spanish"
-        Then page title is "Test File PPT_Spanish [Español traducción]"
-        And user selects "Publicado" from Change to dropdown
+        Then page title is "Test File PPT_Spanish [Spanish translation]"
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File XLSX"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File XLSX"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test File XLSX"
+        Then page title is "Create Spanish translation of Test File XLSX"
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
-            | Nombre     | _Spanish | name[0][value] |
+            | Name       | _Spanish | name[0][value] |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File XLSX"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File XLSX"
         When user clicks on "Edit" button to edit translation of "Test File XLSX_Spanish"
-        Then page title is "Test File XLSX_Spanish [Español traducción]"
-        And user selects "Publicado" from Change to dropdown
+        Then page title is "Test File XLSX_Spanish [Spanish translation]"
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File XLS"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File XLS"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test File XLS"
+        Then page title is "Create Spanish translation of Test File XLS"
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
-            | Nombre     | _Spanish | name[0][value] |
+            | Name       | _Spanish | name[0][value] |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File XLS"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File XLS"
         When user clicks on "Edit" button to edit translation of "Test File XLS_Spanish"
-        Then page title is "Test File XLS_Spanish [Español traducción]"
-        And user selects "Publicado" from Change to dropdown
+        Then page title is "Test File XLS_Spanish [Spanish translation]"
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File DOCX"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File DOCX"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test File DOCX"
+        Then page title is "Create Spanish translation of Test File DOCX"
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
-            | Nombre     | _Spanish | name[0][value] |
+            | Name       | _Spanish | name[0][value] |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File DOCX"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File DOCX"
         When user clicks on "Edit" button to edit translation of "Test File DOCX_Spanish"
-        Then page title is "Test File DOCX_Spanish [Español traducción]"
-        And user selects "Publicado" from Change to dropdown
+        Then page title is "Test File DOCX_Spanish [Spanish translation]"
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File DOC"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File DOC"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test File DOC"
+        Then page title is "Create Spanish translation of Test File DOC"
         And user fills out the following fields
             | fieldLabel | value    | field_name     |
-            | Nombre     | _Spanish | name[0][value] |
+            | Name       | _Spanish | name[0][value] |
         And user selects "Review" from Change to dropdown
         Then user saves the content page
-        Then user selects "Traducir" option from Operations dropdown for media with title "Test File DOC"
+        Then user selects "Translate" option from Operations dropdown for media with title "Test File DOC"
         When user clicks on "Edit" button to edit translation of "Test File DOC_Spanish"
-        Then page title is "Test File DOC_Spanish [Español traducción]"
-        And user selects "Publicado" from Change to dropdown
+        Then page title is "Test File DOC_Spanish [Spanish translation]"
+        And user selects "Published" from Change to dropdown
         Then user saves the content page
 
     Scenario: Creating Article and List to test files
@@ -569,23 +569,23 @@ Feature: As a content owner I want to be able to upload different file types to 
         Then user selects "Translate" option from Operations dropdown for content with title "Article to test Files"
         Then page title is "Translations of Article to test Files"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Article to test Files"
+        Then page title is "Create Spanish translation of Article to test Files"
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
-        When user clicks on "Contenido" tab
-        Then user selects "Traducir" option from Operations dropdown for content with title "Cancer Research List Page to Test Files"
+        When user clicks on "Content" tab
+        Then user selects "Translate" option from Operations dropdown for content with title "Cancer Research List Page to Test Files"
         Then page title is "Translations of Cancer Research List Page to Test Files"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Cancer Research List Page to Test Files"
+        Then page title is "Create Spanish translation of Cancer Research List Page to Test Files"
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify translated pages
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "article-to-test-files"
@@ -642,27 +642,27 @@ Feature: As a content owner I want to be able to upload different file types to 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "article-to-test-files"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+       When user confirms "Delete Spanish translation" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "crlp-for-files"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user confirms "Delete Spanish translation" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url "article-to-test-files" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

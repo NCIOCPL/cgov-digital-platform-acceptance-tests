@@ -406,11 +406,11 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Cancer Type Homepage Patient"
         Then the page title is "Translations of Automated Test Cancer Type Homepage Patient"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Cancer Type Homepage Patient"
+        Then page title is "Create Spanish translation of Automated Test Cancer Type Homepage Patient"
         And the following fields are displayed
             | fieldLabel               | field_name                     |
             | Pretty URL               | field_pretty_url               |
-            | Título de página         | title                          |
+            | Page Title               | title                          |
             | Browser Title            | field_browser_title            |
             | Card Title               | field_card_title               |
             | Meta Description         | field_page_description         |
@@ -421,7 +421,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Patient             |
             | Health Professional |
         And "Audience Toggle Link" is present
-        And the following cards fields are displayed with remove button translated as "Eliminar"
+        And the following cards fields are displayed with remove button translated as "Remove"
             | card                       |
             | CTHP Overview Card         |
             | CTHP Guide Card            |
@@ -431,23 +431,23 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | CTHP Research Card         |
             | CTHP Block Card            |
             | CTHP Raw HTML Card         |
-        And Add Card Section was translated as "Añadir CTHP Overview Card"
+        And Add Card Section was translated as "Add CTHP Overview Card"
         And "Search Engine Restrictions" dropdown displays "Include in search"
-        And current state was translated as "Estado actual" "Borrador"
+        And current state was translated as "Current state" "Draft"
         And Change to dropdown has the following options
-            | option   |
-            | Borrador |
-            | Review   |
-        And Save button was translated as "Guardar (esta traducción)"
-        And preview button was translated as "Vista previa"
+            | option |
+            | Draft  |
+            | Review |
+        And Save button was translated as "Save (this translation)"
+        And preview button was translated as "Preview"
         And user remembers the title of selected summary for further verification
         And user remembers the title of selected video for further verification
         And user remembers title of selected Cancer Research List Page for future verification
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify translated content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-edited"
@@ -492,19 +492,19 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-edited"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
-        And user clears out "Título de página" field
+        And user clears out "Page Title" field
         And user clears out "Meta Description" field
         And user fills out the following fields
             | fieldLabel       | value                                               | field_name             |
-            | Título de página | Automated Test CTHP Edited Spanish                  | title                  |
+            | Page Title       | Automated Test CTHP Edited Spanish                  | title                  |
             | Meta Description | Automated Test CTHP Meta Description Edited Spanish | field_page_description |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Post-Publication Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify Spanish edited CTHP content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-edited"
@@ -955,11 +955,11 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Cancer Type Homepage HP"
         Then the page title is "Translations of Automated Test Cancer Type Homepage HP"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Cancer Type Homepage HP"
+        Then page title is "Create Spanish translation of Automated Test Cancer Type Homepage HP"
         And the following fields are displayed
             | fieldLabel               | field_name                     |
             | Pretty URL               | field_pretty_url               |
-            | Título de página         | title                          |
+            | Page Title               | title                          |
             | Browser Title            | field_browser_title            |
             | Card Title               | field_card_title               |
             | Meta Description         | field_page_description         |
@@ -970,7 +970,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Patient             |
             | Health Professional |
         And "Audience Toggle Link" is present
-        And the following cards fields are displayed with remove button translated as "Eliminar"
+        And the following cards fields are displayed with remove button translated as "Remove"
             | card                       |
             | CTHP Overview Card         |
             | CTHP Guide Card            |
@@ -980,23 +980,23 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | CTHP Research Card         |
             | CTHP Block Card            |
             | CTHP Raw HTML Card         |
-        And Add Card Section was translated as "Añadir CTHP Overview Card"
+        And Add Card Section was translated as "Add CTHP Overview Card"
         And "Search Engine Restrictions" dropdown displays "Include in search"
-        And current state was translated as "Estado actual" "Borrador"
+        And current state was translated as "Current state" "Draft"
         And Change to dropdown has the following options
-            | option   |
-            | Borrador |
-            | Review   |
-        And Save button was translated as "Guardar (esta traducción)"
-        And preview button was translated as "Vista previa"
+            | option |
+            | Draft  |
+            | Review |
+        And Save button was translated as "Save (this translation)"
+        And preview button was translated as "Preview"
         And user remembers the title of selected summary for further verification
         And user remembers the title of selected video for further verification
         And user remembers title of selected Cancer Research List Page for future verification
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify translated Cancer Type Homepage HP content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
@@ -1042,19 +1042,19 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
-        And user clears out "Título de página" field
+        And user clears out "Page Title" field
         And user clears out "Meta Description" field
         And user fills out the following fields
             | fieldLabel       | value                                                             | field_name             |
-            | Título de página | Automated Test CTHP HP Edited Spanish                             | title                  |
+            | Page Title       | Automated Test CTHP HP Edited Spanish                             | title                  |
             | Meta Description | Automated Cancer Type Homepage HP Meta Description Edited Spanish | field_page_description |
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Post-Publication Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify Spanish edited CTHP HP content
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
@@ -1071,27 +1071,27 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-edited"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user confirms "Delete Spanish translation" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user confirms "Delete Spanish translation" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar

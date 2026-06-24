@@ -270,20 +270,20 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Blog Series Edited"
         Then the page title is "Translations of Automated Test Blog Series Edited"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Blog Series Edited"
+        Then page title is "Create Spanish translation of Automated Test Blog Series Edited"
         And the following fields are displayed
             | fieldLabel               | field_name                     |
             | Pretty URL               | field_pretty_url               |
-            | Título de página         | title                          |
+            | Page Title               | title                          |
             | Browser Title            | field_browser_title            |
             | Card Title               | field_card_title               |
             | Meta Description         | field_page_description         |
             | Feature Card Description | field_feature_card_description |
-        And user clears out "Título de página" field
+        And user clears out "Page Title" field
         And user clears out "Meta Description" field
         And user fills out the following fields
             | fieldLabel       | value                                                      | field_name             |
-            | Título de página | Automated Test Blog Series Edited Spanish                  | title                  |
+            | Page Title       | Automated Test Blog Series Edited Spanish                  | title                  |
             | Meta Description | Automated Test Blog Series Meta Description Edited Spanish | field_page_description |
         And "Number of Posts to Display" label is displayed with value 10
         And "List Description" label is displayed
@@ -291,10 +291,10 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And "Subscription URL" text field label is displayed
         And "Recommended Content Header" label is displayed with the text "Recommended Text"
         And the translated banner image is displayed
-        And "Texto alternativo" label is displayed with the text "Text Alt"
-        And the link with the name "blogseriesbanner.png" is displayed with remove button translated as "Eliminar"
-        And "Promotional Image" button is displayed with remove button translated as "Eliminar"
-         And "Search Engine Restrictions" dropdown has the following options
+        And "Alternative text" label is displayed with the text "Text Alt"
+        And the link with the name "blogseriesbanner.png" is displayed with remove button translated as "Remove"
+        And "Promotional Image" button is displayed with remove button translated as "Remove"
+        And "Search Engine Restrictions" dropdown has the following options
             | options             |
             | Include in search   |
             | Exclude from search |
@@ -304,19 +304,19 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | Show Thumbnails        |
             | Do Not Show Thumbnails |
         And "List Thumbnails" dropdown displays "Show Thumbnails"
-        And current state was translated as "Estado actual" "Borrador"
+        And current state was translated as "Current state" "Draft"
         And Change to dropdown has the following options
             | option    |
-            | Borrador  |
+            | Draft     |
             | Review    |
-            | Publicado |
-        And Save button was translated as "Guardar (esta traducción)"
-        And preview button was translated as "Vista previa"
+            | Published |
+        And Save button was translated as "Save (this translation)"
+        And preview button was translated as "Preview"
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
         And browser waits
 
     Scenario: Verify translated Blog Series
@@ -337,27 +337,27 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then user selects "Translate" option from Operations dropdown for content with title "Automated Test Blog Post for testing Blog Series"
         Then the page title is "Translations of Automated Test Blog Post for testing Blog Series"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Automated Test Blog Post for testing Blog Series"
+        Then page title is "Create Spanish translation of Automated Test Blog Post for testing Blog Series"
         And "Blog Series" dropdown displays "Automated Test Blog Series Edited Spanish"
         And the following fields are displayed
             | fieldLabel               | field_name                     |
             | Pretty URL               | field_pretty_url               |
-            | Título de página         | title                          |
+            | Page Title               | title                          |
             | Browser Title            | field_browser_title            |
             | Card Title               | field_card_title               |
             | Meta Description         | field_page_description         |
             | Feature Card Description | field_feature_card_description |
         And "List Description" label is displayed
-        And Author was translated as "Autor"
+        And Author was translated as "Author"
         And "Intro Text" label is displayed
-        And body was translated as "Cuerpo"
-        And Save button was translated as "Guardar (esta traducción)"
-        And preview button was translated as "Vista previa"
+        And body was translated as "Body"
+        And Save button was translated as "Save (this translation)"
+        And preview button was translated as "Preview"
         Then user saves the content page
-        And user clicks on the tool bar status button "Borrador"
+        And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
         And browser waits
 
     Scenario: User is adding Spanish Blog Topic to the already created Spanish Blog Series
@@ -372,16 +372,16 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user selects "Translate" option from Operations for "Test Blog Topic"
         Then the page title is "Translations of Test Blog Topic"
         When user clicks on "Add" button to add translation
-        Then page title is "Crear traducción Español de Test Blog Topic"
-        And user clears out "Nombre" field
+        Then page title is "Create Spanish translation of Test Blog Topic"
+        And user clears out "Name" field
         And user clears out "Pretty URL" field
         And user fills out the following fields
             | fieldLabel | value                   | field_name                       |
-            | Nombre     | Test Blog Topic Spanish | name[0][value]                   |
+            | Name       | Test Blog Topic Spanish | name[0][value]                   |
             | Pretty URL | test-blog-topic         | field_topic_pretty_url[0][value] |
         And user selects "Automated Test Blog Series Edited Spanish" radio button under "Owner Blog"
         And browser waits
-        And user enters "Blog Topic Description Spanish" into "Descripción" field
+        And user enters "Blog Topic Description Spanish" into "Description" field
         Then user saves the content page
 
     Scenario: Edit and republish Spanish Blog Post content type
@@ -392,14 +392,14 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url "blog-post-test-blog-series" under "/espanol/about-cancer/understanding/blog-series-edited" from the list of content
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "View in edit form" button from other actions
         And user checks "Test Blog Topic Spanish" checkbox
         When user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Post-Publication Review"
-        And user selects "Publicar" from workflow actions
+        And user selects "Publish" from workflow actions
 
     Scenario: Verify edited content and Blog Topic in the Blog Series
         Given user is navigating to the front end site with spanish path "/espanol" site section plus "blog-series-edited"
@@ -411,7 +411,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then list of "Spanish blog post" has the following posts
             | title                                            | url                                                                                                | expectedDate | author                          |
             | Automated Test Blog Post for testing Blog Series | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} | today's date | Automated Test Blog Post Author |
-      
+
         And the "Categorías" managed list appears without the date
         And the "Test Blog Topic Spanish" link appears with the following href
             | linkName                | linkHref                                                                               |
@@ -432,17 +432,17 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" plus "about-cancer/understanding/blog-series-edited" plus "2026/blog-post-test-blog-series"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user confirms "Delete Spanish translation" action
 
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on blog with url "blog-post-test-blog-series" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
@@ -467,16 +467,16 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
 
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "blog-series-edited"
-        And user clicks on the tool bar status button "Publicado"
+        And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
         And user clicks "Approve Archive Request" button from Moderation sidebar
-        And user clicks on the tool bar status button "Archivado"
+        And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Borrar la traduccion Español" action
+        When user confirms "Delete Spanish translation" action
 
-        When user clicks on "Contenido" tab
+        When user clicks on "Content" tab
         And user clicks on title with url "blog-series-edited" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
