@@ -17,8 +17,8 @@ Feature: User creating a video
             | Youtube Video URL | https://www.youtube.com/watch?v=zXE7rexUCeI | field_media_oembed_video[0][value] |
             | Pretty URL        | test-video                                  | field_pretty_url                   |
             | Name              | Automated Test Video                        | name[0][value]                     |
-            | Browser Title     | Automated Test Video - Browser Title                  | field_browser_title                |
-            | Meta Description  | Automated Test Video - Meta Description               | field_page_description             |
+            | Browser Title     | Automated Test Video - Browser Title        | field_browser_title                |
+            | Meta Description  | Automated Test Video - Meta Description     | field_page_description             |
         And user types "Test Caption" into Caption text field
         And user selects "Review" from "Save as" dropdown
         Then user saves the content page
@@ -82,7 +82,7 @@ Feature: User creating a video
         And user clicks on "Home and Landing" content type
         Then page title is "Home and Landing"
         When user selects test site section
-         And user selects "NCIDS without Title" from style dropdown
+        And user selects "NCIDS without Title" from style dropdown
         And user fills out the following fields
             | fieldLabel       | value                                              | field_name             |
             | Pretty URL       | home-and-landing-page-video                        | field_pretty_url       |
@@ -128,9 +128,9 @@ Feature: User creating a video
         Then page title is "Create Spanish translation of Home and Landing page for Video"
         And user clears out "Pretty URL" field
         And user fills out the following fields
-            | fieldLabel       | value                               | field_name       |
-            | Pretty URL       | home-and-landing-page-video-spanish | field_pretty_url |
-            | Page Title       | Spanish                             | title            |
+            | fieldLabel | value                               | field_name       |
+            | Pretty URL | home-and-landing-page-video-spanish | field_pretty_url |
+            | Page Title | Spanish                             | title            |
         Then user saves the content page
         And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
@@ -160,7 +160,7 @@ Feature: User creating a video
             | Meta Description | Article for embed Video - Meta Description | field_page_description |
         And user enters "Video Display Large with no title - none aligned" as 1 body section heading
         And user clicks the "Insert Video" button 1 in the WYSIWYG editor
-         And browser waits
+        And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -187,7 +187,7 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Large with title - left aligned" as 2 body section heading
         And user clicks the "Insert Video" button 2 in the WYSIWYG editor
-         And browser waits
+        And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -202,7 +202,7 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Medium with no title - center aligned" as 3 body section heading
         And user clicks the "Insert Video" button 3 in the WYSIWYG editor
-         And browser waits
+        And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -216,7 +216,7 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Medium with title - right aligned" as 4 body section heading
         And user clicks the "Insert Video" button 4 in the WYSIWYG editor
-         And browser waits
+        And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -230,7 +230,7 @@ Feature: User creating a video
         And user clicks on "Add Body Section" to add a body section
         And user enters "Video Display Small with title - none aligned" as 5 body section heading
         And user clicks the "Insert Video" button 5 in the WYSIWYG editor
-         And browser waits
+        And browser waits
         And user enters "Automated Test Video" into content title search box and clicks "Apply"
         And user selects "Automated Test Video" option from the list of media
         And browser waits
@@ -280,7 +280,7 @@ Feature: User creating a video
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
         When user clicks on "Content" tab
 
         And user clicks on title with url "home-and-landing-page-video" from the list of content

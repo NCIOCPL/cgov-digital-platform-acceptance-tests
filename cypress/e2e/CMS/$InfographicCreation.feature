@@ -317,9 +317,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
         And user fills out the following fields
-            | fieldLabel       | value                                              | field_name       |
-            | Pretty URL       | article-to-test-infographic-spanish                | field_pretty_url |
-            | Page Title       | Automated Test Article to test Infographic Spanish | title            |
+            | fieldLabel | value                                              | field_name       |
+            | Pretty URL | article-to-test-infographic-spanish                | field_pretty_url |
+            | Page Title | Automated Test Article to test Infographic Spanish | title            |
         Then user saves the content page
         And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
@@ -332,9 +332,9 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
         And user fills out the following fields
-            | fieldLabel       | value                                                            | field_name       |
-            | Pretty URL       | home-and-landing-page-to-test-infographic-spanish                | field_pretty_url |
-            | Page Title       | Automated Test Home and Landing page to test Infographic Spanish | title            |
+            | fieldLabel | value                                                            | field_name       |
+            | Pretty URL | home-and-landing-page-to-test-infographic-spanish                | field_pretty_url |
+            | Page Title | Automated Test Home and Landing page to test Infographic Spanish | title            |
         Then user saves the content page
         And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
@@ -380,7 +380,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "article-to-test-infographic-spanish"
@@ -391,7 +391,7 @@ Feature: As a cms user I want to be able to create an Infographic media content 
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
         When user clicks on "Content" tab
         And user clicks on title with url "home-and-landing-page-to-test-infographic" from the list of content

@@ -294,7 +294,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And "Alternative text" label is displayed with the text "Text Alt"
         And the link with the name "blogseriesbanner.png" is displayed with remove button translated as "Remove"
         And "Promotional Image" button is displayed with remove button translated as "Remove"
-         And "Search Engine Restrictions" dropdown has the following options
+        And "Search Engine Restrictions" dropdown has the following options
             | options             |
             | Include in search   |
             | Exclude from search |
@@ -307,7 +307,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And current state was translated as "Current state" "Draft"
         And Change to dropdown has the following options
             | option    |
-            | Draft  |
+            | Draft     |
             | Review    |
             | Published |
         And Save button was translated as "Save (this translation)"
@@ -411,7 +411,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         Then list of "Spanish blog post" has the following posts
             | title                                            | url                                                                                                | expectedDate | author                          |
             | Automated Test Blog Post for testing Blog Series | /espanol{TEST_SITE_SECTION}/blog-series-edited-{RANDOM}/{YEAR}/blog-post-test-blog-series-{RANDOM} | today's date | Automated Test Blog Post Author |
-      
+
         And the "Categorías" managed list appears without the date
         And the "Test Blog Topic Spanish" link appears with the following href
             | linkName                | linkHref                                                                               |
@@ -439,7 +439,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
 
         When user clicks on "Content" tab
@@ -474,7 +474,7 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
         When user clicks on "Content" tab
         And user clicks on title with url "blog-series-edited" from the list of content

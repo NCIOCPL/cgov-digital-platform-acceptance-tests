@@ -435,9 +435,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Current state" "Draft"
         And Change to dropdown has the following options
-            | option   |
-            | Draft    |
-            | Review   |
+            | option |
+            | Draft  |
+            | Review |
         And Save button was translated as "Save (this translation)"
         And preview button was translated as "Preview"
         And user remembers the title of selected summary for further verification
@@ -984,9 +984,9 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And "Search Engine Restrictions" dropdown displays "Include in search"
         And current state was translated as "Current state" "Draft"
         And Change to dropdown has the following options
-            | option   |
-            | Draft    |
-            | Review   |
+            | option |
+            | Draft  |
+            | Review |
         And Save button was translated as "Save (this translation)"
         And preview button was translated as "Preview"
         And user remembers the title of selected summary for further verification
@@ -1078,7 +1078,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
         When user clicks on "Content" tab
         And user clicks on title with url spanish path "/espanol" site section plus "cancer-type-homepage-hp-edited"
@@ -1089,7 +1089,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
         When user clicks on "Content" tab
         And user clicks on title with url "cancer-type-homepage-edited" from the list of content

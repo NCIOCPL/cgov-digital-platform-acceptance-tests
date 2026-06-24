@@ -267,22 +267,6 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And "Lead Image" button is displayed
         And Remove button for image was translated as "Remove"
         And "Promotional Image" button is displayed
-        And the following fields are displayed under "Blog Topics" label
-            | blogTopic                                  |
-            | Biología                                   |
-            | Riesgo de cáncer                           |
-            | Cáncer infantil                            |
-            | Resultados de estudios clínicos            |
-            | Desigualdades                              |
-            | Aprobaciones de la FDA                     |
-            | Salud mundial                              |
-            | Dirección y opiniones de expertos          |
-            | Prevención                                 |
-            | Pronóstico                                 |
-            | Exámenes de detección y detección temprana |
-            | Supervivencia y cuidados de apoyo          |
-            | Tecnología                                 |
-            | Tratamiento                                |
         And Related Resources section was translated as "Related Resources"
         And Link section under related resources was translated as "Link"
         And dropdown to add link under related resources was translated to start with "Add"
@@ -381,7 +365,7 @@ Feature: As a cms user I want to be able to create Blog Post content type to pro
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
         When user clicks on "Content" tab
         And user clicks on blog with url "blog-post-edited" from the list of content

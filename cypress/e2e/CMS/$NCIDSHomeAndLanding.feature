@@ -496,7 +496,7 @@ Feature: Home And Landing Page Test Creation of Content
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
         When user clicks on "Content" tab
         And user clicks on title with url "ncids-home-and-landing-page-edited" from the list of content

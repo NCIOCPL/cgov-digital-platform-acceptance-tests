@@ -53,7 +53,7 @@ Feature: User creating an image
         And browser waits
         And user selects "Review" from "Save as" dropdown
         When user saves the content page
-       
+
 
     Scenario: editor is publishing content
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -114,9 +114,9 @@ Feature: User creating an image
         And user clears out "Pretty URL" field
         And user clears out "Page Title" field
         And user fills out the following fields
-            | fieldLabel       | value                         | field_name       |
-            | Pretty URL       | article-to-test-image-spanish | field_pretty_url |
-            | Page Title       | Article to test Image Spanish | title            |
+            | fieldLabel | value                         | field_name       |
+            | Pretty URL | article-to-test-image-spanish | field_pretty_url |
+            | Page Title | Article to test Image Spanish | title            |
         Then user saves the content page
         And user clicks on the tool bar status button "Draft"
         And user selects "Submit for Review" from workflow actions
@@ -148,7 +148,7 @@ Feature: User creating an image
         And user clicks on the tool bar status button "Archived"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete" option button
-        When user confirms "Delete" action
+        When user confirms "Delete Spanish translation" action
 
 
         When user clicks on "Content" tab
