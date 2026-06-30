@@ -131,3 +131,7 @@ When('user clicks on NCIDS feature card at position {int}', (cardIndex) => {
 When('user clicks on {int} video',(position)=>{
     cy.get('div.cgdp-video .video-preview__play-button').eq(position-1).trigger('click')
 })
+
+  When('user clicks on {int} link in the body of the blog post', (linkPosition) => {
+    cy.get('div.usa-prose a').eq(linkPosition - 1).trigger('click', { followRedirect: false });
+  });

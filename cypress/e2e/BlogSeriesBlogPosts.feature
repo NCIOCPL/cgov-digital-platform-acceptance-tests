@@ -32,13 +32,13 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then page title is "Cancer Currents Blog"
         And blog posts list appears
         And each blog post has a title, time, description
-        And 1 blog has a date as "June 5, 2019"
-        And 1 blog has an image with an url "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
-        And 1 blog's title link to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
+        And 2 blog has a date as "June 5, 2019"
+        And 2 blog has an image with an url "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
+        And 2 blog's title link to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
         When user is navigating to "/news-events/cancer-currents-blog?page=1"
-        And 3 blog has no image
-        And 3 blog has a date as "January 31, 2019"
-        And 3 blog has an author "NCI Staff"
+        And 4 blog has no image
+        And 4 blog has a date as "January 31, 2019"
+        And 4 blog has an author "NCI Staff"
 
     Scenario: Blog series accordion
         Given user is navigating to "/news-events/cancer-currents-blog"
@@ -88,10 +88,10 @@ Feature: As an user, I want to see different components of the Blog Series and B
         Then page title is "<title>"
         And only 1 blog appear
         Examples:
-            | url                                                               | title                           |
-            | /news-events/cancer-currents-blog?year=2017                       | 2017 - Cancer Currents          |
-            | /research/key-initiatives/ras/ras-central/blog?year=2017          | 2017 - RAS Dialogue             |
-            | /espanol/noticias/temas-y-relatos-blog?year=2018                  | 2018 - Temas y relatos blog     |
+            | url                                                      | title                       |
+            | /news-events/cancer-currents-blog?year=2017              | 2017 - Cancer Currents      |
+            | /research/key-initiatives/ras/ras-central/blog?year=2017 | 2017 - RAS Dialogue         |
+            | /espanol/noticias/temas-y-relatos-blog?year=2018         | 2018 - Temas y relatos blog |
 
     Scenario Outline: Filtering blogs by year - invalid
         When user is requesting bad url "<url>" and receives "<text>"
@@ -215,7 +215,31 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | pev2      | Body:EmbeddedMedia:LinkClick                                                                        |
             | linkType  | lnk_o                                                                                               |
 
+    Scenario Outline: Embedded body link click events
+        Given user is navigating to "/news-events/cancer-currents-blog/2026/test-blog-wysiwyg-analytics-link-types"
+        When user clicks on <linkPosition> link in the body of the blog post
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                                                      |
+            | prop4     | D=pev1                                                                                                     |
+            | prop8     | english                                                                                                    |
+            | prop67    | D=pageName                                                                                                 |
+            | evar2     | D=c8                                                                                                       |
+            | evar81    | <evar81>                                                                                                   |
+            | evar82    | <evar82>                                                                                                   |
+            | evar60    | InnerPageLinkClick                                                                                         |
+            | evar68    | Body                                                                                                       |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog/2026/test-blog-wysiwyg-analytics-link-types              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog/2026/test-blog-wysiwyg-analytics-link-types |
+            | linkType  | lnk_o                                                                                                      |
 
 
-
-
+        Examples:
+            | linkPosition | evar82                              | evar81              |
+            | 1            | WYSIWYG\|Google external link       | WYSIWYG\|External   |
+            | 2            | WYSIWYG\|About Cancer internal link | WYSIWYG\|Internal   |
+            | 3            | WYSIWYG\|Managed internal link      | WYSIWYG\|Internal   |
+            | 4            | WYSIWYG\|test@example.org           | WYSIWYG\|Email      |
+            | 5            | WYSIWYG\|Managed media link         | WYSIWYG\|Media      |
+            | 6            | WYSIWYG\|biopsy                     | WYSIWYG\|Glossified |
+            | 7            | WYSIWYG\|1-800-555-1212             | WYSIWYG\|Other      |
