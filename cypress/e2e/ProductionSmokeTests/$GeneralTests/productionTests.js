@@ -51,7 +51,7 @@ And('the list of posts is displayed', () => {
 });
 
 And('the list of blogs is displayed', () => {
-    cy.get('.dynamic.list li').should('be.visible').and('not.be.empty');
+    cy.get('.cgdp-block-blog-posts .usa-collection').should('be.visible').and('not.be.empty');
 });
 
 And('page options are displayed', () => {
