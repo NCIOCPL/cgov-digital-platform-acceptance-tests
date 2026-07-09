@@ -128,28 +128,6 @@ Feature: As an user, I want to see different components of the Blog Series and B
 
     ###Blog Analytics####
 
-    Scenario: When user clicks a blog post image from result list -  analytics event is fired
-        When user is navigating to "/news-events/cancer-currents-blog"
-        And user clicks on blog post number 1
-        Then page click request is sent
-        And the following parameters should be captured
-            | parameter | value                                                          |
-            | prop4     | D=pev1                                                         |
-            | prop13    | 1                                                              |
-            | prop57    | Cancer Currents Blog                                           |
-            | prop58    | SearchResults                                                  |
-            | prop59    | Cancer Currents Blog:1                                         |
-            | prop60    | D=pageName                                                     |
-            | prop67    | D=pageName                                                     |
-            | prop8     | english                                                        |
-            | evar2     | D=c8                                                           |
-            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog              |
-            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog |
-            | channel   | News and Events                                                |
-            | pev2      | Legacy:DynamicListItemClick                                    |
-            | linkType  | lnk_o                                                          |
-            | link      | Snuggles                                                       |
-
     Scenario: External Feature card click event
         Given user is navigating to "/news-events/cancer-currents-blog/2019/blog-post-feature-card-embed-test-page"
         When user clicks on NCIDS feature card at position 9
@@ -243,3 +221,27 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | 5            | WYSIWYG\|Managed media link         | WYSIWYG\|Media      |
             | 6            | WYSIWYG\|biopsy                     | WYSIWYG\|Glossified |
             | 7            | WYSIWYG\|1-800-555-1212             | WYSIWYG\|Other      |
+   
+   
+    Scenario Outline: Blog series links click events
+        Given user is navigating to "/news-events/cancer-currents-blog"
+        When user clicks on "<linkPosition>" link in the blog series
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                          |
+            | prop4     | D=pev1                                                         |
+            | prop8     | english                                                        |
+            | prop67    | D=pageName                                                     |
+            | evar2     | D=c8                                                           |
+            | <evar9..> | <evar9..value>                                                 |
+            | evar60    | <linkName>                                                     |
+            | evar68    | <evar68>                                                       |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog |
+            | linkType  | lnk_o                                                          |
+            | <event>   |                                                                |
+        Examples:
+            | linkPosition                          | evar9.. | evar9..value                                                          | linkName            | event    | evar68     |
+            | .usa-collection__body .usa-link       | evar92  | Blog Series List\|Test Blog Post: WYSIWYG Analytics Link Types\|15\|1 | BlogSeriesListClick | event131 | Body       |
+            | .usa-summary-box .usa-link            | evar93  | Blog Series\|Category Box\|Biology                                    | BlogRightRailClick  | event132 | Right Rail |
+            | .cgdp-blog-post-pager--older.usa-link | evar94  | Blog Series\|Blog Pager\|Older                                        | BlogPagerClick      | event133 | Body       |
