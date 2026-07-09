@@ -26,15 +26,15 @@ And('blog posts list appears', () => {
 });
 
 And('{string} button appears with a link {string}', (postLink, link) => {
-    cy.get(`a:contains("${postLink}")`).should('be.visible').and('have.attr','href').and('include',`${getBaseDirectory()}${link}`);
+    cy.get(`a:contains("${postLink}")`).should('be.visible').and('have.attr', 'href').and('include', `${getBaseDirectory()}${link}`);
 });
 
 And('{string} button1 appears with a link {string}', (postLink, link) => {
-    cy.get(`div.cgdp-blog-post-pager`).contains(`${postLink}`).and('include',`${getBaseDirectory()}${link}`);
+    cy.get(`div.cgdp-blog-post-pager`).contains(`${postLink}`).and('include', `${getBaseDirectory()}${link}`);
 });
 
 When('user clicks on {string} button', (olderPostLink) => {
-    cy.get('.cgdp-blog-post-pager').contains(olderPostLink).click();  
+    cy.get('.cgdp-blog-post-pager').contains(olderPostLink).click();
 });
 
 When('user clicks on {string} button1', (olderPostLink) => {
@@ -52,11 +52,11 @@ And('{int} blog has a date as {string}', (blogPosition, date) => {
 });
 
 And('{int} blog has an image with an url {string}', (blogPosition, link) => {
-    cy.get('.usa-collection__item').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
+    cy.get('.usa-collection__item').eq(blogPosition - 1).find('a').should('have.attr', 'href').and('eq', `${getBaseDirectory()}${link}`);
 });
 
 And(`{int} blog's title link to {string}`, (blogPosition, link) => {
-    cy.get('.usa-collection__item').eq(blogPosition - 1).find('a').should('have.attr','href').and('eq',`${getBaseDirectory()}${link}`);
+    cy.get('.usa-collection__item').eq(blogPosition - 1).find('a').should('have.attr', 'href').and('eq', `${getBaseDirectory()}${link}`);
 });
 
 When('user clicks on {string} accordion', (archive) => {
@@ -104,34 +104,37 @@ And('user clicks on blog post number {int}', (positionNumber) => {
 
 
 
-Then('status code is {int} on {string}', (statusCode, badApi) => {  
-const baseUrlFromConfig = Cypress.config("baseUrl");
-const replacedUrl = badApi.replace("{BASE_URL}",baseUrlFromConfig);
+Then('status code is {int} on {string}', (statusCode, badApi) => {
+    const baseUrlFromConfig = Cypress.config("baseUrl");
+    const replacedUrl = badApi.replace("{BASE_URL}", baseUrlFromConfig);
     cy.request({
-      url: replacedUrl,
-      failOnStatusCode: false
+        url: replacedUrl,
+        failOnStatusCode: false
     }).then((resp) => {
-      expect(resp.status).to.be.eq(statusCode);
-    }) 
-  });
-
-  Then('user is requesting bad url {string} and receives {string}', (badApi, text) => {
-    cy.request({
-      url: badApi,
-      failOnStatusCode: false
-    }).then((resp) => {
-      expect(resp.body).to.eq(text)
+        expect(resp.status).to.be.eq(statusCode);
     })
-  });
+});
+
+Then('user is requesting bad url {string} and receives {string}', (badApi, text) => {
+    cy.request({
+        url: badApi,
+        failOnStatusCode: false
+    }).then((resp) => {
+        expect(resp.body).to.eq(text)
+    })
+});
 
 When('user clicks on NCIDS feature card at position {int}', (cardIndex) => {
     cy.get('div.nci-card').eq(cardIndex - 1).find('a').trigger('click', { followRedirect: false })
 })
 
-When('user clicks on {int} video',(position)=>{
-    cy.get('div.cgdp-video .video-preview__play-button').eq(position-1).trigger('click')
+When('user clicks on {int} video', (position) => {
+    cy.get('div.cgdp-video .video-preview__play-button').eq(position - 1).trigger('click')
 })
 
   When('user clicks on {int} link in the body of the blog post', (linkPosition) => {
     cy.get('div.usa-prose a').eq(linkPosition - 1).trigger('click', { followRedirect: false });
   });
+When('user clicks on {string} link in the blog series', (linkPosition) => {
+    cy.get(`${linkPosition}`).eq(0).trigger('click', { followRedirect: false });
+});
