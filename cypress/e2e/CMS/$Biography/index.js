@@ -6,12 +6,17 @@ And('user clicks on {string} to a title section', (buttonLable) => {
 })
 
 
-And('user selects {int} Biography Image from the list of images', (number) => {
+And('user selects Biography Image {string} from the list of images', (name) => {
     cy.get('summary:contains("Biography Image")').click();
     cy.get('input[value="Select Image"]').click({ force: true });
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id^='edit-entity-browser-select-media']").eq(number - 1).check();
-    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click({ force: true });
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-name']").type(name);
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit-cgov-image-media-browser']").click();
+    cy.wait(1500)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input.form-checkbox").eq(0).click();
+    cy.wait(1500)
+    cy.getIframeBody('iframe.entity-browser-modal-iframe').find("input[id='edit-submit'][value='Select image']").click();
 });
+
 And('user remembers the source of selected biography image for further verification', () => {
     cy.get('details img').then($el => {
         Cypress.env('tempImg', $el[0].getAttribute('src').replace('.webp',''));
@@ -50,7 +55,7 @@ And('description reads {string}', (description) => {
 
 })
 And('the Biography image is matching the earlier selected image', () => {
-    cy.get('.profile-panel-image img').then($el => {
+    cy.get('.cgdp-image img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
         const expectedSrc = (Cypress.env('tempImg').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
@@ -58,30 +63,30 @@ And('the Biography image is matching the earlier selected image', () => {
     })
 })
 And('the individual {int} title is displayed as {string}', (num, option1) => {
-    cy.get(`#nvcgSlProfilePanel div:contains("${option1}")`).eq(num).should('be.visible')
+    cy.get('li[class="cgdp-profile-box__title"]').eq(num-1).should('be.visible').and('have.text', option1);
 })
 
 And('the following organizations with links are listed for this individual', (dataTable) => {
     for (const { organization, url } of dataTable.hashes()) {
-        cy.get(`#nvcgSlProfilePanel a:contains('${organization}')`).should('have.attr', 'href', url)
+        cy.get(`ul[class='cgdp-profile-box__org'] li a:contains('${organization}')`).should('have.attr', 'href', url)
     }
 })
 And('individuals office is at {string}', (address) => {
     cy.document().then(doc => {
-        const addressInnerText = doc.querySelector("div[class='profile-panel-content'] p").innerText;
+        const addressInnerText = doc.querySelector("div[class='cgdp-profile-box__field usa-prose'] div:first-of-type").innerText;
         expect(addressInnerText).to.be.eq(address)
-        cy.get("div[class='profile-panel-content'] p").should('be.visible')
+        cy.get("div.cgdp-profile-box__address").should('be.visible');
     });
 })
 And('contact phone number is {string}', (phone) => {
-    cy.get('.profile-contact-info').should('be.visible').and('include.text', phone)
+    cy.get('.cgdp-profile-box__phone').should('be.visible').and('include.text', phone)
 })
 And('contact email is {string}', (email) => {
     cy.get(`a:contains("${email}")`).should('be.visible').and('include.text', email)
 })
 And('the following social media links are present', (dataTable) => {
     for (const { socialMedia, href } of dataTable.hashes()) {
-        cy.get(`a[href="${href}"]`).should('be.visible')
+        cy.get(`a[href="${href}"]`).should('be.visible');
     }
 })
 And('user removes the Biography Image', () => {

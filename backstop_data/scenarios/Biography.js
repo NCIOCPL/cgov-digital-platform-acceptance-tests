@@ -19,9 +19,9 @@ module.exports = [
     {
         label: 'biography whole page focus on social media link tablet',
         testPath: '/about-cancer/coping/feelings/relaxation/loukissas-jen-biography',
-        focusSelector: '.profile-panel-social-media a',
+        focusSelector: '.cgdp-profile-box__social-media a',
         selectors: [
-            ' #nvcgSlProfilePanel'
+            '.cgdp-profile-box.cgdp-profile-box--biography'
         ],
         selectorExpansion: false,
         viewports: [
@@ -35,9 +35,9 @@ module.exports = [
     {
         label: 'biography focus on email link desktop',
         testPath: '/about-cancer/coping/feelings/relaxation/loukissas-jen-biography',
-        focusSelector: '.profile-contact-email a',
+        focusSelector: 'a.cgdp-profile-box__email',
         selectors: [
-            '#nvcgSlProfilePanel'
+            '.cgdp-profile-box.cgdp-profile-box--biography'
         ],
         selectorExpansion: false,
         viewports: [

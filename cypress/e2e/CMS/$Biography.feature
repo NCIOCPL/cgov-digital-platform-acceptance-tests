@@ -58,7 +58,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
             | Title (value 2) | Title 2 | field_title[1][value] |
         And user fills out "Body" text area with "This is a description of biography content type."
         And user selects "NCI Shady Grove Campus" from "Campus" dropdown
-        And user selects 1 Biography Image from the list of images
+        And user selects Biography Image "Ocean Sunset View Mykonos" from the list of images
         And user remembers the source of selected biography image for further verification
         And user selects "Posted Date" checkbox
         And user selects "Reviewed Date" checkbox
@@ -98,10 +98,10 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And contact phone number is "555-555-5555"
         And contact email is "test@test.com"
         And the following social media links are present
-            | socialMedia             | href                                   |
-            | Twitter                 | http://www.twitter.com/profilename     |
-            | LinkedIn                | http://www.linkedin.com/in/profilename |
-            | Scientific Publications | https://www.ncbi.nlm.nih.gov/          |
+            | socialMedia             | href                                         |
+            | Twitter                 | https://twitter.com/profilename              |
+            | LinkedIn                | https://www.linkedin.com/company/profilename |
+            | Scientific Publications | https://www.ncbi.nlm.nih.gov/                |
 
     Scenario: Edit and republish biography content type
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -136,7 +136,8 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And user selects "NCI Frederick Campus" from "Campus" dropdown
         And user selects "Display" from "Show Press Information for Journalists" dropdown
         And user removes the Biography Image
-        And user selects 2 Biography Image from the list of images
+        And user selects Biography Image "prostate cancer mortality" from the list of images
+        And browser waits
         And user remembers the source of selected biography image for further verification
         When user saves the content page
         And user clicks on the tool bar status button "Editing"

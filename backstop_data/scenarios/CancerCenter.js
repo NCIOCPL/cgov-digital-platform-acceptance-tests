@@ -19,9 +19,9 @@ module.exports = [
     {
         label: 'cancer center focus on website link tablet',
         testPath: '/about-cancer/coping/feelings/relaxation/duke-university',
-        focusSelector: 'a[href="http://www.dukecancerinstitute.org/"]',
+        focusSelector: 'a.cgdp-profile-box__website-url',
         selectors: [
-            ' #nvcgSlProfilePanel'
+            '.cgdp-profile-box.cgdp-profile-box--cancer-center'
         ],
         selectorExpansion: false,
         viewports: [
@@ -35,9 +35,9 @@ module.exports = [
     {
         label: 'cancer center focus on phone link desktop',
         testPath: '/about-cancer/coping/feelings/relaxation/duke-university',
-        focusSelector: 'a[href="tel:1-888-275-3853"]',
+        focusSelector: '.cgdp-profile-box__address div a',
         selectors: [
-            ' #nvcgSlProfilePanel'
+            '.cgdp-profile-box.cgdp-profile-box--cancer-center'
         ],
         selectorExpansion: false,
         viewports: [
