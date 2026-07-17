@@ -12,9 +12,9 @@ Feature: As a user, I want to able to see individual's biography page with all i
         And contact phone number is "240-276-7367"
         And contact email is "loukissj@mail.nih.gov"
         And the following social media links are present
-            | socialMedia | href                                                  |
-            | twitter     | http://www.twitter.com/jloukissas                     |
-            | linkedin    | http://www.linkedin.com/in/jennifer-loukissas-b09b254 |
+            | socialMedia | href                                                        |
+            | twitter     | https://twitter.com/jloukissas                              |
+            | linkedin    | https://www.linkedin.com/company/jennifer-loukissas-b09b254 |
         And biography description contains text "Follow Ms. Loukissas on Twitter "
         And "Related Resources" section contains the following links
             | title                               | href                                     |
@@ -43,8 +43,8 @@ Feature: As a user, I want to able to see individual's biography page with all i
         And contact phone number is "240-276-7150"
         And contact email is "chanocks@mail.nih.gov"
         And the following social media links are present
-            | socialMedia | href                              |
-            | twitter     | http://www.twitter.com/NCIChanock |
+            | socialMedia | href                               |
+            | twitter     | https://twitter.com/NCIChanock     |
         And "Scientific Publications" icon link has a href "https://dceg2.cancer.gov/cgi-bin-pubsearch/pubsearch/index.pl?EntryLimit=0&branch=ALL&searchTxtAuth=chanock%20s&authorOption=exact&pi=0010114442"
         And biography description contains text "Follow Dr. Chanock on Twitter"
         And "Updated:" date stamp displays "February 7, 2019"

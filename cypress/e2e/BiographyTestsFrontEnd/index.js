@@ -3,26 +3,25 @@ import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 import { getBaseDirectory } from '../../utils';
 
 And('the individuals title is {string}', (individualTitle) => {
-    cy.get('div[class="profile-title"]').should('be.visible').and('include.text', individualTitle)
+    cy.get('li[class="cgdp-profile-box__title"]').should('be.visible').and('include.text', individualTitle)
 })
 
 And('the following organizations are listed for this individual', (dataTable) => {
     for (const { organization } of dataTable.hashes()) {
-        cy.get("div[class='profile-orgs'] div").should('be.visible').and('include.text', organization)
+        cy.get("ul[class='cgdp-profile-box__org'] li").should('be.visible').and('include.text', organization)
     }
 })
 
 And('individuals office is at {string}', (address) => {
     cy.document().then(doc => {
-        const addressInnerText = doc.querySelector("div[class='profile-panel-content'] p").innerText;
+        const addressInnerText = doc.querySelector("div[class='cgdp-profile-box__field usa-prose'] div:first-of-type").innerText;
         expect(addressInnerText).to.be.eq(address)
-        cy.get("div[class='profile-panel-content'] p").should('be.visible')
+        cy.get("div.cgdp-profile-box__address").should('be.visible')
     });
-   
-   })
+})
 
 And('contact phone number is {string}', (phone) => {
-    cy.get('.profile-contact-info').should('be.visible').and('include.text', phone)
+    cy.get('.cgdp-profile-box__phone').should('be.visible').and('include.text', phone)
 })
 
 And('contact email is {string}', (email) => {
@@ -56,7 +55,7 @@ And('date stamp does not exist', () => {
 
 And('the following organizations with links are listed for this individual', (dataTable) => {
     for (const { organization, url } of dataTable.hashes()) {
-        cy.get(`div#nvcgSlProfilePanel div a:contains('${organization}')`).should('have.attr', 'href').and('eq', `${url}`);
+        cy.get(`ul.cgdp-profile-box__org li a:contains('${organization}')`).should('have.attr', 'href').and('eq', `${url}`);
     }
 })
 
