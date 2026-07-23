@@ -4,7 +4,7 @@ Feature: Basic checks to ensure PCP production site is up and running
     Scenario: Home page is loading on all sites
         Given user is navigating to "/"
         Then mega menu is displayed
-        And main categories titles are "Members,About,Reports & Meetings,National Cancer Plan"
+        And main categories titles are "Members,Reports & Meetings,Blogs,About"
         And footer is displayed
 
     Scenario Outline: Different contents are loaded on all sites
