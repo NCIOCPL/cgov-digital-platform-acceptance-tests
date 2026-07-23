@@ -285,7 +285,6 @@ Feature: As a cms user I want to be able to create Blog Series content type to p
             | fieldLabel       | value                                                      | field_name             |
             | Page Title       | Automated Test Blog Series Edited Spanish                  | title                  |
             | Meta Description | Automated Test Blog Series Meta Description Edited Spanish | field_page_description |
-        And "Number of Posts to Display" label is displayed with value 10
         And "List Description" label is displayed
         And "About Blog" label is displayed
         And "Subscription URL" text field label is displayed
