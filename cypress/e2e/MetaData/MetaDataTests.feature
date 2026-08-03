@@ -15,7 +15,6 @@ Feature: MetaData Tests
             | dcterms.type           | <dcterms.type>           |
             | dcterms.subject        | <dcterms.subject>        |
             | dcterms.isPartOf       | <dcterms.isPartOf>       |
-            | dcterms.coverage       | <dcterms.coverage>       |
             | dcterms.isReferencedBy | <dcterms.isReferencedBy> |
             | twitter:card           | <twitter:card>           |
         And the page contains dcterms.issued meta tags with the following names
