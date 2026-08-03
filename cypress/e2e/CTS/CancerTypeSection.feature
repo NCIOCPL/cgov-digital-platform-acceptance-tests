@@ -43,8 +43,8 @@ Feature: Primary CancerType keyword search
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
     When user types following value and selects matched option in the corresponding field
-      | field   | value                   |
-      | Subtype | Bilateral Breast Cancer |
+      | field   | value                         |
+      | Subtype | Bilateral Breast Carcinoma    |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
     And trial info displays "Results 1-\d+  of \d+ for your search.*"
@@ -65,9 +65,9 @@ Feature: Primary CancerType keyword search
       | field   | placeholder                      |
       | Subtype | Start typing to select a subtype |
     When user types following value and selects matched option in the corresponding field
-      | field   | value                     |
-      | Subtype | Bilateral Breast Cancer   |
-      | Stage   | Early-Stage Breast Cancer |
+      | field   | value                           |
+      | Subtype | Bilateral Breast Carcinoma      |
+      | Stage   | Early-Stage Breast Cancer       |
     And user clicks "Find Trials" button
     Then the search is executed and results page is displayed
     And trial info displays "Results 1-\d+  of \d+ for your search.*"
