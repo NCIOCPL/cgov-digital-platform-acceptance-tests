@@ -57,7 +57,7 @@ And('{string} tag contains expected environment value', (tagName) => {
         ['www-test-acsf.cancer.gov/automation-refreshed', 'autorefreshed-stage'],
         ['www-dev-acsf.cancer.gov/automation-installed', 'autoinstalled-dev'],
         ['www-dev-acsf.cancer.gov/automation-refreshed', 'autorefreshed-dev'],
-       
+
     ])
     const value = () => {
         for (let [key, value] of domains.entries()) {
@@ -71,9 +71,13 @@ And('{string} tag contains expected environment value', (tagName) => {
     cy.get(locator).should('have.length', 1).and('have.attr', 'content', value())
 });
 
-
-
-
-
+And('the page contains title meta tag with the following content', (dataTable) => {
+    cy.document().then((document) => {
+        for (const { name, content } of dataTable.hashes()) {
+            const actVal = document.getElementsByTagName(`${name}`)[0].textContent
+            expect(actVal).to.be.eq(content)
+        }
+    });
+})
 
 
