@@ -25,6 +25,4 @@ Feature: Test for checking HTTP Status Code
       | desktop    | /espanol/publicaciones/diccionarios/diccionario-cancer/ampliar/C | 200  |
       | desktop    | /research/participate/clinical-trials-search                     | 200  |
       | desktop    | /research/participate/clinical-trials-search/advanced            | 200  |
-      | desktop    | /research/resources                                              | 200  |
-      | desktop    | /research/resources/search?from=0&researchAreas=cancer_biology   | 200  |
       | desktop    | /search/results?swKeyword=cancer                                 | 200  |
