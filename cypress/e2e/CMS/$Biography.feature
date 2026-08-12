@@ -58,7 +58,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
             | Title (value 2) | Title 2 | field_title[1][value] |
         And user fills out "Body" text area with "This is a description of biography content type."
         And user selects "NCI Shady Grove Campus" from "Campus" dropdown
-        And user selects Biography Image "Ocean Sunset View Mykonos" from the list of images
+        And user selects Biography Image "NCIDS Image" from the list of images
         And user remembers the source of selected biography image for further verification
         And user selects "Posted Date" checkbox
         And user selects "Reviewed Date" checkbox
@@ -136,7 +136,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         And user selects "NCI Frederick Campus" from "Campus" dropdown
         And user selects "Display" from "Show Press Information for Journalists" dropdown
         And user removes the Biography Image
-        And user selects Biography Image "prostate cancer mortality" from the list of images
+        And user selects Biography Image "Automated Test Image" from the list of images
         And browser waits
         And user remembers the source of selected biography image for further verification
         When user saves the content page

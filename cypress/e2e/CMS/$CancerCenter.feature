@@ -39,7 +39,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user selects "Virginia" from "State" dropdown
         And user selects "Pacific" from "Region" dropdown
         And user fills out "Body" text area with "This is a description of cancer institute"
-        And user selects Cancer Center Image "Ocean Sunset View Mykonos" from the list of images
+        And user selects Cancer Center Image "NCIDS Image" from the list of images
         And user remembers the source of selected image for further verification
         And user checks "Updated Date" checkbox
         And user selects "Review" from "Save as" dropdown
@@ -192,7 +192,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And user selects "Basic Laboratory Cancer Center" from "Institution Type" dropdown
         And user selects "Texas" from "State" dropdown
         And user removes Cancer Center Image
-        And user selects Cancer Center Image "prostate cancer mortality" from the list of images
+        And user selects Cancer Center Image "Automated Test Image" from the list of images
         
         And user remembers the source of selected image for further verification
         When user saves the content page
