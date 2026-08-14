@@ -5,9 +5,8 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And screen breakpoint is set to "desktop"
         Then the system returns the results page for "mantle cell lymphoma"
         And the "H1" title is "NCI Search Results"
-        And the "H3" title is "Results for: mantle cell lymphoma"
         And the best bet box is displayed
-        And the "H2" title is "Best Bets for Mantle Cell Lymphoma"
+        And the "H2" title is "Recommended Results for Mantle Cell Lymphoma"
         And the best bets title is a link
         And the dictionary definition box is displayed
         And the "More information on dictionary page" button is displayed within the dictionary definition
@@ -22,7 +21,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And screen breakpoint is set to "tablet"
         Then the system returns the results page for "cancer"
         And the "H1" title is "Resultados"
-        And the "H3" title is "Resultados para: cancer"
         And the dictionary definition box is displayed
         And the "H2" title is "Definición:"
         And the "Más información" button is displayed within the dictionary definition
@@ -35,9 +33,8 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And screen breakpoint is set to "mobile"
         Then the system returns the results page for "pact"
         And the "H1" title is "NCI Search Results"
-        And the "H3" title is "Results for: pact"
         And the best bet box is displayed
-        And the "H2" title is "Best Bets for Partnership for Accelerating Cancer Therapies (PACT)"
+        And the "H2" title is "Recommended Results for Partnership for Accelerating Cancer Therapies (PACT)"
         And the best bets title is a link
         And the "H4" title is "Results XXXXX-XXXXX of XXXXX for: pact"
         And the results are displayed with each title containing a link
@@ -52,13 +49,12 @@ Feature: Site Wide Search app is integrated within CGOV platform
     Scenario Outline: Edge case: search results with 2/3 and bin on English Desktop and Spanish mobile sites.
         Given user is navigating to "<url>"
         And screen breakpoint is set to "<breakpoint>"
-        And the "<titleTag>" title is "<title>"
         And the results are displayed with each title containing a link
 
         Examples:
-            | breakpoint | url                                      | titleTag | title                |
-            | desktop    | /search/results?swKeyword=bin            | H3       | Results for: bin     |
-            | mobile     | /espanol/buscar/resultados?swKeyword=2/3 | H3       | Resultados para: 2/3 |
+            | breakpoint | url                                      |
+            | desktop    | /search/results?swKeyword=bin            |
+            | mobile     | /espanol/buscar/resultados?swKeyword=2/3 |
 
     # Scenario: Edge case: Fetching more than 30000 results on English site.
     #     Given user is navigating to "/search/results?swKeyword=cancer"
@@ -75,7 +71,6 @@ Feature: Site Wide Search app is integrated within CGOV platform
         And screen breakpoint is set to "desktop"
         Then the system returns the results page for "retch"
         And the "H1" title is "NCI Search Results"
-        And the "H3" title is "Results for: retch"
         And the dictionary definition box is displayed
         And the "H2" title is "Definition:"
         Then the "Show full definition" button within the dictionary definition is displayed

@@ -2,7 +2,7 @@
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 
 Then('the system returns the results page for {string}', (term) => {
-    cy.get('div.results > h3').should('include.text', term);
+    cy.get('input#sws-results-search').should('have.value',term);
 });
 
 And('the best bet box is displayed', () => {
@@ -14,15 +14,15 @@ And('the best bets title is a link', () => {
 });
 
 And('the dictionary definition box is displayed', () => {
-    cy.get('div.definition').should('be.visible');
+    cy.get('div.usa-summary-box.sws-results__definition').should('be.visible');
 });
 
 And('the {string} button is displayed within the dictionary definition', (moreInfoButton) => {
-    cy.get('div.definition p').find('a').should('contain.text', moreInfoButton);
+    cy.get('div.usa-summary-box.sws-results__definition p').find('a').should('contain.text', moreInfoButton);
 });
 
 Then('the {string} button within the dictionary definition is displayed', (showHideButtonText) => {
-    cy.get('.definition__show-full').should('contain.text', showHideButtonText);
+    cy.get('.sws-results__definition-show-full').should('contain.text', showHideButtonText);
 });
 
 And('the {string} title is {string}', (tag, title) => {
@@ -36,11 +36,11 @@ And('the {string} title is {string}', (tag, title) => {
 });
 
 And('the results are displayed with each title containing a link', () => {
-    cy.get('.result__list-item').find('a').should('have.attr', 'href');
+    cy.get('.usa-collection__item.sws-results__list-item.grid-container').find('a').should('have.attr', 'href');
 });
 
 And('the system defaults to {string} results per page', (resultsCount) => {
-    cy.get('.results__viewby option').should('be.selected').and('have.value', resultsCount);
+    cy.get('.grid-col.sws-results__viewby option').should('be.selected').and('have.value', resultsCount);
 });
 
 Then('the drop down box to show results per page is displayed', () => {
@@ -65,7 +65,7 @@ Then('user is clicking on a BestBets title link at position {int}', (positionNum
 });
 
 Then('user is clicking on a search result item at position {int}', (positionNumber) => {
-    cy.get('.result__list-item').eq(positionNumber - 1).find('a').then(link$ => {
+    cy.get('.usa-collection__item.sws-results__list-item.grid-container').eq(positionNumber - 1).find('a').then(link$ => {
         link$.on('click', e => {
             e.preventDefault();
         });
@@ -74,7 +74,7 @@ Then('user is clicking on a search result item at position {int}', (positionNumb
 });
 
 Then('user is clicking on a glossary term link {string}', (termLink) => {
-    cy.get('div.definition p').find('a').then(link$ => {
+    cy.get('div.usa-summary-box.sws-results__definition p').find('a').then(link$ => {
         link$.on('click', e => {
             e.preventDefault();
         });
