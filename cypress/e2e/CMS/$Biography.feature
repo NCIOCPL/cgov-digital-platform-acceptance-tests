@@ -84,7 +84,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         Then page title is "Full Name"
         And "Reviewed:" date is displaying today's date
         And description reads "This is a description of biography content type."
-        And the Biography image is matching the earlier selected image
+        And the Biography image is "cgov_image/ncids_promo_art_1x1" as "thumbnail_image.jpg"
         And the individual 1 title is displayed as "Title 1"
         And the individual 2 title is displayed as "Title 2"
         And the page contains meta tags with the following names
@@ -150,7 +150,7 @@ Feature: As a cms user I want to be able to create Biography content type to pro
         Then page title is "Full Name Edited"
         And "Reviewed:" date is displaying today's date
         And description reads "This is a description of biography content type."
-        And the Biography image is matching the earlier selected image
+        And the Biography image is "cgov_image/media_image" as "main_image.jpg"
         And the individual 1 title is displayed as "Title 1 Edited"
         And the individual 2 title is displayed as "Title 2 Edited"
         And the page contains meta tags with the following names

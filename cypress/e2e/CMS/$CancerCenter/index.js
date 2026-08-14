@@ -67,3 +67,13 @@ And('the cancer center image matching the earlier selected image', () => {
         expect(actSrc).to.include(expectedSrc);
     })
 });
+
+And('the cancer center image is {string} as {string}', (expectedSrc, imageName) => {
+    cy.get('.cgdp-image img').then($el => {
+        const source = $el[0].getAttribute('src');
+        const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
+        expect(actSrc).to.include(expectedSrc);
+        expect(actSrc).to.include(imageName);
+    })
+});
+

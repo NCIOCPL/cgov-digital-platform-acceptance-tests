@@ -54,12 +54,12 @@ And('description reads {string}', (description) => {
     cy.get(`div#cgvBody p:contains("${description}")`).should('be.visible')
 
 })
-And('the Biography image is matching the earlier selected image', () => {
+And('the Biography image is {string} as {string}', (expectedSrc, imageName) => {
     cy.get('.cgdp-image img').then($el => {
         const source = $el[0].getAttribute('src');
         const actSrc = source.replace(/\?itok=[\S]+/, '').replace(/^(.*?)\/public/, '')
-        const expectedSrc = (Cypress.env('tempImg').replace(/\?itok=[\S]+/, '')).replace(/^(.*?)\/public/, '')
         expect(actSrc).to.include(expectedSrc);
+           expect(actSrc).to.include(imageName);
     })
 })
 And('the individual {int} title is displayed as {string}', (num, option1) => {
