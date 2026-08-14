@@ -38,6 +38,7 @@ And('user uploads hero images as follows', (dataTable) => {
         cy.fixture(fileName, { encoding: null }).as('fixture')
         cy.get(`input[type="file"][data-drupal-selector*="${type}"]`).eq(0).selectFile('@fixture');
         cy.get('.throbber', { timeout: 40000 }).should('not.exist')
+        cy.wait(500)
     }
 });
 And('user adds another {string} link for {int} guide card', (link, index) => {

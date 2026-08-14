@@ -5,16 +5,6 @@ module.exports = [
         hoverSelector: 'a.title',
 	},
     {
-		label: 'cancer research list page focus on link media',
-		testPath: '/types/breast/research',
-        focusSelector: 'a[href*="/about-nci/organization/nci-at-a-glance"]',
-        selectors: [
-            '.grid-row.grid-gap'
-        ],
-        selectorExpansion: false,
-       
-	},
-    {
         label: 'cancer research list page glossified links',
         testPath: '/test/dictionary-link-test-cancer-research',
         viewports: [

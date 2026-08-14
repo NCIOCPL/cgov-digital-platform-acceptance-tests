@@ -181,37 +181,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits for 5000
         Then user saves the content page
 
-    Scenario: Adding research card
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "author"
-        And user clicks "Log in" button
-        Then user is logged in and the user name "author" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on title with url "cancer-type-homepage" from the list of content
-        And user clicks on the tool bar status button "Draft"
-        And user clicks "View in edit form" button from other actions
-        And user selects "Add CTHP Research Card" from "CTHP Cards" CTHP dropdown
-        And browser waits
-        And user fills out the following fields
-            | fieldLabel      | value         | field_name                                          |
-            | CTHP Card Title | Test Research | field_cthp_cards[5][subform][field_cthp_card_title] |
-        And browser waits
-        And user selects "Research" from CTHP Card Theme dropdown number 6
-        And browser waits
-        And user clicks on "Research Page" link in the "CTHP Research Card" text area
-        And browser waits
-        And user clicks on "Select content" button from "CTHP Research Card" text area
-        And browser waits
-        And user filters results by "Cancer Research List Page" type
-        And browser waits
-        And user types "Breast Cancer Research" into title field search area
-        And browser waits
-        And user clicks on "Select content" button to select item
-        And browser waits
-        And user remembers title of selected Cancer Research List Page for future verification
-        And browser waits
-        Then user saves the content page
 
     Scenario: Adding block and raw html cards
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -227,8 +196,8 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user fills out the following fields
             | fieldLabel      | value           | field_name                                          |
-            | CTHP Card Title | Test Block Card | field_cthp_cards[6][subform][field_cthp_card_title] |
-        And user selects "General Resources on Coping" from CTHP Card Theme dropdown number 7
+            | CTHP Card Title | Test Block Card | field_cthp_cards[5][subform][field_cthp_card_title] |
+        And user selects "General Resources on Coping" from CTHP Card Theme dropdown number 6
         And browser waits
         And user types "coping" in the autosuggest field of "CTHP Block Card Content" card area
         And browser waits
@@ -237,8 +206,8 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user fills out the following fields
             | fieldLabel      | value              | field_name                                          |
-            | CTHP Card Title | Test Raw HTML Card | field_cthp_cards[7][subform][field_cthp_card_title] |
-        And user selects "Genetics" from CTHP Card Theme dropdown number 8
+            | CTHP Card Title | Test Raw HTML Card | field_cthp_cards[6][subform][field_cthp_card_title] |
+        And user selects "Genetics" from CTHP Card Theme dropdown number 7
         And browser waits
         And user clicks on Source tool icon in the html content tool bar
         And browser waits
@@ -261,7 +230,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Test Causes & Prevention | cthp-causes    |
             | Test Statistics          | cthp-survival  |
             | Test Video Card          | cthp-screening |
-            | Test Research            | cthp-research  |
             | Test Block Card          | cthp-general   |
             | Test Raw HTML Card       | cthp-genetics  |
         And cthp overview card has description "Description of Overview Card of CTHP content type"
@@ -281,9 +249,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And cthp general card has description that is not empty
         And cthp general card has multiple links
         And cthp genetics card reads "This is to test Raw Html Content in CTHP Raw HTML Card"
-        And cthp research card has multiple links
-        Then user clicks "View more research" link inside cthp research card
-        Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
+     
 
     Scenario: Edit and republish Cancer Type Homepage content type
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -428,7 +394,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | CTHP Internal Feature Card |
             | CTHP External Feature Card |
             | CTHP Video Card            |
-            | CTHP Research Card         |
             | CTHP Block Card            |
             | CTHP Raw HTML Card         |
         And Add Card Section was translated as "Add CTHP Overview Card"
@@ -442,7 +407,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And preview button was translated as "Preview"
         And user remembers the title of selected summary for further verification
         And user remembers the title of selected video for further verification
-        And user remembers title of selected Cancer Research List Page for future verification
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
         And user selects "Submit for Review" from workflow actions
@@ -459,7 +423,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Test Causes & Prevention | cthp-causes    |
             | Test Statistics          | cthp-survival  |
             | Test Video Card          | cthp-screening |
-            | Test Research            | cthp-research  |
             | Test Block Card          | cthp-general   |
             | Test Raw HTML Card       | cthp-genetics  |
         And cthp overview card has description "Description of Overview Card of CTHP content type"
@@ -477,12 +440,8 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then the video is matching the earlier selected video
         And cthp screening card has a link "Automated Test Article - Feature Card Desc" with href "{TEST_SITE_SECTION}/article"
         And cthp general card has description that is not empty
-        And the following cards have multiple spanish links that start with "/espanol"
-            | cardType      |
-            | cthp-research |
         And cthp genetics card reads "This is to test Raw Html Content in CTHP Raw HTML Card"
-        Then user clicks "Ver más investigaciones" link inside cthp research card
-        Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
+     
 
     Scenario: Edit and republish Spanish CTHP content type
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -703,37 +662,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         Then user saves the content page
 
-    Scenario: Adding research card Cancer Type Homepage HP content type
-        Given user is navigating to "/user/login?show_login_fields=true"
-        When user enters credentials of "author"
-        And user clicks "Log in" button
-        Then user is logged in and the user name "author" is displayed in the toolbar
-        And the tool bar appears at the top
-        When user clicks on "Content" tab
-        And user clicks on title with url "cancer-type-homepage-hp" from the list of content
-        And user clicks on the tool bar status button "Draft"
-        And user clicks "View in edit form" button from other actions
-        And user selects "Add CTHP Research Card" from "CTHP Cards" CTHP dropdown
-        And browser waits
-        And user fills out the following fields
-            | fieldLabel      | value            | field_name                                          |
-            | CTHP Card Title | Test Research HP | field_cthp_cards[5][subform][field_cthp_card_title] |
-        And browser waits
-        And user selects "Research" from CTHP Card Theme dropdown number 6
-        And browser waits
-        And user clicks on "Research Page" link in the "CTHP Research Card" text area
-        And browser waits
-        And user clicks on "Select content" button from "CTHP Research Card" text area
-        And browser waits
-        And user filters results by "Cancer Research List Page" type
-        And browser waits
-        And user types "Breast Cancer Research" into title field search area
-        And browser waits
-        And user clicks on "Select content" button to select item
-        And browser waits
-        And user remembers title of selected Cancer Research List Page for future verification
-        And browser waits
-        Then user saves the content page
 
     Scenario: Adding block and raw html cards Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -749,8 +677,8 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user fills out the following fields
             | fieldLabel      | value              | field_name                                          |
-            | CTHP Card Title | Test Block Card HP | field_cthp_cards[6][subform][field_cthp_card_title] |
-        And user selects "General Resources on Coping" from CTHP Card Theme dropdown number 7
+            | CTHP Card Title | Test Block Card HP | field_cthp_cards[5][subform][field_cthp_card_title] |
+        And user selects "General Resources on Coping" from CTHP Card Theme dropdown number 6
         And browser waits
         And user types "coping" in the autosuggest field of "CTHP Block Card Content" card area
         And browser waits
@@ -759,8 +687,8 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And browser waits
         And user fills out the following fields
             | fieldLabel      | value                 | field_name                                          |
-            | CTHP Card Title | Test Raw HTML Card HP | field_cthp_cards[7][subform][field_cthp_card_title] |
-        And user selects "Genetics" from CTHP Card Theme dropdown number 8
+            | CTHP Card Title | Test Raw HTML Card HP | field_cthp_cards[6][subform][field_cthp_card_title] |
+        And user selects "Genetics" from CTHP Card Theme dropdown number 7
         And browser waits
         And user clicks on Source tool icon in the html content tool bar
         And browser waits
@@ -804,7 +732,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Test Causes & Prevention HP | cthp-causes    |
             | Test Statistics HP          | cthp-survival  |
             | Test Video Card HP          | cthp-screening |
-            | Test Research HP            | cthp-research  |
             | Test Block Card HP          | cthp-general   |
             | Test Raw HTML Card HP       | cthp-genetics  |
         And cthp overview card has description "Description of Overview Card of CTHP HP content type"
@@ -824,9 +751,7 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And cthp general card has description that is not empty
         And cthp general card has multiple links
         And cthp genetics card reads "This is to test Raw Html Content in CTHP Raw HTML Card"
-        And cthp research card has multiple links
-        Then user clicks "View more research" link inside cthp research card
-        Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
+   
 
     Scenario: Edit and republish Cancer Type Homepage HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
@@ -881,12 +806,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Test Treatment HPEdited | cthp-treatment |
         And cthp overview card has description "Description of Overview Card of CTHP HP content type"
         And PDQ link label reads "PDQ Treatment Information for HPEdited"
-        When user clicks on "View more information" dropdown
-        Then the following more info links are displayed
-            | title                                          | url                           |
-            | Article to test Related Resources              | {TEST_SITE_SECTION}/article   |
-            | Google Link Guide Card                         | https://www.google.com        |
-            | Media Link Override Title Guide cards HPEdited | {TEST_SITE_SECTION}/test-file |
         Then the video is matching the earlier selected video
 
     Scenario: Verify the Patient/HP toggle in Cancer Type Homepage Patient content
@@ -977,7 +896,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | CTHP Internal Feature Card |
             | CTHP External Feature Card |
             | CTHP Video Card            |
-            | CTHP Research Card         |
             | CTHP Block Card            |
             | CTHP Raw HTML Card         |
         And Add Card Section was translated as "Add CTHP Overview Card"
@@ -991,7 +909,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         And preview button was translated as "Preview"
         And user remembers the title of selected summary for further verification
         And user remembers the title of selected video for further verification
-        And user remembers title of selected Cancer Research List Page for future verification
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
         And user selects "Submit for Review" from workflow actions
@@ -1009,7 +926,6 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
             | Test Causes & Prevention HP | cthp-causes    |
             | Test Statistics HP          | cthp-survival  |
             | Test Video Card HP          | cthp-screening |
-            | Test Research HP            | cthp-research  |
             | Test Block Card HP          | cthp-general   |
             | Test Raw HTML Card HP       | cthp-genetics  |
         And cthp overview card has description "Description of Overview Card of CTHP HP content type"
@@ -1027,13 +943,8 @@ Feature: As a cms user I want to be able to create Cancer Type Homepage content 
         Then the video is matching the earlier selected video
         And cthp screening card has a link "Automated Test Article - Feature Card Desc" with href "{TEST_SITE_SECTION}/article"
         And cthp general card has description that is not empty
-        And the following cards have multiple spanish links that start with "/espanol"
-            | cardType      |
-            | cthp-research |
         And cthp genetics card reads "This is to test Raw Html Content in CTHP Raw HTML Card"
-        Then user clicks "Ver más investigaciones" link inside cthp research card
-        Then the Cancer Research List page title is matching the earlier selected Cancer Research List page title
-
+       
     Scenario: Edit and republish Spanish CTHP HP content type
         Given user is navigating to "/user/login?show_login_fields=true"
         When user enters credentials of "editor"
