@@ -98,7 +98,7 @@ And('user selects {string} from CTHP Card Theme dropdown', (dropdown) => {
 })
 
 And('user types {string} in the autosuggest field of {string} card area', (value, option) => {
-    cy.get(`label:contains("${option}")`).parent().find("input[name*='field_cthp_cards[6][subform]']").type(value)
+    cy.get(`label:contains("${option}")`).parent().find("input[name*='field_cthp_cards[5][subform]']").type(value)
 })
 
 And('user selects {int} result from the list of autosuggest', (num) => {
@@ -239,13 +239,6 @@ And('cthp genetics card reads {string}', (title) => {
     cy.get(`div[class='equalheight bgWhite cthp-genetics'] div:contains("${title}")`).should('be.visible')
 })
 
-And('cthp research card has multiple links', () => {
-    cy.get("div[class*='cthp-general'] a").should('have.length.above', 0)
-})
-
-And('user clicks {string} link inside cthp research card', (option) => {
-    cy.get(`div[class*='cthp-research'] a:contains("${option}")`).click({ force: true })
-})
 
 And('user removes Video from {string} card area', (section) => {
     cy.get(`div:contains("${section}")`).parent().find("input[name*='field_cthp_video_remove']").click({ force: true })

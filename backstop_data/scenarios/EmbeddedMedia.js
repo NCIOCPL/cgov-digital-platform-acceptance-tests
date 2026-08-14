@@ -111,10 +111,7 @@ module.exports = [
         label: 'Embedded infographic in cancer center',
         testPath: '/test/cancer-center-infographic-embed-test-page',
     },
-    {
-        label: 'Embedded infographic in cancer research',
-        testPath: '/test/cancer-research-infographic-embed-test-page',
-    },
+
     {
         label: 'Embedded infographic in press release',
         testPath: '/test/press-release-infographic-embed-test-page',
@@ -130,10 +127,6 @@ module.exports = [
     {
         label: 'Embedded feature card in cancer center',
         testPath: '/test/cancer-center-feature-card-embed-test-page',
-    },
-    {
-        label: 'Embedded feature card in cancer research',
-        testPath: '/test/cancer-research-feature-card-embed-test-page',
     },
     {
         label: 'Embedded feature card in press release',
@@ -155,11 +148,6 @@ module.exports = [
     {
         label: 'Embedded video in cancer center',
         testPath: '/test/cancer-center-video-embed-test-page',
-    },
-
-    {
-        label: 'Embedded video in cancer research',
-        testPath: '/test/cancer-research-video-embed-test-page',
     },
 
     {

@@ -387,11 +387,11 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | 0     | Article to test Related Resources | Automated Test Article - Feature Card Desc | {TEST_SITE_SECTION}/article   | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/media_image         | main_image      | N/A            |
             | 1     | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | {TEST_SITE_SECTION}/test-file | /sites/default/files/styles/ncids_promo_1x1/public/cgov_image/ncids_promo_art_1x1 | thumbnail_image | N/A            |
             | 2     | Google Link                       | none                                       | https://www.google1.com       | /sites/default/files/styles/ncids_promo_1x1/module/cgov_image/img                 | placeholder-1x1 | yes            |
-         Then the following imageless cards are displayed
+        Then the following imageless cards are displayed
             | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                | exitDisclaimer |
             | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc | N/A            |
             | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | N/A            |
-            | 2         | three-card       | External | https://www.google1.com       | Google Link default               | Google Link Description Spanish                                      | yes            |
+            | 2         | three-card       | External | https://www.google1.com       | Google Link default               | Google Link Description Spanish            | yes            |
             | 3         | three-card       | External | https://www.google1.com       | Google link force display         | none                                       | yes            |
             | 4         | three-card       | External | https://www.google1.com       | Google Link force hide            | none                                       | N/A            |
             | 5         | three-card       | External | https://www.cancer.gov        | gov Link default                  | none                                       | N/A            |
@@ -474,14 +474,51 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | Featured Item Url | https://www.google1.com | field_landing_contents[8][subform][field_row_cards_unlimited][3][subform][field_featured_url][0][uri]          |
             | Card Title        | Google Link do not show | field_landing_contents[8][subform][field_row_cards_unlimited][3][subform][field_override_card_title][0][value] |
         And user selects "do_not_display" from 9 flag card External Link Display dropdown number 3
-
-
         Then user saves the content page
         And user clicks on the tool bar status button "Editing"
         And user selects "Submit for Review" from workflow actions
         And user clicks on the tool bar status button "Post-Publication Review"
         And user selects "Publish" from workflow actions
 
+    Scenario: Add a title, description and date list
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-mini-landing-page-edited" from the list of content
+       And user clicks on the tool bar status button "Published"
+        And user clicks "View in edit form" button from other actions
+        And browser waits
+        And user selects "Add List" from "Contents" dropdown
+        And browser waits
+        And user selects "NCIDS Title, Description, and Date" from 3 list style dropdown
+        And user clicks on "Link" in 1 "Internal Link" section
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user selects "Add External Link" from 3 item list dropdown
+        And user fills out the following fields
+            | fieldLabel | value                   | field_name                                                                                       |
+            | Link       | https://www.google1.com | field_landing_contents[9][subform][field_list_items][1][subform][field_external_link][0][uri]    |
+            | Title      | Google Link             | field_landing_contents[9][subform][field_list_items][1][subform][field_override_title][0][value] |
+        And user selects "Add Media Link" from 3 item list dropdown
+        And user clicks on "Link" button to link to a media
+        And user clicks on "Select media" to choose a resource to link
+        And user enters "Test File for Related Resources" into media title search box and clicks "Apply"
+        And user selects "Test File for Related Resources" item from the media list
+        And user clicks on "Select media" button to select media
+        And browser waits
+        And user fills out the following fields
+            | fieldLabel     | value                                    | field_name                                                                             |
+            | Override Title | Override Test File for Related Resources | field_landing_contents[9][subform][field_list_items][2][subform][field_override_title] |
+        When user saves the content page
+        And user clicks on the tool bar status button "Editing"
+        And user selects "Submit for Review" from workflow actions
+        And user clicks on the tool bar status button "Post-Publication Review"
+        And user selects "Publish" from workflow actions
 
     Scenario Outline: Verify edited content
         And screen breakpoint is set to "<breakpoint>"
@@ -495,14 +532,15 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | Images and B-roll    | https://visualsonline.cancer.gov/ |
         And NCIDS feature cards have the following attributes
             | index | title                              | description | link                    | source                                                                | file             | exitDisclaimer |
-            | 11     | Google Link No external disclaimer | N/A         | https://www.google1.com | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
-            | 12     | Gov link default                   | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
+            | 11    | Google Link No external disclaimer | N/A         | https://www.google1.com | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
+            | 12    | Gov link default                   | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | N/A            |
         # | 10     | Gov link force display             | N/A         | https://www.cancer.gov  | /sites/default/files/styles/ncids_featured_16x9/module/cgov_image/img | placeholder-16x9 | yes            |
         And NCIDS 1 list is displayed with title "Title and Description List"
         And each 1 list item out of 3 has a heading and description except items 2 and 3
         And NCIDS 2 list is displayed with title "Title, Description and Image List"
         And each 2 list item has a heading and an image
         And each 2 list item out of 3 has a heading and description except items 2 and 3
+        And each 3 list item out of 3 has a heading and description except items 2 and 3
         And the optional flag card group heading is "Flag Card GroupFlag Card Group"
         Then NCIDS flag cards have the following attributes
             | index | title                             | description                                | link                          | source                                                                            | file            | exitDisclaimer |
@@ -517,37 +555,37 @@ Feature: NCIDS Mini Landing Page Test Creation of Content
             | cardIndex | componentVariant | cardType | linkHref                      | title                             | description                                | exitDisclaimer |
             | 0         | three-card       | Internal | {TEST_SITE_SECTION}/article   | Article to test Related Resources | Automated Test Article - Feature Card Desc | N/A            |
             | 1         | three-card       | Media    | {TEST_SITE_SECTION}/test-file | Multimedia Flag Card Title        | Multimedia Flag Card Desc                  | N/A            |
-            | 2         | three-card       | External | https://www.google1.com       | Google Link default                      | none                                       | yes            |
+            | 2         | three-card       | External | https://www.google1.com       | Google Link default               | none                                       | yes            |
 
         Examples:
             | breakpoint |
             | desktop    |
 
 
-Scenario: Clean up
-    Given user is navigating to "/user/login?show_login_fields=true"
-    When user enters credentials of "editor"
-    And user clicks "Log in" button
-    Then user is logged in and the user name "editor" is displayed in the toolbar
-    And the tool bar appears at the top
-    When user clicks on "Content" tab
-    And user clicks on title with url spanish path "/espanol" site section plus "ncids-mini-landing-page"
-    And user clicks on the tool bar status button "Publicado"
-    And user clicks "Request Archive" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archive Requested"
-    And user clicks "Approve Archive Request" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archivado"
-    And user clicks "View in edit form" button from other actions
-    When user clicks on "Delete-translation" option button
-    When user confirms "Delete Spanish translation" action
+    Scenario: Clean up
+        Given user is navigating to "/user/login?show_login_fields=true"
+        When user enters credentials of "editor"
+        And user clicks "Log in" button
+        Then user is logged in and the user name "editor" is displayed in the toolbar
+        And the tool bar appears at the top
+        When user clicks on "Content" tab
+        And user clicks on title with url spanish path "/espanol" site section plus "ncids-mini-landing-page"
+        And user clicks on the tool bar status button "Publicado"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archivado"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete-translation" option button
+        When user confirms "Delete Spanish translation" action
 
-    When user clicks on "Content" tab
-    And user clicks on title with url "ncids-mini-landing-page-edited" from the list of content
-    And user clicks on the tool bar status button "Published"
-    And user clicks "Request Archive" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archive Requested"
-    And user clicks "Approve Archive Request" button from Moderation sidebar
-    And user clicks on the tool bar status button "Archived"
-    And user clicks "View in edit form" button from other actions
-    When user clicks on "Delete" option button
-    When user confirms "Delete" action
+        When user clicks on "Content" tab
+        And user clicks on title with url "ncids-mini-landing-page-edited" from the list of content
+        And user clicks on the tool bar status button "Published"
+        And user clicks "Request Archive" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archive Requested"
+        And user clicks "Approve Archive Request" button from Moderation sidebar
+        And user clicks on the tool bar status button "Archived"
+        And user clicks "View in edit form" button from other actions
+        When user clicks on "Delete" option button
+        When user confirms "Delete" action

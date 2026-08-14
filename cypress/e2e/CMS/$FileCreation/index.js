@@ -33,10 +33,10 @@ And('user selects {string} item from the media list', (title) => {
     })
 });
 
-Then('Selected Research pages list contains the following links', (dataTable) => {
+Then('list contains the following links', (dataTable) => {
     for (let { title, link } of dataTable.hashes()) {
         link = link.replace("{TEST_SITE_SECTION}", siteSection);
-        cy.get(`.managed.list div a:contains("${title}")`).each(($el) => {
+        cy.get(`.usa-collection__item a:contains("${title}")`).each(($el) => {
             const text = $el[0].innerText;
             if (text === title) {
                 cy.wrap($el).should('be.visible').and('have.attr', 'href').then(href => {
@@ -49,23 +49,18 @@ Then('Selected Research pages list contains the following links', (dataTable) =>
 
 And('each file has a file type in the section displayed as follows', (dataTable) => {
     for (let { title, fileType } of dataTable.hashes()) {
-        cy.get(`.managed.list div a:contains("${title}")`).each(($el) => {
+        cy.get(`.usa-collection__item a:contains("${title}")`).each(($el) => {
             const text = $el[0].innerText;
             if (text === title) {
-                if (fileType === 'csv') {
-                    cy.wrap($el).parent().find(".filetype").should('include.text', fileType)
-                }
-                else {
-                    cy.wrap($el).parent().find(".filetype").should('have.class', `filetype ${fileType}`)
-                }
+                    cy.wrap($el).parent().find(".usa-collection__filetype").should('include.text', fileType)
             }
         })
     }
 })
 
 And('each file has a size class', () => {
-    cy.get(`.managed.list div a:contains("Test File")`).each(($el) => {
-        cy.wrap($el).parent().find(".filesize").should('include.text', 'B)')
+    cy.get(`.usa-collection__item a:contains("Test File")`).each(($el) => {
+        cy.wrap($el).parent().find(".usa-collection__filetype").should('include.text', 'B]')
     })
 })
 
@@ -97,3 +92,24 @@ And('user deletes test file and translation with url {string}', (url) => {
 And('user clicks on title with url spanish path {string} site section plus {string}', (spPath, purl) => {
     cy.get(`a[href='${spPath}${siteSection}/${purl}-${randomStr}']`).click();
 });
+
+And('user selects {string} from {int} list style dropdown', (option, index) => {
+    cy.get('select[id*="subform-field-list-item-style"]').eq(index - 1).select(option);
+})
+
+And('user clicks on {string} in {int} {string} section', (featItemLink, index, section) => {
+    cy.get(`summary[aria-expanded="false"]:contains("${featItemLink}")`).click();
+});
+
+And('user clicks on Select content button item', () => {
+    cy.get(`input[value="Select content"]`).click()
+})
+
+And('user selects {string} from {string} dropdown in mlp', (dropDown, cartOption) => {
+    cy.get(`.placeholder:contains("${cartOption}")`).parent().find(`input[value="${dropDown}"]`).click({ force: true });
+})
+
+
+And('user selects {string} from {int} item list dropdown', (dropdown, index) => {
+    cy.get(`input[value='${dropdown}']`).eq(index - 1).click({ force: true })
+})
