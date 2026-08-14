@@ -35,12 +35,17 @@ And('the {string} title is {string}', (tag, title) => {
     }
 });
 
+And('the search box input is {string}', (value) => {
+        cy.get("input#sws-results-search").should('have.attr', 'value', value);
+    
+});
+
 And('the results are displayed with each title containing a link', () => {
-    cy.get('.result__list-item').find('a').should('have.attr', 'href');
+    cy.get('.usa-collection__item.sws-results__list-item.grid-container').find('a').should('have.attr', 'href');
 });
 
 And('the system defaults to {string} results per page', (resultsCount) => {
-    cy.get('.results__viewby option').should('be.selected').and('have.value', resultsCount);
+    cy.get('.grid-col.sws-results__viewby option').should('be.selected').and('have.value', resultsCount);
 });
 
 Then('the drop down box to show results per page is displayed', () => {
