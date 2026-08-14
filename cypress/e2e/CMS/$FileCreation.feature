@@ -404,21 +404,27 @@ Feature: As a content owner I want to be able to upload different file types to 
         And the tool bar appears at the top
         When user clicks on "Content" tab
         And user clicks on "Add content" action button
-        And user clicks on "Cancer Research List Page" content type
-        Then page title is "Create Cancer Research List Page"
+        And user clicks on "Mini Landing Page" content type
+        Then page title is "Create Mini Landing Page"
         And user fills out the following fields
-            | fieldLabel       | value                                                       | field_name             |
-            | Page Title       | Cancer Research List Page to Test Files                     | title                  |
-            | Browser Title    | Cancer Research List Page to Test Files                     | field_browser_title    |
-            | Meta Description | Automated Test Cancer Research List Page - Meta Description | field_page_description |
+            | fieldLabel       | value                                               | field_name             |
+            | Page Title       | Mini Landing Page to Test Files                     | title                  |
+            | Browser Title    | Mini Landing Page to Test Files                     | field_browser_title    |
+            | Meta Description | Automated Test Mini Landing Page - Meta Description | field_page_description |
         When user selects test site section
         And user fills out the following fields
-            | fieldLabel | value          | field_name       |
-            | Pretty URL | crlp-for-files | field_pretty_url |
-        And user clicks on dropdown button toggle to view all Related Resources types
-        And user selects "Add Media Link" related resource item
-        And user clicks on "Link" button to link to a media
+            | fieldLabel | value         | field_name       |
+            | Pretty URL | mlp-for-files | field_pretty_url |
+        And user selects "Add List" from "Contents" dropdown in mlp
         And browser waits
+        And user selects "NCIDS Title, Description, and Date" from 1 list style dropdown
+        And user clicks on "Link" in 1 "Internal Link" section
+        And user clicks on Select content button item
+        And user selects "Article to test Related Resources" item from the list
+        And user clicks on "Select content" button to select item
+        And browser waits
+        And user selects "Add Media Link" from 1 item list dropdown
+        And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File PDF" into media title search box and clicks "Apply"
         And user selects "Test File PDF" item from the media list
@@ -426,8 +432,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on "Select media" button to select media
         And browser waits
 
-        And user clicks on dropdown button toggle to view all Related Resources types
-        And user selects "Add Media Link" related resource item
+        And user selects "Add Media Link" from 1 item list dropdown
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File CSV" into media title search box and clicks "Apply"
@@ -436,8 +441,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on "Select media" button to select media
         And browser waits
 
-        And user clicks on dropdown button toggle to view all Related Resources types
-        And user selects "Add Media Link" related resource item
+        And user selects "Add Media Link" from 1 item list dropdown
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File PPTX" into media title search box and clicks "Apply"
@@ -446,8 +450,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on "Select media" button to select media
         And browser waits
 
-        And user clicks on dropdown button toggle to view all Related Resources types
-        And user selects "Add Media Link" related resource item
+        And user selects "Add Media Link" from 1 item list dropdown
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File PPT" into media title search box and clicks "Apply"
@@ -456,8 +459,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on "Select media" button to select media
         And browser waits
 
-        And user clicks on dropdown button toggle to view all Related Resources types
-        And user selects "Add Media Link" related resource item
+        And user selects "Add Media Link" from 1 item list dropdown
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File XLSX" into media title search box and clicks "Apply"
@@ -466,8 +468,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on "Select media" button to select media
         And browser waits
 
-        And user clicks on dropdown button toggle to view all Related Resources types
-        And user selects "Add Media Link" related resource item
+        And user selects "Add Media Link" from 1 item list dropdown
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File XLS" into media title search box and clicks "Apply"
@@ -476,8 +477,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on "Select media" button to select media
         And browser waits
 
-        And user clicks on dropdown button toggle to view all Related Resources types
-        And user selects "Add Media Link" related resource item
+        And user selects "Add Media Link" from 1 item list dropdown
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File DOCX" into media title search box and clicks "Apply"
@@ -486,8 +486,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on "Select media" button to select media
         And browser waits
 
-        And user clicks on dropdown button toggle to view all Related Resources types
-        And user selects "Add Media Link" related resource item
+        And user selects "Add Media Link" from 1 item list dropdown
         And user clicks on "Link" button to link to a media
         And user clicks on "Select media" to choose a resource to link
         And user enters "Test File DOC" into media title search box and clicks "Apply"
@@ -495,8 +494,8 @@ Feature: As a content owner I want to be able to upload different file types to 
         And browser waits
         And user clicks on "Select media" button to select media
         And browser waits
-        And user selects "Review" from "Save as" dropdown
-        When user saves the content page
+        And user selects "Review" from Change to dropdown
+        Then user saves the content page
 
 
     Scenario: editor is publishing content
@@ -506,7 +505,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         Then user is logged in and the user name "editor" is displayed in the toolbar
         And the tool bar appears at the top
         When user clicks on "Content" tab
-        And user clicks on title with url "crlp-for-files" from the list of content
+        And user clicks on title with url "mlp-for-files" from the list of content
         And user clicks on the tool bar status button "Review"
         And user selects "Publish" from workflow actions
         And browser waits
@@ -535,9 +534,9 @@ Feature: As a content owner I want to be able to upload different file types to 
             | {TEST_SITE_SECTION}/test-file-xls  | excel    |
             | {TEST_SITE_SECTION}/test-file-docx | word     |
             | {TEST_SITE_SECTION}/test-file-doc  | word     |
-        Given user is navigating to the front end site with path site section plus "crlp-for-files"
-        Then page title is "Cancer Research List Page to Test Files"
-        Then Selected Research pages list contains the following links
+        Given user is navigating to the front end site with path site section plus "mlp-for-files"
+        Then page title is "Mini Landing Page to Test Files"
+        Then list contains the following links
             | title          | link                               |
             | Test File PDF  | {TEST_SITE_SECTION}/test-file-pdf  |
             | Test File CSV  | {TEST_SITE_SECTION}/test-file-csv  |
@@ -577,10 +576,10 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user selects "Publicar" from workflow actions
 
         When user clicks on "Contenido" tab
-        Then user selects "Translate" option from Operations dropdown for content with title "Cancer Research List Page to Test Files"
-        Then page title is "Translations of Cancer Research List Page to Test Files"
+        Then user selects "Translate" option from Operations dropdown for content with title "Mini Landing Page to Test Files"
+        Then page title is "Translations of Mini Landing Page to Test Files"
         When user clicks on "Add" button to add translation
-        Then page title is "Create Spanish translation of Cancer Research List Page to Test Files"
+        Then page title is "Create Spanish translation of Mini Landing Page to Test Files"
         Then user saves the content page
         And user clicks on the tool bar status button "Borrador"
         And user selects "Submit for Review" from workflow actions
@@ -610,9 +609,9 @@ Feature: As a content owner I want to be able to upload different file types to 
             | /espanol{TEST_SITE_SECTION}/test-file-xls  | excel    |
             | /espanol{TEST_SITE_SECTION}/test-file-docx | word     |
             | /espanol{TEST_SITE_SECTION}/test-file-doc  | word     |
-        Given user is navigating to the front end site with spanish path "/espanol" site section plus "crlp-for-files"
-        Then page title is "Cancer Research List Page to Test Files"
-        Then Selected Research pages list contains the following links
+        Given user is navigating to the front end site with spanish path "/espanol" site section plus "mlp-for-files"
+        Then page title is "Mini Landing Page to Test Files"
+        Then list contains the following links
             | title                  | link                                       |
             | Test File PDF_Spanish  | /espanol{TEST_SITE_SECTION}/test-file-pdf  |
             | Test File CSV_Spanish  | /espanol{TEST_SITE_SECTION}/test-file-csv  |
@@ -649,10 +648,10 @@ Feature: As a content owner I want to be able to upload different file types to 
         And user clicks on the tool bar status button "Archivado"
         And user clicks "View in edit form" button from other actions
         When user clicks on "Delete-translation" option button
-       When user confirms "Delete Spanish translation" action
+        When user confirms "Delete Spanish translation" action
 
         When user clicks on "Content" tab
-        And user clicks on title with url spanish path "/espanol" site section plus "crlp-for-files"
+        And user clicks on title with url spanish path "/espanol" site section plus "mlp-for-files"
         And user clicks on the tool bar status button "Publicado"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
@@ -674,7 +673,7 @@ Feature: As a content owner I want to be able to upload different file types to 
         When user confirms "Delete" action
 
         When user clicks on "Content" tab
-        And user clicks on title with url "crlp-for-files" from the list of content
+        And user clicks on title with url "mlp-for-files" from the list of content
         And user clicks on the tool bar status button "Published"
         And user clicks "Request Archive" button from Moderation sidebar
         And user clicks on the tool bar status button "Archive Requested"
