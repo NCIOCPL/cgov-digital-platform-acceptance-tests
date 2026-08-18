@@ -108,7 +108,7 @@ Feature: As a cms user I want to be able to create cancer center content type to
         And secondary phone number is "888-111-1111"
         And website title "Website Title" is a link with href "https://www.google.com"
         And description reads "This is a description of cancer institute"
-        And the cancer center image is "cgov_image/ncids_promo_art_1x1" as "thumbnail_image.jpg"
+        And the cancer center image is "cgov_image/ncids_promo_art_1x1" as "thumbnail_image"
         And "Updated:" date stamp displays todays date
         And the page contains meta tags with the following names
             | name        | content                             |
