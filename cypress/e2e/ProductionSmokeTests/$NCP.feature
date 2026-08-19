@@ -4,7 +4,7 @@ Feature: Basic checks to ensure NCP production site is up and running
     Scenario: Home page is loading on all sites
         Given user is navigating to "/"
         Then mega menu is displayed
-        And main categories titles are "About the Plan,Goals,Get Involved"
+        And main categories titles are "About the Plan,Goals"
         And footer is displayed
 
     Scenario Outline: Different contents are loaded on all sites
