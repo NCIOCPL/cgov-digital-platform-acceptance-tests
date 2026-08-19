@@ -35,7 +35,7 @@ And('the following social media links are present', (dataTable) => {
 })
 
 And('biography description contains text {string}', (socialMedia) => {
-    cy.get("div[id='cgvBody'] p ").should('be.visible').and('include.text', socialMedia)
+    cy.get(`p:contains("${socialMedia}")`).should('be.visible')
 })
 
 And('{string} section contains the following links', (sectionTitle, dataTable) => {

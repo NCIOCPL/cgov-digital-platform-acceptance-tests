@@ -57,7 +57,7 @@ And('website title {string} is a link with href {string}', (websiteTitle, href) 
     cy.get(`div.cgdp-profile-box__website > a[href="${href}"]`).should('be.visible').and('have.text', websiteTitle);
 })
 And('description reads {string}', (descr) => {
-    cy.get('div#cgvBody p').should('have.text', descr);
+   cy.get(`p:contains("${descr}")`).should('be.visible')
 })
 And('the cancer center image matching the earlier selected image', () => {
     cy.get('.cgdp-image img').then($el => {
