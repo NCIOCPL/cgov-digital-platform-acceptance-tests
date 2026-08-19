@@ -5,15 +5,12 @@ Then('mega menu is displayed', () => {
     cy.get('nav.nci-header-nav').should('be.visible');
 });
 And('main categories titles are {string}', (titles) => {
-    const allTitles = titles.split(';');
-    cy.document().then(document => {
-        const els = document.querySelectorAll('.nci-header-nav__primary-item span');
-        for (let i = 0; i < els.length; i++) {
-            expect(els[i].textContent).to.eq(allTitles[i]);
-        }
-
+    const allTitles = titles.split(';').map(title => title.trim());
+    cy.get('.nci-header-nav__primary-item span').should(els => {
+        expect(els, 'number of main category titles').to.have.length(allTitles.length);
+        const actualTitles = [...els].map(el => el.textContent.trim());
+        expect(actualTitles).to.deep.eq(allTitles);
     });
-
 });
 
 And('footer is displayed', () => {
