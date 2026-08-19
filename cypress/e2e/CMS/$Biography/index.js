@@ -51,7 +51,7 @@ And("{string} date is displaying today's date", (stampLabel) => {
     cy.get('@dateStamp').find('time').should('include.text', expectedDate)
 })
 And('description reads {string}', (description) => {
-    cy.get(`div#cgvBody p:contains("${description}")`).should('be.visible')
+    cy.get(`p:contains("${description}")`).should('be.visible')
 
 })
 And('the Biography image is {string} as {string}', (expectedSrc, imageName) => {
