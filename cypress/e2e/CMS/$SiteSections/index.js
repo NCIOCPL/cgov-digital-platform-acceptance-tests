@@ -174,7 +174,7 @@ And('user drags {string} item one level down', (dragLink) => {
 });
 
 And('{string} appears in position {int} in the side menu tree', (label, position) => {
-    cy.task('getSharedValue', 'indexSiteSect').then((indexSiteSect) => {
+     cy.task('getSharedValue', 'indexSiteSect').then((indexSiteSect) => {
 
         cy.get('ul.usa-sidenav__sublist li').eq(indexSiteSect-1).find(`a:contains("${label}")`).should('be.visible');
     })
@@ -205,11 +205,14 @@ And('left navigation label {string} has url {string}', (label, contentHref) => {
 });
 
 And('user remembers the new position of a {string} site section', (dragLink) => {
-    cy.get('#taxonomy').find(`a.menu-item__link:contains("${dragLink}")`).parent().parent().parent().parent().invoke('index')
-        .then((index) => {
+    cy.get('#taxonomy')
+        .find(`a.menu-item__link:contains("${dragLink}")`)
+        .closest('tr')
+        .then(($row) => {
+            const index = $row.index() + 1;
             cy.task('setSharedValue', {
                 key: 'indexSiteSect',
                 value: index
             });
         });
-})
+});
