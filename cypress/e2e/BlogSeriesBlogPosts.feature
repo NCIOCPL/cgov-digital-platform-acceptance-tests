@@ -221,8 +221,8 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | 5            | WYSIWYG\|Managed media link         | WYSIWYG\|Media      |
             | 6            | WYSIWYG\|biopsy                     | WYSIWYG\|Glossified |
             | 7            | WYSIWYG\|1-800-555-1212             | WYSIWYG\|Other      |
-   
-   
+
+
     Scenario Outline: Blog series links click events
         Given user is navigating to "/news-events/cancer-currents-blog"
         When user clicks on "<linkPosition>" link in the blog series
@@ -245,3 +245,44 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | .usa-collection__body .usa-link       | evar92  | Blog Series List\|Test Blog Post: WYSIWYG Analytics Link Types\|15\|1 | BlogSeriesListClick | event131 | Body       |
             | .usa-summary-box .usa-link            | evar93  | Blog Series\|Category Box\|Biology                                    | BlogRightRailClick  | event132 | Right Rail |
             | .cgdp-blog-post-pager--older.usa-link | evar94  | Blog Series\|Blog Pager\|Older                                        | BlogPagerClick      | event133 | Body       |
+            | .cgdp-blog-subscribe-link a           | evar96  | Blog Series\|Subscribe                                                | BlogSubscribeClick  | event133 | Body       |
+
+    Scenario: Blog post recommended content imternal link click events
+        Given user is navigating to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
+        When user clicks on 1 recommended content card
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                                                                                                                   |
+            | prop4     | D=pev1                                                                                                                                                                  |
+            | prop8     | english                                                                                                                                                                 |
+            | prop67    | D=pageName                                                                                                                                                              |
+            | evar2     | D=c8                                                                                                                                                                    |
+            | evar82    | Recommended Content\|FDA Approves Lenvatinib for Radioactive Iodine-Refractory Thyroid Cancer\|FDA Approves Lenvatinib for Radioactive Iodine-Refractory Thyroid Cancer |
+            | evar60    | EmbeddedCardClick                                                                                                                                                       |
+            | evar86    | Feature\|None\|Title                                                                                                                                                    |
+            | evar81    | Recommended Content\|Internal                                                                                                                                           |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly                                                                      |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly                                                         |
+            | linkType  | lnk_o                                                                                                                                                                   |
+            | event135  |                                                                                                                                                                         |
+
+    Scenario: Blog post recommended content external link click events
+        Given user is navigating to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
+        When user clicks on 3 recommended content card
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                                                           |
+            | prop4     | D=pev1                                                                                                          |
+            | prop8     | english                                                                                                         |
+            | prop67    | D=pageName                                                                                                      |
+            | evar2     | D=c8                                                                                                            |
+            | evar82    | Recommended Content\|Pubs Locator\|Pubs Locator                                                                 |
+            | evar60    | EmbeddedCardClick                                                                                               |
+            | evar68    | Body                                                                                                            |
+            | evar86    | Feature\|None\|Title                                                                                            |
+            | evar81    | Recommended Content\|External                                                                                   |
+            | pageName  | {CANONICAL_HOST}/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly |
+            | linkType  | lnk_o                                                                                                           |
+            | event135  |                                                                                                                 |
+
