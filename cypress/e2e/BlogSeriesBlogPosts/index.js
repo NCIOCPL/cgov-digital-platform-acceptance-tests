@@ -132,9 +132,13 @@ When('user clicks on {int} video', (position) => {
     cy.get('div.cgdp-video .video-preview__play-button').eq(position - 1).trigger('click')
 })
 
-  When('user clicks on {int} link in the body of the blog post', (linkPosition) => {
+When('user clicks on {int} link in the body of the blog post', (linkPosition) => {
     cy.get('div.usa-prose a').eq(linkPosition - 1).trigger('click', { followRedirect: false });
-  });
+});
 When('user clicks on {string} link in the blog series', (linkPosition) => {
     cy.get(`${linkPosition}`).eq(0).trigger('click', { followRedirect: false });
+});
+
+When('user clicks on {int} recommended content card', (linkPosition) => {
+    cy.get('.nci-card-group a').eq(linkPosition - 1).trigger('click', { followRedirect: false });
 });
