@@ -45,7 +45,13 @@ module.exports = [
         label: 'press release with no lead image',
         testPath: '/test/press-release-no-lead-img',
         delay: 2000,
-    }
+    },
+    {
+        label: 'press release media entity embed test',
+        testPath: '/test/entity-embed-test',
+        delay: 2000,
+    },
+
     
     // {
     // 	label: 'spanish press release with related resources and citations expand citation',
