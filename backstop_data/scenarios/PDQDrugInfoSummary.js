@@ -28,7 +28,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[class="cgdpl desktop:grid-col-9"]'
+            'div[class="cgdpl resize-content"]'
         ],
         selectorExpansion: false,
        
@@ -45,7 +45,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div[class="cgdpl desktop:grid-col-9"]'
+            'div[class="cgdpl resize-content"]'
         ],
         selectorExpansion: true,
        
