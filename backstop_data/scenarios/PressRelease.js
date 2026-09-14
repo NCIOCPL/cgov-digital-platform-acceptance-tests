@@ -49,7 +49,18 @@ module.exports = [
     {
         label: 'press release media entity embed test',
         testPath: '/test/entity-embed-test',
-        delay: 2000,
+        viewports: [
+            {
+                label: 'desktop',
+                width: 1025,
+                height: 600,
+            },
+            {
+                label: 'tablet',
+                width: 650,
+                height: 900,
+            }
+        ]
     },
 
     
