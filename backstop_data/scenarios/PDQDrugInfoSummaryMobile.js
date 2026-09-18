@@ -23,7 +23,7 @@ module.exports = [
             }
         ],
         selectors: [
-            'div[class="cgdpl resize-content"]'
+            '#main-content'
         ],
         selectorExpansion: true,
        
