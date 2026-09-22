@@ -14,7 +14,7 @@ When('user clicks on glossified link with id {string} in the body', (glossId)=>{
 })
 
 When('popup loads',()=>{
-    cy.get('button.cgdp_audiofile').should('be.visible')
+    cy.get('button.cgdp-audiofile.cgdp-audiofile--small').should('be.visible')
 })
 
 When('user clicks on {int} video',(position)=>{
