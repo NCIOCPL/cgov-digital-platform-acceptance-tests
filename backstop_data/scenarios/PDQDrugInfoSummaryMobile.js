@@ -14,7 +14,7 @@ module.exports = [
     {
 		label: 'PDQ drug info summary audio button focus',
 		testPath: '/about-cancer/treatment/drugs/bevacizumab',
-        focusSelector: 'a.CDR_audiofile',
+        focusSelector: 'button.cgdp-audiofile.cgdp-audiofile--large',
         viewports: [
             {
                 label: 'mobile',
