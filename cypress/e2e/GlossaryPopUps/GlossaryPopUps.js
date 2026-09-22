@@ -35,7 +35,7 @@ And('definition box displays all {string} provided by glossary', (features) => {
                 cy.get('div.usa-modal__content dl span').first().should('be.visible');
                 break;
             case 'audio':
-                cy.get('div.usa-modal__content button.cgdp_audiofile').should('be.visible');
+                cy.get('div.usa-modal__content button.cgdp-audiofile.cgdp-audiofile--small').should('be.visible');
                 break;
             default:
                 cy.get('div.usa-modal__content').find('img').as('image');
