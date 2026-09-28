@@ -23,7 +23,7 @@ module.exports = [
             }
         ],
         selectors: [
-            'div[class="cgdpl desktop:grid-col-9"]'
+            '#main-content'
         ],
         selectorExpansion: true,
        
