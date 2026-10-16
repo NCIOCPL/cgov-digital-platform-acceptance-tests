@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 import { Then } from "cypress-cucumber-preprocessor/steps";
 import { getClickBeacon } from "../../utils/getClickBeacon.js";
-import {getSpecificClickBeacon} from "../../utils/getClickBeacon.js"
+import { getSpecificClickBeacon } from "../../utils/getClickBeacon.js"
 import { getLoadBeacon } from "../../utils/getLoadBeacon.js"
 
 let loadOrClick;
@@ -111,6 +111,11 @@ Then('the following parameters should be captured', dataTable => {
                 expect(beacon[parameter]).to.include(value);
             } else if (value === '/') {
                 expect(beacon[parameter]).to.include(value);
+            } else if (value.includes('derivedTitle')) {
+                cy.task('getSharedValue', 'derivedTitle').then(title => {
+                    const newValue = value.replace('derivedTitle', title);
+                    expect(beacon[parameter]).to.include(newValue);
+                });
             } else
                 expect(beacon[parameter]).to.be.equal(value);
         }
@@ -146,7 +151,7 @@ Then('drug dictionary search page click request is sent', () => {
 });
 
 Then('{string} page click request is sent', (param) => {
-    loadOrClick = getSpecificClickBeacon(cy.AnalyticsStorage,param);
+    loadOrClick = getSpecificClickBeacon(cy.AnalyticsStorage, param);
 });
 
 Then('glossified popup page click request is sent', () => {
@@ -216,10 +221,10 @@ Then('page click request is sent right before page unload', () => {
 
 
 Then('page click request is sent for cts chat', () => {
-    const storage =  cy.AnalyticsStorage
+    const storage = cy.AnalyticsStorage
     let clickBeacon;
     for (let i = 0; i < storage.length; i++) {
-        const singleBeacon =  storage[i];
+        const singleBeacon = storage[i];
         if (!(singleBeacon.linkType === undefined)) {
             if (singleBeacon.linkType.includes('lnk_o') && !singleBeacon.pev2.includes('Resized')) {
                 if (singleBeacon.pev2 === 'Legacy:ProactiveChat')
