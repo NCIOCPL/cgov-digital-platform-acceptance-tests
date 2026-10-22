@@ -26,8 +26,8 @@ Feature: Basic checks to ensure NCP production site is up and running
     Scenario: Verify favicons
         Given user is navigating to "/"
         Then the following favicons links are present
-            | rel              | href                                                                                | sizes | type          |
-            | icon             | https://nationalcancerplan.cancer.gov/sites/ncp/files/favicons/favicon.ico          | 32x32 | none          |
-            | icon             | https://nationalcancerplan.cancer.gov/sites/ncp/files/favicons/favicon.svg          | none  | image/svg+xml |
-            | apple-touch-icon | https://nationalcancerplan.cancer.gov/sites/ncp/files/favicons/apple-touch-icon.png | none  | none          |
-            | manifest         | https://nationalcancerplan.cancer.gov/sites/ncp/files/favicons/manifest.webmanifest | none  | none          |
+            | rel              | href                                           | sizes | type          |
+            | icon             | /sites/ncp/files/favicons/favicon.ico          | 32x32 | none          |
+            | icon             | /sites/ncp/files/favicons/favicon.svg          | none  | image/svg+xml |
+            | apple-touch-icon | /sites/ncp/files/favicons/apple-touch-icon.png | none  | none          |
+            | manifest         | /sites/ncp/files/favicons/manifest.webmanifest | none  | none          |

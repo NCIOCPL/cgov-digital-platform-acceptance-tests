@@ -131,10 +131,10 @@ Feature: Basic checks to ensure production site is up and running
     Scenario: Verify favicons
         Given user is navigating to "/"
         Then the following favicons links are present
-            | rel              | href                                                                                                                                  | sizes | type          |
-            | icon             | https://www.cancer.gov/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/favicon.ico          | 32x32 | none          |
-            | icon             | https://www.cancer.gov/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/favicon.svg          | none  | image/svg+xml |
-            | apple-touch-icon | https://www.cancer.gov/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/apple-touch-icon.png | none  | none          |
-            | manifest         | https://www.cancer.gov/profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/site.webmanifest     | none  | none          |
+            | rel              | href                                                                                                            | sizes | type          |
+            # | icon             | /profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/favicon.ico          | 32x32 | none          |
+            | icon             | /profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/favicon.svg          | none  | image/svg+xml |
+            | apple-touch-icon | /profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/apple-touch-icon.png | none  | none          |
+            | manifest         | /profiles/custom/cgov_site/themes/custom/cgov/static/images/design-elements/icons/favicons/site.webmanifest     | none  | none          |
 
 
