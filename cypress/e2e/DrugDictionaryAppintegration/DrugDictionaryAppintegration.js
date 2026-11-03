@@ -112,11 +112,9 @@ When('user selects {string} from result list', (result) => {
 And('user clicks {string} button', (searchButton) => {
     if (searchButton === 'Search') {
         cy.DrugDictionarySearchStorage = [];
+            cy.CaptureDrugDictionarySearchBeacon = true;
         cy.location('href').then((href) => {
             cy.DrugDictionarySearchSourceUrl = href.replace(/\/$/, '');
-        });
-        cy.on('window:before:unload', () => {
-            cy.DrugDictionarySearchStorage = [...(cy.AnalyticsStorage || [])];
         });
     }
     cy.get('#btnSearch').click();
