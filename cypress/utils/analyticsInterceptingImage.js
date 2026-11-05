@@ -13,7 +13,11 @@ const NativeImage = win.Image;
           if (prop === 'src') {
             for (let i=0; i< Cypress.env('trackingServer').length; i++){
               if(value.includes(Cypress.env('trackingServer')[i])){
-              cy.AnalyticsStorage.push(convertBeacon(value));
+              const beacon = convertBeacon(value);
+              cy.AnalyticsStorage.push(beacon);
+              if (cy.CaptureDrugDictionarySearchBeacon) {
+                cy.DrugDictionarySearchStorage.push(beacon);
+              }
               break;
             }
           }

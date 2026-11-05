@@ -147,6 +147,7 @@ Then('drug dictionary search page click request is sent', () => {
 
         expect(clickBeacon, 'drug dictionary search click beacon').to.exist;
         loadOrClick = clickBeacon;
+        cy.CaptureDrugDictionarySearchBeacon = false;
     });
 });
 
