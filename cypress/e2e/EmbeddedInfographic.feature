@@ -93,3 +93,22 @@ Feature: Content creator wants to associate alt text and caption with an infogra
             | desktopImage | .*\/files\/styles\/cgov_article\/public\/cgov_infographic\/\d{4}-\d{2}\/Human-Tumor-Atlas-AP-web-spanish-640x2\.png |
         And "Ver e Imprimir Infografía" link should not appear
 
+    Scenario: View and print click analytics event
+        When user is navigating to "/test/embed-info-med"
+        And user clicks on View and Print Infographic link
+        And browser waits
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                |
+            | prop4     | D=pev1                                                               |
+            | prop66    | viewPrint\|inline                                                    |
+            | prop8     | english                                                              |
+            | evar2     | D=c8                                                                 |
+            | evar60    | InfographicClick                                                     |
+            | evar68    | Body                                                                 |
+            | evar81    | Embedded Infographic\|viewPrint                                      |
+            | evar82    | Infographic\|Pediatric MATCH Infographic\|View and Print Infographic |
+            | pageName  | {CANONICAL_HOST}/test/embed-info-med                                 |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/embed-info-med                    |
+            | pev2      | Body:EmbeddedMedia:LinkClick                                         |
+            | event71   |                                                                      |
