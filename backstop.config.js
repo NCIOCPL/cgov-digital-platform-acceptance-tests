@@ -9,7 +9,7 @@ if (!args.testBaseUrl) {
 	args.testBaseUrl = 'https://www-dev-ac.cancer.gov';
 }
 const isACSF = args.testBaseUrl.toLowerCase().includes('acsf') || args.refBaseUrl.toLowerCase().includes('acsf')
-const scenarioFiles = glob.sync('backstop_data/scenarios/**/*.js');
+const scenarioFiles = glob.sync(args.BACKSTOP_SCENARIO_GLOB || 'backstop_data/scenarios/**/*.js');
 
 const scenariosExpanded = scenarioFiles.reduce((ac, scenarioFile) => {
 	const scenarios = require(pathUtil.resolve(__dirname, scenarioFile));

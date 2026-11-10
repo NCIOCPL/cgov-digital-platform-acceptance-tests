@@ -1,0 +1,82 @@
+name: Generate references and run visual regression
+
+on:
+  workflow_dispatch:
+    inputs:
+      refBaseUrl:
+        description: "Base URL for generating reference images"
+        required: true
+        default: "https://www-dev-ac.cancer.gov"
+        type: string
+      testBaseUrl:
+        description: "Base URL for visual regression tests"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  visual_regression:
+    name: Generate references and test
+    runs-on: ubuntu-24.04
+    env:
+      BACKSTOP_SCENARIO_GLOB: backstop_data/scenarios/AppModules.js
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Normalize URL inputs
+        env:
+          REF_BASE_URL_INPUT: ${{ inputs.refBaseUrl }}
+          TEST_BASE_URL_INPUT: ${{ inputs.testBaseUrl }}
+        run: |
+          ref_base_url="$(printf '%s' "$REF_BASE_URL_INPUT" | sed -E 's/^[[:space:]]+//; s#[[:space:]/]*$##')"
+          test_base_url="$(printf '%s' "$TEST_BASE_URL_INPUT" | sed -E 's/^[[:space:]]+//; s#[[:space:]/]*$##')"
+          if [[ -z "$ref_base_url" || -z "$test_base_url" ]]; then
+            echo "Both refBaseUrl and testBaseUrl must be non-empty."
+            exit 1
+          fi
+          echo "refBaseUrl=$ref_base_url" >> "$GITHUB_ENV"
+          echo "testBaseUrl=$test_base_url" >> "$GITHUB_ENV"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4.3.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Clear old reference images
+        run: rm -rf -- backstop_data/reference
+
+      - name: Generate fresh reference images
+        run: npm run backstop:reference
+
+      - name: Upload reference images
+        uses: actions/upload-artifact@v4
+        with:
+          name: backstopjs-reference
+          path: backstop_data/reference
+          if-no-files-found: error
+
+      - name: Run backstopjs tests
+        run: npm run backstop:test
+
+      - name: Upload failed tests
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failed-backstopjs
+          path: backstop_data/
+
+      - name: Upload successful tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: success-backstopjs
+          path: backstop_data/test/**/report.json
