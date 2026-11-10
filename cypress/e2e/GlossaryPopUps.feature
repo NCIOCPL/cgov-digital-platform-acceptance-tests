@@ -26,9 +26,20 @@ Feature: Viewing glossary pop-ups when available while visiting cancer info summ
             | tablet     | /espanol/cancer/tratamiento/mca/pro/vitamina-c-pdq                | cáncer                                    | definition,audio                      |
             | tablet     | /about-cancer/treatment/side-effects/fatigue/fatigue-pdq          | chemotherapy                              | definition,pronunciation,audio        |
             | tablet     | /espanol/cancer/tratamiento/efectos-secundarios/fatiga/fatiga-pdq | cáncer                                    | definition,audio                      |
+
+     Scenario Outline: PDQ Information summary glossary links on PDQ DIS 
+        Given user is navigating to "<url>"
+        And screen breakpoint is set to "<breakpoint>"
+        When user is clicking on definition for "<termName>" on PDQ DIS
+        Then pop-up definition box is displayed for "<termName>"
+        And definition box displays all "<features>" provided by glossary on PDQ DIS
+
+
+        Examples:
+            | breakpoint | url                                                               | termName                                  | features                              |
             | tablet     | /about-cancer/treatment/drugs/bevacizumab                         | drug                                      | definition,pronunciation,audio        |
             | tablet     | /about-cancer/treatment/drugs/bep                                 | malignant                                 | definition,pronunciation,audio        |
-
+    
     Scenario Outline: Glossary popup link styles
         Given user is navigating to "<url>"
         And screen breakpoint is set to "<breakpoint>"
