@@ -2,17 +2,6 @@
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 import { getBaseDirectory } from '../../../utils';
 
-//This step is just a workaround until it gets fixed
-Given('user is navigating to {string}', (a) => {
-    Cypress.on('uncaught:exception', (err, runnable) => {
-        // we expect a 3rd party library error with message like 'list not defined' etc.
-        // and don't want to fail the test so we return false
-        if (err.message.includes(`Cannot read property 'getAttribute' of undefined`)) {
-            return false
-        }
-    });
-    cy.visit(a);
-});
 
 Then('pdq citation section is visible', () => {
     cy.get('div.pdq-sections > ol').should('be.visible');
