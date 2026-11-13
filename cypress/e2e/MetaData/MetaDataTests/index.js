@@ -2,18 +2,6 @@
 import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 const baseUrl = Cypress.config('baseUrl');
 
-//This step is just a workaround until it gets fixed
-Given('user is navigating to {string}', (a) => {
-    Cypress.on('uncaught:exception', (err, runnable) => {
-        // we expect a 3rd party library error with message like 'list not defined' etc.
-        // and don't want to fail the test so we return false
-        if (err.message.includes(`Cannot read property 'getAttribute' of undefined`)) {
-            return false
-        }
-    });
-    cy.visit(a);
-});
-
 And('the page contains og:site_name meta tags with the following properties', (dataTable) => {
     cy.document().then((doc) => {
         for (const { property, content } of dataTable.hashes()) {

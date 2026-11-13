@@ -3,18 +3,6 @@ import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 const baseURL = Cypress.config('baseUrl');
 const host = baseURL.replace(new RegExp("(https:\/\/)|(http:\/\/)"), "")
 
-//This step is just a workaround until it gets fixed
-Given('user is navigating to {string}', (a) => {
-    Cypress.on('uncaught:exception', (err, runnable) => {
-        // we expect a 3rd party library error with message like 'list not defined' etc.
-        // and don't want to fail the test so we return false
-        if (err.message.includes(`Cannot read property 'getAttribute' of undefined`)) {
-            return false
-        }
-    });
-    cy.visit(a);
-});
-
 Then('the following {string} buttons are displayed at top and bottom of the page', (pageOptions) => {
     const pOptions = pageOptions.split(',');
     pOptions.forEach(option => {
