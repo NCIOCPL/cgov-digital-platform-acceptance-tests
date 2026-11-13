@@ -35,3 +35,7 @@ And('exit disclaimer is not visible', () => {
     cy.get('.cgdp-related-resources').find('a').hasPseudoElement('::after')
         .should('eq', false)
 });
+
+And('user clicks on {int} related resource link', (index) => {
+    cy.get('.cgdp-related-resources ul').find('a').eq(index-1).trigger('click',{followRedirect: false});
+});

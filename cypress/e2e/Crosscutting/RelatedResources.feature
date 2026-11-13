@@ -54,4 +54,30 @@ Feature: Related Resources Tests
             | mobile     | espanol/cancer/sobrellevar/self-image                                               |
             | desktop    | espanol/noticias/temas-y-relatos-blog/2019/vitamina-d-complemento-cancer-prevencion |
 
+    Scenario Outline: Click event fires when user clicks on related resource link
+        Given user is navigating to "about-cancer/coping/feelings"
+        When user clicks on <index> related resource link
+        Then page click request is sent
+        And browser waits
+        And the following parameters should be captured
+            | parameter | value                                                      |
+            | prop4     | D=pev1                                                     |
+            | prop67    | D=pageName                                                 |
+            | prop8     | english                                                    |
+            | evar2     | D=c8                                                       |
+            | evar61    | cgvArticle\|default                                        |
+            | evar68    | Body                                                       |
+            | evar81    | <evar81>                                                   |
+            | evar82    | Related Resources                                          |
+            | evar83    | <evar83>                                                   |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/about-cancer/coping/feelings |
+            | pageName  | {CANONICAL_HOST}/about-cancer/coping/feelings              |
+            | event57   |                                                            |
+            | pev2      | Inner:RelatedResources:LinkClick                           |
 
+
+        Examples:
+            | index | evar81                                           | evar83                  |
+            | 1     | Internal\|Learning to Relax\|Related Resources   | Related Resources\|4\|1 |
+            | 3     | External\|External Card Title\|Related Resources | Related Resources\|4\|3 |
+            | 4     | Media\|Test PDF File name\|Related Resources     | Related Resources\|4\|4 |
