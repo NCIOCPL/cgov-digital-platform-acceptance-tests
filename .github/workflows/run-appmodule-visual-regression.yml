@@ -1,4 +1,4 @@
-name: Generate references and run visual regression
+name: Run appmodule visual regression
 
 on:
   workflow_dispatch:
