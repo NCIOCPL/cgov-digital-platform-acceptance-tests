@@ -72,7 +72,7 @@ module.exports = [
     {
 		label: 'PDQ drug info summary FDA glossified term focus',
 		testPath: '/about-cancer/treatment/drugs/bevacizumab',
-        focusSelector: 'a[href*="/Common/PopUps/popDefinition.aspx?id=444973&version=Patient&language=English"]',
+        focusSelector: 'a[href*="publications/dictionaries/cancer-terms/def/444973"]',
         viewports: [
             {
                 label: 'desktop',
@@ -81,7 +81,7 @@ module.exports = [
             },
         ],
         selectors: [
-            'div.accordion'
+            '.usa-prose.usa-prose--ncids-full-html'
         ],
         selectorExpansion: false,
        
