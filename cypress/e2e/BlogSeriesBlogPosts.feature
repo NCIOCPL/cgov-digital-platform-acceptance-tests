@@ -245,7 +245,7 @@ Feature: As an user, I want to see different components of the Blog Series and B
             | .usa-collection__body .usa-link       | evar92  | Blog Series List\|Test Blog Post: WYSIWYG Analytics Link Types\|15\|1 | BlogSeriesListClick | event131 | Body       |
             | .usa-summary-box .usa-link            | evar93  | Blog Series\|Category Box\|Biology                                    | BlogRightRailClick  | event132 | Right Rail |
             | .cgdp-blog-post-pager--older.usa-link | evar94  | Blog Series\|Blog Pager\|Older                                        | BlogPagerClick      | event133 | Body       |
-            | .cgdp-blog-subscribe-link a           | evar96  | Blog Series\|Subscribe                                                | BlogSubscribeClick  | event133 | Body       |
+            | .cgdp-blog-subscribe-link a           | evar96  | Blog Series\|Subscribe                                                | BlogSubscribeClick  | event129 | Body       |
 
     Scenario: Blog post recommended content imternal link click events
         Given user is navigating to "/news-events/cancer-currents-blog/2019/pancreatic-cancer-targeting-kras-indirectly"
