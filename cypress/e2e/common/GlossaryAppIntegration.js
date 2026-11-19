@@ -61,7 +61,7 @@ Then('search bar is displayed below introductory text', () => {
 });
 
 Then('{string} is displayed as the submit button', (searchButton) => {
-  cy.get('input#btnSearch').should('have.value', searchButton);
+  cy.get('button.nci-autocomplete__submit').should('have.value', searchButton);
 });
 
 Then('the introductory text appears', () => {
@@ -108,4 +108,37 @@ Then('status code is {int} on {string}', (statusCode, badApi) => {
     expect(resp.status).to.be.eq(statusCode);
   })
 });
+
+When('user types {string} in the search box', (textEntered) => {
+    cy.get('input[id="keywords"]').clear().type(textEntered);
+    cy.wait(500);
+});
+
+And('user selects {string} from the autosuggest dropdown', (autosuggestTerm) => {
+    cy.get("ul.nci-autocomplete__listbox").should('be.visible');
+    cy.get("ul.nci-autocomplete__listbox li").contains(autosuggestTerm).click();
+    cy.wait(500);
+
+});
+
+And('user clicks Search button', () => {
+   cy.get('button[class*="nci-autocomplete__submit"]').click();
+});
+
+And('user clears the search box', () => {
+    cy.get('input[id="keywords"]').clear();
+});
+
+When('user types {string} in the search box', (textEntered) => {
+    cy.get('input[id="keywords"]').clear().type(textEntered);
+    cy.wait(500);
+});
+
+When('user hits enter key', () => {
+    cy.get('input[id="keywords"]').type('{enter}');
+});
+
+
+
+
 

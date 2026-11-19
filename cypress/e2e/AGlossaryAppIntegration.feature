@@ -135,5 +135,56 @@ Feature: Glossary app is integrated withing CGOV platform
             | /espanol/publicaciones/diccionarios/diccionario-genetica/def/44393 | Location: {PROTOCOL}://{CANONICAL_HOST}/espanol/publicaciones/diccionarios/diccionario-genetica/def/acido-desoxirribonucleico |
             | /publications/dictionaries/genetics-dictionary/def/44393           | Location: {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/genetics-dictionary/def/deoxyribonucleic-acid               |
 
-
-
+    Scenario: When user uses Autosuggest, selects a term from autosuggest and search -  analytics events are fired
+        Given screen breakpoint is set to "desktop"
+        And user is navigating to "/publications/dictionaries/cancer-terms/expand/a"
+        Given analytics storage is cleared
+        When user types "cancer" in the search box
+        And browser waits for 500
+        And user selects "cancer" from the autosuggest dropdown
+        And browser waits for 500
+        And user clicks Search button
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                        |
+            | prop4     | D=pev1                                                                       |
+            | prop8     | english                                                                      |
+            | prop11    | D=v11                                                                        |
+            | prop23    | D=v23                                                                        |
+            | prop67    | D=pageName                                                                   |
+            | prop68    | D=v68                                                                        |
+            | evar1     | {CANONICAL_HOST}/publications/dictionaries/cancer-terms/expand/a             |   
+            | evar2     | D=c8                                                                         |
+            | evar11    | Glossary Search Box                                                          |
+            | evar23    | Selected\|10\|1\|6\|cancer\|cancer                                           |
+            | evar91    | starts with\|cancer\|undefined                                               |   
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-terms/expand/a|                                              
+            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-terms/expand/a             |
+            | pev2      | GlossaryApp:SearchBox:Submit                                                 |
+ 
+    Scenario: When user uses Autosuggest, modifies the suggestion and search -  analytics events are fired
+        Given screen breakpoint is set to "desktop"
+        And user is navigating to "/publications/dictionaries/cancer-terms/search/breast%20cancer/?searchMode=Begins"
+        Given analytics storage is cleared
+        When user types "lung cancer" in the search box
+        And browser waits for 500
+        And user selects "lung cancer" from the autosuggest dropdown
+        And browser waits for 1000
+        And user hits enter key
+        Then page click request is sent
+        And the following parameters should be captured
+            | parameter | value                                                                                                                                |
+            | prop4     | D=pev1                                                                                                                               |
+            | prop8     | english                                                                                                                              |
+            | prop11    | D=v11                                                                                                                                |
+            | prop23    | D=v23                                                                                                                                |
+            | prop67    | D=pageName                                                                                                                           |
+            | prop68    | D=v68                                                                                                                                |
+            | evar1     | {CANONICAL_HOST}/publications/dictionaries/cancer-terms/search/breast%20cancer                                                       |
+            | evar2     | D=c8                                                                                                                                 |
+            | evar11    | Glossary Search Box                                                                                                                  |
+            | evar23    | Selected\|1\|1\|11\|lung cancer\|lung cancer                                                                                         |
+            | evar91    | starts with\|lung cancer\|breast cancer                                                                                              |
+            | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/publications/dictionaries/cancer-terms/search/breast%20cancer/?searchMode=Begins                       |                                              
+            | pageName  | {CANONICAL_HOST}/publications/dictionaries/cancer-terms/search/breast cancer                                                         |
+            | pev2      | GlossaryApp:SearchBox:Submit                                                                                                         |
