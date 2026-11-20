@@ -145,4 +145,45 @@ Feature: As an user, I want to see different components of the Press Releases
                         | pev2      | Body:EmbeddedMedia:LinkClick                                           |
                         | linkType  | lnk_o                                                                  |
 
+        Scenario: Contact link click event
+                Given user is navigating to "/test/press-release-video-embed-test-page"
+                When user clicks on Contact link
+                Then page click request is sent
+                And the following parameters should be captured
+                        | parameter | value                                                                  |
+                        | prop4     | D=pev1                                                                 |
+                        | prop8     | english                                                                |
+                        | prop67    | D=pageName                                                             |
+                        | evar2     | D=c8                                                                   |
+                        | evar60    | PressReleaseContactClick                                               |
+                        | evar82    | Contact\|NIH Press Office                                              |
+                        | evar68    | Body                                                                   |
+                        | pageName  | {CANONICAL_HOST}/test/press-release-video-embed-test-page              |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/test/press-release-video-embed-test-page |
+                        | event138  |                                                                        |
+                        | channel   | NCI Homepage                                                           |
+                        | pev2      | PressRelease:Contact:LinkClick                                         |
+                        | linkType  | lnk_o                                                                  |
+
+        Scenario: reference link click event
+                Given user is navigating to "/news-events/press-releases/2018/leukemia-cll-ibrutinib-trial"
+                When user clicks on 2 reference link
+                Then page click request is sent
+                And the following parameters should be captured
+                        | parameter | value                                                                                      |
+                        | prop4     | D=pev1                                                                                     |
+                        | prop8     | english                                                                                    |
+                        | prop67    | D=pageName                                                                                 |
+                        | evar2     | D=c8                                                                                       |
+                        | evar60    | PressReleaseReferenceClick                                                                 |
+                        | evar82    | Reference\|[PubMed Abstract]                                                               |
+                        | evar68    | Body                                                                                       |
+                        | pageName  | {CANONICAL_HOST}/news-events/press-releases/2018/leukemia-cll-ibrutinib-trial              |
+                        | pageURL   | {PROTOCOL}://{CANONICAL_HOST}/news-events/press-releases/2018/leukemia-cll-ibrutinib-trial |
+                        | event139  |                                                                                            |
+                        | channel   | News and Events                                                                            |
+                        | pev2      | PressRelease:Reference:LinkClick                                                           |
+                        | linkType  | lnk_o                                                                                      |
+
+
 

@@ -65,3 +65,12 @@ When('user clicks on NCIDS feature card at position {int}', (cardIndex) => {
 When('user clicks on {int} video',(position)=>{
     cy.get('div.cgdp-video .video-preview__play-button').eq(position-1).trigger('click')
 })
+
+When('user clicks on Contact link',()=>{
+    cy.get('.cgdp-media-contact__info a').trigger('click',{followRedirect: false});
+})
+
+When('user clicks on {int} reference link',(linkIndex)=>{
+    cy.get('.cgdp-article-footer-citation a').eq(linkIndex - 1).trigger('click',{followRedirect: false});
+})
+
